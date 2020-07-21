@@ -1,7 +1,39 @@
-p {
-  color: red;
+.homeimage {
+  width: 25%;
+  height: 25%;
+  margin-bottom: -200px;
+  margin-top: -100px;
 }
 
 h1 {
-  font-size: 300px;
+    font-family: Futura, Avenir, monospace;
+    font-style: normal;
+    font-size: 100px;
+    font-weight: 950;
+    background: -webkit-linear-gradient(#f59b60 20%, #a1dbf8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 85%;
+    user-select: none;
+    z-index: auto;
+
+}
+
+body {
+  border: grey;
+  font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+  background-color: black;
+  background-image: url('https://imgur.com/HCIb3sL.png');
+  background-repeat: repeat;
+}
+
+.first {
+  background: -webkit-linear-gradient(#f59b60 20%, #a1dbf8 100%);
+  opacity: 85%;
+}
+
+p {
+  color: orange;
+  font-style: italic;
 }
