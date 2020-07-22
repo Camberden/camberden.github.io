@@ -10,6 +10,8 @@ window.onload = function(){
 function clickmeboy(){
 	q = q + 1;
 	document.getElementById('pedestal').innerHTML = q;
+	document.getElementById('hitbutton').classList.add('red');
+	setTimeout(() => document.getElementById('hitbutton').classList.remove('red'), 200);
 }
 
 setInterval(printTimer, 1000);
@@ -24,8 +26,8 @@ function sampleTypingTest(){
 	const typed = document.getElementById('sampleTypingField').value;
 	const marker = document.getElementById('pangram');
 
-	if (typed.substring(0, typed.length) === para.substring(0, typed.length)){
-		marker.innerHTML = para.replace(typed, '<span style="color:red">' + typed + '</span>');
+	if (typed === para.substring(0, typed.length)){
+		marker.innerHTML = para.replace(typed, '<span class="red">' + typed + '</span>');
 	}
 
 	if (typed === para){

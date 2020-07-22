@@ -15,7 +15,7 @@ h1 {
   text-align: center;
   font-weight: 950;
   background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
-  background-clip: text;
+  -webkit-background-clip: text;
   color: transparent;
   user-select: none;
 }
@@ -42,4 +42,8 @@ body {
 p {
   color: orange;
   font-style: italic;
+}
+
+.red {
+  color: red;
 }
