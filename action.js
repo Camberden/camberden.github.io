@@ -3,9 +3,7 @@
 
 let q = 0;
 
-window.onload = function(){
-	console.log('Running!');
-};
+window.onload = () => console.log('Running!');
 
 function clickmeboy(){
 	q = q + 1;
@@ -33,6 +31,6 @@ function sampleTypingTest(){
 	if (typed === para){
 		document.getElementById('sampleTypingField').value = '';
 		marker.innerHTML = para;
-		alert('Nice!');
+		alert('✨');
 	}
 }

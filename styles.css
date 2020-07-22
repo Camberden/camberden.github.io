@@ -4,8 +4,9 @@
   height: 25%;
   min-height: 300px;
   margin-bottom: -180px;
-  margin-top: -100px;
+  margin-top: -45px;
   margin-left: 30px;
+  user-select: none;
 }
 
 h1 {
@@ -35,6 +36,10 @@ body {
   to {background-position: 100% 0;}
 }
 
+button {
+  user-select: none;
+}
+
 #pangram {
   color: lightblue;
 }
@@ -46,4 +51,42 @@ p {
 
 .red {
   color: red;
+}
+
+/* --PURE.CSS FRAMEWORK NAVBAR-- */
+
+.home-menu {
+  padding: 0.5em;
+  text-align: left;
+  box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+.home-menu {
+  /* background: #2d3e50; */
+  background: rgb(4, 16, 34);
+}
+.pure-menu.pure-menu-fixed {
+  /* Fixed menus normally have a border at the bottom. */
+  border-bottom: none;
+  /* I need a higher z-index here because of the scroll-over effect. */
+  z-index: 4;
+}
+
+.home-menu .pure-menu-heading {
+  color: #f59b60;
+  font-weight: 400;
+  font-size: 120%;
+}
+
+.home-menu .pure-menu-selected a {
+  color: white;
+}
+
+.home-menu a {
+  color: #a1dbf8;
+}
+.home-menu li a:hover,
+.home-menu li a:focus {
+  background: none;
+  border: none;
+  color: #AECFE5;
 }
