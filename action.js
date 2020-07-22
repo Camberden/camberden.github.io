@@ -27,6 +27,7 @@ function sampleTypingTest() {
     
     if (typed == para) {
         document.getElementById("sampleTypingField").value = "";
+        marker.innerHTML = para;
         alert("Nice!");
     }
 }
