@@ -23,21 +23,35 @@
 
 <body>
 
-	<div class="firsttext"></div>
+	<div class="firsttext">
+		<i><br>Type this out and see what'll happen if you do it correctly.<br>
+			Maybe you'll be surprised, or maybe you'll not:<br><br>
+			<h5 id="pangram">The quick brown fox jumps over the lazy dog.</h5>
+		</i>
+		<form class="pure-form">
+			<div class="typingfield">
+				<br><input type="text" id="sampleTypingField" value="" onkeyup="sampleTypingTest()" autocomplete="off" >
+		</form>
+	</div>
+
 	<p>This is a place to test out website building using GitHub's Pages feature. Cheers.</p>
+	</div>
+
 	<a href="http://keyhero.com/profile/camberden/?ba" title="camberden's typing test profile">
 		<img src="https://www.keyhero.com/static//badges/1203/typing-test-361007.png" alt="camberden's typing test WPM"
 			style="vertical-align:middle"></a>
-	</br>
+	</br>ff
 
 	<div>
-		<p id="miniclock" onload="printTime()">_______</p>
+		<p id="miniclock"></p>
 
 	</div>
 
 	<p>What'll come next, I wonder?</p>
 
 	<h1 id="pedestal"></h1>
+
+	<script type="text/javascript">printTimer();</script>
 
 </body>
 
