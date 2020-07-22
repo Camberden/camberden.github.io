@@ -4,7 +4,6 @@ window.onload = function() {
     console.log("Running!");
 }
 
-
 function clickmeboy() {
     q = q + 1;
     document.getElementById("pedestal").innerHTML = q;
@@ -27,6 +26,7 @@ function sampleTypingTest() {
     }
     
     if (typed == para) {
+        document.getElementById("sampleTypingField").value = "";
         alert("Nice!");
     }
 }

@@ -17,42 +17,35 @@ h1 {
   background: -webkit-linear-gradient(#f59b60 20%, #a1dbf8 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  opacity: 85%;
+  /* opacity: 80%; */
   user-select: none;
-  
-
 }
 
 body {
   border: grey;
-  font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
   text-align: center;
   background-color: black;
   background-image: url('https://imgur.com/HCIb3sL.png');
-  /* background-repeat: repeat; */
-  -webkit-animation: animatebackground 60s linear infinite;
+  background-repeat: repeat;
+  /* -webkit-animation: animatebackground 60s linear infinite;
   animation: animatebackground 60s linear infinite;
   -ms-animation: animatebackground 60s linear infinite;
-  -moz-animation: animatebackground 60s linear infinite;
+  -moz-animation: animatebackground 60s linear infinite; */
 }
 
 .firsttext {
-  /* background: -webkit-linear-gradient(#f59b60 20%, #a1dbf8 100%); */
+  color: white;
   opacity: 85%;
 }
 
-.firsttext > i {
-  color: white;
-}
-
-.firsttext > i > h5 {
+#pangram {
   color: lightblue;
 }
 
 p {
   color: orange;
   font-style: italic;
-
 }
 
 #pedestal {
