@@ -1,17 +1,15 @@
 'use strict';
 /* exported clickmeboy sampleTypingTest */
 
-let q = 0;
-
 window.onload = () => console.log('Running!');
 
 function clickmeboy(){
-	q = q + 1;
-	document.getElementById('pedestal').innerHTML = q;
+	document.getElementById('pedestal').innerHTML -= -1;
 	document.getElementById('hitbutton').classList.add('red');
 	setTimeout(() => document.getElementById('hitbutton').classList.remove('red'), 200);
 }
 
+printTimer();
 setInterval(printTimer, 1000);
 
 function printTimer(){
@@ -34,3 +32,5 @@ function sampleTypingTest(){
 		alert('✨');
 	}
 }
+
+// TODO: remove all pure.css library containers.
