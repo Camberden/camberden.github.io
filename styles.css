@@ -1,141 +1,151 @@
 .homeimage {
-  width: 25%;
-  min-width: 300px;
-  height: 25%;
-  min-height: 300px;
-  margin-bottom: -180px;
-  margin-top: -45px;
-  margin-left: 30px;
-  user-select: none;
+	width: 25%;
+	min-width: 300px;
+	height: 25%;
+	min-height: 300px;
+	margin-bottom: -180px;
+	margin-top: -45px;
+	margin-left: 30px;
+	user-select: none;
 }
 
 h1 {
-  font-family: Futura, Avenir, monospace;
-  font-style: normal;
-  font-size: 500%;
-  text-align: center;
-  font-weight: 950;
-  background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
-  -webkit-background-clip: text;
-  color: transparent;
-  user-select: none;
+	font-family: Futura, Avenir, monospace;
+	font-style: normal;
+	font-size: 500%;
+	text-align: center;
+	font-weight: 950;
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
 }
 
 body {
-  color: white;
-  font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-  text-align: center;
-  z-index: 1;
-  background-color: black;
-  background-image: url('https://imgur.com/HCIb3sL.png');
-  background-repeat: repeat;
-  animation: mymove 100s linear infinite;
+	color: white;
+	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	text-align: center;
+	z-index: 1;
+	background-color: black;
+	background-image: url('https://imgur.com/HCIb3sL.png');
+	animation: mymove 100s linear infinite;
 }
 
 @keyframes mymove {
-  from {background-position: 0 0;}
-  to {background-position: 100% 0;}
+	from {background-position: 0 0;}
+	to {background-position: 100% 0;}
 }
 
 button {
-  user-select: none;
+	user-select: none;
 }
 
 #pangram {
-  color: lightblue;
+	color: lightblue;
 }
 
 p {
-  color: #f59b60;
-  font-style: italic;
+	color: #f59b60;
+	font-style: italic;
 }
 
 .red {
-  color: red;
+	color: red;
 }
 
 /* --PURE.CSS FRAMEWORK NAVBAR-- */
 
 .home-menu {
-  padding: 0.5em;
-  text-align: left;
-  box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+	padding: 0.5em;
+	text-align: left;
+	box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
 }
 .home-menu {
-  /* background: #2d3e50; */
-  background: rgb(4, 16, 34);
+	/* background: #2d3e50; */
+	background: rgb(4, 16, 34);
 }
 .pure-menu.pure-menu-fixed {
-  /* Fixed menus normally have a border at the bottom. */
-  border-bottom: none;
-  /* I need a higher z-index here because of the scroll-over effect. */
-  z-index: 4;
+	/* Fixed menus normally have a border at the bottom. */
+	border-bottom: none;
+	/* I need a higher z-index here because of the scroll-over effect. */
+	z-index: 4;
 }
 
 .home-menu .pure-menu-heading {
-  color: #f59b60;
-  font-weight: 400;
-  font-size: 120%;
+	color: #f59b60;
+	font-weight: 400;
+	font-size: 120%;
 }
 
 .home-menu .pure-menu-selected a {
-  color: white;
+	color: white;
 }
 
 .home-menu a {
-  color: #a1dbf8;
+	color: #a1dbf8;
 }
 .home-menu li a:hover,
 .home-menu li a:focus {
-  background: none;
-  border: none;
-  color: #AECFE5;
+	background: none;
+	border: none;
+	color: #AECFE5;
 }
 
 
  /* -- PURE.CSS FRAMEWORK CONTENT STYLES -- */
 
  .content-wrapper {
-  position: absolute;
-  top: 49%;
-  width: 100%;
-  min-height: 0%;
-  z-index: 2;
-  background: rgb(4, 16, 34);
-  /* background-image: url('https://imgur.com/HCIb3sL.png');
-  background-repeat: repeat; */
+	position: absolute;
+	top: 49%;
+	width: 100%;
+	min-height: 0%;
+	z-index: 2;
+	background: rgb(4, 16, 34);
+	/* background-image: url('https://imgur.com/HCIb3sL.png');
+	background-repeat: repeat; */
 
 }
 
 .content {
-  padding: 1em 1em 3em;
+	padding: 1em 1em 3em;
 }
 
 .content-head {
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  margin: 2em 0 1em;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	margin: 2em 0 1em;
 }
 
 .content-head-ribbon {
-  color: #f59b60;
+	color: #f59b60;
 }
 
 .content-subhead {
-  color: #1f8dd6;
+	color: #1f8dd6;
 }
-  .content-subhead i {
-      margin-right: 7px;
-  }
+
+.content-subhead i {
+	margin-right: 7px;
+}
 
 .ribbon {
-  background: black;
+	background: black;
 }
 
 .footer {
-  background: black;
-  position: fixed;
-  bottom: 0;
-  width: 100%;
+	background: black;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+}
+
+.gamecontainer {
+	background-color: rgba(0,0,0, 0.80);
+	text-align: center;
+	position: absolute;
+	top: 25%;
+	left: 25%;
+	height: 50%;
+	width: 50%;
 }
