@@ -41,7 +41,9 @@ button {
 }
 
 #pangram {
-	color: lightblue;
+	color: #f59b60;
+	font-size: 14px;
+
 }
 
 p {
@@ -53,92 +55,26 @@ p {
 	color: red;
 }
 
-/* --PURE.CSS FRAMEWORK NAVBAR-- */
 
-.home-menu {
-	padding: 0.5em;
-	text-align: left;
-	box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
-}
-.home-menu {
-	/* background: #2d3e50; */
-	background: rgb(4, 16, 34);
-}
-.pure-menu.pure-menu-fixed {
-	/* Fixed menus normally have a border at the bottom. */
-	border-bottom: none;
-	/* I need a higher z-index here because of the scroll-over effect. */
-	z-index: 4;
-}
-
-.home-menu .pure-menu-heading {
-	color: #f59b60;
-	font-weight: 400;
-	font-size: 120%;
-}
-
-.home-menu .pure-menu-selected a {
-	color: white;
-}
-
-.home-menu a {
-	color: #a1dbf8;
-}
-.home-menu li a:hover,
-.home-menu li a:focus {
-	background: none;
-	border: none;
-	color: #AECFE5;
-}
+/* GRID CONTAINERS IN THE MAIN PAGE ARE RIGHT HERE */
 
 
- /* -- PURE.CSS FRAMEWORK CONTENT STYLES -- */
-
- .content-wrapper {
-	position: absolute;
-	top: 49%;
-	width: 100%;
-	min-height: 0%;
-	z-index: 2;
-	background: rgb(4, 16, 34);
-	/* background-image: url('https://imgur.com/HCIb3sL.png');
-	background-repeat: repeat; */
-
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	background-color: black;
+	padding: 10px;
 }
 
-.content {
-	padding: 1em 1em 3em;
+.grid-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 60px;
+	font-size: 30px;
+	text-align: center;
 }
 
-.content-head {
-	font-weight: 400;
-	text-transform: uppercase;
-	letter-spacing: 0.1em;
-	margin: 2em 0 1em;
-}
-
-.content-head-ribbon {
-	color: #f59b60;
-}
-
-.content-subhead {
-	color: #1f8dd6;
-}
-
-.content-subhead i {
-	margin-right: 7px;
-}
-
-.ribbon {
-	background: black;
-}
-
-.footer {
-	background: black;
-	position: fixed;
-	bottom: 0;
-	width: 100%;
-}
+/* CSS ELEMENTS FOUND IN 'DEMOGAME' */
 
 .gamecontainer {
 	background-color: rgba(0,0,0, 0.80);
@@ -155,4 +91,3 @@ p {
 	letter-spacing: .2em;
 	display: block;
 }
-

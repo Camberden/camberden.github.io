@@ -1,0 +1,125 @@
+OLD HEADER
+-----------
+
+
+<div class="header">
+		<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
+			<a class="pure-menu-heading" href="http://www.camberden.com">camberden</a>
+
+			<ul class="pure-menu-list">
+				<li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+				<li class="pure-menu-item"><a href="" class="pure-menu-link">Contact</a></li>
+			</ul>
+		</div>
+	</div>
+
+
+PURE.CSS FRAMEWORK NAVBAR
+----------
+
+.home-menu {
+	padding: 0.5em;
+	text-align: left;
+	box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
+}
+.home-menu {
+	/* background: #2d3e50; */
+	background: rgb(4, 16, 34);
+}
+.pure-menu.pure-menu-fixed {
+	/* Fixed menus normally have a border at the bottom. */
+	border-bottom: none;
+	/* I need a higher z-index here because of the scroll-over effect. */
+	z-index: 4;
+}
+
+.home-menu .pure-menu-heading {
+	color: #f59b60;
+	font-weight: 400;
+	font-size: 120%;
+}
+
+.home-menu .pure-menu-selected a {
+	color: white;
+}
+
+.home-menu a {
+	color: #a1dbf8;
+}
+.home-menu li a:hover,
+.home-menu li a:focus {
+	background: none;
+	border: none;
+	color: #AECFE5;
+
+
+BUTTON PRESS TOTAL AND SUBHEADING
+---------
+
+	<div class="content-wrapper">
+		<div class="content">
+			<h1 id="pedestal">0</h1>
+			<h2 class="content-head is-center">It's time to roll out!</h2>
+		</div>
+	</div>
+}
+
+
+
+OLD CONTENT BODY
+----------
+
+<div class="pure-g">
+				<div class="l-box pure-u-1 pure-u-md-1-2 pure-u-lg-1-4">
+
+					<div>
+						<button class="pure-button" id="hitbutton" onclick="clickmeboy()">Hit me!</button>
+					</div>
+
+					<div class="firsttext">
+						<i><br>Type this out and see what'll happen if you do it correctly.<br>
+							Maybe you'll be surprised, or maybe you'll not:<br><br>
+							<span id="pangram">The quick brown fox jumps over the lazy dog.</span>
+						</i>
+						<form class="pure-form">
+							<div class="typingfield">
+								<br><input type="text" id="sampleTypingField" value="" onkeyup="sampleTypingTest()"
+									autocomplete="off">
+							</div>
+						</form>
+					</div>
+
+					<p>This is a place to test out website building using GitHub's Pages feature. Cheers.</p>
+
+					<a href="http://keyhero.com/profile/camberden/?ba" title="camberden's typing test profile">
+						<img src="https://www.keyhero.com/static//badges/1203/typing-test-361007.png"
+							alt="camberden's typing test WPM" style="vertical-align:middle"></a>
+					</br>
+
+					<div>
+						</br>
+						<a href="demogame/demogame.html">Prospects! 10/10/2020</a>
+						</br>
+						<a href="texts/text1.html">Musings. 10/10/2020</a>
+						<p id="miniclock"></p>
+					</div>
+
+					<p>What'll come next, I wonder?</p>
+
+				</div>
+			</div>
+		</div>
+
+		<div class="content">
+
+			<div class="pure-g">
+				<div class="l-box-lrg pure-u-1 pure-u-md-2-5">
+
+				</div>
+
+				<div class="l-box-lrg pure-u-1 pure-u-md-3-5">
+
+				</div>
+			</div>
+
+		</div>
