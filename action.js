@@ -3,6 +3,7 @@
 
 window.onload = () => console.log('Running!');
 
+
 function clickmeboy(){
 	document.getElementById('pedestal').innerHTML -= -1;
 	document.getElementById('hitbutton').classList.add('red');

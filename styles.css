@@ -149,3 +149,10 @@ p {
 	height: 50%;
 	width: 50%;
 }
+
+.ncjob > a {
+	color: white;
+	letter-spacing: .2em;
+	display: block;
+}
+
