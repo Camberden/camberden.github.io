@@ -1,0 +1,1 @@
+Hi! This is a little message used as a prompt for an AJAX call!

@@ -27,7 +27,7 @@ body {
 	text-align: center;
 	z-index: 1;
 	background-color: black;
-	background-image: url('https://imgur.com/HCIb3sL.png');
+	background-image: url('assets/favicon-32x32 copy.png');
 	animation: mymove 100s linear infinite;
 }
 
@@ -44,6 +44,10 @@ button {
 	color: #f59b60;
 	font-size: 14px;
 
+}
+
+#httpheading {
+	font-size: 12px;
 }
 
 p {
