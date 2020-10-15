@@ -31,7 +31,7 @@ body{
 }
   
 .wum-small {
-	font-family: Pacifico;
+	font-family: Pacifico, Futura, Avenir;
 	font-weight: 400;
 	font-size: 0.37em;
 	line-height: 1.35em;
@@ -49,6 +49,7 @@ body{
 
 .poemassetscontainer{
 	/* background-image: url("https://imgur.com/FXAQU9u.png"); */
+	background-color: #f6f6f6;
 }
 
 .poemcontainer{
@@ -56,12 +57,29 @@ body{
 	/* margin-left: auto;
 	margin-right: auto; */
 	background-color: #f6f3ed;
-	/* margin-left: 30em;
-	margin-right: 30em; */
+	margin-left: 19vh;
+	margin-right: 20vh;
 	min-width: 500px;
 	border-left: 500px white;
 	border-right: 500px white;
 }
+
+.grid-container {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	background-color: black;
+	padding: 10px;
+}
+
+.grid-item {
+	background-color: rgba(255, 255, 255, 0.8);
+	border: 1px solid rgba(0, 0, 0, 0.8);
+	padding: 60px;
+	font-size: 30px;
+	text-align: center;
+}
+
+/* percents instead of pixels, says mo */
 
 /*	POEMTEXT	 */
 
