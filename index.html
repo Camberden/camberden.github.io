@@ -6,6 +6,7 @@
 	<meta charset="UTF-8">
 	<link rel="icon" type="image/x-icon" href="https://imgur.com/ax4g74g.jpg">
 	<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+	<link href='https://fonts.googleapis.com/css?family=Lora:400italic' rel='stylesheet' type='text/css'>
 	<title>Chrispy's Site</title>
 </head>
 
@@ -15,7 +16,6 @@
 	<img src="assets/CamberdenSignature copy.png" alt="Emblem" class="homeimage">
 
 	<h1>it's chrispy's site</h1>
-	<h6 id="demotxt"></h6>
 
 	<div class="grid-container">
 
@@ -25,9 +25,8 @@
 
 		<div class="grid-item"><span id="pangram">The quick brown fox jumps over the lazy dog.</span></div>
 
-		<div class="grid-item"></br><a href="http://keyhero.com/profile/camberden/?ba" title="camberden's typing test profile">
-			<img src="https://www.keyhero.com/static//badges/1203/typing-test-361007.png"
-				alt="camberden's typing test WPM"></a></div>
+		<div class="grid-item"><p id="demotxt" style="font-family: Lora, sans-serif;
+			font-style: italic; font-size: large; padding: 22px" onclick="inMo()"></p></div>
 
 		<div class="grid-item"><p id="miniclock"></p></div>
 
@@ -42,18 +41,18 @@
 	  </div> 
 
 	<script src="action.js"></script>
-	<!-- <script>
+	<script>
 		var xhttp = new XMLHttpRequest();
 		xhttp.onreadystatechange = function() {
 		  if (this.readyState == 4 && this.status == 200) {
 			document.getElementById("demotxt").innerHTML =
-			this.responseText;
+			this.responseText.substring(0,2);
 			console.log("Retrieved!");
 		  }
 		};
 		xhttp.open("GET", "http://www.textfiles.com/food/fudge.txt", true);
 		xhttp.send();
-		</script> -->
+		</script>
 
 </body>
 

@@ -1,6 +1,10 @@
 /*	METADATA	*/
-body{
+body {
+	background-image: url(../assets/interlaced.png);
 	background-color: #f6f6f6;
+	background-blend-mode: multiply;
+	/* background: #f6f6f6; */
+
 }
 
 /*	PAGETITLE	*/
@@ -47,55 +51,55 @@ body{
 
 /*	POEMCONTAINER	*/
 
-.poemassetscontainer{
-	/* background-image: url("https://imgur.com/FXAQU9u.png"); */
-	background-color: #f6f6f6;
-}
-
-.poemcontainer{
-	/* display: block; */
-	/* margin-left: auto;
-	margin-right: auto; */
-	background-color: #f6f3ed;
+.poemcontainer {
+	display: grid;
+	grid-template-columns: auto auto auto;
+	margin-left: auto;
+	margin-right: auto;
 	margin-left: 19vh;
 	margin-right: 20vh;
 	min-width: 500px;
-	border-left: 500px white;
-	border-right: 500px white;
+	/* padding: 10px; */
+	/* display: block; */
+	/* border-left: 500px white; */
+	/* border-right: 500px white; */
 }
 
-.grid-container {
-	display: grid;
-	grid-template-columns: auto auto auto;
-	background-color: black;
-	padding: 10px;
+.poem {
+	background-color: #f6f3ed;
+	min-width: 300px;
 }
 
-.grid-item {
-	background-color: rgba(255, 255, 255, 0.8);
-	border: 1px solid rgba(0, 0, 0, 0.8);
+.poemasset {
+	background-color: inherit;
 	padding: 60px;
 	font-size: 30px;
 	text-align: center;
+	margin-top: 75%;
+}
+
+button {
+	/* border: 20px solid f;
+	border-radius: 5%; */
+	background-color: inherit;
+	padding: 15px 20px;
+	text-align: center;
+	text-decoration: none;	
+	display: inline-block;
+	user-select: none;
 }
 
 /* percents instead of pixels, says mo */
 
 /*	POEMTEXT	 */
-
-.eb-lora {
+  
+.writing {
 	color: #000;
 	text-align: left;
 	font-family: Lora, sans-serif;
 	font-style: italic;
-	font-weight: 400;
-	line-height: 3em;
-	/* padding: 11em 12em 10em; */
-}
-  
-.eb-lora-p {
-	font-size: 10px;
 	font-size: 1.5em;
+
 	max-width: 570px;
 	margin-left: auto;
 	margin-right: auto;
@@ -104,7 +108,7 @@ body{
 	min-width: 1em;
 }
   
-.eb-lora-fl {
+.writinginitial {
 	font-size: 7em;
 	float: left;
 	line-height: 0.8em;
@@ -114,7 +118,7 @@ body{
 
 /*	BOTTOMSIGNATURE	*/
 
-.kir {
+.marker {
 	color: #db8044;
 	text-align: right;
 	font-size: 1em;
@@ -122,15 +126,15 @@ body{
 	/* padding: 7em 0em 13em; */
 }
   
-.kir-r1 {
+.markerlarge {
 	line-height: 0em;
 	font-size: 100px;
 	font-weight: 100;
-	color: rgb(225, 234, 243);
+	color: rgb(123, 153, 184);
 }
   
-.kir-r2 {
-	line-height: -1em;
+.markersmall {
+	/* line-height: -1em; */
 	margin-top: -1em;
 	font-size: 50px;
 }
