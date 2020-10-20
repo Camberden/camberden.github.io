@@ -14,36 +14,35 @@
 <body>
 	<a class="marker" href="../index.html">Return</a>
 
-	<div class="wum" id="poemtitle">
-		<h1 class="wum-r1"><span class="wum-small">The</span>Rush<span class="wum-small">of</span>Feeling</h1>
+	<div class="open" id="poemtitle">
+		<h1 class="opentitle"><span class="pacifico">The</span>Rush<span class="pacifico">of</span>Feeling</h1>
 	</div>
 
 	<div class="poemcontainer">
 
 		<div class="poemasset">
-			<button class="marker">Next</button>
+			<button class="marker" onclick="previousPoem()">Previous</button>
 		</div>
 
 		<div class="poem">
+			<p>
 			<div class="writing" id="fortyping">
-				<p><span class="writinginitial">W</span>ayward I drifted, loosely guided by principle and
-					conviction whose strength teetered and peaked with a worrying frequency.
-				</br></br>
-				Each inevitable workplace dejection garnered close company with the pangs of such
-					teetering strength, hallmarked by decisional regret of both the short and long term: the inescapable
-					failings of a
-					misguided youth.</p>
+				
 			</div>
-		</div>
+			</p>
 
-		<div class="poemasset">
-			<form>
-				<div class="typingfield">
+			<form onSubmit="return false;">
+				<div class="typingfield" style="text-align: center;">
 					<br><input type="text" id="sampleTypingField" value="" onkeyup="sampleTypingTest()"
 						autocomplete="off">
 				</div>
 			</form>
-			<button class="marker">Previous</button>
+
+		</div>
+
+		<div class="poemasset">
+			<p id="peomnumberref"></p>
+			<button class="marker"onclick="nextPoem()">Next</button>
 		</div>
 	</div>
 
@@ -60,7 +59,7 @@
 		<h2 class="markersmall">Chrispy</h2>
 	</div>
 
-<script src="poemactions.js"></script>
+	<script src="poemactions.js"></script>
 </body>
 
 </html>

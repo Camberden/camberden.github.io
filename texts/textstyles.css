@@ -1,6 +1,8 @@
 /*	METADATA	*/
 body {
-	background-image: url(../assets/interlaced.png);
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
 	/* background: #f6f6f6; */
@@ -19,7 +21,7 @@ body {
 	user-select: none;
 }
 
-.wum {
+.open {
 	color: #f1cf63;
 	font-family: Open Sans Condensed, sans-serif;
 	text-align: center;
@@ -27,15 +29,15 @@ body {
 	line-height: 3em;
 }
   
-.wum-r1 {
+.opentitle {
 	font-size: 8.7em;
 	font-weight: 700;
 	line-height: 1.1em;
 	text-transform: uppercase;
 }
   
-.wum-small {
-	font-family: Pacifico, Futura, Avenir;
+.pacifico {
+	font-family: Pacifico, Futura, Avenir, monospace;
 	font-weight: 400;
 	font-size: 0.37em;
 	line-height: 1.35em;
@@ -56,10 +58,10 @@ body {
 	grid-template-columns: auto auto auto;
 	margin-left: auto;
 	margin-right: auto;
-	margin-left: 19vh;
-	margin-right: 20vh;
+	/* margin-left: 15vh;
+	margin-right: 20vh; */
 	min-width: 500px;
-	/* padding: 10px; */
+	/* padding: 100px; */
 	/* display: block; */
 	/* border-left: 500px white; */
 	/* border-right: 500px white; */
@@ -94,6 +96,7 @@ button {
 /*	POEMTEXT	 */
   
 .writing {
+	user-select: none;
 	color: #000;
 	text-align: left;
 	font-family: Lora, sans-serif;
@@ -114,7 +117,26 @@ button {
 	line-height: 0.8em;
 	margin-top: -0.29em;
 	margin-right: -0.05em;
+	text-shadow: -5px -2px 0px rgb(133, 132, 132);
 }
+
+/* INPUT FIELD */
+
+input[type=text] {
+	background-color: #a1dbf8;
+	color: #f59b60;
+	font-family: Permanent Marker, serif;
+	/* background-position: 10px 10px; */
+	background-repeat: no-repeat;
+	padding-left: 100px;
+	padding-right: 100px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+  }
+
+  input[type=text]:focus {
+	border: 3px solid #555;
+  }
 
 /*	BOTTOMSIGNATURE	*/
 
@@ -138,3 +160,5 @@ button {
 	margin-top: -1em;
 	font-size: 50px;
 }
+
+

@@ -21,9 +21,15 @@ function printTimer(){
 }
 
 function inMo(){
-	document.getElementById('demotxt').style = 'font-size:50px; color:red; background-blend-mode: exclusion';
+	document.getElementById('demotxt').style = 'font-size:50px; color:red;';
 	missouri.play();
 }
+
+missouri.addEventListener('ended', function(){
+	missouri.currentTime = 0;
+	console.log('missouri ended');
+	document.getElementById('demotxt').style = 'font-size:25px; color:orange;';
+});
 
 function sampleTypingTest(){
 	const para = 'The quick brown fox jumps over the lazy dog.';
