@@ -8,7 +8,7 @@
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Permanent+Marker:400' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="../poems/poemstyles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../poems/poemstyles.css" media="screen"/>
 	<title>Chrispy's Texts</title>
 </head>
 
@@ -23,7 +23,23 @@
 
 		<div class="poemasset">
 			<div class="leftbox">
-				<span class="marker" id="menu">Menu</span><br>
+				<span class="marker" id="menulabel">Menu</span><br>
+
+
+
+				<!-- MENUMODAL -->
+				<div class="modal" id="menumodal">
+
+					<div class="menudialog">
+						<span class="closemenu">&times;</span>
+						<p class="dialogtext">Browse passages! And other things, too.</p>
+					</div>
+
+				</div>
+
+
+
+
 				<button class="marker" onclick="previousPoem()">Previous</button>
 			</div>
 		</div>
@@ -36,7 +52,7 @@
 
 			<form onSubmit="return false;" style="user-select: none;">
 				<div class="typingfield" style="text-align: center; user-select: none;">
-					<input type="text" id="sampleTypingField" value="" onkeyup="sampleTypingTest()" autocomplete="off">
+					<input type="text" id="sampleTypingField" value="" onkeyup="typingTest()" autocomplete="off">
 				</div>
 			</form>
 
@@ -47,7 +63,7 @@
 				<span class="marker" id="poemnum"></span><br>
 			</div>
 			<button class="marker" onclick="nextPoem()">Next</button>
-		
+
 		</div>
 	</div>
 

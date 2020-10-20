@@ -31,6 +31,7 @@ missouri.addEventListener('ended', function(){
 	document.getElementById('demotxt').style = 'font-size:25px; color:orange;';
 });
 
+
 function sampleTypingTest(){
 	const para = 'The quick brown fox jumps over the lazy dog.';
 	const typed = document.getElementById('sampleTypingField').value;
@@ -43,6 +44,7 @@ function sampleTypingTest(){
 	if (typed === para){
 		document.getElementById('sampleTypingField').value = '';
 		marker.innerHTML = para;
+		// eslint-disable-next-line no-undef
 		alert('✨');
 	}
 }

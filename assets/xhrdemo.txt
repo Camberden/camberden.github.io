@@ -1,0 +1,12 @@
+<!-- <script>
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+		  if (this.readyState == 4 && this.status == 200) {
+			document.getElementById("demotxt").innerHTML =
+			this.responseText.substring(0,2);
+			console.log("Retrieved!");
+		  }
+		};
+		xhttp.open("GET", "http://www.textfiles.com/food/fudge.txt", true);
+		xhttp.send();
+		</script> -->
