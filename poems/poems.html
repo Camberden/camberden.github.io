@@ -3,11 +3,12 @@
 
 <head>
 	<meta charset="UTF-8">
+	<link rel="icon" type="image/x-icon" href="https://imgur.com/ax4g74g.jpg">
 	<link href='https://fonts.googleapis.com/css?family=Lora:400italic' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:700' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Pacifico:400' rel='stylesheet' type='text/css'>
 	<link href='https://fonts.googleapis.com/css?family=Permanent+Marker:400' rel='stylesheet' type='text/css'>
-	<link rel="stylesheet" type="text/css" href="../texts/textstyles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../poems/poemstyles.css" media="screen" />
 	<title>Chrispy's Texts</title>
 </head>
 
@@ -21,38 +22,36 @@
 	<div class="poemcontainer">
 
 		<div class="poemasset">
-			<button class="marker" onclick="previousPoem()">Previous</button>
+			<div class="leftbox">
+				<span class="marker" id="menu">Menu</span><br>
+				<button class="marker" onclick="previousPoem()">Previous</button>
+			</div>
 		</div>
 
-		<div class="poem">
+		<div class="poem" style="user-select: none;">
 			<p>
 			<div class="writing" id="fortyping">
-				
 			</div>
 			</p>
 
-			<form onSubmit="return false;">
-				<div class="typingfield" style="text-align: center;">
-					<br><input type="text" id="sampleTypingField" value="" onkeyup="sampleTypingTest()"
-						autocomplete="off">
+			<form onSubmit="return false;" style="user-select: none;">
+				<div class="typingfield" style="text-align: center; user-select: none;">
+					<input type="text" id="sampleTypingField" value="" onkeyup="sampleTypingTest()" autocomplete="off">
 				</div>
 			</form>
 
 		</div>
 
 		<div class="poemasset">
-			<p id="peomnumberref"></p>
-			<button class="marker"onclick="nextPoem()">Next</button>
+			<div class="rightbox">
+				<span class="marker" id="poemnum"></span><br>
+			</div>
+			<button class="marker" onclick="nextPoem()">Next</button>
+		
 		</div>
 	</div>
 
-	<!-- <div class="poemcontainer">
-
-		<div class="poemasset"></div>
-		<div class="poemasset"></div>
-		<div class="poemasset"></div>
-
-	</div> -->
+	</div>
 
 	<div class="marker">
 		<h1 class="markerlarge">Camberden</h1>

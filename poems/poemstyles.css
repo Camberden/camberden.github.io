@@ -58,9 +58,9 @@ body {
 	grid-template-columns: auto auto auto;
 	margin-left: auto;
 	margin-right: auto;
+	min-width: 500px;
 	/* margin-left: 15vh;
 	margin-right: 20vh; */
-	min-width: 500px;
 	/* padding: 100px; */
 	/* display: block; */
 	/* border-left: 500px white; */
@@ -72,6 +72,12 @@ body {
 	min-width: 300px;
 }
 
+.poem:hover {
+	box-shadow: 5px, solid, rgb(172, 238, 205);
+}
+
+/* ASSETS */
+
 .poemasset {
 	background-color: inherit;
 	padding: 60px;
@@ -79,6 +85,16 @@ body {
 	text-align: center;
 	margin-top: 75%;
 }
+
+.rightbox {
+	user-select: none;
+}
+
+.leftbox {
+	user-select: none;
+}
+
+/* BUTTON */
 
 button {
 	/* border: 20px solid f;
@@ -89,6 +105,10 @@ button {
 	text-decoration: none;	
 	display: inline-block;
 	user-select: none;
+}
+
+button:hover {
+	border: 7px solid rgb(172, 238, 205);
 }
 
 /* percents instead of pixels, says mo */
@@ -122,20 +142,24 @@ button {
 
 /* INPUT FIELD */
 
+form {
+	padding-bottom: 15px;
+}
+
 input[type=text] {
 	background-color: #a1dbf8;
 	color: #f59b60;
 	font-family: Permanent Marker, serif;
-	/* background-position: 10px 10px; */
+	font-size: 24px;
 	background-repeat: no-repeat;
-	padding-left: 100px;
-	padding-right: 100px;
+	padding-left: 3%;
+	padding-right: 3%;
 	padding-top: 15px;
 	padding-bottom: 15px;
   }
 
-  input[type=text]:focus {
-	border: 3px solid #555;
+input[type=text]:focus {
+	border: 10px solid #bda5d4;
   }
 
 /*	BOTTOMSIGNATURE	*/
@@ -161,4 +185,6 @@ input[type=text] {
 	font-size: 50px;
 }
 
+
+/* MODAL TESTING */
 
