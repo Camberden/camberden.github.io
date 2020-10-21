@@ -76,6 +76,7 @@ function typingTest(){
 		document.getElementById('sampleTypingField').value = '';
 		document.getElementById('fortyping').innerHTML = '<span class="writinginitial">' + selectedpoem[0] + '</span>' + selectedpoem.substring(1, selectedpoem.length);
 		alert('✨');
+		nextPoem();
 	}
 }
 

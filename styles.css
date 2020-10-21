@@ -21,8 +21,10 @@ h1 {
 	user-select: none;
 }
 
+/* ASSETS IN THE BODY */
+
 body {
-	color: white;
+	color: #f59b60;
 	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
 	text-align: center;
 	z-index: 1;
@@ -40,20 +42,33 @@ button {
 	user-select: none;
 }
 
-#pangram {
-	color: #f59b60;
-	font-size: 14px;
-
-}
-
-#httpheading {
-	font-size: 12px;
-}
-
 p {
-	color: #f59b60;
-	font-style: italic;
+	color: inherit;
 }
+
+a {
+	display: inline-block;
+	color: inherit;
+	padding: 20px;
+	margin-top: 5%;
+	margin-bottom: 5%;
+	font-style: normal;
+	text-decoration: solid;
+	outline: 0;
+	cursor: pointer;
+
+	background-image: linear-gradient(120deg, 0%,  100%);
+	background-repeat: no-repeat;
+	background-size: 25% 0.1em;
+	background-position: 0 88%;
+	transition: background-size 0.1s ease-in;
+}
+
+a:hover {
+	background-size: 100% 5%;
+	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+}
+
 
 .red {
 	color: red;
@@ -64,26 +79,28 @@ p {
 
 
 .grid-container {
+	border: 10px solid #ff00ff;
 	display: grid;
-	grid-template-columns: auto auto auto;
-	background-color: black;
-	padding: 10px;
+	grid-template-columns: auto;
 }
 
 .grid-item {
-	background-color: rgba(255, 255, 255, 0.8);
-	border: 1px solid rgba(0, 0, 0, 0.8);
-	padding: 60px;
-	font-size: 30px;
-	text-align: center;
+	border: 10px solid #ff00ff;
+	padding: 5px;
+	font-size: 1000%;
+	overflow: hidden;
+	position: sticky;
+	text-align: left;
+	padding-left: 15%;
+	background-color: rgba(0, 0, 0, 0.8);
 }
 
-/* CSS ELEMENTS FOUND IN 'DEMOGAME' */
+/* CSS ELEMENTS FOUND IN 'PROSPECTS' */
 
 .gamecontainer {
 	background-color: rgba(0,0,0, 0.8);
 	text-align: center;
-	position: absolute;
+	position: relative;
 	top: 25%;
 	left: 25%;
 	height: 50%;
@@ -91,7 +108,18 @@ p {
 }
 
 .ncjob > a {
-	color: white;
+	padding: 0px;
+	margin-top: 0%;
+	margin-bottom: 0%;
+
 	letter-spacing: .2em;
 	display: block;
+	transition: 0.1s ease-out;
+	color: inherit;
+	background-image: none;
+}
+
+.ncjob > a:hover {
+	letter-spacing: .5em;
+	color: red;
 }
