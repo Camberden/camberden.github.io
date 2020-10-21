@@ -20,17 +20,17 @@ function printTimer(){
 	const dd = d.toLocaleTimeString();
 	let cc;
 	const nn = parseInt(dd.substring(0, 2));
-	console.log(nn + 12);
 
 	if (dd.substring(dd.length - 2, dd.length - 1) === 'P'){
 		cc = dd.replace(dd.substring(0, 2), nn + 12);
 	}
-	else if (dd.charAt(1) === '2' && dd.substring(dd.length - 2, dd.length - 1) === 'A'){
+	if (dd.charAt(1) === '2' && dd.substring(dd.length - 2, dd.length - 1) === 'A'){
 		cc = dd.replace(dd.substring(0, 2), '00');
 	}
-
-	console.log(dd);
-	document.getElementById('miniclock').innerHTML = cc.substring(0, 8);
+	if (dd.charAt(1) === ':'){
+		cc = '0'.concat(dd);
+	}
+	document.getElementById('miniclock').innerHTML = cc.substring(0, 8) + ' EST';
 }
 
 function inMo(){
@@ -40,12 +40,12 @@ function inMo(){
 }
 
 function moSign(){
-	setTimeout(() => document.getElementById('grid3').style = 'background-image: url(assets/missouri-getty.jpg); background-position-x: 125%; background-repeat: no-repeat;', 2100);
+	setTimeout(() => document.getElementById('grid3').style = 'background-image: url(assets/missouri-getty.jpg); background-position-x: 100%; background-repeat: no-repeat; background-size: cover;', 2100);
 }
 
 missouri.addEventListener('ended', function(){
 	missouri.currentTime = 0;
 	console.log('missouri ended');
 	document.getElementById('demotxt').style ='font-size:inherit; color:inherit;';
-	document.getElementById('grid3').style = 'background-image: none;';
+	document.getElementById('grid3').style = 'background-image: transparent;';
 });

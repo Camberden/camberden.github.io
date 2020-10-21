@@ -5,8 +5,6 @@ body {
 	url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
-	/* background: #f6f6f6; */
-
 }
 
 /*	PAGETITLE	*/
@@ -45,7 +43,6 @@ body {
 	vertical-align: middle;
 	margin-top: -0.44em;
 	padding-right: 0.2em;
-	/* border: 0.3em solid #f1cf63; */
 	border-right: 0;
 	border-left: 0;
 	text-transform: lowercase;
@@ -59,18 +56,11 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	min-width: 500px;
-	/* margin-left: 15vh;
-	margin-right: 20vh; */
-	/* padding: 100px; */
-	/* display: block; */
-	/* border-left: 500px white; */
-	/* border-right: 500px white; */
 }
 
 .poem {
 	background-color: #f6f3ed;
 	min-width: 300px;
-	/* overflow: auto; */
 }
 
 /* ASSETS */
@@ -94,8 +84,6 @@ body {
 /* BUTTON */
 
 button {
-	/* border: 20px solid f;
-	border-radius: 5%; */
 	background-color: inherit;
 	padding: 15px 20px;
 	text-align: center;
@@ -182,7 +170,6 @@ input[type=text]:focus {
 	font-size: 50px;
 }
 
-
 /* MENUMODAL */
 
 #menulabel {
@@ -218,7 +205,7 @@ input[type=text]:focus {
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
-	background-image: url(/Users/chrispy/Documents/cambergithub/camberden.github.io/assets/1chr.jpg);
+	background-image: url(../assets/1chr.jpg);
 	background-size: 200px;
 	background-repeat: no-repeat;
 	background-position-x: 100%;
