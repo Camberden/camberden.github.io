@@ -37,15 +37,21 @@ function inMo(){
 	document.getElementById('demotxt').style = 'color:red; user-select:none';
 	missouri.play();
 	moSign();
+	moRemove();
 }
 
 function moSign(){
 	setTimeout(() => document.getElementById('grid3').style = 'background-image: url(assets/missouri-getty.jpg); background-position-x: 100%; background-repeat: no-repeat; background-size: cover;', 2100);
 }
 
+function moRemove(){
+	setTimeout(() => document.getElementById('grid3').style = 'background-image: transparent;', 4000);
+	setTimeout(() => document.getElementById('demotxt').style = 'color: inherit;', 4000);
+}
+
 missouri.addEventListener('ended', function(){
 	missouri.currentTime = 0;
 	console.log('missouri ended');
 	document.getElementById('demotxt').style ='font-size:inherit; color:inherit;';
-	document.getElementById('grid3').style = 'background-image: transparent;';
+	// document.getElementById('grid3').style = 'background-image: transparent;';
 });
