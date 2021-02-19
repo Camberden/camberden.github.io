@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 'use strict';
-/* exported typingTest */
+/* exported typingTest playQuote*/
 
 window.onload = () => console.log('Running!');
 
@@ -62,6 +62,14 @@ function previousPoem(){
 	getPoemNumber();
 }
 
+const quoteAudio = new Audio('assets/quote' + (poemnumber + 1) + '.mp3');
+let tap = 1;
+function playQuote(){
+	quoteAudio.play();
+	tap++;
+	console.log(tap);
+}
+
 function typingTest(){
 	const para = selectedpoem;
 	const typed = document.getElementById('sampleTypingField').value;
@@ -93,6 +101,7 @@ document.onkeydown = function(evt){
 		nextPoem();
 	}
 };
+
 
 
 
