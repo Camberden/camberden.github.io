@@ -33,6 +33,15 @@ body {
 	line-height: 1.1em;
 	text-transform: uppercase;
 }
+
+.center {
+	margin: 0;
+	position: relative;
+	top: 3%;
+	left: 50%;
+	-ms-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+  }
   
 .pacifico {
 	font-family: Pacifico, 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;

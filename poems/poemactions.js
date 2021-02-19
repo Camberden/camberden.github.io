@@ -23,6 +23,7 @@ const poems = [
 
 let poemnumber = 0;
 let selectedpoem = poems[poemnumber];
+let quoteAudio = new Audio('../assets/quote' + (poemnumber + 1) + '.mp3');
 
 function getPoemNumber(){
 	document.getElementById('poemnum').innerHTML = 'Passage #' + (poemnumber + 1);
@@ -45,6 +46,7 @@ function nextPoem(){
 	document.getElementById('sampleTypingField').value = '';
 	focusWriting();
 	getPoemNumber();
+	quoteAudio = new Audio('../assets/quote' + (poemnumber + 1) + '.mp3');
 }
 
 function previousPoem(){
@@ -60,14 +62,12 @@ function previousPoem(){
 	document.getElementById('sampleTypingField').value = '';
 	focusWriting();
 	getPoemNumber();
+	quoteAudio = new Audio('../assets/quote' + (poemnumber + 1) + '.mp3');
 }
 
-const quoteAudio = new Audio('assets/quote' + (poemnumber + 1) + '.mp3');
-let tap = 1;
+const tap = 1;
 function playQuote(){
 	quoteAudio.play();
-	tap++;
-	console.log(tap);
 }
 
 function typingTest(){
