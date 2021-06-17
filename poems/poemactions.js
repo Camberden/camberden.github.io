@@ -66,8 +66,18 @@ function previousPoem(){
 }
 
 const tap = 1;
+let isQuotePlaying = false;
 function playQuote(){
-	quoteAudio.play();
+	if (isQuotePlaying === false){
+		quoteAudio.play();
+		document.getElementById('playbuttontext').innerHTML = 'Stop';
+		isQuotePlaying = true;
+	}
+	else {
+		quoteAudio.pause();
+		document.getElementById('playbuttontext').innerHTML = 'Play';
+		isQuotePlaying = false;
+	}
 }
 
 function typingTest(){
