@@ -1,2 +1,7 @@
 *.json
+*.key
+*.pem
+*.srl
+*.crt
+*.cnf
 node_modules
