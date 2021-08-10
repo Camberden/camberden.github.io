@@ -1,0 +1,77 @@
+/*	METADATA	*/
+body {
+	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url(../assets/interlaced.png);
+	background-color: #f6f6f6;
+	background-blend-mode: multiply;
+}
+
+.marker {
+	color: #db8044;
+	font-size: 1em;
+	font-family: Permanent Marker, serif;
+}
+
+#lifeinweekstitle {
+	font-style: normal;
+	text-align: left;
+	font-weight: 1500;
+	font-size: 50px;
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
+}
+
+#programorconcentration {
+	margin-left: 25px;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: [first] auto [line2] auto [line3] auto [end];
+	grid-template-rows: [row1-start] auto [row1-end] auto [row2-start] auto [row2-end];
+	column-gap: 10px;
+	color: rgb(105, 107, 107);
+	/* font-family: Lora, sans-serif; */
+	text-align: left;
+	margin-left: 10px;
+	position: relative;
+}
+
+.item-info {
+	grid-column-start: first;
+	grid-column-end: line2;
+	grid-row-start: row1-start;
+	grid-row-end: row1-end;
+	word-wrap: break-word;
+	word-break: break-all;
+	position: fixed;
+	margin-bottom: 700px;
+	margin-left: 30px
+}
+
+.item-chart {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row1-start;
+	grid-row-end: row1-end;
+	word-wrap: break-word;
+	word-break: break-all;
+	
+	max-width: 79ch;
+
+  }
+
+#boxinput {
+	margin-left: 30px;
+	margin-right: 30px;
+  }
+
+  #boxinput:hover {
+	  background-color: yellow;
+  }
+
