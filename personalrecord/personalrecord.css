@@ -1,0 +1,74 @@
+/*	METADATA	*/
+body {
+	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url(../assets/interlaced.png);
+	background-color: #f6f6f6;
+	background-blend-mode: multiply;
+}
+
+.marker {
+	color: #db8044;
+	font-size: 1em;
+	font-family: Permanent Marker, serif;
+}
+
+#personalrecordtitle {
+	font-style: normal;
+	text-align: left;
+	font-weight: 1500;
+	font-size: 50px;
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
+}
+
+#programorconcentration {
+	margin-left: 25px;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];
+	grid-template-rows: [row1-start] auto [row1-end] auto [row2-start] auto [row2-end];
+	column-gap: 10px;
+	color: black;
+	font-family: Lora, sans-serif;
+	text-align: left;
+	margin-left: 10px;
+	position: relative;
+}
+
+.item-aas {
+	background-color: #f6f3ed;
+	grid-column-start: 1;
+	grid-column-end: line2;
+	grid-row-start: row1-start;
+	grid-row-end: row1-end;
+  }
+
+  .item-cpc {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row1-start;
+	grid-row-end: row1-end;
+  }
+
+  .item-mcs {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row1-start;
+	grid-row-end: row1-end;
+  }
+
+  .item-info {
+	text-align: center;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+  }
