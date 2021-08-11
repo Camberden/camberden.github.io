@@ -62,7 +62,7 @@ body {
 	word-wrap: break-word;
 	word-break: break-all;
 	
-	max-width: 79ch;
+	max-width: 81ch;
 
   }
 
@@ -71,7 +71,20 @@ body {
 	margin-right: 30px;
   }
 
-  #boxinput:hover {
+  /* #boxinput:hover {
 	  background-color: yellow;
+  } */
+
+  .momentbox {
+	  width: 10px;
+	  height: 10px;
+	  border-radius: 2px;
+	  margin: 1px;
+	  border: 1px solid #444;
   }
+
+  .momentboxfilled {
+	  background-color: #444;
+  }
+
 
