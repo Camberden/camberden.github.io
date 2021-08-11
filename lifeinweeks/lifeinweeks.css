@@ -46,8 +46,6 @@ body {
 	grid-column-end: line2;
 	grid-row-start: row1-start;
 	grid-row-end: row1-end;
-	word-wrap: break-word;
-	word-break: break-all;
 	position: fixed;
 	margin-bottom: 700px;
 	margin-left: 30px
@@ -59,8 +57,6 @@ body {
 	grid-column-end: end;
 	grid-row-start: row1-start;
 	grid-row-end: row1-end;
-	word-wrap: break-word;
-	word-break: break-all;
 	
 	max-width: 81ch;
 
@@ -76,15 +72,27 @@ body {
   } */
 
   .momentbox {
+	  display: inline-block;
 	  width: 10px;
 	  height: 10px;
 	  border-radius: 2px;
 	  margin: 1px;
 	  border: 1px solid #444;
+	  color: rgba(0, 0, 0, 0);
   }
 
   .momentboxfilled {
 	  background-color: #444;
+  }
+
+  .firstyearmoment {
+	  border: 2px solid yellow;
+	  opacity: 0.5;
+	  margin: 0px;
+  }
+
+  .firstyearmoment:hover {
+	  opacity: 1;
   }
 
 

@@ -1,10 +1,9 @@
 /* eslint-disable no-unused-vars */
 'use strict';
 
-window.onload = () => console.log('Running lifeinweeks.js!');
-window.onload = populateBoxes();
 
 function populateBoxes(){
+	console.log('Running lifeinweeks.js!');
 	const inception = 753300000000;
 	const millisecondweek = 1000*60*60*24*7;
 	const d = new Date();
@@ -13,30 +12,28 @@ function populateBoxes(){
 	console.log(weekslived);
 	const weeks = 52;
 	const years = 78;
-	const box = '☐';
-	const filled = '■';
-	const boxes = box.repeat(weeks);
-	let boxchart = boxes.repeat(years);
-	const chartspace = document.getElementById('boxinput');
+	const spans = new Array(weeks*years).fill(0).map((_, i) => {
+		const span = document.createElement('span');
+		span.classList.add('momentbox');
+		span.id = `box${i}`;
+		// debugger;
+		return span;
+	});
 
-	console.log('populated!');
-	console.log(boxchart.length);
+	//SEGMENTS
 
-	boxchart = boxchart.substring(0, weekslived).replaceAll(box, filled) +
-		boxchart.substring(weekslived, boxchart.length);
-
-	// MOMENTS
-	// Attempting to create highlightable substrings with onhover and onclick elements.
-	// Consider CSS classes with <span>, boi
-	const firstyearmoment = boxchart.substring(0, 52);
-
-	boxchart = `<span style="background-color: #FFFF00">${firstyearmoment}</span>` +
-		boxchart.substring(52, boxchart.length);
-
-	// const ncrelocationmoment = boxchart[1395];
-	//boxchart = '<span style="background-color: #FFFF00">' + ncrelocationmoment + '</span>' +
-	// boxchart.substring(1396, boxchart.length);
-
-
-	chartspace.innerHTML = boxchart;
+	//Filled
+	spans.forEach((span, i) => {
+		if (i < weekslived)
+			span.classList.add('momentboxfilled');
+	});
+	spans.forEach((span, i) => {
+		if (i < weeks)
+			span.classList.add('firstyearmoment');
+	});
+	const boxinput = document.getElementById('boxinput');
+	spans.forEach(s => boxinput.appendChild(s));
+	//debugger;
 }
+
+populateBoxes();
