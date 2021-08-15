@@ -50,14 +50,18 @@ function populateBoxes(){
 }
 
 function displayMomentInfo(moment){
-	const iframetext = '<iframe frameborder="0" style="height: 185px; overflow:scroll; width: 100%' +
+	const iframeleft = '<iframe frameborder="0" style="height: 185px; overflow:scroll; width: 100%' +
 		'marginheight="1" marginwidth="1" seamless="seamless" scrolling="no" frameborder="0"' +
 		'allowtransparency="true" src=../lifeinweeks/moments/';
-	if (moment === 'firstyearmoment'){
-		document.getElementById('moment-info').innerHTML = iframetext + 'firstyear.html></iframe';
-	}
-	if (moment === 'ncrelocationmoment'){
-		document.getElementById('moment-info').innerHTML = iframetext + 'ncrelocation.html></iframe>';
+	const iframeright = '.html></iframe>';
+
+	switch (moment){
+		case 'firstyearmoment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'firstyear' + iframeright;
+			break;
+		case 'ncrelocationmoment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'ncrelocation' + iframeright;
+			break;
 	}
 }
 populateBoxes();
