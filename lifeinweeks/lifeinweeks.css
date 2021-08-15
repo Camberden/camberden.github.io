@@ -8,6 +8,13 @@ body {
 	background-blend-mode: multiply;
 }
 
+a {
+	color: inherit;
+	text-decoration: solid;
+	outline: 0;
+	cursor: pointer;
+}
+
 .marker {
 	color: #db8044;
 	font-size: 1em;

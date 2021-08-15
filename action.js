@@ -30,7 +30,7 @@ function printTimer(){
 	if (dd.charAt(1) === ':'){
 		cc = '0'.concat(dd);
 	}
-	document.getElementById('miniclock').innerHTML = cc.substring(0, 8) + ' EST';
+	document.getElementById('miniclock').innerHTML = cc.substring(0, 8);
 }
 
 function inMo(){
@@ -53,5 +53,4 @@ missouri.addEventListener('ended', function(){
 	missouri.currentTime = 0;
 	console.log('missouri ended');
 	document.getElementById('demotxt').style ='font-size:inherit; color:inherit;';
-	// document.getElementById('grid3').style = 'background-image: transparent;';
 });
