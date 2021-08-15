@@ -21,6 +21,22 @@ a {
 	font-family: Permanent Marker, serif;
 }
 
+.plan-name{
+	color: black;
+	font-family: Lora, sans-serif;
+	text-align: left;
+	margin-left: 10px;
+	position: relative;
+}
+
+.plan-info{
+	color: black;
+	font-family: Lora, sans-serif;
+	text-align: left;
+	margin-left: 10px;
+	position: relative;
+}
+
 #personalrecordtitle {
 	font-style: normal;
 	text-align: left;
@@ -69,7 +85,10 @@ a {
 .container {
 	display: grid;
 	grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];
-	grid-template-rows: [row1-start] auto [row1-end] auto [row2-start] auto [row2-end];
+	grid-template-rows: 
+	[row1-start] auto [row1-end] auto
+	[row2-start] auto [row2-end] auto
+	[row-3start] auto [row-3end] auto;
 	column-gap: 10px;
 	color: black;
 	font-family: Lora, sans-serif;
@@ -82,30 +101,55 @@ a {
 	background-color: #f6f3ed;
 	grid-column-start: 1;
 	grid-column-end: line2;
-	grid-row-start: row1-start;
-	grid-row-end: row1-end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
   }
 
-  .item-cpc {
+.item-cpc {
 	background-color: #f6f3ed;
-	grid-column-start: line2;
-	grid-column-end: line3;
-	grid-row-start: row1-start;
-	grid-row-end: row1-end;
-  }
-
-  .item-mcs {
-	background-color: #f6f3ed;
-	grid-column-start: line3;
-	grid-column-end: end;
-	grid-row-start: row1-start;
-	grid-row-end: row1-end;
-  }
-
-  .item-info {
-	text-align: center;
 	grid-column-start: line2;
 	grid-column-end: line3;
 	grid-row-start: row2-start;
 	grid-row-end: row2-end;
-  }
+}
+
+.item-mcs {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-bso {
+	background-color: #f6f3ed;
+	grid-column-start: first;
+	grid-column-end: line2;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-mat-option1 {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-mat-option2 {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+
+.item-info {
+	text-align: center;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row3-start;
+	grid-row-end: row3-end;
+}
