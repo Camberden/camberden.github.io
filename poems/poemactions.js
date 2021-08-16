@@ -12,7 +12,6 @@ function focusWriting(){
 
 focusWriting();
 
-
 /* To associate with an audiofile, use a Map */
 const poems = [
 	'Wayward I drifted, loosely guided by principle and conviction whose strength teetered and peaked with a worrying frequency. Each inevitable workplace dejection garnered close company with the pangs of such teetering strength, hallmarked by decisional regret of both the short and long term: the inescapable failings of a misguided youth.',
