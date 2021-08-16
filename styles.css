@@ -19,6 +19,11 @@
 	user-select: none;
 }
 
+.site-info {
+	margin-top: -2%;
+	margin-bottom: 5%;
+}
+
 h1 {
 	font-family: Futura, Avenir, monospace;
 	font-style: normal;
@@ -36,8 +41,8 @@ h1 {
 /* ASSETS IN THE BODY */
 
 body {
-	color: #f59b60;
-	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	color: black;
+	font-family: Lora, Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
 	text-align: center;
 	z-index: 1;
 	background-image: url('assets/interlaced.png');
@@ -47,16 +52,21 @@ button {
 	user-select: none;
 }
 
+.marker {
+	color: #db8044;
+	font-size: 1em;
+	font-family: Permanent Marker, serif;
+}
+
 p {
 	color: inherit;
 }
 
 a {
-	display: inline-block;
-	color: inherit;
-	padding: 20px;
-	margin-top: 5%;
-	margin-bottom: 5%;
+	color: #f59b60;
+	/* padding: 20px; */
+	/* margin-top: 5%;
+	margin-bottom: 5%; */
 	font-style: normal;
 	text-decoration: solid;
 	outline: 0;
@@ -74,41 +84,81 @@ a:hover {
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 }
 
+.section-title {
+	color: #f59b60;
+	/* padding: 20px; */
+	/* margin-top: 5%;
+	margin-bottom: 5%; */
+	font-weight: lighter;
+	font-size: 50px;
+	font-style: normal;
+	text-decoration: solid;
+	outline: 0;
+	cursor: pointer;
+
+	background-image: linear-gradient(120deg, 0%,  100%);
+	background-repeat: no-repeat;
+	background-size: 25% 0.1em;
+	background-position: 0 88%;
+	transition: background-size 0.6s ease-in;
+}
+
+.section-title:hover{
+	background-size: 100% 5%;
+	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+}
+
+.section-selected {
+	border: 5px solid #a1dbf8;
+	border-radius: 5px;
+}
 
 .red {
 	color: red;
 }
 
 
-/* GRID CONTAINERS */
+/* CONTAINERS */
 
-.grid-container {
-	display: grid;
-	grid-template-columns: none;
+.container {
+	position: relative;
 	background-color: transparent;
-	padding-left: 20%;
-	padding-right: 20%;
+	text-align: center;
 }
 
-.grid-item {
-	border: 10px solid #a1dbf8;
-	border-radius: 4px;
+.item {
 	background-color: rgba(0, 0, 0, 0.75);
-	font-size: 500%;
-	overflow: hidden;
-	position: sticky;
+	background-position: inherit;
+	font-size: 300%;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-bottom: 50px;
 	text-align: left;
-	padding-left: 15%;
-
 }
 
-.grid-item:hover {
+.item:hover {
 	background-color: black;
-	margin: 2%;
 	background-image:
 	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
 	url('assets/favicon-32x32 copy.png');
 	animation: mymove 25s linear infinite;
+}
+
+.info-box {
+	background-color: rgba(0,0,0, 0.05);
+	margin-top: -1%;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-bottom: 3%;
+}
+
+.entry-box {
+	background-color: rgba(0,0,0, 0.05);
+	margin-top: -1%;
+	margin-left: 25%;
+	margin-right: 25%;
+	margin-bottom: 3%;
+	font-size: 50px;
 }
 
 @keyframes mymove {
@@ -116,9 +166,17 @@ a:hover {
 	to {background-position: 100% 0;}
 }
 
+
+
+
+
+
+
+
+
 /* CSS ELEMENTS FOUND IN 'PROSPECTS' */
 
-.gamecontainer {
+/* .gamecontainer {
 	background-color: rgba(0,0,0, 0.8);
 	text-align: center;
 	position: relative;
@@ -143,4 +201,4 @@ a:hover {
 .ncjob > a:hover {
 	letter-spacing: .5em;
 	color: red;
-}
+} */

@@ -12,8 +12,8 @@ function clickmeboy(){
 	setTimeout(() => document.getElementById('hitbutton').classList.remove('red'), 200);
 }
 
-printTimer();
-setInterval(printTimer, 1000);
+// printTimer();
+// setInterval(printTimer, 1000);
 
 function printTimer(){
 	const d = new Date();
@@ -52,5 +52,102 @@ function moRemove(){
 missouri.addEventListener('ended', function(){
 	missouri.currentTime = 0;
 	console.log('missouri ended');
-	document.getElementById('demotxt').style ='font-size:inherit; color:inherit;';
+	document.getElementById('demotxt').style = 'font-size:inherit; color:inherit;';
 });
+
+// --- INFO AND ENTRYWAYS --- //
+
+const musingslink = '<a href="poems/poems.html">';
+const personalrecordlink = '<a href="personalrecord/personalrecord.html">';
+const lifeinweekslink = '<a href="lifeinweeks/lifeinweeks.html">';
+const linkending = 'Enter</a>';
+
+const musings = document.getElementById('musings');
+const personalrecord = document.getElementById('personalrecord');
+const lifeinweeks = document.getElementById('lifeinweeks');
+
+function populateInfoAndEntryways(selection){
+	switch (selection){
+		case musings:
+			document.getElementById('musings-info').innerHTML =
+				'This is a test and stuff';
+			document.getElementById('musings-entry').innerHTML =
+				musingslink + linkending;
+			console.log(document.getElementById('musings-entry'));
+
+			break;
+		case personalrecord:
+			document.getElementById('personalrecord-info').innerHTML =
+				'Here, I write about my future plans concerning work and re-education.';
+			document.getElementById('personalrecord-entry').innerHTML =
+				personalrecordlink + linkending;
+			console.log(document.getElementById('personalrecord-entry'));
+			break;
+		case lifeinweeks:
+			document.getElementById('lifeinweeks-info').innerHTML =
+				'Here, I detail events of my life using a chart featuring each week of my life as the timeline.';
+			document.getElementById('lifeinweeks-entry').innerHTML =
+				lifeinweekslink + linkending;
+			break;
+	}
+}
+
+
+// --- REMOVAL FUNCTIONS --- //
+
+const infos = document.getElementsByClassName('info-box');
+function removeInfoBox(selection){
+	for (let i = 0; i < infos.length; ++i){
+		infos[i].innerHTML = '';
+	}
+}
+
+const entries = document.getElementsByClassName('entry-box');
+function removeEntryBox(selection){
+	for (let i = 0; i < entries.length; ++i){
+		entries[i].innerHTML = '';
+	}
+}
+
+function removeInfoAndEntry(){
+	removeInfoBox(infos);
+	removeEntryBox(entries);
+}
+
+// --- ON CLICK FUNCTIONS --- //
+
+let counter = 1;
+musings.onclick = function(){
+	console.log(counter);
+	populateInfoAndEntryways(musings);
+	++counter;
+	if (counter > 1 && counter % 2){
+		console.log('removed!');
+		removeInfoAndEntry();
+		counter = 1;
+	}
+};
+
+personalrecord.onclick = function(){
+	console.log(counter);
+	populateInfoAndEntryways(personalrecord);
+	++counter;
+	if (counter > 1 && counter % 2){
+		console.log('removed!');
+		removeInfoAndEntry();
+		counter = 1;
+	}
+};
+
+lifeinweeks.onclick = function(){
+	console.log(counter);
+	populateInfoAndEntryways(lifeinweeks);
+	++counter;
+	if (counter > 1 && counter % 2){
+		console.log('removed!');
+		removeInfoAndEntry();
+		counter = 1;
+	}
+};
+
+console.log(musings);

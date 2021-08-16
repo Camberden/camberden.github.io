@@ -7,6 +7,7 @@
 	<link rel="icon" type="image/x-icon" href="https://imgur.com/ax4g74g.jpg">
 	<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
 	<link href='https://fonts.googleapis.com/css?family=Lora:400italic' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Permanent+Marker:400' rel='stylesheet' type='text/css'>
 	<link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
 	<title>Chrispy's Site</title>
 </head>
@@ -16,36 +17,55 @@
 	<img src="assets/CamberdenSignaturecopy.png" alt="Emblem" class="homeimage">
 
 	<div class="heading-container">
-		<h1>chrispy's site</h1>
+		<h1>camberden</h1>
 	</div>
 
-	<div class="grid-container">
+	<div class='site-info'>
+		<p>Welcome to camberden's personal page.<br>
+			Here you will find musics and musings,<br>
+			and an assortment of modest software projects.<br>
+			Whatever I place here is a summation of what I do<br>
+			and it's my intent that what is placed here<br>
+			is meaningful enough to me to justify its existence<br></p>
+	</div>
 
-		<div class="grid-item" id="grid1">
-			<a href="poems/poems.html">Musings</a>
+	<div class="container">
+
+		<div class="item" id="item1">
+			<h3 class='section-title' id='musings'>Musings</h3>
 		</div>
 
-		<div class="grid-item" id="grid2" href="prospects/prospects.html">
-			<a href="prospects/prospects.html">Prospects</a>
+		<div class='section-access'>
+			<p class='info-box' id='musings-info'></p>
+			<p class='entry-box' id='musings-entry'></p>
 		</div>
 
-		<div class="grid-item" id="grid3">
-			<p id="demotxt" onclick="inMo()">Misery</p>
+		<div class="item" id="item2">
+			<h3 class='section-title' id='personalrecord'>Personal Record</h3>
 		</div>
 
-		<div class="grid-item" id="grid4">
-			<a href="personalrecord/personalrecord.html">Personal Record</a>
+		<div class='section-access'>
+			<p class='info-box' id='personalrecord-info'></p>
+			<p class='entry-box' id='personalrecord-entry'></p>
 		</div>
 
-		<div class='grid-item' id='grid5'>
-			<a href = 'lifeinweeks/lifeinweeks.html'>Life in Weeks</a>
+		<div class='item' id='item3'>
+			<h3 class='section-title' id='lifeinweeks'>Life in Weeks</h3>
 		</div>
 
-		<div class="grid-item" id="grid6">
+		<div class='section-access'>
+			<p class='info-box' id='lifeinweeks-info'></p>
+			<p class='entry-box' id='lifeinweeks-entry'></p>
+		</div>
+
+		<!-- 
+		<div class="item" id="item5">
 			<p id="miniclock"></p>
-		</div>
+		</div> -->
 
 	</div>
+
+	<p class='marker'>Made with ❤️ by Chrispy</p>
 
 	<script src="action.js"></script>
 </body>
