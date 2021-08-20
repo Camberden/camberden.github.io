@@ -12,26 +12,26 @@ function clickmeboy(){
 	setTimeout(() => document.getElementById('hitbutton').classList.remove('red'), 200);
 }
 
-printTimer();
-setInterval(printTimer, 1000);
+// printTimer();
+// setInterval(printTimer, 1000);
 
-function printTimer(){
-	const d = new Date();
-	const dd = d.toLocaleTimeString();
-	let cc;
-	const nn = parseInt(dd.substring(0, 2));
+// function printTimer(){
+// 	const d = new Date();
+// 	const dd = d.toLocaleTimeString();
+// 	let cc;
+// 	const nn = parseInt(dd.substring(0, 2));
 
-	if (dd.substring(dd.length - 2, dd.length - 1) === 'P'){
-		cc = dd.replace(dd.substring(0, 2), nn + 12);
-	}
-	if (dd.charAt(1) === '2' && dd.substring(dd.length - 2, dd.length - 1) === 'A'){
-		cc = dd.replace(dd.substring(0, 2), '00');
-	}
-	if (dd.charAt(1) === ':'){
-		cc = '0'.concat(dd);
-	}
-	document.getElementById('miniclock').innerHTML = cc.substring(0, 8);
-}
+// 	if (dd.substring(dd.length - 2, dd.length - 1) === 'P'){
+// 		cc = dd.replace(dd.substring(0, 2), nn + 12);
+// 	}
+// 	if (dd.charAt(1) === '2' && dd.substring(dd.length - 2, dd.length - 1) === 'A'){
+// 		cc = dd.replace(dd.substring(0, 2), '00');
+// 	}
+// 	if (dd.charAt(1) === ':'){
+// 		cc = '0'.concat(dd);
+// 	}
+// document.getElementById('miniclock').innerHTML = cc.substring(0, 8);
+//}
 
 // function inMo(){
 // 	document.getElementById('demotxt').style = 'color:red; user-select:none';
