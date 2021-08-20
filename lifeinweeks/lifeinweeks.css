@@ -88,16 +88,50 @@ a {
 
 /* MOMENTS */
 
-.firstyearmoment {
+.firstyear-moment {
 	  border: 2px solid yellow;
 	  opacity: 1;
 	  margin: 0px;
 }
 
-.ncrelocationmoment {
+.ncrelocation-moment {
 	  border: 2px solid red;
 	  opacity: 1;
 	  margin: 0px;
 }
 
+.jailhired-moment {
+	border: 2px solid green;
+	opacity: 1;
+	margin: 0px;
+}
 
+.jailfired-moment {
+	border: 2px solid orange;
+	opacity: 1;
+	margin: 0px;
+}
+
+.upshired-moment {
+	border: 2px solid brown;
+	opacity: 1;
+	margin: 0px;
+}
+
+.securityhired-moment {
+	border: 2px solid blue;
+	opacity: 1;
+	margin: 0px;
+}
+
+.techwv-moment {
+	border: 2px solid lightblue;
+	opacity: 1;
+	margin: 0px;
+}
+
+.techva-moment {
+	border: 2px solid lightcoral;
+	opacity: 1;
+	margin: 0px;
+}
