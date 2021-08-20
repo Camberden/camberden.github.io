@@ -1,0 +1,84 @@
+//First Year
+	spans.forEach((span, i) => {
+		if (i < weeks){
+			span.classList.add('firstyear-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('firstyear-moment');
+			}, false);
+		}
+	});
+
+	//Jail Hired
+	spans.forEach((span, i) => {
+		if (i === 1239){
+			span.classList.add('jailhired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('jailhired-moment');
+			}, false);
+		}
+	});
+
+	//Jail Fired
+	spans.forEach((span, i) => {
+		if (i === 1252){
+			span.classList.add('jailfired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('jailfired-moment');
+			}, false);
+		}
+	});
+
+	//UPS Hired
+	spans.forEach((span, i) => {
+		if (i === 1254){
+			span.classList.add('upshired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('upshired-moment');
+			}, false);
+		}
+	});
+
+	//Security Hired
+	spans.forEach((span, i) => {
+		if (i === 1261){
+			span.classList.add('securityhired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('securityhired-moment');
+			}, false);
+		}
+	});
+
+	//Tech Company in WV
+	spans.forEach((span, i) => {
+		if (i === 1300){
+			span.classList.add('techwv-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('techwv-moment');
+			}, false);
+		}
+	});
+
+	//Tech Company in VA
+	spans.forEach((span, i) => {
+		if (i === 1366){
+			span.classList.add('techva-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('techva-moment');
+			}, false);
+		}
+	});
+
+	//NC Relocation
+	spans.forEach((span, i) => {
+		if (i === 1395){
+			span.classList.add('ncrelocation-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('ncrelocation-moment');
+			}, false);
+		}
+	});
+	// --- END MOMENTS SECTION ---
+
+	const boxinput = document.getElementById('boxinput');
+	spans.forEach(s => boxinput.appendChild(s));
+}

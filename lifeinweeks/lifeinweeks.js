@@ -6,7 +6,7 @@ const millisecondweek = 1000 * 60 * 60 * 24 * 7;
 const d = new Date();
 const weekslived = (d.getTime() - inception) / millisecondweek;
 // Change 'newmoment' to identify the week of a moment.
-const newmoment = 1579791600000;
+const newmoment = 1590508800000;
 const dateplanning = (newmoment - inception) / millisecondweek;
 
 function populateBoxes(){
@@ -22,85 +22,70 @@ function populateBoxes(){
 		return span;
 	});
 
-	// --- BEGIN MOMENTS SECTION ---
+	const boxinput = document.getElementById('boxinput');
+	spans.forEach(s => boxinput.appendChild(s));
 
-	//Filled
 	spans.forEach((span, i) => {
-		if (i < weekslived)
+		if (i < weekslived){
 			span.classList.add('momentboxfilled');
-	});
-	//First Year
-	spans.forEach((span, i) => {
+		}
+		// First Year Moment
 		if (i < weeks){
 			span.classList.add('firstyear-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('firstyear-moment');
 			}, false);
 		}
-	});
-
-	//Jail Hired
-	spans.forEach((span, i) => {
+		// Jail Hired Moment
 		if (i === 1239){
 			span.classList.add('jailhired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('jailhired-moment');
 			}, false);
 		}
-	});
-
-	//Jail Fired
-	spans.forEach((span, i) => {
+		// Jail Fired Moment
 		if (i === 1252){
 			span.classList.add('jailfired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('jailfired-moment');
 			}, false);
 		}
-	});
-
-	//UPS Hired
-	spans.forEach((span, i) => {
+		// UPS Hired Moment
 		if (i === 1254){
 			span.classList.add('upshired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('upshired-moment');
 			}, false);
 		}
-	});
-
-	//Security Hired
-	spans.forEach((span, i) => {
+		// Security Hired Moment
 		if (i === 1261){
 			span.classList.add('securityhired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('securityhired-moment');
 			}, false);
 		}
-	});
-
-	//Tech Company in WV
-	spans.forEach((span, i) => {
+		// Tech Company WV Moment
 		if (i === 1300){
 			span.classList.add('techwv-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('techwv-moment');
 			}, false);
 		}
-	});
-
-	//Tech Company in VA
-	spans.forEach((span, i) => {
+		// Tech Company VA Moment
 		if (i === 1366){
 			span.classList.add('techva-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('techva-moment');
 			}, false);
 		}
-	});
-
-	//NC Relocation
-	spans.forEach((span, i) => {
+		// Tech Company Furloughed
+		if (i === 1384){
+			span.classList.add('techvafurloughed-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('techvafurloughed-moment');
+			}, false);
+		}
+		// NC Relocation Moment
 		if (i === 1395){
 			span.classList.add('ncrelocation-moment');
 			span.addEventListener('click', function(){
@@ -108,11 +93,7 @@ function populateBoxes(){
 			}, false);
 		}
 	});
-
-	// --- END MOMENTS SECTION ---
-	const boxinput = document.getElementById('boxinput');
-	spans.forEach(s => boxinput.appendChild(s));
-}
+} // END populateBoxes()
 
 function displayMomentInfo(moment){
 	const iframeleft = '<iframe frameborder="0" style="height: 185px; overflow:scroll; width: 100%' +
@@ -145,7 +126,11 @@ function displayMomentInfo(moment){
 		case 'techva-moment':
 			document.getElementById('moment-info').innerHTML = iframeleft + 'techva' + iframeright;
 			break;
+		case 'techvafurloughed-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'techvafurloughed' + iframeright;
+			break;
 	}
-}
+} // END displayMomentInfo()
+
 document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(weekslived);
 populateBoxes();

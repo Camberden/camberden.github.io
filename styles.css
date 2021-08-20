@@ -31,6 +31,7 @@ h1 {
 	text-align: center;
 	font-weight: 950;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
@@ -164,14 +165,6 @@ a:hover {
 	from {background-position: 0 0;}
 	to {background-position: 100% 0;}
 }
-
-
-
-
-
-
-
-
 
 /* CSS ELEMENTS FOUND IN 'PROSPECTS' */
 

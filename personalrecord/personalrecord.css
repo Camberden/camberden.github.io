@@ -43,6 +43,7 @@ a {
 	font-weight: 1500;
 	font-size: 50px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;

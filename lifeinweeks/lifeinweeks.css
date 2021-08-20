@@ -27,6 +27,7 @@ a {
 	font-weight: 1500;
 	font-size: 50px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
@@ -89,19 +90,13 @@ a {
 /* MOMENTS */
 
 .firstyear-moment {
-	  border: 2px solid yellow;
-	  opacity: 1;
-	  margin: 0px;
-}
-
-.ncrelocation-moment {
-	  border: 2px solid red;
+	  border: 2px solid orange;
 	  opacity: 1;
 	  margin: 0px;
 }
 
 .jailhired-moment {
-	border: 2px solid green;
+	border: 2px solid orange;
 	opacity: 1;
 	margin: 0px;
 }
@@ -113,25 +108,37 @@ a {
 }
 
 .upshired-moment {
-	border: 2px solid brown;
+	border: 2px solid orange;
 	opacity: 1;
 	margin: 0px;
 }
 
 .securityhired-moment {
-	border: 2px solid blue;
+	border: 2px solid orange;
 	opacity: 1;
 	margin: 0px;
 }
 
 .techwv-moment {
-	border: 2px solid lightblue;
+	border: 2px solid orange;
 	opacity: 1;
 	margin: 0px;
 }
 
 .techva-moment {
-	border: 2px solid lightcoral;
+	border: 2px solid orange;
+	opacity: 1;
+	margin: 0px;
+}
+
+.ncrelocation-moment {
+	border: 2px solid orange;
+	opacity: 1;
+	margin: 0px;
+}
+
+.techvafurloughed-moment {
+	border: 2px solid orange;
 	opacity: 1;
 	margin: 0px;
 }
