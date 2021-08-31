@@ -60,11 +60,13 @@ missouri.addEventListener('ended', function(){
 const musingslink = '<a href="poems/poems.html">';
 const personalrecordlink = '<a href="personalrecord/personalrecord.html">';
 const lifeinweekslink = '<a href="lifeinweeks/lifeinweeks.html">';
+const billcalculatorlink = '<a href="billcalculator/billcalculator.html">';
 const linkending = 'Enter</a>';
 
 const musings = document.getElementById('musings');
 const personalrecord = document.getElementById('personalrecord');
 const lifeinweeks = document.getElementById('lifeinweeks');
+const billcalculator = document.getElementById('billcalculator');
 
 function populateInfoAndEntryways(selection){
 	switch (selection){
@@ -88,6 +90,12 @@ function populateInfoAndEntryways(selection){
 				'Here, I detail events of my life using a chart featuring each week of my life as the timeline.';
 			document.getElementById('lifeinweeks-entry').innerHTML =
 				lifeinweekslink + linkending;
+			break;
+		case billcalculator:
+			document.getElementById('billcalculator-info').innerHTML =
+					'Here, I plan my finances month-by-month based on my current situation.';
+			document.getElementById('billcalculator-entry').innerHTML =
+					billcalculatorlink + linkending;
 			break;
 	}
 }
@@ -142,6 +150,17 @@ personalrecord.onclick = function(){
 lifeinweeks.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(lifeinweeks);
+	++counter;
+	if (counter > 1 && counter % 2){
+		console.log('removed!');
+		removeInfoAndEntry();
+		counter = 1;
+	}
+};
+
+billcalculator.onclick = function(){
+	console.log(counter);
+	populateInfoAndEntryways(billcalculator);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');

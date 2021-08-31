@@ -1,0 +1,27 @@
+/*	METADATA	*/
+body {
+	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url(../assets/interlaced.png);
+	background-color: #f6f6f6;
+	background-blend-mode: multiply;
+}
+
+a {
+	color: inherit;
+	text-decoration: solid;
+	outline: 0;
+	cursor: pointer;
+}
+
+li{
+	display: inline;
+	text-align: left;
+}
+
+.marker {
+	color: #db8044;
+	font-size: 1em;
+	font-family: Permanent Marker, serif;
+}
