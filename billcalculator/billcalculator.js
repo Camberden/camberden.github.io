@@ -40,13 +40,11 @@ document.getElementById('cre-cost').innerHTML = cre;
 const calculateNewBalance = function(){
 	const endbalance = startbalance - total;
 	document.getElementById('endbalance').innerHTML = endbalance.toFixed(2);
-	// const expenses = parseInt(document.getElementsByClassName('expense').value);
-	// let total = 0;
-	// expenses.forEach(expense => {
-	// 	total += expense;
-	// });
-	// console.log(expenses);
-	// document.getElementById('endbalance').innerHTML = total;
 };
+
+// Add a class to trigger the checkbox selection to have a value of $0.00
+
+const insurance = document.getElementById('ins-cost');
+console.log(insurance.checked);
 
 calculateNewBalance();

@@ -92,6 +92,13 @@ function populateBoxes(){
 				displayMomentInfo('ncrelocation-moment');
 			}, false);
 		}
+		// Covid Moment
+		if (i === 1452){
+			span.classList.add('covid-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('covid-moment');
+			}, false);
+		}
 	});
 } // END populateBoxes()
 
@@ -128,6 +135,9 @@ function displayMomentInfo(moment){
 			break;
 		case 'techvafurloughed-moment':
 			document.getElementById('moment-info').innerHTML = iframeleft + 'techvafurloughed' + iframeright;
+			break;
+		case 'covid-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'covid' + iframeright;
 			break;
 	}
 } // END displayMomentInfo()
