@@ -25,3 +25,39 @@ li{
 	font-size: 1em;
 	font-family: Permanent Marker, serif;
 }
+
+.trackcontainer {
+	background-color: rgba(0,0,0, 0.8);
+	position: relative;
+	text-align: center;
+	top: 25%;
+	height: 50%;
+	width: 50%;
+
+	letter-spacing: .2em;
+	display: block;
+	transition: 0.1s ease-out;
+	color: white;
+	background-image: none;
+}
+
+/* #meaningtune {
+	letter-spacing: .2em;
+	display: block;
+	transition: 0.1s ease-out;
+	color: white;
+	background-image: none;
+} */
+
+#meaningtune:hover {
+	letter-spacing: .5em;
+	transition: 0.1s ease-out;
+	color: lightblue;
+}
+
+.currentlyplaying {
+	color:red;
+	letter-spacing: .5em;
+	transition: 0.1s ease-out;
+}
+
