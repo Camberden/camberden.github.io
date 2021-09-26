@@ -57,26 +57,36 @@ missouri.addEventListener('ended', function(){
 
 // --- INFO AND ENTRYWAYS --- //
 
+const musiclink = '<a href="music/music.html">';
 const musingslink = '<a href="poems/poems.html">';
 const personalrecordlink = '<a href="personalrecord/personalrecord.html">';
 const lifeinweekslink = '<a href="lifeinweeks/lifeinweeks.html">';
 const billcalculatorlink = '<a href="billcalculator/billcalculator.html">';
+const studydocumentslink = '<a href="studydocuments/studydocuments.html">';
 const linkending = 'Enter</a>';
 
+const music = document.getElementById('music');
 const musings = document.getElementById('musings');
 const personalrecord = document.getElementById('personalrecord');
 const lifeinweeks = document.getElementById('lifeinweeks');
 const billcalculator = document.getElementById('billcalculator');
+const studydocuments = document.getElementById('studydocuments');
 
 function populateInfoAndEntryways(selection){
 	switch (selection){
+		case music:
+			document.getElementById('music-info').innerHTML =
+				'Here you can find my musical works';
+			document.getElementById('music-entry').innerHTML =
+				musiclink + linkending;
+			console.log(document.getElementById('music-entry'));
+			break;
 		case musings:
 			document.getElementById('musings-info').innerHTML =
 				'This is a test and stuff';
 			document.getElementById('musings-entry').innerHTML =
 				musingslink + linkending;
 			console.log(document.getElementById('musings-entry'));
-
 			break;
 		case personalrecord:
 			document.getElementById('personalrecord-info').innerHTML =
@@ -96,6 +106,12 @@ function populateInfoAndEntryways(selection){
 					'Here, I plan my finances month-by-month based on my current situation.';
 			document.getElementById('billcalculator-entry').innerHTML =
 					billcalculatorlink + linkending;
+			break;
+		case studydocuments:
+			document.getElementById('studydocuments-info').innerHTML =
+					'Here, I provide personal study resources';
+			document.getElementById('studydocuments-entry').innerHTML =
+					studydocumentslink + linkending;
 			break;
 	}
 }
@@ -125,6 +141,17 @@ function removeInfoAndEntry(){
 // --- ON CLICK FUNCTIONS --- //
 
 let counter = 1;
+
+music.onclick = function(){
+	console.log(counter);
+	populateInfoAndEntryways(music);
+	++counter;
+	if (counter > 1 && counter % 2){
+		console.log('removed!');
+		removeInfoAndEntry();
+		counter = 1;
+	}
+};
 musings.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(musings);
@@ -161,6 +188,17 @@ lifeinweeks.onclick = function(){
 billcalculator.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(billcalculator);
+	++counter;
+	if (counter > 1 && counter % 2){
+		console.log('removed!');
+		removeInfoAndEntry();
+		counter = 1;
+	}
+};
+
+studydocuments.onclick = function(){
+	console.log(counter);
+	populateInfoAndEntryways(studydocuments);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');
