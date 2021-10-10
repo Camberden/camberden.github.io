@@ -30,6 +30,7 @@ li{
 	background-color: rgba(0,0,0, 0.8);
 	position: relative;
 	text-align: center;
+	padding: 30px;
 	top: 25%;
 	height: 50%;
 	width: 50%;
@@ -55,9 +56,28 @@ li{
 	color: lightblue;
 }
 
+#warofartinstrumentaltune:hover {
+	letter-spacing: .5em;
+	transition: 0.1s ease-out;
+	color: blue;
+}
+
 .currentlyplaying {
 	color:red;
 	letter-spacing: .5em;
 	transition: 0.1s ease-out;
+	background-color: black;
 }
 
+.currentlyplayingbox {
+	background-color: black;
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url('../assets/favicon-32x32 copy.png');
+	animation: mymove 25s linear infinite;
+}
+
+@keyframes mymove {
+	from {background-position: 0 0;}
+	to {background-position: 100% 0;}
+}
