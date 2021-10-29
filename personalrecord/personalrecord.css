@@ -82,6 +82,10 @@ a {
 	color: red;
 }
 
+.osureqhighlight{
+	color: red;
+}
+
 .container {
 	display: grid;
 	grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];

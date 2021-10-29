@@ -6,11 +6,13 @@ window.onload = () => console.log('Running!');
 const cpccourses = document.querySelectorAll('.cpcreq');
 const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
 const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
+const osucourses = document.querySelectorAll('.osureq');
 
 const aas = document.getElementById('aas');
 const cpc = document.getElementById('cpc');
 const gcp = document.getElementById('gcp');
 const mcs = document.getElementById('mcs');
+const osu = document.getElementById('osu');
 
 console.log(mcs);
 
@@ -60,6 +62,22 @@ mcs.onmouseleave = function(){
 	}
 };
 
+osu.onmouseenter = function(){
+	for (let i = 0; i < osucourses.length; ++i){
+		const course = osucourses[i];
+		course.classList.add('osureqhighlight');
+		displayCredits(osu);
+	}
+};
+
+osu.onmouseleave = function(){
+	for (let i = 0; i < osucourses.length; ++i){
+		const course = osucourses[i];
+		course.classList.remove('osureqhighlight');
+	}
+};
+
+
 function displayCredits(curriculum){
 	switch (curriculum){
 		case aas:
@@ -85,5 +103,11 @@ function displayCredits(curriculum){
 				'PER 3 CREDIT COURSE: $2,782.53<br>' +
 				'FOR ALL 19 CREDITS $19982,99';
 			break;
+		case osu:
+			document.getElementById('credit-info-or').innerHTML =
+			'<p>CREDIT HOUR w/o FEES: $527.00<br>' +
+			'MTH 111 COURSE: $1324.00<br>' +
+			'PER 4 CREDIT COURSE: $2,108.00<br>' +
+			'FOR ALL 60 CREDITS $32,220,00';
 	}
 }
