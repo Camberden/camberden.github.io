@@ -26,6 +26,28 @@ li{
 	font-family: Permanent Marker, serif;
 }
 
+#musictitle {
+	font-style: normal;
+	text-align: left;
+	font-weight: 1500;
+	font-size: 50px;
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
+}
+
+.lyric-bar > #credit {
+	float: right;
+	margin-right: 30px;
+	/* WHY DOES MARGIN TOP FORCE APPEARANCE OF BAR? */
+	/* margin-top: 30px; */
+	color: #db8044;
+	font-size: 10px;
+	font-family: Permanent Marker, serif;
+}
+
 .trackcontainer {
 	background-color: rgba(0,0,0, 0.8);
 	position: relative;
@@ -66,13 +88,13 @@ li{
 	color:red;
 	letter-spacing: .5em;
 	transition: 0.1s ease-out;
-	background-color: black;
+	background-color: transparent;
 }
 
 .currentlyplayingbox {
 	background-color: black;
 	background-image:
-	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	linear-gradient(rgba(105, 89, 89, 0), rgba(1, 0, 0, 0.0)),
 	url('../assets/favicon-32x32 copy.png');
 	animation: mymove 25s linear infinite;
 }
@@ -80,4 +102,21 @@ li{
 @keyframes mymove {
 	from {background-position: 0 0;}
 	to {background-position: 100% 0;}
+}
+
+.lyrics {
+	color: #db8044;
+	font-size: 50px;
+	font-family: Permanent Marker, serif;
+	/* text-align: left; */
+	/* margin-left: 15px; */
+}
+
+.lyric-bar {
+	background-color: rgba(0, 0, 0, 0.8);    /*  40% opaque green */ 
+	text-align: left;
+	overflow: hidden;
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }

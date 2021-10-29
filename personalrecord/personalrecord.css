@@ -173,11 +173,19 @@ a {
 	grid-row-end: row2-end;
 }
 
+.item-ecu {
+	background-color: #f6f3ed;
+	grid-column-start: first;
+	grid-column-end: line2;
+	grid-row-start: row3-start;
+	grid-row-end: row3-end;
+}
+
 
 .item-info {
 	text-align: center;
 	grid-column-start: line2;
 	grid-column-end: line3;
-	grid-row-start: row3-start;
-	grid-row-end: row3-end;
+	grid-row-start: row1-start;
+	grid-row-end: row1-end;
 }

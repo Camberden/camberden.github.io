@@ -15,24 +15,35 @@
 <body>
 	<a class="marker" href='../index.html'>Return</a>
 	<h1 id='musictitle'>Music</h1>
+
+
+	<!-- PLACE THESE DIVS INTO A CONTAINER TO ALLOW FOR LYRICS ON RIGHT SIDE -->
+	<!-- OR MAKE A TOOLBAR AT THE BOTTOM APPEAR TO MANIPULATE TRACKS -->
+	<div>
+		<h3>Here I will post my musical compositions</h3>
+		<p>Most recent works will appear at the top of this page.</p>
+	</div>
+
+	<div id='track1' class='trackcontainer'>
+		<h4 id='meaningtune'>Meaning - 2021</h4>
+		<!-- MAKE TUNE ITS OWN CLASS AND MAKE IT GENERIC FOR ANY AND ALL TUNES -->
+	</div>
+
+	<br>
+	<div id='track2' class='trackcontainer'>
+		<h4 id='warofartinstrumentaltune' class='tune'>War of Art - 2019</h4>
+	</div>
+
+	<!-- CREATE ONE LYRICS VARIABLE -->
+	<div class=lyric-bar>
+		<span class='lyrics' id='meaning-lyrics'></span>
+		<span id='credit'></span>
+	</div>
+
+
+
+	<script src='music.js'></script>
+
 </body>
-
-
-
-<div>
-	<h3>Here I will post my musical compositions</h3>
-	<p>Most recent works will appear at the top of this page.</p>
-</div>s
-
-<div id='track1' class='trackcontainer'>
-	<h4 id='meaningtune'>Meaning - 2021</h4>
-	<!-- MAKE TUNE ITS OWN CLASS AND MAKE IT GENERIC FOR ANY AND ALL TUNES -->
-</div>
-<br>
-<div id='track2' class='trackcontainer'>
-	<h4 id='warofartinstrumentaltune' class='tune'>War of Art - 2019</h4>
-</div>
-
-<script src='music.js'></script>
 
 </html>
