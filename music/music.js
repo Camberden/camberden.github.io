@@ -10,9 +10,8 @@ const credit = document.getElementById('credit');
 // ASSIGN THE VARIABLE TO THE LYRICS FUNCTION BASED ON THE TUNE CLICKED UPON
 const currentlyrics = document.getElementById('meaning-lyrics');
 
-
 let playcounter = 0;
-
+let songline = 0;
 
 // THIS FUNCTION NEEDS TO BECOME TUNE AGNOSTIC.
 // MAKE IT SUCH THAT SELECTING A TUNE DOES NOT REQUIRE AN EXTENDING IF STATEMENT.
@@ -25,20 +24,42 @@ playtext.addEventListener('click', function(){
 		document.getElementById('meaningtune').classList.add('currentlyplaying');
 		document.getElementById('track1').classList.add('currentlyplayingbox');
 		setInterval(function(){
-			meaningLyrics();
+			writeMeaningLyrics();
 		}, 500);
 	}
 	else {
 		meaning.pause();
 		meaning.currentTime = 0;
-		document.getElementById('warofartinstrumentaltune').classList.remove('currentlyplaying');
+		songline = 0;
+		document.getElementById('meaningtune').classList.remove('currentlyplaying');
 		document.getElementById('track1').classList.remove('currentlyplayingbox');
 		currentlyrics.innerHTML = '';
 		credit.innerHTML = '';
 	}
 });
 
-function meaningLyrics(){
+const meaninglyrics = [
+	'Another day...',
+	'I\'m all alone',
+	'I wonder what to do again...',
+	'I take a seat,',
+	'then I endure',
+	'cascading flows of thoughts and so I',
+	'freeze again',
+	'paralyzed...',
+	'directionless and overwhelmed',
+	'I close my eyes...',
+	'fostering the will to take my leave',
+];
+
+let played = false;
+function nextLyrics(song){
+	if (played === false){
+		currentlyrics.innerHTML = song[songline];
+	}
+}
+
+function writeMeaningLyrics(){
 	const ts = meaning.currentTime;
 	if (ts === 0){
 		currentlyrics.innerHTML = '';
@@ -48,13 +69,21 @@ function meaningLyrics(){
 		credit.innerHTML = '<br><br>Chrispy 2021';
 	}
 	if (ts > 22 && ts < 24){
-		currentlyrics.innerHTML = 'Another day...';
+		nextLyrics(meaninglyrics);
+		played = true;
+		songline++;
 	}
 	if (ts > 24 && ts < 26){
-		currentlyrics.innerHTML = ' I\'m all alone';
+		played = false;
+		nextLyrics(meaninglyrics);
+		played = true;
+		songline++;
 	}
 	if (ts > 26 && ts < 30){
-		currentlyrics.innerHTML = ' I wonder what to do again...';
+		played = false;
+		nextLyrics(meaninglyrics);
+		played = true;
+		songline++;
 	}
 }
 
