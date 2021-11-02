@@ -99,6 +99,7 @@ function boiBoiBoi(){
 	let ts;
 	let line = 0;
 	while ((ts = meaning.currentTime) <= meaning.duration){
+		console.debug(ts);
 		if (tsPairs[line][0] <= ts){
 			line++;
 			continue;
