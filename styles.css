@@ -144,6 +144,19 @@ a:hover {
 	animation: mymove 25s linear infinite;
 }
 
+.flourish {
+	background-color: black;
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url('assets/favicon-32x32 copy.png');
+	animation: mymove 25s linear infinite;
+}
+
+.text-flourish {
+	background-size: 100% 5%;
+	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+}
+
 .info-box {
 	background-color: rgba(0,0,0, 0.05);
 	margin-top: -1%;

@@ -3,51 +3,15 @@
 /* exported clickmeboy sampleTypingTest */
 
 window.onload = () => console.log('Running!');
-const missouri = new Audio('assets/missouri.mp3');
 
+// --- MISCELLANEOUS --- //
+const missouri = new Audio('assets/missouri.mp3');
 
 function clickmeboy(){
 	document.getElementById('pedestal').innerHTML -= -1;
 	document.getElementById('hitbutton').classList.add('red');
 	setTimeout(() => document.getElementById('hitbutton').classList.remove('red'), 200);
 }
-
-// printTimer();
-// setInterval(printTimer, 1000);
-
-// function printTimer(){
-// 	const d = new Date();
-// 	const dd = d.toLocaleTimeString();
-// 	let cc;
-// 	const nn = parseInt(dd.substring(0, 2));
-
-// 	if (dd.substring(dd.length - 2, dd.length - 1) === 'P'){
-// 		cc = dd.replace(dd.substring(0, 2), nn + 12);
-// 	}
-// 	if (dd.charAt(1) === '2' && dd.substring(dd.length - 2, dd.length - 1) === 'A'){
-// 		cc = dd.replace(dd.substring(0, 2), '00');
-// 	}
-// 	if (dd.charAt(1) === ':'){
-// 		cc = '0'.concat(dd);
-// 	}
-// document.getElementById('miniclock').innerHTML = cc.substring(0, 8);
-//}
-
-// function inMo(){
-// 	document.getElementById('demotxt').style = 'color:red; user-select:none';
-// 	missouri.play();
-// 	moSign();
-// 	moRemove();
-// }
-
-// function moSign(){
-// 	setTimeout(() => document.getElementById('grid3').style = 'background-image: url(assets/missouri-getty.jpg); background-position-x: 100%; background-repeat: no-repeat; background-size: cover;', 2100);
-// }
-
-// function moRemove(){
-// 	setTimeout(() => document.getElementById('grid3').style = 'background-image: transparent;', 4000);
-// 	setTimeout(() => document.getElementById('demotxt').style = 'color: inherit;', 4000);
-// }
 
 missouri.addEventListener('ended', function(){
 	missouri.currentTime = 0;
@@ -72,6 +36,13 @@ const lifeinweeks = document.getElementById('lifeinweeks');
 const billcalculator = document.getElementById('billcalculator');
 const studydocuments = document.getElementById('studydocuments');
 
+const item1 = document.getElementById('item1');
+const item2 = document.getElementById('item2');
+const item3 = document.getElementById('item3');
+const item4 = document.getElementById('item4');
+const item5 = document.getElementById('item5');
+const item6 = document.getElementById('item6');
+
 function populateInfoAndEntryways(selection){
 	switch (selection){
 		case music:
@@ -79,21 +50,18 @@ function populateInfoAndEntryways(selection){
 				'Here you can find my musical works';
 			document.getElementById('music-entry').innerHTML =
 				musiclink + linkending;
-			console.log(document.getElementById('music-entry'));
 			break;
 		case musings:
 			document.getElementById('musings-info').innerHTML =
 				'This is a test and stuff';
 			document.getElementById('musings-entry').innerHTML =
 				musingslink + linkending;
-			console.log(document.getElementById('musings-entry'));
 			break;
 		case personalrecord:
 			document.getElementById('personalrecord-info').innerHTML =
 				'Here, I write about my future plans concerning work and re-education.';
 			document.getElementById('personalrecord-entry').innerHTML =
 				personalrecordlink + linkending;
-			console.log(document.getElementById('personalrecord-entry'));
 			break;
 		case lifeinweeks:
 			document.getElementById('lifeinweeks-info').innerHTML =
@@ -116,17 +84,30 @@ function populateInfoAndEntryways(selection){
 	}
 }
 
+// --- ITEM BOX STYLES --- //
+
+function styleItemBoxes(item, selection){
+	item.classList.add('flourish');
+	selection.classList.add('text-flourish');
+}
+
+function unstyleItemBoxes(item, selection){
+	item.classList.remove('flourish');
+	selection.classList.remove('text-flourish');
+}
+
 
 // --- REMOVAL FUNCTIONS --- //
 
 const infos = document.getElementsByClassName('info-box');
+const entries = document.getElementsByClassName('entry-box');
+
 function removeInfoBox(selection){
 	for (let i = 0; i < infos.length; ++i){
 		infos[i].innerHTML = '';
 	}
 }
 
-const entries = document.getElementsByClassName('entry-box');
 function removeEntryBox(selection){
 	for (let i = 0; i < entries.length; ++i){
 		entries[i].innerHTML = '';
@@ -145,9 +126,11 @@ let counter = 1;
 music.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(music);
+	styleItemBoxes(item1, music);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');
+		unstyleItemBoxes(item1, music);
 		removeInfoAndEntry();
 		counter = 1;
 	}
@@ -155,9 +138,11 @@ music.onclick = function(){
 musings.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(musings);
+	styleItemBoxes(item2, musings);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');
+		unstyleItemBoxes(item2, musings);
 		removeInfoAndEntry();
 		counter = 1;
 	}
@@ -166,9 +151,11 @@ musings.onclick = function(){
 personalrecord.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(personalrecord);
+	styleItemBoxes(item3, personalrecord);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');
+		unstyleItemBoxes(item3, personalrecord);
 		removeInfoAndEntry();
 		counter = 1;
 	}
@@ -177,9 +164,11 @@ personalrecord.onclick = function(){
 lifeinweeks.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(lifeinweeks);
+	styleItemBoxes(item4, lifeinweeks);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');
+		unstyleItemBoxes(item4, lifeinweeks);
 		removeInfoAndEntry();
 		counter = 1;
 	}
@@ -188,9 +177,11 @@ lifeinweeks.onclick = function(){
 billcalculator.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(billcalculator);
+	styleItemBoxes(item5, billcalculator);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');
+		unstyleItemBoxes(item5, billcalculator);
 		removeInfoAndEntry();
 		counter = 1;
 	}
@@ -199,12 +190,12 @@ billcalculator.onclick = function(){
 studydocuments.onclick = function(){
 	console.log(counter);
 	populateInfoAndEntryways(studydocuments);
+	styleItemBoxes(item6, studydocuments);
 	++counter;
 	if (counter > 1 && counter % 2){
 		console.log('removed!');
+		unstyleItemBoxes(item6, studydocuments);
 		removeInfoAndEntry();
 		counter = 1;
 	}
 };
-
-console.log(musings);

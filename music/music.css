@@ -119,4 +119,10 @@ li{
 	position: fixed;
 	bottom: 0;
 	width: 100%;
+	animation: lyric-bar-move 5s linear;
+}
+
+@keyframes lyric-bar-move {
+	from {bottom: 100}
+	to {bottom:0}
 }

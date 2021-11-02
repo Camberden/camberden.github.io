@@ -30,7 +30,7 @@ function populateBoxes(){
 			span.classList.add('momentboxfilled');
 		}
 		// First Year Moment
-		if (i < weeks){
+		if (i === 0){
 			span.classList.add('firstyear-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('firstyear-moment');
