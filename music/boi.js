@@ -1,9 +1,8 @@
-/* exported boiBoi */
+/* exported omegaBoi */
 'use strict';
 
 const meaning = new Audio('../assets/Meaning.mp3');
 const reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
-const currentlyrics = document.getElementById('meaning-lyrics');
 
 function boiBoi(){
 	reader.open('get', 'boilyrics.txt', true);
@@ -27,14 +26,13 @@ function boiBoiBoi(){
 			line++;
 			continue;
 		}
-		currentlyrics.innerHTML = tsPairs[line][1];
+		document.getElementById('meaning-lyrics').innerHTML = tsPairs[line][1];
 	}
 }
 
-const playtext = document.getElementById('meaningtune');
 let playcounter = 0;
-playtext.addEventListener('click', function(){
-	++playcounter;
+function omegaBoi(){
+	playcounter++;
 	console.log(playcounter);
 	if (playcounter % 2){
 		meaning.play();
@@ -44,9 +42,9 @@ playtext.addEventListener('click', function(){
 	}
 	else {
 		meaning.pause();
-		meaning.currentTime = 0;
+		// meaning.currentTime = 0;
 		document.getElementById('meaningtune').classList.remove('currentlyplaying');
 		document.getElementById('track1').classList.remove('currentlyplayingbox');
-		currentlyrics.innerHTML = '';
+		// currentlyrics.innerHTML = '';
 	}
-});
+}
