@@ -52,11 +52,9 @@ const meaninglyrics = [
 	'fostering the will to take my leave',
 ];
 
-let played = false;
 function nextLyrics(song){
-	if (played === false){
-		currentlyrics.innerHTML = song[songline];
-	}
+	currentlyrics.innerHTML = song[songline];
+	// false
 }
 
 function writeMeaningLyrics(){
@@ -70,20 +68,41 @@ function writeMeaningLyrics(){
 	}
 	if (ts > 22 && ts < 24){
 		nextLyrics(meaninglyrics);
-		played = true;
 		songline++;
 	}
 	if (ts > 24 && ts < 26){
-		played = false;
 		nextLyrics(meaninglyrics);
-		played = true;
 		songline++;
 	}
 	if (ts > 26 && ts < 30){
-		played = false;
 		nextLyrics(meaninglyrics);
-		played = true;
 		songline++;
 	}
 }
 
+const reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
+
+function boiBoi(){
+	reader.open('get', 'boilyrics.txt', true);
+	reader.onreadystatechange = boiBoiBoi;
+	reader.send(null);
+}
+
+function boiBoiBoi(){
+	if (reader.readyState !== 4)
+		return;
+	const tsPairs = reader.responseText.split('\n').map(l => {
+		const out = l.split('\t');
+		out[0] = parseInt(out[0]);
+		return out;
+	});
+	let ts;
+	let line = 0;
+	while ((ts = meaning.currentTime) <= meaning.duration){
+		if (tsPairs[line][0] <= ts){
+			line++;
+			continue;
+		}
+		currentlyrics.innerHTML = tsPairs[line][1];
+	}
+}
