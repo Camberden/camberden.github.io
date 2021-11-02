@@ -30,3 +30,23 @@ function boiBoiBoi(){
 		currentlyrics.innerHTML = tsPairs[line][1];
 	}
 }
+
+const playtext = document.getElementById('meaningtune');
+let playcounter = 0;
+playtext.addEventListener('click', function(){
+	++playcounter;
+	console.log(playcounter);
+	if (playcounter % 2){
+		meaning.play();
+		document.getElementById('meaningtune').classList.add('currentlyplaying');
+		document.getElementById('track1').classList.add('currentlyplayingbox');
+		boiBoi();
+	}
+	else {
+		meaning.pause();
+		meaning.currentTime = 0;
+		document.getElementById('meaningtune').classList.remove('currentlyplaying');
+		document.getElementById('track1').classList.remove('currentlyplayingbox');
+		currentlyrics.innerHTML = '';
+	}
+});
