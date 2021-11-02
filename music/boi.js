@@ -18,18 +18,13 @@ function boiBoiBoi(){
 		out[0] = parseInt(out[0]);
 		return out;
 	});
-	let ts;
 	let line = 0;
-	while ((ts = meaning.currentTime) <= meaning.duration){
-		console.debug(ts);
-		if (tsPairs[line][0] <= ts){
-			line++;
-			continue;
-		}
-		document.getElementById('meaning-lyrics').innerHTML = tsPairs[line][1];
-	}
+	while (meaning.currentTime > tsPairs[line][0])
+		line++;
+	console.debug(document.getElementById('meaning-lyrics').innerHTML = tsPairs[line][1]);
 }
 
+let interval;
 let playcounter = 0;
 function omegaBoi(){
 	playcounter++;
@@ -37,8 +32,7 @@ function omegaBoi(){
 	if (playcounter % 2){
 		meaning.play();
 		document.getElementById('meaningtune').classList.add('currentlyplaying');
-		document.getElementById('track1').classList.add('currentlyplayingbox');
-		boiBoi();
+		interval = setInterval(boiBoi, 1000);
 	}
 	else {
 		meaning.pause();
@@ -46,5 +40,6 @@ function omegaBoi(){
 		document.getElementById('meaningtune').classList.remove('currentlyplaying');
 		document.getElementById('track1').classList.remove('currentlyplayingbox');
 		// currentlyrics.innerHTML = '';
+		clearInterval(interval);
 	}
 }
