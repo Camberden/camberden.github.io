@@ -3,6 +3,10 @@
 
 window.onload = () => console.log('Running!');
 
+// setInterval(function(){
+// 	console.log(Math.floor(meaning.currentTime));
+// }, 500);
+
 const meaning = new Audio('../assets/Meaning.mp3');
 const woai = new Audio('../assets/WarOfArtInstrumental.mp3');
 // CHANGE PLAYTEXT TO TUNE AGNOSTIC
@@ -28,7 +32,7 @@ playtext.addEventListener('click', function(){
 		document.getElementById('track1').classList.add('currentlyplayingbox');
 		setInterval(function(){
 			writeLyrics();
-		}, 500);
+		}, 1000);
 	}
 	else {
 		meaning.pause();
@@ -42,17 +46,17 @@ playtext.addEventListener('click', function(){
 });
 
 const meaninglyrics = new Map([
-	[22, 'Another day...'],
+	[21, 'Another day...'],
 	[24, 'I\'m all alone'],
 	[26, 'I wonder what to do again...'],
-	[30, 'I take a seat,'],
-	[32, 'then I endure'],
-	[34, 'cascading flows of thoughts and so I'],
-	[38, 'freeze again'],
-	[40, 'paralyzed...'],
-	[42, 'directionless and overwhelmed'],
-	[44, 'I close my eyes...'],
-	[46, 'fostering the will to take my leave'],
+	[31, 'I take a seat,'],
+	[34, 'then I endure'],
+	[36, 'cascading flows of thoughts and so I'],
+	[40, 'freeze again'],
+	[42, 'paralyzed...'],
+	[45, 'directionless and overwhelmed'],
+	[49, 'I close my eyes...'],
+	[51, 'fostering the will to take my leave'],
 ]);
 
 const warofartlyrics = [
@@ -64,7 +68,7 @@ const warofartlyrics = [
 
 // --- MAPPING FUNCTIONS --- //
 
-let lyricMap = new Map();
+const lyricMap = new Map();
 
 // buildLyricsMap();
 
@@ -79,27 +83,34 @@ function nextLyrics(song){
 }
 
 function writeLyrics(){
-	const ts = meaning.currentTime;
-	if (ts === 0){
-		currentlyrics.innerHTML = '';
-	}
-	if (ts < 22 && ts > 0){
-		currentlyrics.innerHTML = 'huff...';
-		credit.innerHTML = '<br><br>Chrispy 2021';
-	}
-	if (ts > 22 && ts < 24){
-		nextLyrics(meaninglyrics);
-		songline++;
-	}
-	if (ts > 24 && ts < 26){
-		nextLyrics(meaninglyrics);
-		songline++;
-	}
-	if (ts > 26 && ts < 30){
-		nextLyrics(meaninglyrics);
-		songline++;
+	const timestamp = Math.floor(meaning.currentTime);
+	console.log(timestamp);
+
+	if (meaninglyrics.has(timestamp)){
+		currentlyrics.innerHTML = meaninglyrics.get(timestamp);
 	}
 }
+
+// if (ts === 0){
+// 	currentlyrics.innerHTML = '';
+// }
+// if (ts < 22 && ts > 0){
+// 	currentlyrics.innerHTML = 'huff...';
+// 	credit.innerHTML = '<br><br>Chrispy 2021';
+// }
+// if (ts > 22 && ts < 24){
+// 	nextLyrics(meaninglyrics);
+// 	songline++;
+// }
+// if (ts > 24 && ts < 26){
+// 	nextLyrics(meaninglyrics);
+// 	songline++;
+// }
+// if (ts > 26 && ts < 30){
+// 	nextLyrics(meaninglyrics);
+// 	songline++;
+// }
+//}
 
 // --- TEXT FILE CODE --- //
 
