@@ -3,10 +3,6 @@
 
 window.onload = () => console.log('Running!');
 
-// setInterval(function(){
-// 	console.log(Math.floor(meaning.currentTime));
-// }, 500);
-
 const meaning = new Audio('../assets/Meaning.mp3');
 const woai = new Audio('../assets/WarOfArtInstrumental.mp3');
 // CHANGE PLAYTEXT TO TUNE AGNOSTIC
@@ -45,6 +41,8 @@ playtext.addEventListener('click', function(){
 	}
 });
 
+// --- LYRIC PAGES (MAPS) --- //
+
 const meaninglyrics = new Map([
 	[21, 'Another day...'],
 	[24, 'I\'m all alone'],
@@ -66,21 +64,7 @@ const warofartlyrics = [
 	'I wonder if I will follow through the course this time',
 ];
 
-// --- MAPPING FUNCTIONS --- //
-
-const lyricMap = new Map();
-
-// buildLyricsMap();
-
-function writeLyricsToMap(array){
-	for (let i = 0; i < 50; i++){
-		lyricMap.set(i, array[i]);
-	}
-}
-
-function nextLyrics(song){
-	currentlyrics.innerHTML = song[songline];
-}
+// --- WRITING FUNCTIONS --- //
 
 function writeLyrics(){
 	const timestamp = Math.floor(meaning.currentTime);
@@ -90,27 +74,6 @@ function writeLyrics(){
 		currentlyrics.innerHTML = meaninglyrics.get(timestamp);
 	}
 }
-
-// if (ts === 0){
-// 	currentlyrics.innerHTML = '';
-// }
-// if (ts < 22 && ts > 0){
-// 	currentlyrics.innerHTML = 'huff...';
-// 	credit.innerHTML = '<br><br>Chrispy 2021';
-// }
-// if (ts > 22 && ts < 24){
-// 	nextLyrics(meaninglyrics);
-// 	songline++;
-// }
-// if (ts > 24 && ts < 26){
-// 	nextLyrics(meaninglyrics);
-// 	songline++;
-// }
-// if (ts > 26 && ts < 30){
-// 	nextLyrics(meaninglyrics);
-// 	songline++;
-// }
-//}
 
 // --- TEXT FILE CODE --- //
 
