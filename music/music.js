@@ -5,6 +5,7 @@ window.onload = () => console.log('Running!');
 
 const meaning = new Audio('../assets/Meaning.mp3');
 const woai = new Audio('../assets/WarOfArtInstrumental.mp3');
+// CHANGE PLAYTEXT TO TUNE AGNOSTIC
 const playtext = document.getElementById('meaningtune');
 const credit = document.getElementById('credit');
 // ASSIGN THE VARIABLE TO THE LYRICS FUNCTION BASED ON THE TUNE CLICKED UPON
@@ -16,6 +17,8 @@ let songline = 0;
 // THIS FUNCTION NEEDS TO BECOME TUNE AGNOSTIC.
 // MAKE IT SUCH THAT SELECTING A TUNE DOES NOT REQUIRE AN EXTENDING IF STATEMENT.
 // PERHAPS QUERY SELECT THE TEXT IN THE BOX AND RETRIEVE THE MP3 FILE THROUGH IT.
+
+// ADD SONG PARAMETER TO FUNCTION
 playtext.addEventListener('click', function(){
 	++playcounter;
 	console.log(playcounter);
@@ -24,7 +27,7 @@ playtext.addEventListener('click', function(){
 		document.getElementById('meaningtune').classList.add('currentlyplaying');
 		document.getElementById('track1').classList.add('currentlyplayingbox');
 		setInterval(function(){
-			writeMeaningLyrics();
+			writeLyrics();
 		}, 500);
 	}
 	else {
@@ -38,26 +41,44 @@ playtext.addEventListener('click', function(){
 	}
 });
 
-const meaninglyrics = [
-	'Another day...',
-	'I\'m all alone',
-	'I wonder what to do again...',
-	'I take a seat,',
-	'then I endure',
-	'cascading flows of thoughts and so I',
-	'freeze again',
-	'paralyzed...',
-	'directionless and overwhelmed',
-	'I close my eyes...',
-	'fostering the will to take my leave',
+const meaninglyrics = new Map([
+	[22, 'Another day...'],
+	[24, 'I\'m all alone'],
+	[26, 'I wonder what to do again...'],
+	[30, 'I take a seat,'],
+	[32, 'then I endure'],
+	[34, 'cascading flows of thoughts and so I'],
+	[38, 'freeze again'],
+	[40, 'paralyzed...'],
+	[42, 'directionless and overwhelmed'],
+	[44, 'I close my eyes...'],
+	[46, 'fostering the will to take my leave'],
+]);
+
+const warofartlyrics = [
+	'Yes, I\'ve a contenance appearing sad',
+	'I\'ve fallen off the track on which I forged a plan.',
+	'Yes, my resolve is taking flight again,',
+	'I wonder if I will follow through the course this time',
 ];
+
+// --- MAPPING FUNCTIONS --- //
+
+let lyricMap = new Map();
+
+// buildLyricsMap();
+
+function writeLyricsToMap(array){
+	for (let i = 0; i < 50; i++){
+		lyricMap.set(i, array[i]);
+	}
+}
 
 function nextLyrics(song){
 	currentlyrics.innerHTML = song[songline];
-	// false
 }
 
-function writeMeaningLyrics(){
+function writeLyrics(){
 	const ts = meaning.currentTime;
 	if (ts === 0){
 		currentlyrics.innerHTML = '';
@@ -80,30 +101,32 @@ function writeMeaningLyrics(){
 	}
 }
 
-const reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
+// --- TEXT FILE CODE --- //
 
-function boiBoi(){
-	reader.open('get', 'boilyrics.txt', true);
-	reader.onreadystatechange = boiBoiBoi;
-	reader.send(null);
-}
+// const reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
 
-function boiBoiBoi(){
-	if (reader.readyState !== 4)
-		return;
-	const tsPairs = reader.responseText.split('\n').map(l => {
-		const out = l.split('\t');
-		out[0] = parseInt(out[0]);
-		return out;
-	});
-	let ts;
-	let line = 0;
-	while ((ts = meaning.currentTime) <= meaning.duration){
-		console.debug(ts);
-		if (tsPairs[line][0] <= ts){
-			line++;
-			continue;
-		}
-		currentlyrics.innerHTML = tsPairs[line][1];
-	}
-}
+// function boiBoi(){
+// 	reader.open('get', 'boilyrics.txt', true);
+// 	reader.onreadystatechange = boiBoiBoi;
+// 	reader.send(null);
+// }
+
+// function boiBoiBoi(){
+// 	if (reader.readyState !== 4)
+// 		return;
+// 	const tsPairs = reader.responseText.split('\n').map(l => {
+// 		const out = l.split('\t');
+// 		out[0] = parseInt(out[0]);
+// 		return out;
+// 	});
+// 	let ts;
+// 	let line = 0;
+// 	while ((ts = meaning.currentTime) <= meaning.duration){
+// 		console.debug(ts);
+// 		if (tsPairs[line][0] <= ts){
+// 			line++;
+// 			continue;
+// 		}
+// 		currentlyrics.innerHTML = tsPairs[line][1];
+// 	}
+// }
