@@ -31,70 +31,70 @@ function populateBoxes(){
 		}
 		// First Year Moment
 		if (i === 0){
-			span.classList.add('firstyear-moment');
+			span.classList.add('moment', 'firstyear-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('firstyear-moment');
 			}, false);
 		}
 		// Jail Hired Moment
 		if (i === 1239){
-			span.classList.add('jailhired-moment');
+			span.classList.add('moment', 'jailhired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('jailhired-moment');
 			}, false);
 		}
 		// Jail Fired Moment
 		if (i === 1252){
-			span.classList.add('jailfired-moment');
+			span.classList.add('moment', 'jailfired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('jailfired-moment');
 			}, false);
 		}
 		// UPS Hired Moment
 		if (i === 1254){
-			span.classList.add('upshired-moment');
+			span.classList.add('moment', 'upshired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('upshired-moment');
 			}, false);
 		}
 		// Security Hired Moment
 		if (i === 1261){
-			span.classList.add('securityhired-moment');
+			span.classList.add('moment', 'securityhired-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('securityhired-moment');
 			}, false);
 		}
 		// Tech Company WV Moment
 		if (i === 1300){
-			span.classList.add('techwv-moment');
+			span.classList.add('moment', 'techwv-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('techwv-moment');
 			}, false);
 		}
 		// Tech Company VA Moment
 		if (i === 1366){
-			span.classList.add('techva-moment');
+			span.classList.add('moment', 'techva-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('techva-moment');
 			}, false);
 		}
 		// Tech Company Furloughed
 		if (i === 1384){
-			span.classList.add('techvafurloughed-moment');
+			span.classList.add('moment', 'techvafurloughed-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('techvafurloughed-moment');
 			}, false);
 		}
 		// NC Relocation Moment
 		if (i === 1395){
-			span.classList.add('ncrelocation-moment');
+			span.classList.add('moment', 'ncrelocation-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('ncrelocation-moment');
 			}, false);
 		}
 		// Covid Moment
 		if (i === 1452){
-			span.classList.add('covid-moment');
+			span.classList.add('moment', 'covid-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('covid-moment');
 			}, false);
@@ -104,7 +104,7 @@ function populateBoxes(){
 
 function displayMomentInfo(moment){
 	const iframeleft = '<iframe frameborder="0" style="height: 185px; overflow:scroll; width: 100%' +
-		'marginheight="1" marginwidth="1" seamless="seamless" scrolling="no" frameborder="0"' +
+		'marginheight="1" marginwidth="1" seamless="seamless" scrolling="yes" frameborder="0"' +
 		'allowtransparency="true" src=../lifeinweeks/moments/';
 	const iframeright = '.html></iframe>';
 

@@ -33,6 +33,10 @@ a {
 	user-select: none;
 }
 
+#weeks-lived {
+	margin-left: .5em;
+}
+
 .container {
 	display: grid;
 	grid-template-columns: [first] auto [line2] auto [line3] auto [end];
@@ -55,7 +59,8 @@ a {
 }
 
 .item-chart {
-	background-color: #f6f3ed;
+	/* background-color: #f6f3ed; */
+	background-color: #a4c2a3;
 	grid-column-start: line3;
 	grid-column-end: end;
 	grid-row-start: row1-start;
@@ -89,6 +94,13 @@ a {
 
 /* MOMENTS */
 
+.moment {
+	border: 2px solid violet;
+	opacity: 1;
+	margin: 0px;
+}
+
+/* 
 .firstyear-moment {
 	  border: 2px solid orange;
 	  opacity: 1;
@@ -147,4 +159,5 @@ a {
 	border: 2px solid orange;
 	opacity: 1;
 	margin: 0px;
-}
+} 
+*/
