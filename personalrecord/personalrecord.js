@@ -7,12 +7,14 @@ const cpccourses = document.querySelectorAll('.cpcreq');
 const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
 const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
 const osucourses = document.querySelectorAll('.osureq');
+const ecucourses = document.querySelectorAll('.ecureq');
 
 const aas = document.getElementById('aas');
 const cpc = document.getElementById('cpc');
 const gcp = document.getElementById('gcp');
 const mcs = document.getElementById('mcs');
 const osu = document.getElementById('osu');
+const ecu = document.getElementById('ecu');
 
 console.log(mcs);
 
@@ -77,6 +79,21 @@ osu.onmouseleave = function(){
 	}
 };
 
+ecu.onmouseenter = function(){
+	for (let i = 0; i < ecucourses.length; ++i){
+		const course = ecucourses[i];
+		course.classList.add('ecureqhighlight');
+		displayCredits(ecu);
+	}
+};
+
+ecu.onmouseleave = function(){
+	for (let i = 0; i < ecucourses.length; ++i){
+		const course = ecucourses[i];
+		course.classList.remove('ecureqhighlight');
+	}
+};
+
 
 function displayCredits(curriculum){
 	switch (curriculum){
@@ -109,5 +126,12 @@ function displayCredits(curriculum){
 			'MTH 111 COURSE: $1324.00<br>' +
 			'PER 4 CREDIT COURSE: $2,108.00<br>' +
 			'FOR ALL 60 CREDITS $32,220,00';
+			break;
+		case ecu:
+			document.getElementById('credit-info-ecu').innerHTML =
+				'<p>CREDIT HOUR w/o FEES: $289.11<br>' +
+				'PER 3 CREDIT COURSE: $867.33<br>' +
+				'FOR ALL 19 CREDITS $8673.30';
+			break;
 	}
 }

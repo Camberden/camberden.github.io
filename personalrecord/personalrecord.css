@@ -74,6 +74,10 @@ a {
 	margin-left: 25px;
 }
 
+#credit-info-ecu {
+	margin-left: 25px;
+}
+
 .cpcreqhighlight{
 	color: red;
 }
@@ -87,6 +91,10 @@ a {
 }
 
 .osureqhighlight{
+	color: red;
+}
+
+.ecureqhighlight{
 	color: red;
 }
 
@@ -106,28 +114,11 @@ a {
 }
 
 @media screen and (max-width: 768px) {
+}
 	.container {
 		grid-template-columns: [first] auto end;
 	}
-	.item-aas {
-		grid-column-start: 1;
-		grid-column-end: line2;
-		grid-row-start: row1-start;
-		grid-row-end: row1-end;
-	}
-	.item-cpc {
-		grid-column-start: 1;
-		grid-column-end: line2;
-		grid-row-start: row2-start;
-		grid-row-end: row2-end;
-	}
-	.item-mcs {
-		grid-column-start: 1;
-		grid-column-end: line2;
-		grid-row-start: row3-start;
-		grid-row-end: row3-end;
-	}
-  }
+	
 
 .item-aas {
 	background-color: #f6f3ed;
@@ -181,8 +172,24 @@ a {
 	background-color: #f6f3ed;
 	grid-column-start: first;
 	grid-column-end: line2;
-	grid-row-start: row3-start;
-	grid-row-end: row3-end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-ecu-electives {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-ecu-credits {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
 }
 
 

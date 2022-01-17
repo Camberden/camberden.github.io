@@ -99,6 +99,14 @@ function populateBoxes(){
 				displayMomentInfo('covid-moment');
 			}, false);
 		}
+
+		// Covid Moment 2
+		if (i === 1469){
+			span.classList.add('moment', 'covid2-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('covid2-moment');
+			}, false);
+		}
 	});
 } // END populateBoxes()
 
@@ -138,6 +146,9 @@ function displayMomentInfo(moment){
 			break;
 		case 'covid-moment':
 			document.getElementById('moment-info').innerHTML = iframeleft + 'covid' + iframeright;
+			break;
+		case 'covid2-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'covid2' + iframeright;
 			break;
 	}
 } // END displayMomentInfo()
