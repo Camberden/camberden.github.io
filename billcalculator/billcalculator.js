@@ -22,7 +22,9 @@ const ele = 77.39;
 const int = 34.99;
 const gym = 23.06;
 const cre = 0.00;
-const total = car + nav + sal + ren + ins + wat + ele + int + gym + cre;
+let total = car + nav + sal + ren + ins + wat + ele + int + gym + cre;
+
+const all = [car, nav, sal, ren, ins, wat, ele, int, gym, cre];
 
 
 document.getElementById('car-cost').innerHTML = car;
@@ -38,6 +40,15 @@ document.getElementById('cre-cost').innerHTML = cre;
 
 
 const calculateNewBalance = function(){
+	for (let i = 0; i < all.length; ++i){
+		const e = all[i];
+		if (e.checked === true){
+			console.log(e + e.checked);
+			total -= e;
+		} else {
+			console.log('no check print');
+		}
+	}
 	const endbalance = startbalance - total;
 	document.getElementById('endbalance').innerHTML = endbalance.toFixed(2);
 };

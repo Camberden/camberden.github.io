@@ -3,12 +3,14 @@
 
 window.onload = () => console.log('Running!');
 
+const taking = document.querySelectorAll('.taking');
 const cpccourses = document.querySelectorAll('.cpcreq');
 const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
 const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
 const osucourses = document.querySelectorAll('.osureq');
 const ecucourses = document.querySelectorAll('.ecureq');
 
+const currentlyTaking = document.getElementById('currently-taking');
 const aas = document.getElementById('aas');
 const cpc = document.getElementById('cpc');
 const gcp = document.getElementById('gcp');
@@ -17,6 +19,20 @@ const osu = document.getElementById('osu');
 const ecu = document.getElementById('ecu');
 
 console.log(mcs);
+
+currentlyTaking.onmouseover = function(){
+	currentlyTaking.classList.add('takinghighlight');
+};
+currentlyTaking.onmouseleave = function(){
+	currentlyTaking.classList.remove('takinghighlight');
+};
+
+currentlyTaking.onclick = function(){
+	for (let i = 0; i < taking.length; ++i){
+		const course = taking[i];
+		course.classList.add('takinghighlight');
+	}
+};
 
 aas.onmouseenter = function(){
 	displayCredits(aas);
