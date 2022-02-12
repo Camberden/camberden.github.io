@@ -78,6 +78,10 @@ a {
 	margin-left: 25px;
 }
 
+#credit-info-psu {
+	margin-left: 25px;
+}
+
 .takinghighlight{
 	color: blue;
 }
@@ -99,6 +103,10 @@ a {
 }
 
 .ecureqhighlight{
+	color: red;
+}
+
+.psureqhighlight{
 	color: red;
 }
 
@@ -189,6 +197,30 @@ a {
 }
 
 .item-ecu-credits {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-psu {
+	background-color: #f6f3ed;
+	grid-column-start: first;
+	grid-column-end: line2;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-psu-electives {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-psu-credits {
 	background-color: #f6f3ed;
 	grid-column-start: line3;
 	grid-column-end: end;

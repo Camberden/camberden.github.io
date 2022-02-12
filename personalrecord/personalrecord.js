@@ -9,6 +9,7 @@ const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
 const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
 const osucourses = document.querySelectorAll('.osureq');
 const ecucourses = document.querySelectorAll('.ecureq');
+const psucourses = document.querySelectorAll('.psureq');
 
 const currentlyTaking = document.getElementById('currently-taking');
 const aas = document.getElementById('aas');
@@ -17,6 +18,7 @@ const gcp = document.getElementById('gcp');
 const mcs = document.getElementById('mcs');
 const osu = document.getElementById('osu');
 const ecu = document.getElementById('ecu');
+const psu = document.getElementById('psu');
 
 console.log(mcs);
 
@@ -110,6 +112,21 @@ ecu.onmouseleave = function(){
 	}
 };
 
+psu.onmouseenter = function(){
+	for (let i = 0; i < psucourses.length; ++i){
+		const course = psucourses[i];
+		course.classList.add('psureqhighlight');
+		displayCredits(psu);
+	}
+};
+
+psu.onmouseleave = function(){
+	for (let i = 0; i < psucourses.length; ++i){
+		const course = psucourses[i];
+		course.classList.remove('psureqhighlight');
+	}
+};
+
 
 function displayCredits(curriculum){
 	switch (curriculum){
@@ -138,10 +155,10 @@ function displayCredits(curriculum){
 			break;
 		case osu:
 			document.getElementById('credit-info-or').innerHTML =
-			'<p>CREDIT HOUR w/o FEES: $527.00<br>' +
-			'MTH 111 COURSE: $1324.00<br>' +
-			'PER 4 CREDIT COURSE: $2,108.00<br>' +
-			'FOR ALL 60 CREDITS $32,220,00';
+				'<p>CREDIT HOUR w/o FEES: $527.00<br>' +
+				'MTH 111 COURSE: $1324.00<br>' +
+				'PER 4 CREDIT COURSE: $2,108.00<br>' +
+				'FOR ALL 60 CREDITS $32,220,00';
 			break;
 		case ecu:
 			document.getElementById('credit-info-ecu').innerHTML =
@@ -149,5 +166,12 @@ function displayCredits(curriculum){
 				'PER 3 CREDIT COURSE: $867.33<br>' +
 				'FOR ALL 19 CREDITS $8673.30';
 			break;
+		case psu:
+			document.getElementById('credit-info-psu').innerHTML =
+				'<p>CREDIT HOUR w/o FEES: $996.00<br>' +
+				'PER 3 CREDIT COURSE: $2988.00<br>' +
+				'FOR ALL 36 CREDITS $35,856.30';
+			break;
 	}
 }
+
