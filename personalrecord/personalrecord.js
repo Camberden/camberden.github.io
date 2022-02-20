@@ -10,6 +10,7 @@ const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
 const osucourses = document.querySelectorAll('.osureq');
 const ecucourses = document.querySelectorAll('.ecureq');
 const psucourses = document.querySelectorAll('.psureq');
+const upncourses = document.querySelectorAll('.upnreq');
 
 const currentlyTaking = document.getElementById('currently-taking');
 const aas = document.getElementById('aas');
@@ -19,6 +20,7 @@ const mcs = document.getElementById('mcs');
 const osu = document.getElementById('osu');
 const ecu = document.getElementById('ecu');
 const psu = document.getElementById('psu');
+const upn = document.getElementById('upn');
 
 console.log(mcs);
 
@@ -127,6 +129,21 @@ psu.onmouseleave = function(){
 	}
 };
 
+upn.onmouseenter = function(){
+	for (let i = 0; i < upncourses.length; ++i){
+		const course = upncourses[i];
+		course.classList.add('upnreqhighlight');
+		displayCredits(upn);
+	}
+};
+
+upn.onmouseleave = function(){
+	for (let i = 0; i < upncourses.length; ++i){
+		const course = upncourses[i];
+		course.classList.remove('upnreqhighlight');
+	}
+};
+
 
 function displayCredits(curriculum){
 	switch (curriculum){
@@ -171,6 +188,12 @@ function displayCredits(curriculum){
 				'<p>CREDIT HOUR w/o FEES: $996.00<br>' +
 				'PER 3 CREDIT COURSE: $2988.00<br>' +
 				'FOR ALL 36 CREDITS $35,856.30';
+			break;
+		case upn:
+			document.getElementById('credit-info-upn').innerHTML =
+				'PER 3 CREDIT COURSE: $3200.00<br>' +
+				'ONLINE FEE PER COURSE: $140.00<br>' +
+				'FOR ALL 30 CREDITS $33,400';
 			break;
 	}
 }
