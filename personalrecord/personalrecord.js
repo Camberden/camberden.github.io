@@ -198,3 +198,23 @@ function displayCredits(curriculum){
 	}
 }
 
+// MODAL
+
+const modal = document.getElementById('menumodal');
+const menuclick = document.getElementById('menulabel');
+const menuclose = document.getElementsByClassName('closemenu')[0];
+
+menuclick.onclick = function(){
+	modal.style.display = 'block';
+};
+
+menuclose.onclick = function(){
+	modal.style.display = 'none';
+};
+
+window.onclick = function(event){
+	if (event.target === modal){
+		modal.style.display = 'none';
+	}
+};
+
