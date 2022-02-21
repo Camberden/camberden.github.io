@@ -17,16 +17,16 @@
 	<h2 id='personalrecordtitle'>Re-Education Exploration</h2>
 
 	<div class='container'>
-		<h3 id='currently-taking'>[ Currently Taking ]</h3>
-		<span class="marker" id="menulabel">Menu</span>
+		<span class="marker" id='currently-taking'>View Courses Currently Being Taken</span>
+		<span class="marker" id="menulabel">View Current Semester-by-Semester Plan!</span>
 		<div class="modal" id="menumodal">
 
 			<div class="menudialog">
 				<span class="closemenu">&times;</span>
-				<p>Here is my current plan, broken down semester by semester. 
-					Currently I am debating whether or not I should stay with WakeTech 
+				<p>Here is my current plan, broken down semester by semester.
+					Currently I am debating whether or not I should stay with WakeTech
 					until I complete all prerequisites for the CPC, or should enroll with
-					NC State before completing all pre-requisites for the sake of 
+					NC State before completing all pre-requisites for the sake of
 					completing my desired pathway quicker. Getting some WakeTech cert might
 					be a little redundant if I am to get one from NC State anyway.<br>
 				<ul>Spring 2022:
@@ -70,10 +70,10 @@
 				</ul>
 
 
-			
-			
-			
-			</p>
+
+
+
+				</p>
 			</div>
 		</div>
 	</div>
@@ -179,7 +179,7 @@
 				<li>CSC 591 - Algorithms for Data Guided Business Intelligence</li>
 			</ul>
 
-			<h4 style='margin-left: 25px;'><br><br><br>Credit Information</h4>
+			<h4 style='margin-left: 25px;'><br><br><br>Credit Information <span id='displayed-school-credit'></span></h4>
 			<p id='credit-info'>Hover over a program to display credit info!</p>
 
 		</div>
@@ -224,9 +224,8 @@
 		</div>
 
 		<div class='item-mat-option1'>
-			<h3 class='programorconcentration' id='mat-option1'>
-				<a target='_blank' href='#'>
-					Credit at Oregon State University</a>
+			<h3 class='program-segment' id='mat-option1'>
+				Credit at Oregon State University</a>
 				<h4 class='sub-courses'>Math Background</h4>
 				<ul>
 					<li class='osureq'>MTH 111 - College Algebra</li>
@@ -236,9 +235,8 @@
 		</div>
 
 		<div class='item-mat-option2'>
-			<h3 class='programorconcentration' id='mat-option2'>
-				<a target='_blank' href='#'>
-					Credit at Wake Tech and Elsewhere</a>
+			<h3 class='program-segment' id='mat-option2'>
+				Credit at Wake Tech and Elsewhere</a>
 				<h4 class='sub-courses'>Math Background</h4>
 				<ul>
 					<li class='osureq'>MAT 171 - Precalculus Algebra</li>
@@ -246,7 +244,12 @@
 			</h3>
 
 			<h4 style='margin-left: 25px;'><br><br><br>Credit Information</h4>
-			<p id='credit-info-or'>Hover over a program to display credit info!</p>
+			<p id='credit-info-or'>
+				CREDIT HOUR w/o FEES: $527.00<br>
+				MTH 111 COURSE: $1324.00<br>
+				PER 4 CREDIT COURSE: $2,108.00<br>
+				FOR ALL 60 CREDITS $32,220,00
+			</p>
 
 		</div>
 	</div>
@@ -280,9 +283,8 @@
 		</div>
 
 		<div class='item-ecu-electives'>
-			<h3 class='programorconcentration' id='item-ecu-electives'>
-				<a target='_blank' href='#'>
-					Electives at East Carolina</a>
+			<h3 class='program-segment' id='item-ecu-electives'>
+				Electives at East Carolina</a>
 				<h4 class='sub-courses'>All Unmentioned Electives</h4>
 				<ul>
 					<li>SENG **** - ***</li>
@@ -301,9 +303,8 @@
 
 		</div>
 		<div class='item-ecu-credits'>
-			<h3 class='programorconcentration' id='item-ecu-credits'>
-				<a target='_blank' href='#'>
-					Credit at Wake Tech and Elsewhere</a>
+			<h3 class='program-segment' id='item-ecu-credits'>
+				Credit at Wake Tech and Elsewhere</a>
 				<h4 class='sub-courses'>Requirements</h4>
 				<ul>
 					<li class='ecureq'>MAT 171 - Precalculus Algebra</li>
@@ -311,7 +312,11 @@
 				</ul>
 			</h3>
 			<h4 style='margin-left: 25px;'><br>Credit Information</h4>
-			<p id='credit-info-ecu'>Hover over a program to display credit info!</p>
+			<p id='credit-info-ecu'>
+				CREDIT HOUR w/o FEES: $289.11<br>
+				PER 3 CREDIT COURSE: $867.33<br>
+				FOR ALL 19 CREDITS $8673.30
+			</p>
 		</div>
 	</div>
 
@@ -325,7 +330,8 @@
 
 		<div class='item-psu'>
 			<h3 class='programorconcentration' id='psu'>
-				<a target='_blank' href='https://www.worldcampus.psu.edu/degrees-and-certificates/software-engineering-masters/overview'>
+				<a target='_blank'
+					href='https://www.worldcampus.psu.edu/degrees-and-certificates/software-engineering-masters/overview'>
 					M.S.E. Penn State</a>
 			</h3>
 
@@ -346,9 +352,8 @@
 		</div>
 
 		<div class='item-psu-electives'>
-			<h3 class='programorconcentration' id='item-psu-electives'>
-				<a target='_blank' href='#'>
-					Electives at Penn State</a>
+			<h3 class='program-segment' id='item-psu-electives'>
+				Electives at Penn State</a>
 				<h4 class='sub-courses'>All Unmentioned Electives</h4>
 				<ul>
 					<li>SWENG **** - ***</li>
@@ -367,23 +372,26 @@
 
 		</div>
 		<div class='item-psu-credits'>
-			<h3 class='programorconcentration' id='item-psu-credits'>
-				<a target='_blank' href='#'>
-					Credit at Wake Tech and Elsewhere</a>
+			<h3 class='program-segment' id='item-psu-credits'>
+				Credit at Wake Tech and Elsewhere</a>
 				<h4 class='sub-courses'>Requirements</h4>
 				<ul>
 					<li class='psureq'>MAT 171 - Precalculus Algebra</li>
-					<li class='psureq'>GRE *** - Graduate Record Examination</li>
+					<li class='psureq'>MAT 172 - Precalculus Trigonometry</li>
+					<li class='psureq'>MAT 271 - Calculus I</li>
 				</ul>
 			</h3>
 			<h4 style='margin-left: 25px;'><br>Credit Information</h4>
-			<p id='credit-info-psu'>Hover over a program to display credit info!</p>
+			<p id='credit-info-psu'>
+				CREDIT HOUR w/o FEES: $996.00<br>
+				PER 3 CREDIT COURSE: $2988.00<br>
+				FOR ALL 36 CREDITS $35,856.30</p>
 		</div>
 	</div>
 
 	<!-- FIFTH PLAN -->
 	<div>
-		<h2 class='plan-name'>University of Pennsylvania Engineering</h2>
+		<h2 class='plan-name'>University of Pennsylvania Plan</h2>
 		<p class='plan-info'>Fairly costly but well tailored, ivy-league, and highly flexible.</p>
 	</div>
 
@@ -403,14 +411,13 @@
 				<li>CIT 594 - Data Structures and Software Design</li>
 				<li>CIT 595 - Computer System Programming</li>
 				<li>CIT 596 - Algorithms and Computation</li>
-				
+
 			</ul>
 		</div>
 
 		<div class='item-upn-electives'>
-			<h3 class='programorconcentration' id='item-upn-electives'>
-				<a target='_blank' href='#'>
-					Electives at UPenn</a>
+			<h3 class='program-segment' id='item-upn-electives'>
+				Electives at UPenn
 				<h4 class='sub-courses'>Four(4) are Required</h4>
 				<ul>
 					<li>CIS 515 - Fundamentals of Linear Algebra and Optimization</li>
@@ -425,7 +432,7 @@
 					<li>CIT 520 - Intro to Robotics</li>
 					<li>CIT 582 - Blockchains and Cryptography</li>
 					<li>ESE 542 - Statistics for Data Science: An Applied Machine Learning Course</li>
-				
+
 				</ul>
 			</h3>
 
@@ -433,9 +440,8 @@
 
 		</div>
 		<div class='item-upn-credits'>
-			<h3 class='programorconcentration' id='item-upn-credits'>
-				<a target='_blank' href='#'>
-					Credit at Wake Tech and Elsewhere</a>
+			<h3 class='program-segment' id='item-upn-credits'>
+				Credit at Wake Tech and Elsewhere</a>
 				<h4 class='sub-courses'>Requirements</h4>
 				<ul>
 					<li class='upnreq'>MAT 121 - Algebra & Trigonometry I</li>
@@ -445,7 +451,10 @@
 				</ul>
 			</h3>
 			<h4 style='margin-left: 25px;'><br>Credit Information</h4>
-			<p id='credit-info-upn'>Hover over a program to display credit info!</p>
+			<p id='credit-info-upn'>
+				PER 3 CREDIT COURSE: $3,200.00<br>
+				ONLINE FEE PER COURSE: $140.00<br>
+				FOR ALL 30 CREDITS $33,400.00</p>
 		</div>
 	</div>
 

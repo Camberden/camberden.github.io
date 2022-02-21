@@ -62,8 +62,21 @@ a {
 	background-size: 100% 100%;
 }
 
+.program-segment {
+	margin-left: 25px;
+	background-repeat: no-repeat;
+	background-size: 75% 15%;
+	background-position: 0 88%;
+	background-image: linear-gradient(120deg, #a1bdf8 0%, #a1dbf8 100%);
+}
+
 .sub-courses {
 	margin-left: 25px;
+}
+
+#displayed-school-credit {
+	font-size: smaller;
+	font-family: 'Courier New', Courier, monospace;
 }
 
 #credit-info {
@@ -280,7 +293,7 @@ a {
 
 #menulabel:hover {
 	color: #a1dbf8;
-	font-size: 1.1em;
+	/* font-size: 1.1em; */
 	position: inherit;
 	text-shadow: -2.5px -1px 0px #ff00ff;
 }

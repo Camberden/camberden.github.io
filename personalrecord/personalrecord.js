@@ -151,49 +151,32 @@ function displayCredits(curriculum){
 			document.getElementById('credit-info').innerHTML =
 				'<p>CREDIT HOUR w/o FEES: $76<br>' +
 				'PER 3 CREDIT COURSE: $357.00<br>';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	Wake Tech';
 			break;
 		case cpc:
 			document.getElementById('credit-info').innerHTML =
 				'<p>CREDIT HOUR w/o FEES: $272.29<br>' +
 				'PER 3 CREDIT COURSE: $1066.89<br>' +
 				'FOR ALL 22 CREDITS: $7740.52';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	NC State CPC';
 			break;
 		case gcp:
 			document.getElementById('credit-info').innerHTML =
 				'<p>CREDIT HOUR w/o FEES: $505.28<br>' +
 				'PER 3 CREDIT COURSE: $2,782.53<br>' +
 				'FOR ALL 12 CREDITS: $11130.12';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	NC State GPC';
 			break;
 		case mcs:
 			document.getElementById('credit-info').innerHTML =
 				'<p>CREDIT HOUR w/o FEES: $505.28<br>' +
 				'PER 3 CREDIT COURSE: $2,782.53<br>' +
 				'FOR ALL 19 CREDITS $19982,99';
-			break;
-		case osu:
-			document.getElementById('credit-info-or').innerHTML =
-				'<p>CREDIT HOUR w/o FEES: $527.00<br>' +
-				'MTH 111 COURSE: $1324.00<br>' +
-				'PER 4 CREDIT COURSE: $2,108.00<br>' +
-				'FOR ALL 60 CREDITS $32,220,00';
-			break;
-		case ecu:
-			document.getElementById('credit-info-ecu').innerHTML =
-				'<p>CREDIT HOUR w/o FEES: $289.11<br>' +
-				'PER 3 CREDIT COURSE: $867.33<br>' +
-				'FOR ALL 19 CREDITS $8673.30';
-			break;
-		case psu:
-			document.getElementById('credit-info-psu').innerHTML =
-				'<p>CREDIT HOUR w/o FEES: $996.00<br>' +
-				'PER 3 CREDIT COURSE: $2988.00<br>' +
-				'FOR ALL 36 CREDITS $35,856.30';
-			break;
-		case upn:
-			document.getElementById('credit-info-upn').innerHTML =
-				'PER 3 CREDIT COURSE: $3200.00<br>' +
-				'ONLINE FEE PER COURSE: $140.00<br>' +
-				'FOR ALL 30 CREDITS $33,400';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	NC State MCS';
 			break;
 	}
 }
