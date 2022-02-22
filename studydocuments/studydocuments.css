@@ -1,6 +1,6 @@
 /*	METADATA	*/
 body {
-	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: Lora, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
 	background-image:
 	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
 	url(../assets/interlaced.png);
@@ -10,18 +10,43 @@ body {
 
 a {
 	color: inherit;
+	font-family: 'Courier New', Courier, monospace;
+	font-size: x-small;
 	text-decoration: solid;
 	outline: 0;
 	cursor: pointer;
 }
+a:hover{
+	color:#db8044
+}
 
-li{
-	display: inline;
+#studydocumentstitle {
+
+	font-family: Futura;
+	font-style: normal;
 	text-align: left;
+	font-weight: 1500;
+	font-size: 50px;
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
 }
 
 .marker {
 	color: #db8044;
 	font-size: 1em;
 	font-family: Permanent Marker, serif;
+}
+
+ul {
+	background-color:#f6f3ed;
+	margin-right: 50%;
+	padding-bottom: 30px;
+}
+
+.topic {
+	font-weight: bold;
+	margin-left: -3%;
 }
