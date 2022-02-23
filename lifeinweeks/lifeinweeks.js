@@ -18,6 +18,7 @@ function populateBoxes(){
 	const spans = new Array(weeks * years).fill(0).map((_, i) => {
 		const span = document.createElement('span');
 		span.classList.add('momentbox');
+		span.title = i + 1;
 		span.id = `box${i}`;
 		return span;
 	});
@@ -153,5 +154,5 @@ function displayMomentInfo(moment){
 	}
 } // END displayMomentInfo()
 
-document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(weekslived);
+document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(weekslived + 1);
 populateBoxes();

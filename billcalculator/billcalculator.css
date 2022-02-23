@@ -1,9 +1,7 @@
 /*	METADATA	*/
 body {
-	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-	background-image:
-	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url(../assets/interlaced.png);
+	font-family: Lora, Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	background-image: url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
 }

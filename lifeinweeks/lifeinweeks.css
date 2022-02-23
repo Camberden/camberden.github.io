@@ -60,7 +60,7 @@ a {
 
 .item-chart {
 	/* background-color: #f6f3ed; */
-	background-color: #a4c2a3;
+	background-color: #f6f3ed;
 	grid-column-start: line3;
 	grid-column-end: end;
 	grid-row-start: row1-start;
@@ -95,7 +95,7 @@ a {
 /* MOMENTS */
 
 .moment {
-	border: 2px solid violet;
+	border: 2px solid red;
 	opacity: 1;
 	margin: 0px;
 }
