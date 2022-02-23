@@ -1,6 +1,6 @@
 /*	METADATA	*/
 body {
-	font-family: Lora, Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: Lora, Avenir, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
 	background-image: url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
@@ -13,13 +13,31 @@ a {
 	cursor: pointer;
 }
 
-li{
-	display: inline;
+#billcalculatortitle {
+	font-family: Futura;
+	font-style: normal;
 	text-align: left;
+	font-weight: 1500;
+	font-size: 50px;
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
+}
+
+#balance-container {
+	background-color:#f6f3ed;
+	margin-right: 75%;
+	padding: 10px;
 }
 
 .marker {
 	color: #db8044;
 	font-size: 1em;
 	font-family: Permanent Marker, serif;
+}
+
+#balance {
+	margin-left: 24px;
 }
