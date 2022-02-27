@@ -26,10 +26,39 @@ const cre = 0.00;
 const all = [car, nav, sal, ren, ins, wat, ele, int, gym, cre];
 // text box element list
 const allElem = Array.from('car nav sal ren ins wat ele int gym cre'.split(' '))
-	.map(str => document.getElementById(str+'-cost'));
+	.map(str => document.getElementById(str + '-cost'));
 // check box element list
 const allElem2 = Array.from('car nav sal ren ins wat ele int gym cre'.split(' '))
-	.map(str => document.getElementById(str+'-check'));
+	.map(str => document.getElementById(str + '-check'));
+
+const baserate = 20;
+const retirement = 6176.75;
+const vacationleave = 173.02;
+const sickleave = 146.5;
+const holidayleave = 88;
+const mutualfund = 1152.79;
+const cryptofund = 278.15;
+const securitydeposit = 775.00;
+
+const reserves = [retirement, vacationleave, sickleave, mutualfund, cryptofund, securitydeposit];
+const reservestotal = retirement + (vacationleave * baserate) + (sickleave * baserate) +
+	(holidayleave * baserate) + mutualfund + cryptofund + securitydeposit;
+document.getElementById('r-retirement').innerHTML = retirement;
+document.getElementById('r-sickleave').innerHTML = sickleave * baserate;
+document.getElementById('r-vacationleave').innerHTML = vacationleave * baserate;
+document.getElementById('r-holidayleave').innerHTML = holidayleave * baserate;
+document.getElementById('r-mutualfund').innerHTML = mutualfund;
+document.getElementById('r-cryptocurrency').innerHTML = cryptofund;
+document.getElementById('r-securitydeposit').innerHTML = securitydeposit;
+
+
+
+// for (let i = 0; i < reserves.length; i++){
+// 	console.log('testes');
+// 	reservestotal += reserves[i];
+// }
+
+document.getElementById('totalreserves').innerHTML = Math.floor(reservestotal, 0);
 
 allElem.forEach((elem, i) => elem.innerHTML = all[i]);
 // document.getElementById('car-cost').innerHTML = car;

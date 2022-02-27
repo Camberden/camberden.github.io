@@ -32,6 +32,12 @@ a {
 	padding: 10px;
 }
 
+#reserves-container {
+	background-color:#f6f3ed;
+	margin-right: 50%;
+	padding: 10px;
+}
+
 .marker {
 	color: #db8044;
 	font-size: 1em;
