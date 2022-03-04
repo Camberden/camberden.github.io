@@ -108,6 +108,14 @@ function populateBoxes(){
 				displayMomentInfo('covid2-moment');
 			}, false);
 		}
+
+		// PERT Tryout
+		if (i === 1476){
+			span.classList.add('moment', 'perttryout-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('perttryout-moment');
+			}, false);
+		}
 	});
 } // END populateBoxes()
 
@@ -150,6 +158,9 @@ function displayMomentInfo(moment){
 			break;
 		case 'covid2-moment':
 			document.getElementById('moment-info').innerHTML = iframeleft + 'covid2' + iframeright;
+			break;
+		case 'perttryout-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'perttryout' + iframeright;
 			break;
 	}
 } // END displayMomentInfo()

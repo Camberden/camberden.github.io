@@ -53,7 +53,7 @@ a {
 	grid-column-end: line2;
 	grid-row-start: row1-start;
 	grid-row-end: row1-end;
-	position: fixed;
+	position: relative;
 	margin-bottom: 700px;
 	margin-left: 30px
 }
