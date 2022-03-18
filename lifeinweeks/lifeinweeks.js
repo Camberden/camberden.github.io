@@ -116,6 +116,14 @@ function populateBoxes(){
 				displayMomentInfo('perttryout-moment');
 			}, false);
 		}
+
+		// Joined PERT
+		if (i === 1478){
+			span.classList.add('moment', 'joinedpert-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('joinedpert-moment');
+			}, false);
+		}
 	});
 } // END populateBoxes()
 
@@ -161,6 +169,9 @@ function displayMomentInfo(moment){
 			break;
 		case 'perttryout-moment':
 			document.getElementById('moment-info').innerHTML = iframeleft + 'perttryout' + iframeright;
+			break;
+		case 'joinedpert-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'joinedpert' + iframeright;
 			break;
 	}
 } // END displayMomentInfo()
