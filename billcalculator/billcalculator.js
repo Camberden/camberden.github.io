@@ -16,19 +16,20 @@ const car = 514.03;
 const nav = 0.00;
 const sal = 884.15;
 const ren = 775.00;
-const ins = 60.76;
+const rti = 12.10;
+const ins = 70.09;
 const wat = 80.24;
 const ele = 77.39;
 const int = 34.99;
 const gym = 23.06;
 const cre = 0.00;
 
-const all = [car, nav, sal, ren, ins, wat, ele, int, gym, cre];
+const all = [car, nav, sal, ren, rti, ins, wat, ele, int, gym, cre];
 // text box element list
-const allElem = Array.from('car nav sal ren ins wat ele int gym cre'.split(' '))
+const allElem = Array.from('car nav sal ren rti ins wat ele int gym cre'.split(' '))
 	.map(str => document.getElementById(str + '-cost'));
 // check box element list
-const allElem2 = Array.from('car nav sal ren ins wat ele int gym cre'.split(' '))
+const allElem2 = Array.from('car nav sal ren rti ins wat ele int gym cre'.split(' '))
 	.map(str => document.getElementById(str + '-check'));
 
 const baserate = 20;
