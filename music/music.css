@@ -64,13 +64,13 @@ li{
 	background-image: none;
 }
 
-/* #meaningtune {
+#meaningtune {
 	letter-spacing: .2em;
 	display: block;
 	transition: 0.1s ease-out;
 	color: white;
 	background-image: none;
-} */
+}
 
 #meaningtune:hover {
 	letter-spacing: .5em;
@@ -78,10 +78,10 @@ li{
 	color: lightblue;
 }
 
-#warofartinstrumentaltune:hover {
+.tune:hover {
 	letter-spacing: .5em;
 	transition: 0.1s ease-out;
-	color: blue;
+	color: lightblue;
 }
 
 .currentlyplaying {

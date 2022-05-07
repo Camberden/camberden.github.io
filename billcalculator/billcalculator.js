@@ -24,12 +24,23 @@ const int = 34.99;
 const gym = 23.06;
 const cre = 0.00;
 
-const all = [car, nav, sal, ren, rti, ins, wat, ele, int, gym, cre];
+function updateInp(){
+	all[11] = inp = parseFloat(document.getElementById('inp-cost').value);
+}
+
+// TODO: ADDING CUSTOM INPUT
+let inp;
+// console.log(document.getElementById('inp-cost').innerHTML);
+
+
+
+const all = [car, nav, sal, ren, rti, ins, wat, ele, int, gym, cre, inp];
 // text box element list
-const allElem = Array.from('car nav sal ren rti ins wat ele int gym cre'.split(' '))
+const expenseNames = Array.from('car nav sal ren rti ins wat ele int gym cre inp'.split(' '));
+const allElem = expenseNames
 	.map(str => document.getElementById(str + '-cost'));
 // check box element list
-const allElem2 = Array.from('car nav sal ren rti ins wat ele int gym cre'.split(' '))
+const allElem2 = expenseNames
 	.map(str => document.getElementById(str + '-check'));
 
 const baserate = 20;
@@ -52,38 +63,21 @@ document.getElementById('r-mutualfund').innerHTML = mutualfund;
 document.getElementById('r-cryptocurrency').innerHTML = cryptofund;
 document.getElementById('r-securitydeposit').innerHTML = securitydeposit;
 
-
-
-// for (let i = 0; i < reserves.length; i++){
-// 	console.log('testes');
-// 	reservestotal += reserves[i];
-// }
-
 document.getElementById('totalreserves').innerHTML = Math.floor(reservestotal, 0);
 
 allElem.forEach((elem, i) => elem.innerHTML = all[i]);
-// document.getElementById('car-cost').innerHTML = car;
-// document.getElementById('nav-cost').innerHTML = nav;
-// document.getElementById('sal-cost').innerHTML = sal;
-// document.getElementById('ren-cost').innerHTML = ren;
-// document.getElementById('ins-cost').innerHTML = ins;
-// document.getElementById('wat-cost').innerHTML = wat;
-// document.getElementById('ele-cost').innerHTML = ele;
-// document.getElementById('int-cost').innerHTML = int;
-// document.getElementById('gym-cost').innerHTML = gym;
-// document.getElementById('cre-cost').innerHTML = cre;
-
 
 const calculateNewBalance = function(){
+	updateInp();
 	let sum = 0;
 	all.forEach((e, i) => {
 		const elem = allElem2[i];
 		if (elem.checked){
-			console.log(e + e.checked);
+			console.log(`73; e = ${e}; e.checked = ${e.checked}`);
 			sum += e;
 		}
 		else {
-			console.log('no check print');
+			console.log(`77; i = ${i}; e = ${e}`);
 		}
 	});
 	const endbalance = startbalance - sum;
@@ -94,7 +88,6 @@ const calculateNewBalance = function(){
 allElem2.forEach(elem => elem.onclick = calculateNewBalance);
 // Add a class to trigger the checkbox selection to have a value of $0.00
 
-const insurance = document.getElementById('ins-cost');
-console.log(insurance.checked);
+// const insurance = document.getElementById('ins-cost');
 
 calculateNewBalance();

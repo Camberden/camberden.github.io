@@ -14,9 +14,6 @@
 	<a class="marker" href='../index.html'>Return</a>
 	<h1 id='billcalculatortitle'>Bill Calculator</h1>
 
-
-
-
 	<div>
 		<h3>Here is my personal bill calculator.</h3>
 		<p>Input current income and see the deductions take place!</p>
@@ -36,6 +33,7 @@
 			</li>
 			<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
 			</li>
+			<!-- Why do I have value='no'?-->
 			<li><input type='checkbox' id="ins-check" value='no'>INS = $<span class='expense' id='ins-cost'>0</span>
 			</li>
 			<li><input type='checkbox' id='wat-check'>WAT = $<span class='expense' id='wat-cost'>0</span>
@@ -47,6 +45,9 @@
 			<li><input type='checkbox' id='gym-check'>GYM = $<span class='expense' id='gym-cost'>0</span>
 			</li>
 			<li><input type='checkbox' id='cre-check'>CRE = $<span class='expense' id='cre-cost'>0</span>
+			</li>
+			<!-- TODO: CREATE A CUSTOM INPUT -->
+			<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder="Input Value" id="inp-cost">
 			</li>
 			<br>
 			<li>END BALANCE = $<span id='endbalance'>0</span>
