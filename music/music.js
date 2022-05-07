@@ -44,25 +44,44 @@ playtext.addEventListener('click', function(){
 // --- LYRIC PAGES (MAPS) --- //
 
 const meaninglyrics = new Map([
-	[21, 'Another day...'],
-	[24, 'I\'m all alone'],
-	[26, 'I wonder what to do again...'],
-	[31, 'I take a seat,'],
-	[34, 'then I endure'],
-	[36, 'cascading flows of thoughts and so I'],
-	[40, 'freeze again'],
-	[42, 'paralyzed...'],
-	[45, 'directionless and overwhelmed'],
-	[49, 'I close my eyes...'],
-	[51, 'fostering the will to take my leave'],
+	[21,	'Another day...'],
+	[24,	'I\'m all alone'],
+	[26,	'I wonder what to do again...'],
+	[31,	'I take a seat,'],
+	[33,	'then I endure'],
+	[36,	'cascading flows of thoughts and so I'],
+	[40,	'freeze again'],
+	[42,	'paralyzed...'],
+	[44,	'directionless and overwhelmed'],
+	[49,	'I close my eyes...'],
+	[51,	'fostering the will to take my leave'],
+	[56,	'...'],
+	[76,	'I understand'],
+	[79,	'my perseverence'],
+	[81,	'is fielding over much to many'],
+	[85,	'things to do...'],
+	[87,	'and people with whom'],
+	[90,	'my anxiousness and social withdraw'],
+	[94,	'disunite.'],
+	[97,	'This inner fight'],
+	[99,	'breeds isolation speaking naught.'],
+	[103,	'I steal away...'],
+	[106,	'and lock myself inside this state of mind.'],
+	[110,	'...'],
+	[135,	'My soul!'],
+	[137,	'It comes alive!'],
+	[138,	'For just this night!'],
+	[143,	'I realize is just for now!'],
+	[146,	'I do surmise a lack of meaning'],
+	[150,	'to come...'],
+	[152,	'from what I do,'],
+	[154,	'the day by day,'],
+	[156,	'the black and grey'],
+	[161,	'the solidude,'],
+	[162,	'this mental cage'],
+	[164,	'There\'s just so little sense of meaning'],
+	[167,	'to me...'],
 ]);
-
-const warofartlyrics = [
-	'Yes, I\'ve a contenance appearing sad',
-	'I\'ve fallen off the track on which I forged a plan.',
-	'Yes, my resolve is taking flight again,',
-	'I wonder if I will follow through the course this time',
-];
 
 // --- WRITING FUNCTIONS --- //
 
@@ -74,33 +93,3 @@ function writeLyrics(){
 		currentlyrics.innerHTML = meaninglyrics.get(timestamp);
 	}
 }
-
-// --- TEXT FILE CODE --- //
-
-// const reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
-
-// function boiBoi(){
-// 	reader.open('get', 'boilyrics.txt', true);
-// 	reader.onreadystatechange = boiBoiBoi;
-// 	reader.send(null);
-// }
-
-// function boiBoiBoi(){
-// 	if (reader.readyState !== 4)
-// 		return;
-// 	const tsPairs = reader.responseText.split('\n').map(l => {
-// 		const out = l.split('\t');
-// 		out[0] = parseInt(out[0]);
-// 		return out;
-// 	});
-// 	let ts;
-// 	let line = 0;
-// 	while ((ts = meaning.currentTime) <= meaning.duration){
-// 		console.debug(ts);
-// 		if (tsPairs[line][0] <= ts){
-// 			line++;
-// 			continue;
-// 		}
-// 		currentlyrics.innerHTML = tsPairs[line][1];
-// 	}
-// }
