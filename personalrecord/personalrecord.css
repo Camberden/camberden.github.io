@@ -103,6 +103,10 @@ a {
 	color: blue;
 }
 
+.taken{
+	color:#ff00ff
+}
+
 .cpcreqhighlight{
 	color: red;
 }

@@ -4,6 +4,7 @@
 window.onload = () => console.log('Running!');
 
 const taking = document.querySelectorAll('.taking');
+const taken = document.querySelectorAll('.taken');
 const cpccourses = document.querySelectorAll('.cpcreq');
 const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
 const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
@@ -13,6 +14,7 @@ const psucourses = document.querySelectorAll('.psureq');
 const upncourses = document.querySelectorAll('.upnreq');
 
 const currentlyTaking = document.getElementById('currently-taking');
+
 const aas = document.getElementById('aas');
 const cpc = document.getElementById('cpc');
 const gcp = document.getElementById('gcp');
@@ -37,6 +39,16 @@ currentlyTaking.onclick = function(){
 		course.classList.add('takinghighlight');
 	}
 };
+
+const addCheck = function(course){
+	course.concat=(course.innerHTML, '!!!');
+};
+
+
+for (let i = 0; i < taken.length; ++i){
+	const course = taken[i];
+	addCheck(course);
+}
 
 aas.onmouseenter = function(){
 	displayCredits(aas);
