@@ -23,11 +23,11 @@
 		<p>Most recent works will appear at the top of this page.</p>
 	</div>
 	<!-- FIND A WAY TO PASS AN AUDIO FILE JS VARIABLE AS A PARAMETER -->
-	<div id='track1' class='trackcontainer' onclick="writeLyrics();">
+	<div id='track1' class='trackcontainer' onclick="recognizeSong('meaning')">
 		<h4 class='tune' id='meaningtune'>Meaning - 2021</h4>
 	</div>
 
-	<div id='track2' class='trackcontainer'>
+	<div id='track2' class='trackcontainer' onclick="recognizeSong('woai')">
 		<h4 class='tune' id='woaitune'>War of Art - 2019</h4>
 	</div>
 
@@ -35,7 +35,7 @@
 
 	<!-- CREATE ONE LYRICS VARIABLE -->
 	<div class=lyric-bar>
-		<span class='lyrics' id='meaning-lyrics'></span>
+		<span class='lyrics' id='playing-lyrics'></span>
 		<span id='credit'></span>
 	</div>
 	<script src='music.js'></script>

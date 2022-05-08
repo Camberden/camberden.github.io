@@ -93,9 +93,10 @@ li{
 
 .currentlyplayingbox {
 	background-color: black;
-	background-image:
+	background-image: url('../assets/missouri-getty.jpg');
+	/* background-image:
 	linear-gradient(rgba(105, 89, 89, 0), rgba(1, 0, 0, 0.0)),
-	url('../assets/favicon-32x32 copy.png');
+	url('../assets/favicon-32x32 copy.png'); */
 	animation: mymove 25s linear infinite;
 }
 

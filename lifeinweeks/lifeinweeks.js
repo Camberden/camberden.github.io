@@ -5,9 +5,9 @@ const inception = 753300000000;
 const millisecondweek = 1000 * 60 * 60 * 24 * 7;
 const d = new Date();
 const weekslived = (d.getTime() - inception) / millisecondweek;
-// Change 'newmoment' to identify the week of a moment.
-const newmoment = 1185926401000 - inception;
-const dateplanning = newmoment / millisecondweek;
+// Change 'newmoment' value to identify the week of a moment.
+const newmoment = 1571976000000;
+const dateplanning = (newmoment - inception) / millisecondweek;
 
 function populateBoxes(){
 	console.log('Running lifeinweeks.js!');
@@ -38,7 +38,6 @@ function populateBoxes(){
 				displayMomentInfo('firstyear-moment');
 			}, false);
 		}
-
 		// High School Moment
 		if (i === 715){
 			span.classList.add('moment', 'highschool-moment');
@@ -89,7 +88,7 @@ function populateBoxes(){
 			}, false);
 		}
 		// Tech Company WV Moment
-		if (i === 1300){
+		if (i === 1353){
 			span.classList.add('moment', 'techwv-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('techwv-moment');
