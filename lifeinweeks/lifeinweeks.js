@@ -6,12 +6,12 @@ const millisecondweek = 1000 * 60 * 60 * 24 * 7;
 const d = new Date();
 const weekslived = (d.getTime() - inception) / millisecondweek;
 // Change 'newmoment' to identify the week of a moment.
-const newmoment = 1590508800000;
-const dateplanning = (newmoment - inception) / millisecondweek;
+const newmoment = 1185926401000 - inception;
+const dateplanning = newmoment / millisecondweek;
 
 function populateBoxes(){
 	console.log('Running lifeinweeks.js!');
-	console.log(dateplanning + ' = printed event plan');
+	console.log(dateplanning);
 
 	const weeks = 52;
 	const years = 78;
@@ -30,11 +30,34 @@ function populateBoxes(){
 		if (i < weekslived){
 			span.classList.add('momentboxfilled');
 		}
+
 		// First Year Moment
 		if (i === 0){
 			span.classList.add('moment', 'firstyear-moment');
 			span.addEventListener('click', function(){
 				displayMomentInfo('firstyear-moment');
+			}, false);
+		}
+
+		// High School Moment
+		if (i === 715){
+			span.classList.add('moment', 'highschool-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('highschool-moment');
+			}, false);
+		}
+		// Undergraduate School Moment
+		if (i === 924){
+			span.classList.add('moment', 'undergrad-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('undergrad-moment');
+			}, false);
+		}
+		// Graduate School Moment
+		if (i === 1132){
+			span.classList.add('moment', 'gradschool-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('gradschool-moment');
 			}, false);
 		}
 		// Jail Hired Moment
@@ -134,6 +157,15 @@ function displayMomentInfo(moment){
 	const iframeright = '.html></iframe>';
 
 	switch (moment){
+		case 'highschool-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'highschool' + iframeright;
+			break;
+		case 'undergrad-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'undergrad' + iframeright;
+			break;
+		case 'gradschool-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'gradschool' + iframeright;
+			break;
 		case 'firstyear-moment':
 			document.getElementById('moment-info').innerHTML = iframeleft + 'firstyear' + iframeright;
 			break;
