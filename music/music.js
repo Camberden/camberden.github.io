@@ -36,6 +36,7 @@ const recognizeSong = function(song){
 				playingAudio.play();
 				document.getElementById('meaningtune').classList.add('currentlyplaying');
 				document.getElementById('track1').classList.add('currentlyplayingbox');
+				document.getElementById('backdrop').classList.add('animatedgradient');
 				setInterval(function(){
 					writeLyrics(meaning, meaninglyrics);
 				}, 1000);
@@ -46,6 +47,7 @@ const recognizeSong = function(song){
 				songline = 0;
 				document.getElementById('meaningtune').classList.remove('currentlyplaying');
 				document.getElementById('track1').classList.remove('currentlyplayingbox');
+				document.getElementById('backdrop').classList.remove('animatedgradient');
 				currentlyrics.innerHTML = '';
 				// credit.innerHTML = '';
 			}
@@ -57,6 +59,7 @@ const recognizeSong = function(song){
 				playingAudio.play();
 				document.getElementById('woaitune').classList.add('currentlyplaying');
 				document.getElementById('track2').classList.add('currentlyplayingbox');
+				document.getElementById('backdrop').classList.add('animatedgradient');
 				setInterval(function(){
 					writeLyrics(woai, woailyrics);
 				}, 1000);
@@ -67,6 +70,7 @@ const recognizeSong = function(song){
 				songline = 0;
 				document.getElementById('woaitune').classList.remove('currentlyplaying');
 				document.getElementById('track2').classList.remove('currentlyplayingbox');
+				document.getElementById('backdrop').classList.remove('animatedgradient');
 				currentlyrics.innerHTML = '';
 				// credit.innerHTML = '';
 			}
@@ -84,36 +88,36 @@ const meaninglyrics = new Map([
 	[33,	'then I endure'],
 	[36,	'cascading flows of thoughts and so I'],
 	[40,	'freeze again'],
-	[42,	'paralyzed...'],
+	[42,	'paralyzed...🎵'],
 	[44,	'directionless and overwhelmed'],
-	[49,	'I close my eyes...'],
+	[49,	'I close my eyes...🎵'],
 	[51,	'fostering the will to take my leave'],
-	[56,	'...'],
+	[56,	'...🎵'],
 	[76,	'I understand'],
 	[79,	'my perseverence'],
 	[81,	'is fielding over much to many'],
-	[85,	'things to do...'],
+	[85,	'things to do...🎵'],
 	[87,	'and people with whom'],
-	[89,	'my anxiousness and social withdraw'],
+	[88,	'my anxiousness and social withdraw'],
 	[94,	'disunite.'],
 	[97,	'This inner fight'],
 	[99,	'breeds isolation speaking naught.'],
 	[103,	'I steal away...'],
 	[105,	'and lock myself inside this state of mind.'],
-	[110,	'...'],
+	[110,	'...🎵'],
 	[134,	'My soul!'],
 	[137,	'It comes alive!'],
 	[138,	'For just this night!'],
 	[140,	'I realize is only now!'],
-	[142,	'I do surmise a lack of meaning'],
-	[150,	'to come...'],
+	[143,	'I do surmise a lack of meaning'],
+	[150,	'to come...🎵'],
 	[152,	'from what I do,'],
 	[154,	'the day by day,'],
 	[156,	'the black and grey'],
 	[158,	'the solidude,'],
-	[159,	'this mental cage'],
-	[160,	'There\'s just so little sense of meaning'],
-	[163,	'to me...'],
+	[160,	'this mental cage'],
+	[162,	'There\'s just so little sense of meaning'],
+	[165,	'to me...'],
 	[165,	'My soul!'],
 	[167,	'It comes alive!'],
 	[168,	'For just this night!'],
@@ -126,7 +130,9 @@ const meaninglyrics = new Map([
 	[188,	'the solidude,'],
 	[189,	'this mental cage'],
 	[190,	'There\'s just so little sense of meaning'],
-	[193,	'to me...'],
+	[193,	'to me...🎵'],
+	[193,	'Little sense of meaning...🎵'],
+	[193,	'Little sense of meaning!'],
 ]);
 
 const woailyrics = new Map([

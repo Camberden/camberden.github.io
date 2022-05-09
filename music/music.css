@@ -2,21 +2,56 @@
 
 body {
 	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
-	background-image:
-	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url(../assets/interlaced.png);
+	background-image: url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
+
 }
-/* linear-gradient(rgba(98, 161, 238, 0.63), rgba(62, 105, 124, 0)), */
+
+.animatedgradient {
+	background: url(../assets/interlaced.png), linear-gradient(45deg, #EE7722, rgb(122, 114, 234), #73bcde, #62dd87);
+	background-size: 20%, 400%;
+	opacity: 1;
+	position: relative;
+	animation: spectrum 15s ease-in-out infinite, fade-in .25s ease-in;
+	/* animation: fade-in .5s ease-in; */
+}
+
+@keyframes spectrum {
+	0% {
+		background-position: 0 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0 50%;
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: .5;
+	}
+	50% {
+		opacity: .75
+	}
+	100%{
+		opacity: 1;
+	}
+}
+
+
 
 .heading-container {
-	background-color: rgba(0,0,0, 0.05);
+	background-color: rgba(0, 0, 0, 0.05);
 	margin-left: 20%;
 	margin-right: 20%;
 }
 
-#titleimage{
+#titleimage {
 	margin-left: 45%;
 	margin-right: 55%;
 	margin-top: -15px;
@@ -44,7 +79,7 @@ a {
 
 /* ELEMENTAL DATA */
 
-.introduction{
+.introduction {
 	text-align: center;
 	padding-bottom: 3%;
 }
@@ -67,7 +102,7 @@ a {
 	user-select: none;
 }
 
-.lyric-bar > #credit {
+.lyric-bar>#credit {
 	float: right;
 	margin-right: 30px;
 	/* WHY DOES MARGIN TOP FORCE APPEARANCE OF BAR? */
@@ -79,7 +114,7 @@ a {
 
 .trackcontainer-odd {
 	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: rgba(0,0,0, 0.8);
+	background-color: rgba(0, 0, 0, 0.8);
 	text-align: center;
 	padding: 30px;
 	margin-left: 20%;
@@ -91,9 +126,15 @@ a {
 	background-image: none;
 }
 
+.trackcontainer-odd:hover {
+	letter-spacing: .5em;
+	transition: 0.1s ease-out;
+	color: lightblue;
+}
+
 .trackcontainer-even {
 	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: rgba(0,0,0, 0.8);
+	background-color: rgba(0, 0, 0, 0.8);
 	text-align: center;
 	padding: 30px;
 	margin-left: 40%;
@@ -105,43 +146,29 @@ a {
 	background-image: none;
 }
 
-.trackbarrier{
-	padding:5px;
+.trackcontainer-even:hover {
+	letter-spacing: .5em;
+	transition: 0.1s ease-out;
+	color: lightblue;
+}
+
+.trackbarrier {
+	padding: 5px;
 	background-color: rgba(117, 40, 40, 0.3);
 	margin-left: 30%;
 	margin-right: 30%;
 }
 
-#meaningtune {
-	letter-spacing: .2em;
-	display: block;
-	transition: 0.1s ease-out;
-	color: white;
-	background-image: none;
-}
-
-#meaningtune:hover {
-	letter-spacing: .5em;
-	transition: 0.1s ease-out;
-	color: lightblue;
-}
-
-.tune:hover {
-	letter-spacing: .5em;
-	transition: 0.1s ease-out;
-	color: lightblue;
-}
-
-.songinfo-odd{
+.songinfo-odd {
 	font-family: 'Courier New', Courier, monospace;
-	color:blue;
+	color: blue;
 	margin-left: 59%;
 	margin-bottom: 10%;
 	padding: 2%;
 	position: absolute;
 }
 
-.songinfo-even{
+.songinfo-even {
 	font-family: 'Courier New', Courier, monospace;
 	color: blue;
 	margin-left: 28%;
@@ -151,7 +178,7 @@ a {
 }
 
 .currentlyplaying {
-	color:red;
+	color: red;
 	letter-spacing: .5em;
 	transition: 0.1s ease-out;
 	background-color: transparent;
@@ -160,14 +187,19 @@ a {
 .currentlyplayingbox {
 	background-color: black;
 	background-image:
-	linear-gradient(rgba(105, 89, 89, 0), rgba(1, 0, 0, 0.0)),
-	url('../assets/favicon-32x32 copy.png');
+		linear-gradient(rgba(105, 89, 89, 0), rgba(1, 0, 0, 0.0)),
+		url('../assets/favicon-32x32 copy.png');
 	animation: mymove 25s linear infinite;
 }
 
 @keyframes mymove {
-	from {background-position: 0 0;}
-	to {background-position: 100% 0;}
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: 100% 0;
+	}
 }
 
 .lyricprompt {

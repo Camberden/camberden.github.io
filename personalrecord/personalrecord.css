@@ -39,7 +39,7 @@ a {
 
 #personalrecordtitle {
 	font-style: normal;
-	text-align: left;
+	text-align: center;
 	font-weight: 1500;
 	font-size: 50px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
@@ -47,6 +47,14 @@ a {
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
+}
+
+#currently-taking{
+	text-align: center;
+}
+
+#menulabel{
+	text-align: left;
 }
 
 .programorconcentration {
