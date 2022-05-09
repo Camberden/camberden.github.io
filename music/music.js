@@ -14,6 +14,10 @@ const currentlyrics = document.getElementById('playing-lyrics');
 let playcounter = 0;
 let songline = 0;
 let playingAudio = new Audio;
+const modal = document.getElementById('info-modal');
+document.getElementById('close-modal').onclick = function(){
+	modal.style.display = 'none';
+};
 
 function writeLyrics(song, lyrics){
 	const timestamp = Math.floor(song.currentTime);
@@ -34,9 +38,14 @@ const recognizeSong = function(song){
 			if (playcounter % 2){
 				playingAudio = meaning;
 				playingAudio.play();
-				document.getElementById('meaningtune').classList.add('currentlyplaying');
+				document.getElementById(song + 'tune').classList.add('currentlyplaying');
 				document.getElementById('track1').classList.add('currentlyplayingbox');
 				document.getElementById('backdrop').classList.add('animatedgradient');
+				document.getElementById(song + '-info').classList.add('songinfo-deploy');
+				document.getElementById(song + '-info').innerHTML = '[info]';
+				document.getElementById(song + '-info').onclick = function(){
+					modal.style.display = 'block';
+				};
 				setInterval(function(){
 					writeLyrics(meaning, meaninglyrics);
 				}, 1000);
@@ -45,9 +54,11 @@ const recognizeSong = function(song){
 				playingAudio.pause();
 				playingAudio.currentTime = 0;
 				songline = 0;
-				document.getElementById('meaningtune').classList.remove('currentlyplaying');
+				document.getElementById(song + 'tune').classList.remove('currentlyplaying');
 				document.getElementById('track1').classList.remove('currentlyplayingbox');
 				document.getElementById('backdrop').classList.remove('animatedgradient');
+				document.getElementById(song + '-info').classList.remove('songinfo-deploy');
+				document.getElementById(song + '-info').innerHTML = '&#8201';
 				currentlyrics.innerHTML = '&#8201';
 				// credit.innerHTML = '';
 			}
@@ -57,9 +68,14 @@ const recognizeSong = function(song){
 			if (playcounter % 2){
 				playingAudio = woai;
 				playingAudio.play();
-				document.getElementById('woaitune').classList.add('currentlyplaying');
+				document.getElementById(song + 'tune').classList.add('currentlyplaying');
 				document.getElementById('track2').classList.add('currentlyplayingbox');
 				document.getElementById('backdrop').classList.add('animatedgradient');
+				document.getElementById(song + '-info').classList.add('songinfo-deploy');
+				document.getElementById(song + '-info').innerHTML = '[info]';
+				document.getElementById(song + '-info').onclick = function(){
+					modal.style.display = 'block';
+				};
 				setInterval(function(){
 					writeLyrics(woai, woailyrics);
 				}, 1000);
@@ -68,9 +84,11 @@ const recognizeSong = function(song){
 				playingAudio.pause();
 				playingAudio.currentTime = 0;
 				songline = 0;
-				document.getElementById('woaitune').classList.remove('currentlyplaying');
+				document.getElementById(song + 'tune').classList.remove('currentlyplaying');
 				document.getElementById('track2').classList.remove('currentlyplayingbox');
 				document.getElementById('backdrop').classList.remove('animatedgradient');
+				document.getElementById(song + '-info').classList.remove('songinfo-deploy');
+				document.getElementById(song + '-info').innerHTML = '&#8201';
 				currentlyrics.innerHTML = '&#8201';
 				// credit.innerHTML = '';
 			}
