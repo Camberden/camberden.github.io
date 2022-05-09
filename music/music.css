@@ -10,13 +10,23 @@ body {
 }
 /* linear-gradient(rgba(98, 161, 238, 0.63), rgba(62, 105, 124, 0)), */
 
-
 .heading-container {
 	background-color: rgba(0,0,0, 0.05);
-	margin-top: -1%;
 	margin-left: 20%;
 	margin-right: 20%;
-	margin-bottom: 6%;
+}
+
+#titleimage{
+	margin-left: 45%;
+	margin-right: 55%;
+	margin-top: -15px;
+	width: 10%;
+	height: 10%;
+	min-width: 175px;
+	min-height: 175px;
+	border-style: double;
+	border-color: blue;
+	border-radius: 50%;
 }
 
 a {
@@ -24,11 +34,6 @@ a {
 	text-decoration: solid;
 	/* outline: 0; */
 	cursor: pointer;
-}
-
-li{
-	display: inline;
-	text-align: center;
 }
 
 .marker {
@@ -41,18 +46,23 @@ li{
 
 .introduction{
 	text-align: center;
-	padding-bottom: 5%;
+	padding-bottom: 3%;
 }
 
 #musictitle {
+	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	font-style: normal;
 	text-align: center;
 	font-weight: 1500;
-	font-size: 50px;
+	font-size: 70px;
+	margin-bottom: -0px;
+	margin-top: -0px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;
 	outline: blue;
 	-webkit-background-clip: text;
+	z-index: 2;
+
 	color: transparent;
 	user-select: none;
 }
@@ -68,6 +78,7 @@ li{
 }
 
 .trackcontainer-odd {
+	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background-color: rgba(0,0,0, 0.8);
 	text-align: center;
 	padding: 30px;
@@ -81,6 +92,7 @@ li{
 }
 
 .trackcontainer-even {
+	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 	background-color: rgba(0,0,0, 0.8);
 	text-align: center;
 	padding: 30px;
@@ -123,8 +135,8 @@ li{
 .songinfo-odd{
 	font-family: 'Courier New', Courier, monospace;
 	color:blue;
-	margin-left: 65%;
-	margin-bottom: 3em;
+	margin-left: 59%;
+	margin-bottom: 10%;
 	padding: 2%;
 	position: absolute;
 }
@@ -132,7 +144,7 @@ li{
 .songinfo-even{
 	font-family: 'Courier New', Courier, monospace;
 	color: blue;
-	margin-left: 20%;
+	margin-left: 28%;
 	margin-bottom: 10%;
 	padding: 2%;
 	position: absolute;

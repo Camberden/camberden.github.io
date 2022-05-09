@@ -2,7 +2,6 @@
 
 .heading-container {
 	background-color: rgba(0,0,0, 0.05);
-	margin-top: -1%;
 	margin-left: 20%;
 	margin-right: 20%;
 	margin-bottom: 6%;
@@ -87,9 +86,6 @@ a:hover {
 
 .section-title {
 	color: #f59b60;
-	/* padding: 20px; */
-	/* margin-top: 5%;
-	margin-bottom: 5%; */
 	font-weight: lighter;
 	font-size: 50px;
 	font-style: normal;
