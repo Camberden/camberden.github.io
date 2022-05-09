@@ -4,5 +4,4 @@
 *.srl
 *.crt
 *.cnf
-*.mp3
 node_modules
