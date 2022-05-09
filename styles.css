@@ -25,7 +25,7 @@
 }
 
 h1 {
-	font-family: Futura, Avenir, monospace;
+	font-family: Bungee, Lora, Georgia, 'Times New Roman', Times, serif;
 	font-style: normal;
 	font-size: 500%;
 	text-align: center;
@@ -43,7 +43,7 @@ h1 {
 
 body {
 	color: black;
-	font-family: Lora, Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
 	text-align: center;
 	z-index: 1;
 	background-image: url('assets/interlaced.png');
@@ -178,32 +178,3 @@ a:hover {
 	from {background-position: 0 0;}
 	to {background-position: 100% 0;}
 }
-
-/* CSS ELEMENTS FOUND IN 'PROSPECTS' */
-
-/* .gamecontainer {
-	background-color: rgba(0,0,0, 0.8);
-	text-align: center;
-	position: relative;
-	top: 25%;
-	left: 25%;
-	height: 50%;
-	width: 50%;
-}
-
-.ncjob > a {
-	padding: 0px;
-	margin-top: 0%;
-	margin-bottom: 0%;
-
-	letter-spacing: .2em;
-	display: block;
-	transition: 0.1s ease-out;
-	color: inherit;
-	background-image: none;
-}
-
-.ncjob > a:hover {
-	letter-spacing: .5em;
-	color: red;
-} */

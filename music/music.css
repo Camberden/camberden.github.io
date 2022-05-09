@@ -1,38 +1,57 @@
-/*	METADATA	*/
+/* METADATA */
+
 body {
-	font-family: Futura, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
+	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
 	background-image:
 	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
 	url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
 }
+/* linear-gradient(rgba(98, 161, 238, 0.63), rgba(62, 105, 124, 0)), */
+
+
+.heading-container {
+	background-color: rgba(0,0,0, 0.05);
+	margin-top: -1%;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-bottom: 6%;
+}
 
 a {
 	color: inherit;
 	text-decoration: solid;
-	outline: 0;
+	/* outline: 0; */
 	cursor: pointer;
 }
 
 li{
 	display: inline;
-	text-align: left;
+	text-align: center;
 }
 
 .marker {
 	color: #db8044;
-	font-size: 1em;
+	font-size: 20px;
 	font-family: Permanent Marker, serif;
+}
+
+/* ELEMENTAL DATA */
+
+.introduction{
+	text-align: center;
+	padding-bottom: 5%;
 }
 
 #musictitle {
 	font-style: normal;
-	text-align: left;
+	text-align: center;
 	font-weight: 1500;
 	font-size: 50px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;
+	outline: blue;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
@@ -48,20 +67,37 @@ li{
 	font-family: Permanent Marker, serif;
 }
 
-.trackcontainer {
+.trackcontainer-odd {
 	background-color: rgba(0,0,0, 0.8);
-	position: relative;
 	text-align: center;
 	padding: 30px;
-	top: 25%;
-	height: 50%;
-	width: 50%;
+	margin-left: 20%;
+	margin-right: 40%;
 
 	letter-spacing: .2em;
-	display: block;
 	transition: 0.1s ease-out;
 	color: white;
 	background-image: none;
+}
+
+.trackcontainer-even {
+	background-color: rgba(0,0,0, 0.8);
+	text-align: center;
+	padding: 30px;
+	margin-left: 40%;
+	margin-right: 20%;
+
+	letter-spacing: .2em;
+	transition: 0.1s ease-out;
+	color: white;
+	background-image: none;
+}
+
+.trackbarrier{
+	padding:5px;
+	background-color: rgba(117, 40, 40, 0.3);
+	margin-left: 30%;
+	margin-right: 30%;
 }
 
 #meaningtune {
@@ -84,6 +120,24 @@ li{
 	color: lightblue;
 }
 
+.songinfo-odd{
+	font-family: 'Courier New', Courier, monospace;
+	color:blue;
+	margin-left: 65%;
+	margin-bottom: 3em;
+	padding: 2%;
+	position: absolute;
+}
+
+.songinfo-even{
+	font-family: 'Courier New', Courier, monospace;
+	color: blue;
+	margin-left: 20%;
+	margin-bottom: 10%;
+	padding: 2%;
+	position: absolute;
+}
+
 .currentlyplaying {
 	color:red;
 	letter-spacing: .5em;
@@ -93,10 +147,9 @@ li{
 
 .currentlyplayingbox {
 	background-color: black;
-	background-image: url('../assets/missouri-getty.jpg');
-	/* background-image:
+	background-image:
 	linear-gradient(rgba(105, 89, 89, 0), rgba(1, 0, 0, 0.0)),
-	url('../assets/favicon-32x32 copy.png'); */
+	url('../assets/favicon-32x32 copy.png');
 	animation: mymove 25s linear infinite;
 }
 
@@ -105,25 +158,29 @@ li{
 	to {background-position: 100% 0;}
 }
 
+.lyricprompt {
+	text-align: center;
+}
+
 .lyrics {
 	color: #db8044;
 	font-size: 50px;
 	font-family: Permanent Marker, serif;
-	/* text-align: left; */
-	/* margin-left: 15px; */
+	/* position: fixed; */
 }
 
 .lyric-bar {
-	background-color: rgba(0, 0, 0, 0.8);    /*  40% opaque green */ 
-	text-align: left;
+	background-color: rgba(0, 0, 0, 0.8);
+	text-align: center;
 	overflow: hidden;
-	position: fixed;
-	bottom: 0;
+	/* position: fixed; */
+	bottom: auto;
+	margin-top: 20%;
 	width: 100%;
-	animation: lyric-bar-move 5s linear;
+	/* animation: lyric-bar-move 5s linear; */
 }
 
-@keyframes lyric-bar-move {
-	from {bottom: 100}
+/* @keyframes lyric-bar-move {
+	from {bottom: 1}
 	to {bottom:0}
-}
+} */

@@ -13,30 +13,38 @@
 </head>
 
 <body>
-	<a class="marker" href='../index.html'>Return</a>
+	<a class="marker" href='../index.html'><span>Return</span></a>
 	<h1 id='musictitle'>Music</h1>
 
-
-	<!-- PLACE THESE DIVS INTO A CONTAINER TO ALLOW FOR LYRICS ON RIGHT SIDE -->
-	<div>
+	<div class="introduction">
 		<h3>Here I will post my musical compositions</h3>
 		<p>Most recent works will appear at the top of this page.</p>
 	</div>
-	<!-- FIND A WAY TO PASS AN AUDIO FILE JS VARIABLE AS A PARAMETER -->
-	<div id='track1' class='trackcontainer' onclick="recognizeSong('meaning')">
-		<h4 class='tune' id='meaningtune'>Meaning - 2021</h4>
+
+	<div class="trackbarrier"></div>
+	<div>
+		<p class='songinfo-odd'>[information]</p>
+		<div id='track1' class='trackcontainer-odd' onclick="recognizeSong('meaning')">
+			<h4 class='tune' id='meaningtune'>Meaning - 2021</h4>
+		</div>
 	</div>
 
-	<div id='track2' class='trackcontainer' onclick="recognizeSong('woai')">
-		<h4 class='tune' id='woaitune'>War of Art - 2019</h4>
+
+	<div class="trackbarrier"></div>
+	<div>
+		<p class='songinfo-even'><span>[information]</span></p>
+		<div id='track2' class='trackcontainer-even' onclick="recognizeSong('woai')">
+			<h4 class='tune' id='woaitune'>War of Art - 2019</h4>
+		</div>
 	</div>
 
-	<br>
+	<div class="trackbarrier"></div>
 
-	<!-- CREATE ONE LYRICS VARIABLE -->
-	<div class=lyric-bar>
-		<span class='lyrics' id='playing-lyrics'></span>
-		<span id='credit'></span>
+	<div class="lyricprompt"></div>
+
+	<div class='lyric-bar'>
+		<div class='lyrics'><span id='playing-lyrics'></span></div>
+		<!-- <span id='credit'></span> -->
 	</div>
 	<script src='music.js'></script>
 </body>
