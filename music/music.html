@@ -15,44 +15,45 @@
 
 
 
-	<body id="backdrop">
+<body id="backdrop">
 
-		<a class="marker" href='../index.html'><span>Return</span></a>
-		<div><img id='titleimage' src='../assets/chrispycollage.jpg'></div>
-		<h1 id='musictitle'>Music</h1>
+	<a class="marker" href='../index.html'><span>Return</span></a>
+	<div><img id='titleimage' src='../assets/chrispycollage.jpg'></div>
+	<h1 id='musictitle'>Music</h1>
 
-		<div class="introduction">
-			<h3>Here I will post my musical compositions</h3>
-			<p>Most recent works will appear at the top of this page.</p>
+	<div class="introduction">
+		<h3>Here I will post my musical compositions</h3>
+		<p>Most recent works will appear at the top of this page.</p>
+	</div>
+
+	<div class="trackbarrier"></div>
+	<div>
+		<p class='songinfo-odd'>&#8201</p>
+		<div id='track1' class='trackcontainer-odd' onclick="recognizeSong('meaning')">
+			<h4 class='tune' id='meaningtune'>Meaning - 2021</h4>
 		</div>
+	</div>
 
-		<div class="trackbarrier"></div>
-		<div>
-			<p class='songinfo-odd'>[information]</p>
-			<div id='track1' class='trackcontainer-odd' onclick="recognizeSong('meaning')">
-				<h4 class='tune' id='meaningtune'>Meaning - 2021</h4>
-			</div>
+
+	<div class="trackbarrier"></div>
+	<div>
+		<p class='songinfo-even'><span>&#8201</span></p>
+		<div id='track2' class='trackcontainer-even' onclick="recognizeSong('woai')">
+			<h4 class='tune' id='woaitune'>War of Art - 2019</h4>
 		</div>
+	</div>
 
+	<div class="trackbarrier"></div>
 
-		<div class="trackbarrier"></div>
-		<div>
-			<p class='songinfo-even'><span>[information]</span></p>
-			<div id='track2' class='trackcontainer-even' onclick="recognizeSong('woai')">
-				<h4 class='tune' id='woaitune'>War of Art - 2019</h4>
-			</div>
+	<div class="lyricprompt"></div>
+
+	<div class='lyric-bar'>
+		<div class='lyrics'>
+			<p id='playing-lyrics'>&#8201</p>
 		</div>
+	</div>
+	<script src='music.js'></script>
 
-		<div class="trackbarrier"></div>
-
-		<div class="lyricprompt"></div>
-
-		<div class='lyric-bar'>
-			<div class='lyrics'><span id='playing-lyrics'></span></div>
-			<!-- <span id='credit'></span> -->
-		</div>
-		<script src='music.js'></script>
-
-	</body>
+</body>
 
 </html>

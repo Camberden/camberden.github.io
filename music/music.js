@@ -48,7 +48,7 @@ const recognizeSong = function(song){
 				document.getElementById('meaningtune').classList.remove('currentlyplaying');
 				document.getElementById('track1').classList.remove('currentlyplayingbox');
 				document.getElementById('backdrop').classList.remove('animatedgradient');
-				currentlyrics.innerHTML = '';
+				currentlyrics.innerHTML = '&#8201';
 				// credit.innerHTML = '';
 			}
 			break;
@@ -71,7 +71,7 @@ const recognizeSong = function(song){
 				document.getElementById('woaitune').classList.remove('currentlyplaying');
 				document.getElementById('track2').classList.remove('currentlyplayingbox');
 				document.getElementById('backdrop').classList.remove('animatedgradient');
-				currentlyrics.innerHTML = '';
+				currentlyrics.innerHTML = '&#8201';
 				// credit.innerHTML = '';
 			}
 			break;
