@@ -4,7 +4,6 @@ body {
 	background-image: url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
-	text-align: center;
 }
 
 a {
@@ -13,13 +12,16 @@ a {
 	text-decoration: solid;
 	outline: 0;
 	cursor: pointer;
-	float: left;
 }
 
 .marker {
 	color: #db8044;
 	font-size: 1em;
 	font-family: Permanent Marker, serif;
+}
+
+#all-containers {
+	text-align: center;
 }
 
 #billcalculatortitle {
@@ -32,6 +34,7 @@ a {
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
+	text-align: center;
 }
 
 #balance-container {

@@ -11,67 +11,69 @@
 </head>
 
 <body>
-	<a class="marker" href='../index.html'>Return</a>
+	<a class="marker" href='../index.html'><span>Return</span></a>
 	<h1 id='billcalculatortitle'>Bill Calculator</h1>
 
+	<div id="all-containers">
+		<div>
+			<h3>Here is my personal bill calculator.</h3>
+			<p>Input current income and see the deductions take place!</p>
+		</div>
 
-	<div>
-		<h3>Here is my personal bill calculator.</h3>
-		<p>Input current income and see the deductions take place!</p>
-	</div>
+		<div id="balance-container">
+			<input type='text' id='balance' label='balance'>
+			<ul>
+				<li><input type='checkbox' id="car-check">CAR = $<span class='expense' id='car-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id="nav-check">NAV = $<span class='expense' id='nav-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id="sal-check">SAL = $<span class='expense' id='sal-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id="ren-check">REN = $<span class='expense' id='ren-cost'>0</span>
+				</li>
+				</li>
+				<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id="ins-check">INS = $<span class='expense' id='ins-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id='wat-check'>WAT = $<span class='expense' id='wat-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id='ele-check'>ELE = $<span class='expense' id='ele-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id='int-check'>INT = $<span class='expense' id='int-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id='gym-check'>GYM = $<span class='expense' id='gym-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id='cre-check'>CRE = $<span class='expense' id='cre-cost'>0</span>
+				</li>
+				<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder="Input Value"
+						id="inp-cost">
+				</li>
+				<br>
+				<li>END BALANCE = $<span id='endbalance'>0</span>
+				</li>
+			</ul>
+		</div>
 
-	<div id="balance-container">
-		<input type='text' id='balance' label='balance'>
-		<ul>
-			<li><input type='checkbox' id="car-check">CAR = $<span class='expense' id='car-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id="nav-check">NAV = $<span class='expense' id='nav-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id="sal-check">SAL = $<span class='expense' id='sal-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id="ren-check">REN = $<span class='expense' id='ren-cost'>0</span>
-			</li>
-			</li>
-			<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id="ins-check">INS = $<span class='expense' id='ins-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id='wat-check'>WAT = $<span class='expense' id='wat-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id='ele-check'>ELE = $<span class='expense' id='ele-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id='int-check'>INT = $<span class='expense' id='int-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id='gym-check'>GYM = $<span class='expense' id='gym-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id='cre-check'>CRE = $<span class='expense' id='cre-cost'>0</span>
-			</li>
-			<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder="Input Value"
-					id="inp-cost">
-			</li>
-			<br>
-			<li>END BALANCE = $<span id='endbalance'>0</span>
-			</li>
-		</ul>
-	</div>
+		<div>
+			<h3>Here are my financial reserves.</h3>
+			<p>Updated as of <u>Saturday, 02/26/2022</u></p>
+		</div>
 
-	<div>
-		<h3>Here are my financial reserves.</h3>
-		<p>Updated as of <u>Saturday, 02/26/2022</u></p>
-	</div>
+		<div id="reserves-container">
+			<ul>
+				<li>RETIREMENT ACCOUNT = $<span class='reserve' id="r-retirement">0</span></li>
+				<li>SICK LEAVE VALUE = $<span class='reserve' id="r-sickleave">0</span></li>
+				<li>VACATION LEAVE VALUE = $<span class='reserve' id="r-vacationleave">0</span></li>
+				<li>HOLIDAY LEAVE VALUE = $<span class='reserve' id="r-holidayleave">_</span></li>
+				<li>MUTUAL FUND INVESTMENTS = $<span class='reserve' id="r-mutualfund">0</span></li>
+				<li>CRYPTOCURRENCY INVESTMENTS = $<span class='reserve' id="r-cryptocurrency">0</span></li>
+				<li>SECURITY DEPOSIT = $<span class='reserve' id="r-securitydeposit">0</span></li>
+				<br>
+				<li>TOTAL RESERVES = ~ $<span id='totalreserves'>0</span></li>
+			</ul>
+		</div>
 
-	<div id="reserves-container">
-		<ul>
-			<li>RETIREMENT ACCOUNT = $<span class='reserve' id="r-retirement">0</span></li>
-			<li>SICK LEAVE VALUE = $<span class='reserve' id="r-sickleave">0</span></li>
-			<li>VACATION LEAVE VALUE = $<span class='reserve' id="r-vacationleave">0</span></li>
-			<li>HOLIDAY LEAVE VALUE = $<span class='reserve' id="r-holidayleave">_</span></li>
-			<li>MUTUAL FUND INVESTMENTS = $<span class='reserve' id="r-mutualfund">0</span></li>
-			<li>CRYPTOCURRENCY INVESTMENTS = $<span class='reserve' id="r-cryptocurrency">0</span></li>
-			<li>SECURITY DEPOSIT = $<span class='reserve' id="r-securitydeposit">0</span></li>
-			<br>
-			<li>TOTAL RESERVES = ~ $<span id='totalreserves'>0</span></li>
-		</ul>
 	</div>
 
 </body>
