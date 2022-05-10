@@ -4,19 +4,27 @@ body {
 	background-image: url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
+	text-align: center;
 }
 
 a {
 	color: inherit;
+	text-align: left;
 	text-decoration: solid;
 	outline: 0;
 	cursor: pointer;
+	float: left;
+}
+
+.marker {
+	color: #db8044;
+	font-size: 1em;
+	font-family: Permanent Marker, serif;
 }
 
 #billcalculatortitle {
 	font-family: Futura;
 	font-style: normal;
-	text-align: left;
 	font-weight: 1500;
 	font-size: 50px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
@@ -28,22 +36,22 @@ a {
 
 #balance-container {
 	background-color:#f6f3ed;
-	margin-right: 75%;
+	margin-right: 35%;
+	margin-left: 35%;
 	padding: 10px;
 }
 
 #reserves-container {
 	background-color:#f6f3ed;
-	margin-right: 50%;
+	margin-right: 35%;
+	margin-left: 35%;
 	padding: 10px;
-}
-
-.marker {
-	color: #db8044;
-	font-size: 1em;
-	font-family: Permanent Marker, serif;
 }
 
 #balance {
 	margin-left: 24px;
+}
+
+li{
+	text-align: left;
 }
