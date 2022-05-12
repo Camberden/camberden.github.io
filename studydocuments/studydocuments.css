@@ -6,7 +6,6 @@ body {
 	url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
-	text-align: center;
 }
 
 a {
@@ -32,11 +31,16 @@ a {
 	color: red;
 }
 
+#all-containers {
+	text-align: center;
+}
+
 #studydocumentstitle {
 
 	font-family: Futura;
 	font-style: normal;
 	font-size: 50px;
+	text-align: center;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;
 	-webkit-background-clip: text;
