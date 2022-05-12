@@ -7,6 +7,14 @@ body {
 	background-blend-mode: multiply;
 }
 
+a {
+	color: inherit;
+	text-align: left;
+	text-decoration: solid;
+	outline: 0;
+	cursor: pointer;
+}
+
 /*	PAGETITLE	*/
 
 #poemtitle {
@@ -167,7 +175,6 @@ input[type=text]:focus {
 	text-align: right;
 	font-size: 1em;
 	font-family: Permanent Marker, serif;
-	/* padding: 7em 0em 13em; */
 }
   
 .markerlarge {

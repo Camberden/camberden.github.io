@@ -6,6 +6,7 @@ body {
 	url(../assets/interlaced.png);
 	background-color: #f6f6f6;
 	background-blend-mode: multiply;
+	text-align: center;
 }
 
 a {
@@ -16,16 +17,25 @@ a {
 	outline: 0;
 	cursor: pointer;
 }
-a:hover{
-	color:#db8044
+
+.marker {
+	color: #db8044;
+	font-size: 1em;
+	font-family: Permanent Marker, serif;
+}
+
+#return {
+	text-align: left;
+}
+
+#return:hover {
+	color: red;
 }
 
 #studydocumentstitle {
 
 	font-family: Futura;
 	font-style: normal;
-	text-align: left;
-	font-weight: 1500;
 	font-size: 50px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;
@@ -34,16 +44,12 @@ a:hover{
 	user-select: none;
 }
 
-.marker {
-	color: #db8044;
-	font-size: 1em;
-	font-family: Permanent Marker, serif;
-}
-
 ul {
 	background-color:#f6f3ed;
-	margin-right: 50%;
+	margin-right: 25%;
+	margin-left: 25%;
 	padding-bottom: 30px;
+	text-align: left;
 }
 
 .topic {
