@@ -21,6 +21,10 @@ a {
 	font-family: Permanent Marker, serif;
 }
 
+#return:hover {
+	color: red;
+}
+
 #lifeinweekstitle {
 	font-style: normal;
 	text-align: left;
