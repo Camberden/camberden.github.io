@@ -17,6 +17,10 @@ a {
 	cursor: pointer;
 }
 
+a:hover {
+	color:blue;
+}
+
 .marker {
 	color: #db8044;
 	font-size: 1em;
