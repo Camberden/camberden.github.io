@@ -147,6 +147,10 @@ a {
 	color: red;
 }
 
+.ashreqhighlight{
+	color: red;
+}
+
 .container {
 	display: grid;
 	grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];
@@ -282,6 +286,30 @@ a {
 }
 
 .item-upn-credits {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-ash {
+	background-color: #f6f3ed;
+	grid-column-start: first;
+	grid-column-end: line2;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-ash-electives {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-ash-credits {
 	background-color: #f6f3ed;
 	grid-column-start: line3;
 	grid-column-end: end;
