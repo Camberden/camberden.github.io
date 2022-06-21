@@ -15,12 +15,13 @@ startbalanceupdate.onkeypress = function(){
 const car = 514.03;
 const nav = 0.00;
 const sal = 884.15;
-const ren = 775.00;
-const rti = 12.10;
-const ins = 70.09;
-const wat = 80.24;
+const ren = 1190.00;
+const rti = 9.36;
+const ins = 60.21;
+const loa = 169.10;
+const wat = 0.00;
 const ele = 77.39;
-const int = 34.99;
+const int = 55.39;
 const gym = 23.06;
 const cre = 0.00;
 
@@ -34,9 +35,9 @@ let inp;
 
 
 
-const all = [car, nav, sal, ren, rti, ins, wat, ele, int, gym, cre, inp];
+const all = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, gym, cre, inp];
 // text box element list
-const expenseNames = Array.from('car nav sal ren rti ins wat ele int gym cre inp'.split(' '));
+const expenseNames = Array.from('car nav sal ren rti ins loa wat ele int gym cre inp'.split(' '));
 const allElem = expenseNames
 	.map(str => document.getElementById(str + '-cost'));
 // check box element list
