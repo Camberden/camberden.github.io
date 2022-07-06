@@ -197,7 +197,7 @@ a {
 	grid-row-end: row2-end;
 }
 
-.item-bso {
+.item-uil {
 	background-color: #f6f3ed;
 	grid-column-start: first;
 	grid-column-end: line2;
@@ -293,7 +293,7 @@ a {
 	grid-row-end: row2-end;
 }
 
-.item-ash {
+.item-uil {
 	background-color: #f6f3ed;
 	grid-column-start: first;
 	grid-column-end: line2;
@@ -301,7 +301,7 @@ a {
 	grid-row-end: row2-end;
 }
 
-.item-ash-electives {
+.item-uil-electives {
 	background-color: #f6f3ed;
 	grid-column-start: line2;
 	grid-column-end: line3;
@@ -309,7 +309,7 @@ a {
 	grid-row-end: row2-end;
 }
 
-.item-ash-credits {
+.item-uil-credits {
 	background-color: #f6f3ed;
 	grid-column-start: line3;
 	grid-column-end: end;

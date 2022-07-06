@@ -1,0 +1,420 @@
+<!-- THESE ARE FORMER RE-EDUCATION PLANS THAT I AM NO LONGER CONSIDERING AS OPTIONS -->
+<!-- INCLUDED ARE THE RELEVANT HTML AND CSS -->
+
+<!-- SECOND PLAN -->
+	<div>
+		<h2 class='plan-name'>Oregon State Ecampus Plans</h2>
+		<p class='plan-info'>For jumping into a CS curriculum with minimal mathematics.</p>
+	</div>
+
+	<div class='container'>
+
+		<div class='item-bso'>
+			<h3 class='programorconcentration' id='osu'>
+				<!-- <a target='_blank' href='#'> -->
+				<a target='_blank'
+					href='https://ecampus.oregonstate.edu/online-degrees/undergraduate/computer-science-postbacc/'>
+					B.S. Oregon State University</a>
+			</h3>
+
+			<h4 class='sub-courses'>Primary Concentration (Required)</h4>
+			<ul>
+				<li>CS 161 - Introduction to Computer Science I</li>
+				<li>CS 162 - Introduction to Computer Science II</li>
+				<li>CS 225 - Discrete Structures in Computer Science</li>
+				<li>CS 261 - Data Structures</li>
+				<li>CS 271 - Computer Architecture and Assembly Language</li>
+				<li>CS 290 - Web Development</li>
+				<li>CS 325 - Analysis of Algorithms</li>
+				<li>CS 340 - Introduction to Databases</li>
+				<li>CS 344 - Operating Systems I</li>
+				<li>CS 361 - Software Engineering I</li>
+				<li>CS 362 - Software Engineering II</li>
+				<li>CS 467 - Online Capstone Project</li>
+				<li>CS *** - Elective</li>
+				<li>CS *** - Elective</li>
+				<li>CS *** - Elective</li>
+			</ul>
+
+		</div>
+
+		<div class='item-mat-option1'>
+			<h3 class='program-segment' id='mat-option1'>
+				Credit at Oregon State University</a>
+				<h4 class='sub-courses'>Math Background</h4>
+				<ul>
+					<li class='osureq taking'>MTH 111 - College Algebra</li>
+				</ul>
+			</h3>
+
+		</div>
+
+		<div class='item-mat-option2'>
+			<h3 class='program-segment' id='mat-option2'>
+				Credit at Wake Tech and Elsewhere</a>
+				<h4 class='sub-courses'>Math Background</h4>
+				<ul>
+					<li class='osureq taking'>MAT 171 - Precalculus Algebra</li>
+				</ul>
+			</h3>
+
+			<h4 style='margin-left: 25px;'><br><br><br>Credit Information</h4>
+			<p id='credit-info-or'>
+				CREDIT HOUR w/o FEES: $527.00<br>
+				MTH 111 COURSE: $1324.00<br>
+				PER 4 CREDIT COURSE: $2,108.00<br>
+				FOR ALL 60 CREDITS $32,220,00
+			</p>
+
+		</div>
+	</div>
+
+	<!-- THIRD PLAN -->
+	<div>
+		<h2 class='plan-name'>East Carolina Plan</h2>
+		<p class='plan-info'>For delving into a newer SWE program that's very affordable in-state.</p>
+	</div>
+
+	<div class='container'>
+
+		<div class='item-ecu'>
+			<h3 class='programorconcentration' id='ecu'>
+				<a target='_blank' href='https://online.ecu.edu/tuition-financial-aid/tuition/'>
+					M.S.S.E. East Carolina University</a>
+			</h3>
+
+			<h4 class='sub-courses'>Primary Concentration (Required)</h4>
+			<ul>
+				<li>SENG 6230 - Software Engineering Foundations</li>
+				<li>SENG 6235 - Software Project Management</li>
+				<li>SENG 6265 - Foundations of Software Testing</li>
+				<li>SENG **** - ***</li>
+				<li>SENG **** - ***</li>
+				<li>SENG **** - ***</li>
+				<li>SENG **** - ***</li>
+				<li>SENG **** - ***</li>
+				<li>SENG **** - ***</li>
+			</ul>
+		</div>
+
+		<div class='item-ecu-electives'>
+			<h3 class='program-segment' id='item-ecu-electives'>
+				Electives at East Carolina</a>
+				<h4 class='sub-courses'>All Unmentioned Electives</h4>
+				<ul>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+					<li>SENG **** - ***</li>
+				</ul>
+			</h3>
+
+
+
+		</div>
+		<div class='item-ecu-credits'>
+			<h3 class='program-segment' id='item-ecu-credits'>
+				Credit at Wake Tech and Elsewhere</a>
+				<h4 class='sub-courses'>Requirements</h4>
+				<ul>
+					<li class='ecureq taken'>MAT 121 - Algebra & Trigonometry I</li>
+					<li class='ecureq taking'>MAT 171 - Precalculus Algebra</li>
+					<li class='ecureq'>GRE *** - Graduate Record Examination</li>
+				</ul>
+			</h3>
+			<h4 style='margin-left: 25px;'><br>Credit Information</h4>
+			<p id='credit-info-ecu'>
+				CREDIT HOUR w/o FEES: $289.11<br>
+				PER 3 CREDIT COURSE: $867.33<br>
+				FOR ALL 19 CREDITS $8673.30
+			</p>
+		</div>
+	</div>
+
+	<!-- FORTH PLAN -->
+	<div>
+		<h2 class='plan-name'>Penn State World Campus Plan</h2>
+		<p class='plan-info'>Costly, but online and from my Alma Mater herself.</p>
+	</div>
+
+	<div class='container'>
+
+		<div class='item-psu'>
+			<h3 class='programorconcentration' id='psu'>
+				<a target='_blank'
+					href='https://www.worldcampus.psu.edu/degrees-and-certificates/software-engineering-masters/overview'>
+					M.S.E. Penn State</a>
+			</h3>
+
+			<h4 class='sub-courses'>Primary Concentration (Required)</h4>
+			<ul>
+				<li>SWENG 861 - Software Construction</li>
+				<li>SWENG 586 - Requirements Engineering</li>
+				<li>SWENG 587 - Software Systems Architecture</li>
+				<li>SWENG 837 - Software System Design</li>
+				<li>SWENG 505 - Software Project Management</li>
+				<li>SWENG 581 - Software Testing</li>
+				<li>INSC 521 - Database Design Concepts</li>
+				<li>SWENG 585 - Pattern-Oriented Design</li>
+				<li>INSC 561 - Web Security and Privacy</li>
+				<li>SWENG 826 - Applied HCI</li>
+				<li>SWENG 894 - Software Engineering Studio</li>
+			</ul>
+		</div>
+
+		<div class='item-psu-electives'>
+			<h3 class='program-segment' id='item-psu-electives'>
+				Electives at Penn State</a>
+				<h4 class='sub-courses'>All Unmentioned Electives</h4>
+				<ul>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+					<li>SWENG **** - ***</li>
+				</ul>
+			</h3>
+
+
+
+		</div>
+		<div class='item-psu-credits'>
+			<h3 class='program-segment' id='item-psu-credits'>
+				Credit at Wake Tech and Elsewhere</a>
+				<h4 class='sub-courses'>Requirements</h4>
+				<ul>
+					<li class='psureq taken'>MAT 121 - Algebra & Trigonometry I</li>
+					<li class='psureq taking'>MAT 171 - Precalculus Algebra</li>
+					<li class='psureq'>MAT 172 - Precalculus Trigonometry</li>
+					<li class='psureq'>MAT 271 - Calculus I</li>
+				</ul>
+			</h3>
+			<h4 style='margin-left: 25px;'><br>Credit Information</h4>
+			<p id='credit-info-psu'>
+				CREDIT HOUR w/o FEES: $996.00<br>
+				PER 3 CREDIT COURSE: $2988.00<br>
+				PER 6 CREDIT SEMESTER: $5976.00<br>
+				FOR ALL 36 CREDITS $35,856.30</p>
+		</div>
+	</div>
+
+	<!-- FIFTH PLAN -->
+	<div>
+		<h2 class='plan-name'>University of Pennsylvania Plan</h2>
+		<p class='plan-info'>Fairly costly but well tailored, ivy-league, and highly flexible.</p>
+	</div>
+
+	<div class='container'>
+
+		<div class='item-upn'>
+			<h3 class='programorconcentration' id='upn'>
+				<a target='_blank' href='https://online.seas.upenn.edu/degrees/mcit-online/'>
+					M.C.I.T University of Pennsylvania</a>
+			</h3>
+
+			<h4 class='sub-courses'>Primary Concentration (Required)</h4>
+			<ul>
+				<li>CIT 591 - Introduction to Software Development</li>
+				<li>CIT 592 - Mathematical Foundations of Computer Science</li>
+				<li>CIT 593 - Introduction to Computer Systems</li>
+				<li>CIT 594 - Data Structures and Software Design</li>
+				<li>CIT 595 - Computer System Programming</li>
+				<li>CIT 596 - Algorithms and Computation</li>
+
+			</ul>
+		</div>
+
+		<div class='item-upn-electives'>
+			<h3 class='program-segment' id='item-upn-electives'>
+				Electives at UPenn
+				<h4 class='sub-courses'>Four(4) are Required</h4>
+				<ul>
+					<li>CIS 515 - Fundamentals of Linear Algebra and Optimization</li>
+					<li>CIS 521 - Artificial Intelligence</li>
+					<li>CIS 545 - Big Data Analytics</li>
+					<li>CIS 547 - Software Analysis</li>
+					<li>CIS 549 - Wireless Communications for Mobile Networks and Internet of Things</li>
+					<li>CIS 550 - Database and Information Systems</li>
+					<li>CIS 551 - Computer and Network Security</li>
+					<li>CIS 553 - Networked Systems</li>
+					<li>CIS 581 - Computer Vision and Computational Photography</li>
+					<li>CIT 520 - Intro to Robotics</li>
+					<li>CIT 582 - Blockchains and Cryptography</li>
+					<li>ESE 542 - Statistics for Data Science: An Applied Machine Learning Course</li>
+
+				</ul>
+			</h3>
+
+
+
+		</div>
+		<div class='item-upn-credits'>
+			<h3 class='program-segment' id='item-upn-credits'>
+				Credit at Wake Tech and Elsewhere</a>
+				<h4 class='sub-courses'>Requirements</h4>
+				<ul>
+					<li class='upnreq taken'>MAT 121 - Algebra & Trigonometry I</li>
+					<li class='upnreq taking'>MAT 171 - Precalculus Algebra</li>
+					<li class='upnreq'>MAT 172 - Precalculus Trigonometry</li>
+					<li class='upnreq'>MAT 271 - Calculus I</li>
+				</ul>
+			</h3>
+			<h4 style='margin-left: 25px;'><br>Credit Information</h4>
+			<p id='credit-info-upn'>
+				PER 3 CREDIT COURSE: $3200.00<br>
+				ONLINE FEE PER COURSE: $140.00<br>
+				FOR ALL 30 CREDITS $33,400.00</p>
+		</div>
+	</div>
+
+	<!-- SIXTH PLAN -->
+	<div>
+		<h2 class='plan-name'>UNC Asheville Plan</h2>
+		<p class='plan-info'>Now local, in-person option for a full CS degree.</p>
+	</div>
+
+	<div class='container'>
+
+		<div class='item-ash'>
+			<h3 class='programorconcentration' id='ash'>
+				<a target='_blank' href='http://catalog.unca.edu/preview_program.php?catoid=18&poid=3409&returnto=1040'>
+					B.S UNC Asheville</a>
+			</h3>
+
+			<h4 class='sub-courses'>Primary Concentration (Required)</h4>
+			<ul>
+				<li>CSCI 185 - Introduction to Programming: Web Development</li>
+				<li>CSCI 201 - Introduction to Object-Oriented Programming</li>
+				<li>CSCI 202 - Introduction to Data Structures</li>
+				<li>CSCI 235 - Systems</li>
+				<li>CSCI 280 - Computer Science Seminar</li>
+				<li>CSCI 333 - Algorithms and Data Structures</li>
+				<li>CSCI 338 - Software Engineering</li>
+				<li>CSCI 343 - Database Management Systems</li>
+				<li>CSCI 344 - Advanced Web Technology</li>
+				<li>CSCI 480 - Capstone I</li>
+				<li>CSCI 481 - Capstone II</li>
+
+			</ul>
+		</div>
+
+		<div class='item-ash-electives'>
+			<h3 class='program-segment' id='item-ash-electives'>
+				Electives & Additional Courses at UNC Asheville
+				<h4 class='sub-courses'>All are Required; Other CSCI options available</h4>
+				<ul>
+					<li>CSCI 346 - Computer Graphics</li>
+					<li>CSCI 441 - Numerical Analysis</li>
+					<li>MAT 191 - Calculus</li>
+					<li>MATH 251 - Discrete Mathematics</li>
+					<li>STAT 225 - Introduction to Calculus-Based Statistics</li>
+
+				</ul>
+			</h3>
+
+
+
+		</div>
+		<div class='item-ash-credits'>
+			<h3 class='program-segment' id='item-ash-credits'>
+				Credit at Wake Tech and Elsewhere</a>
+				<h4 class='sub-courses'>Requirements</h4>
+				<ul>
+					<li class='ashreq taken'>MAT 121 - Algebra & Trigonometry I</li>
+					<li class='ashreq taking'>MAT 171 - Precalculus Algebra</li>
+					<li class='ashreq'>MAT 172 - Precalculus Trigonometry</li>
+					<li class='ashreq'>MAT 271 - Calculus I</li>
+					<li><em>Additional Liberal Arts Credits Required</em></li>
+				</ul>
+			</h3>
+			<h4 style='margin-left: 25px;'><br>Credit Information</h4>
+			<p id='credit-info-ash'>
+				CREDIT HOUR w/o FEES: $302.23<br>
+				PER 3 or 4 CREDIT COURSE: $939.19<br>
+		</div>
+	</div>
+
+
+	<!-- SECTION END -->
+
+
+#credit-info-or {
+	margin-left: 25px;
+}
+
+#credit-info-ecu {
+	margin-left: 25px;
+}
+
+#credit-info-psu {
+	margin-left: 25px;
+}
+
+#credit-info-upn {
+	margin-left: 25px;
+}
+
+.cpcreqhighlight{
+	color: red;
+}
+
+.gcpreqhighlight{
+	color: red;
+}
+
+.mcsreqhighlight{
+	color: red;
+}
+
+.osureqhighlight{
+	color: red;
+}
+
+.ecureqhighlight{
+	color: red;
+}
+
+.psureqhighlight{
+	color: red;
+}
+
+.upnreqhighlight{
+	color: red;
+}
+
+.ashreqhighlight{
+	color: red;
+}
+
+item-cpc {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-mcs {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-bso {
+	background-color: #f6f3ed;
+	grid-column-start: first;
+	grid-column-end: line2;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
