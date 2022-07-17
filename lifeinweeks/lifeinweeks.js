@@ -146,6 +146,14 @@ function populateBoxes(){
 				displayMomentInfo('joinedpert-moment');
 			}, false);
 		}
+
+		// Moved to Asheville
+		if (i === 1488){
+			span.classList.add('moment', 'asheville-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('asheville-moment');
+			}, false);
+		}
 	});
 } // END populateBoxes()
 
@@ -203,6 +211,9 @@ function displayMomentInfo(moment){
 			break;
 		case 'joinedpert-moment':
 			document.getElementById('moment-info').innerHTML = iframeleft + 'joinedpert' + iframeright;
+			break;
+		case 'asheville-moment':
+			document.getElementById('moment-info').innerHTML = iframeleft + 'asheville' + iframeright;
 			break;
 	}
 } // END displayMomentInfo()
