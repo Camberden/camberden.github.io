@@ -53,7 +53,7 @@ function populateInfoAndEntryways(selection){
 			break;
 		case musings:
 			document.getElementById('musings-info').innerHTML =
-				'This is a test and stuff';
+				'Here I write and record some quotes and musings. You may write along too.';
 			document.getElementById('musings-entry').innerHTML =
 				musingslink + linkending;
 			break;

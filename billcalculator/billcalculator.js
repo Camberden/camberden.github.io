@@ -25,13 +25,13 @@ const int = 55.39;
 const gym = 23.06;
 const cre = 0.00;
 
-function updateInp(){
-	all[11] = inp = parseFloat(document.getElementById('inp-cost').value);
-}
-
-// TODO: ADDING CUSTOM INPUT
+// CUSTOM INPUT: INP
 let inp;
 console.log(document.getElementById('inp-cost').innerHTML);
+
+function updateInp(){
+	all[all.length - 1] = inp = parseFloat(document.getElementById('inp-cost').value);
+}
 
 
 
@@ -65,6 +65,8 @@ document.getElementById('r-cryptocurrency').innerHTML = cryptofund;
 document.getElementById('r-securitydeposit').innerHTML = securitydeposit;
 
 document.getElementById('totalreserves').innerHTML = Math.floor(reservestotal, 0);
+
+// CHECKBOX LOGIC
 
 allElem.forEach((elem, i) => elem.innerHTML = all[i]);
 
