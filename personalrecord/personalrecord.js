@@ -98,21 +98,6 @@ mcs.onmouseleave = function(){
 	}
 };
 
-osu.onmouseenter = function(){
-	for (let i = 0; i < osucourses.length; ++i){
-		const course = osucourses[i];
-		course.classList.add('osureqhighlight');
-		displayCredits(osu);
-	}
-};
-
-osu.onmouseleave = function(){
-	for (let i = 0; i < osucourses.length; ++i){
-		const course = osucourses[i];
-		course.classList.remove('osureqhighlight');
-	}
-};
-
 ecu.onmouseenter = function(){
 	for (let i = 0; i < ecucourses.length; ++i){
 		const course = ecucourses[i];

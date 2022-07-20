@@ -31,7 +31,7 @@ function updateInp(){
 
 // TODO: ADDING CUSTOM INPUT
 let inp;
-// console.log(document.getElementById('inp-cost').innerHTML);
+console.log(document.getElementById('inp-cost').innerHTML);
 
 
 
