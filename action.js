@@ -4,21 +4,6 @@
 
 window.onload = () => console.log('Running!');
 
-// --- MISCELLANEOUS --- //
-const missouri = new Audio('assets/missouri.mp3');
-
-function clickmeboy(){
-	document.getElementById('pedestal').innerHTML -= -1;
-	document.getElementById('hitbutton').classList.add('red');
-	setTimeout(() => document.getElementById('hitbutton').classList.remove('red'), 200);
-}
-
-missouri.addEventListener('ended', function(){
-	missouri.currentTime = 0;
-	console.log('missouri ended');
-	document.getElementById('demotxt').style = 'font-size:inherit; color:inherit;';
-});
-
 // --- INFO AND ENTRYWAYS --- //
 
 const musiclink = '<a href="music/music.html">';
@@ -47,7 +32,7 @@ function populateInfoAndEntryways(selection){
 	switch (selection){
 		case music:
 			document.getElementById('music-info').innerHTML =
-				'Here you can find my musical works';
+				'Here you can find some of my musical works';
 			document.getElementById('music-entry').innerHTML =
 				musiclink + linkending;
 			break;
