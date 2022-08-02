@@ -21,7 +21,7 @@ const ins = 60.21;
 const loa = 169.10;
 const wat = 0.00;
 const ele = 77.39;
-const int = 55.39;
+const int = 54.99;
 const gym = 23.06;
 const cre = 0.00;
 
@@ -45,13 +45,13 @@ const allElem2 = expenseNames
 	.map(str => document.getElementById(str + '-check'));
 
 const baserate = 20;
-const retirement = 6176.75;
-const vacationleave = 173.02;
-const sickleave = 146.5;
-const holidayleave = 88;
-const mutualfund = 1152.79;
-const cryptofund = 278.15;
-const securitydeposit = 775.00;
+const retirement = 7683.83;
+const vacationleave = 219.67;
+const sickleave = 121.25;
+const holidayleave = 61.50;
+const mutualfund = 49.16;
+const cryptofund = 19.17;
+const securitydeposit = 300.00;
 
 const reserves = [retirement, vacationleave, sickleave, mutualfund, cryptofund, securitydeposit];
 const reservestotal = retirement + (vacationleave * baserate) + (sickleave * baserate) +
