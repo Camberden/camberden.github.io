@@ -76,3 +76,9 @@ li {
 	opacity: 0.5;
 	color: red;
 }
+
+.not-applicable {
+	color: grey;
+	opacity: 0.3;
+	user-select: none;
+}
