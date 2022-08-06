@@ -261,3 +261,12 @@ a:hover {
 	/* margin-top: 20%; */
 	/* width: 80%; */
 }
+
+#soundcloud-link {
+	font-family: 'Courier New', Courier, monospace;
+	color: purple;
+	background-color: transparent;
+	opacity: 0.6;
+	position: relative;
+}
+
