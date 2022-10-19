@@ -22,7 +22,7 @@ document.getElementById('close-modal').onclick = function(){
 function writeLyrics(song, lyrics){
 	const timestamp = Math.floor(song.currentTime);
 	// UNCOMMENT THIS CONSOLE LOG TO PINPOINT LYRICS SUNG DURING TRACK
-	//console.log(timestamp);
+	console.log(timestamp);
 
 	if (lyrics.has(timestamp)){
 		currentlyrics.innerHTML = lyrics.get(timestamp);
@@ -108,7 +108,7 @@ const meaninglyrics = new Map([
 	[40,	'freeze again'],
 	[42,	'paralyzed...🎵'],
 	[44,	'directionless and overwhelmed'],
-	[49,	'I close my eyes...🎵'],
+	[49,	'I close my eyes...'],
 	[51,	'fostering the will to take my leave'],
 	[56,	'...🎵'],
 	[76,	'I understand'],
@@ -124,7 +124,7 @@ const meaninglyrics = new Map([
 	[105,	'and lock myself inside this state of mind.'],
 	[110,	'...🎵'],
 	[134,	'My soul!'],
-	[137,	'It comes alive!'],
+	[136,	'It comes alive!'],
 	[138,	'For just this night!'],
 	[140,	'I realize is only now!'],
 	[143,	'I do surmise a lack of meaning'],
@@ -132,25 +132,25 @@ const meaninglyrics = new Map([
 	[152,	'from what I do,'],
 	[154,	'the day by day,'],
 	[156,	'the black and grey'],
-	[158,	'the solidude,'],
+	[158,	'the solitude,'],
 	[160,	'this mental cage'],
 	[162,	'There\'s just so little sense of meaning'],
-	[165,	'to me...'],
-	[165,	'My soul!'],
-	[167,	'It comes alive!'],
-	[168,	'For just this night!'],
-	[173,	'I realize is only now!'],
-	[176,	'I do surmise a lack of meaning'],
-	[180,	'to come...'],
-	[182,	'from what I do,'],
-	[184,	'the day by day,'],
-	[186,	'the black and grey'],
-	[188,	'the solidude,'],
-	[189,	'this mental cage'],
-	[190,	'There\'s just so little sense of meaning'],
-	[193,	'to me...🎵'],
-	[193,	'Little sense of meaning...🎵'],
-	[193,	'Little sense of meaning!'],
+	[167,	'to me...'],
+	[170,	'My soul!'],
+	[172,	'It comes alive!'],
+	[175,	'For just this night!'],
+	[178,	'I realize is only now!'],
+	[180,	'I do surmise a lack of meaning'],
+	[184,	'to come...'],
+	[188,	'from what I do,'],
+	[190,	'the day by day,'],
+	[192,	'the black and grey'],
+	[194,	'the solidude,'],
+	[195,	'this mental cage'],
+	[198,	'There\'s just so little sense of meaning'],
+	[202,	'to me...🎵'],
+	[205,	'Little sense of meaning...🎵'],
+	[210,	'Little sense of meaning!'],
 ]);
 
 const woailyrics = new Map([

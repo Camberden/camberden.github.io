@@ -121,6 +121,10 @@ a:hover {
 	  font-size: 100px;
   }
 
+  #close-modal:hover {
+	color: red;
+  }
+
 /* TRACK CONTAINERS AND SONG INFO SETTINGS */
 
 .trackcontainer-odd {
