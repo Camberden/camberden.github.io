@@ -32,6 +32,8 @@ function getPoemNumber(){
 }
 getPoemNumber();
 
+
+
 /* SETS THE POEM INTO THE FORTYPING ID ELEMENT */
 document.getElementById('fortyping').innerHTML = '<span class="writinginitial">' + selectedpoem[0] + '</span>' + selectedpoem.substring(1, selectedpoem.length);
 
@@ -123,7 +125,15 @@ const modal = document.getElementById('menumodal');
 const menuclick = document.getElementById('menulabel');
 const menuclose = document.getElementsByClassName('closemenu')[0];
 
+const poemSelectionMenu = document.getElementById("poem-select");
+function populatePoemSelection(){
+	for (let i = 1; i<poems.length; i++) {
+		poemSelectionMenu.innerHTML += `<option> Poem` + poems[i] + `</option`;
+	}
+}
+
 menuclick.onclick = function(){
+	populatePoemSelection();
 	modal.style.display = 'block';
 };
 
@@ -136,3 +146,5 @@ window.onclick = function(event){
 		modal.style.display = 'none';
 	}
 };
+
+
