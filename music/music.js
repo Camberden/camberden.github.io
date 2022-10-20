@@ -15,6 +15,7 @@ let playcounter = 0;
 let songline = 0;
 let playingAudio = new Audio;
 const modal = document.getElementById('info-modal');
+const specificModal = document.getElementById('specific-modal');
 document.getElementById('close-modal').onclick = function(){
 	modal.style.display = 'none';
 };
@@ -38,6 +39,7 @@ const recognizeSong = function(song){
 			if (playcounter % 2){
 				playingAudio = meaning;
 				playingAudio.play();
+				specificModal.innerHTML = meaningModalText + meaningModalImage;
 				document.getElementById(song + 'tune').classList.add('currentlyplaying');
 				document.getElementById('track1').classList.add('currentlyplayingbox');
 				document.getElementById('backdrop').classList.add('animatedgradient');
@@ -68,6 +70,7 @@ const recognizeSong = function(song){
 			if (playcounter % 2){
 				playingAudio = woai;
 				playingAudio.play();
+				specificModal.innerHTML = woaiModalText;
 				document.getElementById(song + 'tune').classList.add('currentlyplaying');
 				document.getElementById('track2').classList.add('currentlyplayingbox');
 				document.getElementById('backdrop').classList.add('animatedgradient');
@@ -156,3 +159,9 @@ const meaninglyrics = new Map([
 const woailyrics = new Map([
 	[1,	'🎵 Instrumental Version! 🎵'],
 ]);
+
+// --- SONG-SPECIFIC MODALS --- //
+
+const meaningModalText = `This is a song about Meaning.<br>`;
+const meaningModalImage = `<img src="../assets/meaning-paper.jpg">`;
+const woaiModalText = `This is a song about forcing oneself to keep working on projects in front of the computer screen.`;
