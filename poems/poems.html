@@ -33,8 +33,12 @@
 					<div class="menudialog">
 						<span class="closemenu">&times;</span>
 						<p class="dialogtext">Browse passages!</p>
-						<select id="poem-select">
-						</select>
+						<form>
+							<label for="choice"></label>
+							<select name="choice" id="poem-select">
+							</select>
+							<input type="button" value="Submit" onclick="goToPoem()">
+						</form>
 					</div>
 
 				</div>
@@ -45,11 +49,11 @@
 				<button class="marker" onclick="previousPoem()">Previous</button>
 			</div>
 		</div>
-		
+
 		<div class="poem" style="user-select: none;">
 			<p>
-			<div class="writing" id="fortyping">
-			</div>
+				<div class="writing" id="fortyping">
+				</div>
 			</p>
 			<button class="center" id="playbuttontext" style="color: grey; text-align: center; "
 				onclick="playQuote()">Play</button>

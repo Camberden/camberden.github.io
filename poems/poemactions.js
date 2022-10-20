@@ -120,16 +120,35 @@ document.onkeydown = function(evt){
 
 
 // MODAL
+// TODO : ENSURE THAT THE POEM-SELECT CAN TAKE A VALUE OF 10 OR MORE; REDO SUBSTRING()
 
 const modal = document.getElementById('menumodal');
 const menuclick = document.getElementById('menulabel');
 const menuclose = document.getElementsByClassName('closemenu')[0];
 
+let chosenPoem = "";
 const poemSelectionMenu = document.getElementById("poem-select");
 function populatePoemSelection(){
-	for (let i = 1; i<poems.length; i++) {
-		poemSelectionMenu.innerHTML += `<option> Poem` + poems[i] + `</option`;
+	for (let i = 0; i<poems.length; i++) {
+		poemSelectionMenu.innerHTML += `<option> Poem ` + (i + 1) + ": " + poems[i].substring(0,20) + `... </option`;
 	}
+}
+
+function goToPoem(){
+	// UPDATE THIS ASSIGNMENT.
+	chosenPoem = document.getElementById(`poem-select`).value.substring(5,6);
+	poemnumber = parseInt(chosenPoem) - 1;
+	selectedpoem = poems[poemnumber];
+
+	console.log('Testing goToPoem function!');
+	document.getElementById('fortyping').innerHTML = '<span class="writinginitial">' + selectedpoem[0] + '</span>' + selectedpoem.substring(1, selectedpoem.length);
+	document.getElementById('sampleTypingField').value = '';
+	focusWriting();
+	getPoemNumber();
+	quoteAudio = new Audio('../assets/quote' + (poemnumber + 1) + '.mp3');
+	modal.style.display = 'none';
+	poemSelectionMenu.innerHTML = "";
+	console.log(poemnumber);
 }
 
 menuclick.onclick = function(){
@@ -139,6 +158,7 @@ menuclick.onclick = function(){
 
 menuclose.onclick = function(){
 	modal.style.display = 'none';
+	poemSelectionMenu.innerHTML = "";
 };
 
 window.onclick = function(event){
