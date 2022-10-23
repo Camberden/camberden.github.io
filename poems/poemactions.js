@@ -126,17 +126,17 @@ const modal = document.getElementById('menumodal');
 const menuclick = document.getElementById('menulabel');
 const menuclose = document.getElementsByClassName('closemenu')[0];
 
-let chosenPoem = "";
-const poemSelectionMenu = document.getElementById("poem-select");
+let chosenPoem = '';
+const poemSelectionMenu = document.getElementById('poem-select');
 function populatePoemSelection(){
-	for (let i = 0; i<poems.length; i++) {
-		poemSelectionMenu.innerHTML += `<option> Poem ` + (i + 1) + ": " + poems[i].substring(0,20) + `... </option`;
+	for (let i = 0; i<poems.length; i++){
+		poemSelectionMenu.innerHTML += '<option> Poem ' + (i + 1) + ': ' + poems[i].substring(0, 20) + '... </option';
 	}
 }
 
 function goToPoem(){
 	// UPDATE THIS ASSIGNMENT.
-	chosenPoem = document.getElementById(`poem-select`).value.substring(5,6);
+	chosenPoem = document.getElementById('poem-select').value.substring(5, 6);
 	poemnumber = parseInt(chosenPoem) - 1;
 	selectedpoem = poems[poemnumber];
 
@@ -147,7 +147,7 @@ function goToPoem(){
 	getPoemNumber();
 	quoteAudio = new Audio('../assets/quote' + (poemnumber + 1) + '.mp3');
 	modal.style.display = 'none';
-	poemSelectionMenu.innerHTML = "";
+	poemSelectionMenu.innerHTML = '';
 	console.log(poemnumber);
 }
 
@@ -158,7 +158,7 @@ menuclick.onclick = function(){
 
 menuclose.onclick = function(){
 	modal.style.display = 'none';
-	poemSelectionMenu.innerHTML = "";
+	poemSelectionMenu.innerHTML = '';
 };
 
 window.onclick = function(event){

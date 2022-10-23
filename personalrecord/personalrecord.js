@@ -40,16 +40,6 @@ currentlyTaking.onclick = function(){
 	}
 };
 
-// TODO: Add a checkmark to the string of a completed course!
-const addCheck = function(course){
-	course.innerHTML = course.innerHTML + ' ✓';
-};
-
-for (let i = 0; i < taken.length; ++i){
-	const course = taken[i];
-	addCheck(course);
-}
-
 // ---
 
 aas.onmouseenter = function(){

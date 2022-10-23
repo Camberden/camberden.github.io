@@ -113,10 +113,12 @@ a {
 
 .takinghighlight {
 	color: blue;
+	list-style-type: circle;
 }
 
 .taken {
 	color:#db8044;
+	list-style-type: "✓ ";
 }
 
 .cpcreqhighlight{
