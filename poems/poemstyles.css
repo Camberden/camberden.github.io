@@ -176,6 +176,10 @@ input[type=text]:focus {
 	font-size: 1em;
 	font-family: Permanent Marker, serif;
 }
+
+#return:hover {
+	color: red;
+}
   
 .markerlarge {
 	line-height: 0em;

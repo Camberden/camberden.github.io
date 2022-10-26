@@ -42,39 +42,39 @@ a {
 }
 
 .container {
-	display: grid;
-	grid-template-columns: [first] auto [line2] auto [line3] auto [end];
-	grid-template-rows: [row1-start] auto [row1-end] auto [row2-start] auto [row2-end];
-	column-gap: 10px;
+	/* display: grid; */
+	/* grid-template-columns: [first] auto [line2] auto [line3] auto [end];
+	grid-template-rows: [row1-start] auto [row1-end] auto [row2-start] auto [row2-end]; */
+	/* column-gap: 10px; */
 	color: rgb(105, 107, 107);
 	text-align: left;
-	margin-left: 10px;
-	position: relative;
+	margin-left: 10em;
+	margin-right: 10em;
 }
 
 .item-info {
-	grid-column-start: first;
+	/* grid-column-start: first;
 	grid-column-end: line2;
 	grid-row-start: row1-start;
-	grid-row-end: row1-end;
-	position: relative;
-	margin-bottom: 700px;
+	grid-row-end: row1-end; */
+	/* position: relative; */
+	/* margin-bottom: 700px; */
 	margin-left: 30px
 }
 
 .item-chart {
 	/* background-color: #f6f3ed; */
 	background-color: #f6f3ed;
-	grid-column-start: line3;
+	/* grid-column-start: line3;
 	grid-column-end: end;
 	grid-row-start: row1-start;
-	grid-row-end: row1-end;
+	grid-row-end: row1-end; */
 	max-width: 81ch;
 }
 
 #boxinput {
-	margin-left: 30px;
-	margin-right: 30px;
+	/* margin-left: 30px;
+	margin-right: 30px; */
 }
 
 .momentbox {
