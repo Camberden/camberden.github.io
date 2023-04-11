@@ -20,9 +20,9 @@ const rti = 9.36;
 const ins = 60.18;
 const loa = 169.10;
 const wat = 0.00;
-const ele = 112.75;
+const ele = 115.00;
 const int = 54.99;
-const gym = 23.06;
+const gym = 0.00;
 const cre = 0.00;
 
 // CUSTOM INPUT: INP
@@ -44,24 +44,25 @@ const allElem = expenseNames
 const allElem2 = expenseNames
 	.map(str => document.getElementById(str + '-check'));
 
-const baserate = 20;
-const retirement = 7683.83;
-const vacationleave = 219.67;
-const sickleave = 121.25;
-const holidayleave = 61.50;
-const mutualfund = 49.16;
-const cryptofund = 19.17;
+const baserate = 20.00;
+const retirement = 10778.72;
+const vacationleave = 267.99;
+const sickleave = 211.57;
+const holidayleave = 96.00;
+//const mutualfund = 49.16;
+//const cryptofund = 19.17;
 const securitydeposit = 300.00;
 
-const reserves = [retirement, vacationleave, sickleave, mutualfund, cryptofund, securitydeposit];
+// Removed mutualfund and cryptofund from reserves
+const reserves = [retirement, vacationleave, sickleave, securitydeposit];
 const reservestotal = retirement + (vacationleave * baserate) + (sickleave * baserate) +
-	(holidayleave * baserate) + mutualfund + cryptofund + securitydeposit;
+	(holidayleave * baserate) + securitydeposit;
 document.getElementById('r-retirement').innerHTML = retirement;
 document.getElementById('r-sickleave').innerHTML = sickleave * baserate;
 document.getElementById('r-vacationleave').innerHTML = vacationleave * baserate;
 document.getElementById('r-holidayleave').innerHTML = holidayleave * baserate;
-document.getElementById('r-mutualfund').innerHTML = mutualfund;
-document.getElementById('r-cryptocurrency').innerHTML = cryptofund;
+//document.getElementById('r-mutualfund').innerHTML = mutualfund;
+//document.getElementById('r-cryptocurrency').innerHTML = cryptofund;
 document.getElementById('r-securitydeposit').innerHTML = securitydeposit;
 
 document.getElementById('totalreserves').innerHTML = Math.floor(reservestotal, 0);

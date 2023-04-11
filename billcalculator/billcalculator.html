@@ -24,8 +24,7 @@
 			<input type='text' id='balance' label='balance'>
 			<ul>
 				<!-- CAR PAYMENT -->
-				<li><input type='checkbox' id="car-check">CAR = $<span class='expense'
-						id='car-cost'>0</span>
+				<li><input type='checkbox' id="car-check">CAR = $<span class='expense' id='car-cost'>0</span>
 					<span class="automated-payment">Automated: 3rd</span>
 				</li>
 				<!-- FEDERAL STUDENT LOAN -->
@@ -34,28 +33,23 @@
 					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- PRIVATE STUDENT LOAN -->
-				<li><input type='checkbox' id="sal-check">SAL = $<span class='expense'
-						id='sal-cost'>0</span>
+				<li><input type='checkbox' id="sal-check">SAL = $<span class='expense' id='sal-cost'>0</span>
 					<span class="automated-payment">Automated: 3rd</span>
 				</li>
 				<!-- RENT -->
-				<li><input type='checkbox' id="ren-check">REN = $<span class='expense'
-						id='ren-cost'>0</span>
+				<li><input type='checkbox' id="ren-check">REN = $<span class='expense' id='ren-cost'>0</span>
 					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- RENTER'S INSURANCE -->
-				<li><input type='checkbox' id="rti-check">RTI = $<span class='expense'
-						id='rti-cost'>0</span>
+				<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
 					<span class="automated-payment">Automated: 3rd</span>
 				</li>
 				<!-- CAR INSURANCE -->
-				<li><input type='checkbox' id="ins-check">INS = $<span class='expense'
-						id='ins-cost'>0</span>
+				<li><input type='checkbox' id="ins-check">INS = $<span class='expense' id='ins-cost'>0</span>
 					<span class="automated-payment">Automated: 30th</span>
 				</li>
 				<!-- PERSONAL RELOCATION LOAN -->
-				<li><input type='checkbox' id="loa-check">LOA = $<span class='expense'
-						id='loa-cost'>0</span>
+				<li><input type='checkbox' id="loa-check">LOA = $<span class='expense' id='loa-cost'>0</span>
 					<span class="automated-payment">Automated: 5th</span>
 				</li>
 				<!-- MUNICIPAL WATER BILL -->
@@ -64,28 +58,25 @@
 					<span class="automated-payment">Automated</span>
 				</li>
 				<!-- ELECTRICITY/POWER BILL -->
-				<li><input type='checkbox' id='ele-check'>ELE = $<span class='expense'
-						id='ele-cost'>0</span>
+				<li><input type='checkbox' id='ele-check'>ELE = $<span class='expense' id='ele-cost'>0</span>
 					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- INTERNET BILL -->
-				<li><input type='checkbox' id='int-check'>INT = $<span class='expense'
-						id='int-cost'>0</span>
+				<li><input type='checkbox' id='int-check'>INT = $<span class='expense' id='int-cost'>0</span>
 					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- GYM MEMBERSHIP -->
-				<li><input type='checkbox' id='gym-check'>GYM = $<span class='expense'
+				<li class="not-applicable"><input type='checkbox' id='gym-check'>GYM = $<span class='expense'
 						id='gym-cost'>0</span>
-					<span class="automated-payment">Automated: 17th</span>
+					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<!--CREDIT CARD BALANCE -->
-				<li><input type='checkbox' id='cre-check'>CRE = $<span class='expense'
-						id='cre-cost'>0</span>
+				<li><input type='checkbox' id='cre-check'>CRE = $<span class='expense' id='cre-cost'>0</span>
 					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- MISCELLANEOUS OBLIGATIONS -->
-				<li><input type='checkbox' id='inp-check'>INP = $<input type='number'
-						placeholder="Input Value" id="inp-cost">
+				<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder="Input Value"
+						id="inp-cost">
 					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<br>
@@ -97,7 +88,7 @@
 
 		<div>
 			<h3>Here are my financial reserves.</h3>
-			<p>Updated as of <u>Tuesday, August 2, 2022</u></p>
+			<p>Updated as of <u>Tuesday, April 11, 2023</u></p>
 		</div>
 
 		<div id="reserves-container">
@@ -106,8 +97,8 @@
 				<li>SICK LEAVE VALUE = $<span class='reserve' id="r-sickleave">0</span></li>
 				<li>VACATION LEAVE VALUE = $<span class='reserve' id="r-vacationleave">0</span></li>
 				<li>HOLIDAY LEAVE VALUE = $<span class='reserve' id="r-holidayleave">_</span></li>
-				<li>MUTUAL FUND INVESTMENTS = $<span class='reserve' id="r-mutualfund">0</span></li>
-				<li>CRYPTOCURRENCY INVESTMENTS = $<span class='reserve' id="r-cryptocurrency">0</span></li>
+				<!-- <li>MUTUAL FUND INVESTMENTS = $<span class='reserve' id="r-mutualfund">0</span></li>
+				<li>CRYPTOCURRENCY INVESTMENTS = $<span class='reserve' id="r-cryptocurrency">0</span></li> -->
 				<li>SECURITY DEPOSIT = $<span class='reserve' id="r-securitydeposit">0</span></li>
 				<br>
 				<li>TOTAL RESERVES = ~ $<span id='totalreserves'>0</span></li>

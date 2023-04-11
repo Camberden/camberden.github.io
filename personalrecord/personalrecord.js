@@ -8,10 +8,7 @@ const taken = document.querySelectorAll('.taken');
 const cpccourses = document.querySelectorAll('.cpcreq');
 const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
 const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
-const osucourses = document.querySelectorAll('.osureq');
 const ecucourses = document.querySelectorAll('.ecureq');
-const psucourses = document.querySelectorAll('.psureq');
-const upncourses = document.querySelectorAll('.upnreq');
 
 const currentlyTaking = document.getElementById('currently-taking');
 
@@ -19,10 +16,7 @@ const aas = document.getElementById('aas');
 const cpc = document.getElementById('cpc');
 const gcp = document.getElementById('gcp');
 const mcs = document.getElementById('mcs');
-const osu = document.getElementById('osu');
 const ecu = document.getElementById('ecu');
-const psu = document.getElementById('psu');
-const upn = document.getElementById('upn');
 
 console.log(mcs);
 
@@ -100,36 +94,6 @@ ecu.onmouseleave = function(){
 	for (let i = 0; i < ecucourses.length; ++i){
 		const course = ecucourses[i];
 		course.classList.remove('ecureqhighlight');
-	}
-};
-
-psu.onmouseenter = function(){
-	for (let i = 0; i < psucourses.length; ++i){
-		const course = psucourses[i];
-		course.classList.add('psureqhighlight');
-		displayCredits(psu);
-	}
-};
-
-psu.onmouseleave = function(){
-	for (let i = 0; i < psucourses.length; ++i){
-		const course = psucourses[i];
-		course.classList.remove('psureqhighlight');
-	}
-};
-
-upn.onmouseenter = function(){
-	for (let i = 0; i < upncourses.length; ++i){
-		const course = upncourses[i];
-		course.classList.add('upnreqhighlight');
-		displayCredits(upn);
-	}
-};
-
-upn.onmouseleave = function(){
-	for (let i = 0; i < upncourses.length; ++i){
-		const course = upncourses[i];
-		course.classList.remove('upnreqhighlight');
 	}
 };
 

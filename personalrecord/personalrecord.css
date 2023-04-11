@@ -103,14 +103,6 @@ a {
 	margin-left: 25px;
 }
 
-#credit-info-psu {
-	margin-left: 25px;
-}
-
-#credit-info-upn {
-	margin-left: 25px;
-}
-
 .takinghighlight {
 	color: blue;
 	list-style-type: circle;
@@ -133,23 +125,7 @@ a {
 	color: red;
 }
 
-.osureqhighlight{
-	color: red;
-}
-
 .ecureqhighlight{
-	color: red;
-}
-
-.psureqhighlight{
-	color: red;
-}
-
-.upnreqhighlight{
-	color: red;
-}
-
-.ashreqhighlight{
 	color: red;
 }
 
@@ -247,54 +223,6 @@ a {
 	grid-row-end: row2-end;
 }
 
-.item-psu {
-	background-color: #f6f3ed;
-	grid-column-start: first;
-	grid-column-end: line2;
-	grid-row-start: row2-start;
-	grid-row-end: row2-end;
-}
-
-.item-psu-electives {
-	background-color: #f6f3ed;
-	grid-column-start: line2;
-	grid-column-end: line3;
-	grid-row-start: row2-start;
-	grid-row-end: row2-end;
-}
-
-.item-psu-credits {
-	background-color: #f6f3ed;
-	grid-column-start: line3;
-	grid-column-end: end;
-	grid-row-start: row2-start;
-	grid-row-end: row2-end;
-}
-
-.item-upn {
-	background-color: #f6f3ed;
-	grid-column-start: first;
-	grid-column-end: line2;
-	grid-row-start: row2-start;
-	grid-row-end: row2-end;
-}
-
-.item-upn-electives {
-	background-color: #f6f3ed;
-	grid-column-start: line2;
-	grid-column-end: line3;
-	grid-row-start: row2-start;
-	grid-row-end: row2-end;
-}
-
-.item-upn-credits {
-	background-color: #f6f3ed;
-	grid-column-start: line3;
-	grid-column-end: end;
-	grid-row-start: row2-start;
-	grid-row-end: row2-end;
-}
-
 .item-uil {
 	background-color: #f6f3ed;
 	grid-column-start: first;
@@ -318,7 +246,6 @@ a {
 	grid-row-start: row2-start;
 	grid-row-end: row2-end;
 }
-
 
 .item-info {
 	text-align: center;
