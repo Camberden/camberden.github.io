@@ -44,28 +44,28 @@ const allElem = expenseNames
 const allElem2 = expenseNames
 	.map(str => document.getElementById(str + '-check'));
 
-const baserate = 20.00;
-const retirement = 10778.72;
-const vacationleave = 267.99;
-const sickleave = 211.57;
-const holidayleave = 96.00;
+// const baserate = 20.00;
+// const retirement = 10778.72;
+// const vacationleave = 267.99;
+// const sickleave = 211.57;
+// const holidayleave = 96.00;
 //const mutualfund = 49.16;
 //const cryptofund = 19.17;
-const securitydeposit = 300.00;
+// const securitydeposit = 300.00;
 
 // Removed mutualfund and cryptofund from reserves
-const reserves = [retirement, vacationleave, sickleave, securitydeposit];
-const reservestotal = retirement + (vacationleave * baserate) + (sickleave * baserate) +
-	(holidayleave * baserate) + securitydeposit;
-document.getElementById('r-retirement').innerHTML = retirement;
-document.getElementById('r-sickleave').innerHTML = sickleave * baserate;
-document.getElementById('r-vacationleave').innerHTML = vacationleave * baserate;
-document.getElementById('r-holidayleave').innerHTML = holidayleave * baserate;
+//const reserves = [retirement, vacationleave, sickleave, securitydeposit];
+//const reservestotal = retirement + (vacationleave * baserate) + (sickleave * baserate) +
+//	(holidayleave * baserate) + securitydeposit;
+//document.getElementById('r-retirement').innerHTML = retirement;
+//document.getElementById('r-sickleave').innerHTML = sickleave * baserate;
+//document.getElementById('r-vacationleave').innerHTML = vacationleave * baserate;
+//document.getElementById('r-holidayleave').innerHTML = holidayleave * baserate;
 //document.getElementById('r-mutualfund').innerHTML = mutualfund;
 //document.getElementById('r-cryptocurrency').innerHTML = cryptofund;
-document.getElementById('r-securitydeposit').innerHTML = securitydeposit;
+//document.getElementById('r-securitydeposit').innerHTML = securitydeposit;
 
-document.getElementById('totalreserves').innerHTML = Math.floor(reservestotal, 0);
+//document.getElementById('totalreserves').innerHTML = Math.floor(reservestotal, 0);
 
 // CHECKBOX LOGIC
 
