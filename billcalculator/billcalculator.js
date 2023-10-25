@@ -12,16 +12,16 @@ startbalanceupdate.onkeypress = function(){
 	calculateNewBalance();
 };
 
-const car = 514.03;
-const nav = 0.00;
+const car = 0.00;
+const nav = 53.85;
 const sal = 884.15;
 const ren = 800.00;
 const rti = 10.88;
-const ins = 79.37;
-const loa = 0.00;
+const ins = 85.15;
+const loa = 300.00;
 const wat = 0.00;
-const ele = 0.00;
-const int = 0.00;
+const ele = 100.00;
+const int = 54.99;
 const gym = 0.00;
 const cre = 0.00;
 
