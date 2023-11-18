@@ -43,12 +43,14 @@ a:hover {
 
 #notes-header {
 	list-style-type: none;
+	font-family: 'Courier New', Courier, monospace;
+	font-weight: 700;
 }
 
 #notes-list {
 	list-style-type: square;
 	text-align: left;
-	margin-right: 35%;
+	margin-right: 25%;
 	margin-left: 35%;
 	padding: 10px;
 }
@@ -96,8 +98,20 @@ a:hover {
 	color: red;
 }
 
+.her-non-automated-payment {
+	text-align: right;
+	font-family: 'Courier New', Courier, monospace;
+	opacity: 0.5;
+	background-color: mistyrose;
+	color: red;
+}
+
 .not-applicable {
 	color: grey;
 	opacity: 0.3;
 	user-select: none;
+}
+
+#inp-cost {
+	margin-left: 10px;
 }

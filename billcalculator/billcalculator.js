@@ -3,7 +3,6 @@
 
 window.onload = () => console.log('Running!');
 
-
 let startbalance = document.getElementById('balance').value;
 const startbalanceupdate = document.getElementById('balance');
 
@@ -15,59 +14,32 @@ startbalanceupdate.onkeypress = function(){
 const car = 0.00;
 const nav = 53.85;
 const sal = 884.15;
-const ren = 800.00;
+const ren = 801.00;
+const hrt = 801.00;
 const rti = 10.88;
 const ins = 85.15;
 const loa = 300.00;
-const wat = 0.00;
+const wat = 15.00;
 const ele = 70.27;
 const int = 54.99;
+const mus = 11.73;
 const gym = 0.00;
-const cre = 0.00;
-
-// CUSTOM INPUT: INP
-let inp;
+let inp; // CUSTOM INPUT: INP
 console.log(document.getElementById('inp-cost').innerHTML);
-
 function updateInp(){
 	all[all.length - 1] = inp = parseFloat(document.getElementById('inp-cost').value);
 }
 
-
-
-const all = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, gym, cre, inp];
+// ADD NEW VARIABLES TO all
+const all = [car, nav, sal, ren, hrt, rti, ins, loa, wat, ele, int, mus, gym, inp];
 // text box element list
-const expenseNames = Array.from('car nav sal ren rti ins loa wat ele int gym cre inp'.split(' '));
+// ADD NEW VARIABLES TO expenseNames
+const expenseNames = Array.from('car nav sal ren hrt rti ins loa wat ele int mus gym inp'.split(' '));
 const allElem = expenseNames
 	.map(str => document.getElementById(str + '-cost'));
 // check box element list
 const allElem2 = expenseNames
 	.map(str => document.getElementById(str + '-check'));
-
-// const baserate = 20.00;
-// const retirement = 10778.72;
-// const vacationleave = 267.99;
-// const sickleave = 211.57;
-// const holidayleave = 96.00;
-//const mutualfund = 49.16;
-//const cryptofund = 19.17;
-// const securitydeposit = 300.00;
-
-// Removed mutualfund and cryptofund from reserves
-//const reserves = [retirement, vacationleave, sickleave, securitydeposit];
-//const reservestotal = retirement + (vacationleave * baserate) + (sickleave * baserate) +
-//	(holidayleave * baserate) + securitydeposit;
-//document.getElementById('r-retirement').innerHTML = retirement;
-//document.getElementById('r-sickleave').innerHTML = sickleave * baserate;
-//document.getElementById('r-vacationleave').innerHTML = vacationleave * baserate;
-//document.getElementById('r-holidayleave').innerHTML = holidayleave * baserate;
-//document.getElementById('r-mutualfund').innerHTML = mutualfund;
-//document.getElementById('r-cryptocurrency').innerHTML = cryptofund;
-//document.getElementById('r-securitydeposit').innerHTML = securitydeposit;
-
-//document.getElementById('totalreserves').innerHTML = Math.floor(reservestotal, 0);
-
-// CHECKBOX LOGIC
 
 allElem.forEach((elem, i) => elem.innerHTML = all[i]);
 
@@ -88,10 +60,6 @@ const calculateNewBalance = function(){
 	document.getElementById('endbalance').innerHTML = endbalance.toFixed(2);
 };
 
-// autoupdate
 allElem2.forEach(elem => elem.onclick = calculateNewBalance);
-// Add a class to trigger the checkbox selection to have a value of $0.00
-
-// const insurance = document.getElementById('ins-cost');
 
 calculateNewBalance();

@@ -19,10 +19,12 @@
 			<h3>Here is my personal bill calculator.</h3>
 			<p>Input current income and see the deductions take place!</p>
 			<ul id="notes-list">
-				<li id="notes-header">Notes:</li>
-				<li>Updating NAV Payment Date... will call on Monday, November 20th, 2023</li>
-				<li>Will re-enable GYM Payment upon starting CrossFit</li>
-				<li>Pay her P2P $300 at beginning of months: <span id="p2p">$5044.76</span></li>
+				<!-- <li id="notes-header">Notes:</li> -->
+				<span id="notes-header">Notes:</span>
+				<li>I will update NAV Payment Date on Monday, November 20th, 2023.</li>
+				<li>I will re-enable GYM Payment upon starting CrossFit in 2024.</li>
+				<li>I will P2P her $300.00 at beginning of months: <span id="p2p">$5044.76</span> remain.</li>
+				<li>I will end EW Subscription ($99.99) before the January 31st, 2024 bill.</li>
 			</ul>
 		</div>
 
@@ -42,9 +44,13 @@
 				<li><input type='checkbox' id="sal-check">SAL = $<span class='expense' id='sal-cost'>0</span>
 					<span class="automated-payment">Automated: 3rd</span>
 				</li>
-				<!-- RENT -->
+				<!-- MY RENT -->
 				<li><input type='checkbox' id="ren-check">REN = $<span class='expense' id='ren-cost'>0</span>
-					<span class="non-automated-payment">NOT Automated</span>
+					<span class="automated-payment">Automated: 1st</span>
+				</li>
+				<!-- HER RENT -->
+				<li class="not-applicable"><input type='checkbox' id="hrt-check">HRT = $<span class='expense' id='hrt-cost'>0</span>
+					<span class="her-non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- RENTER'S INSURANCE -->
 				<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
@@ -61,29 +67,28 @@
 				<!-- WATER BILL -->
 				<li class="not-applicable"><input type='checkbox' id='wat-check'>WAT = $<span class='expense'
 						id='wat-cost'>0</span>
-					<span class="non-automated-payment">NOT Automated</span>
+					<span class="her-non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- ELECTRICITY/POWER BILL -->
-				<li><input type='checkbox' id='ele-check'>ELE = $<span class='expense' id='ele-cost'>0</span>
+				<li class="not-applicable"><input type='checkbox' id='ele-check'>ELE = $<span class='expense' id='ele-cost'>0</span>
 					<span class="her-automated-payment">Automated: 1st</span>
 				</li>
 				<!-- INTERNET BILL -->
-				<li><input type='checkbox' id='int-check'>INT = $<span class='expense' id='int-cost'>0</span>
+				<li class="not-applicable"><input type='checkbox' id='int-check'>INT = $<span class='expense' id='int-cost'>0</span>
 					<span class="her-automated-payment">Automated: 2nd</span>
+				</li>
+				<!-- MUSIC SUBSCRIPTION -->
+				<li><input type='checkbox' id="mus-check">MUS = $<span class='expense' id='mus-cost'>0</span>
+					<span class="automated-payment">Automated: 3rd</span>
 				</li>
 				<!-- GYM MEMBERSHIP -->
 				<li class="not-applicable"><input type='checkbox' id='gym-check'>GYM = $<span class='expense'
 						id='gym-cost'>0</span>
 					<span class="non-automated-payment">NOT Automated</span>
 				</li>
-				<!--CREDIT CARD BALANCE -->
-				<li><input type='checkbox' id='cre-check'>CRE = $<span class='expense' id='cre-cost'>0</span>
-					<span class="non-automated-payment">NOT Automated</span>
-				</li>
 				<!-- MISCELLANEOUS OBLIGATIONS -->
-				<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder="Input Value"
+				<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder=" Input Value"
 						id="inp-cost">
-					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<br>
 				<!-- TOTAL AFTER DEDUCTIONS -->
