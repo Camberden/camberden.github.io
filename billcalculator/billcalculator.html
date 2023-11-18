@@ -18,14 +18,20 @@
 		<div>
 			<h3>Here is my personal bill calculator.</h3>
 			<p>Input current income and see the deductions take place!</p>
+			<ul id="notes-list">
+				<li id="notes-header">Notes:</li>
+				<li>Updating NAV Payment Date... will call on Monday, November 20th, 2023</li>
+				<li>Will re-enable GYM Payment upon starting CrossFit</li>
+				<li>Pay her P2P $300 at beginning of months: <span id="p2p">$5044.76</span></li>
+			</ul>
 		</div>
 
 		<div id="balance-container">
 			<input type='text' id='balance' label='balance'>
-			<ul>
+			<ul id="balance-list">
 				<!-- CAR PAYMENT -->
 				<li class='not-applicable'><input type='checkbox' id="car-check">CAR = $<span class='expense' id='car-cost'>0</span>
-					<span class="automated-payment">Automated: 3rd</span>
+					<span class="non-automated-payment">Automated: 3rd</span>
 				</li>
 				<!-- FEDERAL STUDENT LOAN -->
 				<li class="checkbox"><input type='checkbox' id="nav-check">NAV = $<span class='expense'
@@ -48,22 +54,22 @@
 				<li><input type='checkbox' id="ins-check">INS = $<span class='expense' id='ins-cost'>0</span>
 					<span class="automated-payment">Automated: 30th</span>
 				</li>
-				<!-- PERSONAL RELOCATION LOAN -->
+				<!-- PERSONAL LOAN -->
 				<li><input type='checkbox' id="loa-check">LOA = $<span class='expense' id='loa-cost'>0</span>
-					<span class="automated-payment">Automated: 5th</span>
+					<span class="non-automated-payment">NOT Automated</span>
 				</li>
-				<!-- MUNICIPAL WATER BILL -->
+				<!-- WATER BILL -->
 				<li class="not-applicable"><input type='checkbox' id='wat-check'>WAT = $<span class='expense'
 						id='wat-cost'>0</span>
-					<span class="automated-payment">Automated</span>
+					<span class="non-automated-payment">NOT Automated</span>
 				</li>
 				<!-- ELECTRICITY/POWER BILL -->
 				<li><input type='checkbox' id='ele-check'>ELE = $<span class='expense' id='ele-cost'>0</span>
-					<span class="automated-payment">Automated: 2nd; Alt-Account</span>
+					<span class="her-automated-payment">Automated: 1st</span>
 				</li>
 				<!-- INTERNET BILL -->
 				<li><input type='checkbox' id='int-check'>INT = $<span class='expense' id='int-cost'>0</span>
-					<span class="automated-payment">Automated: PRN; Alt-Account </span>
+					<span class="her-automated-payment">Automated: 2nd</span>
 				</li>
 				<!-- GYM MEMBERSHIP -->
 				<li class="not-applicable"><input type='checkbox' id='gym-check'>GYM = $<span class='expense'

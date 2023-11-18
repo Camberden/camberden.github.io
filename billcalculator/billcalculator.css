@@ -24,10 +24,6 @@ a:hover {
 	font-family: Permanent Marker, serif;
 }
 
-#all-containers {
-	text-align: center;
-}
-
 #billcalculatortitle {
 	font-family: Futura;
 	font-style: normal;
@@ -41,6 +37,32 @@ a:hover {
 	text-align: center;
 }
 
+#all-containers {
+	text-align: center;
+}
+
+#notes-header {
+	list-style-type: none;
+}
+
+#notes-list {
+	list-style-type: square;
+	text-align: left;
+	margin-right: 35%;
+	margin-left: 35%;
+	padding: 10px;
+}
+
+#p2p {
+	background-color: lightcyan;
+	color: red;
+	font-weight: 900;
+}
+
+#balance {
+	margin-left: 24px;
+}
+
 #balance-container {
 	background-color:#f6f3ed;
 	margin-right: 35%;
@@ -48,18 +70,7 @@ a:hover {
 	padding: 10px;
 }
 
-#reserves-container {
-	background-color:#f6f3ed;
-	margin-right: 35%;
-	margin-left: 35%;
-	padding: 10px;
-}
-
-#balance {
-	margin-left: 24px;
-}
-
-li {
+#balance-list {
 	text-align: left;
 }
 
@@ -68,6 +79,14 @@ li {
 	font-family: 'Courier New', Courier, monospace;
 	opacity: 0.5;
 	background-color: greenyellow;
+}
+
+.her-automated-payment {
+	text-align: right;
+	font-family: 'Courier New', Courier, monospace;
+	opacity: 0.5;
+	background-color: mistyrose;
+	color: purple;
 }
 
 .non-automated-payment {
