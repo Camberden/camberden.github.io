@@ -8,7 +8,6 @@ const taken = document.querySelectorAll('.taken');
 const cpccourses = document.querySelectorAll('.cpcreq');
 const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
 const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
-const ecucourses = document.querySelectorAll('.ecureq');
 
 const currentlyTaking = document.getElementById('currently-taking');
 
@@ -16,7 +15,6 @@ const aas = document.getElementById('aas');
 const cpc = document.getElementById('cpc');
 const gcp = document.getElementById('gcp');
 const mcs = document.getElementById('mcs');
-const ecu = document.getElementById('ecu');
 
 console.log(mcs);
 
@@ -79,21 +77,6 @@ mcs.onmouseleave = function(){
 	for (let i = 0; i < mcscourses.length; ++i){
 		const course = mcscourses[i];
 		course.classList.remove('mcsreqhighlight');
-	}
-};
-
-ecu.onmouseenter = function(){
-	for (let i = 0; i < ecucourses.length; ++i){
-		const course = ecucourses[i];
-		course.classList.add('ecureqhighlight');
-		displayCredits(ecu);
-	}
-};
-
-ecu.onmouseleave = function(){
-	for (let i = 0; i < ecucourses.length; ++i){
-		const course = ecucourses[i];
-		course.classList.remove('ecureqhighlight');
 	}
 };
 
