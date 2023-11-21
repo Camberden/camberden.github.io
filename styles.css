@@ -23,8 +23,9 @@
 	margin-bottom: 5%;
 }
 
-h1 {
-	font-family: Bungee, Lora, Georgia, 'Times New Roman', Times, serif;
+#camberden {
+	font-family: Permanent Marker, sans-serif;
+	/* Bungee */
 	font-style: normal;
 	font-size: 500%;
 	text-align: center;

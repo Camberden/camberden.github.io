@@ -62,7 +62,7 @@ function populateInfoAndEntryways(selection){
 			break;
 		case studydocuments:
 			document.getElementById('studydocuments-info').innerHTML =
-					'Here, I provide personal study resources';
+					'Here, I provide personal resources';
 			document.getElementById('studydocuments-entry').innerHTML =
 					studydocumentslink + linkending;
 			break;

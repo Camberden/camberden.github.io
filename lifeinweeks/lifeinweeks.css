@@ -18,7 +18,7 @@ a {
 .marker {
 	color: #db8044;
 	font-size: 1em;
-	font-family: Permanent Marker, serif;
+	font-family: Permanent Marker, sans-serif;
 }
 
 #return:hover {
@@ -26,10 +26,11 @@ a {
 }
 
 #lifeinweekstitle {
+	font-family: Permanent Marker, sans-serif;
 	font-style: normal;
-	text-align: left;
+	text-align: center;
 	font-weight: 1500;
-	font-size: 50px;
+	font-size: 3em;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;
 	-webkit-background-clip: text;
@@ -38,7 +39,8 @@ a {
 }
 
 #weeks-lived {
-	margin-left: .5em;
+	text-align: center;
+	/* margin-left: .5em; */
 }
 
 .container {
@@ -69,7 +71,7 @@ a {
 	grid-column-end: end;
 	grid-row-start: row1-start;
 	grid-row-end: row1-end; */
-	max-width: 81ch;
+	/* max-width: 81ch; */
 }
 
 #boxinput {

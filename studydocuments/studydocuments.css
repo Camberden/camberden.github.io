@@ -41,9 +41,9 @@ a:hover {
 
 #studydocumentstitle {
 
-	font-family: Futura;
+	font-family: Permanent Marker, sans-serif;
 	font-style: normal;
-	font-size: 50px;
+	font-size: 3em;
 	text-align: center;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;

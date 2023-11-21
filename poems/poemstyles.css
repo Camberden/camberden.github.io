@@ -37,7 +37,8 @@ a {
 }
   
 .opentitle {
-	font-size: 8.7em;
+	font-family: Permanent Marker, sans-serif;
+	font-size: 5em;
 	font-weight: 700;
 	line-height: 1.1em;
 	text-transform: uppercase;
@@ -51,20 +52,6 @@ a {
 	-ms-transform: translate(-50%, -50%);
 	transform: translate(-50%, -50%);
   }
-  
-.pacifico {
-	font-family:pacifico, cursive;
-	font-weight: 400;
-	font-size: 0.37em;
-	line-height: 1.35em;
-	display: inline-block;
-	vertical-align: middle;
-	margin-top: -0.44em;
-	padding-right: 0.2em;
-	border-right: 0;
-	border-left: 0;
-	text-transform: lowercase;
-}
 
 /*	POEMCONTAINER	*/
 

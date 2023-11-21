@@ -87,9 +87,9 @@ a:hover {
 }
 
 #musictitle {
-	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+	font-family: Permanent Marker, sans-serif;
 	text-align: center;
-	font-size: 70px;
+	font-size: 5em;
 	margin-bottom: -0px;
 	margin-top: -0px;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
@@ -97,7 +97,6 @@ a:hover {
 	outline: blue;
 	-webkit-background-clip: text;
 	z-index: 2;
-
 	color: transparent;
 	user-select: none;
 }
