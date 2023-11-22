@@ -9,6 +9,31 @@ const weekslived = (d.getTime() - inception) / millisecondweek;
 const newmoment = 1571976000000;
 const dateplanning = (newmoment - inception) / millisecondweek;
 
+const modal = document.getElementById('moment-modal');
+const modalclose = document.getElementsByClassName('close-moment')[0];
+
+
+// FIND THIS MOMENT SELECTION
+// menuclick.onclick = function(){
+// 	modal.style.display = 'block';
+// };
+
+window.onload = function(){
+	modal.style.display = 'none';
+}
+
+// modalclose.onclick = function(){
+// 	modal.style.display = 'none';
+// 	poemSelectionMenu.innerHTML = '';
+// };
+
+window.onclick = function(event){
+	if (event.target === modal){
+		modal.style.display = 'none';
+	}
+};
+
+
 function populateBoxes(){
 	console.log('Running lifeinweeks.js!');
 	console.log(dateplanning);
