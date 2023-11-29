@@ -18,6 +18,8 @@ const mcs = document.getElementById('mcs');
 
 console.log(mcs);
 
+// --- CURRENTLY TAKING
+
 currentlyTaking.onmouseover = function(){
 	currentlyTaking.classList.add('takinghighlight');
 };
@@ -32,7 +34,7 @@ currentlyTaking.onclick = function(){
 	}
 };
 
-// ---
+// --- NC PLAN 1 INFO
 
 aas.onmouseenter = function(){
 	displayCredits(aas);
