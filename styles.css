@@ -25,7 +25,6 @@
 
 #camberden {
 	font-family: Permanent Marker, sans-serif;
-	/* Bungee */
 	font-style: normal;
 	font-size: 500%;
 	text-align: center;
@@ -65,9 +64,6 @@ p {
 
 a {
 	color: #f59b60;
-	/* padding: 20px; */
-	/* margin-top: 5%;
-	margin-bottom: 5%; */
 	font-style: normal;
 	text-decoration: solid;
 	outline: 0;

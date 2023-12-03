@@ -12,6 +12,7 @@ const personalrecordlink = '<a href="personalrecord/personalrecord.html">';
 const lifeinweekslink = '<a href="lifeinweeks/lifeinweeks.html">';
 const billcalculatorlink = '<a href="billcalculator/billcalculator.html">';
 const studydocumentslink = '<a href="studydocuments/studydocuments.html">';
+const dashboardlink = '<a href="dashboard/dashboard.html">';
 const linkending = 'Enter</a>';
 
 const music = document.getElementById('music');
@@ -20,6 +21,7 @@ const personalrecord = document.getElementById('personalrecord');
 const lifeinweeks = document.getElementById('lifeinweeks');
 const billcalculator = document.getElementById('billcalculator');
 const studydocuments = document.getElementById('studydocuments');
+const dashboard = document.getElementById('dashboard');
 
 const item1 = document.getElementById('item1');
 const item2 = document.getElementById('item2');
@@ -27,9 +29,10 @@ const item3 = document.getElementById('item3');
 const item4 = document.getElementById('item4');
 const item5 = document.getElementById('item5');
 const item6 = document.getElementById('item6');
+const item7 = document.getElementById('item7');
 
-function populateInfoAndEntryways(selection){
-	switch (selection){
+function populateInfoAndEntryways(selection) {
+	switch (selection) {
 		case music:
 			document.getElementById('music-info').innerHTML =
 				'Here you can find some of my musical works';
@@ -56,27 +59,33 @@ function populateInfoAndEntryways(selection){
 			break;
 		case billcalculator:
 			document.getElementById('billcalculator-info').innerHTML =
-					'Here, I plan my finances month-by-month based on my current situation.';
+				'Here, I plan my finances month-by-month based on my current situation.';
 			document.getElementById('billcalculator-entry').innerHTML =
-					billcalculatorlink + linkending;
+				billcalculatorlink + linkending;
 			break;
 		case studydocuments:
 			document.getElementById('studydocuments-info').innerHTML =
-					'Here, I provide personal resources';
+				'Here, I provide personal resources';
 			document.getElementById('studydocuments-entry').innerHTML =
-					studydocumentslink + linkending;
+				studydocumentslink + linkending;
+			break;
+		case dashboard:
+			document.getElementById('dashboard-info').innerHTML =
+				'Here, I display personally relevant statistics on progress';
+			document.getElementById('dashboard-entry').innerHTML =
+				dashboardlink + linkending;
 			break;
 	}
 }
 
 // --- ITEM BOX STYLES --- //
 
-function styleItemBoxes(item, selection){
+function styleItemBoxes(item, selection) {
 	item.classList.add('flourish');
 	selection.classList.add('text-flourish');
 }
 
-function unstyleItemBoxes(item, selection){
+function unstyleItemBoxes(item, selection) {
 	item.classList.remove('flourish');
 	selection.classList.remove('text-flourish');
 }
@@ -87,19 +96,19 @@ function unstyleItemBoxes(item, selection){
 const infos = document.getElementsByClassName('info-box');
 const entries = document.getElementsByClassName('entry-box');
 
-function removeInfoBox(selection){
-	for (let i = 0; i < infos.length; ++i){
+function removeInfoBox(selection) {
+	for (let i = 0; i < infos.length; ++i) {
 		infos[i].innerHTML = '';
 	}
 }
 
-function removeEntryBox(selection){
-	for (let i = 0; i < entries.length; ++i){
+function removeEntryBox(selection) {
+	for (let i = 0; i < entries.length; ++i) {
 		entries[i].innerHTML = '';
 	}
 }
 
-function removeInfoAndEntry(){
+function removeInfoAndEntry() {
 	removeInfoBox(infos);
 	removeEntryBox(entries);
 }
@@ -108,24 +117,24 @@ function removeInfoAndEntry(){
 
 let counter = 1;
 
-music.onclick = function(){
+music.onclick = function () {
 	console.log(counter);
 	populateInfoAndEntryways(music);
 	styleItemBoxes(item1, music);
 	++counter;
-	if (counter > 1 && counter % 2){
+	if (counter > 1 && counter % 2) {
 		console.log('removed!');
 		unstyleItemBoxes(item1, music);
 		removeInfoAndEntry();
 		counter = 1;
 	}
 };
-musings.onclick = function(){
+musings.onclick = function () {
 	console.log(counter);
 	populateInfoAndEntryways(musings);
 	styleItemBoxes(item2, musings);
 	++counter;
-	if (counter > 1 && counter % 2){
+	if (counter > 1 && counter % 2) {
 		console.log('removed!');
 		unstyleItemBoxes(item2, musings);
 		removeInfoAndEntry();
@@ -133,12 +142,12 @@ musings.onclick = function(){
 	}
 };
 
-personalrecord.onclick = function(){
+personalrecord.onclick = function () {
 	console.log(counter);
 	populateInfoAndEntryways(personalrecord);
 	styleItemBoxes(item3, personalrecord);
 	++counter;
-	if (counter > 1 && counter % 2){
+	if (counter > 1 && counter % 2) {
 		console.log('removed!');
 		unstyleItemBoxes(item3, personalrecord);
 		removeInfoAndEntry();
@@ -146,12 +155,12 @@ personalrecord.onclick = function(){
 	}
 };
 
-lifeinweeks.onclick = function(){
+lifeinweeks.onclick = function () {
 	console.log(counter);
 	populateInfoAndEntryways(lifeinweeks);
 	styleItemBoxes(item4, lifeinweeks);
 	++counter;
-	if (counter > 1 && counter % 2){
+	if (counter > 1 && counter % 2) {
 		console.log('removed!');
 		unstyleItemBoxes(item4, lifeinweeks);
 		removeInfoAndEntry();
@@ -159,12 +168,12 @@ lifeinweeks.onclick = function(){
 	}
 };
 
-billcalculator.onclick = function(){
+billcalculator.onclick = function () {
 	console.log(counter);
 	populateInfoAndEntryways(billcalculator);
 	styleItemBoxes(item5, billcalculator);
 	++counter;
-	if (counter > 1 && counter % 2){
+	if (counter > 1 && counter % 2) {
 		console.log('removed!');
 		unstyleItemBoxes(item5, billcalculator);
 		removeInfoAndEntry();
@@ -172,14 +181,27 @@ billcalculator.onclick = function(){
 	}
 };
 
-studydocuments.onclick = function(){
+studydocuments.onclick = function () {
 	console.log(counter);
 	populateInfoAndEntryways(studydocuments);
 	styleItemBoxes(item6, studydocuments);
 	++counter;
-	if (counter > 1 && counter % 2){
+	if (counter > 1 && counter % 2) {
 		console.log('removed!');
 		unstyleItemBoxes(item6, studydocuments);
+		removeInfoAndEntry();
+		counter = 1;
+	}
+};
+
+dashboard.onclick = function () {
+	console.log(counter);
+	populateInfoAndEntryways(dashboard);
+	styleItemBoxes(item7, dashboard);
+	++counter;
+	if (counter > 1 && counter % 2) {
+		console.log('removed!');
+		unstyleItemBoxes(item7, dashboard);
 		removeInfoAndEntry();
 		counter = 1;
 	}
