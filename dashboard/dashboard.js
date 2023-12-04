@@ -15,11 +15,10 @@ const salarySchedule2024 = [
 	['41558', '44468', '47137', '49494', '51473', '53017', '54078'], // C/OIII
 ];
 const now = new Date();
-const pslfRequirement = 120;
 let fiscalYear; // because it is fy 2024
 
 const determineCurrentFiscalYear = function () {
-	return fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later
+	return fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
 }
 // This is executed onload:
 determineCurrentFiscalYear();
@@ -27,11 +26,9 @@ determineCurrentFiscalYear();
 const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
 const getYearID = (date = new Date()) => date.getUTCFullYear();
 
-const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1;
+const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1; // Adjusted from base Zero
 const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
-
-console.log(govtServiceMonths);
-console.log(govtServiceYears);
+const pslfRequirement = 120;
 
 let salarySchedule;
 const setSalarySchedule = function (fiscalYear) {
@@ -67,7 +64,7 @@ class Officer {
 	constructor(name, startDate, grade) {
 		this.name = name;
 		this.startDate = startDate;
-		this.grade = grade;
+		this.grade = grade; // COI = 0; COII = 1; COIII = 2
 	}
 	get yearsExperience() {
 		return getYearID() - getYearID(this.startDate);
@@ -87,18 +84,9 @@ console.log("Years experience: " + chrispy.yearsExperience);
 console.log("Step: " + chrispy.step);
 console.log('Chrispy base rate ' + chrispy.salary);
 
+/// --- PSLF BAR
 
-
-// let officer = {
-// 	name: 'Officer',
-// 	startDate: now.getMilliseconds,
-// 	yearsExperience() {
-// 		return getYearID(now) - getYearID(now);
-// 	},
-// 	grade: 0,
-// 	step: 0,
-// 	salary: function () {
-// 		return '$' + salarySchedule[this.grade][this.step];
-// 	}
-// }
-
+const pslfProgressBar = document.getElementById('pslfProgressBar');
+document.getElementById('pslfHeading').innerHTML = govtServiceMonths + " of " + pslfRequirement + " months completed!";
+const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
+pslfProgressBar.innerHTML = `<span style="width:` + pslfCompletionPercentage + `%;"></span>`;
