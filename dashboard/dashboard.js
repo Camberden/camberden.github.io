@@ -51,10 +51,20 @@ const setSalarySchedule = function (fiscalYear) {
 setSalarySchedule(fiscalYear);
 
 const displaySalarySchedule = function () {
+	let salaryTable = document.getElementById('salaryScheduleTable');
+	let salaryScheduleContent = ``;
+	salaryScheduleContent += `<table>`;
 	for (let i = 0; i < salarySchedule.length; i++) {
+		salaryScheduleContent += `<tr>`;
 		for (let j = 0; j < salarySchedule[i].length; j++) {
 			console.log('$ ' + salarySchedule[i][j]);
+			salaryScheduleContent += `<td>$` + salarySchedule[i][j] + `</td>`;
+			if (j == salarySchedule[i].length - 1) {
+				salaryScheduleContent += `</tr>`;
+			}
 		}
+		salaryScheduleContent += `</table`;
+		salaryTable = salaryScheduleContent;
 	}
 };
 
