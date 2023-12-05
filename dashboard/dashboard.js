@@ -50,22 +50,40 @@ const setSalarySchedule = function (fiscalYear) {
 // Executed onload:
 setSalarySchedule(fiscalYear);
 
-const displaySalarySchedule = function () {
-	let salaryTable = document.getElementById('salaryScheduleTable');
-	let salaryScheduleContent = ``;
-	salaryScheduleContent += `<table>`;
+// const displaySalarySchedule = function () {
+// 	let salaryTable = document.getElementById('salaryScheduleTable');
+// 	let salaryScheduleContent = ``;
+// 	salaryScheduleContent += `<table>`;
+// 	for (let i = 0; i < salarySchedule.length; i++) {
+// 		salaryScheduleContent += `<tr>`;
+// 		for (let j = 0; j < salarySchedule[i].length; j++) {
+// 			console.log('$ ' + salarySchedule[i][j]);
+// 			salaryScheduleContent += `<td>$` + salarySchedule[i][j] + `</td>`;
+// 			if (j == salarySchedule[i].length - 1) {
+// 				salaryScheduleContent += `</tr>`;
+// 			}
+// 		}
+// 		salaryScheduleContent += `</table`;
+// 		salaryTable = salaryScheduleContent;
+// 	}
+// };
+
+function generateSalaryTable() {
+	const salaryTable = document.createElement("table");
+	const salaryTableBody = document.createElement("tbody");
 	for (let i = 0; i < salarySchedule.length; i++) {
-		salaryScheduleContent += `<tr>`;
+		const salaryRow = document.createElement("tr");
 		for (let j = 0; j < salarySchedule[i].length; j++) {
-			console.log('$ ' + salarySchedule[i][j]);
-			salaryScheduleContent += `<td>$` + salarySchedule[i][j] + `</td>`;
-			if (j == salarySchedule[i].length - 1) {
-				salaryScheduleContent += `</tr>`;
-			}
+			const salaryCell = document.createElement("td");
+			const salaryCellText = document.createTextNode("$" + salarySchedule[i][j]);
+			salaryCell.appendChild(salaryCellText);
+			salaryRow.appendChild(salaryCell);
 		}
-		salaryScheduleContent += `</table`;
-		salaryTable = salaryScheduleContent;
+		salaryTableBody.appendChild(salaryRow);
 	}
+salaryTable.appendChild(salaryTableBody);
+document.body.appendChild(salaryTable);
+salaryTable.setAttribute("border", "2");	
 };
 
 //const girlunaDispSalSched = () => salarySchedule2023.forEach(x => x.forEach(y => console.debug(`$${y}`)));
