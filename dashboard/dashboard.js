@@ -32,7 +32,6 @@ const pslfRequirement = 120;
 
 let salarySchedule;
 const setSalarySchedule = function (fiscalYear) {
-	console.log('sss')
 	switch (fiscalYear) {
 		// TODO: make past cases
 		case (2023):
@@ -84,11 +83,18 @@ const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
 pslfProgressBar.innerHTML = `<span style="width:` + pslfCompletionPercentage + `%;"></span>`;
 
 function generateSalaryTable(salary) {
+	// Add table headings and CO Grade Column
 	const salaryTable = document.createElement("table");
 	const salaryTableBody = document.createElement("tbody");
 	for (let i = 0; i < salarySchedule.length; i++) {
 		const salaryRow = document.createElement("tr");
 		for (let j = 0; j < salarySchedule[i].length; j++) {
+			if (j === 0) {
+				const salaryCellHeader = document.createElement("td");
+				const salaryCellHeaderText = document.createTextNode("CO" + (i + 1));
+				salaryCellHeader.appendChild(salaryCellHeaderText);
+				salaryRow.appendChild(salaryCellHeader);
+			}
 			const salaryCell = document.createElement("td");
 			if ("$" + salarySchedule[i][j] === salary) {
 				salaryCell.classList.add("salaryHighlight");
