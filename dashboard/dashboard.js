@@ -50,42 +50,6 @@ const setSalarySchedule = function (fiscalYear) {
 // Executed onload:
 setSalarySchedule(fiscalYear);
 
-// const displaySalarySchedule = function () {
-// 	let salaryTable = document.getElementById('salaryScheduleTable');
-// 	let salaryScheduleContent = ``;
-// 	salaryScheduleContent += `<table>`;
-// 	for (let i = 0; i < salarySchedule.length; i++) {
-// 		salaryScheduleContent += `<tr>`;
-// 		for (let j = 0; j < salarySchedule[i].length; j++) {
-// 			console.log('$ ' + salarySchedule[i][j]);
-// 			salaryScheduleContent += `<td>$` + salarySchedule[i][j] + `</td>`;
-// 			if (j == salarySchedule[i].length - 1) {
-// 				salaryScheduleContent += `</tr>`;
-// 			}
-// 		}
-// 		salaryScheduleContent += `</table`;
-// 		salaryTable = salaryScheduleContent;
-// 	}
-// };
-
-function generateSalaryTable() {
-	const salaryTable = document.createElement("table");
-	const salaryTableBody = document.createElement("tbody");
-	for (let i = 0; i < salarySchedule.length; i++) {
-		const salaryRow = document.createElement("tr");
-		for (let j = 0; j < salarySchedule[i].length; j++) {
-			const salaryCell = document.createElement("td");
-			const salaryCellText = document.createTextNode("$" + salarySchedule[i][j]);
-			salaryCell.appendChild(salaryCellText);
-			salaryRow.appendChild(salaryCell);
-		}
-		salaryTableBody.appendChild(salaryRow);
-	}
-salaryTable.appendChild(salaryTableBody);
-document.body.appendChild(salaryTable);
-salaryTable.setAttribute("border", "2");	
-};
-
 //const girlunaDispSalSched = () => salarySchedule2023.forEach(x => x.forEach(y => console.debug(`$${y}`)));
 
 class Officer {
@@ -118,3 +82,28 @@ const pslfProgressBar = document.getElementById('pslfProgressBar');
 document.getElementById('pslfHeading').innerHTML = govtServiceMonths + " of " + pslfRequirement + " months completed!";
 const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
 pslfProgressBar.innerHTML = `<span style="width:` + pslfCompletionPercentage + `%;"></span>`;
+
+function generateSalaryTable(salary) {
+	const salaryTable = document.createElement("table");
+	const salaryTableBody = document.createElement("tbody");
+	for (let i = 0; i < salarySchedule.length; i++) {
+		const salaryRow = document.createElement("tr");
+		for (let j = 0; j < salarySchedule[i].length; j++) {
+			const salaryCell = document.createElement("td");
+			if ("$" + salarySchedule[i][j] === salary) {
+				salaryCell.classList.add("salaryHighlight");
+			}
+			const salaryCellText = document.createTextNode("$" + salarySchedule[i][j]);
+			salaryCell.appendChild(salaryCellText);
+			salaryRow.appendChild(salaryCell);
+		}
+		salaryTableBody.appendChild(salaryRow);
+	}
+	salaryTable.appendChild(salaryTableBody);
+	document.getElementById("salaryTableDiv").appendChild(salaryTable);
+	// document.body.appendChild(salaryTable);
+	salaryTable.setAttribute("border", "2");
+};
+
+// This is executed onload:
+generateSalaryTable(chrispy.salary);

@@ -101,3 +101,8 @@ button {
 	position: relative;
 	overflow: hidden;
   }
+
+  .salaryHighlight {
+	  color: blueviolet;
+	  background-color: yellow;
+  }
