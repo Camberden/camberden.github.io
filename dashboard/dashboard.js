@@ -15,13 +15,7 @@ const salarySchedule2024 = [
 	['41558', '44468', '47137', '49494', '51473', '53017', '54078'], // C/OIII
 ];
 const now = new Date();
-let fiscalYear; // because it is fy 2024
-
-const determineCurrentFiscalYear = function () {
-	return fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
-}
-// This is executed onload:
-determineCurrentFiscalYear();
+const fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
 
 const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
 const getYearID = (date = new Date()) => date.getUTCFullYear();
@@ -31,8 +25,8 @@ const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
 const pslfRequirement = 120;
 
 let salarySchedule;
-const setSalarySchedule = function (fiscalYear) {
-	switch (fiscalYear) {
+const setSalarySchedule = fy => {
+	switch (fy) {
 		// TODO: make past cases
 		case (2023):
 			salarySchedule = salarySchedule2023;
@@ -41,7 +35,7 @@ const setSalarySchedule = function (fiscalYear) {
 			salarySchedule = salarySchedule2024;
 			break;
 		default:
-			salarySchedule = fiscalYear;
+			salarySchedule = fy;
 			break;
 	}
 }
