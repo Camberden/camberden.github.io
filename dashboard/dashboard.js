@@ -80,21 +80,39 @@ console.log('Chrispy base rate ' + chrispy.salary);
 const pslfProgressBar = document.getElementById('pslfProgressBar');
 document.getElementById('pslfHeading').innerHTML = govtServiceMonths + " of " + pslfRequirement + " months completed!";
 const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
-pslfProgressBar.innerHTML = `<span style="width:` + pslfCompletionPercentage + `%;"></span>`;
+pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
 
 function generateSalaryTable(salary) {
 	// Add table headings and CO Grade Column
 	const salaryTable = document.createElement("table");
 	const salaryTableBody = document.createElement("tbody");
-	for (let i = 0; i < salarySchedule.length; i++) {
+
+	for (let i = -1; i < salarySchedule.length; i++) {
 		const salaryRow = document.createElement("tr");
+		salaryTableBody.appendChild(salaryRow);
+
+		if (i === -1) {
+			for (let k = -1; k < salarySchedule[0].length; k++) {
+				const salaryCellHeader = document.createElement("th");
+				const salaryCellHeaderText = document.createTextNode("Step " + (k + 1));
+				salaryRow.appendChild(salaryCellHeader);
+				if (k < 0) {
+					continue;
+				}
+				salaryCellHeader.appendChild(salaryCellHeaderText);
+			}
+			continue;
+		}
+
+
 		for (let j = 0; j < salarySchedule[i].length; j++) {
 			if (j === 0) {
-				const salaryCellHeader = document.createElement("td");
-				const salaryCellHeaderText = document.createTextNode("CO" + (i + 1));
-				salaryCellHeader.appendChild(salaryCellHeaderText);
-				salaryRow.appendChild(salaryCellHeader);
+				const salaryCellGrade = document.createElement("td");
+				const salaryCellGradeText = document.createTextNode("CO" + (i + 1));
+				salaryCellGrade.appendChild(salaryCellGradeText);
+				salaryRow.appendChild(salaryCellGrade);
 			}
+
 			const salaryCell = document.createElement("td");
 			if ("$" + salarySchedule[i][j] === salary) {
 				salaryCell.classList.add("salaryHighlight");
@@ -103,7 +121,6 @@ function generateSalaryTable(salary) {
 			salaryCell.appendChild(salaryCellText);
 			salaryRow.appendChild(salaryCell);
 		}
-		salaryTableBody.appendChild(salaryRow);
 	}
 	salaryTable.appendChild(salaryTableBody);
 	document.getElementById("salaryTableDiv").appendChild(salaryTable);
