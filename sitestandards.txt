@@ -5,6 +5,15 @@ Chapel Hill, NC
 
 Use double quotations ("") for html values.
 
-JavaScript variables shall be in kebab-case.
+HTML values shall be in kebab-case.
+
+JavaScript values shall be in camel-case.
 
 Meta from index.html will be inherited in all subsequent css documents.
+
+Git Ignore temporary reference documents.
+
+Background SVG is #EEEFF0 and Background Color is #F4F5F6
+
+Return button is written as: <div id="return"><a class="marker" href="../index.html">Return</a></div>
+

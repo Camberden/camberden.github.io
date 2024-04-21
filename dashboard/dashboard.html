@@ -4,29 +4,123 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="icon" type="image/x-icon" href="https://imgur.com/ax4g74g.jpg">
-	<link href='https://fonts.googleapis.com/css?family=Lora:400italic' rel='stylesheet' type='text/css'>
-	<link href='https://fonts.googleapis.com/css?family=Permanent+Marker:400' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../dashboard/dashboard.css" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
 	<title>Chrispy's Dashboard</title>
 </head>
 
 <body>
-	<a class="marker" href='../index.html'><span>Return</span></a>
-	<h1 id='dashboardtitle'>Chrispy's Dashboard</h3>
 
-		<p id="pslfHeading"></p>
-		<div class="bar" id="pslfProgressBar">
+	<div id="return">
+		<a class="marker" href="../index.html">Return</a>
+	</div>
+
+	<!---------- EXPENSE MANAGEMENT ---------->
+	<div class="container">
+		<div>
+			<ul id="notes-list">
+				<!-- <li id="notes-header">Notes:</li> -->
+				<span id="notes-header">Notes:</span>
+				<li>I will P2P her $300.00 at beginning of months: <span id="p2p">$3654.05</span> remain.</li>
+				<li>Retention: $2500 on June 28th.</li>
+				<li>Progression Program: $1250 for the month of completion. May? July?</li>
+			</ul>
+		</div>
+
+			<input type='text' id='balance' label='balance'>
+			<ul id="balance-list">
+				<!-- CAR PAYMENT -->
+				<li class='not-applicable'><input type='checkbox' id="car-check">CAR = $<span class='expense'
+						id='car-cost'>0</span>
+					<span class="non-automated-payment">Automated: 3rd</span>
+				</li>
+				<!-- FEDERAL STUDENT LOAN -->
+				<li class="checkbox"><input type='checkbox' id="nav-check">NAV = $<span class='expense'
+						id='nav-cost'>0</span>
+					<span class="automated-payment">Automated: 3rd</span>
+				</li>
+				<!-- PRIVATE STUDENT LOAN -->
+				<li><input type='checkbox' id="sal-check">SAL = $<span class='expense' id='sal-cost'>0</span>
+					<span class="automated-payment">Automated: 3rd</span>
+				</li>
+				<!-- MY RENT -->
+				<li><input type='checkbox' id="ren-check">REN = $<span class='expense' id='ren-cost'>0</span>
+					<span class="automated-payment">Automated: 1st</span>
+				</li>
+				<!-- HER RENT -->
+				<li class="not-applicable"><input type='checkbox' id="hrt-check">HRT = $<span class='expense'
+						id='hrt-cost'>0</span>
+					<span class="her-non-automated-payment">NOT Automated</span>
+				</li>
+				<!-- RENTER'S INSURANCE -->
+				<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
+					<span class="automated-payment">Automated: 3rd</span>
+				</li>
+				<!-- CAR INSURANCE -->
+				<li><input type='checkbox' id="ins-check">INS = $<span class='expense' id='ins-cost'>0</span>
+					<span class="automated-payment">Automated: 30th</span>
+				</li>
+				<!-- PERSONAL LOAN -->
+				<li><input type='checkbox' id="loa-check">LOA = $<span class='expense' id='loa-cost'>0</span>
+					<span class="non-automated-payment">NOT Automated</span>
+				</li>
+				<!-- WATER BILL -->
+				<li class="not-applicable"><input type='checkbox' id='wat-check'>WAT = $<span class='expense'
+						id='wat-cost'>0</span>
+					<span class="her-non-automated-payment">NOT Automated</span>
+				</li>
+				<!-- ELECTRICITY/POWER BILL -->
+				<li class="not-applicable"><input type='checkbox' id='ele-check'>ELE = $<span class='expense'
+						id='ele-cost'>0</span>
+					<span class="her-automated-payment">Automated: 1st</span>
+				</li>
+				<!-- INTERNET BILL -->
+				<li class="not-applicable"><input type='checkbox' id='int-check'>INT = $<span class='expense'
+						id='int-cost'>0</span>
+					<span class="her-automated-payment">Automated: 2nd</span>
+				</li>
+				<!-- MUSIC SUBSCRIPTION -->
+				<li><input type='checkbox' id="mus-check">MUS = $<span class='expense' id='mus-cost'>0</span>
+					<span class="automated-payment">Automated: 3rd</span>
+				</li>
+				<!-- GYM MEMBERSHIP -->
+				<li class="not-applicable"><input type='checkbox' id='gym-check'>GYM = $<span class='expense'
+						id='gym-cost'>0</span>
+					<span class="non-automated-payment">NOT Automated</span>
+				</li>
+				<!-- MISCELLANEOUS OBLIGATIONS -->
+				<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder=" Input Value"
+						id="inp-cost">
+				</li>
+				<br>
+				<!-- TOTAL AFTER DEDUCTIONS -->
+				<li>END BALANCE = $<span id='endbalance'>0</span>
+				</li>
+			</ul>
+
+	</div>
+
+	
+	<!---------- PSLF DATA AND TABLES ---------->
+	<div class="container">
+
+		<p id="pslf-heading"></p>
+		<div class="bar" id="pslf-progress-bar">
 			<!-- `<span style="width:` + pslfCompletionPercentage + `%;"></span>` -->
 		</div>
 
 		<p>Testing display of salary schedules:</p>
 		<!-- <button onclick="generateSalaryTable()"></button> -->
-	
-		<div id="salaryTableDiv"></div>
+
+		<div id="salary-table-div"></div>
+
+	</div>
 
 </body>
 
 
-<script src='dashboard.js'></script>
+<script src="dashboard.js"></script>
 
 </html>

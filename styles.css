@@ -64,6 +64,14 @@ button {
 	font-family: Permanent Marker, serif;
 }
 
+#return {
+	text-align: left;
+}
+
+#return a:hover {
+	color: red;
+}
+
 p {
 	color: inherit;
 }

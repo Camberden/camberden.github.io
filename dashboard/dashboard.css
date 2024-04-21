@@ -1,56 +1,67 @@
-/*	METADATA	*/
-body {
-	font-family: Lora, Avenir, BlinkMacSystemFont, 'Segoe UI', 'Open Sans', 'Helvetica Neue', sans-serif;
-	background-image:
-	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url(../assets/interlaced.png);
-	background-color: #f6f6f6;
-	background-blend-mode: multiply;
+/* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
+
+#p2p {
+	background-color: lightcyan;
+	color: red;
+	font-weight: 900;
 }
 
-a {
-	color: inherit;
-	font-family: 'Courier New', Courier, monospace;
-	font-size: x-small;
-	text-decoration: solid;
-	outline: 0;
-	cursor: pointer;
+#balance {
+	margin-left: 24px;
 }
 
-a:hover {
-	color:blue;
+#balance-container {
+	background-color:#f6f3ed;
+	margin-right: 35%;
+	margin-left: 35%;
+	padding: 10px;
 }
 
-.marker {
-	color: #db8044;
-	font-size: 1em;
-	font-family: Permanent Marker, serif;
-}
-
-#return {
+#balance-list {
 	text-align: left;
 }
 
-#return:hover {
+.automated-payment {
+	text-align: right;
+	font-family: 'Courier New', Courier, monospace;
+	opacity: 0.5;
+	background-color: greenyellow;
+}
+
+.her-automated-payment {
+	text-align: right;
+	font-family: 'Courier New', Courier, monospace;
+	opacity: 0.5;
+	background-color: mistyrose;
+	color: purple;
+}
+
+.non-automated-payment {
+	text-align: right;
+	font-family: 'Courier New', Courier, monospace;
+	opacity: 0.5;
 	color: red;
 }
 
-#all-containers {
-	text-align: center;
+.her-non-automated-payment {
+	text-align: right;
+	font-family: 'Courier New', Courier, monospace;
+	opacity: 0.5;
+	background-color: mistyrose;
+	color: red;
 }
 
-#dashboardtitle {
-
-	font-family: Permanent Marker, sans-serif;
-	font-style: normal;
-	font-size: 3em;
-	text-align: center;
-	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
-	background-clip: border-box;
-	-webkit-background-clip: text;
-	color: transparent;
+.not-applicable {
+	color: grey;
+	opacity: 0.3;
 	user-select: none;
 }
+
+#inp-cost {
+	margin-left: 10px;
+}
+
+/* ----- PSLF DATA AND MANAGEMENT SPECIFIC ----- */
 
 ul {
 	background-color:#f6f3ed;
@@ -58,17 +69,6 @@ ul {
 	margin-left: 25%;
 	padding-bottom: 30px;
 	text-align: left;
-}
-
-button {
-	height: 2em;
-  	position: relative;
-  	background: #555;
-	border-radius: 2em;
-	margin-right: 50%;
-  	padding: 2em;
-	box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-
 }
 
 .bar {
@@ -79,7 +79,6 @@ button {
 	margin-right: 50%;
   	padding: 10px;
 	box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
-	  
 }
 
 .bar > span {
@@ -102,7 +101,7 @@ button {
 	overflow: hidden;
   }
 
-  .salaryHighlight {
+  .salary-highlight {
 	  color: blueviolet;
 	  background-color: yellow;
   }
