@@ -19,6 +19,10 @@
 
 	<!---------- EXPENSE MANAGEMENT ---------->
 	<div class="container">
+
+		<div class="marker">
+			<h2>Expense Management</h2>
+		</div>
 		<div>
 			<ul id="notes-list">
 				<!-- <li id="notes-header">Notes:</li> -->
@@ -29,93 +33,168 @@
 			</ul>
 		</div>
 
-			<input type='text' id='balance' label='balance'>
-			<ul id="balance-list">
-				<!-- CAR PAYMENT -->
-				<li class='not-applicable'><input type='checkbox' id="car-check">CAR = $<span class='expense'
-						id='car-cost'>0</span>
-					<span class="non-automated-payment">Automated: 3rd</span>
-				</li>
-				<!-- FEDERAL STUDENT LOAN -->
-				<li class="checkbox"><input type='checkbox' id="nav-check">NAV = $<span class='expense'
-						id='nav-cost'>0</span>
-					<span class="automated-payment">Automated: 3rd</span>
-				</li>
-				<!-- PRIVATE STUDENT LOAN -->
-				<li><input type='checkbox' id="sal-check">SAL = $<span class='expense' id='sal-cost'>0</span>
-					<span class="automated-payment">Automated: 3rd</span>
-				</li>
-				<!-- MY RENT -->
-				<li><input type='checkbox' id="ren-check">REN = $<span class='expense' id='ren-cost'>0</span>
-					<span class="automated-payment">Automated: 1st</span>
-				</li>
-				<!-- HER RENT -->
-				<li class="not-applicable"><input type='checkbox' id="hrt-check">HRT = $<span class='expense'
-						id='hrt-cost'>0</span>
-					<span class="her-non-automated-payment">NOT Automated</span>
-				</li>
-				<!-- RENTER'S INSURANCE -->
-				<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
-					<span class="automated-payment">Automated: 3rd</span>
-				</li>
-				<!-- CAR INSURANCE -->
-				<li><input type='checkbox' id="ins-check">INS = $<span class='expense' id='ins-cost'>0</span>
-					<span class="automated-payment">Automated: 30th</span>
-				</li>
-				<!-- PERSONAL LOAN -->
-				<li><input type='checkbox' id="loa-check">LOA = $<span class='expense' id='loa-cost'>0</span>
-					<span class="non-automated-payment">NOT Automated</span>
-				</li>
-				<!-- WATER BILL -->
-				<li class="not-applicable"><input type='checkbox' id='wat-check'>WAT = $<span class='expense'
-						id='wat-cost'>0</span>
-					<span class="her-non-automated-payment">NOT Automated</span>
-				</li>
-				<!-- ELECTRICITY/POWER BILL -->
-				<li class="not-applicable"><input type='checkbox' id='ele-check'>ELE = $<span class='expense'
-						id='ele-cost'>0</span>
-					<span class="her-automated-payment">Automated: 1st</span>
-				</li>
-				<!-- INTERNET BILL -->
-				<li class="not-applicable"><input type='checkbox' id='int-check'>INT = $<span class='expense'
-						id='int-cost'>0</span>
-					<span class="her-automated-payment">Automated: 2nd</span>
-				</li>
-				<!-- MUSIC SUBSCRIPTION -->
-				<li><input type='checkbox' id="mus-check">MUS = $<span class='expense' id='mus-cost'>0</span>
-					<span class="automated-payment">Automated: 3rd</span>
-				</li>
-				<!-- GYM MEMBERSHIP -->
-				<li class="not-applicable"><input type='checkbox' id='gym-check'>GYM = $<span class='expense'
-						id='gym-cost'>0</span>
-					<span class="non-automated-payment">NOT Automated</span>
-				</li>
-				<!-- MISCELLANEOUS OBLIGATIONS -->
-				<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder=" Input Value"
-						id="inp-cost">
-				</li>
-				<br>
-				<!-- TOTAL AFTER DEDUCTIONS -->
-				<li>END BALANCE = $<span id='endbalance'>0</span>
-				</li>
-			</ul>
+		<ul id="balance-list">
+			<li>STARTING BALANCE = $<input type='text' id='balance' label='balance'></li>
+			<!-- CAR PAYMENT -->
+			<li class='not-applicable'><input type='checkbox' id="car-check">CAR = $<span class='expense'
+					id='car-cost'>0</span>
+				<span class="non-automated-payment">Automated: 3rd</span>
+			</li>
+			<!-- FEDERAL STUDENT LOAN -->
+			<li class="checkbox"><input type='checkbox' id="nav-check">NAV = $<span class='expense'
+					id='nav-cost'>0</span>
+				<span class="automated-payment">Automated: 3rd</span>
+			</li>
+			<!-- PRIVATE STUDENT LOAN -->
+			<li><input type='checkbox' id="sal-check">SAL = $<span class='expense' id='sal-cost'>0</span>
+				<span class="automated-payment">Automated: 3rd</span>
+			</li>
+			<!-- MY RENT -->
+			<li><input type='checkbox' id="ren-check">REN = $<span class='expense' id='ren-cost'>0</span>
+				<span class="automated-payment">Automated: 1st</span>
+			</li>
+			<!-- HER RENT -->
+			<li class="not-applicable"><input type='checkbox' id="hrt-check">HRT = $<span class='expense'
+					id='hrt-cost'>0</span>
+				<span class="her-non-automated-payment">NOT Automated</span>
+			</li>
+			<!-- RENTER'S INSURANCE -->
+			<li><input type='checkbox' id="rti-check">RTI = $<span class='expense' id='rti-cost'>0</span>
+				<span class="automated-payment">Automated: 3rd</span>
+			</li>
+			<!-- CAR INSURANCE -->
+			<li><input type='checkbox' id="ins-check">INS = $<span class='expense' id='ins-cost'>0</span>
+				<span class="automated-payment">Automated: 30th</span>
+			</li>
+			<!-- PERSONAL LOAN -->
+			<li><input type='checkbox' id="loa-check">LOA = $<span class='expense' id='loa-cost'>0</span>
+				<span class="non-automated-payment">NOT Automated</span>
+			</li>
+			<!-- WATER BILL -->
+			<li class="not-applicable"><input type='checkbox' id='wat-check'>WAT = $<span class='expense'
+					id='wat-cost'>0</span>
+				<span class="her-non-automated-payment">NOT Automated</span>
+			</li>
+			<!-- ELECTRICITY/POWER BILL -->
+			<li class="not-applicable"><input type='checkbox' id='ele-check'>ELE = $<span class='expense'
+					id='ele-cost'>0</span>
+				<span class="her-automated-payment">Automated: 1st</span>
+			</li>
+			<!-- INTERNET BILL -->
+			<li class="not-applicable"><input type='checkbox' id='int-check'>INT = $<span class='expense'
+					id='int-cost'>0</span>
+				<span class="her-automated-payment">Automated: 2nd</span>
+			</li>
+			<!-- MUSIC SUBSCRIPTION -->
+			<li><input type='checkbox' id="mus-check">MUS = $<span class='expense' id='mus-cost'>0</span>
+				<span class="automated-payment">Automated: 3rd</span>
+			</li>
+			<!-- GYM MEMBERSHIP -->
+			<li class="not-applicable"><input type='checkbox' id='gym-check'>GYM = $<span class='expense'
+					id='gym-cost'>0</span>
+				<span class="non-automated-payment">NOT Automated</span>
+			</li>
+			<!-- MISCELLANEOUS OBLIGATIONS -->
+			<li><input type='checkbox' id='inp-check'>INP = $<input type='number' placeholder=" Input Value"
+					id="inp-cost">
+			</li>
+			<br>
+			<!-- TOTAL AFTER DEDUCTIONS -->
+			<li>ENDING BALANCE = $<span id='endbalance'>0</span>
+			</li>
+		</ul>
 
 	</div>
 
-	
-	<!---------- PSLF DATA AND TABLES ---------->
+
+	<!---------- PSLF PROGRESS DATA ---------->
 	<div class="container">
+
+		<div class="marker">
+			<h2>PSLF Management</h2>
+		</div>
 
 		<p id="pslf-heading"></p>
 		<div class="bar" id="pslf-progress-bar">
 			<!-- `<span style="width:` + pslfCompletionPercentage + `%;"></span>` -->
 		</div>
 
-		<p>Testing display of salary schedules:</p>
 		<!-- <button onclick="generateSalaryTable()"></button> -->
 
-		<div id="salary-table-div"></div>
 
+	</div>
+
+	<!---------- SALARY DATA TABLES ---------->
+
+
+	<div class="container">
+
+		<div class="marker">
+			<h2>Step Pay Plan</h2>
+		</div>
+
+		<div id="salary-table-div"></div>
+	</div>
+	<!---------- RE-EDUCATION INFORMATION ---------->
+
+	<div class='container'>
+
+		<div class="marker">
+			<h2>RE-EDUCATION INFORMATION</h2>
+		</div>
+
+		<span class="marker" id="menulabel">Click for Semester-by-Semester Progress!</span>
+		<div class="modal" id="menumodal">
+
+			<div class="menudialog">
+				<span class="closemenu">&times;</span>
+				<p>I don't really have much of a plan for re-education anymore. I more or less feel that I will simply
+					migrate into a better scheduled non-custody position in due time. To reach that end, and to improve
+					skillsets related to tasks surrounding corrections, I would like to try out Accounting coursework.
+					The Computer Science ship has sailed and the market for that field is terrible.<br>
+					<ul>Spring 2022 <u>(Begin WakeTech Prerequisites)</u>:
+						<li class="taken">MAT 121 - Algebra & Trigonometry I</li>
+					</ul>
+					<ul> Summer 2022:
+						<li class="taken">CTI 110 - Web, Pgm, and DB Fundamentals</li>
+					</ul>
+					<ul>Fall 2022:
+						<li class="taken">MAT 171 - Precalculus Algebra</li>
+					</ul>
+					<ul>Spring 2023:
+						<li class="taken">CSC 151 - JAVA Programming</li>
+					</ul>
+					<ul>Summer 2023:
+						<li class="taken">NONE</li>
+					</ul>
+					<ul>Fall 2023:
+						<li class="taken">NONE</li>
+					</ul>
+					<ul>Spring 2024:
+						<li class="taken">NONE</li>
+					</ul>
+					<ul>Summer 2024:
+						<li class='taking-highlight'>TBD</li>
+					</ul>
+					<ul>Fall 2024:
+						<li>TBD</li>
+					</ul>
+					<ul>Spring 2024:
+						<li>TBD</li>
+					</ul>
+					<ul>Summer 2025:
+						<li>TBD</li>
+					</ul>
+					<ul>Fall 2025:
+						<li>TBD</li>
+					</ul>
+					<ul>Spring 2026:
+						<li>TBD</li>
+					</ul>
+
+				</p>
+			</div>
+		</div>
 	</div>
 
 </body>

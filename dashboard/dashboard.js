@@ -144,7 +144,7 @@ console.log("Years experience: " + chrispy.yearsExperience);
 console.log("Step: " + chrispy.step);
 console.log('Chrispy base rate ' + chrispy.salary);
 
-/// --- PSLF BAR
+// ----- PSLF BAR
 
 const pslfProgressBar = document.getElementById('pslf-progress-bar');
 document.getElementById('pslf-heading').innerHTML = govtServiceMonths + " of " + pslfRequirement + " months completed!";
@@ -199,3 +199,25 @@ function generateSalaryTable(salary) {
 
 // This is executed onload:
 generateSalaryTable(chrispy.salary);
+
+// ---------- REEDUCATION INFORMATION ----------//
+
+// MODAL
+
+const modal = document.getElementById('menumodal');
+const menuclick = document.getElementById('menulabel');
+const menuclose = document.getElementsByClassName('closemenu')[0];
+
+menuclick.onclick = function(){
+	modal.style.display = 'block';
+};
+
+menuclose.onclick = function(){
+	modal.style.display = 'none';
+};
+
+window.onclick = function(event){
+	if (event.target === modal){
+		modal.style.display = 'none';
+	}
+};

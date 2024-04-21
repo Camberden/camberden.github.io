@@ -128,7 +128,7 @@ a:hover {
 /* CONTAINERS */
 
 .container {
-	/* position: relative; */
+	position: relative;
 	background-color: transparent;
 	text-align: center;
 }
