@@ -1,0 +1,10 @@
+Site Standards
+04/21/2024
+Chapel Hill, NC
+0500HRS
+
+Use double quotations ("") for html values.
+
+JavaScript variables shall be in kebab-case.
+
+Meta from index.html will be inherited in all subsequent css documents.

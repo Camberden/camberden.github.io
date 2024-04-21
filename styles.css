@@ -7,7 +7,7 @@
 	margin-bottom: 6%;
 }
 
-.homeimage {
+.home-image {
 	width: 25%;
 	min-width: 300px;
 	height: 25%;
@@ -34,7 +34,11 @@
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
+	/* text-shadow: -5px -2px 0px rgb(112, 12, 170); PREVIOUS PURPLE */
+	/* text-shadow: -5px -2px 0px black; */
 	text-shadow: -5px -2px 0px rgb(112, 12, 170);
+
+
 
 }
 
@@ -45,9 +49,9 @@ body {
 	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
 	text-align: center;
 	z-index: 1;
-	background-image: url('assets/interlaced.png');
-	/* background-image: url('assets/Curtain2.svg'); */
-	background-color: rgb(240, 228, 212);
+	/* background-image: url('assets/interlaced.png'); */
+	background-image: url('assets/Curtain3.svg'); /* #EEEFF0 in SVG Fill */
+	background-color: #F4F5F6;
 }
 
 button {
@@ -116,7 +120,7 @@ a:hover {
 /* CONTAINERS */
 
 .container {
-	position: relative;
+	/* position: relative; */
 	background-color: transparent;
 	text-align: center;
 }
@@ -125,8 +129,8 @@ a:hover {
 	background-color: rgba(0, 0, 0, 0.75);
 	background-position: inherit;
 	font-size: 300%;
-	margin-left: 25%;
-	margin-right: 25%;
+	margin-left: 20%;
+	margin-right: 20%;
 	margin-bottom: 50px;
 	text-align: left;
 }
@@ -172,4 +176,16 @@ a:hover {
 @keyframes mymove {
 	from {background-position: 0 0;}
 	to {background-position: 100% 0;}
+}
+
+footer {
+	background-color: black;
+	background-position: inherit;
+	margin-left: 20%;
+	margin-right: 20%;
+	margin-bottom: 50px;
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url('assets/favicon-32x32 copy.png');
+	animation: mymove 25s linear infinite;
 }
