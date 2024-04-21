@@ -46,6 +46,8 @@ body {
 	text-align: center;
 	z-index: 1;
 	background-image: url('assets/interlaced.png');
+	/* background-image: url('assets/Curtain2.svg'); */
+	background-color: rgb(240, 228, 212);
 }
 
 button {

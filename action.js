@@ -13,6 +13,7 @@ const lifeinweekslink = '<a href="lifeinweeks/lifeinweeks.html">';
 const billcalculatorlink = '<a href="billcalculator/billcalculator.html">';
 const studydocumentslink = '<a href="studydocuments/studydocuments.html">';
 const dashboardlink = '<a href="dashboard/dashboard.html">';
+const deadlink = 'PENDING UPDATE';
 const linkending = 'Enter</a>';
 
 const music = document.getElementById('music');
@@ -37,25 +38,29 @@ function populateInfoAndEntryways(selection) {
 			document.getElementById('music-info').innerHTML =
 				'Here you can find some of my musical works';
 			document.getElementById('music-entry').innerHTML =
-				musiclink + linkending;
+				// musiclink + linkending;
+				deadlink;
 			break;
 		case musings:
 			document.getElementById('musings-info').innerHTML =
 				'Here I write and record some quotes and musings. You may write along too.';
 			document.getElementById('musings-entry').innerHTML =
-				musingslink + linkending;
+				// musingslink + linkending;
+				deadlink;
 			break;
 		case personalrecord:
 			document.getElementById('personalrecord-info').innerHTML =
 				'Here, I write about my future plans concerning work and re-education.';
 			document.getElementById('personalrecord-entry').innerHTML =
-				personalrecordlink + linkending;
+				// personalrecordlink + linkending;
+				deadlink;
 			break;
 		case lifeinweeks:
 			document.getElementById('lifeinweeks-info').innerHTML =
 				'Here, I detail events of my life using a chart featuring each week of my life as the timeline.';
 			document.getElementById('lifeinweeks-entry').innerHTML =
-				lifeinweekslink + linkending;
+				// lifeinweekslink + linkending;
+				deadlink;
 			break;
 		case billcalculator:
 			document.getElementById('billcalculator-info').innerHTML =
