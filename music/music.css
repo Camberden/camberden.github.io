@@ -1,15 +1,5 @@
-/* METADATA */
-
-body {
-	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
-	background-image: url(../assets/interlaced.png);
-	background-color: #f6f6f6;
-	background-blend-mode: multiply;
-
-}
-
 .animatedgradient {
-	background: url(../assets/interlaced.png), linear-gradient(45deg, #EE7722, rgb(122, 114, 234), #73bcde, #62dd87);
+	background: url(../assets/Curtain3.svg.png), linear-gradient(45deg, #EE7722, rgb(122, 114, 234), #73bcde, #62dd87);
 	background-size: 20%, 400%;
 	opacity: 1;
 	position: relative;
@@ -64,44 +54,7 @@ body {
 	border-radius: 50%;
 }
 
-a {
-	color: inherit;
-	text-decoration: solid;
-	cursor: pointer;
-}
-
-a:hover {
-	color:red;
-}
-
-.marker {
-	color: #db8044;
-	font-family: Permanent Marker, serif;
-}
-
-/* ELEMENTAL DATA */
-
-.introduction {
-	text-align: center;
-	padding-bottom: 3%;
-}
-
-#musictitle {
-	font-family: Permanent Marker, sans-serif;
-	text-align: center;
-	font-size: 5em;
-	margin-bottom: -0px;
-	margin-top: -0px;
-	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
-	background-clip: border-box;
-	outline: blue;
-	-webkit-background-clip: text;
-	z-index: 2;
-	color: transparent;
-	user-select: none;
-}
-
-/* MODAL SETTINGS */
+/* ---------- MODAL SETTINGS ---------- */
 
 #info-modal {
 	color:antiquewhite;
@@ -125,10 +78,13 @@ a:hover {
 	color: red;
   }
 
-/* TRACK CONTAINERS AND SONG INFO SETTINGS */
+/* ---------- TRACK CONTAINERS AND SONG INFO SETTINGS ---------- */
 
-.trackcontainer-odd {
-	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+audio {
+	position: relative;
+}
+
+.trackcontainer {
 	background-color: rgba(0, 0, 0, 0.8);
 	text-align: center;
 	padding: 30px;
@@ -142,38 +98,21 @@ a:hover {
 	background-image: none;
 }
 
-.trackcontainer-odd:hover {
+.trackcontainer:hover {
 	letter-spacing: .5em;
 	transition: 0.1s ease-out;
 	color: lightblue;
 }
 
-.trackcontainer-even {
-	font-family: Futura, 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-	background-color: rgba(0, 0, 0, 0.8);
-	text-align: center;
-	padding: 30px;
-	margin-left: 40%;
-	margin-right: 20%;
-	position: relative;
-
-	letter-spacing: .2em;
-	transition: 0.1s ease-out;
-	color: white;
-	background-image: none;
-}
-
-.trackcontainer-even:hover {
-	letter-spacing: .5em;
-	transition: 0.1s ease-out;
-	color: lightblue;
-}
-
-.trackbarrier {
-	padding: 5px;
-	background-color: rgba(117, 40, 40, 0.3);
+.track-barrier {
+	padding: 1%;
+	background-color: rgba(80, 28, 28, 0.3);
 	margin-left: 30%;
 	margin-right: 30%;
+}
+
+.play-button {
+	padding: 3%;
 }
 
 .songinfo-odd {
@@ -182,19 +121,6 @@ a:hover {
 	color: lightskyblue;
 	margin-left: 36%;
 	margin-right: 70%;
-	padding: 2%;
-	width: 40%;
-	background-color: transparent;
-	opacity: 0.6;
-	position: absolute;
-}
-
-.songinfo-even {
-	font-family: 'Courier New', Courier, monospace;
-	text-align: left;
-	color: lightskyblue;
-	margin-left: 20%;
-	margin-right: 72%;
 	padding: 2%;
 	width: 40%;
 	background-color: transparent;
@@ -221,14 +147,14 @@ a:hover {
 
 /* CURRENTLY PLAYING SETTINGS */
 
-.currentlyplaying {
+.currently-playing {
 	color: red;
 	letter-spacing: .5em;
 	transition: 0.1s ease-out;
 	background-color: transparent;
 }
 
-.currentlyplayingbox {
+.currently-playing-design {
 	background-color: black;
 	background-image:
 		linear-gradient(rgba(105, 89, 89, 0), rgba(1, 0, 0, 0.0)),
@@ -244,26 +170,6 @@ a:hover {
 	to {
 		background-position: 100% 0;
 	}
-}
-
-.lyricprompt {
-	text-align: center;
-}
-
-.lyrics {
-	color: purple;
-	font-size: 4em;
-	font-family: Permanent Marker, serif;
-}
-
-.lyric-bar {
-	background-color: transparent;
-	opacity: 0.8;
-	text-align: center;
-	position: relative;
-	/* z-index: 100; */
-	/* margin-top: 20%; */
-	/* width: 80%; */
 }
 
 #soundcloud-link {

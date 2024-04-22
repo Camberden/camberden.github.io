@@ -68,13 +68,6 @@ allElem2.forEach(elem => elem.onclick = calculateNewBalance);
 calculateNewBalance();
 
 
-
-
-
-
-
-
-
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
 const workAnniversary = new Date(1602156600000);
