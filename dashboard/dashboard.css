@@ -1,10 +1,11 @@
 /* ----- PAGE SPECIFIC ----- */
 
 ul {
-	background-color:#f6f3ed;
+	/* background-color:#f6f3ed; */
 	margin-right: 25%;
 	margin-left: 25%;
-	padding-bottom: 30px;
+	/* padding-bottom: 30px;
+	padding-top: 30px; */
 	text-align: left;
 }
 
@@ -16,19 +17,25 @@ ul {
 	font-weight: 900;
 }
 
+.no-bullet {
+	list-style-type: none;
+}
+
+#notes-list {
+	background-color:#f6f3ed;
+
+}
+
 #balance {
 	margin-left: 24px;
 }
 
-#balance-container {
-	background-color:#f6f3ed;
-	margin-right: 35%;
-	margin-left: 35%;
-	padding: 10px;
-}
+
 
 #balance-list {
 	text-align: left;
+	background-color:#f6f3ed;
+
 }
 
 .automated-payment {
