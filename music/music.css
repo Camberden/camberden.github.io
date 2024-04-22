@@ -54,6 +54,10 @@
 	border-radius: 50%;
 }
 
+#music-title {
+	font-size: 2em;
+}
+
 /* ---------- MODAL SETTINGS ---------- */
 
 #info-modal {

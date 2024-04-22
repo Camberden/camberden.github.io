@@ -61,12 +61,11 @@ button {
 .marker {
 	color: #db8044;
 	/* color: #781710; */
-
-	font-size: 1em;
 	font-family: Permanent Marker, serif;
 }
 
 #return {
+	font-size: 1em;
 	text-align: left;
 }
 
