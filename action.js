@@ -1,12 +1,9 @@
-/* eslint-disable no-unused-vars */
-'use strict';
-
 window.onload = () => console.log('Running!');
 
 // --- INFO AND ENTRYWAYS --- //
 
 const musiclink = '<a href="music/music.html">';
-const musingslink = '<a href="poems/poems.html">';
+const musingslink = '<a href="musings/musings.html">';
 const personalrecordlink = '<a href="personalrecord/personalrecord.html">';
 const lifeinweekslink = '<a href="lifeinweeks/lifeinweeks.html">';
 const billcalculatorlink = '<a href="billcalculator/billcalculator.html">';
@@ -16,7 +13,7 @@ const deadlink = 'PENDING UPDATE';
 const linkending = 'Enter</a>';
 
 const music = document.getElementById('music');
-// const musings = document.getElementById('musings');
+const musings = document.getElementById('musings');
 // const personalrecord = document.getElementById('personalrecord');
 // const lifeinweeks = document.getElementById('lifeinweeks');
 const billcalculator = document.getElementById('billcalculator');
