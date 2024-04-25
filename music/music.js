@@ -1,5 +1,3 @@
-'use strict';
-
 window.onload = () => console.log('Running!');
 
 const modal = document.getElementById('info-modal');
@@ -34,7 +32,6 @@ const tracks = [ // ../assets/music-
 	trackSuperScapegrace = new Track("SUPER Scapegrace", 2016, "Audioshi Isle", "../assets/music-super-scapegrace.mp3", true, false),
 	trackBlueberryBeach = new Track("Blueberry Beach", 2016, "Audioshi Isle", "../assets/music-blueberry-beach.mp3", true, false),
 	trackFruityFrolicField = new Track("Fruity Frolic Field", 2016, "Audioshi Isle", "../assets/music-fruity-frolic-field.mp3", true, false),
-
 
 ];
 

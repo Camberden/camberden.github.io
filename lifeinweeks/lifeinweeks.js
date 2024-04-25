@@ -1,6 +1,3 @@
-/* eslint-disable no-unused-vars */
-'use strict';
-
 const inception = 753300000000;
 const millisecondweek = 1000 * 60 * 60 * 24 * 7;
 const d = new Date();
