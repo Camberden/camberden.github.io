@@ -1,0 +1,470 @@
+// ------------------------------------------------------------- HTML
+
+<div class='container'>
+
+		<div class='item-aas'>
+			<h3 class='programorconcentration' id='aas'>
+				<a target='_blank' href='https://www.waketech.edu/programs-courses/credit/computer-programming'>
+					Foundations @ Wake Tech</a>
+			</h3>
+
+			<h4 class='sub-courses'>Primary Concentration</h4>
+			<ul>
+				<li class='cpcreq taken'>MAT 121 - Algebra & Trigonometry I</li>
+				<li class='cpcreq taken'>MAT 171 - Precalculus Algebra</li>
+				<li class='cpcreq'>MAT 172 - Precalculus Trigonometry</li>
+				<li class='cpcreq'>MAT 271 - Calculus I</li>
+				<li class="taken">CTI 110 - Web, Pgm, and DB Foundations</li>
+				<li class='cpcreq taken'>CSC 151 - Java Programming</li>
+			</ul>
+
+			<h4 class='sub-courses'>Additional Coursework</h4>
+			<ul>
+
+				<li class='gcpreq'>MAT 271 - Calculus II</li>
+				<li class='gcpreq'>MAT 272 - Calculus III</li>
+				<li>MAT 280 - Linear Algebra</li>
+				<li>MAT 285 - Differential Equations</li>
+				<li class='taking'>NONE</li>
+			</ul>
+		</div>
+
+		<div class='item-cpc'>
+
+			<h3 class='programorconcentration' id='cpc'>
+				<a target='_blank'
+					href='https://www.engineeringonline.ncsu.edu/programs-and-courses/certificates/computer-programming-certificate/'>
+					C.P.C. North Carolina State University</a>
+			</h3>
+
+			<h4 class='sub-courses'>Requirements</h4>
+			<ul>
+				<li class='gcpreq'>CSC 216 - Software Development Fundamentals</li>
+				<li class='gcpreq'>CSC 217 - Software Development Fundamentals Lab</li>
+				<li class='gcpreq'>CSC 226 - Discrete Mathematics for Computer Scientists</li>
+				<li class='gcpreq'>CSC 230 - C and Software Tools</li>
+				<li class='gcpreq'>CSC 236 - Computer Organization and Assembly Language for Computer Scientists</li>
+				<li class='gcpreq'>CSC 246 - Concepts and Facilities of Operating Systems for Computer Scientists</li>
+				<li class='gcpreq'>CSC 316 - Data Structures and Algorithms</li>
+			</ul>
+
+			<h3 class='programorconcentration' id='gcp'><a target='_blank'
+					href='https://www.csc.ncsu.edu/academics/graduate/degrees/cs.php'>
+					G.C.P. North Carolina State University</a></h3>
+
+			<h4 class='sub-courses'>Requirements</h4>
+			<ul>
+				<li class='mcsreq'>CSC 510 - Software Engineering</li>
+				<li class='mcsreq'>CSC 540 - Database Management Concepts and Systems</li>
+				<li class='mcsreq'>CSC 503 - Computational Applied Logic</li>
+				<li class='mcsreq'>CSC 505 - Design and Analysis of Algorithms</li>
+			</ul>
+
+			<h4 class='sub-courses'>M.C.S. Preparation</h4>
+			<ul>
+				<li class='mcsreq'>MA 421 - Introduction to Probability</li>
+				<li class='gcpreq'>GRE *** - Graduate Record Examination</li>
+			</ul>
+		</div>
+
+		<div class='item-mcs'>
+
+			<h3 class='programorconcentration' id='mcs'><a target='_blank'
+					href='https://www.csc.ncsu.edu/academics/graduate/degrees/mcsdl.php'>
+					M.C.S. North Carolina State University</a></h3>
+
+			<h4 class='sub-courses'>Requirements <i>(can vary)</i></h4>
+			<ul>
+				<li>CSC 600 - Computer Science Graduate Orientation</li>
+				<li>CSC 517 - Object Oriented Design and Development</li>
+				<li>CSC 519 - Devops: Modern Software Engineering Practices</li>
+				<li>CSC 533 - Privacy in the Digital Age</li>
+				<li>CSC 555 - Social Computing</li>
+				<li>CSC 561 - Principles of Computer Graphics</li>
+				<li>CSC 591 - Algorithms for Data Guided Business Intelligence</li>
+			</ul>
+
+			<h4 style='margin-left: 25px;'><br><br><br>Credit Information <span id='displayed-school-credit'></span>
+			</h4>
+			<p id='credit-info'>Hover over a program to display credit info!</p>
+
+		</div>
+
+	</div>
+
+
+// ------------------------------------------------------------- CSS
+
+
+
+	.plan-name{
+	color: black;
+	font-family: Lora,serif;
+	text-align: left;
+	margin-left: 10px;
+	position: relative;
+}
+
+.plan-info{
+	color: black;
+	font-family: Lora, serif;
+	text-align: left;
+	margin-left: 10px;
+	position: relative;
+}
+
+#personalrecordtitle {
+	font-family: Permanent Marker, sans-serif;
+	font-style: normal;
+	text-align: center;
+	font-weight: 1500;
+	font-size: 3em;
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
+}
+
+#currently-taking{
+	text-align: center;
+}
+
+#menulabel{
+	text-align: left;
+}
+
+.programorconcentration {
+	margin-left: 25px;
+	background-repeat: no-repeat;
+	background-size: 75% 15%;
+	background-position: 0 88%;
+	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+	transition: background-size  .3s ease-in;
+}
+
+.programorconcentration:hover{
+	background-size: 100% 100%;
+}
+
+.program-segment {
+	margin-left: 25px;
+	background-repeat: no-repeat;
+	background-size: 75% 15%;
+	background-position: 0 88%;
+	background-image: linear-gradient(120deg, #a1bdf8 0%, #a1dbf8 100%);
+}
+
+.sub-courses {
+	margin-left: 25px;
+}
+
+#displayed-school-credit {
+	font-size: smaller;
+	font-family: 'Courier New', Courier, monospace;
+}
+
+#credit-info {
+	margin-left: 25px;
+}
+
+.takinghighlight {
+	color: blue;
+	list-style-type: circle;
+}
+
+.taken {
+	color:#db8044;
+	list-style-type: "✓ ";
+}
+
+.cpcreqhighlight{
+	color: red;
+}
+
+.gcpreqhighlight{
+	color: red;
+}
+
+.mcsreqhighlight{
+	color: red;
+}
+
+.container {
+	display: grid;
+	grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];
+	grid-template-rows: 
+	[row1-start] auto [row1-end] auto
+	[row2-start] auto [row2-end] auto
+	[row-3start] auto [row-3end] auto;
+	column-gap: 10px;
+	color: black;
+	font-family: Lora, serif;
+	text-align: left;
+	margin-left: 3em;
+	margin-right: 3em;
+	position: relative;
+}
+
+@media screen and (max-width: 768px) {
+}
+	.container {
+		grid-template-columns: [first] auto end;
+	}
+	
+
+.item-aas {
+	background-color: #f6f3ed;
+	grid-column-start: 1;
+	grid-column-end: line2;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+  }
+
+.item-cpc {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-mcs {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-mat-option1 {
+	background-color: #f6f3ed;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+
+.item-mat-option2 {
+	background-color: #f6f3ed;
+	grid-column-start: line3;
+	grid-column-end: end;
+	grid-row-start: row2-start;
+	grid-row-end: row2-end;
+}
+.item-info {
+	text-align: center;
+	grid-column-start: line2;
+	grid-column-end: line3;
+	grid-row-start: row1-start;
+	grid-row-end: row1-end;
+}
+
+/* MENUMODAL */
+
+#menulabel {
+	color: #db8044;
+	text-align: right;
+	font-size: 1em;
+	font-family: Permanent Marker, serif;
+}
+
+#menulabel:hover {
+	color: #a1dbf8;
+	/* font-size: 1.1em; */
+	position: inherit;
+	text-shadow: -2.5px -1px 0px #ff00ff;
+}
+
+.modal {
+	display: none; /* To hide by default */
+	position: fixed; /* to stay in place */
+	z-index: 1; /* To stay on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.4); 
+  }
+  
+.menudialog {
+	background-color: rgb(233, 233, 233);
+	margin: 15% auto; /* 15% from the top and centered */
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.menudialog > li {
+	margin-left: 25px;
+}
+
+.dialogtext {
+	color: #db8044;
+	font-size: 1em;
+	margin-left: 30%;
+	font-family: Permanent Marker, serif;
+}
+
+.closemenu {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.closemenu:hover,
+.closemenu:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+footer {
+	text-align: center;
+}
+
+
+// ------------------------------------------------------------- JS
+
+
+window.onload = () => console.log('Running!');
+
+const taking = document.querySelectorAll('.taking');
+const taken = document.querySelectorAll('.taken');
+const cpccourses = document.querySelectorAll('.cpcreq');
+const gcpcourses = document.querySelectorAll('.cpcreq, .gcpreq');
+const mcscourses = document.querySelectorAll('.cpcreq, .gcpreq, .mcsreq');
+
+const currentlyTaking = document.getElementById('currently-taking');
+
+const aas = document.getElementById('aas');
+const cpc = document.getElementById('cpc');
+const gcp = document.getElementById('gcp');
+const mcs = document.getElementById('mcs');
+
+console.log(mcs);
+
+// --- CURRENTLY TAKING
+
+currentlyTaking.onmouseover = function(){
+	currentlyTaking.classList.add('takinghighlight');
+};
+currentlyTaking.onmouseleave = function(){
+	currentlyTaking.classList.remove('takinghighlight');
+};
+
+currentlyTaking.onclick = function(){
+	for (let i = 0; i < taking.length; ++i){
+		const course = taking[i];
+		course.classList.add('takinghighlight');
+	}
+};
+
+// --- NC PLAN 1 INFO
+
+aas.onmouseenter = function(){
+	displayCredits(aas);
+};
+
+cpc.onmouseenter = function(){
+	for (let i = 0; i < cpccourses.length; ++i){
+		const course = cpccourses[i];
+		course.classList.add('cpcreqhighlight');
+	}
+	displayCredits(cpc);
+};
+cpc.onmouseleave = function(){
+	for (let i = 0; i < cpccourses.length; ++i){
+		const course = cpccourses[i];
+		course.classList.remove('cpcreqhighlight');
+	}
+};
+
+gcp.onmouseenter = function(){
+	for (let i = 0; i < gcpcourses.length; ++i){
+		const course = gcpcourses[i];
+		course.classList.add('gcpreqhighlight');
+		displayCredits(gcp);
+	}
+};
+gcp.onmouseleave = function(){
+	for (let i = 0; i < gcpcourses.length; ++i){
+		const course = gcpcourses[i];
+		course.classList.remove('gcpreqhighlight');
+	}
+};
+
+mcs.onmouseenter = function(){
+	for (let i = 0; i < mcscourses.length; ++i){
+		const course = mcscourses[i];
+		course.classList.add('mcsreqhighlight');
+		displayCredits(mcs);
+	}
+};
+mcs.onmouseleave = function(){
+	for (let i = 0; i < mcscourses.length; ++i){
+		const course = mcscourses[i];
+		course.classList.remove('mcsreqhighlight');
+	}
+};
+
+
+function displayCredits(curriculum){
+	switch (curriculum){
+		case aas:
+			document.getElementById('credit-info').innerHTML =
+				'<p>CREDIT HOUR w/o FEES: $76<br>' +
+				'PER 3 CREDIT COURSE: $357.00<br>';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	Wake Tech';
+			break;
+		case cpc:
+			document.getElementById('credit-info').innerHTML =
+				'<p>CREDIT HOUR w/o FEES: $272.29<br>' +
+				'PER 3 CREDIT COURSE: $1066.89<br>' +
+				'FOR ALL 22 CREDITS: $7740.52';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	NC State CPC';
+			break;
+		case gcp:
+			document.getElementById('credit-info').innerHTML =
+				'<p>CREDIT HOUR w/o FEES: $505.28<br>' +
+				'PER 3 CREDIT COURSE: $2,782.53<br>' +
+				'FOR ALL 12 CREDITS: $11130.12';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	NC State GPC';
+			break;
+		case mcs:
+			document.getElementById('credit-info').innerHTML =
+				'<p>CREDIT HOUR w/o FEES: $505.28<br>' +
+				'PER 3 CREDIT COURSE: $2,782.53<br>' +
+				'FOR ALL 19 CREDITS $19982,99';
+			document.getElementById('displayed-school-credit').innerHTML =
+				'	NC State MCS';
+			break;
+	}
+}
+
+// MODAL
+
+const modal = document.getElementById('menumodal');
+const menuclick = document.getElementById('menulabel');
+const menuclose = document.getElementsByClassName('closemenu')[0];
+
+menuclick.onclick = function(){
+	modal.style.display = 'block';
+};
+
+menuclose.onclick = function(){
+	modal.style.display = 'none';
+};
+
+window.onclick = function(event){
+	if (event.target === modal){
+		modal.style.display = 'none';
+	}
+};
+
