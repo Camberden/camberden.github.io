@@ -21,63 +21,62 @@
 		<h2 id="poemtitle">Musings and Miscellaneous Posts</h2>
 	</div>
 
+	<div>
+		<h2 id="sutra-panel"></h2>
+	</div>
+
 	<div class="poemcontainer">
-	<div class="poemasset">
-		<div class="leftbox">
-			<span class="marker" id="menulabel">Menu</span><br>
+		<div class="poemasset">
+			<div class="leftbox">
+				<span class="marker" id="menulabel">Menu</span><br>
 
+				<!-- MENUMODAL -->
+				<div class="modal" id="menumodal">
 
+					<div class="menudialog">
+						<span class="closemenu">&times;</span>
+						<p class="dialogtext">Browse passages!</p>
+						<form>
+							<label for="choice"></label>
+							<select name="choice" id="poem-select">
+							</select>
+							<input type="button" value="Submit" onclick="goToPoem()">
+						</form>
+					</div>
 
-			<!-- MENUMODAL -->
-			<div class="modal" id="menumodal">
-
-				<div class="menudialog">
-					<span class="closemenu">&times;</span>
-					<p class="dialogtext">Browse passages!</p>
-					<form>
-						<label for="choice"></label>
-						<select name="choice" id="poem-select">
-						</select>
-						<input type="button" value="Submit" onclick="goToPoem()">
-					</form>
 				</div>
 
+				<button class="marker" onclick="previousPoem()">Previous</button>
 			</div>
-
-
-
-
-			<button class="marker" onclick="previousPoem()">Previous</button>
 		</div>
-	</div>
 
 
 
 
 
-	<div class="poem" style="user-select: none;">
-		<p>
+		<div class="poem" style="user-select: none;">
+			<p>
 			<div class="writing" id="fortyping">
 			</div>
-		</p>
-		<!-- <button class="center" id="playbuttontext" style="color: grey; text-align: center" onclick="disabledAudioNotice()"></button> -->
+			</p>
+			<!-- <button class="center" id="playbuttontext" style="color: grey; text-align: center" onclick="disabledAudioNotice()"></button> -->
 			<!-- onclick="playQuote()">Play</button> -->
 
-		<form onSubmit="return false;" style="user-select: none; color: grey;">
+			<form onSubmit="return false;" style="user-select: none; color: grey;">
 
-			<div class="typingfield" style="text-align: center; user-select: none;">
-				<input type="text" id="sampleTypingField" value="" onkeyup="typingTest()" autocomplete="off">
-			</div>
-		</form>
-	</div>
-
-	<div class="poemasset">
-		<div class="rightbox">
-			<span class="marker" id="poemnum"></span><br>
+				<div class="typingfield" style="text-align: center; user-select: none;">
+					<input type="text" id="sampleTypingField" value="" onkeyup="typingTest()" autocomplete="off">
+				</div>
+			</form>
 		</div>
-		<button class="marker" onclick="nextPoem()">Next</button>
 
-	</div>
+		<div class="poemasset">
+			<div class="rightbox">
+				<span class="marker" id="poemnum"></span><br>
+			</div>
+			<button class="marker" onclick="nextPoem()">Next</button>
+
+		</div>
 	</div>
 
 	<script src="musings.js"></script>

@@ -3,13 +3,19 @@
 #poemtitle {
 	font-style: normal;
 	text-align: center;
-	font-weight: 950;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
-	padding-bottom: 10%;
+}
+
+#sutra-panel {
+	font-style: normal;
+	text-align: center;
+	color:#8fd488;
+	user-select: none;
+	padding: 0%;
 }
 
 .open {
@@ -201,7 +207,7 @@ input[type=text]:focus {
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
-	background-image: url(../assets/chrispy-collage.jpg);
+	background-image: url(../assets/image-chrispy-collage.jpg);
 	background-size: 200px;
 	background-repeat: no-repeat;
 	background-position-x: 100%;

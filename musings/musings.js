@@ -1,6 +1,6 @@
 window.onload = () => console.log('Running!');
 
-function focusWriting(){
+function focusWriting() {
 	const foc = document.getElementById('sampleTypingField').autofocus = true;
 	document.getElementById('sampleTypingField').innerHTML = foc;
 	console.log('Focus Writing is triggering!');
@@ -19,11 +19,62 @@ const poems = [
 	// 'I live for coincidences. They briefly give mto me the illusion or the hope that there\'s a pattern to my life, and if there\'s a pattern, then maybe I\'m moving toward some kind of destiny where it\'s all explained.',
 ];
 
+// ---------- SUTRA SECTION ---------- //
+
+const sutrasSinoSanskritJapanese = [
+	"搭袈裟の偈", [
+		"大哉解脱服",
+		"無相福田衣",
+		"披奉如來教",
+		"廣度諸衆生",
+	]
+];
+
+const sutrasRomaji = [
+	"Takkesa no Ge", [
+		"dai zai ge da ppu ku",
+		"mu so fuku den e",
+		"hi bu nyo rai kyo",
+		"ko do sho shu jo",
+	]
+];
+
+const sutrasFurigana = [
+	"たっけさのげ", [
+		"だい ざい だ っぷ く",
+		"む そ ふく でん え",
+		"ひ ぶ にょ らい きょ",
+		"こ ど しょ しゅ じょ",
+	]
+];
+
+
+
+let sutraPanel = document.getElementById("sutra-panel");
+sutraPanel.innerHTML = sutrasSinoSanskritJapanese[0];
+let k = 0;
+function cycleSutraLines() {
+	sutraPanel.innerHTML = sutrasSinoSanskritJapanese[1][k];
+	console.log(k);
+	if (k >= sutrasSinoSanskritJapanese[1].length - 1) {
+		k = 0;
+	} else {
+		k++;
+	}
+	return k;
+}
+
+const displaySutras = function () {
+	setInterval(cycleSutraLines, 2000); //DON'T USE FUNCTION PARAENTHESIS FOR INTERVAL ARGUMENT
+}
+
+displaySutras();
+
 let poemnumber = 0;
 let selectedpoem = poems[poemnumber];
 let quoteAudio = new Audio('../assets/quote-' + (poemnumber + 1) + '.mp3');
 
-function getPoemNumber(){
+function getPoemNumber() {
 	document.getElementById('poemnum').innerHTML = 'Passage #' + (poemnumber + 1);
 }
 getPoemNumber();
@@ -33,8 +84,8 @@ getPoemNumber();
 /* SETS THE POEM INTO THE FORTYPING ID ELEMENT */
 document.getElementById('fortyping').innerHTML = '<span class="writinginitial">' + selectedpoem[0] + '</span>' + selectedpoem.substring(1, selectedpoem.length);
 
-function nextPoem(){
-	if (poemnumber === poems.length - 1){
+function nextPoem() {
+	if (poemnumber === poems.length - 1) {
 		poemnumber = 0;
 		selectedpoem = poems[poemnumber];
 	}
@@ -49,8 +100,8 @@ function nextPoem(){
 	quoteAudio = new Audio('../assets/quote-' + (poemnumber + 1) + '.mp3');
 }
 
-function previousPoem(){
-	if (poemnumber === 0){
+function previousPoem() {
+	if (poemnumber === 0) {
 		poemnumber = poems.length - 1;
 		selectedpoem = poems[poemnumber];
 	}
@@ -87,17 +138,17 @@ function disabledAudioNotice() {
 // 	}
 // }
 
-function typingTest(){
+function typingTest() {
 	const para = selectedpoem;
 	const typed = document.getElementById('sampleTypingField').value;
 	console.log('TYPED = ' + typed);
 	const marker = document.getElementById('fortyping');
 
-	if (typed === selectedpoem.substring(0, typed.length) && typed.length){
+	if (typed === selectedpoem.substring(0, typed.length) && typed.length) {
 		marker.innerHTML = para.replace(typed, '<span class="writinginitial" style="color:rgb(123, 153, 184);">' + typed[0] + '</span> <span style="color:rgb(123, 153, 184);">' + typed.substring(1, typed.length) + '</span>');
 	}
 
-	if (typed === selectedpoem){
+	if (typed === selectedpoem) {
 		document.getElementById('sampleTypingField').value = '';
 		document.getElementById('fortyping').innerHTML = '<span class="writinginitial">' + selectedpoem[0] + '</span>' + selectedpoem.substring(1, selectedpoem.length);
 		alert('✨');
@@ -105,16 +156,16 @@ function typingTest(){
 	}
 }
 
-document.onkeydown = function(evt){
+document.onkeydown = function (evt) {
 	evt = evt || window.event;
 	let isEscape = false;
-	if ('key' in evt){
+	if ('key' in evt) {
 		isEscape = evt.key === 'Escape' || evt.key === 'Esc';
 	}
 	else {
 		isEscape = evt.keyCode === 27;
 	}
-	if (isEscape){
+	if (isEscape) {
 		nextPoem();
 	}
 };
@@ -131,13 +182,13 @@ const menuclose = document.getElementsByClassName('closemenu')[0];
 
 let chosenPoem = '';
 const poemSelectionMenu = document.getElementById('poem-select');
-function populatePoemSelection(){
-	for (let i = 0; i<poems.length; i++){
+function populatePoemSelection() {
+	for (let i = 0; i < poems.length; i++) {
 		poemSelectionMenu.innerHTML += '<option> Poem ' + (i + 1) + ': ' + poems[i].substring(0, 20) + '... </option';
 	}
 }
 
-function goToPoem(){
+function goToPoem() {
 	// UPDATE THIS ASSIGNMENT.
 	chosenPoem = document.getElementById('poem-select').value.substring(5, 6);
 	poemnumber = parseInt(chosenPoem) - 1;
@@ -154,18 +205,18 @@ function goToPoem(){
 	console.log(poemnumber);
 }
 
-menuclick.onclick = function(){
+menuclick.onclick = function () {
 	populatePoemSelection();
 	modal.style.display = 'block';
 };
 
-menuclose.onclick = function(){
+menuclose.onclick = function () {
 	modal.style.display = 'none';
 	poemSelectionMenu.innerHTML = '';
 };
 
-window.onclick = function(event){
-	if (event.target === modal){
+window.onclick = function (event) {
+	if (event.target === modal) {
 		modal.style.display = 'none';
 	}
 };
