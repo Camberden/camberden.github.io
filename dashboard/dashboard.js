@@ -2,8 +2,6 @@
 
 window.onload = () => console.log('Running!');
 
-
-
 // ----- EXPENSE MANAGEMENT ----- //
 
 let startbalance = document.getElementById('balance').value;
@@ -35,7 +33,6 @@ function updateInp() {
 
 // ADD NEW VARIABLES TO all
 const all = [car, nav, sal, ren, hrt, rti, ins, loa, wat, ele, int, mus, gym, inp];
-// text box element list
 // ADD NEW VARIABLES TO expenseNames
 const expenseNames = Array.from('car nav sal ren hrt rti ins loa wat ele int mus gym inp'.split(' '));
 const allElem = expenseNames
@@ -92,6 +89,9 @@ const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)
 const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
 const pslfRequirement = 120;
 
+console.log(govtServiceMonths / 12);
+console.log(govtServiceMonths);
+
 let salarySchedule;
 const setSalarySchedule = fy => {
 	switch (fy) {
@@ -113,17 +113,18 @@ setSalarySchedule(fiscalYear);
 
 //const girlunaDispSalSched = () => salarySchedule2023.forEach(x => x.forEach(y => console.debug(`$${y}`)));
 
-class Officer {
+class Officer { //REFACTOR BASED ON MONTHS OF EXP.
 	constructor(name, startDate, grade) {
 		this.name = name;
 		this.startDate = startDate;
 		this.grade = grade; // COI = 0; COII = 1; COIII = 2
 	}
 	get yearsExperience() {
-		return getYearID() - getYearID(this.startDate);
+		return (getYearID() - getYearID(this.startDate) - 1); // HARD CODED -1 TO CORRECT FOR ISSUE
 	}
 
 	get step() {
+
 		return (this.yearsExperience > 6 ? 6 : this.yearsExperience);
 	}
 
@@ -156,7 +157,7 @@ function generateSalaryTable(salary) {
 		if (i === -1) {
 			for (let k = -1; k < salarySchedule[0].length; k++) {
 				const salaryCellHeader = document.createElement("th");
-				const salaryCellHeaderText = document.createTextNode("Step " + (k + 1));
+				const salaryCellHeaderText = document.createTextNode("Step " + (k));
 				salaryRow.appendChild(salaryCellHeader);
 				if (k < 0) {
 					continue;
@@ -201,16 +202,16 @@ const modal = document.getElementById('menumodal');
 const menuclick = document.getElementById('menulabel');
 const menuclose = document.getElementsByClassName('closemenu')[0];
 
-menuclick.onclick = function(){
+menuclick.onclick = function () {
 	modal.style.display = 'block';
 };
 
-menuclose.onclick = function(){
+menuclose.onclick = function () {
 	modal.style.display = 'none';
 };
 
-window.onclick = function(event){
-	if (event.target === modal){
+window.onclick = function (event) {
+	if (event.target === modal) {
 		modal.style.display = 'none';
 	}
 };

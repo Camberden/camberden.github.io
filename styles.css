@@ -37,9 +37,6 @@
 	/* text-shadow: -5px -2px 0px rgb(112, 12, 170); PREVIOUS PURPLE */
 	/* text-shadow: -5px -2px 0px black; */
 	text-shadow: -5px -2px 0px rgb(112, 12, 170);
-
-
-
 }
 
 /* ASSETS IN THE BODY */
@@ -49,8 +46,7 @@ body {
 	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
 	text-align: center;
 	z-index: 1;
-	/* background-image: url('assets/interlaced.png'); */
-	background-image: url('assets/Curtain3.svg'); /* #EEEFF0 in SVG Fill */
+	background-image: url('assets/image-curtain.svg'); /* #EEEFF0 in SVG Fill */
 	background-color: #F4F5F6;
 }
 
@@ -60,7 +56,6 @@ button {
 
 .marker {
 	color: #db8044;
-	/* color: #781710; */
 	font-family: Permanent Marker, serif;
 }
 
@@ -99,10 +94,8 @@ a:hover {
 .section-title {
 	color: #f59b60;
 	font-weight: lighter;
-	font-size: 50px;
+	font-size: 50px; 
 	font-style: normal;
-	text-decoration: solid;
-	outline: 0;
 	cursor: pointer;
 
 	background-image: linear-gradient(120deg, 0%,  100%);
@@ -112,18 +105,15 @@ a:hover {
 	transition: background-size 0.6s ease-in;
 }
 
-.section-title:hover{
+.section-title:hover {
 	background-size: 100% 5%;
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 }
 
+/* COULD USE FOR MUSIC FOLDERS */
 .section-selected {
 	border: 5px solid #a1dbf8;
 	border-radius: 5px;
-}
-
-.red {
-	color: red;
 }
 
 /* CONTAINERS */
@@ -136,11 +126,8 @@ a:hover {
 
 .item {
 	background-color: rgba(0, 0, 0, 0.75);
-	background-position: inherit;
-	font-size: 300%;
 	margin-left: 20%;
 	margin-right: 20%;
-	margin-bottom: 50px;
 	text-align: left;
 }
 
@@ -148,38 +135,14 @@ a:hover {
 	background-color: black;
 	background-image:
 	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url('assets/favicon-32x32 copy.png');
+	url('assets/image-camberden-signature-small-favicon.png');
 	animation: mymove 25s linear infinite;
 }
 
-.flourish {
-	background-color: black;
-	background-image:
-	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url('assets/favicon-32x32 copy.png');
-	animation: mymove 25s linear infinite;
-}
-
+/* FOR SOMETHING TO HIGHLIGHT IN VIEWPORT: PENDING USE CASE */
 .text-flourish {
 	background-size: 100% 5%;
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
-}
-
-.info-box {
-	background-color: rgba(0,0,0, 0.05);
-	margin-top: -1%;
-	margin-left: 25%;
-	margin-right: 25%;
-	margin-bottom: 3%;
-}
-
-.entry-box {
-	background-color: rgba(0,0,0, 0.05);
-	margin-top: -1%;
-	margin-left: 25%;
-	margin-right: 25%;
-	margin-bottom: 3%;
-	font-size: 50px;
 }
 
 @keyframes mymove {
@@ -195,6 +158,6 @@ footer {
 	margin-bottom: 50px;
 	background-image:
 	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url('assets/favicon-32x32 copy.png');
+	url('assets/image-camberden-signature-small-favicon.png');
 	animation: mymove 25s linear infinite;
 }

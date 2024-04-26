@@ -1,4 +1,5 @@
 window.onload = () => console.log('Running!');
+const lastestUpdatePushed = "Thu Apr 26 2024";
 
 // --- INFO AND ENTRYWAYS --- //
 
@@ -14,5 +15,16 @@ const music = document.getElementById('music');
 const musings = document.getElementById('musings');
 const dashboard = document.getElementById('dashboard');
 
-const now = new Date();
-console.log(now.toDateString());
+const latestUpdate = document.getElementById("latest-update");
+latestUpdate.innerHTML = lastestUpdatePushed;
+
+const menuItems = document.querySelectorAll(".section-title");
+const iconPlay = document.querySelector("#camberden");
+
+iconPlay.onclick = function(){
+	console.log("Hi! :D");
+}
+
+menuItems.onclick = function(){
+	console.log("jhi");
+}
