@@ -5,4 +5,5 @@
 *.crt
 *.cnf
 TODO.txt
+disciplinaries.txt
 node_modules
