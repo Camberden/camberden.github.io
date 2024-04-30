@@ -81,6 +81,8 @@ const salarySchedule2024 = [
 ];
 const now = new Date();
 const fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
+const fiscalYearDisplay = document.getElementById("fiscal-year");
+fiscalYearDisplay.innerHTML = `FY ${fiscalYear}-${fiscalYear + 1}`;
 
 const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
 const getYearID = (date = new Date()) => date.getUTCFullYear();
@@ -88,9 +90,6 @@ const getYearID = (date = new Date()) => date.getUTCFullYear();
 const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1; // Adjusted from base Zero
 const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
 const pslfRequirement = 120;
-
-console.log(govtServiceMonths / 12);
-console.log(govtServiceMonths);
 
 let salarySchedule;
 const setSalarySchedule = fy => {

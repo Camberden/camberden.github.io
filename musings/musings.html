@@ -18,7 +18,7 @@
 	</div>
 
 	<div class="marker">
-		<h2 id="poemtitle">Musings and Miscellaneous Posts</h2>
+		<h2>Musings and Miscellaneous Posts</h2>
 	</div>
 
 	<div>
@@ -28,7 +28,7 @@
 	<div class="poemcontainer">
 		<div class="poemasset">
 			<div class="leftbox">
-				<span class="marker" id="menulabel">Menu</span><br>
+				<span class="marker-for-menu" id="menulabel">Menu</span><br>
 
 				<!-- MENUMODAL -->
 				<div class="modal" id="menumodal">
@@ -46,7 +46,7 @@
 
 				</div>
 
-				<button class="marker" onclick="previousPoem()">Previous</button>
+				<button class="marker-for-menu" onclick="previousPoem()">Previous</button>
 			</div>
 		</div>
 
@@ -68,11 +68,23 @@
 
 		<div class="poemasset">
 			<div class="rightbox">
-				<span class="marker" id="poemnum"></span><br>
+				<span class="marker-for-menu" id="poemnum"></span><br>
 			</div>
-			<button class="marker" onclick="nextPoem()">Next</button>
+			<button class="marker-for-menu" onclick="nextPoem()">Next</button>
 
 		</div>
+	</div>
+
+
+	<div class="container">
+		<div class="marker">
+			<h2 id="blog-title">Blogging Dump</h2>
+		</div>
+
+		<div>
+			<p>Here's just a little test.</p>
+		</div>
+
 	</div>
 
 	<script src="musings.js"></script>

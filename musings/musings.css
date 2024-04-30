@@ -1,6 +1,6 @@
 /*	PAGETITLE	*/
 
-#poemtitle {
+#blog-title {
 	font-style: normal;
 	text-align: center;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
@@ -147,7 +147,7 @@ input[type=text]:focus {
 
 /*	BOTTOMSIGNATURE	*/
 
-.marker {
+.marker-for-menu {
 	color: #db8044;
 	text-align: right;
 	font-size: 1em;
@@ -158,18 +158,9 @@ input[type=text]:focus {
 	color: red;
 }
   
-.markerlarge {
-	line-height: 0em;
-	font-size: 100px;
-	font-weight: 100;
-	color: rgb(123, 153, 184);
-
-}  
 .markersmall {
-	/* line-height: -1em; */
 	margin-top: -1em;
 	font-size: 50px;
-
 }
 
 /* MENUMODAL */
