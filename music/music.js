@@ -7,6 +7,17 @@ document.getElementById('close-modal').onclick = function () {
 
 // ---------- TRACK CLASS AND TRACKS ---------- //
 
+
+// TRY MOCHA'S PARAM TAG BASED SEGREGATION TO STREAMLINE NEW ADDITIONS
+
+/**
+	 * @param {string} title
+	 * @param {number} year
+	 * @param {string} compilation
+	 * @param {string} audioFileLink
+	 * @param {boolean} completeOrIncomplete
+	 * @param {boolean} lyricalOrInstrumental
+	 */
 class Track {
 	constructor(title, year, compilation, audioFileLink, completeOrIncomplete, lyricalOrInstrumental) {
 		this.title = title;
@@ -35,23 +46,32 @@ const tracks = [ // ../assets/music-
 
 ];
 
+
+
 const trackBarrier = `<div class="track-barrier"></div>`;
 const trackPlayButtonBreak = `<br>`;
-tracks.forEach(track => { 
-	const trackPlayButton = `<audio id="${track.audioFileLink.substr(10, track.audioFileLink.length - 5)}" controls>
-	<source src="${track.audioFileLink}" type="audio/mpeg">
-	Your browser does not support the audio element. </audio>`;
 
-	// DON'T FORGET THAT I COULD SEND THESE VALUES TO OTHER ELEMENTS
-	document.getElementById("music-table-div").innerHTML += // USING +=; MIGHT NEED TO ADD TO STRING THEN PUSH TO HTML
-		` 
-		${track.title}
-		${track.year}
-		${track.compilation} <br>
-		${track.completeOrIncomplete ? "Complete" : "Incomplete"}
-		${track.lyricalOrInstrumental ? "Lyrical" : "Instrumental"}
-		${trackPlayButtonBreak}
-		${trackPlayButton}
-		${trackBarrier}
-		`;
-});
+const createMusicTable = function(){
+
+	tracks.forEach(track => { 
+
+		const trackPlayButton = `<audio preload="none" controls>
+		<source src="${track.audioFileLink}" type="audio/mpeg">
+		Your browser does not support the audio element. </audio>`;
+	
+		// DON'T FORGET THAT I COULD SEND THESE VALUES TO OTHER ELEMENTS
+	
+		document.getElementById("music-table-div").innerHTML +=
+			` 
+			${track.title}
+			${track.year}
+			${track.compilation} <br>
+			${track.completeOrIncomplete ? "Complete" : "Incomplete"}
+			${track.lyricalOrInstrumental ? "Lyrical" : "Instrumental"}
+			${trackPlayButtonBreak}
+			${trackPlayButton}
+			${trackBarrier}
+			`;
+	});
+}
+createMusicTable();
