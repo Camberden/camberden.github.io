@@ -150,14 +150,26 @@ document.onkeydown = function (evt) {
 	}
 };
 
-function sutraTest(){
+
+
+document.getElementById("sutra-fortyping").innerHTML = sutrasSinoSanskritJapanese[1] + "</span>";
+
+function sutraTest() {
 	const sutra = sutrasSinoSanskritJapanese;
+	const transliteration = sutrasRomaji[1].split(" ");
 	const typed = document.getElementById("sutraTypingField").value;
 	console.log("TYPED = " + typed);
+	const marker = document.getElementById("sutra-fortyping");
 
+	if (typed === transliteration.substring(0, typed.length) && typed.length) {
+		marker.innerHTML = para.replace(typed, `<span style="color:rgb(123, 153, 184);">` + typed.substring(0, typed.length) + "</span>");
+	}
+
+	if (typed === transliteration) {
+		document.getElementById("sutraTypingField").value = "";
+		alert("✨");
+	}
 }
-
-
 // MODAL
 // TODO : ENSURE THAT THE POEM-SELECT CAN TAKE A VALUE OF 10 OR MORE; REDO SUBSTRING()
 

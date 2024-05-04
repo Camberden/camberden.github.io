@@ -76,16 +76,24 @@
 	</div>
 
 
-	<div class="container">
+	<div class="poemcontainer">
 		<div class="marker">
 			<h2 id="blog-title">Blogging Dump</h2>
 		</div>
 
 
-		<div class="typingfield" style="text-align: center; user-select: none;">
-			<input type="text" id="sutraTypingField" value="" onkeyup="sutraTest()" autocomplete="off">
-		</div>
+		<div class="sutra-container">
+			<p>
+			<div class="sutra-writing" id="sutra-fortyping">
+			</div>
+			</p>
+			<form onSubmit="return false;" style="user-select: none; color: grey;">
+				<div class="typingfield" style="text-align: center; user-select: none;">
+					<input type="text" id="sutraTypingField" value="" onkeyup="sutraTest()" autocomplete="off">
+				</div>
+			</form>
 
+		</div>
 
 		<div>
 			<p>Here's just a little test.</p>
