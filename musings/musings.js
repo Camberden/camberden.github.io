@@ -79,8 +79,6 @@ function getPoemNumber() {
 }
 getPoemNumber();
 
-
-
 /* SETS THE POEM INTO THE FORTYPING ID ELEMENT */
 document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[0] + "</span>" + selectedpoem.substring(1, selectedpoem.length);
 
@@ -119,25 +117,6 @@ function previousPoem() {
 const tap = 1;
 let isQuotePlaying = false;
 
-
-function disabledAudioNotice() {
-	alert("Recordings disabled through site updates!");
-}
-// ---------- RECONNECT THIS TO ACTIVATE AUDIO ---------- //
-
-// function playQuote(){
-// 	if (isQuotePlaying === false){
-// 		quoteAudio.play();
-// 		document.getElementById("playbuttontext").innerHTML = "Stop";
-// 		isQuotePlaying = true;
-// 	}
-// 	else {
-// 		quoteAudio.pause();
-// 		document.getElementById("playbuttontext").innerHTML = "Play";
-// 		isQuotePlaying = false;
-// 	}
-// }
-
 function typingTest() {
 	const para = selectedpoem;
 	const typed = document.getElementById("sampleTypingField").value;
@@ -145,9 +124,10 @@ function typingTest() {
 	const marker = document.getElementById("fortyping");
 
 	if (typed === selectedpoem.substring(0, typed.length) && typed.length) {
-		marker.innerHTML = para.replace(typed, `<span class="writinginitial" style="color:rgb(123, 153, 184);>` + typed[0] + `</span> <span style="color:rgb(123, 153, 184);">` + typed.substring(1, typed.length) + "</span>");
+		marker.innerHTML = para.replace(typed, `<span class="writinginitial" style="color:rgb(123, 153, 184);">` + typed[0] + `</span> <span style="color:rgb(123, 153, 184);">` + typed.substring(1, typed.length) + "</span>");
 	}
 
+	// IS WHAT'S TYPED THE SAME AS THE SELECTION? COMPLETE!
 	if (typed === selectedpoem) {
 		document.getElementById("sampleTypingField").value = "";
 		document.getElementById("fortyping").innerHTML = `<span class="writinginitial">" + selectedpoem[0] + "</span>` + selectedpoem.substring(1, selectedpoem.length);
@@ -170,7 +150,12 @@ document.onkeydown = function (evt) {
 	}
 };
 
+function sutraTest(){
+	const sutra = sutrasSinoSanskritJapanese;
+	const typed = document.getElementById("sutraTypingField").value;
+	console.log("TYPED = " + typed);
 
+}
 
 
 // MODAL

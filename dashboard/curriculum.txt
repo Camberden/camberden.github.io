@@ -468,3 +468,22 @@ window.onclick = function(event){
 	}
 };
 
+
+
+
+
+
+// ---------- RECONNECT THIS TO ACTIVATE AUDIO ---------- //
+
+// function playQuote(){
+// 	if (isQuotePlaying === false){
+// 		quoteAudio.play();
+// 		document.getElementById("playbuttontext").innerHTML = "Stop";
+// 		isQuotePlaying = true;
+// 	}
+// 	else {
+// 		quoteAudio.pause();
+// 		document.getElementById("playbuttontext").innerHTML = "Play";
+// 		isQuotePlaying = false;
+// 	}
+// }

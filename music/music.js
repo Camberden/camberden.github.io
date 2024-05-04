@@ -1,8 +1,8 @@
-window.onload = () => console.log('Running!');
+window.onload = () => console.log("Running!");
 
-const modal = document.getElementById('info-modal');
-document.getElementById('close-modal').onclick = function () {
-	modal.style.display = 'none';
+const modal = document.getElementById("info-modal");
+document.getElementById("close-modal").onclick = function () {
+	modal.style.display = "none";
 };
 
 // ---------- TRACK CLASS AND TRACKS ---------- //
