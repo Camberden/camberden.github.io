@@ -8,6 +8,9 @@ function focusWriting() {
 
 focusWriting();
 
+// ---------- POEM SECTION ---------- //
+
+
 /* To associate with an audiofile, use a Map */
 const poems = [
 	"Wayward I drifted, loosely guided by principle and conviction whose strength teetered and peaked with a worrying frequency. Each inevitable workplace dejection garnered close company with the pangs of such teetering strength, hallmarked by decisional regret of both the short and long term: the inescapable failings of a misguided youth.",
@@ -19,56 +22,7 @@ const poems = [
 	// "I live for coincidences. They briefly give mto me the illusion or the hope that there\'s a pattern to my life, and if there\'s a pattern, then maybe I\'m moving toward some kind of destiny where it\'s all explained.",
 ];
 
-// ---------- SUTRA SECTION ---------- //
 
-const sutrasSinoSanskritJapanese = [
-	"搭袈裟の偈", [
-		"大哉解脱服",
-		"無相福田衣",
-		"披奉如來教",
-		"廣度諸衆生",
-	]
-];
-
-const sutrasRomaji = [
-	"Takkesa no Ge", [
-		"dai zai ge da ppu ku",
-		"mu so fuku den e",
-		"hi bu nyo rai kyo",
-		"ko do sho shu jo",
-	]
-];
-
-const sutrasFurigana = [
-	"たっけさのげ", [
-		"だい ざい だ っぷ く",
-		"む そ ふく でん え",
-		"ひ ぶ にょ らい きょ",
-		"こ ど しょ しゅ じょ",
-	]
-];
-
-
-
-let sutraPanel = document.getElementById("sutra-panel");
-sutraPanel.innerHTML = sutrasSinoSanskritJapanese[0];
-let k = 0;
-function cycleSutraLines() {
-	sutraPanel.innerHTML = sutrasSinoSanskritJapanese[1][k];
-	console.log(k);
-	if (k >= sutrasSinoSanskritJapanese[1].length - 1) {
-		k = 0;
-	} else {
-		k++;
-	}
-	return k;
-}
-
-const displaySutras = function () {
-	setInterval(cycleSutraLines, 2000); //DON'T USE FUNCTION PARAENTHESIS FOR INTERVAL ARGUMENT
-}
-
-displaySutras();
 
 let poemnumber = 0;
 let selectedpoem = poems[poemnumber];
@@ -130,7 +84,7 @@ function typingTest() {
 	// IS WHAT'S TYPED THE SAME AS THE SELECTION? COMPLETE!
 	if (typed === selectedpoem) {
 		document.getElementById("sampleTypingField").value = "";
-		document.getElementById("fortyping").innerHTML = `<span class="writinginitial">" + selectedpoem[0] + "</span>` + selectedpoem.substring(1, selectedpoem.length);
+		document.getElementById("fortyping").innerHTML = `<span class="writinginitial">"` + selectedpoem[0] + "</span>" + selectedpoem.substring(1, selectedpoem.length);
 		alert("✨");
 		nextPoem();
 	}
@@ -151,28 +105,6 @@ document.onkeydown = function (evt) {
 };
 
 
-
-document.getElementById("sutra-fortyping").innerHTML = sutrasSinoSanskritJapanese[1] + "</span>";
-
-function sutraTest() {
-	const sutra = sutrasSinoSanskritJapanese;
-	const transliteration = sutrasRomaji[1].split(" ");
-	const typed = document.getElementById("sutraTypingField").value;
-	console.log("TYPED = " + typed);
-	const marker = document.getElementById("sutra-fortyping");
-
-	if (typed === transliteration.substring(0, typed.length) && typed.length) {
-		marker.innerHTML = para.replace(typed, `<span style="color:rgb(123, 153, 184);">` + typed.substring(0, typed.length) + "</span>");
-	}
-
-	if (typed === transliteration) {
-		document.getElementById("sutraTypingField").value = "";
-		alert("✨");
-	}
-}
-// MODAL
-// TODO : ENSURE THAT THE POEM-SELECT CAN TAKE A VALUE OF 10 OR MORE; REDO SUBSTRING()
-
 const modal = document.getElementById("menumodal");
 const menuclick = document.getElementById("menulabel");
 const menuclose = document.getElementsByClassName("closemenu")[0];
@@ -192,11 +124,11 @@ function goToPoem() {
 	selectedpoem = poems[poemnumber];
 
 	console.log("Testing goToPoem function!");
-	document.getElementById("fortyping").innerHTML = `<span class="writinginitial">" + selectedpoem[0] + "</span>` + selectedpoem.substring(1, selectedpoem.length);
+	document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[0] + "</span>" + selectedpoem.substring(1, selectedpoem.length);
 	document.getElementById("sampleTypingField").value = "";
 	focusWriting();
 	getPoemNumber();
-	quoteAudio = new Audio("../assets/quote" + (poemnumber + 1) + ".mp3");
+	//quoteAudio = new Audio("../assets/quote" + (poemnumber + 1) + ".mp3");
 	modal.style.display = "none";
 	poemSelectionMenu.innerHTML = "";
 	console.log(poemnumber);
@@ -217,6 +149,110 @@ window.onclick = function (event) {
 		modal.style.display = "none";
 	}
 };
+
+
+
+// ---------- SUTRA SECTION ---------- //
+
+const sutrasSinoSanskritJapanese = [
+	"搭袈裟の偈", [
+		"大哉解脱服",
+		"無相福田衣",
+		"披奉如來教",
+		"廣度諸衆生",
+	]
+];
+
+const sutrasRomaji = [
+	"Takkesa no Ge", [
+		"dai zai ge da ppuku",
+		"mu so fuku den e",
+		"hi bu nyo rai kyo",
+		"ko do sho shu jo",
+	]
+];
+
+const sutrasFurigana = [
+	"たっけさのげ", [
+		"だい ざい だ っぷ く",
+		"む そ ふく でん え",
+		"ひ ぶ にょ らい きょ",
+		"こ ど しょ しゅ じょ",
+	]
+];
+
+let sutraPanel = document.getElementById("sutra-panel");
+sutraPanel.innerHTML = sutrasSinoSanskritJapanese[0];
+let k = 0;
+function cycleSutraLines() {
+	sutraPanel.innerHTML = sutrasSinoSanskritJapanese[1][k];
+	// console.log(k);
+	if (k >= sutrasSinoSanskritJapanese[1].length - 1) {
+		k = 0;
+	} else {
+		k++;
+	}
+	return k;
+}
+
+const displaySutras = function () {
+	setInterval(cycleSutraLines, 2000); //DON'T USE FUNCTION PARAENTHESIS FOR INTERVAL ARGUMENT
+}
+
+displaySutras();
+
+
+let kanjiCounter = 0;
+let lineCounter = 0;
+let sutraSelection = 1 // must be altered through HTML form
+const highlight = `<span style="color:rgb(123, 153, 184);">`;
+
+const sutraForTyping = document.getElementById("sutra-fortyping");
+// Sutra Selection will be done with the first array index.
+sutraForTyping.innerHTML = sutrasSinoSanskritJapanese[sutraSelection][lineCounter];
+
+
+function sutraTest() {
+	const transliteration = sutrasRomaji[1][lineCounter].split(" ");
+	console.log(transliteration);
+
+	const typed = document.getElementById("sutra-typing-field");
+	console.log("TYPED value = " + typed.value);
+
+	if (typed.value === transliteration[transliteration.length - 1]) {
+		// Next Line Triggered
+		console.log("Triggered Line Change");
+		typed.innerHTML = "";
+		typed.value = "";
+		++lineCounter;
+		kanjiCounter = 0;
+	}
+
+	// if (typed.value === transliteration[0]){
+	// 	sutraForTyping.innerHTML = (highlight + sutrasSinoSanskritJapanese[sutraSelection][0] + "</span>")
+	// }
+
+	// Color first kanji
+	if (typed.value === transliteration[kanjiCounter]) {
+		console.log("Sutra Next Kanji Triggered!");
+		typed.innerHTML = "";
+		typed.value = "";
+		sutraForTyping.innerHTML = (highlight + sutrasSinoSanskritJapanese[sutraSelection][lineCounter][kanjiCounter]) + "</span>" + 
+		sutrasSinoSanskritJapanese[sutraSelection][lineCounter].substring(kanjiCounter + sutrasSinoSanskritJapanese[sutraSelection][lineCounter].length);
+		++kanjiCounter;
+	}
+}
+
+
+
+// if (typed === transliteration.substring(0, typed.length) && typed.length) {
+// 	marker.innerHTML = para.replace(typed, `<span style="color:rgb(123, 153, 184);">` + typed.substring(0, typed.length) + "</span>");
+// }
+
+// if (typed === transliteration) {
+// 	document.getElementById("sutraTypingField").value = "";
+// 	alert("✨");
+// }
 
 
 // ---------- RECONNECT THIS TO ACTIVATE AUDIO ---------- //
