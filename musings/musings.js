@@ -208,9 +208,14 @@ let sutraSelection = 1 // must be altered through HTML form
 const highlight = `<span style="color:rgb(123, 153, 184);">`;
 
 const sutraForTyping = document.getElementById("sutra-fortyping");
-// Sutra Selection will be done with the first array index.
-sutraForTyping.innerHTML = sutrasSinoSanskritJapanese[sutraSelection][lineCounter];
 
+function loadNextLine() {
+	sutraForTyping.innerHTML = "";
+	for (let i = 0; i < sutrasSinoSanskritJapanese[sutraSelection][lineCounter].length; i++) {
+		sutraForTyping.innerHTML += `<span id="kanji${i}">` + sutrasSinoSanskritJapanese[sutraSelection][lineCounter][i] + `</span>`;
+	};
+}
+loadNextLine();
 
 function sutraTest() {
 	const transliteration = sutrasRomaji[1][lineCounter].split(" ");
@@ -219,30 +224,32 @@ function sutraTest() {
 	const typed = document.getElementById("sutra-typing-field");
 	console.log("TYPED value = " + typed.value);
 
-	if (typed.value === transliteration[transliteration.length - 1]) {
+	if (typed.value === transliteration[transliteration.length - 1] && lineCounter === sutrasSinoSanskritJapanese[sutraSelection].length - 1) {
+		console.log("Triggered Line Change");
+		typed.innerHTML = "";
+		typed.value = "";
+		++lineCounter;
+		kanjiCounter = 0;
+		document.getElementById("sutra-typing-field").innerHTML = "";
+		alert("✨");	
+	} else if (typed.value === transliteration[transliteration.length - 1]) {
 		// Next Line Triggered
 		console.log("Triggered Line Change");
 		typed.innerHTML = "";
 		typed.value = "";
 		++lineCounter;
 		kanjiCounter = 0;
+		loadNextLine();
 	}
 
-	// if (typed.value === transliteration[0]){
-	// 	sutraForTyping.innerHTML = (highlight + sutrasSinoSanskritJapanese[sutraSelection][0] + "</span>")
-	// }
-
-	// Color first kanji
 	if (typed.value === transliteration[kanjiCounter]) {
 		console.log("Sutra Next Kanji Triggered!");
 		typed.innerHTML = "";
 		typed.value = "";
-		sutraForTyping.innerHTML = (highlight + sutrasSinoSanskritJapanese[sutraSelection][lineCounter][kanjiCounter]) + "</span>" + 
-		sutrasSinoSanskritJapanese[sutraSelection][lineCounter].substring(kanjiCounter + sutrasSinoSanskritJapanese[sutraSelection][lineCounter].length);
-		++kanjiCounter;
+		document.getElementById("kanji" + kanjiCounter).classList.add("highlight");
+		kanjiCounter++;
 	}
 }
-
 
 
 // if (typed === transliteration.substring(0, typed.length) && typed.length) {

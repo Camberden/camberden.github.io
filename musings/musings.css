@@ -43,6 +43,10 @@
 	transform: translate(-50%, -50%);
   }
 
+  .highlight {
+	color:rgb(123, 153, 184);
+  }
+
 /*	POEMCONTAINER	*/
 
 .poemcontainer {
@@ -63,6 +67,8 @@
 	background-color: #f6f3ed;
 	min-width: 300px;
 }
+
+
 
 
 
