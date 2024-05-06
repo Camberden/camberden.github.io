@@ -78,12 +78,19 @@
 
 	<div class="poemcontainer">
 		<div class="marker">
-			<h2 id="blog-title">Blogging Dump</h2>
+			<h2 id="blog-title">Sutra Practice</h2>
+			<form>
+			<select id="sutra-list"> <!-- THIS ID HOLDS THE VALUE -->
+				<option value="1">Robe Chant</option>
+				<option value="3">Heart Sutra</option>
+			</select>
+			<button id="sutra-button">Load</button>
+		</form>
 		</div>
 
 
 		<div class="sutra-container">
-			<p>
+			<p><span id="furigana-writing"></span>
 			<div class="sutra-writing" id="sutra-fortyping">
 			</div>
 			</p>
@@ -96,7 +103,7 @@
 		</div>
 
 		<div>
-			<p>Here's just a little test.</p>
+			<p><span id="sutra-title"></span></p>
 			<p><span id="completed-sutra-lines"></span></p>
 		</div>
 

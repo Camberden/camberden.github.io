@@ -135,7 +135,7 @@ a:hover {
 	background-color: black;
 	background-image:
 	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url('assets/image-camberden-signature-small-favicon.png');
+	url('assets/image-camberden-signature-small-favicon.ico');
 	animation: mymove 25s linear infinite;
 }
 

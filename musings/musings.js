@@ -153,6 +153,7 @@ window.onclick = function (event) {
 
 
 // ---------- SUTRA SECTION ---------- //
+// array [title][lines]
 
 const sutrasSinoSanskritJapanese = [
 	"搭袈裟の偈", [
@@ -160,15 +161,124 @@ const sutrasSinoSanskritJapanese = [
 		"無相福田衣",
 		"披奉如來教",
 		"廣度諸衆生",
-	]
+	],
+	"摩訶般若波羅蜜多心經", [
+		"觀自在菩薩",
+		"行深般若波羅蜜多時",
+		"照見五蘊皆空",
+		"度一切苦厄",
+		"舍利子",
+		"色不異空",
+		"空不異色",
+		"色即是空",
+		"空即是色",
+		"受想行識亦復如是",
+		"舍利子",
+		"是諸法空相",
+		"不生不滅",
+		"不垢不淨",
+		"不增不減",
+		"是故空中無色",
+		"無受想行識",
+		"無眼耳鼻舌身意",
+		"無色聲香味觸法",
+		"無眼界",
+		"乃至無意識界",
+		"無無明亦",
+		"無無明盡",
+		"乃至無老死",
+		"亦無老死盡",
+		"無苦集滅道",
+		"無智亦無得",
+		"以無所得故",
+		"菩提薩埵",
+		"依般若波羅蜜多故",
+		"心無罣礙",
+		"無罣礙故",
+		"無有恐怖",
+		"遠離顛倒夢想",
+		"究竟涅槃",
+		"三世諸佛",
+		"依般若波羅蜜多故",
+		"得阿耨多羅三藐三菩提",
+		"故知般若波羅蜜多",
+		"是大神咒",
+		"是大明咒",
+		"是無上咒",
+		"是無等等咒",
+		"能除一切苦",
+		"真實不虛",
+		"故說般若波羅蜜多咒",
+		"即說咒曰",
+		"揭諦揭諦",
+		"波羅揭諦",
+		"波羅僧揭諦",
+		"菩提薩婆訶",
+		"般若心經",
+	],
 ];
 
 const sutrasRomaji = [
-	"Takkesa no Ge", [
+	"Takkesa no Ge", 
+	[
 		"dai zai ge da ppuku",
 		"mu so fuku den e",
 		"hi bu nyo rai kyo",
 		"ko do sho shu jo",
+	],
+	"Maka Hanya Haramitta Shingyou", 
+	[
+		"kan ji zai bo satsu",
+		"gyou jin han nya ha ra mi tta ji",
+		"sho ken go on kai ku",
+		"do i ssai ku yaku",
+		"sha ri shi",
+		"shiki fu i ku",
+		"ku fu i shiki",
+		"shiki soku ze ku",
+		"ku soku ze shiki",
+		"ju sou gyou shiki yaku bu nyo ze",
+		"sha ri shi",
+		"ze shou hou ku sou",
+		"fu shou fu metsu",
+		"fu ku fu jo",
+		"fu zou fu gen",
+		"ze ko ku chuu mu shiki",
+		"mu ju sou gyou shiki",
+		"mu gen ni bi ze sshin ni",
+		"mu shiki shou ko mi soku hou",
+		"mu gen kai",
+		"nai shi mu i shiki kai",
+		"mu mu myou yaku",
+		"mu mu myou jin",
+		"nai shi mu rou shi",
+		"yaku mu rou shi jin",
+		"mu ku shuu metsu dou",
+		"mu chi yaku mu toku",
+		"i mu sho to kko bodai satta",
+		"e han nya ha ra mi tta ko",
+		"shin mu ke ge",
+		"mu ke ge ko",
+		"mu u ku fu",
+		"on ri i ssai ten do",
+		"mu sou ku gyou ne han",
+		"san ze sho butsu",
+		"e han nya ha ra mi tta ko",
+		"toku a noku ta ra san myaku san bo dai",
+		"ko chi han nya ha ra mi tta",
+		"ze dai jin shu",
+		"ze dai myou shu",
+		"ze mu jo shu",
+		"ze mu to do shu",
+		"no jo i ssai ku",
+		"shin jitsu fu ko",
+		"ko setsu han nya ha ra mi tta shu",
+		"soku setsu shu watsu",
+		"gya te gya te",
+		"ha ra gya te",
+		"hara sou gya te",
+		"bo ji so wa ka",
+		"han nya shin gyou",
 	]
 ];
 
@@ -178,6 +288,47 @@ const sutrasFurigana = [
 		"む そ ふく でん え",
 		"ひ ぶ にょ らい きょ",
 		"こ ど しょ しゅ じょ",
+	],"まかはんやはらみったしんぎょう", [
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
+		"",
 	]
 ];
 
@@ -201,13 +352,32 @@ const displaySutras = function () {
 
 displaySutras();
 
-
 let kanjiCounter = 0;
 let lineCounter = 0;
-let sutraSelection = 1 // must be altered through HTML form
+let sutraSelection = 1; // must be altered through HTML form
+let sutraTitle = sutraSelection - 1;
 const highlight = `<span style="color:rgb(123, 153, 184);">`;
-
 const sutraForTyping = document.getElementById("sutra-fortyping");
+
+
+function loadSutra(){
+	kanjiCounter =  0;
+	lineCounter = 0;
+	sutraForTyping.innerHTML = "";
+	document.getElementById("sutra-typing-field").innerHTML = "";
+	document.getElementById("completed-sutra-lines").innerHTML = "";
+	sutraSelection = document.getElementById("sutra-list").value;
+	document.getElementById("sutra-title").innerHTML = sutrasSinoSanskritJapanese[sutraSelection - 1];
+	console.log(sutraSelection);
+}
+loadSutra();
+
+const sutraButton = document.getElementById("sutra-button");
+sutraButton.onclick = (event) => {
+	loadSutra();
+	event.preventDefault();
+	loadNextLine();
+}
 
 function loadNextLine() {
 	sutraForTyping.innerHTML = "";
@@ -218,25 +388,29 @@ function loadNextLine() {
 loadNextLine();
 
 function sutraTest() {
-	const transliteration = sutrasRomaji[1][lineCounter].split(" ");
+	const transliteration = sutrasRomaji[sutraSelection][lineCounter].split(" ");
 	console.log(transliteration);
+
 
 	const typed = document.getElementById("sutra-typing-field");
 	console.log("TYPED value = " + typed.value);
 
 	if (typed.value === transliteration[transliteration.length - 1] && lineCounter === sutrasSinoSanskritJapanese[sutraSelection].length - 1) {
-		console.log("Triggered Line Change");
+		console.log("Triggered Last Line Change");
 		typed.innerHTML = "";
 		typed.value = "";
+		document.getElementById("kanji" + kanjiCounter).classList.add("highlight");
+		document.getElementById("completed-sutra-lines").innerHTML += sutrasSinoSanskritJapanese[sutraSelection][lineCounter];
 		++lineCounter;
 		kanjiCounter = 0;
 		document.getElementById("sutra-typing-field").innerHTML = "";
 		alert("✨");	
-	} else if (typed.value === transliteration[transliteration.length - 1]) {
+	} else if (typed.value === transliteration[transliteration.length - 1] && kanjiCounter === sutrasSinoSanskritJapanese[sutraSelection][lineCounter].length - 1) {
 		// Next Line Triggered
 		console.log("Triggered Line Change");
 		typed.innerHTML = "";
 		typed.value = "";
+		document.getElementById("completed-sutra-lines").innerHTML += (sutrasSinoSanskritJapanese[sutraSelection][lineCounter] + "<br>");
 		++lineCounter;
 		kanjiCounter = 0;
 		loadNextLine();
