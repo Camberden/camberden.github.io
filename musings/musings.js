@@ -13,14 +13,15 @@ focusWriting();
 
 /* To associate with an audiofile, use a Map */
 const poems = [
-	"Wayward I drifted, loosely guided by principle and conviction whose strength teetered and peaked with a worrying frequency. Each inevitable workplace dejection garnered close company with the pangs of such teetering strength, hallmarked by decisional regret of both the short and long term: the inescapable failings of a misguided youth.",
+	"My soul, it comes alive, for just this night. I realize it\'s only now. I do surmise a lack of meaning to come from what I do - the day by day, the black and grey - there\'s just so little sense of meaning to me.",
 	"If you will read and follow the rules in this booklet, your time in prison will be easier. The people who work for the prisons can be of help to you. If you have any questions about any matter, ask a member of the staff. If you have any questions about any of the rules in this booklet, see a staff member and they will answer your questions. Obey all prison rules and make the most of chances to show that you can act in a manner which can lead to your release.",
+	"Avalokiteshvara Bodhisattva, when practicing deeply the prajna paramita, perceived that all five skandhas in their own being are empty, and was saved from all suffering. O Shariputra, form does not differ from emptiness, emptiness does not differ from form; that which is form is emptiness, that which is emptiness form. The same is true of feelings, perceptions, formations, consciousness. O Shariputra, all dharmas are marked with emptiness: they do not appear nor disappear, are not tainted nor pure; do not increase nor decrease. Therefore, in emptiness, no form, no feelings, no perceptions, no formations, no consciousness; no eyes, no ears, no nose, no tongue, no body, no mind, no color, no sound, no smell, no taste, no touch, no object of mind; no realm of eyes, until no realm of mind-consciousness; no ignorance, and also no extinction of it, until no old-age-and-death, and also no extinction of it; no suff’ring, no origination, no stopping, no path, no cognition, also no attainment. With nothing to attain, a Bodhisattva depends on prajna paramita and the mind is no hindrance. Without any hindrance, no fears exist. Far apart from every inverted view one dwells in nirvana. In the three worlds all Buddhas depend on prajna paramita and attain unsurpassed complete perfect enlightenment. Therefore, know the prajna paramita is the great transcendent mantra, is the great bright mantra, is the utmost mantra, is the supreme mantra, which is able to relieve all suffering and is true not false. So, proclaim the prajna paramita mantra, proclaim the mantra that says, Gate, gate, paragate, parasamgate! Bodhi! Svaha! ",
+	// "Wayward I drifted, loosely guided by principle and conviction whose strength teetered and peaked with a worrying frequency. Each inevitable workplace dejection garnered close company with the pangs of such teetering strength, hallmarked by decisional regret of both the short and long term: the inescapable failings of a misguided youth.",
 	"You\'re most attractive when you\'re not worried about who you\'re attracting.",
 	"A gentle breeze was the only thing I had heard. All I could see surrounding my small, green oasis were immaculate dunes, some of stature, some modest, subjacent to a brilliant, pristine, blue sky whose fields spread dotted by puffy, white clouds, inching away ever so slowly, their movement involving enough in this remarkably empty scene so as to merit my attention and enrapture me in contemplative wonder.",
-	"My soul, it comes alive, for just this night. I realize it\'s only now. I do surmise a lack of meaning to come from what I do - the day by day, the black and grey - there\'s just so little sense of meaning to me.",
 	// "I choose discomfort to my betterment over comfort to my detriment.",
 	// "I live for coincidences. They briefly give mto me the illusion or the hope that there\'s a pattern to my life, and if there\'s a pattern, then maybe I\'m moving toward some kind of destiny where it\'s all explained.",
-];
+];	
 
 let poemnumber = 0;
 let selectedpoem = poems[poemnumber];
@@ -32,9 +33,15 @@ function getPoemNumber() {
 getPoemNumber();
 
 /* SETS THE POEM INTO THE FORTYPING ID ELEMENT */
+let englishSutraLine = 0;
 document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[0] + "</span>" + selectedpoem.substring(1, selectedpoem.length);
 
+// document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[englishSutraLine][0] + "</span>" + selectedpoem[englishSutraLine].substring(1, selectedpoem[englishSutraLine].length) + ".";
+// document.getElementById("fortyping").innerHTML = selectedpoem.split(".")[englishSutraLine];
+
+
 function nextPoem() {
+	englishSutraLine = 0;
 	if (poemnumber === poems.length - 1) {
 		poemnumber = 0;
 		selectedpoem = poems[poemnumber];
@@ -51,6 +58,7 @@ function nextPoem() {
 }
 
 function previousPoem() {
+	englishSutraLine = 0;
 	if (poemnumber === 0) {
 		poemnumber = poems.length - 1;
 		selectedpoem = poems[poemnumber];
@@ -69,15 +77,25 @@ function previousPoem() {
 const tap = 1;
 let isQuotePlaying = false;
 
+
+// Avalokiteshvara Bodhisattva, when practicing deeply the prajna paramita, perceived that all five skandhas in their own being are empty, and was saved from
 function typingTest() {
 	const para = selectedpoem;
 	const typed = document.getElementById("sampleTypingField").value;
+	const typingProgress = document.getElementById("fortyping");
 	console.log("TYPED = " + typed);
-	const marker = document.getElementById("fortyping");
 
 	if (typed === selectedpoem.substring(0, typed.length) && typed.length) {
-		marker.innerHTML = para.replace(typed, `<span class="writinginitial" style="color:rgb(123, 153, 184);">` + typed[0] + `</span> <span style="color:rgb(123, 153, 184);">` + typed.substring(1, typed.length) + "</span>");
+		typingProgress.innerHTML = para.replace(typed, `<span class="writinginitial" style="color:rgb(123, 153, 184);">` + typed[0] + `</span> <span style="color:rgb(123, 153, 184);">` + typed.substring(1, typed.length) + "</span>");
 	}
+
+	// if (typed === selectedpoem[englishSutraLine]) {
+	// 	englishSutraLine++;
+	// 	typed = "";
+	// 	typingProgress.innerHTML = "";
+	// 	para = selectedpoem[englishSutraLine];
+	// 	document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[englishSutraLine][0] + "</span>" + selectedpoem[englishSutraLine].substring(1, selectedpoem[englishSutraLine].length);
+	// }
 
 	// IS WHAT'S TYPED THE SAME AS THE SELECTION? COMPLETE!
 	if (typed === selectedpoem) {
@@ -439,19 +457,29 @@ function sutraTest() {
 	}
 }
 
+const nobleTruths = [
+	"Suffering Exists", "The Cause is Attachment", "Suffering can End", "A Path to its End Exists",
+];
 
-// if (typed === transliteration.substring(0, typed.length) && typed.length) {
-// 	marker.innerHTML = para.replace(typed, `<span style="color:rgb(123, 153, 184);">` + typed.substring(0, typed.length) + "</span>");
-// }
+const eightfoldPath = [
+	"Right View", "Right Thinking", "Right Speech", "Right Action", "Right Livelihood", "Right Effort", "Right Mindfulness", "Right Concentration",
+];
 
-// if (typed === transliteration) {
-// 	document.getElementById("sutraTypingField").value = "";
-// 	alert("✨");
-// }
-
-
-// ---------- RECONNECT THIS TO ACTIVATE AUDIO ---------- //
-
-// ---------- DISCIPLINARY MAP ---------- //
-
-
+const boddhisattvaPrecepts = [
+	"Refuge in Buddha", 
+	"Refuge in Dharma", 
+	"Refuge in Sangha", 
+	"Embrace all Moral Codes", 
+	"Embrace all Good Acts", 
+	"Benefit all Living Beings", 
+	"Not Killing", 
+	"Not Stealing", 
+	"No Indulgence in Sexual Greed", 
+	"Not Speaking Falsehood", 
+	"Not Selling Intoxicants", 
+	"Not Talking of Others' Faults", 
+	"No Praising Self or Slandering Others",
+	"No Begrudging the Dharma",
+	"Not Being Angry",
+	"Not Slandering the Three Treasures",
+];
