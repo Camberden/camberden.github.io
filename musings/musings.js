@@ -260,7 +260,7 @@ const sutrasRomaji = [
 		"mu ke ge ko",
 		"mu u ku fu",
 		"on ri i ssai ten do",
-		"mu sou ku gyou ne han",
+		"mu sou ku kyou ne han",
 		"san ze sho butsu",
 		"e han nya ha ra mi tta ko", // here
 		"toku a noku ta ra san myaku san bo dai",
@@ -275,7 +275,7 @@ const sutrasRomaji = [
 		"soku setsu shu watsu",
 		"gya te gya te",
 		"ha ra gya te",
-		"hara sou gya te",
+		"ha ra sou gya te",
 		"bo ji so wa ka",
 		"han nya shin gyou",
 	]
