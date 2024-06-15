@@ -207,3 +207,28 @@ ul {
 	text-decoration: none;
 	cursor: pointer;
 }
+
+.acc-container {
+	display: grid;
+	grid-template-columns: [first] 400px [line2] 400px [line3] 400px [end];
+	grid-template-rows: 
+	[row1-start] auto [row1-end] auto
+	[row2-start] auto [row2-end] auto
+	[row-3start] auto [row-3end] auto;
+	/* column-gap: 10px; */
+	color: black;
+	font-family: Lora, serif;
+	text-align: left;
+	border: #555;
+	/* margin-left: 3em;
+	margin-right: 3em;
+	position: relative; */
+}
+
+.cpa-req {
+	color: black;
+}
+
+.cpa-req-highlight{
+	color: red;
+}

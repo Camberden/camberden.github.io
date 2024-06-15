@@ -225,3 +225,6 @@ window.onclick = function (event) {
 		modal.style.display = "none";
 	}
 };
+
+const cpacourses = document.querySelectorAll(".cpa-req");
+

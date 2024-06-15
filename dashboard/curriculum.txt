@@ -190,7 +190,7 @@
 	color: red;
 }
 
-.container {
+.acc-container {
 	display: grid;
 	grid-template-columns: [first] 450px [line2] 450px [line3] 450px [end];
 	grid-template-rows: 
