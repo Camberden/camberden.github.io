@@ -21,7 +21,7 @@ const loa = 300.00;
 const wat = 15.00;
 const ele = 70.27;
 const int = 54.99;
-const mus = 11.73;
+const mus = 6.39;
 const gym = 0.00;
 let inp; // CUSTOM INPUT: INP
 console.log(document.getElementById("inp-cost").innerHTML);
@@ -135,7 +135,7 @@ class Officer { //REFACTOR BASED ON MONTHS OF EXP.
 
 	get step() {
 
-		return (this.yearsExperience > 6 ? 6 : this.yearsExperience);
+		return (this.yearsExperience > 6 ? 6 : (this.yearsExperience + 1)); // HARD CODED TO ACCOUNT FOR JUNE 2024 STEP BUMP!
 	}
 
 	get salary() {
