@@ -55,9 +55,9 @@ const createMusicTable = function(){
 
 	tracks.forEach(track => { 
 
-		const trackPlayButton = `<audio preload="none" controls>
+		const trackPlayButton = `<br><audio preload="none" controls>
 		<source src="${track.audioFileLink}" type="audio/mpeg">
-		Your browser does not support the audio element. </audio>`;
+		Your browser does not support the audio element. </audio><br>`;
 	
 		// DON'T FORGET THAT I COULD SEND THESE VALUES TO OTHER ELEMENTS
 	
