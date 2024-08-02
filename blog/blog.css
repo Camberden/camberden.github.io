@@ -1,3 +1,47 @@
+body {
+	/* display: grid; */
+	/* place-content: center; */
+	min-height: 100vh;
+  
+  }
+
 .blog-post {
 	text-align: left;
+}
+
+.blog-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 25%); /* repeat(4, 25%) */
+
+
+	padding-block: 2rem;
+	width: min(95%, 70rem);
+	margin-inline: auto;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}
+
+.blog-post {
+	padding: 2rem;
+	border-radius: 0.5rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: red;
+	border-style: double;
+}
+
+.blog-post:last-child {
+	background: red !important;
+	/* grid-column: span 2; goes across 2 gridspaces */
+	grid-column-start: 4; /* starts after gridspace 4 */
+	/* grid-row-start: 1; places it on first row */
+	grid-row-start: 1;
+	grid-row-end: span 2; /* goes across 2 rows, expanding column!  can just say grid-row: 1 / 3 (based on grid lines) */
+}
+
+.blog-post:nth-child(3) {
+	background: blue !important;
+
 }
