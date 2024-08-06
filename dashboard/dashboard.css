@@ -1,8 +1,20 @@
 /* ----- PAGE SPECIFIC ----- */
 
 ul {
-	margin-right: 25%;
+	/* margin-right: 25%; */
 	text-align: left;
+}
+
+input[type=text] {
+	background-color: #a1dbf8;
+	color: #f59b60;
+	font-family: Permanent Marker, serif;
+	font-size: 1rem;
+	border: none;
+}
+
+input[type=text]:focus {
+	background-color: #f6f3ed;
 }
 
 .list-background {
@@ -43,10 +55,8 @@ ul {
 	/* grid-row-end: span 2;  goes across 2 rows, expanding column!  can just say grid-row: 1 / 3 (based on grid lines) */
 }
 
-.dashboard-item:nth-child(3) {
-	/* background: blue !important; */
-
-}
+/* .dashboard-item:nth-child(3) {
+} */
 
 /* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
 
@@ -116,10 +126,9 @@ ul {
 	height: 2em;
   	position: relative;
   	background: #555;
-	border-radius: 2em;
-	margin-right: 25%;
-	margin-left: 25%;
-  	padding: 10px;
+	border-radius: 1rem;
+	margin-right: 5%;
+	margin-left: 5%;
 	box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
 }
 
@@ -142,12 +151,6 @@ ul {
 	position: relative;
 	overflow: hidden;
   }
-
-#salary-table-div {
-	/* margin-left: 26%; */
-	/* margin-right: 50%; */
-
-}
 
 .salary-highlight {
 	color: blueviolet;
@@ -173,10 +176,6 @@ ul {
 .taken {
 	color:#db8044;
 	list-style-type: "✓ ";
-}
-
-.course-list {
-	background: #f6f3ed;
 }
 
 /* MENUMODAL */

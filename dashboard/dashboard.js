@@ -78,7 +78,6 @@ const salarySchedule2024 = [
 	["41558", "44468", "47137", "49494", "51473", "53017", "54078"], // C/OIII
 ];
 
-// Pending
 const salarySchedule2025 = [
 	["37621", "40253", "42670", "44803", "46594", "47993", "48953"], // C/OI
 	["38859", "41578", "44074", "46277", "48128", "49571", "50563"], // C/OII
@@ -151,7 +150,8 @@ console.log("Chrispy base rate " + chrispy.salary);
 // ----- PSLF BAR
 
 const pslfProgressBar = document.getElementById("pslf-progress-bar");
-document.getElementById("pslf-heading").innerHTML = govtServiceMonths + " of " + pslfRequirement + " months completed!";
+document.getElementById("pslf-heading").innerHTML = Math.floor(govtServiceMonths / 12) + 
+" years of service with " + govtServiceMonths + " of " + pslfRequirement + " months completed!";
 const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
 pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
 

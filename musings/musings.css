@@ -75,7 +75,6 @@ button {
 	padding: 1rem 1rem;
 	user-select: none;
 	border-radius: 1rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-color: red;
 	border-style: double;
 }
@@ -130,11 +129,11 @@ input[type=text] {
 	padding-right: 3%;
 	padding-top: 15px;
 	padding-bottom: 15px;
-  }
+}
 
 input[type=text]:focus {
 	border: 10px solid #bda5d4;
-  }
+}
 
 /*	BOTTOMSIGNATURE	*/
 

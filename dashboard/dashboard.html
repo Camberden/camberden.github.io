@@ -19,6 +19,7 @@
 
 
 	<main class="dashboard-grid">
+		<!--EXPENSE MANAGEMENT -->
 		<article class="dashboard-item">
 			<div class="container">
 				<div class="marker">
@@ -26,14 +27,14 @@
 				</div>
 				<div>
 					<ul class="list-background">
-						<!-- <li id="notes-header">Notes:</li> -->
 						<span>Notes:</span>
 						<li>P2P $300.00 monthly: <span id="p2p">$2124.74</span> remain.</li>
 					</ul>
 				</div>
 		
 				<ul id="balance-list">
-					<li class="no-bullet">STARTING BALANCE = $<input type="text" id="balance" label="balance"></li>
+					<li class="no-bullet">STARTING BALANCE = $<input type="text" placeholder=" Input Value" id="balance" label="balance"></li>
+					<br>
 					<!-- CAR PAYMENT -->
 					<li class="not-applicable"><input type="checkbox" id="car-check">CAR = $<span class="expense"
 							id="car-cost">0</span>
@@ -94,7 +95,7 @@
 						<span class="non-automated-payment">NOT Automated</span>
 					</li>
 					<!-- MISCELLANEOUS OBLIGATIONS -->
-					<li><input type="checkbox" id="inp-check">INP = $<input type="number" placeholder=" Input Value"
+					<li><input type="checkbox" id="inp-check">INP = $<input type="text" placeholder=" Input Value"
 							id="inp-cost">
 					</li>
 					<br>
@@ -104,20 +105,33 @@
 				</ul>
 			</div>
 		</article>
+		<!-- PSLF MANAGEMENT -->
 		<article class="dashboard-item">
-	<div class="container">
-
 		<div class="marker">
 			<h2>PSLF Management</h2>
 		</div>
-
-		<p id="pslf-heading"></p>
-		<div class="bar" id="pslf-progress-bar">
-			<!-- `<span style="width:` + pslfCompletionPercentage + `%;"></span>` -->
+		<p class="list-background" id="pslf-heading"></p>
+		<div class="bar" id="pslf-progress-bar">	
 		</div>
 
-	</div>
+		<div>
+			<ul class="list-background">
+				<li>BEGIN: August 10th, 2020</li>
+				<li class="taken">August 10th, 2021</li>
+				<li class="taken">August 10th, 2022</li>
+				<li class="taken">August 10th, 2023</li>
+				<li>August 10th, 2024</li>
+				<li>August 10th, 2025</li>
+				<li>August 10th, 2026</li>
+				<li>August 10th, 2027</li>
+				<li>August 10th, 2028</li>
+				<li>August 10th, 2029</li>
+				<li>END: August 10th, 2030</li>
+			</ul>
+		</div>
+
 		</article>
+		<!-- STEP PAY PLAN -->
 		<article class="dashboard-item">
 	<div class="container">
 
@@ -130,17 +144,17 @@
 		<div id="salary-table-div"></div>
 	</div>
 		</article>
+		<!-- RE-EDUCATION INFORMATION -->
 		<article class="dashboard-item">
-			<div class="container">
 
 				<div class="marker">
 					<h2>RE-EDUCATION INFORMATION</h2>
 				</div>
 				<span class="marker" id="menulabel">Additional Information</span>
-				<p>CPA Credits: 3/30</p>
+				<p class="list-background">CPA Credits: 3/30</p>
 				
 
-				<ul class="course-list">
+				<ul class="list-background">
 					<li class="acc-core adv-acc-core taken">ACC 120 - Prin of Financial Accounting</li>
 					<li class="acc-core adv-acc-core taking-highlight">ACC 121 - Prin of Managerial Accounting</li>
 					<li class="acc-core adv-acc-core taking-highlight">BUS 115 - Business Law I</li>
@@ -149,7 +163,7 @@
 					<li class="adv-acc-core">ACC 221 - Intermediate Accounting II</li>
 					<li class="adv-acc-core">ACC 269 - Auditing & Assurance Services</li>
 				</ul>
-				<ul class="course-list">
+				<ul class="list-background">
 					<li class="acc-soft-app">ACC 149 - Intro to ACC Spreadsheets (2)</li>
 					<li class="acc-soft-app">ACC 150 - Accounting Software Applications (2)</li>
 					<li class="acc-soft-app">ACC 151 - Accounting Spreadsheet Applications (2)</li>
@@ -177,7 +191,6 @@
 		
 					</div>
 				</div>
-			</div>
 		</article>
 
 </body>
