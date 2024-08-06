@@ -68,43 +68,20 @@
 	min-width: 300px;
 }
 
-
-
-
-
-/* ASSETS */
-
-.poemasset {
-	background-color: inherit;
-	padding: 60px;
-	font-size: 30px;
-	text-align: center;
-	margin-top: 75%;
-}
-
-.rightbox {
-	user-select: none;
-}
-
-.leftbox {
-	user-select: none;
-}
-
 /* BUTTON */
 
 button {
 	background-color: inherit;
-	padding: 15px 20px;
-	/* text-align: center; */
-	text-decoration: none;	
-	display: inline-block;
+	padding: 1rem 1rem;
 	user-select: none;
-	position: relative;
+	border-radius: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: red;
+	border-style: double;
 }
 
 button:hover {
-	border: 7px solid rgb(172, 238, 205);
-	display: inline;
+	border: 4px solid rgb(172, 238, 205);
 }
 
 /* percents instead of pixels, says mo */
@@ -239,5 +216,25 @@ input[type=text]:focus {
 	cursor: pointer;
 }
 
+.tools-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
 
 
+	padding-block: 1rem;
+	width: min(90%, 70rem);
+	margin-inline: auto;
+}
+
+.tools-item {
+	padding: 1rem;
+	border-radius: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: red;
+	border-style: double;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}

@@ -1,12 +1,12 @@
 /* ----- PAGE SPECIFIC ----- */
 
 ul {
-	/* background-color:#f6f3ed; */
 	margin-right: 25%;
-	/* margin-left: 25%; */
-	/* padding-bottom: 30px;
-	padding-top: 30px; */
 	text-align: left;
+}
+
+.list-background {
+	background: #f6f3ed;
 }
 
 /* ----- GRID SPECIFIC ----- */
@@ -27,9 +27,9 @@ ul {
 }
 
 .dashboard-item {
-	/* padding: 2rem; */
+	padding: 1rem;
 	border-radius: 0.5rem;
-	/* box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25); */
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-color: red;
 	border-style: double;
 }
@@ -58,10 +58,6 @@ ul {
 
 .no-bullet {
 	list-style-type: none;
-}
-
-#notes-list {
-	background-color:#f6f3ed;
 }
 
 #balance {
@@ -179,8 +175,9 @@ ul {
 	list-style-type: "✓ ";
 }
 
-/* @media screen and (max-width: 768px) {
-} */
+.course-list {
+	background: #f6f3ed;
+}
 
 /* MENUMODAL */
 

@@ -18,94 +18,38 @@
 	</div>
 
 	<div class="marker">
-		<h2>Musings and Miscellaneous Posts</h2>
+		<h2>Just Miscellany</h2>
 	</div>
 
-	<div>
-		<h2 id="sutra-panel"></h2>
-	</div>
-
-	<div class="poemcontainer">
-		<div class="poemasset">
-			<div class="leftbox">
-				<span class="marker-for-menu" id="menulabel">Menu</span><br>
-
-				<!-- MENUMODAL -->
-				<div class="modal" id="menumodal">
-
-					<div class="menudialog">
-						<span class="closemenu">&times;</span>
-						<p class="dialogtext">Browse passages!</p>
-						<form>
-							<label for="choice"></label>
-							<select name="choice" id="poem-select">
-							</select>
-							<input type="button" value="Submit" onclick="goToPoem()">
-						</form>
-					</div>
-
+	<main class="tools-grid">
+		<article class="tools-item grid-col-span-2">
+			<h2 id="sutra-panel">test</h2>
+		</article>
+		
+		<article class="tools-item">
+			<button class="marker-for-menu" onclick="previousPoem()">Previous</button>
+			<button class="marker-for-menu" onclick="nextPoem()">Next</button></article>
+		<article class="tools-item grid-col-span-2">
+			<div class="poem" style="user-select: none;">
+				<p>
+				<div class="writing" id="fortyping">
 				</div>
-
-				<button class="marker-for-menu" onclick="previousPoem()">Previous</button>
+				</p>
 			</div>
-		</div>
-
-		<div class="poem" style="user-select: none;">
-			<p>
-			<div class="writing" id="fortyping">
-			</div>
-			</p>
+		</article>
+		<article class="tools-item">
+			<span class="marker-for-menu" id="poemnum"></span><br>
 			<form onSubmit="return false;" style="user-select: none; color: grey;">
 				<div class="typingfield" style="text-align: center; user-select: none;">
 					<input type="text" id="sampleTypingField" value="" onkeyup="typingTest()" autocomplete="off">
 				</div>
 			</form>
-			<!-- <button class="center" id="playbuttontext" style="color: grey; text-align: center" onclick="disabledAudioNotice()"></button> -->
-			<!-- onclick="playQuote()">Play</button> -->
-		</div>
-
-		<div class="poemasset">
-			<div class="rightbox">
-				<span class="marker-for-menu" id="poemnum"></span><br>
-			</div>
-			<button class="marker-for-menu" onclick="nextPoem()">Next</button>
-
-		</div>
-	</div>
-
-
-	<div class="poemcontainer">
-		<div class="marker">
-			<h2 id="blog-title">Sutra Practice</h2>
-			<form>
-			<select id="sutra-list"> <!-- THIS ID HOLDS THE VALUE -->
-				<option value="1">Robe Chant</option>
-				<option value="3">Heart Sutra</option>
-			</select>
-			<button id="sutra-button">Load</button>
-		</form>
-		</div>
-
-
-		<div class="sutra-container">
-			<p><span id="furigana-writing"></span>
-			<div class="sutra-writing" id="sutra-fortyping">
-			</div>
-			</p>
-			<form onSubmit="return false;" style="user-select: none; color: grey;">
-				<div class="typingfield" style="text-align: center; user-select: none;">
-					<input type="text" id="sutra-typing-field" value="" onkeyup="sutraTest()" autocomplete="off">
-				</div>
-			</form>
-
-		</div>
-
-		<div>
-			<p><span id="sutra-title"></span></p>
-			<p><span id="completed-sutra-lines"></span></p>
-		</div>
-
-	</div>
+		</article>
+		<!-- <article class="tools-item">Article 9</article>
+		<article class="tools-item">Article 10</article>
+		<article class="tools-item">Article 11</article>
+		<article class="tools-item">Article 12</article> -->
+	</main>
 
 	<script src="musings.js"></script>
 </body>
