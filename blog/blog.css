@@ -5,10 +5,6 @@ body {
   
   }
 
-.blog-post {
-	text-align: left;
-}
-
 .blog-grid {
 	display: grid;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
