@@ -251,4 +251,156 @@
 		</ul>
 	</div>
 
+
+
+
 </body>
+
+
+function populateBoxes(){
+	console.log('Running lifeinweeks.js!');
+	console.log(dateplanning);
+
+	const weeks = 52;
+	const years = 78;
+	const spans = new Array(weeks * years).fill(0).map((_, i) => {
+		const span = document.createElement('span');
+		span.classList.add('momentbox');
+		span.title = i + 1;
+		span.id = `box${i}`;
+		return span;
+	});
+
+	const boxinput = document.getElementById('boxinput');
+	spans.forEach(s => boxinput.appendChild(s));
+
+	spans.forEach((span, i) => {
+		if (i < weekslived){
+			span.classList.add('momentboxfilled');
+		}
+
+		// First Year Moment
+		if (i === 0){
+			span.classList.add('moment', 'firstyear-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('firstyear-moment');
+			}, false);
+		}
+		// High School Moment
+		if (i === 715){
+			span.classList.add('moment', 'highschool-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('highschool-moment');
+			}, false);
+		}
+		// Undergraduate School Moment
+		if (i === 924){
+			span.classList.add('moment', 'undergrad-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('undergrad-moment');
+			}, false);
+		}
+		// Graduate School Moment
+		if (i === 1132){
+			span.classList.add('moment', 'gradschool-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('gradschool-moment');
+			}, false);
+		}
+		// Jail Hired Moment
+		if (i === 1239){
+			span.classList.add('moment', 'jailhired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('jailhired-moment');
+			}, false);
+		}
+		// Jail Fired Moment
+		if (i === 1252){
+			span.classList.add('moment', 'jailfired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('jailfired-moment');
+			}, false);
+		}
+		// UPS Hired Moment
+		if (i === 1254){
+			span.classList.add('moment', 'upshired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('upshired-moment');
+			}, false);
+		}
+		// Security Hired Moment
+		if (i === 1261){
+			span.classList.add('moment', 'securityhired-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('securityhired-moment');
+			}, false);
+		}
+		// Tech Company WV Moment
+		if (i === 1353){
+			span.classList.add('moment', 'techwv-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('techwv-moment');
+			}, false);
+		}
+		// Tech Company VA Moment
+		if (i === 1366){
+			span.classList.add('moment', 'techva-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('techva-moment');
+			}, false);
+		}
+		// Tech Company Furloughed
+		if (i === 1384){
+			span.classList.add('moment', 'techvafurloughed-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('techvafurloughed-moment');
+			}, false);
+		}
+		// NC Relocation Moment
+		if (i === 1395){
+			span.classList.add('moment', 'ncrelocation-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('ncrelocation-moment');
+			}, false);
+		}
+		// Covid Moment
+		if (i === 1452){
+			span.classList.add('moment', 'covid-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('covid-moment');
+			}, false);
+		}
+
+		// Covid Moment 2
+		if (i === 1469){
+			span.classList.add('moment', 'covid2-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('covid2-moment');
+			}, false);
+		}
+
+		// PERT Tryout
+		if (i === 1476){
+			span.classList.add('moment', 'perttryout-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('perttryout-moment');
+			}, false);
+		}
+
+		// Joined PERT
+		if (i === 1478){
+			span.classList.add('moment', 'joinedpert-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('joinedpert-moment');
+			}, false);
+		}
+
+		// Moved to Asheville
+		if (i === 1488){
+			span.classList.add('moment', 'asheville-moment');
+			span.addEventListener('click', function(){
+				displayMomentInfo('asheville-moment');
+			}, false);
+		}
+	});
+} // END populateBoxes()

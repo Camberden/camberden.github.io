@@ -11,6 +11,7 @@ input[type=text] {
 	font-family: Permanent Marker, serif;
 	font-size: 1rem;
 	border: none;
+	width: 8rem;
 }
 
 input[type=text]:focus {
@@ -72,12 +73,6 @@ input[type=text]:focus {
 
 #balance {
 	margin-left: 24px;
-}
-
-#balance-list {
-	text-align: left;
-	background-color:#f6f3ed;
-
 }
 
 .automated-payment {
@@ -156,7 +151,12 @@ input[type=text]:focus {
 	color: blueviolet;
 	background-color: yellow;
   }
+/* ----- STEP PAY PLAN SPECIFIC ----- */
 
+#salary-table-div {
+	position: relative;
+	text-align: center;
+}
 
 /* ----- REEDUCATION SPECIFIC ----- */
 
@@ -263,4 +263,31 @@ input[type=text]:focus {
 
 .cpa-req-highlight{
 	color: red;
+}
+
+/* ----- LIFE IN WEEKS SPECIFIC ----- */
+
+.momentbox {
+	display: inline-block;
+	width: 2px;
+	height: 5px;
+	border-radius: 1px;
+	margin: 1px;
+	border: 1px solid #444;
+	color: rgba(0, 0, 0, 0);
+}
+
+.momentboxfilled {
+	  background-color: #444;
+}
+
+.momentboxfilled:hover {
+	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background-size: contain;
+}
+
+.moment {
+	border: 2px solid red;
+	opacity: 1;
+	margin: 0px;
 }
