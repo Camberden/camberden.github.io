@@ -101,6 +101,15 @@ const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)
 const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
 const pslfRequirement = 120;
 
+const pslfProgressBar = document.getElementById("pslf-progress-bar");
+document.getElementById("pslf-heading").innerHTML = Math.floor(govtServiceMonths / 12) + 
+" years of service with " + govtServiceMonths + " of " + pslfRequirement + " months completed!";
+const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
+pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
+
+// ----- STEP PAY PLAN MODULE ----- //
+
+
 let salarySchedule;
 const setSalarySchedule = fy => {
 	switch (fy) {
@@ -117,92 +126,137 @@ const setSalarySchedule = fy => {
 	}
 }
 
-// Executed onload:
 setSalarySchedule(fiscalYear);
 
-//const girlunaDispSalSched = () => salarySchedule2023.forEach(x => x.forEach(y => console.debug(`$${y}`)));
+// class Officer {
+// 	constructor(name, startDate, grade) {
+// 		this.name = name;
+// 		this.startDate = startDate;
+// 		this.grade = grade; // COI = 0; COII = 1; COIII = 2
+// 	}
+// 	get yearsExperience() {
+// 		return (getYearID() - getYearID(this.startDate) - 1); // HARD CODED -1 TO CORRECT FOR ISSUE
+// 	}
 
-class Officer { //REFACTOR BASED ON MONTHS OF EXP.
-	constructor(name, startDate, grade) {
-		this.name = name;
-		this.startDate = startDate;
-		this.grade = grade; // COI = 0; COII = 1; COIII = 2
-	}
-	get yearsExperience() {
-		return (getYearID() - getYearID(this.startDate) - 1); // HARD CODED -1 TO CORRECT FOR ISSUE
-	}
+// 	get step() {
 
-	get step() {
+// 		return (this.yearsExperience > 6 ? 6 : (this.yearsExperience + 1)); // HARD CODED TO ACCOUNT FOR JUNE 2024 STEP BUMP!
+// 	}
 
-		return (this.yearsExperience > 6 ? 6 : (this.yearsExperience + 1)); // HARD CODED TO ACCOUNT FOR JUNE 2024 STEP BUMP!
-	}
+// 	get salary() {
+// 		return "$" + salarySchedule[this.grade][this.step];
+// 	}
+// }
 
-	get salary() {
-		return "$" + salarySchedule[this.grade][this.step];
-	}
-}
-
-const chrispy = new Officer("Chrispy", workAnniversary, 0);
-console.log("Years experience: " + chrispy.yearsExperience);
-console.log("Step: " + chrispy.step);
-console.log("Chrispy base rate " + chrispy.salary);
+// const chrispy = new Officer("Chrispy", workAnniversary, 0);
 
 // ----- PSLF BAR
 
-const pslfProgressBar = document.getElementById("pslf-progress-bar");
-document.getElementById("pslf-heading").innerHTML = Math.floor(govtServiceMonths / 12) + 
-" years of service with " + govtServiceMonths + " of " + pslfRequirement + " months completed!";
-const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
-pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
-
-function generateSalaryTable(salary) {
-	// Add table headings and CO Grade Column
-	const salaryTable = document.createElement("table");
-	const salaryTableBody = document.createElement("tbody");
-
-	for (let i = -1; i < salarySchedule.length; i++) {
-		const salaryRow = document.createElement("tr");
-		salaryTableBody.appendChild(salaryRow);
-
-		if (i === -1) {
-			for (let k = -1; k < salarySchedule[0].length; k++) {
-				const salaryCellHeader = document.createElement("th");
-				const salaryCellHeaderText = document.createTextNode("Step " + (k));
-				salaryRow.appendChild(salaryCellHeader);
-				if (k < 0) {
-					continue;
-				}
-				salaryCellHeader.appendChild(salaryCellHeaderText);
-			}
-			continue;
-		}
 
 
-		for (let j = 0; j < salarySchedule[i].length; j++) {
-			if (j === 0) {
-				const salaryCellGrade = document.createElement("td");
-				const salaryCellGradeText = document.createTextNode("CO" + (i + 1));
-				salaryCellGrade.appendChild(salaryCellGradeText);
-				salaryRow.appendChild(salaryCellGrade);
-			}
+// function generateSalaryTable(salary) {
+// 	// Add table headings and CO Grade Column
+// 	const salaryTable = document.createElement("table");
+// 	const salaryTableBody = document.createElement("tbody");
 
-			const salaryCell = document.createElement("td");
-			if ("$" + salarySchedule[i][j] === salary) {
-				salaryCell.classList.add("salary-highlight");
-			}
-			const salaryCellText = document.createTextNode("$" + salarySchedule[i][j]);
-			salaryCell.appendChild(salaryCellText);
-			salaryRow.appendChild(salaryCell);
-		}
+// 	for (let i = -1; i < salarySchedule.length; i++) {
+// 		const salaryRow = document.createElement("tr");
+// 		salaryTableBody.appendChild(salaryRow);
+
+// 		if (i === -1) {
+// 			for (let k = -1; k < salarySchedule[0].length; k++) {
+// 				const salaryCellHeader = document.createElement("th");
+// 				const salaryCellHeaderText = document.createTextNode("Step " + (k));
+// 				salaryRow.appendChild(salaryCellHeader);
+// 				if (k < 0) {
+// 					continue;
+// 				}
+// 				salaryCellHeader.appendChild(salaryCellHeaderText);
+// 			}
+// 			continue;
+// 		}
+
+
+// 		for (let j = 0; j < salarySchedule[i].length; j++) {
+// 			if (j === 0) {
+// 				const salaryCellGrade = document.createElement("td");
+// 				const salaryCellGradeText = document.createTextNode("CO" + (i + 1));
+// 				salaryCellGrade.appendChild(salaryCellGradeText);
+// 				salaryRow.appendChild(salaryCellGrade);
+// 			}
+
+// 			const salaryCell = document.createElement("td");
+// 			if ("$" + salarySchedule[i][j] === salary) {
+// 				salaryCell.classList.add("salary-highlight");
+// 			}
+// 			const salaryCellText = document.createTextNode("$" + salarySchedule[i][j]);
+// 			salaryCell.appendChild(salaryCellText);
+// 			salaryRow.appendChild(salaryCell);
+// 		}
+// 	}
+// 	salaryTable.appendChild(salaryTableBody);
+// 	document.getElementById("salary-table-div").appendChild(salaryTable);
+// 	// document.body.appendChild(salaryTable);
+// 	salaryTable.setAttribute("border", "2");
+// };
+// generateSalaryTable(chrispy.salary);
+
+let custodyLevel = 1;
+let yearsExperience = 4;
+let experienceBonus = 1;
+let activeBonus = true;
+document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
+
+function calculateStep(){
+	currentSalary = salarySchedule2024[custodyLevel - 1][yearsExperience === 6 ? yearsExperience : (yearsExperience + experienceBonus)];
+	document.getElementById("current-salary").innerHTML = currentSalary;
+	document.getElementById("custody-level").innerHTML = custodyLevel;
+	document.getElementById("years-experience").innerHTML = yearsExperience;
+}
+calculateStep();
+function increaseCustodyLevel() {
+	if (custodyLevel >= 1 && custodyLevel < 3){
+		custodyLevel+= 1;
+		document.getElementById("custody-level").innerHTML = custodyLevel;
+		calculateStep();
 	}
-	salaryTable.appendChild(salaryTableBody);
-	document.getElementById("salary-table-div").appendChild(salaryTable);
-	// document.body.appendChild(salaryTable);
-	salaryTable.setAttribute("border", "2");
-};
+}
+function decreaseCustodyLevel() {
+	if (custodyLevel <= 3 && custodyLevel > 1){
+		custodyLevel-= 1;
+		document.getElementById("custody-level").innerHTML = custodyLevel;
+		calculateStep();
+	}
+}
 
-// This is executed onload:
-generateSalaryTable(chrispy.salary);
+function increaseYearsExperience(){
+	if (yearsExperience >= 0 && (yearsExperience) < 6){
+		yearsExperience += 1;
+		document.getElementById("years-experience").innerHTML = yearsExperience;
+		calculateStep();
+	}
+}
+
+function decreaseYearsExperience() {
+	if (yearsExperience > 0 && (yearsExperience) <= 6){
+		yearsExperience-= 1;
+		document.getElementById("years-experience").innerHTML = yearsExperience;
+		calculateStep();
+	}
+}
+
+function toggleExperienceBonus(){
+	if (yearsExperience >= 0 && yearsExperience < 6 && !activeBonus) {
+		experienceBonus = 1;
+		activeBonus = true;
+		document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
+	} else if (activeBonus) {
+		experienceBonus = 0;
+		activeBonus = false;
+		document.getElementById("toggle-bonus").innerHTML = "Add Extra Step";
+	}
+	calculateStep();
+}
 
 // ---------- REEDUCATION INFORMATION ----------//
 

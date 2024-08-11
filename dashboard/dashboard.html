@@ -141,6 +141,13 @@
 				</div>
 				<div>
 					<p><span id="fiscal-year"></span></p>
+					<p><span id="current-salary"></span></p>
+
+				</div>
+				<div id="input-step-information">
+					<span id="custody-level">_</span> <button onclick="increaseCustodyLevel()">Up</button><button onclick="decreaseCustodyLevel()">Down</button><br>
+					<span id="years-experience" label="years-experience">_</span><button onclick="increaseYearsExperience()">Up</button><button onclick="decreaseYearsExperience()">Down</button><br>
+					<button id="toggle-bonus" onclick="toggleExperienceBonus()">_</button>
 				</div>
 				<div id="salary-table-div"></div>
 			</div>
@@ -204,9 +211,10 @@
 			<div id="box-input"></div>
 		</article>
 		<!-- LIFE IN WEEKS DISPLAY -->
-		<!-- <article class="dashboard-item">
-			<p id="moment-reader">Moment Reader (Pending)</p>
-		</article> -->
+		<article class="dashboard-item grid-col-span-2">
+			<!-- <p id="moment-reader">Moment Reader (Pending)</p> -->
+		
+		</article>
 </body>
 
 
