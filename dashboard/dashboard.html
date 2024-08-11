@@ -142,14 +142,57 @@
 				<div>
 					<p><span id="fiscal-year"></span></p>
 					<p><span id="current-salary"></span></p>
+					<div id="salary-table-div">
+						<table>
+							<tr>
+								<th>___</th>
+								<th>Step 0</th>
+								<th>Step 1</th>
+								<th>Step 2</th>
+								<th>Step 3</th>
+								<th>Step 4</th>
+								<th>Step 5</th>
+								<th>Step 6</th>
+							</tr>
+							<tr>
+								<th>COI</th>
+								<td id="co1-0"></td>
+								<td id="co1-1"></td>
+								<td id="co1-2"></td>
+								<td id="co1-3"></td>
+								<td id="co1-4"></td>
+								<td id="co1-5"></td>
+								<td id="co1-6"></td>
+							</tr>
+							<tr>
+								<th>COII</th>
+								<td id="co2-0"></td>
+								<td id="co2-1"></td>
+								<td id="co2-2"></td>
+								<td id="co2-3"></td>
+								<td id="co2-4"></td>
+								<td id="co2-5"></td>
+								<td id="co2-6"></td>
+							</tr>
+							<tr>
+								<th>COIII</th>
+								<td id="co3-0"></td>
+								<td id="co3-1"></td>
+								<td id="co3-2"></td>
+								<td id="co3-3"></td>
+								<td id="co3-4"></td>
+								<td id="co3-5"></td>
+								<td id="co3-6"></td>
+							</tr>
+						</table>
+					</div>
 
 				</div>
 				<div id="input-step-information">
-					<span id="custody-level">_</span> <button onclick="increaseCustodyLevel()">Up</button><button onclick="decreaseCustodyLevel()">Down</button><br>
-					<span id="years-experience" label="years-experience">_</span><button onclick="increaseYearsExperience()">Up</button><button onclick="decreaseYearsExperience()">Down</button><br>
+					<p>CO<span id="custody-level">_</span> <button onclick="increaseCustodyLevel()">Up</button><button onclick="decreaseCustodyLevel()">Down</button></p><br>
+					<p>Years Experience: <span id="years-experience" label="years-experience">_</span> <button onclick="increaseYearsExperience()">Up</button><button onclick="decreaseYearsExperience()">Down</button></p><br>
 					<button id="toggle-bonus" onclick="toggleExperienceBonus()">_</button>
 				</div>
-				<div id="salary-table-div"></div>
 			</div>
 		</article>
 		<!-- RE-EDUCATION INFORMATION -->

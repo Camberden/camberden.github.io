@@ -67,6 +67,27 @@ calculateNewBalance();
 
 const workAnniversary = new Date(1602156600000);
 const fiscalYear2024 = 1719806400000;
+
+const now = new Date();
+const fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
+const fiscalYearDisplay = document.getElementById("fiscal-year");
+fiscalYearDisplay.innerHTML = `FY ${fiscalYear}-${fiscalYear + 1}`;
+
+const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
+const getYearID = (date = new Date()) => date.getUTCFullYear();
+
+const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1; // Adjusted from base Zero
+const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
+const pslfRequirement = 120;
+
+const pslfProgressBar = document.getElementById("pslf-progress-bar");
+document.getElementById("pslf-heading").innerHTML = Math.floor(govtServiceMonths / 12) + 
+" years of service with " + govtServiceMonths + " of " + pslfRequirement + " months completed!";
+const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
+pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
+
+// ----- STEP PAY PLAN MODULE ----- //
+
 const salarySchedule2023 = [
 	["36525", "39801", "41427", "43498", "45237", "46595", "47527"], // C/OI
 	["37727", "40367", "42790", "44929", "46726", "48127", "49090"], // C/OII
@@ -89,118 +110,26 @@ const salarySchedule2026 = [
 	["38859", "41578", "44074", "46277", "48128", "49571", "50563"], // C/OII
 	["41558", "44468", "47137", "49494", "51473", "53017", "54078"], // C/OIII
 ];
-const now = new Date();
-const fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
-const fiscalYearDisplay = document.getElementById("fiscal-year");
-fiscalYearDisplay.innerHTML = `FY ${fiscalYear}-${fiscalYear + 1}`;
 
-const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
-const getYearID = (date = new Date()) => date.getUTCFullYear();
-
-const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1; // Adjusted from base Zero
-const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
-const pslfRequirement = 120;
-
-const pslfProgressBar = document.getElementById("pslf-progress-bar");
-document.getElementById("pslf-heading").innerHTML = Math.floor(govtServiceMonths / 12) + 
-" years of service with " + govtServiceMonths + " of " + pslfRequirement + " months completed!";
-const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
-pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
-
-// ----- STEP PAY PLAN MODULE ----- //
-
-
-let salarySchedule;
-const setSalarySchedule = fy => {
-	switch (fy) {
-		// TODO: make past cases
-		case (2023):
-			salarySchedule = salarySchedule2023;
-			break;
-		case (2024):
-			salarySchedule = salarySchedule2024;
-			break;
-		default:
-			salarySchedule = fy;
-			break;
-	}
-}
-
-setSalarySchedule(fiscalYear);
-
-// class Officer {
-// 	constructor(name, startDate, grade) {
-// 		this.name = name;
-// 		this.startDate = startDate;
-// 		this.grade = grade; // COI = 0; COII = 1; COIII = 2
-// 	}
-// 	get yearsExperience() {
-// 		return (getYearID() - getYearID(this.startDate) - 1); // HARD CODED -1 TO CORRECT FOR ISSUE
-// 	}
-
-// 	get step() {
-
-// 		return (this.yearsExperience > 6 ? 6 : (this.yearsExperience + 1)); // HARD CODED TO ACCOUNT FOR JUNE 2024 STEP BUMP!
-// 	}
-
-// 	get salary() {
-// 		return "$" + salarySchedule[this.grade][this.step];
+const salarySchedule = salarySchedule2024;
+// const setSalarySchedule = fy => {
+// 	switch (fy) {
+// 		// TODO: make past cases
+// 		case (2023):
+// 			salarySchedule = salarySchedule2023;
+// 			break;
+// 		case (2024):
+// 			salarySchedule = salarySchedule2024;
+// 			break;
+// 		default:
+// 			salarySchedule = fy;
+// 			break;
 // 	}
 // }
 
-// const chrispy = new Officer("Chrispy", workAnniversary, 0);
+// setSalarySchedule(fiscalYear);
 
-// ----- PSLF BAR
-
-
-
-// function generateSalaryTable(salary) {
-// 	// Add table headings and CO Grade Column
-// 	const salaryTable = document.createElement("table");
-// 	const salaryTableBody = document.createElement("tbody");
-
-// 	for (let i = -1; i < salarySchedule.length; i++) {
-// 		const salaryRow = document.createElement("tr");
-// 		salaryTableBody.appendChild(salaryRow);
-
-// 		if (i === -1) {
-// 			for (let k = -1; k < salarySchedule[0].length; k++) {
-// 				const salaryCellHeader = document.createElement("th");
-// 				const salaryCellHeaderText = document.createTextNode("Step " + (k));
-// 				salaryRow.appendChild(salaryCellHeader);
-// 				if (k < 0) {
-// 					continue;
-// 				}
-// 				salaryCellHeader.appendChild(salaryCellHeaderText);
-// 			}
-// 			continue;
-// 		}
-
-
-// 		for (let j = 0; j < salarySchedule[i].length; j++) {
-// 			if (j === 0) {
-// 				const salaryCellGrade = document.createElement("td");
-// 				const salaryCellGradeText = document.createTextNode("CO" + (i + 1));
-// 				salaryCellGrade.appendChild(salaryCellGradeText);
-// 				salaryRow.appendChild(salaryCellGrade);
-// 			}
-
-// 			const salaryCell = document.createElement("td");
-// 			if ("$" + salarySchedule[i][j] === salary) {
-// 				salaryCell.classList.add("salary-highlight");
-// 			}
-// 			const salaryCellText = document.createTextNode("$" + salarySchedule[i][j]);
-// 			salaryCell.appendChild(salaryCellText);
-// 			salaryRow.appendChild(salaryCell);
-// 		}
-// 	}
-// 	salaryTable.appendChild(salaryTableBody);
-// 	document.getElementById("salary-table-div").appendChild(salaryTable);
-// 	// document.body.appendChild(salaryTable);
-// 	salaryTable.setAttribute("border", "2");
-// };
-// generateSalaryTable(chrispy.salary);
-
+let currentSalary;
 let custodyLevel = 1;
 let yearsExperience = 4;
 let experienceBonus = 1;
@@ -210,21 +139,19 @@ document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
 function calculateStep(){
 	currentSalary = salarySchedule2024[custodyLevel - 1][yearsExperience === 6 ? yearsExperience : (yearsExperience + experienceBonus)];
 	document.getElementById("current-salary").innerHTML = currentSalary;
-	document.getElementById("custody-level").innerHTML = custodyLevel;
+	document.getElementById("custody-level").innerHTML = ("I".repeat(custodyLevel));
 	document.getElementById("years-experience").innerHTML = yearsExperience;
 }
 calculateStep();
 function increaseCustodyLevel() {
 	if (custodyLevel >= 1 && custodyLevel < 3){
 		custodyLevel+= 1;
-		document.getElementById("custody-level").innerHTML = custodyLevel;
 		calculateStep();
 	}
 }
 function decreaseCustodyLevel() {
 	if (custodyLevel <= 3 && custodyLevel > 1){
 		custodyLevel-= 1;
-		document.getElementById("custody-level").innerHTML = custodyLevel;
 		calculateStep();
 	}
 }
@@ -232,7 +159,6 @@ function decreaseCustodyLevel() {
 function increaseYearsExperience(){
 	if (yearsExperience >= 0 && (yearsExperience) < 6){
 		yearsExperience += 1;
-		document.getElementById("years-experience").innerHTML = yearsExperience;
 		calculateStep();
 	}
 }
@@ -240,7 +166,6 @@ function increaseYearsExperience(){
 function decreaseYearsExperience() {
 	if (yearsExperience > 0 && (yearsExperience) <= 6){
 		yearsExperience-= 1;
-		document.getElementById("years-experience").innerHTML = yearsExperience;
 		calculateStep();
 	}
 }
@@ -257,6 +182,20 @@ function toggleExperienceBonus(){
 	}
 	calculateStep();
 }
+
+function populateSalaryTable(){
+	for (i = 0; i < salarySchedule.length; i++) {
+		for (j = 0; j < salarySchedule[i].length; j++){
+			console.log(salarySchedule[i][j]);
+			document.getElementById(`co${i + 1}-${j}`).innerHTML = salarySchedule[i][j];
+			if (salarySchedule[i][j] === currentSalary) {
+				document.getElementById(`co${i + 1}-${j}`).classList.add("salary-highlight");
+			}
+		}
+	}
+}
+
+populateSalaryTable();
 
 // ---------- REEDUCATION INFORMATION ----------//
 
@@ -437,7 +376,7 @@ function populateBoxes(){
 			}, false);
 		}
 	});
-} // END populateBoxes()
+}
 
 document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(weekslived + 1);
 populateBoxes();

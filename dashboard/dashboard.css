@@ -147,15 +147,27 @@ input[type=text]:focus {
 	overflow: hidden;
   }
 
+/* ----- STEP PAY PLAN SPECIFIC ----- */
+
+#salary-table-div {
+	background: #f6f3ed;
+	position: relative;
+	text-align: center;
+}
+
+table, th, td {
+	border: 1px solid black;
+	background: #f6f3ed;
+
+  }
+
 .salary-highlight {
 	color: blueviolet;
 	background-color: yellow;
   }
-/* ----- STEP PAY PLAN SPECIFIC ----- */
 
-#salary-table-div {
-	position: relative;
-	text-align: center;
+#input-step-information {
+	background: #f6f3ed;
 }
 
 /* ----- REEDUCATION SPECIFIC ----- */
