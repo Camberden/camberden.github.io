@@ -166,6 +166,10 @@ table, th, td {
 	background-color: yellow;
   }
 
+#salary-table-corner {
+	background: black;
+}
+
 #input-step-information {
 	background: #f6f3ed;
 }

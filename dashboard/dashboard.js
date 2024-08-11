@@ -130,28 +130,41 @@ const salarySchedule = salarySchedule2024;
 // setSalarySchedule(fiscalYear);
 
 let currentSalary;
+let highlightedSalary;
 let custodyLevel = 1;
 let yearsExperience = 4;
 let experienceBonus = 1;
+let adjustedExperience;
 let activeBonus = true;
 document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
 
+
 function calculateStep(){
-	currentSalary = salarySchedule2024[custodyLevel - 1][yearsExperience === 6 ? yearsExperience : (yearsExperience + experienceBonus)];
+	adjustedExperience = yearsExperience === 6 ? yearsExperience : (yearsExperience + experienceBonus);
+	currentSalary = salarySchedule2024[custodyLevel - 1][adjustedExperience];
 	document.getElementById("current-salary").innerHTML = currentSalary;
 	document.getElementById("custody-level").innerHTML = ("I".repeat(custodyLevel));
 	document.getElementById("years-experience").innerHTML = yearsExperience;
+	highlightedSalary = document.getElementById(`co${custodyLevel}-${adjustedExperience}`);
+	highlightedSalary.classList.add("salary-highlight");
 }
+
+function removeHighlightedSalary(){
+	highlightedSalary.classList.remove("salary-highlight");
+}
+
 calculateStep();
 function increaseCustodyLevel() {
 	if (custodyLevel >= 1 && custodyLevel < 3){
 		custodyLevel+= 1;
+		removeHighlightedSalary();
 		calculateStep();
 	}
 }
 function decreaseCustodyLevel() {
 	if (custodyLevel <= 3 && custodyLevel > 1){
 		custodyLevel-= 1;
+		removeHighlightedSalary();
 		calculateStep();
 	}
 }
@@ -159,6 +172,7 @@ function decreaseCustodyLevel() {
 function increaseYearsExperience(){
 	if (yearsExperience >= 0 && (yearsExperience) < 6){
 		yearsExperience += 1;
+		removeHighlightedSalary();
 		calculateStep();
 	}
 }
@@ -166,6 +180,7 @@ function increaseYearsExperience(){
 function decreaseYearsExperience() {
 	if (yearsExperience > 0 && (yearsExperience) <= 6){
 		yearsExperience-= 1;
+		removeHighlightedSalary();
 		calculateStep();
 	}
 }
@@ -180,9 +195,9 @@ function toggleExperienceBonus(){
 		activeBonus = false;
 		document.getElementById("toggle-bonus").innerHTML = "Add Extra Step";
 	}
+	removeHighlightedSalary();
 	calculateStep();
 }
-
 function populateSalaryTable(){
 	for (i = 0; i < salarySchedule.length; i++) {
 		for (j = 0; j < salarySchedule[i].length; j++){
