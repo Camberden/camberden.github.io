@@ -152,12 +152,15 @@ input[type=text]:focus {
 #salary-table-div {
 	background: #f6f3ed;
 	position: relative;
-	text-align: center;
+	text-align: left;
+	margin-left: 10%;
+	margin-right: 10%;
+	background: #f6f3ed;
 }
 
 table, th, td {
 	border: 1px solid black;
-	background: #f6f3ed;
+	height: 2rem;
 
   }
 
