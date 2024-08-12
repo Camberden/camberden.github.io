@@ -62,15 +62,17 @@ body {
 
 .index-item {
 	/* padding: 1rem; */
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 3rem 3rem 2rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	/* box-shadow: 2rem -1rem #a1dbf8; */
+	/* background: #f6f3ed; */
 }
 
-.section-title {
+.index-item > .section-title {
 	color: black;
-	font-size: 3rem; 
+	font-size: 3rem;
 	cursor: pointer;
 
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	/* box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25); */
 	background-color: rgba(0, 0, 0, 0.1);
 
 	background-image: linear-gradient(120deg, 0%,  100%);
@@ -126,10 +128,6 @@ a:hover {
 	background-size: 100% 5%;
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 }
-
-/* CONTAINERS */
-
-
 
 /* FOR SOMETHING TO HIGHLIGHT IN VIEWPORT: PENDING USE CASE */
 .text-flourish {

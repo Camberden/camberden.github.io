@@ -49,15 +49,6 @@
 
 /*	POEMCONTAINER	*/
 
-.poemcontainer {
-	display: grid;
-	grid-template-columns: auto auto auto;
-	margin-left: auto;
-	margin-right: auto;
-	min-width: 500px;
-}
-
-
 .poem {
 	background-color: #f6f3ed;
 	min-width: 300px;
@@ -151,6 +142,24 @@ input[type=text]:focus {
 .markersmall {
 	margin-top: -1em;
 	font-size: 50px;
+}
+
+
+/* ----- BLOG POSTING ----- */
+
+.marker-violet {
+	font-family: Permanent Marker, serif;
+	color: rgb(19, 94, 199);
+}
+
+.blog-post-header {
+	text-align: left;
+	background: #f6f3ed;
+}
+
+.blog-post {
+	text-align: left;
+	background-color: #f6f3ed;
 }
 
 /* MENUMODAL */

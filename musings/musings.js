@@ -357,7 +357,7 @@ let k = 0;
 sutraPanel.innerHTML = sutrasSinoSanskritJapanese[0];
 function cycleSutraLines() {
 	sutraPanel.innerHTML = sutrasSinoSanskritJapanese[1][k];
-	console.log(k);
+	// console.log(k);
 	if (k >= sutrasSinoSanskritJapanese[1].length - 1) {
 		k = 0;
 	} else {
@@ -377,27 +377,6 @@ let lineCounter = 0;
 let sutraSelection = 1; // must be altered through HTML form
 let sutraTitle = sutraSelection - 1;
 const highlight = `<span style="color:rgb(123, 153, 184);">`;
-const sutraForTyping = document.getElementById("sutra-fortyping");
-
-
-function loadSutra(){
-	kanjiCounter =  0;
-	lineCounter = 0;
-	sutraForTyping.innerHTML = "";
-	document.getElementById("sutra-typing-field").innerHTML = "";
-	document.getElementById("completed-sutra-lines").innerHTML = "";
-	sutraSelection = document.getElementById("sutra-list").value;
-	document.getElementById("sutra-title").innerHTML = sutrasSinoSanskritJapanese[sutraSelection - 1];
-	console.log(sutraSelection);
-}
-loadSutra();
-
-const sutraButton = document.getElementById("sutra-button");
-sutraButton.onclick = (event) => {
-	loadSutra();
-	event.preventDefault();
-	loadNextLine();
-}
 
 function loadNextLine() {
 	sutraForTyping.innerHTML = "";
@@ -471,3 +450,47 @@ const boddhisattvaPrecepts = [
 	"Not Being Angry",
 	"Not Slandering the Three Treasures",
 ];
+
+// ----- BLOG POSTS
+// console.log(blogData[0]);
+let activeBlogPost = document.getElementById("active-blog-post");
+let activeBlogPostNumber = blogData.length - 1;
+let blogPostList = document.getElementById("blog-post-list");
+
+function initBlogData(){
+	for (i = 0; i < blogData.length; i++){
+		blogData[i] = `<span id=entry-${i}>` + blogData[i] + `</span>`;
+		let listedBlogPost = document.createElement("li");
+		blogPostList.appendChild(listedBlogPost);
+		listedBlogPost.append(`Post ${i + 1}`);
+	}
+	activeBlogPost.innerHTML = blogData[activeBlogPostNumber];
+}
+initBlogData();
+
+function setActiveBlogPost(choice){
+	activeBlogPost.innerHTML = blogData[0];
+}
+
+console.log(`Index Number: ` + (blogData.length - 1));
+console.log(`Active Number:` + activeBlogPostNumber);
+console.log(activeBlogPostNumber == (blogData.length - 1) ? true : false);
+
+function previousBlogPost(){
+	if (activeBlogPostNumber > 0) {
+		activeBlogPostNumber--;
+		console.log(`Active Number:` + activeBlogPostNumber);
+		console.log(`Index Number: ` + (blogData.length - 1));
+		activeBlogPost.innerHTML = blogData[activeBlogPostNumber];
+	}
+}
+
+function nextBlogPost(){
+	if (activeBlogPostNumber < blogData.length - 1) {
+		activeBlogPostNumber++;
+		console.log(`Active Number:` + activeBlogPostNumber);
+		console.log(`Index Number: ` + (blogData.length - 1));
+		activeBlogPost.innerHTML = blogData[activeBlogPostNumber];
+	}
+}
+
