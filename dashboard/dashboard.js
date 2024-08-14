@@ -143,6 +143,9 @@ function calculateStep(){
 	adjustedExperience = yearsExperience === 6 ? yearsExperience : (yearsExperience + experienceBonus);
 	currentSalary = salarySchedule2024[custodyLevel - 1][adjustedExperience];
 	document.getElementById("current-salary").innerHTML = currentSalary;
+	document.getElementById("monthly-salary").innerHTML = (currentSalary / 12).toFixed(2);
+	document.getElementById("hourly-salary").innerHTML = ((currentSalary / 52) / 40).toFixed(2);
+	document.getElementById("gap-pay").innerHTML = ((currentSalary / 52)/ 40 * 11).toFixed(2);
 	document.getElementById("custody-level").innerHTML = ("I".repeat(custodyLevel));
 	document.getElementById("years-experience").innerHTML = yearsExperience;
 	highlightedSalary = document.getElementById(`co${custodyLevel}-${adjustedExperience}`);
