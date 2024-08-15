@@ -169,12 +169,24 @@ table, th, td {
   }
 
 #salary-table-corner {
-	background: black;
+	background: whitesmoke;
 }
 
 #input-step-information {
 	background: #f6f3ed;
 }
+
+#toggle-bonus:hover {
+	border-left-width: .5rem;
+	border-right-width: .5rem;
+
+}
+.button-toggle-enabled {
+	border-style: double;
+	border-color: greenyellow;
+	background-color: #a1dbf8;
+}
+
 
 /* ----- REEDUCATION SPECIFIC ----- */
 

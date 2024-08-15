@@ -136,7 +136,6 @@ let yearsExperience = 4;
 let experienceBonus = 1;
 let adjustedExperience;
 let activeBonus = true;
-document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
 
 
 function calculateStep(){
@@ -161,8 +160,11 @@ function calculateStep(){
 function removeHighlightedSalary(){
 	highlightedSalary.classList.remove("salary-highlight");
 }
+document.getElementById("toggle-bonus").classList.add("button-toggle-enabled");
+document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
 
 calculateStep();
+
 function increaseCustodyLevel() {
 	if (custodyLevel >= 1 && custodyLevel < 3){
 		custodyLevel+= 1;
@@ -177,7 +179,6 @@ function decreaseCustodyLevel() {
 		calculateStep();
 	}
 }
-
 function increaseYearsExperience(){
 	if (yearsExperience >= 0 && (yearsExperience) < 6){
 		yearsExperience += 1;
@@ -185,7 +186,6 @@ function increaseYearsExperience(){
 		calculateStep();
 	}
 }
-
 function decreaseYearsExperience() {
 	if (yearsExperience > 0 && (yearsExperience) <= 6){
 		yearsExperience-= 1;
@@ -193,15 +193,16 @@ function decreaseYearsExperience() {
 		calculateStep();
 	}
 }
-
 function toggleExperienceBonus(){
 	if (yearsExperience >= 0 && yearsExperience < 6 && !activeBonus) {
 		experienceBonus = 1;
 		activeBonus = true;
+		document.getElementById("toggle-bonus").classList.add("button-toggle-enabled");
 		document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
 	} else if (activeBonus) {
 		experienceBonus = 0;
 		activeBonus = false;
+		document.getElementById("toggle-bonus").classList.remove("button-toggle-enabled");
 		document.getElementById("toggle-bonus").innerHTML = "Add Extra Step";
 	}
 	removeHighlightedSalary();
