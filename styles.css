@@ -13,20 +13,21 @@
 	margin-top: -45px;
 	margin-left: 30px;
 	user-select: none;
+	transform: rotate(-30deg);
+	
 }
 
-.heading-container {
-	/* background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
-                url('assets/image-visas.png'); */
-	background-size: cover;
-}
-
-.site-info {
-	margin-top: -2%;
-	background-color: #f6f3ed;
+.heading-image {
+	z-index: -1;
+	padding-bottom: 5rem;
+	background-image: url("assets/image-visas.png");
+	background-size: contain;
+	height: 100%;
+	opacity: 75%;
 }
 
 #camberden {
+	z-index: 1;
 	font-family: Permanent Marker, sans-serif;
 	font-style: normal;
 	font-size: 500%;
@@ -38,6 +39,10 @@
 	color: transparent;
 	user-select: none;
 	text-shadow: -5px -2px 0px rgb(112, 12, 170);
+
+	/* ----- MARGIN ADJUSTMENTS PLACE TITLE ABOVE IMAGE ----- */
+	margin-top: -4rem;
+	margin-bottom: 5rem;
 }
 
 /* ASSETS IN THE BODY */
@@ -80,6 +85,11 @@ body {
 	background-size: 25% 0.1em;
 	background-position: 0 88%;
 	transition: background-size 0.3s ease-in;
+}
+
+.site-info {
+	margin-top: -2%;
+	background-color: #f6f3ed;
 }
 
 .section-title:hover {
