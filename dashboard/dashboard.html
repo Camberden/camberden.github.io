@@ -140,12 +140,7 @@
 					<h2>Step Pay Plan</h2>
 				</div>
 				<div>
-					<p><span id="fiscal-year"></span></p>
-					<p>Base-Rate Salary: $<span id="current-salary"></span></p>
-					<p>Base-Rate Monthly: $<span id="monthly-salary"></span></p>
-					<p>Base-Rate Hourly: $<span id="hourly-salary"></span></p>
-					<p>Base-Rate 11HR Gap: $<span id="gap-pay"></span></p>
-
+					
 					<div id="salary-table-div">
 						<table>
 							<tr>
@@ -190,11 +185,29 @@
 							</tr>
 						</table>
 					</div>
+					<ul class="list-background">
+						<li><span id="fiscal-year"></span></p>
+						<li>Base-Rate Salary: $<span id="current-salary"></span></li>
+						<hr>
+						<li>Base-Rate Monthly: $<span id="monthly-salary"></span></li>
+						<li>Base-Rate Hourly: $<span id="hourly-salary"></span></li>
+						<li>Base-Rate 11HR Gap: $<span id="gap-pay"></span></li>
+						<hr>
+						<li>Differential Overtime: $<span id="overtime-diff"></span></li>
+						<li>Differential Nightly: $<span id="night-diff"></span></li>
+						<li>Differential Weekend: $<span id="weekend-diff"></span></li>
+						<li>Differential Holiday: $<span id="holiday-diff"></span></li>
+
+					</ul>
 
 				</div>
 				<div id="input-step-information">
-					<p>CO<span id="custody-level">_</span> <button onclick="increaseCustodyLevel()">Increase</button><button onclick="decreaseCustodyLevel()">Decrease</button></p>
-					<p>Years Experience: <span id="years-experience" label="years-experience">_</span> <button onclick="increaseYearsExperience()">Increase</button><button onclick="decreaseYearsExperience()">Decrease</button></p>
+					<p>CO<span id="custody-level">_</span> <button
+							onclick="increaseCustodyLevel()">Increase</button><button
+							onclick="decreaseCustodyLevel()">Decrease</button></p>
+					<p>Years Experience: <span id="years-experience" label="years-experience">_</span> <button
+							onclick="increaseYearsExperience()">Increase</button><button
+							onclick="decreaseYearsExperience()">Decrease</button></p>
 					<button id="toggle-bonus" onclick="toggleExperienceBonus()">_</button>
 				</div>
 			</div>
@@ -260,7 +273,7 @@
 		<!-- LIFE IN WEEKS DISPLAY -->
 		<article class="dashboard-item grid-col-span-2">
 			<!-- <p id="moment-reader">Moment Reader (Pending)</p> -->
-		
+
 		</article>
 </body>
 
