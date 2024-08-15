@@ -46,32 +46,45 @@ const tracks = [ // ../assets/music-
 
 ];
 
+console.log(tracks[0].title);
 
+const trackList = document.getElementById("track-list");
+let selectedTrack = tracks[0];
+let nowPlaying = document.getElementById("now-playing");
+let trackPlayerControls = document.getElementById("track-player-controls");
 
-const trackBarrier = `<div class="track-barrier"></div>`;
-const trackPlayButtonBreak = `<br>`;
-
-const createMusicTable = function(){
-
-	tracks.forEach(track => { 
-
-		const trackPlayButton = `<br><audio preload="none" controls>
-		<source src="${track.audioFileLink}" type="audio/mpeg">
-		Your browser does not support the audio element. </audio><br>`;
-	
-		// DON'T FORGET THAT I COULD SEND THESE VALUES TO OTHER ELEMENTS
-	
-		document.getElementById("music-table-div").innerHTML +=
-			` 
-			${track.title}
-			${track.year}
-			${track.compilation} <br>
-			${track.completeOrIncomplete ? "Complete" : "Incomplete"}
-			${track.lyricalOrInstrumental ? "Lyrical" : "Instrumental"}
-			${trackPlayButtonBreak}
-			${trackPlayButton}
-			${trackBarrier}
-			`;
-	});
+function populateTrackList(tracksArray) {
+	for (i = 0; i < tracksArray.length; i++) {
+		const trackListItem = document.createElement("li");
+		trackListItem.setAttribute("id", `t-${i}`);
+		const trackListText = document.createTextNode(tracksArray[i].title + " " + tracksArray[i].year);
+		trackListItem.appendChild(trackListText);
+		trackList.appendChild(trackListItem);
+		console.log(trackListItem.getAttribute("id").substring(2));
+		trackListItem.addEventListener("click", function (e) {
+			if (e.target && e.target.matches("li")) {
+				loadSelectedTrack(tracksArray[trackListItem.getAttribute("id").substring(2)]);
+			}
+		});
+		;
+	}
 }
-createMusicTable();
+populateTrackList(tracks);
+
+/**
+	 * @param {Track} trackObject
+**/
+function loadSelectedTrack(trackObject) {
+	// selectedTrack = trackObject;
+	nowPlaying.innerHTML = trackObject.title;
+	trackPlayerControls.innerHTML = `<audio preload="none" controls>
+	<source src="${trackObject.audioFileLink}" type="audio/mpeg">
+	Your browser does not support the audio element. </audio>`;
+}
+
+loadSelectedTrack(selectedTrack);
+
+function highlightSelectedTrack() {
+	nowPlaying.classList.add("now-playing-highlight");
+}
+highlightSelectedTrack();

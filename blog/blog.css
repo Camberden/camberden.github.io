@@ -10,7 +10,6 @@ body {
 	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(3, 25%); /* repeat(4, 25%) */
 
-
 	padding-block: 2rem;
 	width: min(95%, 70rem);
 	margin-inline: auto;
@@ -24,8 +23,24 @@ body {
 	padding: 2rem;
 	border-radius: 0.5rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: red;
-	border-style: double;
+	
+	border-top-width: 0.5rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.5rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+
+	border-bottom-width: 1rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 1.5rem;
+	border-right-color: grey;
+	border-right-style: groove;
+	
 }
 
 .blog-post:last-child {

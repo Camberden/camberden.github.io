@@ -34,26 +34,6 @@
 	}
 }
 
-.heading-container {
-	background-color: black;
-	opacity: 0.5;
-	margin-left: 20%;
-	margin-right: 20%;
-}
-
-#titleimage {
-	margin-left: 45%;
-	margin-right: 55%;
-	margin-top: -15px;
-	width: 10%;
-	height: 10%;
-	min-width: 175px;
-	min-height: 175px;
-	border-style: double;
-	border-color: blue;
-	border-radius: 50%;
-}
-
 #music-title {
 	font-size: 2em;
 }
@@ -73,14 +53,66 @@
 	background-color: rgba(0,0,0,0.4); 
   }
 
-  #close-modal {
+#close-modal {
 	  text-align: center;
 	  font-size: 100px;
   }
 
-  #close-modal:hover {
+#close-modal:hover {
 	color: red;
   }
+
+
+/* ---------- GRID CONTENT ---------- */
+
+.music-grid {
+	display: grid;
+	gap: 1rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+
+	padding-block: 2rem;
+	width: min(95%, 70rem);
+	margin-inline: auto;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}
+
+.music-item {
+	padding: 1rem;
+	border-radius: 0.5rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: red;
+	border-style: double;
+}
+
+.sub-music-grid {
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: repeat(3, 33%);
+	padding-block: 0.5rem;
+	width: min(95%, 70rem);
+}
+
+.sub-music-item {
+	position: inherit;
+	margin-top: 6rem;
+	padding: 0.5rem;
+	border-radius: 0.5rem;
+	border-color: red;
+	border-style: double;
+}
+
+.now-playing-highlight {
+	background-color: #73bcde;
+	background:#73bcde;
+}
+
+#track-list > li:hover {
+	background-color: lightgreen;
+	background: lightblue;
+}
 
 /* ---------- TRACK CONTAINERS AND SONG INFO SETTINGS ---------- */
 
@@ -106,13 +138,6 @@ audio {
 	letter-spacing: .5em;
 	transition: 0.1s ease-out;
 	color: lightblue;
-}
-
-.track-barrier {
-	padding: 1%;
-	background-color: rgba(80, 28, 28, 0.3);
-	margin-left: 30%;
-	margin-right: 30%;
 }
 
 .play-button {

@@ -1,4 +1,4 @@
-/* HEADING ASSETS */
+/* ----- HEADING ASSETS ----- */
 
 :root {
 	--clr-secondary-400: 217 19% 35%;
@@ -24,6 +24,8 @@
 	background-size: contain;
 	height: 100%;
 	opacity: 75%;
+	box-shadow: 3rem 3rem 2rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+
 }
 
 #camberden {
@@ -45,7 +47,12 @@
 	margin-bottom: 5rem;
 }
 
-/* ASSETS IN THE BODY */
+.site-info {
+	margin-top: -2%;
+	background-color: #f6f3ed;
+}
+
+/* ----- BODY ASSETS ----- */
 
 body {
 	color: black;
@@ -66,10 +73,7 @@ body {
 }
 
 .index-item {
-	/* padding: 1rem; */
 	box-shadow: 3rem 3rem 2rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	/* box-shadow: 2rem -1rem #a1dbf8; */
-	/* background: #f6f3ed; */
 }
 
 .index-item > .section-title {
@@ -85,11 +89,6 @@ body {
 	background-size: 25% 0.1em;
 	background-position: 0 88%;
 	transition: background-size 0.3s ease-in;
-}
-
-.site-info {
-	margin-top: -2%;
-	background-color: #f6f3ed;
 }
 
 .section-title:hover {
