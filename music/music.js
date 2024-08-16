@@ -7,9 +7,6 @@ document.getElementById("close-modal").onclick = function () {
 
 // ---------- TRACK CLASS AND TRACKS ---------- //
 
-
-// TRY MOCHA'S PARAM TAG BASED SEGREGATION TO STREAMLINE NEW ADDITIONS
-
 /**
 	 * @param {string} title
 	 * @param {number} year
@@ -46,8 +43,6 @@ const tracks = [ // ../assets/music-
 
 ];
 
-console.log(tracks[0].title);
-
 const trackList = document.getElementById("track-list");
 let selectedTrack = tracks[0];
 let nowPlaying = document.getElementById("now-playing");
@@ -75,13 +70,11 @@ populateTrackList(tracks);
 	 * @param {Track} trackObject
 **/
 function loadSelectedTrack(trackObject) {
-	// selectedTrack = trackObject;
 	nowPlaying.innerHTML = trackObject.title;
 	trackPlayerControls.innerHTML = `<audio preload="none" controls>
 	<source src="${trackObject.audioFileLink}" type="audio/mpeg">
 	Your browser does not support the audio element. </audio>`;
 }
-
 loadSelectedTrack(selectedTrack);
 
 function highlightSelectedTrack() {

@@ -10,6 +10,7 @@ Journal Entry Input
 `
 */
 
+/*
 const blogData = [
 	
 	`
@@ -54,3 +55,4 @@ const blogData = [
 	`
 	,
 ];
+*/

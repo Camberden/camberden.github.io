@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../blog/blog.css" media="screen" />
 	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
+	<script src="blog-data.js"></script>
 	<title>Chrispy's Blogging</title>
 </head>
 
@@ -17,29 +18,40 @@
 		<a class="marker" href="../index.html">Return</a>
 	</div>
 
-	<h1 class="marker">Chrispy's Code Testing Workspace</h1>
+	<h1 class="marker">Chrispy's Blogging Space</h1>
 	<span>Site construction in progress!</span>
 
-<main class="blog-grid">
-	<article class="blog-post grid-col-span-2">
-		<p>Article 1</p>
-	</article>
-	<article class="blog-post">
-		<p>Article 2</p>
-	</article>
-	<article class="blog-post">
-		<p>Article 3</p>
-	</article>
-	<article class="blog-post grid-col-span-2">
-		<p>Article 4</p>
-	</article>
-	<article class="blog-post">
-		<p>Article 5</p>
-	</article>
+	<main class="blog-grid">
+		<article class="blog-item grid-col-span-2">
+			<h2>Blog Post <span id="displayed-post"></span></h2>
+		</article>
+		<article class="blog-item">
+			<button class="marker-for-menu" onclick="previousBlogPost()">Previous</button>
+			<button class="marker-for-menu" onclick="nextBlogPost()">Next</button>
+		</article>
+		<article class="blog-item grid-col-span-2">
+			<h3 class="marker-violet">
+				<ul class="blog-post-header">
+					<li id="blog-post-date">August 11th, 2024</li>
+					<li id="blog-post-location">Chapel Hill Suite</li>
+					<li id="blog-post-time">2200HRS</li>
+				</ul>
+				<p id="active-blog-post">
+				</p>
 
-</main>
+			</h3>
 
 
+		</article>
+		<article class="blog-item">
+			<ul id="blog-post-list">
+
+			</ul>
+		</article>
+
+	</main>
+
+	<script src="blog.js"></script>
 </body>
 
 </html>
