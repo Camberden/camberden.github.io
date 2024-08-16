@@ -1,6 +1,6 @@
-.animatedgradient {
-	background: url(../assets/Curtain3.svg.png), linear-gradient(45deg, #EE7722, rgb(122, 114, 234), #73bcde, #62dd87);
-	background-size: 20%, 400%;
+.animated-gradient {
+	background: url(../assets/image-curtain.svg), linear-gradient(45deg, #EE7722, rgb(122, 114, 234), #73bcde, #62dd87);
+	background-size: 10%, 400%;
 	opacity: 1;
 	position: relative;
 	animation: spectrum 15s ease-in-out infinite, fade-in .25s ease-in;
@@ -35,7 +35,7 @@
 }
 
 #music-title {
-	font-size: 2em;
+	font-size: 2rem;
 }
 
 /* ---------- MODAL SETTINGS ---------- */
@@ -79,6 +79,10 @@
 	grid-column: span 2;
 }
 
+.grid-col-span-3 {
+	grid-column: span 3;
+}
+
 .music-item {
 	padding: 1rem;
 	border-radius: 0.5rem;
@@ -89,77 +93,34 @@
 
 .sub-music-grid {
 	display: grid;
+	place-self: center;
 	gap: 0.5rem;
 	grid-template-columns: repeat(3, 33%);
-	padding-block: 0.5rem;
 	width: min(95%, 70rem);
 }
 
 .sub-music-item {
-	position: inherit;
-	margin-top: 6rem;
-	padding: 0.5rem;
+	place-self: center;
 	border-radius: 0.5rem;
 	border-color: red;
 	border-style: double;
 }
 
+#photo-box > img {
+	max-width: 10rem;
+}
+
 .now-playing-highlight {
-	background-color: #73bcde;
-	background:#73bcde;
+	background-size: 100% 25%;
+	background-image: linear-gradient(60deg, #f59b60 0%, #a1dbf8 100%);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	color: transparent;
+	user-select: none;
 }
 
 #track-list > li:hover {
-	background-color: lightgreen;
-	background: lightblue;
-}
-
-/* ---------- TRACK CONTAINERS AND SONG INFO SETTINGS ---------- */
-
-audio {
-	position: relative;
-}
-
-.trackcontainer {
-	background-color: rgba(0, 0, 0, 0.8);
-	text-align: center;
-	padding: 30px;
-	margin-left: 20%;
-	margin-right: 40%;
-	position: relative;
-
-	letter-spacing: .2em;
-	transition: 0.1s ease-out;
-	color: white;
-	background-image: none;
-}
-
-.trackcontainer:hover {
-	letter-spacing: .5em;
-	transition: 0.1s ease-out;
-	color: lightblue;
-}
-
-.play-button {
-	padding: 3%;
-}
-
-.songinfo-odd {
-	font-family: 'Courier New', Courier, monospace;
-	text-align: right;
-	color: lightskyblue;
-	margin-left: 36%;
-	margin-right: 70%;
-	padding: 2%;
-	width: 40%;
-	background-color: transparent;
-	opacity: 0.6;
-	position: absolute;
-}
-
-.songinfo-deploy {
-	background-color: black;
-	animation: songinfomove 1s ease-in;
+	background: lightgreen;
 }
 
 @keyframes songinfomove {
@@ -209,3 +170,6 @@ audio {
 	position: relative;
 }
 
+#backdrop-low {
+	padding:10rem;
+}

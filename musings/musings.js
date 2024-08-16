@@ -25,7 +25,6 @@ const poems = [
 
 let poemnumber = 0;
 let selectedpoem = poems[poemnumber];
-let quoteAudio = new Audio("../assets/quote-" + (poemnumber + 1) + ".mp3");
 
 function getPoemNumber() {
 	document.getElementById("poemnum").innerHTML = "Passage #" + (poemnumber + 1);
@@ -54,7 +53,6 @@ function nextPoem() {
 	document.getElementById("sampleTypingField").value = "";
 	focusWriting();
 	getPoemNumber();
-	quoteAudio = new Audio("../assets/quote-" + (poemnumber + 1) + ".mp3");
 }
 
 function previousPoem() {
@@ -71,11 +69,9 @@ function previousPoem() {
 	document.getElementById("sampleTypingField").value = "";
 	focusWriting();
 	getPoemNumber();
-	quoteAudio = new Audio("../assets/quote-" + (poemnumber + 1) + ".mp3");
 }
 
 const tap = 1;
-let isQuotePlaying = false;
 
 
 // Avalokiteshvara Bodhisattva, when practicing deeply the prajna paramita, perceived that all five skandhas in their own being are empty, and was saved from
@@ -88,14 +84,6 @@ function typingTest() {
 	if (typed === selectedpoem.substring(0, typed.length) && typed.length) {
 		typingProgress.innerHTML = para.replace(typed, `<span class="writinginitial" style="color:rgb(123, 153, 184);">` + typed[0] + `</span> <span style="color:rgb(123, 153, 184);">` + typed.substring(1, typed.length) + "</span>");
 	}
-
-	// if (typed === selectedpoem[englishSutraLine]) {
-	// 	englishSutraLine++;
-	// 	typed = "";
-	// 	typingProgress.innerHTML = "";
-	// 	para = selectedpoem[englishSutraLine];
-	// 	document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[englishSutraLine][0] + "</span>" + selectedpoem[englishSutraLine].substring(1, selectedpoem[englishSutraLine].length);
-	// }
 
 	// IS WHAT'S TYPED THE SAME AS THE SELECTION? COMPLETE!
 	if (typed === selectedpoem) {
@@ -119,7 +107,6 @@ document.onkeydown = function (evt) {
 		nextPoem();
 	}
 };
-
 
 const modal = document.getElementById("menumodal");
 const menuclick = document.getElementById("menulabel");
@@ -450,65 +437,5 @@ const boddhisattvaPrecepts = [
 	"Not Being Angry",
 	"Not Slandering the Three Treasures",
 ];
-
-// ----- BLOG POSTS
-let activeBlogPost = document.getElementById("active-blog-post");
-let activeBlogPostNumber = blogData.length - 1;
-let blogPostList = document.getElementById("blog-post-list");
-
-function displayActiveBlogPostNumber(){
-	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
-}
-
-function extractHeaderData(increment){
-	const instance = blogData[increment];
-	let splitInstance = instance.split("|");
-	let instanceDate = splitInstance[1].trim();
-	document.getElementById("blog-post-date").innerHTML = instanceDate;
-	let instanceLocation = splitInstance[2].trim();
-	document.getElementById("blog-post-location").innerHTML = instanceLocation;
-	let instanceTime = splitInstance[3].trim();
-	document.getElementById("blog-post-time").innerHTML = instanceTime;
-	let instanceBlogPost = splitInstance[4].trim();
-	displayActiveBlogPostNumber();
-
-return instanceBlogPost;
-}
-
-function initBlogData(dataLength){
-	for (i = 0; i <= dataLength - 1; i++){
-		let listedBlogPost = document.createElement("li");
-		blogPostList.appendChild(listedBlogPost);
-		listedBlogPost.append(`Post ${i + 1}`);
-
-		// Latest Entry
-		if (i === dataLength - 1) {
-			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-			displayActiveBlogPostNumber();
-		}
-	}
-}
-initBlogData(blogData.length);
-
-function chooseActiveBlogPost(choice){
-	if (choice <= blogData.length && choice >= 0) {
-		activeBlogPostNumber = choice;
-		activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-	}
-}
-
-function previousBlogPost(){
-	if (activeBlogPostNumber > 0) {
-		activeBlogPostNumber--;
-		activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-	}
-}
-
-function nextBlogPost(){
-	if (activeBlogPostNumber < blogData.length - 1) {
-		activeBlogPostNumber++;
-		activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-	}
-}
 
 

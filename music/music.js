@@ -47,6 +47,19 @@ const trackList = document.getElementById("track-list");
 let selectedTrack = tracks[0];
 let nowPlaying = document.getElementById("now-playing");
 let trackPlayerControls = document.getElementById("track-player-controls");
+let currentAudio = new Audio();
+
+/**
+	 * @param {HTMLAudioElement} trackAudio
+**/
+function audioEffects(){
+	console.log("outside!");
+
+	if (!currentAudio.paused || currentAudio.currentTime) {
+		console.log("inside!");
+		document.getElementById("backdrop-low").classList.add("animated-gradient"); 
+	}
+}
 
 function populateTrackList(tracksArray) {
 	for (i = 0; i < tracksArray.length; i++) {
@@ -71,8 +84,9 @@ populateTrackList(tracks);
 **/
 function loadSelectedTrack(trackObject) {
 	nowPlaying.innerHTML = trackObject.title;
+	currentAudio = trackObject.audioFileLink;
 	trackPlayerControls.innerHTML = `<audio preload="none" controls>
-	<source src="${trackObject.audioFileLink}" type="audio/mpeg">
+	<source src="${currentAudio}" type="audio/mpeg">
 	Your browser does not support the audio element. </audio>`;
 }
 loadSelectedTrack(selectedTrack);

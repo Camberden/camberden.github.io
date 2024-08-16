@@ -108,7 +108,6 @@ body {
 
 .section-title:hover {
 	color: rgb(112, 12, 170);
-	transition: font-size 0.3s ease-in-out;
 	background-size: 100% 5%;
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 	transition: background-size 0.3s ease-in;

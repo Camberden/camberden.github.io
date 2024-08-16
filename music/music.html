@@ -11,7 +11,7 @@
 	<title>Chrispy's Music</title>
 </head>
 
-<body class="backdrop">
+<body id="backdrop">
 
 	<div id="return">
 		<a class="marker" href="../index.html">Return</a>
@@ -42,7 +42,7 @@
 			</div>
 			<div class="music-item grid-col-span-2">
 				<div class="sub-music-grid">
-					<div class="sub-music-item">Photo</div>
+					<div class="sub-music-item" id="photo-box" onclick="audioEffects()"><img src="../assets/image-chrispy-collage.jpg"></div>
 					<div class="sub-music-item grid-col-span-2"><span id="track-player-controls">CONTROLS</span></div>
 				</div>
 			</div>
@@ -50,15 +50,11 @@
 				<ul id="track-list"></ul>
 			</div>
 
-
-
 		</div>
 	</main>
 
 	<hr>
-
-	<div class="track-barrier"></div>
-	<!-- <div id="music-table-div"></div> -->
+	<div id="backdrop-low"></div>
 
 
 	<script src="music.js"></script>
