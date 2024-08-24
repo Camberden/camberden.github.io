@@ -68,7 +68,7 @@ body {
 	color: black;
 	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
 	text-align: center;
-	z-index: 1;
+	/* z-index: 1; */
 	background-image: url('assets/image-curtain.svg'); /* #EEEFF0 in SVG Fill */
 	background-color: #F4F5F6;
 }

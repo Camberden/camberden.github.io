@@ -111,12 +111,17 @@
 }
 
 .now-playing-highlight {
-	background-size: 100% 25%;
+	/* background-size: 100% 25%;
 	background-image: linear-gradient(60deg, #f59b60 0%, #a1dbf8 100%);
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
-	user-select: none;
+	user-select: none; */
+
+	color: red;
+	letter-spacing: .5em;
+	transition: 0.1s ease-out;
+	background-color: transparent;
 }
 
 #track-list > li:hover {
@@ -137,12 +142,6 @@
 
 /* CURRENTLY PLAYING SETTINGS */
 
-.currently-playing {
-	color: red;
-	letter-spacing: .5em;
-	transition: 0.1s ease-out;
-	background-color: transparent;
-}
 
 .currently-playing-design {
 	background-color: black;
