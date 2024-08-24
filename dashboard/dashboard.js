@@ -5,7 +5,7 @@ window.onload = () => console.log("Running!");
 let startbalance = document.getElementById("balance").value;
 const startbalanceupdate = document.getElementById("balance");
 
-startbalanceupdate.onkeypress = function () {
+startbalanceupdate.onkeydown = function () {
 	startbalance = document.getElementById("balance").value;
 	calculateNewBalance();
 };
@@ -20,7 +20,7 @@ const ins = 66.98;
 const loa = 300.00;
 const wat = 15.00;
 const ele = 70.27;
-const int = 54.99;
+const int = 71.99;
 const mus = 6.39;
 const gym = 0.00;
 let inp; // CUSTOM INPUT: INP
@@ -87,6 +87,8 @@ const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
 pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
 
 // ----- STEP PAY PLAN MODULE ----- //
+
+// 160 Sick Hours == 1 Month Service
 
 const salarySchedule2023 = [
 	["36525", "39801", "41427", "43498", "45237", "46595", "47527"], // C/OI
