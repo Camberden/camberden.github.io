@@ -14,38 +14,6 @@
 const blogData = [
 	
 	`
-	| July 9th, 2024
-	| Chapel Hill Suite
-	| 2330HRS
-	|
-	Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus condimentum erat eu vehicula tempor. Aliquam ut aliquet enim. Duis hendrerit congue est a porttitor. Praesent ac mi ligula. Curabitur mi felis, pulvinar ac venenatis eu, blandit at elit. Suspendisse convallis a massa id semper. Phasellus ultrices lectus et sem rutrum, nec ultrices nisi scelerisque. Donec commodo scelerisque tellus, ac placerat urna vehicula ac. Nulla congue, dolor a bibendum condimentum, tellus felis fermentum eros, in placerat odio massa vel magna. Vivamus velit felis, tempus mollis interdum sit amet, scelerisque vitae ipsum.
-	`
-	,
-	`
-	| June 9th, 2024
-	| Chapel Hill Suite
-	| 2330HRS
-	|
-	Morbi nunc quam, iaculis non tempor ac, varius eget mi. Proin sodales interdum tortor, eget sollicitudin odio semper eget. Nullam viverra velit id sagittis auctor. Nam convallis, diam ut commodo pulvinar, libero felis congue orci, eget placerat massa mauris et erat. In cursus interdum odio eget pulvinar. Fusce dictum eros at est fringilla, eu rutrum diam laoreet. Fusce scelerisque purus ut tellus porta, vel facilisis magna mattis.
-	`
-	,
-	`
-	| May 9th, 2024
-	| Chapel Hill Suite
-	| 2330HRS
-	|
-	Bacon ipsum dolor amet meatball ham hock chislic ball tip andouille shank buffalo flank rump cupim. Boudin sirloin picanha, beef chislic bacon bresaola porchetta swine doner. Frankfurter picanha beef ribs sirloin bacon venison pork beef kevin t-bone shank chislic spare ribs. Frankfurter pancetta capicola short ribs picanha, corned beef pastrami tri-tip ham hock chicken leberkas flank alcatra. Bresaola short loin shoulder biltong ham hock.
-	`
-	,
-	`
-	| April 9th, 2024
-	| Chapel Hill Suite
-	| 2330HRS
-	|
-	Filet mignon ham sirloin pastrami fatback tri-tip corned beef chislic. Jowl buffalo chicken, alcatra ribeye drumstick cow kevin corned beef tail flank sirloin cupim spare ribs porchetta. Tenderloin beef ribs pork chop strip steak kielbasa chuck. Beef ribs drumstick swine pork, chicken biltong tenderloin ball tip alcatra.
-	`
-	,
-	`
 	| August 11th, 2024
 	| Chapel Hill Suite
 	| 2200HRS
@@ -61,7 +29,7 @@ const blogData = [
 	|
 	I'm making considerable progress on my site. I almost feel too occupied with it to begin my fall semester classes.
 	Regardless, I'll give it a break shortly once this blogging module is successfully given to its own separate page.
-	Things seem to be working well: MVP as they'd say. <br>
+	Things seem to be working well: MVP as they'd say. <hr>
 	Life is funny. More measurable progress is happening in the absense of self-imposed pressures. More so than ever before.
 	Fitness, language study, reading, work, and coding: all of these things are going well. Nothing is difficult to approach.
 	I feel no anxiety. I am content.
@@ -85,6 +53,27 @@ const blogData = [
 	I will aim myself in that direction, and go, with no destination in mind.
 	Freely flowing, I am detached. Detached from the target: suspended in the outset.
 	As Neil Hannon of the Divine Comedy said: "We need to live in a state of suspended animation, like a work of art, detached, detached."
+	`
+	,
+	`
+	| August 25th, 2024
+	| Chapel Hill Suite
+	| 2303HRS
+	|
+	I've being doing okay this weekend, though a bit somber at having missed out on a lot of sunshine and opportunity for
+	hiking or long walks. I've gotten over a week ahead on my coursework, and have been continually doing other activities
+	relevant to me, such as coding and language practice. There's still so much that deserves time. Even though I've
+	done well to restrict my interests, they at times seem too numerous. <hr>
+	I decided to drop the Business Law course because I did not want to be overburdened by coursework for these next few
+	months. Gladly I will be getting a full refund, and will be able to better balance personal interests, work, and health.
+	That extra course would have surely affected my mental health negatively in retrospect. Am I in no rush, after all.
+	My lateral move will happen at some point, likely around late 2026. By then I will be more than ready for entry-level.
+	Would I not like to enjoy the income and vacation time that my current position affords me during 2026 and perhaps beyond?
+	It would be sensible, when of course I am free from SAL. So, overall: I will be selecting one and only one course per
+	semester. Were I to take off most of summer 2026, I may do more; such classes then would be mostly prose/legal/reading.<hr>
+	I pushed my Laravel project again. I enabled CSS and images by moving such files to the 'Public' directory and interpolating
+	in the blades as {{'asset(/css/app.css')}} for instance. I had to update database credentials in the .env file. 
+	For sql, I needed to mysql -uroot following reset and follow mysql_secure_installation instructions.
 	`
 	,
 ];
