@@ -254,7 +254,13 @@ table, th, td {
 	overflow: auto; 
 	background-color: rgb(0,0,0); 
 	background-color: rgba(0,0,0,0.4); 
-  }
+}
+
+.modal-grid {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(2, 50%);
+}
   
 .menudialog {
 	background-color: rgb(233, 233, 233);

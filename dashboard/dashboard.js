@@ -406,4 +406,4 @@ function populateBoxes(){
 }
 
 document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(weekslived + 1);
-populateBoxes();
+// populateBoxes();
