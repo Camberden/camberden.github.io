@@ -164,7 +164,25 @@ input[type=text]:focus {
 	  inset 0 -2px 6px rgba(0,0,0,0.4);
 	position: relative;
 	overflow: hidden;
-  }
+}
+
+#pslfBoxes {
+	background-color: #f6f3ed;
+}
+
+.pslf-box {
+	display: inline-block;
+	width: 1rem;
+	height: 0.5rem;
+	/* border-radius: 1rem; */
+	margin: 0.1rem;
+	border: 1px solid #444;
+	color: rgba(0, 0, 0, 0);
+}
+
+.pslf-box-filled {
+	background-color: #a1dbf8;
+}
 
 /* ----- STEP PAY PLAN SPECIFIC ----- */
 
@@ -213,10 +231,6 @@ table, th, td {
 	text-align: center;
 }
 
-#menulabel{
-	text-align: left;
-}
-
 .taking-highlight {
 	color: blue;
 	list-style-type: circle;
@@ -225,6 +239,11 @@ table, th, td {
 .taken {
 	color:#db8044;
 	list-style-type: "✓ ";
+}
+
+.acc-schedule-grid {
+	display: grid;
+	grid-template-columns: repeat(11, 8%);
 }
 
 /* MENUMODAL */

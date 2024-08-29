@@ -69,6 +69,7 @@ const workAnniversary = new Date(1602156600000);
 const fiscalYear2024 = 1719806400000;
 
 const now = new Date();
+const nowDisplay = now.toLocaleString("en-US");
 const fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
 const fiscalYearDisplay = document.getElementById("fiscal-year");
 fiscalYearDisplay.innerHTML = `FY ${fiscalYear}-${fiscalYear + 1}`;
@@ -79,12 +80,34 @@ const getYearID = (date = new Date()) => date.getUTCFullYear();
 const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1; // Adjusted from base Zero
 const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
 const pslfRequirement = 120;
+const creditedPSLFMonths = 45;
 
 const pslfProgressBar = document.getElementById("pslf-progress-bar");
 document.getElementById("pslf-heading").innerHTML = Math.floor(govtServiceMonths / 12) + 
-" years of service with " + govtServiceMonths + " of " + pslfRequirement + " months completed!";
-const pslfCompletionPercentage = govtServiceMonths / pslfRequirement * 100;
+" years of service with " + creditedPSLFMonths + " months credited as of " + nowDisplay;
+const pslfCompletionPercentage = creditedPSLFMonths / pslfRequirement * 100;
 pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
+
+pslfBoxes = document.getElementById("pslf-boxes");
+
+function populatePSLFBoxes() {
+	for (i = 0; i < pslfRequirement; i++) {
+		if (i % 12 === 0) {
+			const pslfBoxLine = document.createElement("hr");
+			pslfBoxes.appendChild(pslfBoxLine);
+		}
+		const pslfBox = document.createElement("span");
+		pslfBox.classList.add("pslf-box");
+
+		if (i > pslfRequirement - creditedPSLFMonths) {
+			pslfBox.classList.add("pslf-box-filled");
+		}
+		pslfBoxes.appendChild(pslfBox);
+	}
+}
+populatePSLFBoxes();
+
+
 
 // ----- STEP PAY PLAN MODULE ----- //
 
