@@ -457,9 +457,10 @@ function calculateAverageForPension() {
 		document.getElementById("full-service-credit").classList.remove("salary-highlight");
 		pensionReductionVisual = document.getElementById(retirementAge + "-years-row").children.item(30 - serviceCredit);
 		let pensionReductionPercentage = parseInt(pensionReductionVisual.innerHTML.replace("%", ""));
-		// 29 years of service is not reducing by 5% properly
+		document.getElementById("reduction-percentage").innerHTML = pensionReductionPercentage;
+		// 29 years of service is not reducing by 5% properly in Reduction Amount
 		document.getElementById("reduction-amount").innerHTML = averageForPension * parseFloat("." + (100 - pensionReductionPercentage));
-		averageForPension * parseFloat("." + pensionReductionPercentage);
+		averageForPension *= parseFloat("." + pensionReductionPercentage);
 		
 		console.log(pensionReductionPercentage);
 	}
