@@ -365,3 +365,15 @@ table, th, td {
 	opacity: 1;
 	margin: 0px;
 }
+
+/* ----- PENSION CALCULATOR SPECIFIC ----- */
+
+.pension-calculator-button {
+	height: 2rem;
+	width: 7rem;
+}
+.pension-grid {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(3, 30%);
+}

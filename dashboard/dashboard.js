@@ -24,7 +24,6 @@ const int = 71.99;
 const mus = 6.39;
 const gym = 0.00;
 let inp; // CUSTOM INPUT: INP
-console.log(document.getElementById("inp-cost").innerHTML);
 function updateInp() {
 	all[all.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
 }
@@ -47,11 +46,11 @@ const calculateNewBalance = function () {
 	all.forEach((e, i) => {
 		const elem = allElem2[i];
 		if (elem.checked) {
-			console.log(`73; e = ${e}; e.checked = ${e.checked}`);
+			// console.log(`73; e = ${e}; e.checked = ${e.checked}`);
 			sum += e;
 		}
 		else {
-			console.log(`77; i = ${i}; e = ${e}`);
+			// console.log(`77; i = ${i}; e = ${e}`);
 		}
 	});
 	const endbalance = startbalance - sum;
@@ -104,6 +103,8 @@ function populatePSLFBoxes() {
 		}
 		pslfBoxes.appendChild(pslfBox);
 	}
+
+	pslfBoxes.classList.add("list-background");
 }
 populatePSLFBoxes();
 
@@ -236,7 +237,6 @@ function toggleExperienceBonus(){
 function populateSalaryTable(){
 	for (i = 0; i < salarySchedule.length; i++) {
 		for (j = 0; j < salarySchedule[i].length; j++){
-			console.log(salarySchedule[i][j]);
 			document.getElementById(`co${i + 1}-${j}`).innerHTML = salarySchedule[i][j];
 			if (salarySchedule[i][j] === currentSalary) {
 				document.getElementById(`co${i + 1}-${j}`).classList.add("salary-highlight");
@@ -281,9 +281,6 @@ const newmoment = 1571976000000;
 const dateplanning = (newmoment - inception) / millisecondweek;
 
 function populateBoxes(){
-	console.log('Running lifeinweeks.js!');
-	console.log(dateplanning);
-
 	const weeks = 52;
 	const years = 78;
 	const spans = new Array(weeks * years).fill(0).map((_, i) => {
@@ -430,3 +427,26 @@ function populateBoxes(){
 
 document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(weekslived + 1);
 // populateBoxes();
+
+// ---------- PENSION CALCULATOR ----------//
+
+let serviceCredit = 30;
+let averageForPension = 70000;
+
+function calculateAverageForPension(){
+
+	averageForPension = 0;
+	for (i = 1; i <= 4; i++) {
+		averageForPension += parseInt(document.getElementById(`yr${i}-for-pension`).value);
+	}
+	averageForPension /= 4;
+	document.getElementById("average-for-pension").innerHTML = averageForPension;
+	document.getElementById("pre-monthly-pension").innerHTML = averageForPension * 0.0182;
+	document.getElementById("annual-pension").innerHTML = averageForPension * 0.0182 * serviceCredit;
+	document.getElementById("monthly-pension").innerHTML = averageForPension * 0.0182 * serviceCredit / 12;
+};
+
+function calculatePensionWithServiceCredit(){
+	serviceCredit = parseInt(document.getElementById("service-years-for-pension").value);
+	calculateAverageForPension();
+}

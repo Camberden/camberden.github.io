@@ -151,7 +151,7 @@
 				<h2>PSLF Management</h2>
 			</div>
 			<p class="list-background" id="pslf-heading"></p>
-			<div class="bar" id="pslf-progress-bar">
+				<div class="bar" id="pslf-progress-bar">
 			</div>
 
 			<div id="pslf-boxes">
@@ -344,8 +344,40 @@
 			<div id="box-input"></div>
 		</div>
 		<!-- MISC -->
-		<div class="dashboard-item grid-col-span-2">
-			<!-- <p id="moment-reader">Moment Reader (Pending)</p> -->
+		<div class="dashboard-item">
+			<div class="marker">
+				<h2>Pension Calculator</h2>
+			</div>
+
+			
+			<div class="pension-grid">
+				<ul>
+					<li><input type="text" placeholder="YR1" class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension" ></li>
+					<li><input type="text" placeholder="YR2" class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension" ></li>
+					<li><input type="text" placeholder="YR3" class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension" ></li>
+					<li><input type="text" placeholder="YR4" class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension" ></li>
+					<button class="pension-calculator-button" onclick=calculateAverageForPension()>Average!</button>
+				</ul>
+
+				<div>
+					<p id="average-for-pension">hello?</p>
+					<p>x 0.0182 = <span id="pre-monthly-pension"></span></p>
+					<p>times <input type="text" placeholder="years of service" id="service-years-for-pension" label="service-years-for-pension"></p>
+					<button class="pension-calculator-button" onclick=calculatePensionWithServiceCredit()>Calculate!</button>
+
+				</div>
+
+				<div>
+					<p id="annual-pension">annual</p>
+					<p id="monthly-pension">monthly</p>
+				</div>
+
+
+			</div>
+
+		</div>
+
+		<div class="dashboard-item">
 
 		</div>
 </body>
