@@ -343,7 +343,7 @@
 			<p id="weeks-lived"></p>
 			<div id="box-input"></div>
 		</div>
-		<!-- MISC -->
+		<!-- PENSION CALCULATOR -->
 		<div class="dashboard-item">
 			<div class="marker">
 				<h2>Pension Calculator</h2>
@@ -352,33 +352,179 @@
 			
 			<div class="pension-grid">
 				<ul>
-					<li><input type="text" placeholder="YR1" class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension" ></li>
-					<li><input type="text" placeholder="YR2" class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension" ></li>
-					<li><input type="text" placeholder="YR3" class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension" ></li>
-					<li><input type="text" placeholder="YR4" class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension" ></li>
-					<button class="pension-calculator-button" onclick=calculateAverageForPension()>Average!</button>
+					<li><input type="text" placeholder="70000" value="70000" class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension" ></li>
+					<li><input type="text" placeholder="72000" value="72000" class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension" ></li>
+					<li><input type="text" placeholder="80000" value="80000" class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension" ></li>
+					<li><input type="text" placeholder="76000" value="76000" class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension" ></li>
+					<!-- <button class="pension-calculator-button" onclick=calculateAverageForPension()>Average!</button> -->
 				</ul>
 
 				<div>
 					<p id="average-for-pension">hello?</p>
 					<p>x 0.0182 = <span id="pre-monthly-pension"></span></p>
-					<p>times <input type="text" placeholder="years of service" id="service-years-for-pension" label="service-years-for-pension"></p>
-					<button class="pension-calculator-button" onclick=calculatePensionWithServiceCredit()>Calculate!</button>
+					<p>times <input type="text" placeholder="26" value="26" id="service-years-for-pension" label="service-years-for-pension"></p>
+					<button class="pension-calculator-button" onclick=calculateAverageForPension()>Calculate!</button>
 
 				</div>
 
 				<div>
-					<p id="annual-pension">annual</p>
-					<p id="monthly-pension">monthly</p>
+					<p>Annually: <span id="annual-pension"></span></p>
+					<p>Monthly: <span id="monthly-pension"></span></p>
+					<p>Reduction Percentage: <span id="reduction-percentage"></span></p>
+					<p>Reduction Amount: <span id="reduction-amount"></span></p>
 				</div>
-
-
 			</div>
+			<hr>
+
+			<table id="pension-table">
+				<tr id="service-years-row">
+					<th id="full-service-credit">100%/30yrs</th>
+					<th>29</th>
+					<th>28</th>
+					<th>27</th>
+					<th>26</th>
+					<th>25</th>
+					<th>24</th>
+					<th>23</th>
+					<th>22</th>
+					<th>21</th>
+					<th>20</th>
+				</tr>
+				<tr id="59-years-row">
+					<th>59</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+					<td>80%</td>
+				</tr>
+				<tr id="58-years-row">
+					<th>58</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>75%</td>
+					<td>75%</td>
+					<td>75%</td>
+					<td>75%</td>
+					<td>75%</td>
+				</tr>
+				<tr id="57-years-row">
+					<th>57</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>70%</td>
+					<td>70%</td>
+					<td>70%</td>
+					<td>70%</td>
+				</tr>
+				<tr id="56-years-row">
+					<th>56</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>65%</td>
+					<td>65%</td>
+					<td>65%</td>
+					<td>65%</td>
+				</tr>
+				<tr id="55-years-row">
+					<th>55</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>65%</td>
+					<td>60%</td>
+					<td>60%</td>
+					<td>60%</td>
+				</tr>
+				<tr id="54-years-row">
+					<th>54</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>65%</td>
+					<td>60%</td>
+					<td>55%</td>
+					<td>55%</td>
+				</tr>
+				<tr id="53-years-row">
+					<th>53</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>65%</td>
+					<td>60%</td>
+					<td>55%</td>
+					<td>52%</td>
+				</tr>
+				<tr id="52-years-row">
+					<th>52</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>65%</td>
+					<td>60%</td>
+					<td>55%</td>
+					<td>50%</td>
+				</tr>
+				<tr id="51-years-row">
+					<th>51</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>65%</td>
+					<td>60%</td>
+					<td>55%</td>
+					<td>50%</td>
+				</tr>
+				<tr id="50-years-row">
+					<th>50</th>
+					<td>95%</td>
+					<td>90%</td>
+					<td>85%</td>
+					<td>80%</td>
+					<td>75%</td>
+					<td>70%</td>
+					<td>65%</td>
+					<td>60%</td>
+					<td>55%</td>
+					<td>50%</td>
+				</tr>
+			</table>
 
 		</div>
 
 		<div class="dashboard-item">
-
 		</div>
 </body>
 

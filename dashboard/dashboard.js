@@ -430,23 +430,62 @@ document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(
 
 // ---------- PENSION CALCULATOR ----------//
 
-let serviceCredit = 30;
+let retirementAge = 56;
+// from 50 to 65
+let serviceCredit = 26;
 let averageForPension = 70000;
+let pensionReductionVisual = document.getElementById(retirementAge + "-years-row").children.item(30 - serviceCredit);
+let reductionAmount = 0;
 
-function calculateAverageForPension(){
+function calculateAverageForPension() {
+	pensionReductionVisual.classList.remove("salary-highlight");
 
 	averageForPension = 0;
 	for (i = 1; i <= 4; i++) {
 		averageForPension += parseInt(document.getElementById(`yr${i}-for-pension`).value);
 	}
 	averageForPension /= 4;
-	document.getElementById("average-for-pension").innerHTML = averageForPension;
-	document.getElementById("pre-monthly-pension").innerHTML = averageForPension * 0.0182;
-	document.getElementById("annual-pension").innerHTML = averageForPension * 0.0182 * serviceCredit;
-	document.getElementById("monthly-pension").innerHTML = averageForPension * 0.0182 * serviceCredit / 12;
+
+	serviceCredit = parseInt(document.getElementById("service-years-for-pension").value);
+
+	if (serviceCredit >= 30 || serviceCredit < 20 || retirementAge >= 60) {
+		pensionReductionVisual.classList.remove("salary-highlight");
+		serviceCredit = 30;
+		retirementAge = 60;
+		document.getElementById("full-service-credit").classList.add("salary-highlight");
+	} else {
+		document.getElementById("full-service-credit").classList.remove("salary-highlight");
+		pensionReductionVisual = document.getElementById(retirementAge + "-years-row").children.item(30 - serviceCredit);
+		let pensionReductionPercentage = parseInt(pensionReductionVisual.innerHTML.replace("%", ""));
+		// 29 years of service is not reducing by 5% properly
+		document.getElementById("reduction-amount").innerHTML = averageForPension * parseFloat("." + (100 - pensionReductionPercentage));
+		averageForPension * parseFloat("." + pensionReductionPercentage);
+		
+		console.log(pensionReductionPercentage);
+	}
+		document.getElementById("average-for-pension").innerHTML = (averageForPension).toFixed(2);
+		document.getElementById("pre-monthly-pension").innerHTML = (averageForPension * 0.0182).toFixed(2);
+		document.getElementById("annual-pension").innerHTML = (averageForPension * 0.0182 * serviceCredit).toFixed(2);
+		document.getElementById("monthly-pension").innerHTML = (averageForPension * 0.0182 * serviceCredit / 12).toFixed(2);
+	
+	console.log(serviceCredit);
+	highlightPensionTable();
 };
 
-function calculatePensionWithServiceCredit(){
-	serviceCredit = parseInt(document.getElementById("service-years-for-pension").value);
-	calculateAverageForPension();
-}
+// document.getElementById(retirementAge + "-years-row").classList.add("salary-highlight");
+
+function highlightPensionTable(){
+	pensionReductionVisual.classList.remove("salary-highlight");
+	pensionReductionVisual.classList.add("salary-highlight");
+};
+
+highlightPensionTable();
+
+/*
+60+ Table:
+64 ... 97%
+63 ... 94%
+62 ... 91%
+61 ... 88%
+60 ... 85%
+*/ 

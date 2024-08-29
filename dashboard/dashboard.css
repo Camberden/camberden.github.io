@@ -376,4 +376,9 @@ table, th, td {
 	display: grid;
 	gap: 1.5rem;
 	grid-template-columns: repeat(3, 30%);
+	background-color: #f6f3ed;
+}
+
+#pension-table {
+	margin-inline: auto;
 }

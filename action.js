@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const lastestUpdatePushed = "Wednesday August 28th, 2024";
+const lastestUpdatePushed = "Thursday August 29th, 2024";
 
 // --- INFO AND ENTRYWAYS --- //
 
@@ -9,5 +9,6 @@ latestUpdate.innerHTML = lastestUpdatePushed;
 const iconPlay = document.querySelector("#camberden");
 
 iconPlay.onclick = function(){
+	alert("Hi! :D");
 	console.log("Hi! :D");
 }
