@@ -434,9 +434,16 @@ let retirementAge = 56;
 // from 50 to 65
 let serviceCredit = 26;
 let averageForPension = 70000;
-let pensionReductionVisual = document.getElementById(retirementAge + "-years-row").children.item(30 - serviceCredit);
-let reductionAmount = 0;
 
+// refactor
+let pensionReductionVisual = document.getElementById(retirementAge + "-years-row").children.item(30 - serviceCredit);
+let pensionReductionPercentage = parseInt(pensionReductionVisual.innerHTML.replace("%", ""));
+let reductionAmount = 0;
+let reductionPercentageVisual = document.getElementById("reduction-percentage");
+let reductionAmountVisual = document.getElementById("reduction-amount");
+
+
+// refactor
 function calculateAverageForPension() {
 	pensionReductionVisual.classList.remove("salary-highlight");
 
@@ -445,7 +452,6 @@ function calculateAverageForPension() {
 		averageForPension += parseInt(document.getElementById(`yr${i}-for-pension`).value);
 	}
 	averageForPension /= 4;
-
 	serviceCredit = parseInt(document.getElementById("service-years-for-pension").value);
 
 	if (serviceCredit >= 30 || serviceCredit < 20 || retirementAge >= 60) {
@@ -453,27 +459,25 @@ function calculateAverageForPension() {
 		serviceCredit = 30;
 		retirementAge = 60;
 		document.getElementById("full-service-credit").classList.add("salary-highlight");
+		reductionAmount = 0;
+		reductionAmountVisual.innerHTML = reductionAmount; 
 	} else {
 		document.getElementById("full-service-credit").classList.remove("salary-highlight");
 		pensionReductionVisual = document.getElementById(retirementAge + "-years-row").children.item(30 - serviceCredit);
-		let pensionReductionPercentage = parseInt(pensionReductionVisual.innerHTML.replace("%", ""));
 		document.getElementById("reduction-percentage").innerHTML = pensionReductionPercentage;
 		// 29 years of service is not reducing by 5% properly in Reduction Amount
-		document.getElementById("reduction-amount").innerHTML = averageForPension * parseFloat("." + (100 - pensionReductionPercentage));
+		reductionAmountVisual.innerHTML = averageForPension * parseFloat("." + (100 - pensionReductionPercentage));
+		reductionPercentageVisual.innerHTML = pensionReductionPercentage;
 		averageForPension *= parseFloat("." + pensionReductionPercentage);
 		
-		console.log(pensionReductionPercentage);
 	}
 		document.getElementById("average-for-pension").innerHTML = (averageForPension).toFixed(2);
 		document.getElementById("pre-monthly-pension").innerHTML = (averageForPension * 0.0182).toFixed(2);
 		document.getElementById("annual-pension").innerHTML = (averageForPension * 0.0182 * serviceCredit).toFixed(2);
 		document.getElementById("monthly-pension").innerHTML = (averageForPension * 0.0182 * serviceCredit / 12).toFixed(2);
 	
-	console.log(serviceCredit);
 	highlightPensionTable();
 };
-
-// document.getElementById(retirementAge + "-years-row").classList.add("salary-highlight");
 
 function highlightPensionTable(){
 	pensionReductionVisual.classList.remove("salary-highlight");
