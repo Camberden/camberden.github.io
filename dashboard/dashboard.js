@@ -435,7 +435,7 @@ let retirementAge = 56;
 let serviceCredit = 26;
 let averageForPension = 70000;
 
-// refactor
+// REDO
 let pensionReductionVisual = document.getElementById(retirementAge + "-years-row").children.item(30 - serviceCredit);
 let pensionReductionPercentage = parseInt(pensionReductionVisual.innerHTML.replace("%", ""));
 let reductionAmount = 0;
@@ -443,7 +443,7 @@ let reductionPercentageVisual = document.getElementById("reduction-percentage");
 let reductionAmountVisual = document.getElementById("reduction-amount");
 
 
-// refactor
+// REDO - CONSIDER GENERATING TABLE, BUT MAP TO AN ARRAY OF PERCENTAGE VALUES
 function calculateAverageForPension() {
 	pensionReductionVisual.classList.remove("salary-highlight");
 
