@@ -3,6 +3,7 @@ window.onload = () => console.log("Running!");
 // ---------- GENERAL ITEM UTILITY ---------- //
 
 const blockOne = document.getElementById("block-1");
+const allButtons = document.querySelectorAll("button");
 const itemSelectedDisplay = document.getElementById("item-title");
 const itemList = document.getElementById("item-list");
 const listOptions = document.getElementById("list-options");
@@ -118,20 +119,34 @@ function loadSelectedItemArray() {
 }
 
 
+const buttonNext1 = document.getElementById("button-next-1");
+const buttonPrevious1 = document.getElementById("button-previous-1");
+
 function depressButton(){
-	blockOne.onmouseleave = function() {
-		blockOne.classList.add("button-highlight");
+	buttonNext1.onmouseleave = function() {
+		buttonNext1.classList.remove("button-highlight");
+		buttonNext1.classList.remove("button-hover");
+		buttonNext1.classList.remove("button-depressed");
 	}
-	blockOne.onmouseenter = function() {
-		blockOne.classList.remove("button-highlight");
-		blockOne.classList.remove("button-highlight-2");
+	buttonNext1.onmouseenter = function() {
+		buttonNext1.classList.add("button-hover");
+		buttonNext1.classList.remove("button-highlight");
 	}
-	blockOne.onclick = function() {
-		blockOne.classList.add("button-highlight-2");
-	}
+	buttonNext1.onclick = function() {
+		cycleItemArrays(true);
+		buttonNext1.classList.add("button-highlight");
+		buttonNext1.classList.add("button-depressed");
+		setTimeout(() => {
+			buttonNext1.classList.remove("button-depressed");
+		  }, 100);
+		};
 }
 
+
+
+
 depressButton();
+
 // ---------- SUTRA UTILITY ---------- //
 
 const sutraSelectedDisplay = document.getElementById("sutra-title");

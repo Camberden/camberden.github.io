@@ -83,22 +83,30 @@ button {
 	border-right-style: groove;
 }
 
-button:hover {
+.button-hover {
 	background-color: aquamarine;
 }
 
 .button-highlight {
-	background-color: red;
+	background-color: blue;
 }
 
-.button-highlight-2 {
-	background-color: blue;
-	padding: 2.5rem;
-	border-radius: 2rem;
-	border-top-width: 2rem;
-	border-left-width: 2.5rem;
-	border-bottom-width: 2.5rem;
-	border-right-width: 2.5rem;
+.button-depressed {
+	border-top-width: 0.3rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.3rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+	border-bottom-width: 0.7rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 0.7rem;
+	border-right-color: grey;
+	border-right-style: groove;
 }
 
 .w-item:last-child {
