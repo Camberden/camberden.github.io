@@ -1,6 +1,7 @@
 window.onload = () => console.log("Running!");
 
 // ----- EXPENSE MANAGEMENT ----- //
+// TODO Load balance after last typed character
 
 let startbalance = document.getElementById("balance").value;
 const startbalanceupdate = document.getElementById("balance");
@@ -442,7 +443,6 @@ let reductionAmount = 0;
 let reductionPercentageVisual = document.getElementById("reduction-percentage");
 let reductionAmountVisual = document.getElementById("reduction-amount");
 
-
 // REDO - CONSIDER GENERATING TABLE, BUT MAP TO AN ARRAY OF PERCENTAGE VALUES
 function calculateAverageForPension() {
 	pensionReductionVisual.classList.remove("salary-highlight");
@@ -494,3 +494,33 @@ highlightPensionTable();
 61 ... 88%
 60 ... 85%
 */ 
+
+// ---------- REFDOCS DISPLAY ----------//
+
+const refdocs = [
+	"../assets/refdoc-acc121-schedule.pdf",
+	"../assets/refdoc-chzc-chant2020.pdf",
+	"../assets/refdoc-cti110-key.pdf",
+	"../assets/refdoc-duolingo-japanese-vocab.pdf",
+	"../assets/refdoc-mat121-manual.pdf",
+	"../assets/refdoc-mat171-manual.pdf",
+	"../assets/refdoc-mat171-transformations.pdf",
+	"../assets/refdoc-mysql-phpadmin-setup.pdf",
+	"../assets/refdoc-mysql-phpadmin-setup.pdf",
+	"../assets/refdoc-nc-college-equivalence.pdf",
+	"../assets/refdoc-oryoki-guide.pdf",
+];
+
+const refdocsList = document.getElementById("refdocs-list");
+// Generates Any Reference Document if Present in Assets
+for (const doc of refdocs) {
+	let li = document.createElement("li");
+	let a = document.createElement("a");
+	let text = document.createTextNode(doc.substring(17, doc.length - 4));
+	a.appendChild(text);
+	a.setAttribute("href", doc);
+	a.setAttribute("target", "_blank");
+	li.appendChild(a);
+	refdocsList.appendChild(li);
+};
+

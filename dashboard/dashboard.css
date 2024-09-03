@@ -194,6 +194,7 @@ input[type=text]:focus {
 	background: #f6f3ed;
 }
 
+/* maybe this is responsible for bad sizing */
 table, th, td {
 	border: 1px solid black;
 	height: 2rem;
@@ -381,4 +382,11 @@ table, th, td {
 
 #pension-table {
 	margin-inline: auto;
+}
+
+/* ----- REFERENCE DOCUMENTS SPECIFIC ----- */
+
+#refdocs-list {
+	background-color: #f6f3ed;
+	list-style-type: none;
 }

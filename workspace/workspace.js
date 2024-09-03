@@ -90,6 +90,7 @@ initItemArray();
 function cycleItemArrays(boolean) {
 	itemList.innerHTML = "";
 	boolean ? itemSelected++ : itemSelected--;
+	boolean ? console.log("next!") : console.log("previous!");
 	if (itemSelected < 0) {
 		itemSelected = contentItems.length - 1;
 	} 
@@ -118,11 +119,8 @@ function loadSelectedItemArray() {
 	itemSelectedDisplay.innerHTML = contentItems[itemSelected].title;
 }
 
-
-const buttonNext1 = document.getElementById("button-next-1");
-const buttonPrevious1 = document.getElementById("button-previous-1");
-
 // Adds functionality to all buttons!
+// Can create a master function for related functionality
 document.querySelectorAll("button").forEach(button => {
 	button.onmouseleave = function() {
 		button.classList.remove("button-highlight");
@@ -135,7 +133,7 @@ document.querySelectorAll("button").forEach(button => {
 	}
 	button.onclick = function() {
 		console.log(button.value);
-		if (button.value) {
+		if (button.value == "next") {
 			cycleItemArrays(true);
 		} else {
 			cycleItemArrays(false);
@@ -147,7 +145,6 @@ document.querySelectorAll("button").forEach(button => {
 		  }, 100);
 		};
 })
-
 
 // ---------- SUTRA UTILITY ---------- //
 
