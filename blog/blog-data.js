@@ -5,7 +5,7 @@
 	| Date
 	| Location
 	| Time
-	|
+	| &emsp;
 	Journal Entry Input
 	`
 	,
@@ -17,7 +17,7 @@ const blogData = [
 	| August 11th, 2024
 	| Chapel Hill Suite
 	| 2200HRS
-	|
+	| &emsp;
 	At last, the beginning of my digital blogging page! I've been on a great trajectory since July.
 	I am grateful for having had the lucidity of mind to adhere to routines.
 	`
@@ -26,10 +26,10 @@ const blogData = [
 	| August 15th, 2024
 	| Chapel Hill Suite
 	| 2250HRS
-	|
+	| &emsp;
 	I'm making considerable progress on my site. I almost feel too occupied with it to begin my fall semester classes.
 	Regardless, I'll give it a break shortly once this blogging module is successfully given to its own separate page.
-	Things seem to be working well: MVP as they'd say. <hr>
+	Things seem to be working well: MVP as they'd say. <hr> &emsp;
 	Life is funny. More measurable progress is happening in the absense of self-imposed pressures. More so than ever before.
 	Fitness, language study, reading, work, and coding: all of these things are going well. Nothing is difficult to approach.
 	I feel no anxiety. I am content.
@@ -59,11 +59,11 @@ const blogData = [
 	| August 25th, 2024
 	| Chapel Hill Suite
 	| 2303HRS
-	|
+	| &emsp;
 	I've being doing okay this weekend, though a bit somber at having missed out on a lot of sunshine and opportunity for
 	hiking or long walks. I've gotten over a week ahead on my coursework, and have been continually doing other activities
 	relevant to me, such as coding and language practice. There's still so much that deserves time. Even though I've
-	done well to restrict my interests, they at times seem too numerous. <hr>
+	done well to restrict my interests, they at times seem too numerous. <hr> &emsp;
 	I decided to drop the Business Law course because I did not want to be overburdened by coursework for these next few
 	months. Gladly I will be getting a full refund, and will be able to better balance personal interests, work, and health.
 	That extra course would have surely affected my mental health negatively in retrospect. Am I in no rush, after all.
@@ -80,24 +80,24 @@ const blogData = [
 	| September 1st, 2024
 	| Chapel Hill Suite
 	| 1555HRS
-	|
+	| &emsp;
 	Almost finished with another eighty-hour work-week. I'm grateful to have been enjoying work very much.
 	Even so, I maintain managaged enthusiasm for my intended career change, and am learning to better interweave that
 	enthusiasm in my current position through stressing oft-overlooked procedures and offering solutions to streamline
 	operations across shifts and teams. I anticipate my learning journey with coding to manifest my idea for a simple
 	pay and pension prediction utility once I gain enough confidence in Laravel and attain the ability to deploy on an
 	internet-accessible server, cloud or not.
-	<hr>
+	<hr> &emsp;
 	I wouldn't say I have too many interests or anything, but the amount of creative things I want to do can seem like much 
 	though not to an overwhelming degree that would cause me to freeze up like I have prior to my brain's software update, 
 	so to speak. I would like to gain a modest competence in creating digital assets, in producing music again, in font design,
 	in simple game design (likely educational), in video creation, among others that may arise as this worldly self further 
 	develops. 
-	<hr>
+	<hr> &emsp;
 	I've learned through writing the pension calculator about document.getElementById("").children.item(#) which will be 
 	able to target and access the nth index tag within the gotten element's child. Cool! I can't wait to see how these all
 	work with database connectivity through Laravel. Well, I actually can wait, and will. 
-	<hr>
+	<hr> &emsp;
 	I am secure; I am safe; I am content. 
 	Missu.
 	`

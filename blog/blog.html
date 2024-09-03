@@ -22,14 +22,22 @@
 	<span>Site construction in progress!</span>
 
 	<main class="blog-grid">
-		<div class="blog-item grid-col-span-2">
+	
+		<div class="blog-item">
 			<h2>Blog Post <span id="displayed-post"></span></h2>
 		</div>
 		<div class="blog-item">
 			<button class="marker-for-menu" onclick="previousBlogPost()">Previous</button>
 			<button class="marker-for-menu" onclick="nextBlogPost()">Next</button>
 		</div>
-		<article class="blog-item grid-col-span-2">
+	
+		<div class="blog-item">
+			<ul id="blog-post-list">
+
+			</ul>
+		</div>
+
+		<article class="blog-item grid-col-span-3">
 			<h3 class="marker-violet">
 				<ul class="blog-post-header">
 					<li id="blog-post-date">August 11th, 2024</li>
@@ -43,11 +51,6 @@
 
 
 		</article>
-		<div class="blog-item">
-			<ul id="blog-post-list">
-
-			</ul>
-		</div>
 
 	</main>
 
