@@ -122,30 +122,32 @@ function loadSelectedItemArray() {
 const buttonNext1 = document.getElementById("button-next-1");
 const buttonPrevious1 = document.getElementById("button-previous-1");
 
-function depressButton(){
-	buttonNext1.onmouseleave = function() {
-		buttonNext1.classList.remove("button-highlight");
-		buttonNext1.classList.remove("button-hover");
-		buttonNext1.classList.remove("button-depressed");
+// Adds functionality to all buttons!
+document.querySelectorAll("button").forEach(button => {
+	button.onmouseleave = function() {
+		button.classList.remove("button-highlight");
+		button.classList.remove("button-hover");
+		button.classList.remove("button-depressed");
 	}
-	buttonNext1.onmouseenter = function() {
-		buttonNext1.classList.add("button-hover");
-		buttonNext1.classList.remove("button-highlight");
+	button.onmouseenter = function() {
+		button.classList.add("button-hover");
+		button.classList.remove("button-highlight");
 	}
-	buttonNext1.onclick = function() {
-		cycleItemArrays(true);
-		buttonNext1.classList.add("button-highlight");
-		buttonNext1.classList.add("button-depressed");
+	button.onclick = function() {
+		console.log(button.value);
+		if (button.value) {
+			cycleItemArrays(true);
+		} else {
+			cycleItemArrays(false);
+		}
+		button.classList.add("button-highlight");
+		button.classList.add("button-depressed");
 		setTimeout(() => {
-			buttonNext1.classList.remove("button-depressed");
+			button.classList.remove("button-depressed");
 		  }, 100);
 		};
-}
+})
 
-
-
-
-depressButton();
 
 // ---------- SUTRA UTILITY ---------- //
 
