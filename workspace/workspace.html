@@ -41,26 +41,42 @@
 
 <main2 class="w2-grid">
 
-	<div class="w2-item grid-col-span-2">
-		<h2 id="sutra-panel">test</h2>
+	<div class="w2-item grid-col-span-3">
 	</div>
-	<div class="w2-item">
-		<button class="marker-for-menu">Previous</button>
-		<button class="marker-for-menu">Next</button></div>
+
 	<div class="w2-item grid-col-span-2">
 		
 	</div>
-		<div class="w2-item">
-		<span class="marker-for-menu"></span><br>
-		<form onSubmit="return false;" style="user-select: none; color: grey;">
-			<div class="typingfield" style="text-align: center; user-select: none;">
-				<input type="text" value="" autocomplete="off">
-			</div>
-		</form>
+	<div class="w2-item">
+		<button class="marker-for-menu" onclick="previousItemArray()">Previous</button>
+		<button class="marker-for-menu">Next</button>
+
+		<ul id="item-list">
+		
+		</ul>
+		
+	</div>
+	<div class="w2-item grid-col-span-2">
+
+		<p id="sutra-title"></p><hr>
+		<p id="furigana-field"></p>
+		<p id="kanji-field"></p>
+		<p id="romaji-field"></p>
+		<p id="interpretation-field"></p>
+
+	</div>
+
+	<div class="w2-item">
+
+		<ul id="sutra-list">
+		
+		</ul>
+	
 	</div>
 
 </main2>
 
+<script src="workspace.js"></script>
 
 </body>
 

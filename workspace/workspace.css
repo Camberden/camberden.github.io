@@ -19,6 +19,10 @@ body {
 	grid-column: span 2;
 }
 
+.grid-col-span-3 {
+	grid-column: span 3;
+}
+
 /* ----- FIRST TESTING GRID ----- */
 
 .w-item {
@@ -83,4 +87,21 @@ body {
 	border-color: red;
 	border-style: double;
 
+}
+
+/* ----- LIST TRAVERSAL AND ITEM SELECTION ----- */
+
+.highlight {
+	color: red;
+	letter-spacing: .5em;
+	transition: 0.1s ease-out;
+	background-color: transparent;
+}
+
+#item-list > li {
+	text-align: left;
+	list-style-type: none;
+}
+#item-list > li:hover {
+	background: lightgreen;
 }

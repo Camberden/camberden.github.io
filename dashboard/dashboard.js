@@ -78,12 +78,12 @@ const getYearID = (date = new Date()) => date.getUTCFullYear();
 
 const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1; // Adjusted from base Zero
 const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
+
 const pslfRequirement = 120;
 const creditedPSLFMonths = 45;
 
 const pslfProgressBar = document.getElementById("pslf-progress-bar");
-document.getElementById("pslf-heading").innerHTML = Math.floor(govtServiceMonths / 12) + 
-" years of service with " + creditedPSLFMonths + " months credited as of " + nowDisplay;
+document.getElementById("pslf-heading").innerHTML = 4 + " years of service with " + creditedPSLFMonths + " months credited as of " + nowDisplay;
 const pslfCompletionPercentage = creditedPSLFMonths / pslfRequirement * 100;
 pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
 
