@@ -2,6 +2,7 @@ window.onload = () => console.log("Running!");
 
 // ---------- GENERAL ITEM UTILITY ---------- //
 
+const blockOne = document.getElementById("block-1");
 const itemSelectedDisplay = document.getElementById("item-title");
 const itemList = document.getElementById("item-list");
 const listOptions = document.getElementById("list-options");
@@ -116,6 +117,21 @@ function loadSelectedItemArray() {
 	itemSelectedDisplay.innerHTML = contentItems[itemSelected].title;
 }
 
+
+function depressButton(){
+	blockOne.onmouseleave = function() {
+		blockOne.classList.add("button-highlight");
+	}
+	blockOne.onmouseenter = function() {
+		blockOne.classList.remove("button-highlight");
+		blockOne.classList.remove("button-highlight-2");
+	}
+	blockOne.onclick = function() {
+		blockOne.classList.add("button-highlight-2");
+	}
+}
+
+depressButton();
 // ---------- SUTRA UTILITY ---------- //
 
 const sutraSelectedDisplay = document.getElementById("sutra-title");

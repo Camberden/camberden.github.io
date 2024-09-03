@@ -49,6 +49,58 @@ body {
 	
 }
 
+.w-item:hover {
+	padding: 2.2rem;
+	border-radius: 0.5rem;
+	border-top-width: 0.5rem;
+	border-left-width: 0.5rem;
+	border-bottom-width: 0.5rem;
+	border-right-width: 0.5rem;
+	
+}
+
+button {
+
+	/* padding: 2rem; */
+	border-radius: 0.5rem;
+	/* box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25); */
+	
+	border-top-width: 0.5rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.5rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+
+	border-bottom-width: 1rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 1rem;
+	border-right-color: grey;
+	border-right-style: groove;
+}
+
+button:hover {
+	background-color: aquamarine;
+}
+
+.button-highlight {
+	background-color: red;
+}
+
+.button-highlight-2 {
+	background-color: blue;
+	padding: 2.5rem;
+	border-radius: 2rem;
+	border-top-width: 2rem;
+	border-left-width: 2.5rem;
+	border-bottom-width: 2.5rem;
+	border-right-width: 2.5rem;
+}
+
 .w-item:last-child {
 	background: red !important;
 	/* grid-column: span 2; goes across 2 gridspaces */
