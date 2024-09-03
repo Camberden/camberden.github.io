@@ -45,12 +45,16 @@
 	</div>
 
 	<div class="w2-item grid-col-span-2">
+		<h2></h2>
 		
 	</div>
 	<div class="w2-item">
-		<button class="marker-for-menu" onclick="previousItemArray()">Previous</button>
-		<button class="marker-for-menu">Next</button>
+		<button onclick="cycleItemArrays(false)">Previous</button>
+			<select id="list-options" onchange="loadSelectedItemArray()" value="something">
 
+			</select>
+		<button onclick="cycleItemArrays(true)">Next</button>
+		<h3 id="item-title">___</h3>
 		<ul id="item-list">
 		
 		</ul>

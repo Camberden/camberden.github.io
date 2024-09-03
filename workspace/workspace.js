@@ -2,18 +2,39 @@ window.onload = () => console.log("Running!");
 
 // ---------- GENERAL ITEM UTILITY ---------- //
 
-let itemSelected = 1;
 const itemSelectedDisplay = document.getElementById("item-title");
 const itemList = document.getElementById("item-list");
+const listOptions = document.getElementById("list-options");
+
+/**
+* @param {string} title
+* @param {string[]} content
+*/
+class Content {
+	constructor(title, content,) {
+		this.title = title;
+		this.content = content;
+	}
+}
 
 // test arrays
-const nobleTruths = [
-	"Suffering Exists", "The Cause is Attachment", "Suffering can End", "A Path to its End Exists",
+const nobleTruthsArray = [
+	"Suffering Exists",
+	"The Cause is Attachment",
+	"Suffering can End",
+	"A Path to its End Exists",
 ];
-const eightfoldPath = [
-	"Right View", "Right Thinking", "Right Speech", "Right Action", "Right Livelihood", "Right Effort", "Right Mindfulness", "Right Concentration",
+const eightfoldPathArray = [
+	"Right View",
+	"Right Thinking",
+	"Right Speech",
+	"Right Action",
+	"Right Livelihood",
+	"Right Effort",
+	"Right Mindfulness",
+	"Right Concentration",
 ];
-const boddhisattvaPrecepts = [
+const boddhisattvaPreceptsArray = [
 	"Refuge in Buddha", 
 	"Refuge in Dharma", 
 	"Refuge in Sangha", 
@@ -31,54 +52,68 @@ const boddhisattvaPrecepts = [
 	"Not Being Angry",
 	"Not Slandering the Three Treasures",
 ];
-// master array
-const masterArray = [nobleTruths, eightfoldPath, boddhisattvaPrecepts];
 
-function loadSelectedItem(item) {
-	itemSelected.innerHTML = item;
-}
+const contentItems = [
+	nobleTruths = new Content("Noble Truths", nobleTruthsArray),
+	eightfoldPath = new Content("Eightfold Path", eightfoldPathArray),
+	boddhisattvaPrecepts = new Content("Boddhisatva Precepts", boddhisattvaPreceptsArray),
+];
 
-function itemSelectedHighlight() {
-	itemSelected.classList.add("highlight");
-}
+// ----- FUNCTIONS
 
-// inits at index 1
+let itemSelected = 1;
 function initItemArray() {
-	for (i = 0; i < masterArray[1].length; i++){
+	let option = document.createElement("option");
+	let optionText = document.createTextNode("--- Select ---");
+	option.appendChild(optionText);
+	listOptions.appendChild(option);
+
+	for (let i = 0; i < contentItems.length; i++) {
+		option = document.createElement("option");
+		let optionText = document.createTextNode(contentItems[i].title);
+		option.value = i;
+		option.appendChild(optionText);
+		listOptions.appendChild(option);
+	}
+	for (let i = 0; i < contentItems[itemSelected].content.length; i++){
 		let li = document.createElement("li");
-		let itemText = document.createTextNode(masterArray[itemSelected][i]);
+		let itemText = document.createTextNode(contentItems[itemSelected].content[i]);
 		li.appendChild(itemText);
 		itemList.appendChild(li);
 	}
+	itemSelectedDisplay.innerHTML = contentItems[itemSelected].title;
 }
 initItemArray();
 
-function loadSelectedItemArray(itemArray) {
-	let itemArraySelected = itemArray;
-	for (i = 0; i < itemArraySelected.length; i++){
-		let li = document.createElement("li");
-		let itemText = document.createTextNode(itemArray[i]);
-		li.appendChild(itemText);
-		itemList.appendChild(li);
-	}
-}
-
-// cycle with + or - !
-function previousItemArray() {
+function cycleItemArrays(boolean) {
 	itemList.innerHTML = "";
-	itemSelected--;
+	boolean ? itemSelected++ : itemSelected--;
 	if (itemSelected < 0) {
-		itemSelected = masterArray.length - 1;
+		itemSelected = contentItems.length - 1;
 	} 
-	if (itemSelected > masterArray.length - 1) {
+	if (itemSelected > contentItems.length - 1) {
 		itemSelected = 0;
 	}
-	for (i = 0; i < masterArray[itemSelected].length; i++) {
+	for (i = 0; i < contentItems[itemSelected].content.length; i++) {
 		let li = document.createElement("li");
-		let itemText = document.createTextNode(masterArray[itemSelected][i]);
+		let itemText = document.createTextNode(contentItems[itemSelected].content[i]);
 		li.appendChild(itemText);
 		itemList.appendChild(li);
 	}
+	itemSelectedDisplay.innerHTML = contentItems[itemSelected].title;
+}
+
+function loadSelectedItemArray() {
+	console.log(listOptions.value);
+	itemSelected = listOptions.value;
+	itemList.innerHTML = "";
+	for (i = 0; i < contentItems[itemSelected].content.length; i++) {
+		let li = document.createElement("li");
+		let itemText = document.createTextNode(contentItems[itemSelected].content[i]);
+		li.appendChild(itemText);
+		itemList.appendChild(li);
+	}
+	itemSelectedDisplay.innerHTML = contentItems[itemSelected].title;
 }
 
 // ---------- SUTRA UTILITY ---------- //
