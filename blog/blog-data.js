@@ -82,7 +82,7 @@ const blogData = [
 	| 1555HRS
 	| &emsp;
 	Almost finished with another eighty-hour work-week. I'm grateful to have been enjoying work very much.
-	Even so, I maintain ≤managaged enthusiasm≥ for my intended career change, and am learning to better interweave that
+	Even so, I maintain ≤managed enthusiasm≥ for my intended career change, and am learning to better interweave that
 	enthusiasm in my current position through stressing oft-overlooked procedures and offering solutions to streamline
 	operations across shifts and teams. I anticipate my learning journey with coding to manifest my idea for a simple
 	pay and pension prediction utility once I gain enough confidence in Laravel and attain the ability to deploy on an

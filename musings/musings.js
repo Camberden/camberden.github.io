@@ -5,7 +5,6 @@ function focusWriting() {
 	document.getElementById("sampleTypingField").innerHTML = foc;
 	console.log("Focus Writing is triggering!");
 }
-
 focusWriting();
 
 // ---------- POEM SECTION ---------- //

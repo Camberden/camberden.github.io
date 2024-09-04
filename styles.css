@@ -65,22 +65,19 @@
 	user-select: none;
 	text-shadow: -5px -2px 0px rgb(112, 12, 170);
 	animation-name: change-text-shadow;
-  	animation-duration: 5s;
-  	animation-iteration-count: infinite;
+  	animation-duration: 3s;
+  	animation-iteration-count: 1;
 
 	/* ----- MARGIN ADJUSTMENTS PLACE TITLE ABOVE IMAGE ----- */
 	margin-top: -4rem;
 	margin-bottom: 5rem;
 }
 @keyframes change-text-shadow {
-	25% {
+	12% {
+		text-shadow: -5px -2px 0px rgb(161, 219, 248);
+	}
+	100% {
 		text-shadow: -5px -2px 0px rgb(112, 12, 170);
-	}
-	50% {
-		text-shadow: -5px -2px 0px rgb(133, 12, 203);
-	}
-	75% {
-		text-shadow: -5px -2px 0px rgb(104, 5, 161);
 	}
 }
 
@@ -194,7 +191,7 @@ a:hover {
 /* FOR SOMETHING TO HIGHLIGHT IN VIEWPORT: PENDING USE CASE */
 .text-flourish {
 	background-size: 100% 5%;
-	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+	background-image: linear-gradient(120deg, rgb(245, 155, 96) 0%, rgb(161, 219, 248) 100%);
 }
 
 
