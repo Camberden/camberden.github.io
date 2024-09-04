@@ -251,25 +251,70 @@ populateSalaryTable();
 // ---------- REEDUCATION INFORMATION ----------//
 
 // MODAL
-
 const modal = document.getElementById("menumodal");
 const menuclick = document.getElementById("menulabel");
 const menuclose = document.getElementsByClassName("closemenu")[0];
 
-menuclick.onclick = function () {
-	modal.style.display = "block";
-};
-
-menuclose.onclick = function () {
-	modal.style.display = "none";
-};
-
-window.onclick = function (event) {
-	if (event.target === modal) {
+function cpaModalAccess() {
+	menuclick.onclick = function () {
+		modal.style.display = "block";
+	};
+	menuclose.onclick = function () {
 		modal.style.display = "none";
+	};
+	window.onclick = function (event) {
+		if (event.target === modal) {
+			modal.style.display = "none";
+		}
+	};
+}
+cpaModalAccess();
+
+// PRIMARY CPA DIV
+let cpaCredits = 0;
+const cpaCreditsDisplay = document.getElementById("cpa-credits");
+const cpaProgressBar = document.getElementById("cpa-progress-bar");
+
+function initCpaCredits() {
+	document.querySelectorAll(".taken").forEach(course => {
+		cpaCredits += course.value;
+	});
+	document.querySelectorAll(".taking").forEach(course => {
+		cpaCredits += course.value;
+	});
+}
+initCpaCredits();
+
+function displayCpaCredits() {
+	cpaCreditsDisplay.innerHTML = cpaCredits;
+	cpaCompletionPercentage = cpaCredits / 30 * 100;
+	if (cpaCredits >= 30) {
+		cpaProgressBar.innerHTML = `<span style="width:100%;"></span>`
+	} else {
+		cpaProgressBar.innerHTML = `<span style="width:${cpaCompletionPercentage}%;"></span>`;
 	}
-};
-const cpacourses = document.querySelectorAll(".cpa-req");
+}
+displayCpaCredits();
+
+function enableCpaProjection(){
+	document.querySelectorAll(".not-taken").forEach(course => {
+		let clicked = false;
+		course.onclick = function() {
+			if (!clicked) {
+			console.log(course.value);
+			clicked = true;
+			cpaCredits += course.value;
+			course.classList.add("planned-or-completed");
+			} else {
+				cpaCredits -= course.value;
+				clicked = false;
+				course.classList.remove("planned-or-completed");
+			}
+			displayCpaCredits();
+		}
+	});
+}
+enableCpaProjection();
 
 // ---------- LIFE IN WEEKS VISUALIZER ----------//
 
@@ -485,7 +530,6 @@ function highlightPensionTable(){
 };
 
 highlightPensionTable();
-
 /*
 60+ Table:
 64 ... 97%

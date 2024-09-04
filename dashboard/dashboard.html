@@ -151,8 +151,7 @@
 				<h2>PSLF Management</h2>
 			</div>
 			<p class="list-background" id="pslf-heading"></p>
-				<div class="bar" id="pslf-progress-bar">
-			</div>
+			<div class="bar" id="pslf-progress-bar"></div>
 
 			<div id="pslf-boxes">
 				
@@ -242,27 +241,28 @@
 				<h2>RE-EDUCATION INFORMATION</h2>
 			</div>
 			<span class="marker" id="menulabel">Additional Information</span>
-			<p class="list-background">CPA Credits: 3/30</p>
+			<hr>
+			
+			<div class="list-background">CPA Credits: <span id="cpa-credits"></span>/30</div>
+			<div id="cpa-progress-bar"></div>
 
-
-			<ul class="list-background">
-				<li class="acc-core adv-acc-core taken">ACC 120 - Prin of Financial Accounting</li>
-				<li class="acc-core adv-acc-core taking-highlight">ACC 121 - Prin of Managerial Accounting</li>
-				<li class="acc-core adv-acc-core">BUS 115 - Business Law I</li>
-				<li class="adv-acc-core">ACC 220 - Intermediate Accounting I</li>
-				<li class="adv-acc-core">ACC 129 - Individual Income Taxes</li>
-				<li class="adv-acc-core">ACC 221 - Intermediate Accounting II</li>
-				<li class="adv-acc-core">ACC 269 - Auditing & Assurance Services</li>
-			</ul>
-			<ul class="list-background">
-				<li class="acc-soft-app">ACC 149 - Intro to ACC Spreadsheets (2)</li>
-				<li class="acc-soft-app">ACC 150 - Accounting Software Applications (2)</li>
-				<li class="acc-soft-app">ACC 151 - Accounting Spreadsheet Applications (2)</li>
-				<li class="acc-soft-app">ACC 152 - Advanced Software Applications (2)</li>
-				<li class="acc-dpl">ACC 140 - Payroll Accounting (2)</li>
-				<li class="acc-dpl">ACC 130 - Business Income Taxes (3)</li>
-				<li class="acc-dpl">ACC 215 - Ethics in Accounting (3)</li>
-				<li class="acc-dpl">ECO 151 - Survey of Economics (3)</li>
+			<ul id="acc-courses" class="list-background">
+				<li class="acc-core adv-acc-core taken planned-or-completed" value="3">ACC 120 - Prin of Financial Accounting(3)</li>
+				<li class="acc-core adv-acc-core taking planned-or-completed" value="3">ACC 121 - Prin of Managerial Accounting (3)</li>
+				<li class="not-taken acc-core adv-acc-core" value="3">BUS 115 - Business Law I (3)</li>
+				<li class="not-taken adv-acc-core" value="4">ACC 220 - Intermediate Accounting I (4)</li>
+				<li class="not-taken adv-acc-core" value="3">ACC 129 - Individual Income Taxes (3)</li>
+				<li class="not-taken adv-acc-core" value="4">ACC 221 - Intermediate Accounting II (4)</li>
+				<li class="not-taken adv-acc-core" value="3">ACC 269 - Auditing & Assurance Services (3)</li>
+				<hr>
+				<li class="not-taken acc-soft-app" value="2">ACC 149 - Intro to ACC Spreadsheets (2)</li>
+				<li class="not-taken acc-soft-app" value="2">ACC 150 - Accounting Software Applications (2)</li>
+				<li class="not-taken acc-soft-app" value="2">ACC 151 - Accounting Spreadsheet Applications (2)</li>
+				<li class="not-taken acc-soft-app" value="2">ACC 152 - Advanced Software Applications (2)</li>
+				<li class="not-taken acc-dpl" value="2">ACC 140 - Payroll Accounting (2)</li>
+				<li class="not-taken acc-dpl" value="3">ACC 130 - Business Income Taxes (3)</li>
+				<li class="not-taken acc-dpl" value="3">ACC 215 - Ethics in Accounting (3)</li>
+				<li class="not-taken acc-dpl" value="3">ECO 151 - Survey of Economics (3)</li>
 			</ul>
 			<div class="modal" id="menumodal">
 
@@ -301,7 +301,7 @@
 							<li class="taken">ACC 120</li>
 						</ul>
 						<ul>FA2024<hr>
-							<li class="taking-highlight">ACC 121</li>
+							<li class="taking">ACC 121</li>
 						</ul>
 						<ul>SP2025<hr>
 							<li>ACC 220</li>
@@ -528,6 +528,8 @@
 			<div class="marker">
 				<h2>REFERENCE DOCUMENTS</h2>
 			</div>
+
+
 			<ul id="refdocs-list">
 
 			</ul>
