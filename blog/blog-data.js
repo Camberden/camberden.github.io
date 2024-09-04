@@ -18,7 +18,7 @@ const blogData = [
 	| Chapel Hill Suite
 	| 2200HRS
 	| &emsp;
-	At last, the beginning of my digital blogging page! I've been on a great trajectory since July.
+	At last, ≤the beginning≥ of my digital blogging page! I've been on a great trajectory since July.
 	I am grateful for having had the lucidity of mind to adhere to routines.
 	`
 	,
@@ -43,7 +43,7 @@ const blogData = [
 	whether or not whatever I was doing was WORTH it. 
 	I am elated (though calmly) that this is OVER for me. I simply do, for the joy of doing. 
 	I do, even when there is nothing to gain. I don't care if there is something to gain.
-	True, there are multiple little and large goals tied to my activities, but I am no longer ATTACHED to ANY of them.
+	True, there are multiple little and large goals ≤tied to my activities≥, but I am no longer ATTACHED to ANY of them.
 	If goals are attained, then cool. If not, okay. Just like you, reality, I'm simply expressing my nature.
 	Your nature is to attenuate the coming and going of all activity. 
 	My "interests" and whatnot are the means by which I may live skillfully and with finesse; there is a duty assumed
@@ -61,7 +61,7 @@ const blogData = [
 	| 2303HRS
 	| &emsp;
 	I've being doing okay this weekend, though a bit somber at having missed out on a lot of sunshine and opportunity for
-	hiking or long walks. I've gotten over a week ahead on my coursework, and have been continually doing other activities
+	hiking or long walks. I've gotten ≤over a week ahead≥ on my coursework, and have been continually doing other activities
 	relevant to me, such as coding and language practice. There's still so much that deserves time. Even though I've
 	done well to restrict my interests, they at times seem too numerous. <hr> &emsp;
 	I decided to drop the Business Law course because I did not want to be overburdened by coursework for these next few
@@ -82,7 +82,7 @@ const blogData = [
 	| 1555HRS
 	| &emsp;
 	Almost finished with another eighty-hour work-week. I'm grateful to have been enjoying work very much.
-	Even so, I maintain managaged enthusiasm for my intended career change, and am learning to better interweave that
+	Even so, I maintain ≤managaged enthusiasm≥ for my intended career change, and am learning to better interweave that
 	enthusiasm in my current position through stressing oft-overlooked procedures and offering solutions to streamline
 	operations across shifts and teams. I anticipate my learning journey with coding to manifest my idea for a simple
 	pay and pension prediction utility once I gain enough confidence in Laravel and attain the ability to deploy on an

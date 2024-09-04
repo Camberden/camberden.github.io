@@ -45,6 +45,10 @@ button:hover {
 	color: rgb(19, 94, 199);
 }
 
+.common-background {
+	background: #f6f3ed;
+}
+
 .blog-post-header {
 	text-align: left;
 	background: #f6f3ed;

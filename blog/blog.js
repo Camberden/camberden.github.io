@@ -2,6 +2,7 @@
 let activeBlogPost = document.getElementById("active-blog-post");
 let activeBlogPostNumber = blogData.length - 1;
 let blogPostList = document.getElementById("blog-post-list");
+let blogPostTitle = document.getElementById("blog-post-title");
 
 
 function displayActiveBlogPostNumber(){
@@ -19,6 +20,8 @@ function extractHeaderData(increment){
 	let instanceTime = splitInstance[3].trim();
 	document.getElementById("blog-post-time").innerHTML = instanceTime;
 	let instanceBlogPost = splitInstance[4].trim();
+	blogPostTitle.innerHTML = instanceBlogPost.substring(instanceBlogPost.indexOf("≤") + 1, instanceBlogPost.indexOf("≥"));
+
 	displayActiveBlogPostNumber();
 
 return instanceBlogPost;
@@ -33,7 +36,6 @@ function initBlogData(dataLength){
 		blogPostList.appendChild(listedBlogPost);
 		listedBlogPost.append(`Post ${i + 1}: `);
 		listedBlogPost.append(blogData[i].substring(blogData[i].indexOf("|") + 1, blogData[i].indexOf("…")));
-
 		// Latest Entry
 		if (i === dataLength - 1) {
 			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + 
@@ -41,7 +43,6 @@ function initBlogData(dataLength){
 		}
 	}
 }
-
 initBlogData(blogData.length);
 
 function chooseActiveBlogPost(){
