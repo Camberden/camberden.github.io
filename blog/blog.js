@@ -3,8 +3,10 @@ let activeBlogPost = document.getElementById("active-blog-post");
 let activeBlogPostNumber = blogData.length - 1;
 let blogPostList = document.getElementById("blog-post-list");
 
+
 function displayActiveBlogPostNumber(){
 	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
+	document.getElementById(`bp-${activeBlogPostNumber}`).classList.add("listing-highlight");
 }
 
 function extractHeaderData(increment){
@@ -25,35 +27,58 @@ return instanceBlogPost;
 function initBlogData(dataLength){
 	for (i = 0; i <= dataLength - 1; i++){
 		let listedBlogPost = document.createElement("li");
+		listedBlogPost.setAttribute("class", "blog-post-inside-list");
+		listedBlogPost.setAttribute("value", i);
+		listedBlogPost.setAttribute("id", `bp-${i}`);
 		blogPostList.appendChild(listedBlogPost);
-		listedBlogPost.append(`Post ${i + 1}`);
+		listedBlogPost.append(`Post ${i + 1}: `);
+		listedBlogPost.append(blogData[i].substring(blogData[i].indexOf("|") + 1, blogData[i].indexOf("…")));
 
 		// Latest Entry
 		if (i === dataLength - 1) {
-			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-			displayActiveBlogPostNumber();
+			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + 
+			extractHeaderData(activeBlogPostNumber) + `</span>`;
 		}
 	}
 }
+
 initBlogData(blogData.length);
 
-function chooseActiveBlogPost(choice){
-	if (choice <= blogData.length && choice >= 0) {
-		activeBlogPostNumber = choice;
-		activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-	}
+function chooseActiveBlogPost(){
+	document.querySelectorAll(".blog-post-inside-list").forEach(listing => {
+		listing.onclick = function(){
+			document.getElementById(`bp-${activeBlogPostNumber}`).classList.remove("listing-highlight");
+			activeBlogPostNumber = listing.value;
+			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
+		}
+	})
 }
+chooseActiveBlogPost();
 
-function previousBlogPost(){
-	if (activeBlogPostNumber > 0) {
-		activeBlogPostNumber--;
-		activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-	}
+function enableBlogButtons(){
+	document.querySelectorAll(".blog-button").forEach(button => {
+		button.onclick = function() {
+			switch(button.value) {
+				case "next":
+					if (activeBlogPostNumber < blogData.length - 1) {
+						document.getElementById(`bp-${activeBlogPostNumber}`).classList.remove("listing-highlight");
+						activeBlogPostNumber++;
+						activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
+						extractHeaderData(activeBlogPostNumber) + `</span>`;
+					}
+					break;
+				case "previous":
+					if (activeBlogPostNumber > 0) {
+						document.getElementById(`bp-${activeBlogPostNumber}`).classList.remove("listing-highlight");
+						activeBlogPostNumber--;
+						activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
+						extractHeaderData(activeBlogPostNumber) + `</span>`;
+					}
+					break;
+				default:
+					console.log("Default Switch Triggered");
+			}
+		}
+	})
 }
-
-function nextBlogPost(){
-	if (activeBlogPostNumber < blogData.length - 1) {
-		activeBlogPostNumber++;
-		activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
-	}
-}
+enableBlogButtons();

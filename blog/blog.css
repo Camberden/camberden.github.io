@@ -67,3 +67,11 @@ button:hover {
 #blog-post-list > li:hover {
 	background: lightgreen;
 }
+
+.blog-post-inside-list {
+	text-align: center;
+}
+
+.listing-highlight {
+	background-color: lightblue;
+}

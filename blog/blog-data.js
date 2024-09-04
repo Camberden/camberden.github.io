@@ -2,7 +2,7 @@
 
 /*
 	`
-	| Date
+	| Date…
 	| Location
 	| Time
 	| &emsp;
@@ -14,7 +14,7 @@
 const blogData = [
 	
 	`
-	| August 11th, 2024
+	| August 11th, 2024…
 	| Chapel Hill Suite
 	| 2200HRS
 	| &emsp;
@@ -23,7 +23,7 @@ const blogData = [
 	`
 	,
 	`
-	| August 15th, 2024
+	| August 15th, 2024…
 	| Chapel Hill Suite
 	| 2250HRS
 	| &emsp;
@@ -56,7 +56,7 @@ const blogData = [
 	`
 	,
 	`
-	| August 25th, 2024
+	| August 25th, 2024…
 	| Chapel Hill Suite
 	| 2303HRS
 	| &emsp;
@@ -77,7 +77,7 @@ const blogData = [
 	`
 	,
 	`
-	| September 1st, 2024
+	| September 1st, 2024…
 	| Chapel Hill Suite
 	| 1555HRS
 	| &emsp;
