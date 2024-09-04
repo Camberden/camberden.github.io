@@ -8,7 +8,7 @@ const startbalanceupdate = document.getElementById("balance");
 
 startbalanceupdate.onkeydown = function () {
 	startbalance = document.getElementById("balance").value;
-	calculateNewBalance();
+		calculateNewBalance();
 };
 
 const car = 0.00;
@@ -62,7 +62,6 @@ allElem2.forEach(elem => elem.onclick = calculateNewBalance);
 
 calculateNewBalance();
 
-
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
 const workAnniversary = new Date(1602156600000);
@@ -70,25 +69,15 @@ const fiscalYear2024 = 1719806400000;
 
 const now = new Date();
 const nowDisplay = now.toLocaleString("en-US");
-const fiscalYear = (5 < now.getMonth()) + now.getFullYear() - 1; // July or Later // -1 for FY
-const fiscalYearDisplay = document.getElementById("fiscal-year");
-fiscalYearDisplay.innerHTML = `FY ${fiscalYear}-${fiscalYear + 1}`;
 
 const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
 const getYearID = (date = new Date()) => date.getUTCFullYear();
 
-const govtServiceMonths = getMonthID(now) - getMonthID(new Date(workAnniversary)) + 1; // Adjusted from base Zero
-const govtServiceYears = getYearID(now) - getYearID(new Date(workAnniversary));
-
 const pslfRequirement = 120;
 const creditedPSLFMonths = 45;
+document.getElementById("pslf-heading").innerHTML = creditedPSLFMonths + " months credited as of " + nowDisplay;
 
-const pslfProgressBar = document.getElementById("pslf-progress-bar");
-document.getElementById("pslf-heading").innerHTML = 4 + " years of service with " + creditedPSLFMonths + " months credited as of " + nowDisplay;
-const pslfCompletionPercentage = creditedPSLFMonths / pslfRequirement * 100;
-pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;"></span>`;
-
-pslfBoxes = document.getElementById("pslf-boxes");
+const pslfBoxes = document.getElementById("pslf-boxes");
 
 function populatePSLFBoxes() {
 	for (i = 0; i < pslfRequirement; i++) {
@@ -99,7 +88,7 @@ function populatePSLFBoxes() {
 		const pslfBox = document.createElement("span");
 		pslfBox.classList.add("pslf-box");
 
-		if (i > pslfRequirement - creditedPSLFMonths) {
+		if (i >= pslfRequirement - creditedPSLFMonths) {
 			pslfBox.classList.add("pslf-box-filled");
 		}
 		pslfBoxes.appendChild(pslfBox);
@@ -109,12 +98,25 @@ function populatePSLFBoxes() {
 }
 populatePSLFBoxes();
 
-
-
 // ----- STEP PAY PLAN MODULE ----- //
 
 // 160 Sick Hours == 1 Month Service
 
+const salarySchedule2020 = [
+	["33130", "33130", "33130", "33130", "33130", "33130", "33130"], // C/OI
+	["34220", "34220", "34220", "34220", "34220", "34220", "34220"], // C/OII
+	["36598", "36598", "36598", "36598", "36598", "36598", "36598"], // C/OIII
+];
+const salarySchedule2021 = [
+	["33130", "35449", "37576", "39455", "41033", "42264", "43109"], // C/OI
+	["34220", "36615", "38812", "40753", "42383", "43654", "44527"], // C/OII
+	["36598", "39160", "41510", "43586", "45329", "46689", "47623"], // C/OIII
+];
+const salarySchedule2022 = [
+	["33958", "36335", "38515", "40441", "42059", "43321", "44187"], // C/OI
+	["35076", "37530", "39782", "41772", "43443", "44745", "45640"], // C/OII
+	["37513", "40139", "42548", "44676", "46462", "47856", "48814"], // C/OIII
+];
 const salarySchedule2023 = [
 	["36525", "39801", "41427", "43498", "45237", "46595", "47527"], // C/OI
 	["37727", "40367", "42790", "44929", "46726", "48127", "49090"], // C/OII
@@ -125,7 +127,7 @@ const salarySchedule2024 = [
 	["38859", "41578", "44074", "46277", "48128", "49571", "50563"], // C/OII
 	["41558", "44468", "47137", "49494", "51473", "53017", "54078"], // C/OIII
 ];
-
+// Pending
 const salarySchedule2025 = [
 	["37621", "40253", "42670", "44803", "46594", "47993", "48953"], // C/OI
 	["38859", "41578", "44074", "46277", "48128", "49571", "50563"], // C/OII
@@ -138,24 +140,11 @@ const salarySchedule2026 = [
 	["41558", "44468", "47137", "49494", "51473", "53017", "54078"], // C/OIII
 ];
 
+const fiscalYear = 2024;
+const fiscalYearDisplay = document.getElementById("fiscal-year");
+fiscalYearDisplay.innerHTML = `FY ${fiscalYear}-${fiscalYear + 1}`;
+
 const salarySchedule = salarySchedule2024;
-// const setSalarySchedule = fy => {
-// 	switch (fy) {
-// 		// TODO: make past cases
-// 		case (2023):
-// 			salarySchedule = salarySchedule2023;
-// 			break;
-// 		case (2024):
-// 			salarySchedule = salarySchedule2024;
-// 			break;
-// 		default:
-// 			salarySchedule = fy;
-// 			break;
-// 	}
-// }
-
-// setSalarySchedule(fiscalYear);
-
 let currentSalary;
 let highlightedSalary;
 let custodyLevel = 1;
@@ -163,7 +152,6 @@ let yearsExperience = 4;
 let experienceBonus = 1;
 let adjustedExperience;
 let activeBonus = true;
-
 
 function calculateStep(){
 	adjustedExperience = yearsExperience === 6 ? yearsExperience : (yearsExperience + experienceBonus);
