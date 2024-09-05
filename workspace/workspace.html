@@ -37,8 +37,6 @@
 	</div>
 </main>
 
-
-
 <main2 class="w2-grid">
 
 	<div class="w2-item grid-col-span-3">
@@ -57,7 +55,6 @@
 			</select>
 		<button id="button-next-precept" class="button-precepts" value="next">Next</button>
 		<h3 id="item-title">___</h3>
-		
 	</div>
 	<div class="w2-item grid-col-span-2">
 		<p id="sutra-title"></p><hr>
@@ -68,10 +65,14 @@
 	</div>
 
 	<div class="w2-item">
-		<button id="button-previous-sutra" class="button-sutras" value="previous">Previous</button>
-		<button id="button-next-sutra" class="button-sutras" value="next">Next</button>
+		<button id="button-previous-sutra" class="button-sutras" value="previous">Previous Line</button>
+		<button id="button-next-sutra" class="button-sutras" value="next">Next Line</button>
 		<hr>
 			<select id="sutra-options" onchange="loadDifferentSutra()" value="something">
+
+			</select>
+
+			<select id="sutra-line-options" onchange="loadDifferentLine()" value="something">
 
 			</select>
 

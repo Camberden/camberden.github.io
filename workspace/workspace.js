@@ -156,6 +156,7 @@ const romajiDisplay = document.getElementById("romaji-field");
 const englishDisplay = document.getElementById("english-field");
 const sutraList = document.getElementById("sutra-list");
 const sutraOptions = document.getElementById("sutra-options");
+const sutraLineOptions = document.getElementById("sutra-line-options");
 let sutraLinesLength = 0;
 let sutraLineLoaded = 0;
 
@@ -383,6 +384,7 @@ function initSutraList(){
 	let optionText = document.createTextNode("--- Select ---");
 	option.appendChild(optionText);
 	sutraOptions.appendChild(option);
+	sutraLineOptions.appendChild(option);
 
 	for(let i = 0; i < sutras.length; i++) {
 		let option = document.createElement("option");
@@ -420,8 +422,28 @@ function loadSelectedSutraLines(sutra){
 
 function loadDifferentSutra(){
 	currentSutra = sutras[sutraOptions.value];
+	sutraLineLoaded = 0;
 	initSutraLines(currentSutra);
 }
+
+// ----- LINE LOADING: may need to remove/ replace options
+function loadLineNumbers(){
+	for(let i = 0; i < currentSutra.englishLines.length; i++) {
+		let option = document.createElement("option");
+		option.value = i;
+		let lineNumber = document.createTextNode("Line: " + (i + 1));
+		option.append(lineNumber);
+		sutraLineOptions.appendChild(option);
+	}
+}
+loadLineNumbers();
+
+function loadDifferentLine(){
+	sutraLineLoaded = sutraLineOptions.value;
+	initSutraLines(currentSutra);
+}
+
+//
 
 /**
  * @param {boolean} boolean
@@ -451,7 +473,7 @@ function enableSutraButtons(){
 		}
 		button.onclick = function() {
 			console.log(button.value);
-			if (button.value == "next") {
+			if (button.value === "next") {
 				cycleSutraLines(true);
 			} else {
 				cycleSutraLines(false);
