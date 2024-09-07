@@ -424,10 +424,15 @@ function loadDifferentSutra(){
 	currentSutra = sutras[sutraOptions.value];
 	sutraLineLoaded = 0;
 	initSutraLines(currentSutra);
+	loadLineNumbers();
 }
 
 // ----- LINE LOADING: may need to remove/ replace options
 function loadLineNumbers(){
+	let options = document.getElementById("sutra-line-options");
+	while (options.childElementCount > 0) {
+		options.removeChild(options.lastChild);
+	}
 	for(let i = 0; i < currentSutra.englishLines.length; i++) {
 		let option = document.createElement("option");
 		option.value = i;
@@ -439,6 +444,7 @@ function loadLineNumbers(){
 loadLineNumbers();
 
 function loadDifferentLine(){
+
 	sutraLineLoaded = sutraLineOptions.value;
 	initSutraLines(currentSutra);
 }
