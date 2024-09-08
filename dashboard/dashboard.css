@@ -31,7 +31,7 @@ input[type=text]:focus {
 .quick-links-grid {
 	display: grid;
 	gap: 1.5rem; 
-	margin-inline-end: auto;
+	margin-inline: auto;
 	width: min(100%, 69rem);
 	grid-template-columns: repeat(8, 11%); /* repeat(4, 25%) */
 	padding-block: 1rem;
@@ -41,9 +41,8 @@ input[type=text]:focus {
 .quick-links-grid-item {
 	padding: 1rem;
 	height: 1rem;
-	border-radius: 0.5rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: red;
+	border-color: grey;
 	border-style: double;
 }
 
@@ -51,9 +50,8 @@ input[type=text]:focus {
 .dashboard-grid {
 	display: grid;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(2, 50%); /* repeat(4, 25%) */
-
-	/* padding-block: 1rem; */
+	grid-template-columns: repeat(2, 50%);
+	padding-block: 1rem;
 	width: min(100%, 70rem);
 	margin-inline: auto;
 }
@@ -64,9 +62,8 @@ input[type=text]:focus {
 
 .dashboard-item {
 	padding: 1rem;
-	border-radius: 0.5rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: red;
+	border-color: grey;
 	border-style: double;
 }
 

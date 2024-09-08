@@ -13,9 +13,9 @@
 
 .blog-item {
 	padding: 1rem;
-	border-radius: 1rem;
+	/* border-radius: 1rem; */
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: red;
+	border-color: grey;
 	border-style: double;
 }
 
@@ -32,7 +32,7 @@ button {
 	padding: 1rem 1rem;
 	user-select: none;
 	border-radius: 1rem;
-	border-color: red;
+	border-color: slategray;
 	border-style: double;
 }
 
