@@ -150,16 +150,19 @@ enablePreceptsButtons();
 // ---------- SUTRA UTILITY ---------- //
 
 const sutraSelectedDisplay = document.getElementById("sutra-title");
+let sutraFields = document.getElementById("sutra-fields");
 const furiganaDisplay = document.getElementById("furigana-field");
 const kanjiDisplay = document.getElementById("kanji-field");
 const romajiDisplay = document.getElementById("romaji-field");
 const englishDisplay = document.getElementById("english-field");
+const typed = document.getElementById("sutra-typing-field");
 const sutraList = document.getElementById("sutra-list");
 const sutraOptions = document.getElementById("sutra-options");
 const sutraLineOptions = document.getElementById("sutra-line-options");
 let sutraLinesLength = 0;
 let sutraLineLoaded = 0;
 
+// TODO: create single array title
 /**
 	 * @param {string} englishTitle
 	 * @param {string} furiganaTitle
@@ -430,7 +433,7 @@ function loadDifferentSutra(){
 // ----- LINE LOADING: may need to remove/ replace options
 function loadLineNumbers(){
 	let options = document.getElementById("sutra-line-options");
-	while (options.childElementCount > 0) {
+	while (options.childElementCount > 1) {
 		options.removeChild(options.lastChild);
 	}
 	for(let i = 0; i < currentSutra.englishLines.length; i++) {
@@ -444,12 +447,9 @@ function loadLineNumbers(){
 loadLineNumbers();
 
 function loadDifferentLine(){
-
-	sutraLineLoaded = sutraLineOptions.value;
-	initSutraLines(currentSutra);
+		sutraLineLoaded = sutraLineOptions.value;
+		initSutraLines(currentSutra);
 }
-
-//
 
 /**
  * @param {boolean} boolean
@@ -493,3 +493,22 @@ function enableSutraButtons(){
 	})
 }
 enableSutraButtons();
+
+// Nice CSS Reference!
+function sutraType() {
+	console.log("TYPED value = " + typed.value);
+	let fieldLength = englishDisplay.innerHTML.length;
+	let typedLength = typed.value.length;
+	let typedCompletion = (typedLength / fieldLength) * 100;
+	furiganaDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
+	kanjiDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
+	romajiDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
+	englishDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
+
+	
+	if (typed.value === englishDisplay.innerHTML) {
+		typed.value = "";
+		cycleSutraLines(true);
+	}
+
+}
