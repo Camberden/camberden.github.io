@@ -212,6 +212,60 @@ const robeChantKanji = [
 		"披奉如來教",
 		"廣度諸衆生",
 ];
+const heartSutraEnglish = [
+	"Avalokiteshvara Bodhisattva,",
+	"when practicing deeply the prajna paramita",
+	"perceived that all five skandhas in their own being are empty",
+	"and was saved from all suff’ring.",
+	"O Shariputra,", 
+	"form does not differ from emptiness",
+	"emptiness does not differ from form", 
+	"that which is form is emptiness",
+	"that which is emptiness form",
+	"The same is true of feelings, perceptions, formations, consciousness.",
+	"O Shariputra,",
+	"all dharmas are marked with emptiness",
+	"they do not appear nor disappear",
+	"are not tainted nor pure",
+	"do not increase nor decrease",
+	"Therefore, in emptiness, no form,",
+	"no feelings, no perceptions, no formations, no consciousness",
+	"no eyes, no ears, no nose, no tongue, no body, no mind,",
+	"no color, no sound, no smell, no taste, no touch, no object of mind",
+	"no realm of eyes",
+	"until no realm of mind-consciousness",
+	"no ignorance,",
+	"and also no extinction of it",
+	"until no old-age-and-death",
+	"and also no extinction of it",
+	"no suff’ring, no origination, no stopping, no path,",
+	"no cognition, also no attainment",
+	"With nothing to attain",
+	"a Bodhisattva depends on",
+	"prajna paramita, and",
+	"the mind",
+	"is no hindrance.",
+	"Without any hindrance, no fears exist.",
+	"Far apart from every inverted view",
+	"one dwells in nirvana.",
+	"In the three worlds all Buddhas",
+	"depend on prajna paramita",
+	"and attain unsurpassed complete perfect enlightenment.",
+	"Therefore, know the prajna paramita",
+	"is the great transcendent mantra",
+	"is the great bright mantra",
+	"is the utmost mantra",
+	"is the supreme mantra",
+	"which is able to relieve all suff’ring",
+	"and is true not false.",
+	"So, proclaim the prajna paramita mantra",
+	"proclaim the mantra that says",
+	"Gate, gate,",
+	"paragate,",
+	"parasamgate!",
+	"Bodhi! Svaha!",
+	"Heart Sutra",
+];
 const heartSutraKanji = [
 	"觀自在菩薩",
 	"行深般若波羅蜜多時",
@@ -379,7 +433,7 @@ const heartSutraFurigana = [
 
 const sutras = [
 	robeChant = new Sutra("Robe Chant", "たっけさのげ", "搭袈裟の偈", "Takkesa no Ge", robeChantEnglish, robeChantFurigana, robeChantKanji, robeChantRomaji),
-	heartSutra = new Sutra("Heart Sutra", "まかはんやはらみったしんぎょう", "摩訶般若波羅蜜多心經"," Maka Hanya Haramitta Shingyou", heartSutraRomaji, heartSutraFurigana, heartSutraKanji, heartSutraRomaji),
+	heartSutra = new Sutra("Heart Sutra", "まかはんやはらみったしんぎょう", "摩訶般若波羅蜜多心經"," Maka Hanya Haramitta Shingyou", heartSutraEnglish, heartSutraFurigana, heartSutraKanji, heartSutraRomaji),
 ];
 
 function initSutraList(){
@@ -411,7 +465,7 @@ function initSutraLines(sutra) {
 	englishDisplay.innerHTML = sutra.englishLines[sutraLineLoaded];
 	sutraLinesLength = sutra.englishLines.length;
 }
-initSutraLines(sutras[0]);
+initSutraLines(sutras[1]);
 
 /**
  * @param {Sutra} sutra
@@ -504,7 +558,6 @@ function sutraType() {
 	kanjiDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
 	romajiDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
 	englishDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
-
 	
 	if (typed.value === englishDisplay.innerHTML) {
 		typed.value = "";
