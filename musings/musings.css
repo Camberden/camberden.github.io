@@ -1,15 +1,5 @@
 /*	PAGETITLE	*/
 
-#blog-title {
-	font-style: normal;
-	text-align: center;
-	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
-	background-clip: border-box;
-	-webkit-background-clip: text;
-	color: transparent;
-	user-select: none;
-}
-
 #sutra-panel {
 	font-style: normal;
 	text-align: center;
@@ -43,7 +33,7 @@
 	transform: translate(-50%, -50%);
   }
 
-  .highlight {
+.highlight {
 	color:rgb(123, 153, 184);
   }
 
@@ -149,16 +139,6 @@ input[type=text]:focus {
 	color: rgb(19, 94, 199);
 }
 
-.blog-post-header {
-	text-align: left;
-	background: #f6f3ed;
-}
-
-.blog-post {
-	text-align: left;
-	background-color: #f6f3ed;
-}
-
 /* MENUMODAL */
 
 #menulabel {
@@ -226,7 +206,6 @@ input[type=text]:focus {
 	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
 
-
 	padding-block: 1rem;
 	width: min(90%, 70rem);
 	margin-inline: auto;
@@ -234,9 +213,8 @@ input[type=text]:focus {
 
 .tools-item {
 	padding: 1rem;
-	border-radius: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: red;
+	border-color: grey;
 	border-style: double;
 }
 

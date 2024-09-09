@@ -10,6 +10,16 @@ function displayActiveBlogPostNumber(){
 	document.getElementById(`bp-${activeBlogPostNumber}`).classList.add("listing-highlight");
 }
 
+/**
+ * @param content
+ * Gathers text within a blog post's content between custom tags such as `<b-title></b-title>`.
+ * @param tag
+ * The tag name without decorators, such as `b-title` for `<b-title></b-title>`.
+ */
+function gatherTextBetweenTags(content, tag){
+	return content.substring(content.indexOf("<" + tag + ">"), content.indexOf("</" + tag + ">"));
+}
+
 function extractHeaderData(increment){
 	const instance = blogData[increment];
 	let splitInstance = instance.split("|");
@@ -20,12 +30,13 @@ function extractHeaderData(increment){
 	let instanceTime = splitInstance[3].trim();
 	document.getElementById("blog-post-time").innerHTML = instanceTime;
 	let instanceBlogPost = splitInstance[4].trim();
-	blogPostTitle.innerHTML = instanceBlogPost.substring(instanceBlogPost.indexOf("≤") + 1, instanceBlogPost.indexOf("≥"));
-
+	blogPostTitle.innerHTML = gatherTextBetweenTags(instanceBlogPost, "b-title");
+	
 	displayActiveBlogPostNumber();
 
 return instanceBlogPost;
 }
+
 
 function initBlogData(dataLength){
 	for (i = 0; i <= dataLength - 1; i++){
