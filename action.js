@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const lastestUpdatePushed = "Sunday September 8th, 2024";
+const lastestUpdatePushed = "Tuesday September 10th, 2024";
 
 // --- INFO AND ENTRYWAYS --- //
 

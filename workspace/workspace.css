@@ -172,3 +172,7 @@ button {
 	transition: background-size 0.1s ease-in;
 	width: 100%;
 }
+
+#kanji-field {
+	font-size: 2rem;
+}

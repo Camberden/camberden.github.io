@@ -30,13 +30,13 @@ function extractHeaderData(increment){
 	let instanceTime = splitInstance[3].trim();
 	document.getElementById("blog-post-time").innerHTML = instanceTime;
 	let instanceBlogPost = splitInstance[4].trim();
+	/* Add tags below as needed: */
 	blogPostTitle.innerHTML = gatherTextBetweenTags(instanceBlogPost, "b-title");
 	
 	displayActiveBlogPostNumber();
 
 return instanceBlogPost;
 }
-
 
 function initBlogData(dataLength){
 	for (i = 0; i <= dataLength - 1; i++){
