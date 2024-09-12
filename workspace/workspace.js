@@ -8,6 +8,34 @@ const itemSelectedDisplay = document.getElementById("item-title");
 const itemList = document.getElementById("item-list");
 const listOptions = document.getElementById("list-options");
 
+function enableToyButtons() {
+	document.querySelectorAll(".w-item").forEach(e => {
+		e.onclick = function () {
+			console.log(e.id);
+			switch (e.id) {
+				case ("pankair"):
+					e.style.color = "green";
+					break;
+				case ("pankair-sw"):
+					e.style.color = "blue";
+					break;
+				case ("busmat"):
+					e.style.color = "orange";
+					break;
+				case ("elaor"):
+					e.style.color = "pink";
+					break;
+				case ("nao"):
+					e.style.color = "white";
+			}
+		}
+	});
+}
+enableToyButtons();
+
+
+
+
 /**
 * @param {string} title
 * @param {string[]} content

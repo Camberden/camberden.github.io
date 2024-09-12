@@ -21,10 +21,21 @@ body {
 	grid-column: span 3;
 }
 
+/* ----- FONT TESTING ----- */
+
+@font-face {
+	font-family: eremoran-kiptascript;
+	src: url("../assets/font-eremoran-kiptascript.otf") format("opentype");
+}
+
+.eremoran-kiptascript {
+	font-family: eremoran-kiptascript;
+	font-size: 3rem;
+}
+
 /* ----- FIRST TESTING GRID ----- */
 
 .w-item {
-	padding: 2rem;
 	border-radius: 0.5rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	
@@ -48,13 +59,17 @@ body {
 }
 
 .w-item:hover {
-	padding: 2.2rem;
+	padding: 0.2rem;
 	border-radius: 0.5rem;
 	border-top-width: 0.5rem;
 	border-left-width: 0.5rem;
 	border-bottom-width: 0.5rem;
 	border-right-width: 0.5rem;
-	
+	transition: border-right-width 0.3s ease-in;
+	transition: border-bottom-width 0.3s ease-in;
+	transition: padding 0.3s ease-in;
+
+
 }
 
 button {

@@ -9,7 +9,6 @@ const worldMap = document.getElementById("world-map");
 const usMap = document.getElementById("us-map");
 
 const visitedCountries = ["US", "BZ", "GT"];
-visitedTotal.innerHTML = visitedCountries.length;
 const countriesToVisit = ["JP", "GM"];
 const visitedStates = ["US-PA", "US-NJ", "US-NY", "US-MD", "US-DE", "US-VA", "US-WV", "US-TN", "US-NC", "US-SC", "US-IL", "US-CO", "US-NV"];
 
