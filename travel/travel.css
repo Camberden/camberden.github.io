@@ -1,0 +1,31 @@
+.travel-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(2, 50%);
+	padding-block: 1rem;
+	width: min(100%, 70rem);
+	margin-inline: auto;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}
+
+.travel-item {
+	padding: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: grey;
+	border-style: double;
+}
+
+#world-map {
+	fill: grey;
+}
+
+#world-map > :hover {
+	fill: aquamarine;
+}
+
+.visited-country {
+	fill: blue;
+}
