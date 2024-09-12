@@ -295,7 +295,7 @@ const heartSutraEnglish = [
 	"Heart Sutra",
 ];
 const heartSutraKanji = [
-	"觀自在菩薩",
+	"観自在菩薩",
 	"行深般若波羅蜜多時",
 	"照見五蘊皆空",
 	"度一切苦厄",

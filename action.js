@@ -6,9 +6,23 @@ const lastestUpdatePushed = "Thursday September 12th, 2024";
 const latestUpdate = document.getElementById("latest-update");
 latestUpdate.innerHTML = lastestUpdatePushed;
 
-const iconPlay = document.querySelector("#camberden");
+const camberden = document.querySelector("#camberden");
+const monickers = ["camberden", "観葉伝", "カンバデン"];
 
-iconPlay.onclick = function(){
+function randomizeMonicker(){
+	let m = Math.random();
+	console.log(m);
+	if (m < 0.1) {
+		camberden.innerHTML = monickers[1];
+	} else if (m > 0.9) {
+		camberden.innerHTML = monickers[2];
+	} else {
+		camberden.innerHTML = monickers[0];
+	}
+}
+randomizeMonicker();
+
+camberden.onclick = function(){
 	alert("Hi! :D");
 	console.log("Hi! :D");
 }
