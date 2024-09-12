@@ -18,14 +18,31 @@
 	border-style: double;
 }
 
+.map-display-button {
+	width: 3rem;
+	height: 2rem;
+}
+
+.visited {
+	fill: blue;
+}
+
+/* ----- WORLD MAP ----- */
+
 #world-map {
 	fill: grey;
 }
 
 #world-map > :hover {
-	fill: aquamarine;
+	fill: #a1dbf8;
 }
 
-.visited-country {
-	fill: blue;
+/* ----- US MAP ----- */
+
+#us-map {
+	fill: grey;
+}
+
+#us-map > :hover {
+	fill: #a1dbf8;
 }
