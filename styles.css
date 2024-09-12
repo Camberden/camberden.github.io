@@ -65,16 +65,19 @@
 	user-select: none;
 	text-shadow: -5px -2px 0px rgb(112, 12, 170);
 	animation-name: change-text-shadow;
-  	animation-duration: 3s;
-  	animation-iteration-count: 1;
+  	animation-duration: 5s;
+  	animation-iteration-count: infinite;
 
 	/* ----- MARGIN ADJUSTMENTS PLACE TITLE ABOVE IMAGE ----- */
 	margin-top: -4rem;
 	margin-bottom: 5rem;
 }
 @keyframes change-text-shadow {
-	12% {
-		text-shadow: -5px -2px 0px rgb(161, 219, 248);
+	40% {
+		text-shadow: -5px -2px 0px rgb(81, 12, 170);
+	}
+	80% {
+		text-shadow: -5px -2px 0px rgb(133, 12, 170);
 	}
 	100% {
 		text-shadow: -5px -2px 0px rgb(112, 12, 170);
@@ -104,6 +107,8 @@ body {
 	text-align: center;
 	/* z-index: 1; */
 	background-image: url('assets/image-curtain.svg'); /* #EEEFF0 in SVG Fill */
+	/* background-color: #2A2A2A; */
+	/* background-color: #545454; */
 	background-color: #F4F5F6;
 }
 

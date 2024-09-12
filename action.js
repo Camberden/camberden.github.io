@@ -24,5 +24,4 @@ randomizeMonicker();
 
 camberden.onclick = function(){
 	alert("Hi! :D");
-	console.log("Hi! :D");
 }

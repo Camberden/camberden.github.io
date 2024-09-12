@@ -11,6 +11,10 @@
 	grid-column: span 2;
 }
 
+.grid-row-span-2 {
+	grid-row: span 2;
+}
+
 .jlpt-item {
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);

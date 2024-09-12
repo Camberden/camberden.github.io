@@ -1,0 +1,97 @@
+.accounting-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(4, 25%); /* repeat(4, 25%) */
+	padding-block: 2rem;
+	width: min(95%, 70rem);
+	margin-inline: auto;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}
+
+.grid-col-span-3 {
+	grid-column: span 3;
+}
+
+.grid-row-span-2 {
+	grid-row: span 2;
+}
+
+.grid-row-span-3 {
+	grid-row: span 3;
+}
+
+.accounting-item {
+	border-radius: 0.5rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	
+	border-top-width: 0.5rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.5rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+
+	border-bottom-width: 1rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 1.5rem;
+	border-right-color: grey;
+	border-right-style: groove;
+	transition: padding 0.3s ease-in;
+
+	
+}
+
+.accounting-item:hover {
+	border-radius: 0.5rem;
+	border-top-width: 0.5rem;
+	border-left-width: 0.5rem;
+	border-bottom-width: 0.5rem;
+	border-right-width: 0.5rem;
+	transition: border-right-width 0.3s ease-in-out;
+	transition: border-bottom-width 0.3s ease-in-out;
+}
+
+.load-padding-transition {
+	padding: 0.2rem;
+	transition: padding 0.3s ease-in;
+}
+
+
+button {
+	/* padding: 2rem; */
+	border-radius: 0.5rem;
+	/* box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25); */
+	
+	border-top-width: 0.5rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.5rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+
+	border-bottom-width: 1rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 1rem;
+	border-right-color: grey;
+	border-right-style: groove;
+}
+
+.button-hover {
+	background-color: aquamarine;
+}
+
+.button-highlight {
+	background-color: blue;
+}
+
