@@ -7,9 +7,10 @@ body {
 	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(3, 25%); /* repeat(4, 25%) */
 
-	padding-block: 2rem;
+	/* padding-block: 2rem; */
 	width: min(95%, 70rem);
 	margin-inline: auto;
+	max-height: min-content;
 }
 
 .grid-col-span-2 {
@@ -55,6 +56,8 @@ body {
 	border-right-color: grey;
 	border-right-style: groove;
 	
+	max-height: fit-content;
+
 }
 
 .w-item:hover {
@@ -170,6 +173,7 @@ button {
 
 #item-list > li {
 	text-align: left;
+	margin-left: 33%;
 	list-style-type: none;
 }
 

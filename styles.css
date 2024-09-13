@@ -4,39 +4,38 @@
 	--clr-secondary-400: 217 19% 35%;
 }
 
-.home-image {
-	width: 25%;
-	min-width: 300px;
-	height: 25%;
-	min-height: 300px;
-	margin-bottom: -180px;
-	margin-top: -45px;
-	margin-left: 30px;
-	user-select: none;
-	transform: rotate(-30deg);
+.signature-div {
+	text-align: left;
 }
 
 #signature {
-	border: #a1dbf8 solid;
+	position: absolute;
+	width: 14%;
+	min-width: 5rem;
+	height: 18%;
+	min-height: 5rem;
+	user-select: none;
 	animation-name: stagger-signature;
-  	animation-duration: 5s;
-  	animation-iteration-count: infinite;
+	animation-duration: 5s;
+	animation-iteration-count: infinite;
 }
 @keyframes stagger-signature {
 	0% {
-		height: 25%;
-	}
-	25% {
-		height: 30%;
+		/* width: 14%; */
+		/* height: 18%; */
+		/* background-position: 10%; */
+
 	}
 	50% {
-		height: 25%;
-	}
-	75% {
-		height: 30%;
+		/* width: 15%; */
+		/* height: 20%; */
+		/* background-position: 20%; */
 	}
 	100% {
-		height: 25%;
+		/* width: 14%; */
+		/* height: 18%; */
+		/* background-position: 0%; */
+
 	}
 }
 
@@ -52,25 +51,25 @@
 }
 
 #camberden {
-	z-index: 1;
+	/* position: absolute; */
 	font-family: Permanent Marker, sans-serif;
-	font-style: normal;
-	font-size: 500%;
-	text-align: center;
-	font-weight: 950;
+	font-size: 5rem;
+	min-width: 2rem;
+	min-height: 10rem;
 	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
-	text-shadow: -5px -2px 0px rgb(112, 12, 170);
+	text-shadow: -5px -2px 0px #700caa;
+
 	animation-name: change-text-shadow;
   	animation-duration: 5s;
   	animation-iteration-count: infinite;
 
 	/* ----- MARGIN ADJUSTMENTS PLACE TITLE ABOVE IMAGE ----- */
 	margin-top: -4rem;
-	margin-bottom: 5rem;
+	/* margin-bottom: 6rem; */
 }
 @keyframes change-text-shadow {
 	40% {
