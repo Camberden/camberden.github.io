@@ -33,9 +33,6 @@ function enableToyButtons() {
 }
 enableToyButtons();
 
-
-
-
 /**
 * @param {string} title
 * @param {string[]} content

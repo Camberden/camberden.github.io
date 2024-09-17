@@ -15,7 +15,7 @@ const blogData = [
 	
 	`
 	| August 11th, 2024…
-	| Chapel Hill Suite
+	| Chapel Hill, NC
 	| 2200HRS
 	| &emsp;
 	At last, <b-title>the beginning</b-title> of my digital blogging page! I've been on a great trajectory since July.
@@ -24,7 +24,7 @@ const blogData = [
 	,
 	`
 	| August 15th, 2024…
-	| Chapel Hill Suite
+	| Chapel Hill, NC
 	| 2250HRS
 	| &emsp;
 	I'm making considerable progress on my site. I almost feel too occupied with it to begin my fall semester classes.
@@ -57,7 +57,7 @@ const blogData = [
 	,
 	`
 	| August 25th, 2024…
-	| Chapel Hill Suite
+	| Chapel Hill, NC
 	| 2303HRS
 	| &emsp;
 	I've being doing okay this weekend, though a bit somber at having missed out on a lot of sunshine and opportunity for
@@ -104,7 +104,7 @@ const blogData = [
 	,
 	`
 	| September 10th, 2024…
-	| Chapel Hill Suite
+	| Chapel Hill, NC
 	| 0731HRS
 	| &emsp;
 	So, though I have been doing okay for myself, I am experiencing old pangs of inadequacy. I attribute this to the return flight.
@@ -120,4 +120,27 @@ const blogData = [
 	I'm going to put on a smile as I approach my tomorrow, and power through. I am tired. That is fine. 
 	`
 	,
+
+	`
+	| September 14th, 2024…
+	| Hillsborough, NC
+	| 2201 HRS
+	| &emsp;
+	It still holds true that <b-title>community integration</b-title> for me is difficult. 
+	On occasion I find myself disheartened by repeated acceptance that so little works with my schedule.
+	One activity after the next, one event after the next, one person after the next; 
+	I am unable to conform to externally sourced routines with any sort of socially expected consistency. 
+	My schedule is something I enjoy, but no longer wish to maintain long-term; 
+	I recall "wishing" I'd have this type of schedule, and that a 12-hour shift would be the best balance between too much and too little. 
+	It's not only the length or frequency of shifts that causes difficulty, 
+	it's that my off days are inconsistent on a week-by-week basis, 
+	a basis that would be helpful in establishing myself as a reliable regular both online and in-person.
+	Being more reliably regular seems to be the best for developing one's sense of community, especially within third spaces.
+	<hr>
+	I affirm that there can be multiple "selves" through which one's life is lived. 
+	My experience has shown me that the Chrispy of 2018 who highly desired such a lifestyle is simply not the Chrispy of 2024.
+	Though "I" share the same life-lens as that previous self,  I couldn't agree that that person is "me" or the present self.
+	My identities and values have shifted quite dramatically since; the actions taken previously I now consider unthinkable.
+	College debt, liberal arts, fast food, luxury goods etc. 
+	`
 ];
