@@ -41,18 +41,9 @@ let testModuleVocabulary = [
 ];
 
 
-/**
- * 
- * @param {string} word 
- */
-const parseFurigana = function (word){
-
-}
-
-
-
 const kanjiField = document.getElementById("kanji-field");
 const furiganaField = document.getElementById("furigana-field");
+const vocabField = document.getElementById("vocab-field");
 
 /**
  * 
@@ -60,19 +51,40 @@ const furiganaField = document.getElementById("furigana-field");
  */
 const loadModule = function(wordList) {
 	wordList.forEach(word => {
+		let li = document.createElement("li");
+		let sup = document.createElement("sup");
 		let splitWord = word.match(/「(.*?)」/g);
-		kanjiField.innerHTML += word.replaceAll(/「(.*?)」/g, "");
+		let kanjiText = document.createTextNode(word.replaceAll(/「(.*?)」/g, ""));
 
 		splitWord.forEach(e => {
-			e = e.replace("「", "");
+			e = e.replace("「", "・");
 			e = e.replace("」", "");
-			furiganaField.innerHTML += e;
+			let furiganaText = document.createTextNode(e);
+			sup.appendChild(furiganaText);
+			li.appendChild(sup);
 		});
-		furiganaField.innerHTML += "<br>";
-		kanjiField.innerHTML += "<br>"
+		li.appendChild(kanjiText);
+		vocabField.appendChild(li);
 	});
 }
 loadModule(testModuleVocabulary);
+
+const parseFurigana = function () {
+	document.querySelectorAll("li").forEach(e => {
+		e.onclick = function() {
+			displaySuperScript(e.firstChild);
+		}
+	});
+}
+parseFurigana();
+
+const displaySuperScript = function (e){
+	if (e.classList.contains("display-sup")) {
+		e.classList.remove("display-sup");
+	} else {
+		e.classList.add("display-sup");
+	}
+}
 
 // parseFurigana(testModuleVocabulary[8]);
 // Command [ and Command ] is Tab-Based Move

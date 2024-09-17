@@ -21,3 +21,20 @@
 	border-color: grey;
 	border-style: double;
 }
+
+#vocab-field {
+	text-align: left;
+}
+
+li:hover {
+	background-color: #90ee90;
+}
+
+sup {
+	display: none;
+}
+
+.display-sup {
+	display: block;
+	background-color: #a1dbf8;
+}
