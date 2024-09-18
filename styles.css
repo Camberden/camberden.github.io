@@ -111,6 +111,10 @@ body {
 	background-color: #F4F5F6;
 }
 
+.common-background {
+	background: #f6f3ed;
+}
+
 .index-grid {
 	display: grid;
 	gap: 0.5rem;

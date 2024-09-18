@@ -1,7 +1,7 @@
 .jlpt-grid {
 	display: grid;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(2, 50%);
+	grid-template-columns: repeat(4, 25%);
 	padding-block: 1rem;
 	width: min(100%, 70rem);
 	margin-inline: auto;
@@ -18,12 +18,17 @@
 .jlpt-item {
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: grey;
-	border-style: double;
+	border: grey, double, .3rem;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+ul {
+	text-align: left;
+	background: #f6f3ed;
 }
 
 #vocab-field {
-	text-align: left;
+	font-size: 1.5rem;
 }
 
 li:hover {
