@@ -16,7 +16,13 @@ function randomizeMonicker(){
 		camberden.innerHTML = monickers[1];
 	} else if (m > 0.9) {
 		camberden.innerHTML = monickers[2];
-	} else {
+	} else if (m < 0.9 && m > 0.8) {
+		camberden.removeAttribute("font-family");
+		camberden.innerHTML = monickers[0].replace("c", "k");
+		camberden.classList.add("eremoran-kiptascript");
+		camberden.setAttribute("style", "font-family: eremoran-kiptascript; font-size: 7rem;");
+	} 
+	else {
 		camberden.innerHTML = monickers[0];
 	}
 }

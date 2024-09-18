@@ -83,6 +83,16 @@
 	}
 }
 
+@font-face {
+	font-family: eremoran-kiptascript;
+	src: url("assets/font-eremoran-kiptascript.otf") format("opentype");
+}
+
+.eremoran-kiptascript {
+	font-family: eremoran-kiptascript;
+	font-size: 5rem;
+}
+
 .site-info {
 	margin-top: -2%;
 	background-color: #f6f3ed;
