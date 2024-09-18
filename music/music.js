@@ -45,20 +45,55 @@ const tracks = [ // ../assets/music-
 
 const trackList = document.getElementById("track-list");
 let selectedTrack = tracks[0];
-let nowPlaying = document.getElementById("now-playing");
-let trackPlayerControls = document.getElementById("track-player-controls");
+const nowPlaying = document.getElementById("now-playing");
+const trackPlayerControls = document.getElementById("track-player-controls");
 let currentAudio = new Audio();
+const sortByYear = document.getElementById("sort-by-year");
+const sortByAlbum = document.getElementById("sort-by-album");
 
 /**
 	 * @param {HTMLAudioElement} trackAudio
 **/
-function audioEffects(){
+function audioEffects() {
 	console.log("outside!");
 
 	if (!currentAudio.paused || currentAudio.currentTime) {
 		console.log("inside!");
 		document.getElementById("backdrop-low").classList.add("animated-gradient"); 
 	}
+}
+
+function loadSortedTracks(value) {
+	depopulateTrackList();
+	let selectedTracks = [];
+	let selectedCount = 0;
+
+			for (i = 0; i < tracks.length; i++) {
+				if (value === "finished") {
+					if (tracks[i].completeOrIncomplete) {
+						selectedTracks[selectedCount] = tracks[i];
+						selectedCount++;
+					}
+				} else if (value === "scraps") {
+					if (!tracks[i].completeOrIncomplete) {
+						selectedTracks[selectedCount] = tracks[i];
+						selectedCount++;
+					}
+				} else if (value == tracks[i].year) {
+					console.log(value == tracks[i].year);
+					console.log(tracks[i].year);
+					selectedTracks[selectedCount] = tracks[i];
+					selectedCount++;
+				} else if (value === tracks[i].compilation) {
+					console.log(value === tracks[i].compilation);
+					selectedTracks[selectedCount] = tracks[i];
+					selectedCount++;
+				} else if (value === "all-music") {
+					selectedTracks = tracks;
+				}
+			}	
+
+	return selectedTracks;
 }
 
 function populateTrackList(tracksArray) {
@@ -68,7 +103,7 @@ function populateTrackList(tracksArray) {
 		const trackListText = document.createTextNode(tracksArray[i].title + " " + tracksArray[i].year);
 		trackListItem.appendChild(trackListText);
 		trackList.appendChild(trackListItem);
-		console.log(trackListItem.getAttribute("id").substring(2));
+		// console.log(trackListItem.getAttribute("id").substring(2));
 		trackListItem.addEventListener("click", function (e) {
 			if (e.target && e.target.matches("li")) {
 				loadSelectedTrack(tracksArray[trackListItem.getAttribute("id").substring(2)]);
@@ -77,7 +112,18 @@ function populateTrackList(tracksArray) {
 		;
 	}
 }
-populateTrackList(tracks);
+
+populateTrackList(loadSortedTracks("finished"));
+
+function enableMusicSortButtons() {
+	document.querySelectorAll(".music-sort-button").forEach(button => {
+		button.onclick = function() {
+			console.log(button.value);
+			populateTrackList(loadSortedTracks(button.value));
+		}
+	});
+}
+enableMusicSortButtons();
 
 /**
 	 * @param {Track} trackObject
@@ -95,3 +141,38 @@ function highlightSelectedTrack() {
 	nowPlaying.classList.add("now-playing-highlight");
 }
 highlightSelectedTrack();
+
+function depopulateTrackList() {
+	while (trackList.lastChild) {
+		trackList.removeChild(trackList.lastChild);
+	}
+}
+
+function enableSortByYearAndAlbum() {
+	let yearArray = [];
+	let albumArray = [];
+	for (let i = 0; i < tracks.length; i++) {
+		if (!yearArray.includes(tracks[i].year)){
+			yearArray += tracks[i].year;
+			let option = document.createElement("option");
+			let text = document.createTextNode(tracks[i].year);
+			option.appendChild(text);
+			sortByYear.appendChild(option);
+		}
+		if (!albumArray.includes(tracks[i].compilation)) {
+			albumArray += tracks[i].compilation;
+			let option = document.createElement("option");
+			let text = document.createTextNode(tracks[i].compilation);
+			option.appendChild(text);
+			sortByAlbum.appendChild(option);
+		}
+	};
+	sortByYear.onchange = function (){
+		populateTrackList(loadSortedTracks(sortByYear.value));
+	};
+	sortByAlbum.onchange = function (){
+		populateTrackList(loadSortedTracks(sortByAlbum.value));
+	}
+}
+
+enableSortByYearAndAlbum();

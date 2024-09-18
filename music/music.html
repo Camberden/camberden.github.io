@@ -17,8 +17,6 @@
 		<a class="marker" href="../index.html">Return</a>
 	</div>
 
-	<h1 class="marker" id="musictitle">Music</h1>
-	<p>Site Reconstruction in Progress!</p>
 
 	<!----- BEGIN MODALS ----->
 	<!-- To display track information coupled with an image, perhaps! -->
@@ -29,31 +27,47 @@
 	</div>
 	<!----- END MODALS ----->
 
-	<div>
-		<p id="soundcloud-link"><a href="https://soundcloud.com/camberden">[more, older music can be found here].</a>
-		</p>
-	</div>
 
-	<main>
-		<div class="music-grid">
-			<div class="music-item grid-col-span-2">
-				<span id="now-playing">Now Playing</span>
-			</div>
-			<div class="music-item">Sorting / List
-			
-			</div>
-			<div class="music-item grid-col-span-2">
-				<div class="sub-music-grid">
-					<div class="sub-music-item" id="photo-box" onclick="audioEffects()"><img src="../assets/image-chrispy-collage.jpg"></div>
-					<div class="sub-music-item grid-col-span-2"><span id="track-player-controls">CONTROLS</span></div>
-				</div>
-			</div>
-			<div class="music-item">
-				<ul id="track-list"></ul>
-			</div>
+	<div class="music-grid">
+
+		<div class="music-item grid-col-span-3">
+			<h1 class="marker" id="musictitle">Music</h1>
+			<p id="soundcloud-link"><a href="https://soundcloud.com/camberden">[more, older music can be found
+					here].</a>
+			</p>
+		</div>
+
+		<div class="music-item grid-col-span-2">
+			<span id="now-playing">Now Playing</span>
+		</div>
+
+		<div class="music-item">
+			<button class="music-sort-button" value="all-music">All</button>
+			<button class="music-sort-button" value="finished">Finished</button>
+			<button class="music-sort-button" value="scraps">Scraps & Excerpts</button>
+			<hr>
+			<select id="sort-by-year" class="music-sort-select">
+				<option>By Year</option>
+			</select>
+			<select id="sort-by-album" class="music-sort-select">
+				<option>By Album</option>
+			</select>
 
 		</div>
-	</main>
+
+		<div class="music-item grid-col-span-2">
+			<div class="sub-music-grid">
+				<div class="sub-music-item" id="photo-box" onclick="audioEffects()"><img
+						src="../assets/image-chrispy-collage.jpg"></div>
+				<div class="sub-music-item grid-col-span-2"><span id="track-player-controls">CONTROLS</span></div>
+			</div>
+		</div>
+
+		<div class="music-item">
+			<ul id="track-list"></ul>
+		</div>
+
+	</div>
 
 	<hr>
 	<div id="backdrop-low"></div>

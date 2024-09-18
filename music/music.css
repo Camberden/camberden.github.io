@@ -81,13 +81,19 @@
 
 .grid-col-span-3 {
 	grid-column: span 3;
+	box-shadow: none;
+}
+
+.grid-col-span-3 {
+	grid-column: span 3;
 }
 
 .music-item {
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: grey;
-	border-style: double;
+	border: grey, double, .3rem;
+	background: rgba(144, 229, 238, 0.1);
+
 }
 
 .sub-music-grid {

@@ -1,7 +1,7 @@
 .jlpt-grid {
 	display: grid;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(4, 25%);
+	grid-template-columns: repeat(4, 20%);
 	padding-block: 1rem;
 	width: min(100%, 70rem);
 	margin-inline: auto;
@@ -13,6 +13,14 @@
 
 .grid-row-span-2 {
 	grid-row: span 2;
+}
+
+.grid-col-span-4 {
+	grid-column: span 4;
+}
+
+.margin-inline {
+	margin-inline: auto;
 }
 
 .jlpt-item {
