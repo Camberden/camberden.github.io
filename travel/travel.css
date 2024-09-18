@@ -27,6 +27,14 @@
 	fill: blue;
 }
 
+.to-visit {
+	fill: rgb(174, 218, 112);
+}
+
+.to-retire {
+	fill: orchid;
+}
+
 /* ----- WORLD MAP ----- */
 
 #world-map {

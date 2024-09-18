@@ -1,7 +1,7 @@
 window.onload = () => console.log("Running!");
 
 /**
- * @param {string[]} vocabulary
+ * @param {string[10]} vocabulary
  * @param {string[]} english
  * @param {string[]} sentences
  */
