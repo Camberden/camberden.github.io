@@ -18,14 +18,6 @@ input[type=text]:focus {
 	background-color: #f6f3ed;
 }
 
-.list-background {
-	background: #f6f3ed;
-}
-
-.common-background {
-	background: #f6f3ed;
-}
-
 /* ----- GRID SPECIFIC ----- */
 
 .quick-links-grid {
@@ -64,7 +56,7 @@ input[type=text]:focus {
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border: grey, double, .3rem;
-	background: rgba(144, 229, 238, 0.1);
+	background: #90e5ee1a;
 }
 
 .dashboard-item:last-child {
@@ -82,9 +74,7 @@ input[type=text]:focus {
 /* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
 
 #p2p {
-	background-color: lightcyan;
-	color: red;
-	font-weight: 900;
+	background: var(--clr-quaternary);
 }
 
 .no-bullet {
@@ -99,7 +89,7 @@ input[type=text]:focus {
 	text-align: right;
 	font-family: 'Courier New', Courier, monospace;
 	opacity: 0.5;
-	background-color: greenyellow;
+	background-color: var(--clr-tertiary);
 }
 
 .her-automated-payment {
@@ -137,10 +127,6 @@ input[type=text]:focus {
 
 /* ----- PSLF DATA AND MANAGEMENT SPECIFIC ----- */
 
-#pslfBoxes {
-	background-color: #f6f3ed;
-}
-
 .pslf-box {
 	display: inline-block;
 	width: 1rem;
@@ -152,7 +138,7 @@ input[type=text]:focus {
 }
 
 .pslf-box-filled {
-	background-color: #a1dbf8;
+	background-color: var(--clr-primary);
 }
 
 /* ----- STEP PAY PLAN SPECIFIC ----- */
@@ -162,28 +148,24 @@ input[type=text]:focus {
 	text-align: left;
 	margin-left: 10%;
 	margin-right: 10%;
-	background: #f6f3ed;
 }
 
 /* maybe this is responsible for bad sizing */
 table, th, td {
-	border: 1px solid black;
+	border: 1px solid var(--clr-quinary-body);
 	height: 2rem;
 
   }
 
 .salary-highlight {
-	color: blueviolet;
-	background-color: yellow;
+	color: var(--clr-quaternary);
+	background-color: var(--clr-tertiary);
   }
 
 #salary-table-corner {
-	background: whitesmoke;
+	background: var(--clr-quinary-body);
 }
 
-#input-step-information {
-	background: #f6f3ed;
-}
 
 #toggle-bonus:hover {
 	border-left-width: .5rem;
@@ -193,8 +175,8 @@ table, th, td {
 
 .button-toggle-enabled {
 	border-style: double;
-	border-color: greenyellow;
-	background-color: #a1dbf8;
+	border-color: var(--clr-tertiary);
+	background-color: var(--clr-primary);
 }
 
 /* ----- REEDUCATION SPECIFIC ----- */
@@ -235,15 +217,16 @@ table, th, td {
 }
 
 #acc-courses > li:hover {
-	background: lightgreen;
+	background: var(--clr-quaternary);
 }
 
 .planned-or-completed {
-	background-color: lightblue;
+	color: var(--clr-quaternary);
+	background-color: var(--clr-tertiary);
 }
 
 .taken {
-	color:#db8044;
+	color: var(--clr-secondary);
 	list-style-type: "✓ ";
 }
 
@@ -255,14 +238,14 @@ table, th, td {
 /* MENUMODAL */
 
 #menulabel {
-	color: #db8044;
+	color: var(--clr-secondary);
 	text-align: right;
 	font-size: 1em;
 	font-family: Permanent Marker, serif;
 }
 
 #menulabel:hover {
-	color: #a1dbf8;
+	color: var(--clr-primary);
 	/* font-size: 1.1em; */
 	position: inherit;
 	text-shadow: -2.5px -1px 0px #ff00ff;
@@ -288,7 +271,7 @@ table, th, td {
 }
   
 .menudialog {
-	background-color: rgb(233, 233, 233);
+	background-color: var(--clr-quinary-body);
 	margin: 15% auto; /* 15% from the top and centered */
 	/* padding: 20px; */
 	border: 1px solid #888;
@@ -300,7 +283,7 @@ table, th, td {
 }
 
 .dialogtext {
-	color: #db8044;
+	color: var(--clr-secondary);
 	font-size: 1em;
 	margin-left: 30%;
 	font-family: Permanent Marker, serif;
@@ -366,7 +349,6 @@ table, th, td {
 	display: grid;
 	gap: 1.5rem;
 	grid-template-columns: repeat(3, 30%);
-	background-color: #f6f3ed;
 }
 
 #pension-table {
@@ -376,6 +358,5 @@ table, th, td {
 /* ----- REFERENCE DOCUMENTS SPECIFIC ----- */
 
 #refdocs-list {
-	background-color: #f6f3ed;
 	list-style-type: none;
 }

@@ -39,9 +39,9 @@ button:hover {
 	border: 4px solid rgb(172, 238, 205);
 }
 
-.marker-violet {
+.marker-blogging {
 	font-family: Permanent Marker, serif;
-	color: rgb(19, 94, 199);
+	color: var(--clr-tertiary);
 }
 
 .common-background {
@@ -50,16 +50,10 @@ button:hover {
 
 .blog-post-header {
 	text-align: left;
-	background: #f6f3ed;
 }
 
 #active-blog-post {
-	background-color: #f6f3ed;
 	text-align: left;
-}
-
-#blog-post-list {
-	background-color: #f6f3ed;
 }
 
 #blog-post-list > li {
@@ -68,7 +62,7 @@ button:hover {
 }
 
 #blog-post-list > li:hover {
-	background: lightgreen;
+	background: var(--clr-quinary-body);
 }
 
 .blog-post-inside-list {
@@ -76,5 +70,5 @@ button:hover {
 }
 
 .listing-highlight {
-	background-color: lightblue;
+	background-color: var(--clr-quaternary);
 }

@@ -134,6 +134,7 @@ function loadSelectedTrack(trackObject) {
 	trackPlayerControls.innerHTML = `<audio preload="none" controls>
 	<source src="${currentAudio}" type="audio/mpeg">
 	Your browser does not support the audio element. </audio>`;
+
 }
 loadSelectedTrack(selectedTrack);
 

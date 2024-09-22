@@ -99,11 +99,12 @@ button {
 }
 
 .button-hover {
-	background-color: aquamarine;
+	background-color: var(--clr-tertiary);
 }
 
 .button-highlight {
-	background-color: blue;
+	color: var(--clr-tertiary);
+	background-color: var(--clr-quinary-body);
 }
 
 .button-depressed {
@@ -178,7 +179,9 @@ button {
 }
 
 #item-list > li:hover {
-	background: lightgreen;
+	/* background: var(--clr-quaternary); */
+	background: #9A031E;
+	/* background: #797a9e; */
 }
 
 .sutra-line-highlight {

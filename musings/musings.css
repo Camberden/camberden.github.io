@@ -40,7 +40,8 @@
 /*	POEMCONTAINER	*/
 
 .poem {
-	background-color: #f6f3ed;
+	color: var(--clr-primary);
+	background-color: var(--clr-quinary-body);
 	min-width: 300px;
 }
 
@@ -70,7 +71,7 @@ button:hover {
   
 .writing {
 	user-select: none;
-	color: #000;
+	color: var(--clr-secondary);
 	text-align: left;
 	font-family: Lora, sans-serif;
 	font-style: italic;

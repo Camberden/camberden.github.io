@@ -32,7 +32,6 @@
 
 ul {
 	text-align: left;
-	background: #f6f3ed;
 }
 
 #vocab-field {
@@ -40,7 +39,7 @@ ul {
 }
 
 li:hover {
-	background-color: #90ee90;
+	background-color: var(--clr-quaternary);
 }
 
 sup {
@@ -49,5 +48,5 @@ sup {
 
 .display-sup {
 	display: block;
-	background-color: #a1dbf8;
+	background-color: var(--clr-quinary-body);
 }
