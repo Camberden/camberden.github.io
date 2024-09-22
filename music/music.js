@@ -112,8 +112,8 @@ function populateTrackList(tracksArray) {
 		;
 	}
 }
-
 populateTrackList(loadSortedTracks("finished"));
+
 
 function enableMusicSortButtons() {
 	document.querySelectorAll(".music-sort-button").forEach(button => {

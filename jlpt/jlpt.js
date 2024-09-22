@@ -62,6 +62,8 @@ const studyModules = [
 const vocabField = document.getElementById("vocab-field");
 const englishField = document.getElementById("english-field");
 const sentenceField = document.getElementById("sentence-field");
+const jishoField = document.getElementById("jisho-field");
+const jishoIFrame = document.getElementById("jisho-frame");
 
 /**
  * @param {StudyModule} module 
@@ -116,10 +118,6 @@ const displaySuperScript = function (e){
 		e.classList.add("display-sup");
 	}
 }
-
-
-
-
 
 // parseFurigana(testModuleVocabulary[8]);
 // Command [ and Command ] is Tab-Based Move

@@ -143,7 +143,7 @@ const blogData = [
 	My identities and values have shifted quite dramatically since; the actions taken previously I now consider unthinkable.
 	College debt, liberal arts, fast food, luxury goods etc. 
 	`
-
+	,
 	`
 	| September 21st, 2024…
 	| Chapel Hill, NC
