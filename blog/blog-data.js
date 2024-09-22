@@ -78,7 +78,7 @@ const blogData = [
 	,
 	`
 	| September 1st, 2024…
-	| Chapel Hill Suite
+	| Chapel Hill, NC
 	| 1555HRS
 	| &emsp;
 	Almost finished with another eighty-hour work-week. I'm grateful to have been enjoying work very much.
@@ -143,4 +143,50 @@ const blogData = [
 	My identities and values have shifted quite dramatically since; the actions taken previously I now consider unthinkable.
 	College debt, liberal arts, fast food, luxury goods etc. 
 	`
+
+	`
+	| September 21st, 2024…
+	| Chapel Hill, NC
+	| 1952 HRS
+	| &emsp;
+	The weekend began with an overhaul of my digital security across all licenses and websites. I am surprised at just how much peace
+	of mind that afforded me; I suppose it's due to an increased feeling control over my life for years to come, especially as I 
+	increase my time sitting in front of a computer. I've uncovered most of my previously used email accounts and discovered many files
+	and projects my previous selves created including videos, music, college papers, and even silly poems like "Vanilla FOrmula."
+	Aside from things uncovered online, I plugged in my old external harddrive from undergrad, and uncovered my trashed iMac's backup
+	from 2014. Inside, I found more even files to include plugins (like Magic 8-bit Plugin), my Japanese class video recordings,
+	Minecraft multiplayer clips, old desktop screencaps, and albums that got me through my early college years. 
+	I was really hoping to find my Finale music program files from 2007-2010 but sadly they're not present. Some compositions I forgot,
+	like Mission Themes I and II, Floccinaucinilipilificated Tune, and Organ Composition I (my first produced tune).
+	Needless to say, I'm <b-title>feeling the nostalgia</b-title> of that time, though I affirm that I am content in my current place in life.
+	<hr>
+	During this time, I have successfully reloaded all my music plugins into my DAW, Logic Pro. Having been programming consistently, my DAW
+	and its tools have become much easier to manage. I can now see the sense in how many parameters are interconnected and can muster
+	the patience to learn the features that go beyond simply inputting MIDI data. My curiosity for what lies underneath the raw musicality 
+	of the production process is actually alive. In years past, I'd hardly care. All of my interests are inteweaving at large, it seems.
+	While typing this, I'm listening to videos on VST design. Heck, I could even consider making my own software synth plugins someday, 
+	were I to engage dabble with C++ or Rust. Again, something to consider, nothing to involve myself deeply into at this time. 
+	I must be wary to keep my interests limited, because at times lately I've noticed that I could overwhelm myself with new creative avenues to 
+	explore. My time is limited. I long for weeks or months at a time where I can better catch up to who I could have become. Putting it that
+	way seems a bit remorseful, rather, I long for weeks or months at a time where I can become who I will to be. I intend at nothing groundbreaking,
+	but just will to aim my life skillfully.
+	<hr>
+	Overall, I'm feeling okay. It's been a decent weekend so far, and I would like to produce a little thing shortly and place it on my website.
+	I also would like to update the music page, and add a few more tracks. I should sort all lists by year. I should also update the dashboard 
+	and use a different border style site-wide, because on mobile some borders do not appear properly. In addition, I want my JLPT page to 
+	be able to prompt a Jisho iFrame by marshalling a chosen word to its URI query. This way, I could essentially use it as an API without
+	a direct external call which would be permissible by github pages.
+	<hr>
+	Work is going okay. I'm definitely improving in my role and am happy to have really established myself. I'm grateful to know that I am secure,
+	and with that security my peace of mind is maintained. Randomly I feel uneasy about American politics and economy and it escalates to
+	active worrying about societal collapse. This peace I enjoy, like all things, is impermanent. I need to keep working and fulfill my 
+	financial obligations, because only then would I no longer be shackled to this geopolical division were the negatives to exacerbate.
+	The worry materialized into my having created that Travel Log page to include retirement ideas. I can live on little, now moreso than
+	ever. I am concerned that others may follow a very frugal path, which, though potentially beneficial for individuals' lives, would 
+	leave a negative inpact on the economy if there are fewer and fewer consumers out there. If more desires are purged, then there would
+	be fewer jobs geared towards fabricating desire and towards peddling goods for which such desire is fabricated. I am hopeful this 
+	modern world, in all its good and bad, is at least able to avoid collapse. A glipse of collapse would surely increase my consideration
+	for taking a stint at Antaiji. 
+	`
+	,
 ];
