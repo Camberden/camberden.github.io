@@ -277,8 +277,10 @@ function displayCpaCredits() {
 	cpaCreditsDisplay.innerHTML = cpaCredits;
 	cpaCompletionPercentage = cpaCredits / 30 * 100;
 	if (cpaCredits >= 30) {
+		console.log("Where's my bar???")
 		cpaProgressBar.innerHTML = `<span style="width:100%;"></span>`
 	} else {
+		console.log("Stop hiding my bar!!!")
 		cpaProgressBar.innerHTML = `<span style="width:${cpaCompletionPercentage}%;"></span>`;
 	}
 }
@@ -549,6 +551,7 @@ for (const doc of refdocs) {
 	let li = document.createElement("li");
 	let a = document.createElement("a");
 	let text = document.createTextNode(doc.substring(17, doc.length - 4));
+	a.classList.add("marker");
 	a.appendChild(text);
 	a.setAttribute("href", doc);
 	a.setAttribute("target", "_blank");

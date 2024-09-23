@@ -117,6 +117,10 @@ body {
 	background-color: var(--clr-quinary-body);
 }
 
+p {
+	color: inherit;
+}
+
 .common-background {
 	background-color: #90e5ee1a;
 }
@@ -156,26 +160,28 @@ button {
 }
 
 .marker {
-	color: #db8044;
+	color: var(--clr-secondary);
 	font-family: Permanent Marker, serif;
+}
+
+#header-and-return {
+	padding: 2rem;
 }
 
 #return {
 	font-size: 1em;
 	text-align: left;
+	display: flex;
+	flex: 0.1rem;
+	align-items: left;
+	justify-content: left;
 }
 
 #return a:hover {
-	color: red;
-}
-
-p {
-	color: inherit;
+	color: var(--clr-tertiary);
 }
 
 a {
-	color: #f59b60;
-	font-style: normal;
 	text-decoration: solid;
 	outline: 0;
 	cursor: pointer;

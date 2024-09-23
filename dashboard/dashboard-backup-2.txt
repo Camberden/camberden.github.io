@@ -1,42 +1,47 @@
-<!DOCTYPE html>
-<html lang="en-US">
-
-<head>
-	<meta charset="UTF-8">
-	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
-	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../dashboard/dashboard.css" media="screen" />
-	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
-	<title>Chrispy's Dashboard</title>
-</head>
-
-<body>
-	<div id="header-and-return">
-		<div id="return">
-			<a class="marker" href="../index.html">Return</a>
+<!--QUICK LINKS -->
+		<div class="quick-links-grid grid-col-span-2">
+			<div class="quick-links-grid-item">
+				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="https://www.satorireader.com" target="_blank">SatoriReader</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="https://jisho.org" target="_blank">Jisho</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="https://accounts.mheducation.com/login" target="_blank">Coursework</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="../assets/refdoc-acc121-schedule.pdf" target="_blank">Courseplan</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="https://maps.google.com" target="_blank">Maps</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="https://int.dac.nc.gov" target="_blank">Intranet</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="https://portal.osc.nc.gov/app" target="_blank">Fiori</a>
+			</div>
 		</div>
-		<div class="dashboard-header">
-			<h1 class="marker">Dashboard</h1>
-		</div>
-	</div>
 
-<div class="dashboard-grid">
+		<main class="dashboard-grid">
 
 		<!--EXPENSE MANAGEMENT -->
-		<div id="dashboard-expense-management" class="dashboard-item">
+		<div class="dashboard-item">
 			<div>
 				<div class="marker">
 					<h2>Expense Management</h2>
 				</div>
 				<div>
-					<ul>
+					<ul class="list-background">
 						<span>Notes:</span>
 						<li>P2P $300.00 monthly: <span id="p2p">$2055.00</span> remain.</li>
 					</ul>
 				</div>
 
-				<ul>
+				<ul class="list-background">
 					<li class="no-bullet">PAYCHECK = $<input type="text" placeholder=" Input Value" id="balance"
 							label="balance"></li>
 					<br>
@@ -109,108 +114,109 @@
 					</li>
 				</ul>
 			</div>
-		</div>	
-
+		</div>
 		<!-- PSLF MANAGEMENT -->
-		<div id="dashboard-pslf-management" class="dashboard-item">
+		<div class="dashboard-item">
 			<div class="marker">
 				<h2>PSLF Management</h2>
 			</div>
-			<p id="pslf-heading"></p>
+			<p class="list-background" id="pslf-heading"></p>
 			<div class="bar" id="pslf-progress-bar"></div>
 
 			<div id="pslf-boxes">
 				
 			</div>
-		</div>
 
+		</div>
 		<!-- STEP PAY PLAN -->
-		<div id="dashboard-step-pay-plan" class="dashboard-item">
+		<div class="dashboard-item">
 
-		<div class="marker">
-			<h2>Step Pay Plan</h2>
-		</div>
-		<div>
-			<div id="salary-table-div">
-				<table>
-					<tr>
-						<th id="salary-table-corner"></th>
-						<th>Step 0</th>
-						<th>Step 1</th>
-						<th>Step 2</th>
-						<th>Step 3</th>
-						<th>Step 4</th>
-						<th>Step 5</th>
-						<th>Step 6</th>
-					</tr>
-					<tr>
-						<th>COI</th>
-						<td id="co1-0"></td>
-						<td id="co1-1"></td>
-						<td id="co1-2"></td>
-						<td id="co1-3"></td>
-						<td id="co1-4"></td>
-						<td id="co1-5"></td>
-						<td id="co1-6"></td>
-					</tr>
-					<tr>
-						<th>COII</th>
-						<td id="co2-0"></td>
-						<td id="co2-1"></td>
-						<td id="co2-2"></td>
-						<td id="co2-3"></td>
-						<td id="co2-4"></td>
-						<td id="co2-5"></td>
-						<td id="co2-6"></td>
-					</tr>
-					<tr>
-						<th>COIII</th>
-						<td id="co3-0"></td>
-						<td id="co3-1"></td>
-						<td id="co3-2"></td>
-						<td id="co3-3"></td>
-						<td id="co3-4"></td>
-						<td id="co3-5"></td>
-						<td id="co3-6"></td>
-					</tr>
-				</table>
-			</div>
-			<ul class="list-background">
-				<li><span id="fiscal-year"></span></p>
-				<li>Base-Rate Salary: $<span id="current-salary"></span></li>
-				<hr>
-				<li>Base-Rate Monthly: $<span id="monthly-salary"></span></li>
-				<li>Base-Rate Hourly: $<span id="hourly-salary"></span></li>
-				<li>Base-Rate 11HR Gap: $<span id="gap-pay"></span></li>
-				<hr>
-				<li>Differential Overtime: $<span id="overtime-diff"></span></li>
-				<li>Differential Nightly: $<span id="night-diff"></span></li>
-				<li>Differential Weekend: $<span id="weekend-diff"></span></li>
-				<li>Differential Holiday: $<span id="holiday-diff"></span></li>
+				<div class="marker">
+					<h2>Step Pay Plan</h2>
+				</div>
+				<div>
+					<div id="salary-table-div">
+						<table>
+							<tr>
+								<th id="salary-table-corner"></th>
+								<th>Step 0</th>
+								<th>Step 1</th>
+								<th>Step 2</th>
+								<th>Step 3</th>
+								<th>Step 4</th>
+								<th>Step 5</th>
+								<th>Step 6</th>
+							</tr>
+							<tr>
+								<th>COI</th>
+								<td id="co1-0"></td>
+								<td id="co1-1"></td>
+								<td id="co1-2"></td>
+								<td id="co1-3"></td>
+								<td id="co1-4"></td>
+								<td id="co1-5"></td>
+								<td id="co1-6"></td>
+							</tr>
+							<tr>
+								<th>COII</th>
+								<td id="co2-0"></td>
+								<td id="co2-1"></td>
+								<td id="co2-2"></td>
+								<td id="co2-3"></td>
+								<td id="co2-4"></td>
+								<td id="co2-5"></td>
+								<td id="co2-6"></td>
+							</tr>
+							<tr>
+								<th>COIII</th>
+								<td id="co3-0"></td>
+								<td id="co3-1"></td>
+								<td id="co3-2"></td>
+								<td id="co3-3"></td>
+								<td id="co3-4"></td>
+								<td id="co3-5"></td>
+								<td id="co3-6"></td>
+							</tr>
+						</table>
+					</div>
+					<ul class="list-background">
+						<li><span id="fiscal-year"></span></p>
+						<li>Base-Rate Salary: $<span id="current-salary"></span></li>
+						<hr>
+						<li>Base-Rate Monthly: $<span id="monthly-salary"></span></li>
+						<li>Base-Rate Hourly: $<span id="hourly-salary"></span></li>
+						<li>Base-Rate 11HR Gap: $<span id="gap-pay"></span></li>
+						<hr>
+						<li>Differential Overtime: $<span id="overtime-diff"></span></li>
+						<li>Differential Nightly: $<span id="night-diff"></span></li>
+						<li>Differential Weekend: $<span id="weekend-diff"></span></li>
+						<li>Differential Holiday: $<span id="holiday-diff"></span></li>
 
-			</ul>
+					</ul>
+				</div>
+				<div id="input-step-information">
+					<p>CO<span id="custody-level">_</span> <button
+							onclick="increaseCustodyLevel()">Increase</button><button
+							onclick="decreaseCustodyLevel()">Decrease</button></p>
+					<p>Years Experience: <span id="years-experience" label="years-experience">_</span> <button
+							onclick="increaseYearsExperience()">Increase</button><button
+							onclick="decreaseYearsExperience()">Decrease</button></p>
+					<button id="toggle-bonus" onclick="toggleExperienceBonus()">_</button>
+				</div>
 		</div>
-		<div id="input-step-information">
-			<p>CO<span id="custody-level">_</span> <button onclick="increaseCustodyLevel()">Increase</button><button
-					onclick="decreaseCustodyLevel()">Decrease</button></p>
-			<p>Years Experience: <span id="years-experience" label="years-experience">_</span> <button
-					onclick="increaseYearsExperience()">Increase</button><button
-					onclick="decreaseYearsExperience()">Decrease</button></p>
-			<button id="toggle-bonus" onclick="toggleExperienceBonus()">_</button>
-		</div>
-		</div>
-
 		<!-- RE-EDUCATION INFORMATION -->
-		<div id="dashboard-reeducation-information" class="dashboard-item">
+		<div class="dashboard-item">
 
 			<div class="marker">
 				<h2>RE-EDUCATION INFORMATION</h2>
 			</div>
 			<span class="marker" id="menulabel">Additional Information</span>
+			<hr>
 			
 			<div class="list-background">CPA Credits: <span id="cpa-credits"></span>/30</div>
 			<div id="cpa-progress-bar"></div>
-			<ul id="acc-courses">
+
+			<ul id="acc-courses" class="list-background">
 				<li class="acc-core adv-acc-core taken planned-or-completed" value="3">ACC 120 - Prin of Financial Accounting(3)</li>
 				<li class="acc-core adv-acc-core taking planned-or-completed" value="3">ACC 121 - Prin of Managerial Accounting (3)</li>
 				<li class="not-taken acc-core adv-acc-core" value="3">BUS 115 - Business Law I (3)</li>
@@ -300,15 +306,15 @@
 			</div>
 		</div>
 		<!-- LIFE IN WEEKS DISPLAY -->
-		<div id="dashboard-life-in-weeks" class="dashboard-item">
+		<div class="dashboard-item grid-col-span-2">
 			<div class="marker">
-				<h2>LIFE IN WEEKS</h2>
+				<h2>LIFE IN WEEKS DISPLAY</h2>
 			</div>
 			<p id="weeks-lived"></p>
 			<div id="box-input"></div>
 		</div>
 		<!-- PENSION CALCULATOR -->
-		<div id="dashboard-pension-calculator" class="dashboard-item">
+		<div class="dashboard-item">
 			<div class="marker">
 				<h2>Pension Calculator</h2>
 			</div>
@@ -489,7 +495,7 @@
 
 		</div>
 		<!-- REFDOCS DISPLAY -->
-		<div id="dashboard-refdocs" class="dashboard-item">
+		<div class="dashboard-item">
 			<div class="marker">
 				<h2>REFERENCE DOCUMENTS</h2>
 			</div>
@@ -499,10 +505,65 @@
 
 			</ul>
 		</div>
-</div>
-</body>
+		</main>
+
+		<!-- <div id="video-player">
+		<iframe width="560" height="315" src="https://www.youtube.com/embed/j42T6o-XwMU?si=-9VWK0s0J9bQjjzN"
+			title="YouTube video player" frameborder="5"
+			allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+			referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+	</div> -->
 
 
-<script src="dashboard.js"></script>
+	/* ----- GRID SPECIFIC ----- */
 
-</html>
+.quick-links-grid {
+	display: grid;
+	gap: 1.5rem; 
+	margin-inline: auto;
+	width: min(100%, 69rem);
+	grid-template-columns: repeat(8, 11%); /* repeat(4, 25%) */
+	padding-block: 1rem;
+
+}
+
+.quick-links-grid-item {
+	padding: 1rem;
+	height: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: grey;
+	border-style: double;
+}
+
+
+.dashboard-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(2, 50%);
+	padding-block: 1rem;
+	width: min(100%, 70rem);
+	margin-inline: auto;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}
+
+.dashboard-item {
+	padding: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border: grey, double, .3rem;
+	background: #90e5ee1a;
+}
+
+.dashboard-item:last-child {
+	/* background: red !important; */
+	/* grid-column: span 2; goes across 2 gridspaces */
+	grid-column-start: 4; /* starts after gridspace 4 */
+	/* grid-row-start: 1; places it on first row */
+	grid-row-start: 1;
+	/* grid-row-end: span 2;  goes across 2 rows, expanding column!  can just say grid-row: 1 / 3 (based on grid lines) */
+}
+
+/* .dashboard-item:nth-child(3) {
+} */
