@@ -12,7 +12,7 @@ startbalanceupdate.onkeydown = function () {
 };
 
 const car = 0.00;
-const nav = 53.85;
+const nav = 222.07;
 const sal = 884.15;
 const ren = 801.00;
 const hrt = 801.00;

@@ -1,7 +1,6 @@
 /* ----- HEADING ASSETS ----- */
 
 :root {
-
 	--clr-primary: #a1dbf8;
 	--clr-secondary: #f59b60;
 	--clr-tertiary: #8acb88;
@@ -109,11 +108,9 @@ body {
 	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
 	text-align: center;
 	/* z-index: 1; */
-	/* background-image: url('assets/image-curtain.svg');  */
+	background-image: url('assets/image-curtain.svg'); 
 	/* #EEEFF0 in SVG Fill */
-	/* background-color: #2A2A2A; */
-	/* background-color: #545454; */
-	/* background-color: #F4F5F6; */
+	/* background-color: #292540; */
 	background-color: var(--clr-quinary-body);
 }
 

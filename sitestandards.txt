@@ -16,5 +16,3 @@ Git Ignore temporary reference documents.
 Background SVG is #EEEFF0 and Background Color is #F4F5F6
 
 Return button is written as: <div id="return"><a class="marker" href="../index.html">Return</a></div>
-
-Signature Colors:  darkblue #000caa, orange #f59b60, violet #700caa, blue #a1dbf8
