@@ -26,7 +26,28 @@ input[type=text]:focus {
 	justify-content: center;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border: grey, double, .3rem;
+	border-bottom: none;
 	background: rgba(144, 229, 238, 0.1);
+}
+
+#dashboard-quick-links {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border: grey, double, .3rem;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+.quick-links-grid-item {
+	padding: 1rem;
+	border: grey, double, .3rem;
+	border-top: none;
+	border-bottom: none;
 }
 
 .dashboard-grid {
@@ -73,11 +94,15 @@ input[type=text]:focus {
 }
 
 #dashboard-life-in-weeks {
-	flex: 1;
+	flex: 0.5;
 }
 
 #dashboard-pension-calculator {
-	flex: 2;
+	flex: 4;
+}
+
+#dashboard-refdocs {
+	flex: 0.1;
 }
 
 /* ----- EXPENSE MANAGEMENT SPECIFIC ----- */

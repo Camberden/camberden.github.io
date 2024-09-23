@@ -186,6 +186,7 @@ a {
 	outline: 0;
 	cursor: pointer;
 
+	color: var(--clr-secondary);
 	background-image: linear-gradient(120deg, 0%,  100%);
 	background-repeat: no-repeat;
 	background-size: 25% 0.1em;
@@ -194,6 +195,7 @@ a {
 }
 
 a:hover {
+	color: var(--clr-tertiary);
 	background-size: 100% 5%;
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 }
