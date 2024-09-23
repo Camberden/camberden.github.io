@@ -180,10 +180,10 @@ const blogData = [
 	Work is going okay. I'm definitely improving in my role and am happy to have really established myself. I'm grateful to know that I am secure,
 	and with that security my peace of mind is maintained. Randomly I feel uneasy about American politics and economy and it escalates to
 	active worrying about societal collapse. This peace I enjoy, like all things, is impermanent. I need to keep working and fulfill my 
-	financial obligations, because only then would I no longer be shackled to this geopolical division where the negatives to exacerbate.
+	financial obligations, because only then would I no longer be shackled to this geopolitical division where the negatives to exacerbate.
 	The worry materialized into my having created that Travel Log page to include retirement ideas. I can live on little, now moreso than
 	ever. I am concerned that others may follow a very frugal path, which, though potentially beneficial for individuals' lives, would 
-	leave a negative inpact on the economy if there are fewer and fewer consumers out there. If more desires are purged, then there would
+	leave a negative impact on the economy if there are fewer and fewer consumers out there. If more desires are purged, then there would
 	be fewer jobs geared towards fabricating desire and towards peddling goods for which such desire is fabricated. I am hopeful this 
 	modern world, in all its good and bad, is at least able to avoid collapse. A glipse of collapse would surely increase my consideration
 	for taking a stint at Antaiji. 

@@ -105,12 +105,16 @@ loadModule(studyModules[0]);
 const parseFurigana = function () {
 	document.querySelectorAll("#vocab-field > li").forEach(e => {
 		e.onclick = function() {
-			displaySuperScript(e.firstChild);
+			// displaySuperScript(e.firstChild);
+			let text = e.lastChild.textContent;
+			navigator.clipboard.writeText(text);
+			alert("Copied: " + text);
 		}
 	});
 }
 parseFurigana();
 
+// TODO: remove
 const displaySuperScript = function (e){
 	if (e.classList.contains("display-sup")) {
 		e.classList.remove("display-sup");
