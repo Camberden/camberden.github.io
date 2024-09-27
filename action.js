@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const lastestUpdatePushed = "Monday September 23rd, 2024";
+const lastestUpdatePushed = "Friday September 27th, 2024";
 
 // --- INFO AND ENTRYWAYS --- //
 
@@ -31,3 +31,51 @@ randomizeMonicker();
 camberden.onclick = function(){
 	alert("Hi! :D");
 }
+
+/**
+ * [["var/var.html","Var Page"],],
+ * @var
+ * The section link: this is the directory name of the page linked.
+ * @name
+ * The section name to appear on the page.
+ */
+const sections = [
+	["dashboard", "Personal Dashboard",],
+	["workspace", "Coding Workspace",],
+	["blog", "Blogging Page",],
+	["jlpt", "JLPT Resource",],
+	["accounting", "Accounting Resource",],
+	["travel", "Travel Page",],
+	["musings", "Musings Page",],
+	["music", "Original Music",],
+];
+
+const sectionTitles = document.querySelectorAll(".section-title");
+const sectionLinks = document.getElementById("section-links");
+
+/**
+ * @var
+ * Creates clickable link to directory.
+ * @name
+ * Creates h3 element with text link descriptor.
+ */
+function initSections() {
+for (let i = 0; i < sections.length; i++) {
+
+	let h3 = document.createElement("h3");
+	h3.setAttribute("class", "section-title-text");
+	h3.setAttribute("id", sections[i][0]);
+	let text = document.createTextNode(sections[i][1]);
+	h3.appendChild(text);
+
+	let sectionDiv = document.createElement("div");
+	sectionDiv.setAttribute("class", "section-title");
+	sectionDiv.onclick = function () {
+		document.location = sections[i][0] + "/" + sections[i][0] + ".html";
+	};
+	sectionDiv.appendChild(h3);
+	sectionLinks.appendChild(sectionDiv);
+	}
+}
+
+initSections();
