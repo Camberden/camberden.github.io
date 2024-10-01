@@ -5,7 +5,7 @@ let blogPostList = document.getElementById("blog-post-list");
 let blogPostTitle = document.getElementById("blog-post-title");
 
 
-function displayActiveBlogPostNumber(){
+function displayActiveBlogPostNumber() {
 	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
 	document.getElementById(`bp-${activeBlogPostNumber}`).classList.add("listing-highlight");
 }
@@ -16,11 +16,11 @@ function displayActiveBlogPostNumber(){
  * @param tag
  * The tag name without decorators, such as `b-title` for `<b-title></b-title>`.
  */
-function gatherTextBetweenTags(content, tag){
+function gatherTextBetweenTags(content, tag) {
 	return content.substring(content.indexOf("<" + tag + ">"), content.indexOf("</" + tag + ">"));
 }
 
-function extractHeaderData(increment){
+function extractHeaderData(increment) {
 	const instance = blogData[increment];
 	let splitInstance = instance.split("|");
 	let instanceDate = splitInstance[1].trim();
@@ -32,14 +32,14 @@ function extractHeaderData(increment){
 	let instanceBlogPost = splitInstance[4].trim();
 	/* Add tags below as needed: */
 	blogPostTitle.innerHTML = gatherTextBetweenTags(instanceBlogPost, "b-title");
-	
+
 	displayActiveBlogPostNumber();
 
-return instanceBlogPost;
+	return instanceBlogPost;
 }
 
-function initBlogData(dataLength){
-	for (i = 0; i <= dataLength - 1; i++){
+function initBlogData(dataLength) {
+	for (i = 0; i <= dataLength - 1; i++) {
 		let listedBlogPost = document.createElement("li");
 		listedBlogPost.setAttribute("class", "blog-post-inside-list");
 		listedBlogPost.setAttribute("value", i);
@@ -49,16 +49,16 @@ function initBlogData(dataLength){
 		listedBlogPost.append(blogData[i].substring(blogData[i].indexOf("|") + 1, blogData[i].indexOf("…")));
 		// Latest Entry
 		if (i === dataLength - 1) {
-			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + 
-			extractHeaderData(activeBlogPostNumber) + `</span>`;
+			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
+				extractHeaderData(activeBlogPostNumber) + `</span>`;
 		}
 	}
 }
 initBlogData(blogData.length);
 
-function chooseActiveBlogPost(){
+function chooseActiveBlogPost() {
 	document.querySelectorAll(".blog-post-inside-list").forEach(listing => {
-		listing.onclick = function(){
+		listing.onclick = function () {
 			document.getElementById(`bp-${activeBlogPostNumber}`).classList.remove("listing-highlight");
 			activeBlogPostNumber = listing.value;
 			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` + extractHeaderData(activeBlogPostNumber) + `</span>`;
@@ -67,16 +67,19 @@ function chooseActiveBlogPost(){
 }
 chooseActiveBlogPost();
 
-function enableBlogButtons(){
+
+function enableBlogButtons() {
 	document.querySelectorAll(".blog-button").forEach(button => {
-		button.onclick = function() {
-			switch(button.value) {
+		button.onclick = function () {
+			buttonInterface.addButtonDepressedHighlight(button);
+
+			switch (button.value) {
 				case "next":
 					if (activeBlogPostNumber < blogData.length - 1) {
 						document.getElementById(`bp-${activeBlogPostNumber}`).classList.remove("listing-highlight");
 						activeBlogPostNumber++;
 						activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
-						extractHeaderData(activeBlogPostNumber) + `</span>`;
+							extractHeaderData(activeBlogPostNumber) + `</span>`;
 					}
 					break;
 				case "previous":
@@ -84,13 +87,19 @@ function enableBlogButtons(){
 						document.getElementById(`bp-${activeBlogPostNumber}`).classList.remove("listing-highlight");
 						activeBlogPostNumber--;
 						activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
-						extractHeaderData(activeBlogPostNumber) + `</span>`;
+							extractHeaderData(activeBlogPostNumber) + `</span>`;
 					}
 					break;
 				default:
 					console.log("Default Switch Triggered");
 			}
+		};
+		button.onmouseenter = function () {
+			buttonInterface.addButtonHighlight(button);
 		}
-	})
+		button.onmouseleave = function () {
+			buttonInterface.removeButtonDepressedHighlight(button);
+		}
+	});
 }
 enableBlogButtons();

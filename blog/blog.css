@@ -26,26 +26,9 @@
 	grid-column: span 3;
 }
 
-button {
-	background-color: inherit;
-	padding: 1rem 1rem;
-	user-select: none;
-	border-radius: 1rem;
-	border-color: slategray;
-	border-style: double;
-}
-
-button:hover {
-	border: 4px solid rgb(172, 238, 205);
-}
-
 .marker-blogging {
 	font-family: Permanent Marker, serif;
 	color: var(--clr-tertiary);
-}
-
-.common-background {
-	background: #f6f3ed;
 }
 
 .blog-post-header {

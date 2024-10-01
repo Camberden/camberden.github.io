@@ -74,40 +74,9 @@ body {
 
 }
 
-button {
-
-	/* padding: 2rem; */
-	border-radius: 0.5rem;
-	/* box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25); */
-	
-	border-top-width: 0.5rem;
-	border-top-color: grey;
-	border-top-style:groove;
-
-	border-left-width: 0.5rem;
-	border-left-color: black;
-	border-left-style: groove;
-
-
-	border-bottom-width: 1rem;
-	border-bottom-color: black;
-	border-bottom-style: groove;
-
-	border-right-width: 1rem;
-	border-right-color: grey;
-	border-right-style: groove;
-}
-
-.button-hover {
-	background-color: var(--clr-tertiary);
-}
-
-.button-highlight {
-	color: var(--clr-tertiary);
-	background-color: var(--clr-quinary-body);
-}
-
 .button-depressed {
+
+	color:var(--clr-secondary);
 	border-top-width: 0.3rem;
 	border-top-color: grey;
 	border-top-style:groove;

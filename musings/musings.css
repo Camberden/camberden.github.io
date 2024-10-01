@@ -52,19 +52,6 @@
 
 /* BUTTON */
 
-button {
-	background-color: inherit;
-	padding: 1rem 1rem;
-	user-select: none;
-	border-radius: 1rem;
-	border-color: red;
-	border-style: double;
-}
-
-button:hover {
-	border: 4px solid rgb(172, 238, 205);
-}
-
 /* percents instead of pixels, says mo */
 
 /*	POEMTEXT	 */

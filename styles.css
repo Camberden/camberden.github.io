@@ -152,10 +152,6 @@ p {
 	transition: background-size 0.3s ease-in;
 }
 
-button {
-	user-select: none;
-}
-
 .marker {
 	color: var(--clr-secondary);
 	font-family: Permanent Marker, serif;
@@ -195,6 +191,57 @@ a:hover {
 	color: var(--clr-tertiary);
 	background-size: 100% 5%;
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+}
+
+/* ----- BUTTONS ----- */
+
+button {
+	cursor: pointer;
+	user-select: none;
+	border-radius: 0.5rem;
+	
+	border-top-width: 0.5rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.5rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+
+	border-bottom-width: 1rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 1rem;
+	border-right-color: grey;
+	border-right-style: groove;
+}
+
+.button-highlight {
+	color: var(--clr-quaternary);
+	background: var(--clr-tertiary);
+}
+
+.button-depressed {
+
+	color:var(--clr-secondary);
+	background: var(--clr-quaternary-body);
+	border-top-width: 0.3rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.3rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+	border-bottom-width: 0.7rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 0.7rem;
+	border-right-color: grey;
+	border-right-style: groove;
 }
 
 /* FOR SOMETHING TO HIGHLIGHT IN VIEWPORT: PENDING USE CASE */
