@@ -219,12 +219,13 @@
 			</ul>
 		</div>
 		<div id="input-step-information">
-			<p>CO<span id="custody-level">_</span> <button onclick="increaseCustodyLevel()">Increase</button><button
-					onclick="decreaseCustodyLevel()">Decrease</button></p>
-			<p>Years Experience: <span id="years-experience" label="years-experience">_</span> <button
-					onclick="increaseYearsExperience()">Increase</button><button
-					onclick="decreaseYearsExperience()">Decrease</button></p>
-			<button id="toggle-bonus" onclick="toggleExperienceBonus()">_</button>
+			<p>CO<span id="custody-level">_</span> 
+				<button class="step-pay-plan-button" value="increase-custody-level">Increase</button>
+				<button class="step-pay-plan-button" value="decrease-custody-level" >Decrease</button></p>
+			<p>Years Experience: <span id="years-experience" label="years-experience">_</span> 
+				<button class="step-pay-plan-button" value="increase-years-experience">Increase</button>
+				<button class="step-pay-plan-button" value="decrease-years-experience">Decrease</button></p>
+			<button id="toggle-bonus" class="step-pay-plan-button" value="toggle-experience-bonus">_</button>
 		</div>
 		</div>
 
@@ -532,5 +533,7 @@
 
 
 <script src="dashboard.js"></script>
+<script src="../buttons.js"></script>
+
 
 </html>

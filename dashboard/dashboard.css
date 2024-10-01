@@ -368,10 +368,6 @@ table, th, td {
 
 /* ----- PENSION CALCULATOR SPECIFIC ----- */
 
-.pension-calculator-button {
-	height: 2rem;
-	width: 7rem;
-}
 
 .pension-grid {
 	display: grid;

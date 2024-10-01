@@ -2,22 +2,20 @@
  * @interface
  * Acts as an interface to grant event styles to buttons site-wide.
  */
-const buttonInterface = {
+const ButtonInterface = {
 
-	addButtonHighlight: function (button) {
+	buttonOnMouseEnter: function (button) {
 		button.classList.add("button-highlight");
 	},
 
-	removeButtonHighlight: function (button) {
+	buttonOnMouseLeave: function (button) {
 		button.classList.remove("button-highlight");
+		if (button.classList.contains("button-depressed")) {
+			button.classList.remove("button-depressed");
+		}
 	},
 
-	removeButtonDepressedHighlight: function (button) {
-		button.classList.remove("button-highlight");
-		button.classList.remove("button-depressed");
-	},
-
-	addButtonDepressedHighlight: function (button) {
+	buttonOnClick: function (button) {
 		button.classList.add("button-highlight");
 		button.classList.add("button-depressed");
 		setTimeout(() => {

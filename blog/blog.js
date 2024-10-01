@@ -71,7 +71,7 @@ chooseActiveBlogPost();
 function enableBlogButtons() {
 	document.querySelectorAll(".blog-button").forEach(button => {
 		button.onclick = function () {
-			buttonInterface.addButtonDepressedHighlight(button);
+			ButtonInterface.buttonOnClick(button);
 
 			switch (button.value) {
 				case "next":
@@ -95,10 +95,10 @@ function enableBlogButtons() {
 			}
 		};
 		button.onmouseenter = function () {
-			buttonInterface.addButtonHighlight(button);
+			ButtonInterface.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			buttonInterface.removeButtonDepressedHighlight(button);
+			ButtonInterface.buttonOnMouseLeave(button);
 		}
 	});
 }

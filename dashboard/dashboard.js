@@ -1,5 +1,7 @@
 window.onload = () => console.log("Running!");
 
+
+
 // ----- EXPENSE MANAGEMENT ----- //
 // TODO Load balance after last typed character
 
@@ -208,6 +210,7 @@ function decreaseYearsExperience() {
 		calculateStep();
 	}
 }
+
 function toggleExperienceBonus(){
 	if (yearsExperience >= 0 && yearsExperience < 6 && !activeBonus) {
 		experienceBonus = 1;
@@ -223,6 +226,43 @@ function toggleExperienceBonus(){
 	removeHighlightedSalary();
 	calculateStep();
 }
+
+function enableStepPayPlanButtons() {
+	document.querySelectorAll(".step-pay-plan-button").forEach(button => {
+		button.onclick = () => {
+			ButtonInterface.buttonOnClick(button);
+		switch (button.value) {
+			case ("increase-custody-level"):
+				increaseCustodyLevel();
+				break;
+			case ("decrease-custody-level"):
+				decreaseCustodyLevel();
+				break;
+			case ("increase-years-experience"):
+				increaseYearsExperience();
+				break;
+			case ("decrease-years-experience"):
+				decreaseYearsExperience();
+				break;
+			case ("toggle-experience-bonus"):
+				toggleExperienceBonus();
+				break;
+			default:
+				console.log("Hi");
+				break;
+			};
+		};
+
+		button.onmouseenter = () => {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = () => {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+	});
+}
+enableStepPayPlanButtons();
+
 function populateSalaryTable(){
 	for (i = 0; i < salarySchedule.length; i++) {
 		for (j = 0; j < salarySchedule[i].length; j++){
