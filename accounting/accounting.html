@@ -8,37 +8,62 @@
 	<link rel="stylesheet" type="text/css" href="../accounting/accounting.css" media="screen" />
 	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
+	<script src="accounting-data.js" async></script>
+	<script src="accounting.js" async></script>
+	<script src="../buttons.js" async></script>
 	<title>Chrispy's Accounting Page</title>
 </head>
 
 <body>
 
-	<div id="return">
-		<a class="marker" href="../index.html">Return</a>
-	</div>
-
-	<div>
-		<h1 class="marker">Accounting Resource</h1>
+	<div id="header-and-return">
+		<div id="return">
+			<a class="marker" href="../index.html">Return</a>
+		</div>
+		<div class="accounting-header">
+			<h1 class="marker">Accounting Resource</h1>
+		</div>
+		<div id="accounting-quick-links">
+			<div class="quick-links-grid-item">
+				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="https://accounts.mheducation.com/login" target="_blank">Coursework</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<a href="../assets/refdoc-acc121-schedule.pdf" target="_blank">Schedule</a>
+			</div>
+			<div class="quick-links-buttons">
+				<button class="accounting-notes-button" value="previous">Previous</button>
+				<button class="accounting-notes-button" value="next">Next</button>
+			</div>
+			<div class="quick-links-grid-item">ACC120 & ACC121
+			</div>
+		</div>
 	</div>
 
 	<div class="accounting-grid">
 
-		<div class="accounting-item">
-			<p>In Construction...</p>
+		<div id="accounting-notes-item" class="accounting-item">
+			<p id="accounting-notes">In Construction... NOTES</p>
+
 		</div>
 
 		<div class="accounting-item">
 			<p>In Construction...</p>
 		</div>
-
-		<div class="accounting-item grid-col-span-2">
+		<div class="accounting-item">
+			<p>In Construction...</p>
+		</div>
+		<div class="accounting-item">
+			<p>In Construction...</p>
+		</div>
+		<div class="accounting-item">
 			<p>In Construction...</p>
 		</div>
 
 	</div>
 
 </body>
-
-<script src="accounting.js"></script>
 
 </html>

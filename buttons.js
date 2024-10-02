@@ -1,3 +1,5 @@
+/* exported ButtonInterface */
+
 /**
  * @interface
  * Acts as an interface to grant event styles to buttons site-wide.
