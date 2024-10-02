@@ -3,13 +3,13 @@ Site Standards
 Chapel Hill, NC
 0500HRS
 
-Use double quotations ("") for html values.
+Double quotations ("") shall be used for html values.
 
 HTML values shall be in kebab-case.
 
-JavaScript values shall be in camel-case.
+JavaScript values shall be in camelCase.
 
-Meta from index.html will be inherited in all subsequent css documents.
+Meta from styles.css will be inherited in all subsequent css documents.
 
 Git Ignore temporary reference documents.
 

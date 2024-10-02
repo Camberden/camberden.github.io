@@ -143,17 +143,13 @@ function loadSelectedItemArray() {
 	itemSelectedDisplay.innerHTML = contentItems[itemSelected].title;
 }
 
-// Adds functionality to all buttons!
 function enablePreceptsButtons(){
 	document.querySelectorAll(".button-precepts").forEach(button => {
 		button.onmouseleave = function() {
-			button.classList.remove("button-highlight");
-			button.classList.remove("button-hover");
-			button.classList.remove("button-depressed");
+			ButtonInterface.buttonOnMouseLeave(button);
 		}
 		button.onmouseenter = function() {
-			button.classList.add("button-hover");
-			button.classList.remove("button-highlight");
+			ButtonInterface.buttonOnMouseEnter(button);
 		}
 		button.onclick = function() {
 			console.log(button.value);
@@ -162,13 +158,9 @@ function enablePreceptsButtons(){
 			} else {
 				cycleItemArrays(false);
 			}
-			button.classList.add("button-highlight");
-			button.classList.add("button-depressed");
-			setTimeout(() => {
-				button.classList.remove("button-depressed");
-			  }, 100);
-			};
-	})
+			ButtonInterface.buttonOnClick(button);
+		}
+	});
 }
 enablePreceptsButtons();
 
@@ -546,13 +538,10 @@ function cycleSutraLines(boolean){
 function enableSutraButtons(){
 	document.querySelectorAll(".button-sutras").forEach(button => {
 		button.onmouseleave = function() {
-			button.classList.remove("button-highlight");
-			button.classList.remove("button-hover");
-			button.classList.remove("button-depressed");
+			ButtonInterface.buttonOnMouseLeave(button);
 		}
 		button.onmouseenter = function() {
-			button.classList.add("button-hover");
-			button.classList.remove("button-highlight");
+			ButtonInterface.buttonOnMouseEnter(button);
 		}
 		button.onclick = function() {
 			console.log(button.value);
@@ -561,13 +550,9 @@ function enableSutraButtons(){
 			} else {
 				cycleSutraLines(false);
 			}
-			button.classList.add("button-highlight");
-			button.classList.add("button-depressed");
-			setTimeout(() => {
-				button.classList.remove("button-depressed");
-			  }, 100);
-			};
-	})
+			ButtonInterface.buttonOnClick(button);
+		}
+	});
 }
 enableSutraButtons();
 

@@ -74,26 +74,6 @@ body {
 
 }
 
-.button-depressed {
-
-	color:var(--clr-secondary);
-	border-top-width: 0.3rem;
-	border-top-color: grey;
-	border-top-style:groove;
-
-	border-left-width: 0.3rem;
-	border-left-color: black;
-	border-left-style: groove;
-
-	border-bottom-width: 0.7rem;
-	border-bottom-color: black;
-	border-bottom-style: groove;
-
-	border-right-width: 0.7rem;
-	border-right-color: grey;
-	border-right-style: groove;
-}
-
 .w-item:last-child {
 	background: red !important;
 	/* grid-column: span 2; goes across 2 gridspaces */

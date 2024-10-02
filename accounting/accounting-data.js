@@ -80,13 +80,13 @@ The order of steps in creating financial statements. It's a cycle because it's a
 
   
 
-profitMargin = netIncome / netSales;
+<mark class="formula profitMargin = netIncome / netSales;</mark>
 
 18000 / 90000 previous year 20%
 
 20000 / 100000 current year: 20%
 
-currentRatio = currentAssets / currentLiabilities;
+<mark class="formula">currentRatio = currentAssets / currentLiabilities;</mark>
 
 A currentRatio of < .1 = doubt on paying back debt!
 
@@ -247,8 +247,7 @@ Acid-Test Ratio: tests ability to pay back debts but concerns Quick Assets (more
 
 Quick Assets: Cash and Cash Equivalents + Short Term Investments + Current Receivables < 1.10 shows Liabilities exceed Quick Assets. Near to 1.0 is best.
 
-Gross Margin Ratio:
-Net Sales - Cost of Goods Cold / Net Sales
+<mark class="formula">Gross Margin Ratio = Net Sales - Cost of Goods Cold / Net Sales</mark>
 
 22842 | 23822 | 23241.60 | 23572
 
@@ -268,10 +267,7 @@ Net Sales:
 Sales
 Less: Sales Discounts
 Less: Sales Returns and Allowances
-Net Sales
-
-Cost of Goods Sold
-= Gross Profit
+<mark class="formula">Gross Profit = Net Sales - Cost of Goods Sold</mark>
 Insurance Expense: EXCLUDE from Selling Costs unless otherwise specified
 	`
 	,
@@ -306,11 +302,10 @@ NET INCOME = Beginning Inventory + Net Purchases - Ending Inventory = Cost of Go
 
 An error in Inventory is said to be Self Correcting as long as Year 3 is Inventoried Properly. Year 1 Ending inventory becomes Year 2 Beginning Inventory; Year 1 Cost and Year 2 Cost is affected.
 
-Inventory Turnover: Cost of Goods Sold / AVG Inventory
+<mark class="formula">Inventory Turnover = Cost of Goods Sold / AVG Inventory</mark>
 This Ratio shows Management Control of Inventory.
 
-Days' Sales in Inventory:
-(Ending Inventory / Cost of Goods Sold) * 365
+<mark class="formula">Days' Sales in Inventory = (Ending Inventory / Cost of Goods Sold) * 365</mark>
 
 IMPORTANT: assigning costs per unit of inventory. Each of 4 methods depends on type of product and storage. Assuming same item sold att differentt points in May: Sales at differnetn costs are accounted for by chosen method. FIFO LIFO WA SI
 
@@ -517,9 +512,9 @@ IF 4 & 8 are equal, then it's RECONCILED.
 25960
 Bank Reconciliation Requires Book Journal Entries: Dr. & Cr. to Cash Account
 
-Days' Sales Uncollected:
+<mark class="formula">Days' Sales Uncollected = (Accounts Receivable / Net Sales) * 365</mark>
 How quickly a company can convert its Accounts Receivable to Cash.
-(Accounts Receivable / Net Sales) * 365
+
 
 ---------- HW
 
@@ -641,9 +636,10 @@ Net Sales / AVG A/R, net.
 
 High Turnover: could be laxer to increase sales.
 Low Turnover: should be stricter with credit terms to keep money out of receivables
-AVG A/R Net = (Beginning A/R+ End A/R )/ 2
 
-A/R Turnover = Net Sales / AVG A/R Net.
+<mark class="formula">AVG A/R Net = (Beginning A/R+ End A/R )/ 2</mark>
+
+<mark class="formula">A/R Turnover = Net Sales / AVG A/R Net</mark>
 
 Net Sales 2022: 800000
 AR net 2021: 75000
@@ -757,16 +753,14 @@ Appraised Total = 100000
 (90000 * .3 ; 90000 * .1; 90000 * .6)
 27000 ; 9000 ; 54000
 
-Straight-Line Depreciation:
+<mark class="formula">Straight-Line Depreciation = Cost - Salvage Value / Useful Life in Periods</mark>
 Charges same amount of depreciation over the course of an asset's useful life.
-Cost - Salvage Value / Useful Life in Periods
+
 10000 - 1000 / 5 years = 1800 per year.
 
 Units-of-Production Method:
 Used when certain periods have productive times and unused times.
-Depreciation Per Unit =
-Cost - Salvage (Depreciable Cost) /
-TOTAL Units of Production.
+<mark class="formula"> Depreciation Per Unit = Cost - Salvage (Depreciable Cost) / TOTAL Units of Production</mark>
 
 Depreciation per unit is reported and the cost of producing each unit is multiplied.
 
@@ -775,11 +769,11 @@ Depreciation per unit is reported and the cost of producing each unit is multipl
 30000 / 60000 = .5 per unit
 23000units in 2022 = 11500
 
-Declining Balance Method:
+<mark class="formula">Declining Balance Method = Straight-Line Method * 2 = Double-Declining Balance Rate</mark>
 It's an Accelerated Depreciation Method.
-Straight-Line Method * 2 = Double-Declining Balance Rate
 
-Depreciation Expense = Double-Declining Rate * Beginning-Period Book Value
+
+<mark class="formula">Depreciation Expense = Double-Declining Rate * Beginning-Period Book Value</mark>
 
 33000cost - 3000salvage / 3 useful years = 10000 per year (33.3%) * 2 = 66.6% = 20000
 
@@ -830,8 +824,7 @@ then * Amount of Units Sold
 Intangible Assets: recorded at cost when purchased. Separated between Limited lives and Indefinite lives.
 Intangibles: patents, copyrights, franchises and licenses, trademarks and trade names, goodwill, leaseholds, leasehold improvements, other intangibles
 
-Total Asset Turnover:
-Net Sales/ AVG Total Assets
+<mark class="formula">Total Asset Turnover = Net Sales/ AVG Total Assets</mark>
 A high turnover is DESIRABLE
 "Each Dollar of Assets produced ? Dollars of Sales!"
 
