@@ -1,4 +1,4 @@
-/* ----- HEADING ASSETS ----- */
+/* ----- ROOT VALUES ----- */
 
 :root {
 	--clr-primary: #a1dbf8;
@@ -13,6 +13,8 @@
 	--clr-secondary-400: 217 19% 35%;
 }
 
+/* ----- INDEX SPECIFIC COMPONENT ----- */
+
 .signature-div {
 	text-align: left;
 }
@@ -20,31 +22,22 @@
 #signature {
 	position: absolute;
 	width: 6rem;
-	/* min-width: 10rem; */
-	/* height: 3rem; */
 	min-height: 5rem;
 	user-select: none;
 	animation-name: stagger-signature;
-	animation-duration: 5s;
+	animation-duration: 10s;
 	animation-iteration-count: infinite;
 }
 @keyframes stagger-signature {
 	0% {
-		/* width: 14%; */
-		/* height: 18%; */
-		/* background-position: 10%; */
-
+		width: 6rem;
 	}
 	50% {
-		/* width: 15%; */
-		/* height: 20%; */
-		/* background-position: 20%; */
+		width: 7rem;
+		rotate: 5deg;
 	}
 	100% {
-		/* width: 14%; */
-		/* height: 18%; */
-		/* background-position: 0%; */
-
+		width: 6rem;
 	}
 }
 
@@ -59,25 +52,17 @@
 }
 
 #camberden {
-	/* position: absolute; */
 	font-family: Permanent Marker, sans-serif;
 	font-size: 4rem;
-	/* min-width: 2rem;
-	min-height: 10rem; */
-	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
+	background: linear-gradient(var(--clr-gradient-common));
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
 	text-shadow: -5px -2px 0px #700caa;
-
 	animation-name: change-text-shadow;
   	animation-duration: 5s;
   	animation-iteration-count: infinite;
-
-	/* ----- MARGIN ADJUSTMENTS PLACE TITLE ABOVE IMAGE ----- */
-	/* margin-top: -4rem; */
-	/* margin-bottom: 6rem; */
 }
 @keyframes change-text-shadow {
 	40% {
@@ -89,37 +74,6 @@
 	100% {
 		text-shadow: -5px -2px 0px rgb(112, 12, 170);
 	}
-}
-
-@font-face {
-	font-family: eremoran-kiptascript;
-	src: url("assets/font-eremoran-kiptascript.otf") format("opentype");
-}
-
-.eremoran-kiptascript {
-	font-family: eremoran-kiptascript;
-	font-size: 5rem;
-}
-
-/* ----- BODY ASSETS ----- */
-
-body {
-	color: var(--clr-primary);
-	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
-	text-align: center;
-	/* z-index: 1; */
-	background-image: url('assets/image-curtain.svg'); 
-	/* #EEEFF0 in SVG Fill */
-	/* background-color: #292540; */
-	background-color: var(--clr-quinary-body);
-}
-
-p {
-	color: inherit;
-}
-
-.common-background {
-	background-color: #90e5ee1a;
 }
 
 .index-grid {
@@ -150,6 +104,57 @@ p {
 	background-size: 100% 5%;
 	background-image: linear-gradient(var(--clr-gradient-common));
 	transition: background-size 0.3s ease-in;
+}
+
+.footer {
+	/* padding: -1rem; */
+	background-color: black;
+	background-position: inherit;
+
+	border-bottom: 1rem solid var(--clr-grid-box);
+	border-right: 0.5rem solid var(--clr-grid-box);
+
+	background-image:
+	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
+	url('assets/image-camberden-signature-small-favicon.ico');
+	animation: small-signature-movement 30s linear infinite;
+}
+@keyframes small-signature-movement {
+	from {background-position: 0 0;}
+	to {background-position: 100% 0;}
+}
+
+/* ----- SITE-WIDE CUSTOM FONT DATA ----- */
+
+@font-face {
+	font-family: eremoran-kiptascript;
+	src: url("assets/font-eremoran-kiptascript.otf") format("opentype");
+}
+
+.eremoran-kiptascript {
+	font-family: eremoran-kiptascript;
+	font-size: 5rem;
+}
+
+/* ----- SITE-WIDE GENERAL STYLE COMPONENT ----- */
+
+body {
+	color: var(--clr-primary);
+	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
+	text-align: center;
+	/* z-index: 1; */
+	background-image: url('assets/image-curtain.svg'); 
+	/* #EEEFF0 in SVG Fill */
+	/* background-color: #292540; */
+	background-color: var(--clr-quinary-body);
+}
+
+p {
+	color: inherit;
+}
+
+.common-background {
+	background-color: #90e5ee1a;
 }
 
 .marker {
@@ -193,7 +198,7 @@ a:hover {
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 }
 
-/* ----- BUTTONS ----- */
+/* ----- SITE-WIDE BUTTON COMPONENT ----- */
 
 button {
 	cursor: pointer;
@@ -242,29 +247,5 @@ button {
 	border-right-width: 0.7rem;
 	border-right-color: grey;
 	border-right-style: groove;
-}
-
-/* FOR SOMETHING TO HIGHLIGHT IN VIEWPORT: PENDING USE CASE */
-.text-flourish {
-	background-size: 100% 5%;
-	background-image: linear-gradient(120deg, rgb(245, 155, 96) 0%, rgb(161, 219, 248) 100%);
-}
-
-.footer {
-	/* padding: -1rem; */
-	background-color: black;
-	background-position: inherit;
-
-	border-bottom: 1rem solid var(--clr-grid-box);
-	border-right: 0.5rem solid var(--clr-grid-box);
-
-	background-image:
-	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url('assets/image-camberden-signature-small-favicon.ico');
-	animation: small-signature-movement 30s linear infinite;
-}
-@keyframes small-signature-movement {
-	from {background-position: 0 0;}
-	to {background-position: 100% 0;}
 }
 
