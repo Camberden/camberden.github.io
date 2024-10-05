@@ -23,16 +23,16 @@ class AccountingChapter {
 	}
 }
 
-function parseAccountingFormulas() {
+function parseAccountingFormulas(tag, attributes) {
 
 	for(let i = 0; i < accountingData.length; i++) {
 		let section = accountingData[i];
-		if (section.includes("</")) {
-			formulas += section.substring(section.indexOf(`<mark`), section.indexOf(`</`)) + "…";
-			section = section.substring(section.indexOf(`<mark`), section.indexOf(`</`));
+		while (section.indexOf(`</${tag}>`) !== -1) {
+			formulas += section.substring(section.indexOf(`<${tag} ${attributes}>`), section.indexOf(`</${tag}>`)) + "…";
+			console.log("Index: " + section.indexOf(`<${tag} ${attributes}>`));
+			section = section.substring(section.indexOf(`</${tag}>`) + tag.length + 3), section.indexOf(`${tag} ${attributes}`);
 		}
 	}
-
 	formulas = formulas.trim();
 	formulas = formulas.split("…");
 
@@ -51,13 +51,12 @@ function parseAccountingFormulas() {
 			li.appendChild(variables);
 			li.appendChild(hr);
 			formulasList.appendChild(li);
-			console.log(formula);
+			// console.log(formula);
 		}
 		
 	}
 }
-
-parseAccountingFormulas();
+parseAccountingFormulas("mark", `class="formula"`);
 
 function loadAccountingNotes() {
 	accountingNotes.innerHTML = accountingData[currentNotesSet];
