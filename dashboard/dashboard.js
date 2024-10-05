@@ -177,8 +177,6 @@ function calculateStep(){
 function removeHighlightedSalary(){
 	highlightedSalary.classList.remove("salary-highlight");
 }
-document.getElementById("toggle-bonus").classList.add("button-toggle-enabled");
-document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
 
 calculateStep();
 
@@ -583,6 +581,7 @@ const refdocs = [
 	"../assets/refdoc-mysql-phpadmin-setup.pdf",
 	"../assets/refdoc-nc-college-equivalence.pdf",
 	"../assets/refdoc-oryoki-guide.pdf",
+	"../assets/refdoc-chzc-condensed.pdf",
 ];
 
 const refdocsList = document.getElementById("refdocs-list");

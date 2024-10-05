@@ -83,3 +83,11 @@
 	transition: padding 0.3s ease-in;
 }
 
+#formulas-list {
+	list-style-type: none;
+	text-align: left;
+}
+
+#accounting-formulas-item {
+	flex: 1 1 50%;
+}

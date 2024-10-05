@@ -78,9 +78,7 @@ The order of steps in creating financial statements. It's a cycle because it's a
 
 (10). Reverse and Post (Optional)
 
-  
-
-<mark class="formula profitMargin = netIncome / netSales;</mark>
+<mark class="formula"> profitMargin = netIncome / netSales</mark>
 
 18000 / 90000 previous year 20%
 
@@ -923,7 +921,7 @@ Times Interest Earned Ratio:
 
 A measure of ability to pay liabilities, especially fixed ones (like interest) with variable income and expenses.
 
-Times Interest Earned = Income Before Interest Expense and Income Taxes / Interest Expense
+<mark class="formula">Times Interest Earned = Income Before Interest Expense and Income Taxes / Interest Expense</mark>
 
 if Times Interest Earned falls below around 1.5, a business will likely be at risk of not being able to pay its liabilities.
 
@@ -1122,7 +1120,7 @@ PE Ratio = Market Value per Share / Earnings per Share
 
 Dividend Yield: rate of dividend payouts. Higher large dividend payouts are known as income stocks which deliver recurring cash flows.
 
-Dividend Yield = Annual Cash Dividends per Share / Market Value per Share
+<mark class="formula">Dividend Yield = Annual Cash Dividends per Share / Market Value per Share</mark>
 	`
 	,
 	`
@@ -1177,8 +1175,9 @@ determine the cash effects using T-accounts and reconstructed entries
 report the cash flow effects.
 Examples of Financing Activities: receiving cash from issuing debt or repaying amounts borrowed and receiving cash from or distributing cash to owners
 
-Cash Flow on Total Assets =
-Cash Flow from Operations / AVG total assets. The ratio = actual cash flows; Helps estimate amount and timing of cash flows from operating activities.
+<mark class="formula">Cash Flow on Total Assets =
+Cash Flow from Operations / AVG total assets.</mark>
+The ratio = actual cash flows; Helps estimate amount and timing of cash flows from operating activities.
 
 ---------- HW
 
@@ -1228,10 +1227,10 @@ Tools of Financial Analysis:
 2: Vertical Analysis: measuring in reference to a base-amount (common-size analysis; for individual financial statement items, or groups of items)
 3: Ratio Analysis: measurement of key relationships among key financial items
 
- Percent Change = (Analysis Period Amount - Base Period Amount / Base Period Amount) * 100
+<mark class="formula">Percent Change = (Analysis Period Amount - Base Period Amount / Base Period Amount) * 100</mark>
 
 Trend Analysis: line graph typically; patterns across data periods! 
-Trend Percent = (Analysis Period Amount / Base Period Amount) * 100
+<mark class="formula">Trend Percent = (Analysis Period Amount / Base Period Amount) * 100</mark>
 
 Common-Size Comparative Balance Sheets usually use a base-amount like Total Assets as 100%; and Income Statements would use Revenue as 100%
 
@@ -1293,10 +1292,10 @@ Lean Principles
 
 // ----- Formulas
 
-Raw Materials Inventory Turnover = Raw Materials Used / AVG Raw Materials Inventory
+<mark class="formula">Raw Materials Inventory Turnover = Raw Materials Used / AVG Raw Materials Inventory</mark>
 (how many times our materials store is used up)
 
-Days' Sales in Raw Materials Inventory = (Ending Raw Materials Inventory / Raw Materials used) * 365
+<mark class="formula">Days' Sales in Raw Materials Inventory = (Ending Raw Materials Inventory / Raw Materials used) * 365</mark>
 (how many days until store is used up)
 
 // ----- End Formulas
@@ -1472,11 +1471,12 @@ All Direct Materials and Labor Instances are placed into Work in Process Dr.
 
 // ----- Formulas
 
-Gross Profit Ratio = (Service Revenue - Cost of Services) / Service Revenue
+<mark class="formula">Gross Profit Ratio = (Service Revenue - Cost of Services) / Service Revenue</mark>
 
-Predetermined Overhead Rate = Estimated Overhead Costs / Estimated Activity Base
+<mark class="formula">Predetermined Overhead Rate = Estimated Overhead Costs / Estimated Activity Base</mark>
 
-Amount of Allocated Overhead = Actual Amount of Allocation Base * Predetermined Overhead Rate	`
+<mark class="formula">Amount of Allocated Overhead = Actual Amount of Allocation Base * Predetermined Overhead Rate</mark>
+	`
 	,
 	`
 	| ACC 121
@@ -1501,7 +1501,7 @@ Step 2: Compute Equivalent Units of Products (EUP)
 - EUP = whole units started and completed in the costs incurred in the period
 - Exists because some units aren't completed by the end of the period but still need to be assigned costs
 - Conversion costs occur during a process
-- Conversion Cost = Direct Labor + Applied Overhead
+- <mark class="formula">Conversion Cost = Direct Labor + Applied Overhead</mark>
 Step 3: Compute the Cost per Equivalent Units
 Step 4: Assign and Reconcile Costs
 - 
@@ -1550,9 +1550,9 @@ Activity Levels:
 
 // ---------- FORMULAS
 
-Activity Rate = Budgeted Activity Cost / Budgeted Activity Usage
+<mark class="formula">Activity Rate = Budgeted Activity Cost / Budgeted Activity Usage</mark>
 
-Allocated Cost = Actual Activity Usage * Budgeted Activity Rate
+<mark class="formula">Allocated Cost = Actual Activity Usage * Budgeted Activity Rate</mark>
 	`
 	,
 	`
@@ -1568,7 +1568,7 @@ Contribution Margin:
 
 Contribution Margin Ratio: 
 
-<u>Margin of Safety = Expected Sales - Break-Even Sales / Expected Sales</u>
+<mark class="formula">Margin of Safety = Expected Sales - Break-Even Sales / Expected Sales</mark>
 
 Predicted Income from Predicted Amount of Sales:
 4 Variables in Cost-Volume-Profit Analysis:
@@ -1640,7 +1640,7 @@ Assumptions in CVP Analysis:
 - Rough Estimates!
 
 
-<i>Degree of Operating Leverage (DOL) = Contribution Margin / Income</i>
+<mark class="formula">Degree of Operating Leverage (DOL) = Contribution Margin / Income</mark>
 
 DOL * Expected % increase in Sales = New Income Estimate
 - Shows expected increases and decreases to income
@@ -1744,8 +1744,8 @@ To Determine Selling Prices:
 Variable Cost is good for Special Orders;
 Fixed Costs do not change in the Short Run;
 
-CM = Sales - Variable Expenses
-CM Ratio = CM / Sales
+<mark class="formula">CM = Sales - Variable Expenses</mark>
+<mark class="formula">CM Ratio = CM / Sales</mark>
 
 ---------- HW
 
