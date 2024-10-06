@@ -15,6 +15,23 @@ const accountingData = [
 
 	`
 	| ACC 120
+	| Chapter 1
+	| TAGS
+	| &emsp;
+	Didn't make notes for Chapter 1!
+	`
+	,
+	`
+	| ACC 120
+	| Chapter 2
+	| TAGS
+	| &emsp;
+	Didn't make notes for Chapter 2!
+	`
+	,
+
+	`
+	| ACC 120
 	| Chapter 3
 	| TAGS
 	| &emsp;
@@ -1770,79 +1787,6 @@ Rolled Budgets: revises entire set of budgets as a quarterly budget elapses.	`
 	`
 	| ACC 121
 	| Chapter 21
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 22
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-
-	`
-	| ACC 121
-	| Chapter 23
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 24
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 25
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 26
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 27
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 28
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 29
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-	`
-	| ACC 121
-	| Chapter 30
 	| TAGS
 	| &emsp;
 	Notes Input
