@@ -271,11 +271,10 @@ Insurance Expense: EXCLUDE from Selling Costs unless otherwise specified
 	,
 
 	`
-	| ACC
-	| Chapter
+	| ACC 120
+	| Chapter 5
 	| TAGS
 	| &emsp;
-	ACC120 Ch5
 
 COST ACCOUNTING
 Weighted Average:
@@ -354,7 +353,6 @@ In a declining cost market, LIFO would have highest taxes and highest ending inv
 	| Chapter 6
 	| TAGS
 	| &emsp;
-	ACC120 Ch6
 
 Internal Control System:
 Policy and Procedure for:
@@ -533,7 +531,6 @@ NSF CHECK = DR. RECEIVABLE CR. CASH
 	| Chapter 7
 	| TAGS
 	| &emsp;
-	ACC120 Ch7
 
 Accounts Receivable Subsidiary Ledger:
 For each account, shows debits and credits.
@@ -734,7 +731,6 @@ A/R Turnover uses AVG of TWO years, no more.
 	| Chapter 8
 	| TAGS
 	| &emsp;
-	ACC120 Ch8
 
 Appraised Value
 
@@ -858,7 +854,6 @@ REVISIT 11
 	| Chapter 9
 	| TAGS
 	| &emsp;
-	ACC120 Ch9
 
 Known Liabilities:
 
@@ -929,11 +924,10 @@ DEBIT TO REDUCE YOUR LIABILITIES!
 	`
 	,
 	`
-	| ACC
+	| ACC 120
 	| Chapter 11
 	| TAGS
 	| &emsp;
-	ACC120 Ch11
 
 Corporation: separate from its owners with many same legal rights as a person.
 
@@ -1124,11 +1118,10 @@ Dividend Yield: rate of dividend payouts. Higher large dividend payouts are know
 	`
 	,
 	`
-	| ACC
+	| ACC 120
 	| Chapter 12
 	| TAGS
 	| &emsp;
-	ACC120 Ch12
 
 Statement of Cash Flows: reports cash inflows (receipts) and outflows (payments). Separated into Operating, Investing, and Financing activities.
 
@@ -1200,7 +1193,6 @@ Non-Cash Revenues and Gains are Deducted from Net Income
 	| Chapter 13
 	| TAGS
 	| &emsp;
-ACC121 Ch13
 
 Financial Statement Analysis
 
@@ -1252,7 +1244,6 @@ Analysis Report:
 	| Chapter 14
 	| TAGS
 	| &emsp;
-ACC121 Ch14
 
 Managerial Accounting: to provide useful information to management and other internal decision makers. 
 
@@ -1512,7 +1503,6 @@ Step 4: Assign and Reconcile Costs
 	| Chapter 17
 	| TAGS
 	| &emsp;
-ACC121 Ch17
 
 Activity-Based Costing
 - where an activity, task, operation etc. is what would cause Overhead costs to be incurred.
@@ -1560,7 +1550,6 @@ Activity Levels:
 	| Chapter 18
 	| TAGS
 	| &emsp;
-ACC121 Ch18
 
 Cost-Volume-Profit Analysis
 
@@ -1705,7 +1694,6 @@ DOL = CM / Income
 	| Chapter 19
 	| TAGS
 	| &emsp;
-ACC121 Ch19
 
 Absorption Costing and Variable Costing
 - The products absorb costs during creation process, to include Direct Materials, Direct Labor, Variable Overhead, and could absorb Fixed Overhead... BUT
@@ -1757,6 +1745,7 @@ Fixed Costs do not change in the Short Run;
 	| Chapter 20
 	| TAGS
 	| &emsp;
+	
 Budgetary Control
 - Budgets are plans in dollars, usually for short-medium term goals.
 - Steps:
