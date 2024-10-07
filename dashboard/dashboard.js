@@ -160,7 +160,7 @@ function calculateStep(){
 	currentSalary = salarySchedule2024[custodyLevel - 1][adjustedExperience];
 	document.getElementById("current-salary").innerHTML = currentSalary;
 	document.getElementById("monthly-salary").innerHTML = (currentSalary / 12).toFixed(2);
-	let currentHourlyRate = ((currentSalary / 52) / 40);
+	let currentHourlyRate = currentSalary / 52 / 40;
 	document.getElementById("hourly-salary").innerHTML = currentHourlyRate.toFixed(2);
 	document.getElementById("gap-pay").innerHTML = (currentHourlyRate * 11).toFixed(2);
 	document.getElementById("overtime-diff").innerHTML = (currentHourlyRate * 1.5).toFixed(2);
@@ -182,28 +182,28 @@ calculateStep();
 
 function increaseCustodyLevel() {
 	if (custodyLevel >= 1 && custodyLevel < 3){
-		custodyLevel+= 1;
+		custodyLevel += 1;
 		removeHighlightedSalary();
 		calculateStep();
 	}
 }
 function decreaseCustodyLevel() {
 	if (custodyLevel <= 3 && custodyLevel > 1){
-		custodyLevel-= 1;
+		custodyLevel -= 1;
 		removeHighlightedSalary();
 		calculateStep();
 	}
 }
 function increaseYearsExperience(){
-	if (yearsExperience >= 0 && (yearsExperience) < 6){
+	if (yearsExperience >= 0 && yearsExperience < 6){
 		yearsExperience += 1;
 		removeHighlightedSalary();
 		calculateStep();
 	}
 }
 function decreaseYearsExperience() {
-	if (yearsExperience > 0 && (yearsExperience) <= 6){
-		yearsExperience-= 1;
+	if (yearsExperience > 0 && yearsExperience <= 6){
+		yearsExperience -= 1;
 		removeHighlightedSalary();
 		calculateStep();
 	}
@@ -587,9 +587,9 @@ const refdocs = [
 const refdocsList = document.getElementById("refdocs-list");
 // Generates Any Reference Document if Present in Assets
 for (const doc of refdocs) {
-	let li = document.createElement("li");
-	let a = document.createElement("a");
-	let text = document.createTextNode(doc.substring(17, doc.length - 4));
+	const li = document.createElement("li");
+	const a = document.createElement("a");
+	const text = document.createTextNode(doc.substring(17, doc.length - 4));
 	a.classList.add("marker");
 	a.appendChild(text);
 	a.setAttribute("href", doc);

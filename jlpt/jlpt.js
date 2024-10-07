@@ -1,8 +1,8 @@
 window.onload = () => console.log("Running!");
 
 /**
- * @param {string[10]} vocabulary
- * @param {string[10]} english
+ * @param {string[]} vocabulary - contains 10 elements
+ * @param {string[]} english - contains 10 elements
  * @param {string[]} sentences
  */
 class StudyModule {
@@ -59,6 +59,7 @@ const testModuleSentences = [
 const studyModules = [
 	m1 = new StudyModule(testModuleVocabulary, testModuleEnglish, testModuleSentences),
 ];
+
 const vocabField = document.getElementById("vocab-field");
 const englishField = document.getElementById("english-field");
 const sentenceField = document.getElementById("sentence-field");
@@ -106,9 +107,9 @@ const parseFurigana = function () {
 	document.querySelectorAll("#vocab-field > li").forEach(e => {
 		e.onclick = function() {
 			// displaySuperScript(e.firstChild);
-			let text = e.lastChild.textContent;
+			const text = e.lastChild.textContent;
 			navigator.clipboard.writeText(text);
-			alert("Copied: " + text);
+			// alert("Copied: " + text);
 		}
 	});
 }

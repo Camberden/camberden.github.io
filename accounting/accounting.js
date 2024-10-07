@@ -37,26 +37,25 @@ class AccountingChapter {
 
 function initAccountingNotes(tag, attributes) {
 	accountingNotes.innerHTML = "Select a chapter to load notes!";
+	accountingData.forEach((datum, i) => {
 
-	for (let i = 0; i < accountingData.length; i++) {
-
-		const course = accountingData[i].substring(accountingData[i].indexOf("ACC"), accountingData[i].indexOf("| Chapter")).trim();
-		const chapter = accountingData[i].substring(accountingData[i].indexOf("Chapter"), accountingData[i].indexOf("| TAGS")).trim();
+		const course = datum.substring(datum.indexOf("ACC"), datum.indexOf("| Chapter")).trim();
+		const chapter = datum.substring(datum.indexOf("Chapter"), datum.indexOf("| TAGS")).trim();
 		const title = "Title";
 		let accChap = new AccountingChapter(course, chapter, title);
 		// accChap.formulas = "Formulas";
-		let section = accountingData[i];
+		let section = datum;
 		while (section.indexOf(`</${tag}>`) !== -1) {
 			accChap.formulas.push(section.substring(section.indexOf(`<${tag} ${attributes}>`), section.indexOf(`</${tag}>`)));
 			formulas += section.substring(section.indexOf(`<${tag} ${attributes}>`), section.indexOf(`</${tag}>`)) + "…";
 			section = section.substring(section.indexOf(`</${tag}>`) + tag.length + 3), section.indexOf(`${tag} ${attributes}`);
 		}
 		// console.log("1", accChap);
-		// console.log("2", accChap.formulas);
+		console.log("2", accChap.formulas);
 
-		accChap.notes = accountingData[i].substring(accountingData[i].indexOf("&emsp;"), accountingData[i].length);
+		accChap.notes = datum.substring(datum.indexOf("&emsp;"), datum.length);
 		accountingChapters[i] = accChap;
-	}
+	})
 
 	formulas = formulas.trim();
 	formulas = formulas.split("…");

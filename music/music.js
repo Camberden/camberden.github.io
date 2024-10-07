@@ -150,20 +150,20 @@ function depopulateTrackList() {
 }
 
 function enableSortByYearAndAlbum() {
-	let yearArray = [];
-	let albumArray = [];
+	const yearArray = [];
+	const albumArray = [];
 	for (let i = 0; i < tracks.length; i++) {
 		if (!yearArray.includes(tracks[i].year)){
 			yearArray += tracks[i].year;
-			let option = document.createElement("option");
-			let text = document.createTextNode(tracks[i].year);
+			const option = document.createElement("option");
+			const text = document.createTextNode(tracks[i].year);
 			option.appendChild(text);
 			sortByYear.appendChild(option);
 		}
 		if (!albumArray.includes(tracks[i].compilation)) {
 			albumArray += tracks[i].compilation;
-			let option = document.createElement("option");
-			let text = document.createTextNode(tracks[i].compilation);
+			const option = document.createElement("option");
+			const text = document.createTextNode(tracks[i].compilation);
 			option.appendChild(text);
 			sortByAlbum.appendChild(option);
 		}

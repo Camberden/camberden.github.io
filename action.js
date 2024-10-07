@@ -10,13 +10,13 @@ const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
 
 function randomizeMonicker(){
-	let m = Math.random();
+	const m = Math.random();
 	console.log(m);
-	if (m < 0.1) {
+	if (m <= 0.1) {
 		camberden.innerHTML = monickers[1];
-	} else if (m > 0.9) {
+	} else if (m >= 0.9) {
 		camberden.innerHTML = monickers[2];
-	} else if (m < 0.9 && m > 0.8) {
+	} else if (m < 0.9 && m >= 0.8) {
 		camberden.removeAttribute("font-family");
 		camberden.innerHTML = monickers[0].replace("c", "k");
 		camberden.classList.add("eremoran-kiptascript");
@@ -60,22 +60,23 @@ const sectionLinks = document.getElementById("section-links");
  * Creates h3 element with text link descriptor.
  */
 function initSections() {
-for (let i = 0; i < sections.length; i++) {
+	sections.forEach(section => {
 
-	let h3 = document.createElement("h3");
-	h3.setAttribute("class", "section-title-text");
-	h3.setAttribute("id", sections[i][0]);
-	let text = document.createTextNode(sections[i][1]);
-	h3.appendChild(text);
+		const h3 = document.createElement("h3");
+		h3.setAttribute("class", "section-title-text");
+		h3.setAttribute("id", section[0]);
+		const text = document.createTextNode(section[1]);
+		h3.appendChild(text);
 
-	let sectionDiv = document.createElement("div");
-	sectionDiv.setAttribute("class", "section-title");
-	sectionDiv.onclick = function () {
-		document.location = sections[i][0] + "/" + sections[i][0] + ".html";
-	};
-	sectionDiv.appendChild(h3);
-	sectionLinks.appendChild(sectionDiv);
-	}
+		const sectionDiv = document.createElement("div");
+		sectionDiv.setAttribute("class", "section-title");
+		sectionDiv.onclick = function () {
+			document.location = section[0] + "/" + section[0] + ".html";
+		};
+		sectionDiv.appendChild(h3);
+		sectionLinks.appendChild(sectionDiv);
+
+	});
 }
 
 initSections();
