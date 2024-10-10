@@ -190,7 +190,7 @@ const blogData = [
 	`
 	,
 	`
-	| October 9th, 2024
+	| October 9th, 2024…
 	| Chapel Hill, NC
 	| 2236 HRS
 	| &emsp;

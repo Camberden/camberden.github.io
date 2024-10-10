@@ -16,47 +16,48 @@
 
 <body>
 
-	<div id="return">
-		<a class="marker" href="../index.html">Return</a>
+	<div id="header-and-return">
+		<div id="return">
+			<a class="marker" href="../index.html">Return</a>
+		</div>
+		<div class="blog-header">
+			<h1 class="marker">Chrispy's Blogging Page</h1>
+		</div>
+		<div id="blog-quick-links">
+			<div class="quick-links-grid-item">
+				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+			</div>
+			<div class="quick-links-grid-item">
+				Post <span id="displayed-post"></span>
+			</div>
+			<div class="quick-links-grid-item">
+				<span id="blog-post-title"></span>
+			</div>
+			<div class="quick-links-buttons">
+					<button class="blog-button" value="previous">Previous</button>
+					<button class="blog-button" value="next">Next</button>
+			</div>
+		
+		</div>
 	</div>
 
-	<h1 class="marker">Chrispy's Blogging Space</h1>
-
 	<main class="blog-grid">
-	
-		<div class="blog-item">
-			<h2>Post <span id="displayed-post"></span><hr>
-				<span id="blog-post-title"></span></h2>
-		</div>
-		<div class="blog-item">
-			<div>
-				<button class="blog-button" value="previous">Previous</button>
-				<hr>
-				<button class="blog-button" value="next">Next</button>
-			</div>
-			
-		</div>
-	
-		<div class="blog-item">
-			<ul id="blog-post-list">
 
-			</ul>
-		</div>
-
-		<article class="blog-item grid-col-span-3">
+		<article class="blog-item" id="blog-post-content">
 			<h3 class="marker-blogging">
 				<ul class="blog-post-header">
 					<li id="blog-post-date">August 11th, 2024</li>
 					<li id="blog-post-location">Chapel Hill Suite</li>
 					<li id="blog-post-time">2200HRS</li>
 				</ul>
-				<p id="active-blog-post">
-				</p>
-
+				<p id="active-blog-post"></p>
 			</h3>
-
-
 		</article>
+
+		<div class="blog-item">
+			<ul id="blog-post-list">
+			</ul>
+		</div>
 
 	</main>
 
