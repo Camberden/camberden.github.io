@@ -25,6 +25,7 @@ const wat = 15.00;
 const ele = 70.27;
 const int = 71.99;
 const mus = 6.39;
+const don = 10.00;
 const gym = 0.00;
 let inp; // CUSTOM INPUT: INP
 function updateInp() {
@@ -32,9 +33,9 @@ function updateInp() {
 }
 
 // ADD NEW VARIABLES TO all
-const all = [car, nav, sal, ren, hrt, rti, ins, loa, wat, ele, int, mus, gym, inp];
+const all = [car, nav, sal, ren, hrt, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
 // ADD NEW VARIABLES TO expenseNames
-const expenseNames = Array.from("car nav sal ren hrt rti ins loa wat ele int mus gym inp".split(" "));
+const expenseNames = Array.from("car nav sal ren hrt rti ins loa wat ele int mus don gym inp".split(" "));
 const allElem = expenseNames
 	.map(str => document.getElementById(str + "-cost"));
 // check box element list
@@ -583,7 +584,6 @@ const refdocs = [
 	"../assets/refdoc-oryoki-guide.pdf",
 	"../assets/refdoc-chzc-condensed.pdf",
 ];
-
 const refdocsList = document.getElementById("refdocs-list");
 // Generates Any Reference Document if Present in Assets
 for (const doc of refdocs) {
