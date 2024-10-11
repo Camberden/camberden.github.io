@@ -241,7 +241,7 @@ const blogData = [
 	conveniences life has afforded me at this location. I know I can do this. I need to go with the flow of life as it presents itself to me.
 	I know this. I should settle on a course of action for 2025. Firstly, I must be able to see all options available to me. 
 	The debt of my past as a naive student is almost wholly paid; alas, it follows me to 2025 and affects where I will end up for that year.
-	It's not much longer. I can do this. Right now, I must dispell this confusion a bit more such that the mountains and rivers aren't 
+	It's not much longer. I can do this. Right now, I must dispell this confusion a bit more such that the <b-title>mountains and rivers</b-title> aren't 
 	blocking the way. Indeed, I should knock out Test 2. I must dedicate one off day ahead to completing the financially rewarding 
 	progression program. I need to recover and unburden myself to see a path more clearly. I know what I must do.
 	`
