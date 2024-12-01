@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const lastestUpdatePushed = "Saturday November 2nd, 2024";
+const lastestUpdatePushed = "Sunday December 1st, 2024";
 
 // --- INFO AND ENTRYWAYS --- //
 
@@ -45,7 +45,7 @@ const sections = [
 	["blog", "Blogging Page",],
 	["jlpt", "JLPT Resource",],
 	["accounting", "Accounting Resource",],
-	// ["travel", "Travel Page",],
+	["travel", "Travel Page",],
 	["musings", "Musings Page",],
 	["music", "Original Music",],
 ];
