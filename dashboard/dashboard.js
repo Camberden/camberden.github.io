@@ -151,7 +151,7 @@ const salarySchedule = salarySchedule2024;
 let currentSalary;
 let highlightedSalary;
 let custodyLevel = 1;
-let yearsExperience = 4;
+let yearsExperience = 5;
 let experienceBonus = 1;
 let adjustedExperience;
 let activeBonus = true;
@@ -225,6 +225,7 @@ function toggleExperienceBonus(){
 	removeHighlightedSalary();
 	calculateStep();
 }
+toggleExperienceBonus();
 
 function enableStepPayPlanButtons() {
 	document.querySelectorAll(".step-pay-plan-button").forEach(button => {

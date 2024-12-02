@@ -114,3 +114,39 @@ function enableMapHighlightButtons () {
 	});
 }
 enableMapHighlightButtons();
+
+// TODO: Travel Buttons
+function enableButtonStyles() {
+	document.querySelectorAll("button").forEach(button => {
+		button.onclick = () => {
+			ButtonInterface.buttonOnClick(button);
+		switch (button.value) {
+			case ("increase-custody-level"):
+				increaseCustodyLevel();
+				break;
+			case ("decrease-custody-level"):
+				decreaseCustodyLevel();
+				break;
+			case ("increase-years-experience"):
+				increaseYearsExperience();
+				break;
+			case ("decrease-years-experience"):
+				decreaseYearsExperience();
+				break;
+			case ("toggle-experience-bonus"):
+				toggleExperienceBonus();
+				break;
+			default:
+				console.log("Hi");
+				break;
+			};
+		};
+
+		button.onmouseenter = () => {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = () => {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+	});
+}
