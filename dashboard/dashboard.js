@@ -16,17 +16,17 @@ startbalanceupdate.onkeydown = function () {
 const car = 0.00;
 const nav = 222.07;
 const sal = 884.15;
-const ren = 801.00;
-const hrt = 801.00;
-const rti = 10.79;
-const ins = 66.98;
+const ren = 200.00;
+const hrt = 0.00;
+const rti = 0.00;
+const ins = 70.81;
 const loa = 300.00;
 const wat = 15.00;
 const ele = 70.27;
 const int = 71.99;
 const mus = 6.39;
 const don = 10.00;
-const gym = 0.00;
+const gym = 25.05;
 let inp; // CUSTOM INPUT: INP
 function updateInp() {
 	all[all.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
