@@ -191,7 +191,23 @@ expenseValues.forEach((e, i) => e.innerHTML = expenses[i]);
 let totalMonthlyExpenses = 0;
 expenses.forEach(expense => totalMonthlyExpenses += expense);
 document.getElementById("total-monthly-expenses").innerHTML = totalMonthlyExpenses;
-document.getElementById("remainder").innerHTML = document.getElementById("paycheck").innerHTML - totalMonthlyExpenses;
+const remainder = document.getElementById("remainder");
+remainder.innerHTML = document.getElementById("paycheck").innerHTML - totalMonthlyExpenses;
+document.getElementById("projected-debits").innerHTML = remainder.innerHTML * 12;
+
+// TODO
+function completeGenerator() {
+	for (let i = 1; i < 13; i++) {
+		let paycard = document.getElementById(`paycard-list-${i}`);
+		paycard.getElementsByTagName("li").forEach = (expense => {
+
+			// top values like paycheck and savings
+		const expenseValues = expenseNames.map(string => document.getElementById(string + `-cost-${i}`));
+			// middle values like expenses
+		});
+			// bottom expenses like remainder
+	}
+}
 
 let editor = 0;
 let editing = false;
