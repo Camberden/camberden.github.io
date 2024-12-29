@@ -44,10 +44,101 @@
 	</div>
 </main>
 
+<!---------- BUGETTING APP ---------->
+
 <main2 class="w2-grid">
+	
+		<div class="w2-item">
+			<ul>
+				<li>Upcoming Month: <span class="upcoming-month">February</span></li>
+				<li>Typical Paycheck: $<span class="equity" id="typical-paycheck">0</span></li>
+				<li>Current HYSA: $<span class="equity" id="hysa">0</span></li>
+				<li>Current Debits: $<span class="equity" id="debits">0</span></li>
+	
+			</ul>
+		</div>
+	<div class="w2-item">
+		<ul>
+			<li>Projected HYSA: $<span class="equity" id="projected-hysa">0</span></li>
+			<li>Projected Debits: $<span class="equity" id="projected-debits">0</span></li>
+		</ul>
+
+	</div>
+	<div class="w2-item">
+		<ul>
+			<li>Current Private Loan: $<span class="liability" id="loan">0</span></li>
+			<li>High Dollar Item: $<span class="liability" id="high-dollar-item">0</span></li>
+		</ul>
+
+	</div>
 
 	<div class="w2-item grid-col-span-3">
+		<button class="paycard-generator">Generate Paycards</button>
 	</div>
+	
+	</div>
+
+		<div class="w2-item paycard">
+			<ul id="paycard-list-1">
+					<li class="no-bullet">Paycheck: $<span id="paycheck">4500</span></li>
+					<hr>
+					<!-- CAR PAYMENT -->
+					<li>CAR = $<span class="expense" id="car-cost">0</span>
+					</li>
+					<!-- FEDERAL STUDENT LOAN -->
+					<li>NAV = $<span class="expense" id="nav-cost">0</span>
+					</li>
+					<!-- PRIVATE STUDENT LOAN -->
+					<li>SAL = $<span class="expense" id="sal-cost">0</span>
+					</li>
+					<!-- MY RENT -->
+					<li>REN = $<span class="expense" id="ren-cost">0</span>
+					</li>
+					<!-- RENTER'S INSURANCE -->
+					<li>RTI = $<span class="expense" id="rti-cost">0</span>
+					</li>
+					<!-- CAR INSURANCE -->
+					<li>INS = $<span class="expense" id="ins-cost">0</span>
+					</li>
+					<!-- PERSONAL LOAN -->
+					<li>LOA = $<span class="expense" id="loa-cost">0</span>
+					</li>
+					<!-- WATER BILL -->
+					<li>WAT = $<span class="expense" id="wat-cost">0</span>
+					</li>
+					<!-- ELECTRICITY/POWER BILL -->
+					<li>ELE = $<span class="expense" id="ele-cost">0</span>
+					</li>
+					<!-- INTERNET BILL -->
+					<li>INT = $<span class="expense" id="int-cost">0</span>
+					</li>
+					<!-- MUSIC SUBSCRIPTION -->
+					<li>MUS = $<span class="expense" id="mus-cost">0</span>
+					</li>
+					<!-- DONATION -->
+					<li>DON = $<span class="expense" id="don-cost">0</span>
+					</li>
+					<!-- GYM MEMBERSHIP -->
+					<li>GYM = $<span class="expense" id="gym-cost">0</span>
+					</li>
+					<br>
+					<!-- TOTAL AFTER DEDUCTIONS -->
+					<li class="no-bullet">Total Monthly Expenses: $<span id="total-monthly-expenses">0</span>
+					</li>
+					<li class="no-bullet">Remainder: $<span id="remainder"></span></li>
+			</ul>
+		</div>
+		
+
+	
+
+		<div class="w2-item">
+			<ul id="paycard-list-2"></ul>
+		</div>
+		<div class="w2-item">
+			<ul id="paycard-list-3"></ul>
+		</div>
+
 
 	<div class="w2-item grid-col-span-2">
 		<h3 id="item-title"></h3>

@@ -162,7 +162,111 @@ function enablePreceptsButtons(){
 		}
 	});
 }
+
 enablePreceptsButtons();
+
+// ----- BUDGET APP
+
+let car = 0.00;
+let nav = 0.00;
+let sal = 884.15;
+let ren = 200.00;
+let rti = 0.00;
+let ins = 70.81;
+let loa = 300.00;
+let wat = 0.00;
+let ele = 0.00;
+let int = 0.00;
+let mus = 6.39;
+let don = 10.00;
+let gym = 25.05;
+
+let expenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym];
+let expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym".split(" "));
+
+// paycard template here
+
+const expenseValues = expenseNames.map(string => document.getElementById(string + "-cost"));
+expenseValues.forEach((e, i) => e.innerHTML = expenses[i]);
+let totalMonthlyExpenses = 0;
+expenses.forEach(expense => totalMonthlyExpenses += expense);
+document.getElementById("total-monthly-expenses").innerHTML = totalMonthlyExpenses;
+document.getElementById("remainder").innerHTML = document.getElementById("paycheck").innerHTML - totalMonthlyExpenses;
+
+let editor = 0;
+let editing = false;
+let itemEdited;
+function valueEditor(budgetItemId) {
+	if (!editing) {
+		editing = true;
+		const editorForm = document.createElement("form");
+		editorForm.setAttribute("action", "#");
+		// editorForm.setAttribute("onsubmit", "handle");
+		const editorInput = document.createElement("input");
+		editorInput.setAttribute("type", "text");
+		editorInput.setAttribute("placeholder", "Edit value!");
+		editorInput.setAttribute("onkeypress", "handle(event)");
+		editorInput.setAttribute("id", "editor");
+		editorForm.appendChild(editorInput);
+		let budgetItem = document.getElementById(budgetItemId);
+		budgetItem.appendChild(editorForm);
+		budgetItem.value = editor;
+	}
+}
+
+function handle(event) {
+	if (event.keyCode === 13) {
+		event.preventDefault();
+		editor = document.getElementById("editor").value;
+		console.log(editing);
+		itemEdited.textContent = editor;
+		// itemEdited.removeChild();
+		editing = false;
+		alert(editor);
+	}
+}
+
+function editMoneys() {
+	document.querySelectorAll(".equity").forEach(equity => {
+		equity.onmouseenter = function() {
+			equity.classList.add("highlight");
+		}
+		equity.onmouseleave = function() {
+			equity.classList.remove("highlight");
+		}
+
+		equity.onclick = function() {
+			itemEdited = document.getElementById(equity.id);
+			valueEditor(equity.id);	
+		}
+			
+	});
+}
+editMoneys();
+
+
+function generateTwelvePaycards(){
+	let button = document.querySelector(".paycard-generator");
+	button.onmouseleave = function() {
+		ButtonInterface.buttonOnMouseLeave(button);
+	}
+	button.onmouseenter = function() {
+		ButtonInterface.buttonOnMouseEnter(button);
+	}
+	button.onclick = function() {
+		ButtonInterface.buttonOnClick(button);
+
+		for (let i = 1; i < 3; i++) {
+			document.getElementById(`paycard-list-${i+1}`).innerHTML = document.getElementById(`paycard-list-${i}`).innerHTML;
+		}
+
+
+		console.log(button.value);
+	}
+}
+
+generateTwelvePaycards();
+
 
 // ---------- SUTRA UTILITY ---------- //
 

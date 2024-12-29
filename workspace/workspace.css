@@ -90,6 +90,17 @@ body {
 
 /* ----- SECOND TESTING GRID ----- */
 
+.paycard {
+	text-align: left;
+}
+
+.no-bullet {
+	list-style-type: none;
+}
+
+.paycard > ul > hr {
+	margin-right: 25%;
+}
 
 .w2-grid {
 
@@ -116,7 +127,7 @@ body {
 
 .highlight {
 	color: red;
-	letter-spacing: .5em;
+	letter-spacing: .1em;
 	transition: 0.1s ease-out;
 	background-color: transparent;
 }
