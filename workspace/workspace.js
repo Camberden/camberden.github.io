@@ -167,6 +167,12 @@ enablePreceptsButtons();
 
 // ----- BUDGET APP
 
+let hys = 0.00;
+let deb = 0.00;
+
+let equities = [hys, deb];
+let equityNames = Array.from("hys deb".split(" "));
+
 let car = 0.00;
 let nav = 0.00;
 let sal = 884.15;
@@ -184,7 +190,27 @@ let gym = 25.05;
 let expenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym];
 let expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym".split(" "));
 
+function generateExpenses(num) {
+	const targetPaycardList = document.getElementById(`paycard-list-${num}`);
+	for (let i = 0; i < expenseNames.length; i++) {
+		let span = document.createElement("span");
+		span.setAttribute("id", `${expenseNames[i]}-cost-${num}`);
+		span.innerHTML = expenses[i];
+		let li = document.createElement("li");
+		let text = document.createTextNode(expenseNames[i].toUpperCase() + ": $");
+		li.appendChild(text);
+		li.appendChild(span);
+		targetPaycardList.appendChild(li);
+	}
+
+}
+
+for (let i = 1; i < 13; i++) {
+	
+}
+
 // paycard template here
+
 
 const expenseValues = expenseNames.map(string => document.getElementById(string + "-cost"));
 expenseValues.forEach((e, i) => e.innerHTML = expenses[i]);
@@ -202,7 +228,6 @@ function completeGenerator() {
 		paycard.getElementsByTagName("li").forEach = (expense => {
 
 			// top values like paycheck and savings
-		const expenseValues = expenseNames.map(string => document.getElementById(string + `-cost-${i}`));
 			// middle values like expenses
 		});
 			// bottom expenses like remainder
@@ -272,8 +297,8 @@ function generateTwelvePaycards(){
 	button.onclick = function() {
 		ButtonInterface.buttonOnClick(button);
 
-		for (let i = 1; i < 3; i++) {
-			document.getElementById(`paycard-list-${i+1}`).innerHTML = document.getElementById(`paycard-list-${i}`).innerHTML;
+		for (let i = 1; i < 13; i++) {
+			generateExpenses(i);
 		}
 
 
