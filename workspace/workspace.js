@@ -192,8 +192,13 @@ let expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don g
 
 function generateExpenses(num) {
 	const targetPaycardList = document.getElementById(`paycard-list-${num}`);
+
+	for (let i = 0; i < equityNames.length; i++) {
+
+	}
 	for (let i = 0; i < expenseNames.length; i++) {
 		let span = document.createElement("span");
+		span.setAttribute("class", "money-var");
 		span.setAttribute("id", `${expenseNames[i]}-cost-${num}`);
 		span.innerHTML = expenses[i];
 		let li = document.createElement("li");
@@ -202,15 +207,9 @@ function generateExpenses(num) {
 		li.appendChild(span);
 		targetPaycardList.appendChild(li);
 	}
-
-}
-
-for (let i = 1; i < 13; i++) {
-	
-}
+};
 
 // paycard template here
-
 
 const expenseValues = expenseNames.map(string => document.getElementById(string + "-cost"));
 expenseValues.forEach((e, i) => e.innerHTML = expenses[i]);
@@ -221,18 +220,6 @@ const remainder = document.getElementById("remainder");
 remainder.innerHTML = document.getElementById("paycheck").innerHTML - totalMonthlyExpenses;
 document.getElementById("projected-debits").innerHTML = remainder.innerHTML * 12;
 
-// TODO
-function completeGenerator() {
-	for (let i = 1; i < 13; i++) {
-		let paycard = document.getElementById(`paycard-list-${i}`);
-		paycard.getElementsByTagName("li").forEach = (expense => {
-
-			// top values like paycheck and savings
-			// middle values like expenses
-		});
-			// bottom expenses like remainder
-	}
-}
 
 let editor = 0;
 let editing = false;
@@ -268,23 +255,22 @@ function handle(event) {
 }
 
 function editMoneys() {
-	document.querySelectorAll(".equity").forEach(equity => {
-		equity.onmouseenter = function() {
-			equity.classList.add("highlight");
+	document.querySelectorAll(".money-var").forEach(moneyVar => {
+		moneyVar.onmouseenter = function() {
+			moneyVar.classList.add("highlight");
 		}
-		equity.onmouseleave = function() {
-			equity.classList.remove("highlight");
+		moneyVar.onmouseleave = function() {
+			moneyVar.classList.remove("highlight");
 		}
 
-		equity.onclick = function() {
-			itemEdited = document.getElementById(equity.id);
-			valueEditor(equity.id);	
+		moneyVar.onclick = function() {
+			itemEdited = document.getElementById(moneyVar.id);
+			valueEditor(moneyVar.id);	
 		}
 			
 	});
 }
 editMoneys();
-
 
 function generateTwelvePaycards(){
 	let button = document.querySelector(".paycard-generator");
@@ -296,18 +282,26 @@ function generateTwelvePaycards(){
 	}
 	button.onclick = function() {
 		ButtonInterface.buttonOnClick(button);
+		terminatePaycards();
 
 		for (let i = 1; i < 13; i++) {
 			generateExpenses(i);
+			editMoneys();
 		}
-
-
 		console.log(button.value);
 	}
 }
 
 generateTwelvePaycards();
 
+function terminatePaycards() {
+	for (let i = 1; i < 13; i++) {
+		let paycardList = document.getElementById(`paycard-list-${i}`);
+		while (paycardList.firstChild) {
+			paycardList.removeChild(paycardList.lastChild);
+		}
+	}
+}
 
 // ---------- SUTRA UTILITY ---------- //
 
