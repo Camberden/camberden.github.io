@@ -169,13 +169,16 @@ enablePreceptsButtons();
 
 // ----- PAYCARD TEMPLATE ----- //
 
+let typ = 4000.00;
+
+let sav = 1000.00;
 let hys = 8000.00;
 let dbt = 300.00;
-let typ = 4000.00;
-let sav = 1000.00;
 
-let equities = [hys, dbt, typ, sav];
-let equityNames = Array.from("hys dbt typ sav".split(" "));
+let equities = [sav, hys, dbt];
+let equityNames = Array.from("sav hys dbt".split(" "));
+const equityValues = equityNames.map(string => document.getElementById(string + "-equity-t"));
+equityValues.forEach((e, i) => e.innerHTML = equities[i]);
 
 let car = 0.00;
 let nav = 0.00;
@@ -194,14 +197,14 @@ let gym = 25.05;
 let expenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym];
 let expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym".split(" "));
 
-const expenseValues = expenseNames.map(string => document.getElementById(string + "-cost"));
+const expenseValues = expenseNames.map(string => document.getElementById(string + "-cost-t"));
 expenseValues.forEach((e, i) => e.innerHTML = expenses[i]);
 let totalMonthlyExpenses = 0;
 
-const preSavings = document.getElementById("pre-savings");
-const lessSavings = document.getElementById("less-savings");
-const remainder = document.getElementById("remainder");
-const totalSavings = document.getElementById("total-savings");
+const preSavings = document.getElementById("pre-savings-t");
+const lessSavings = document.getElementById("less-savings-t");
+const remainder = document.getElementById("remainder-t");
+const totalSavings = document.getElementById("total-savings-t");
 
 // SHOULD PARSE FLOATS
 // Might be better practice to focus on innerHTML as the js values may take precedence.
@@ -209,14 +212,20 @@ const totalSavings = document.getElementById("total-savings");
 
 function updateTemplate() {
 	totalMonthlyExpenses = 0.00;
-	for (let val of expenseValues) {
-		totalMonthlyExpenses += parseFloat(val.innerHTML);
-	}
-	document.getElementById("total-monthly-expenses").innerHTML = totalMonthlyExpenses;
-	preSavings.innerHTML = document.getElementById("paycheck").innerHTML - totalMonthlyExpenses;
-	lessSavings.innerHTML = sav;
-	remainder.innerHTML = preSavings.innerHTML - sav;
-	totalSavings.innerHTML = hys + sav;
+
+		for (let val of expenseValues) {
+			totalMonthlyExpenses += parseFloat(val.innerHTML);
+		}
+		document.getElementById("total-monthly-expenses-t").innerHTML = totalMonthlyExpenses;
+		preSavings.innerHTML = document.getElementById("paycheck-t").innerHTML - totalMonthlyExpenses;
+		lessSavings.innerHTML = sav;
+		remainder.innerHTML = preSavings.innerHTML - sav;
+		totalSavings.innerHTML = hys + sav;
+
+	// 	const newValues = expenseNames.map(string => document.getElementById(string + `-cost-${budgetItemKey}`));
+	// for (let val of newValues) {
+	// 	totalMonthlyExpenses += parseFloat(val.innerHTML);
+	// }
 }
 
 updateTemplate();
@@ -225,7 +234,7 @@ updateTemplate();
 
 let editor = 0;
 let editing = false;
-let itemEdited;
+let itemEdited = "paycheck-t";
 function valueEditor(budgetItemId) {
 	if (!editing) {
 		editing = true;
@@ -275,12 +284,34 @@ editMoneys();
 
 // ----- PAYCARD GENERATOR AND RELOADER ----- //
 
+function generatePaycheckValue(num){
+
+	let span = document.createElement("span");
+	span.setAttribute("class", "money-var");
+	span.setAttribute("id", `paycheck-${num}`);
+	span.innerHTML = typ;
+	let li = document.createElement("li");
+	let text = document.createTextNode("Paycheck: $");
+	li.appendChild(text);
+	li.appendChild(span);
+	
+	return li;
+}
+
+// can check for classLists 
+function updatePaycard(num) {
+
+}
+
 function generateExpenses(num) {
+	const hr1 = document.createElement("hr");
+	const hr2 = document.createElement("hr");
 	const targetPaycardList = document.getElementById(`paycard-list-${num}`);
 
-	for (let i = 0; i < equityNames.length; i++) {
+	targetPaycardList.appendChild(generatePaycheckValue(num));
 
-	}
+	targetPaycardList.appendChild(hr1);
+
 	for (let i = 0; i < expenseNames.length; i++) {
 		let span = document.createElement("span");
 		span.setAttribute("class", "money-var");
@@ -292,7 +323,19 @@ function generateExpenses(num) {
 		li.appendChild(span);
 		targetPaycardList.appendChild(li);
 	}
+	targetPaycardList.appendChild(hr2);
 
+	for (let i = 0; i < equityNames.length; i++) {
+		let span = document.createElement("span");
+		span.setAttribute("class", "money-var");
+		span.setAttribute("id", `${equityNames[i]}-equity-${num}`);
+		span.innerHTML = equities[i];
+		let li = document.createElement("li");
+		let text = document.createTextNode(equityNames[i].toUpperCase() + ": $");
+		li.appendChild(text);
+		li.appendChild(span);
+		targetPaycardList.appendChild(li);
+	}
 
 };
 

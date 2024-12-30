@@ -150,8 +150,8 @@ function depopulateTrackList() {
 }
 
 function enableSortByYearAndAlbum() {
-	const yearArray = [];
-	const albumArray = [];
+	let yearArray = [];
+	let albumArray = [];
 	for (let i = 0; i < tracks.length; i++) {
 		if (!yearArray.includes(tracks[i].year)){
 			yearArray += tracks[i].year;

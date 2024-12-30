@@ -318,5 +318,26 @@ const blogData = [
 	get that credit.
 	`
 	,
+	`
+	| December 30th, 2024…
+	| Pittsboro, NC
+	| 1129 HRS
+	| &emsp;
+	I'm struggling to <b-title>sleep again</b-title>. I am displeased with how frequently this happens.
+	I have lacked routine ever since I have come here, and I do blame myself, mostly.
+	I need to drastically cut down on my caffeine intake, for good. I am making this a 
+	serious point going into the new year; too many times do I feel peaceful and calm, 
+	only to have the hyperactive urge compell me to down many hundreds of milligrams more.
+	I want to enjoy a refreshing calmness free from CNS stimulation, and allow
+	my body to adjust naturally to a healthier sleeping pattern.
+	This improvement would surely come in tandem with others I have scoped out for
+	2025. I worry that the mundanity of being stuck here may make me stir crazy, 
+	especially if I'd reduce my dopeminergic load with less CNS stimulation and fewer 
+	flavorful drinks to drink. Sigh. I should accept that these sacrifices are a 
+	necessary part of the journey. I should treat this time now as an intermittent time:
+	the time between crawling out from debt and into wealth generation.
+	I would deserve to surface as a refined instance of self, yes? oof.
+	`
+	,
 
 ];

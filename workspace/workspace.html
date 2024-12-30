@@ -21,121 +21,120 @@
 	<h1 class="marker">Chrispy's Code Testing Workspace</h1>
 	<!-- <span>Site construction in progress!</span> -->
 
-<main class="w-grid">
-	<div id="pankair" class="w-item grid-col-span-2">
-		<p class="eremoran-kiptascript">eremôrôm</p>
-	</div>
-	<div id="pankair-sw" class="w-item">
-		<p class="eremoran-kiptascript">kiptaôm</p>
-	</div>
-	<div id="busmat" class="w-item">
-		<p class="eremoran-kiptascript">erekanut busmat</p>
-	</div>
-	<div id="elaor" class="w-item grid-col-span-2">
-		<p class="eremoran-kiptascript">kobensid elaôr</p>
-		<code>let f = 5;
+	<main class="w-grid">
+		<div id="pankair" class="w-item grid-col-span-2">
+			<p class="eremoran-kiptascript">eremôrôm</p>
+		</div>
+		<div id="pankair-sw" class="w-item">
+			<p class="eremoran-kiptascript">kiptaôm</p>
+		</div>
+		<div id="busmat" class="w-item">
+			<p class="eremoran-kiptascript">erekanut busmat</p>
+		</div>
+		<div id="elaor" class="w-item grid-col-span-2">
+			<p class="eremoran-kiptascript">kobensid elaôr</p>
+			<code>let f = 5;
 			for (let i  = 0; i < f; i++) {
 				console.log(i);
 			}
 		</code>
-	</div>
-	<div id="nao" class="w-item">
-		<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
-	</div>
-</main>
+		</div>
+		<div id="nao" class="w-item">
+			<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
+		</div>
+	</main>
 
-<!---------- BUGETTING APP ---------->
+	<!---------- BUGETTING APP ---------->
 
-<main2 class="w2-grid">
-	
-	<div class="w2-item">
-		<ul>
-			<li>Upcoming Month: <span class="upcoming-month">February</span></li>
-			<li>Typical Paycheck: $<span class="money-var equity" id="typ-equity">0</span></li>
-			<li>Current HYSA: $<span class="money-var equity" id="hys-equity">0</span></li>
-			<li>Current Debits: $<span class="money-var equity" id="dbt-equity">0</span></li>
-			<li>Projected Savings Deposit: $<span class="money-var equity" id="sav-equity">0</span></li>
+	<main2 class="w2-grid">
 
-		</ul>
-	</div>
+		<div class="w2-item">
+			<ul>
+				<li>Upcoming Month: <span class="upcoming-month">February</span></li>
+				<li>Typical Paycheck: $<span class="money-var equity" id="typ-equity-t">0</span></li>
+				<li>Current HYSA: $<span class="money-var equity" id="hys-equity-t">0</span></li>
+				<li>Current Debits: $<span class="money-var equity" id="dbt-equity-t">0</span></li>
+				<li>Projected Savings Deposit: $<span class="money-var equity" id="sav-equity-t">0</span></li>
 
-	<div class="w2-item paycard">
-		<ul id="paycard-list-template">
-			<li class="no-bullet"><span class="upcoming-month">February</span></li>
-			<li class="no-bullet">Paycheck: $<span class="money-var" id="paycheck">4000</span></li>
-			<hr>
-			<!-- CAR PAYMENT -->
-			<li>CAR = $<span class="money-var expense" id="car-cost">0</span>
-			</li>
-			<!-- FEDERAL STUDENT LOAN -->
-			<li>NAV = $<span class="money-var expense" id="nav-cost">0</span>
-			</li>
-			<!-- PRIVATE STUDENT LOAN -->
-			<li>SAL = $<span class="money-var expense" id="sal-cost">0</span>
-			</li>
-			<!-- MY RENT -->
-			<li>REN = $<span class="money-var expense" id="ren-cost">0</span>
-			</li>
-			<!-- RENTER'S INSURANCE -->
-			<li>RTI = $<span class="money-var expense" id="rti-cost">0</span>
-			</li>
-			<!-- CAR INSURANCE -->
-			<li>INS = $<span class="money-var expense" id="ins-cost">0</span>
-			</li>
-			<!-- PERSONAL LOAN -->
-			<li>LOA = $<span class="money-var expense" id="loa-cost">0</span>
-			</li>
-			<!-- WATER BILL -->
-			<li>WAT = $<span class="money-var expense" id="wat-cost">0</span>
-			</li>
-			<!-- ELECTRICITY/POWER BILL -->
-			<li>ELE = $<span class="money-var expense" id="ele-cost">0</span>
-			</li>
-			<!-- INTERNET BILL -->
-			<li>INT = $<span class="money-var expense" id="int-cost">0</span>
-			</li>
-			<!-- MUSIC SUBSCRIPTION -->
-			<li>MUS = $<span class="money-var expense" id="mus-cost">0</span>
-			</li>
-			<!-- DONATION -->
-			<li>DON = $<span class="money-var expense" id="don-cost">0</span>
-			</li>
-			<!-- GYM MEMBERSHIP -->
-			<li>GYM = $<span class="money-var expense" id="gym-cost">0</span>
-			</li>
-			<!-- TOTAL AFTER DEDUCTIONS -->
-			<li class="no-bullet">Total Monthly Expenses: $<span id="total-monthly-expenses">0</span>
-			</li>
-			<hr>
-			<li class="no-bullet">Pre-Savings Remainder: $<span id="pre-savings"></span></li>
-			<li class="no-bullet">Less Savings: $<span id="less-savings"></span></li>
-			<li class="no-bullet">Remainder: $<span id="remainder"></span></li>
-			<li class="no-bullet">Total Savings: $<span id="total-savings"></span></li>
+			</ul>
+		</div>
+
+		<div class="w2-item paycard">
+			<ul id="paycard-list-template">
+				<li class="no-bullet"><span class="upcoming-month-t">February</span></li>
+				<li class="no-bullet">Paycheck: $<span class="money-var" id="paycheck-t">4000</span></li>
+				<hr>
+				<!-- CAR PAYMENT -->
+				<li>CAR = $<span class="money-var expense" id="car-cost-t">0</span>
+				</li>
+				<!-- FEDERAL STUDENT LOAN -->
+				<li>NAV = $<span class="money-var expense" id="nav-cost-t">0</span>
+				</li>
+				<!-- PRIVATE STUDENT LOAN -->
+				<li>SAL = $<span class="money-var expense" id="sal-cost-t">0</span>
+				</li>
+				<!-- MY RENT -->
+				<li>REN = $<span class="money-var expense" id="ren-cost-t">0</span>
+				</li>
+				<!-- RENTER'S INSURANCE -->
+				<li>RTI = $<span class="money-var expense" id="rti-cost-t">0</span>
+				</li>
+				<!-- CAR INSURANCE -->
+				<li>INS = $<span class="money-var expense" id="ins-cost-t">0</span>
+				</li>
+				<!-- PERSONAL LOAN -->
+				<li>LOA = $<span class="money-var expense" id="loa-cost-t">0</span>
+				</li>
+				<!-- WATER BILL -->
+				<li>WAT = $<span class="money-var expense" id="wat-cost-t">0</span>
+				</li>
+				<!-- ELECTRICITY/POWER BILL -->
+				<li>ELE = $<span class="money-var expense" id="ele-cost-t">0</span>
+				</li>
+				<!-- INTERNET BILL -->
+				<li>INT = $<span class="money-var expense" id="int-cost-t">0</span>
+				</li>
+				<!-- MUSIC SUBSCRIPTION -->
+				<li>MUS = $<span class="money-var expense" id="mus-cost-t">0</span>
+				</li>
+				<!-- DONATION -->
+				<li>DON = $<span class="money-var expense" id="don-cost-t">0</span>
+				</li>
+				<!-- GYM MEMBERSHIP -->
+				<li>GYM = $<span class="money-var expense" id="gym-cost-t">0</span>
+				</li>
+				<!-- TOTAL AFTER DEDUCTIONS -->
+				<li class="no-bullet">Total Monthly Expenses: $<span id="total-monthly-expenses-t">0</span>
+				</li>
+				<hr>
+				<li class="no-bullet">Pre-Savings: $<span id="pre-savings-t"></span></li>
+				<li class="no-bullet">Less Savings: $<span id="less-savings-t"></span></li>
+				<li class="no-bullet">Remainder: $<span id="remainder-t"></span></li>
+				<li class="no-bullet">Total Savings: $<span id="total-savings-t"></span></li>
 
 
-	</ul>
-	</div>
+			</ul>
+		</div>
 
-	<div class="w2-item">
-		<ul>
-			<li>Current Private Loan: $<span class="money-var liability" id="loan">0</span></li>
-			<li>High Dollar Item: $<span class="money-var liability" id="high-dollar-item">0</span></li>
-		</ul>
+		<div class="w2-item">
+			<ul>
+				<li>Current Private Loan: $<span class="money-var liability" id="loan">0</span></li>
+				<li>High Dollar Item: $<span class="money-var liability" id="high-dollar-item">0</span></li>
+			</ul>
 
-	</div>
+		</div>
 
-	<!-- PAYCARD GENERATOR BUTTON -->
-	<div class="w2-item grid-col-span-3">
-		<button class="paycard-generator">Generate Paycards</button>
-	</div>
-	
-	</div>
+		<!-- PAYCARD GENERATOR BUTTON -->
+		<div class="w2-item grid-col-span-3">
+			<button class="paycard-generator">Generate Paycards</button>
+		</div>
+
+		</div>
 
 		<!-- PAYCARDS -->
 		<div class="w2-item paycard">
 			<ul id="paycard-list-1"></ul>
 		</div>
-
 		<div class="w2-item paycard">
 			<ul id="paycard-list-2"></ul>
 		</div>
@@ -169,36 +168,38 @@
 		<div class="w2-item paycard">
 			<ul id="paycard-list-12"></ul>
 		</div>
-		
 
+	</main2>
 
-	<div class="w2-item grid-col-span-2">
-		<h3 id="item-title"></h3>
-		<hr>
-		<ul id="item-list">
-		
-		</ul>
-	</div>
-	<div class="w2-item">
-		<button id="button-previous-precept" class="button-precepts" value="previous">Previous</button>
-		<button id="button-next-precept" class="button-precepts" value="next">Next</button>
-		<hr>
+	<main3 class="w2-grid">
+		<div class="w2-item grid-col-span-2">
+			<h3 id="item-title"></h3>
+			<hr>
+			<ul id="item-list">
+
+			</ul>
+		</div>
+		<div class="w2-item">
+			<button id="button-previous-precept" class="button-precepts" value="previous">Previous</button>
+			<button id="button-next-precept" class="button-precepts" value="next">Next</button>
+			<hr>
 			<select id="list-options" onchange="loadSelectedItemArray()" value="something">
 
 			</select>
-	</div>
-	<div id="sutra-fields" class="w2-item grid-col-span-2">
-		<span id="sutra-title"></span><hr>
-		<p><span id="furigana-field" class="sutra-line-highlight"></span></p>
-		<p><span id="kanji-field" class="sutra-line-highlight"></span></p>
-		<p><span id="romaji-field" class="sutra-line-highlight"></span></p>
-		<p><span id="english-field" class="sutra-line-highlight"></span></p>
-	</div>
+		</div>
+		<div id="sutra-fields" class="w2-item grid-col-span-2">
+			<span id="sutra-title"></span>
+			<hr>
+			<p><span id="furigana-field" class="sutra-line-highlight"></span></p>
+			<p><span id="kanji-field" class="sutra-line-highlight"></span></p>
+			<p><span id="romaji-field" class="sutra-line-highlight"></span></p>
+			<p><span id="english-field" class="sutra-line-highlight"></span></p>
+		</div>
 
-	<div class="w2-item">
-		<button id="button-previous-sutra" class="button-sutras" value="previous">Previous Line</button>
-		<button id="button-next-sutra" class="button-sutras" value="next">Next Line</button>
-		<hr>
+		<div class="w2-item">
+			<button id="button-previous-sutra" class="button-sutras" value="previous">Previous Line</button>
+			<button id="button-next-sutra" class="button-sutras" value="next">Next Line</button>
+			<hr>
 			<select id="sutra-options" onchange="loadDifferentSutra()" value="something">
 
 			</select>
@@ -206,19 +207,19 @@
 			<select id="sutra-line-options" onchange="loadDifferentLine()" value="something">
 
 			</select>
-		<hr>
+			<hr>
 
 			<div class="sutra-typing-div" style="text-align: center; user-select: none;">
 				<input type="text" id="sutra-typing-field" value="" onkeyup="sutraType()" autocomplete="off">
 			</div>
 
-		<ul id="sutra-list">
-			
-		</ul>
-	
-	</div>
+			<ul id="sutra-list">
 
-</main2>
+			</ul>
+
+		</div>
+	</main3>
+
 
 </body>
 
