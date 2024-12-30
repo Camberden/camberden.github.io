@@ -51,18 +51,18 @@
 	<div class="w2-item">
 		<ul>
 			<li>Upcoming Month: <span class="upcoming-month">February</span></li>
-			<li>Typical Paycheck: $<span class="money-var equity" id="typical-paycheck">0</span></li>
-			<li>Current HYSA: $<span class="money-var equity" id="hysa">0</span></li>
-			<li>Current Debits: $<span class="money-var equity" id="debits">0</span></li>
-			<li>Projected HYSA Deposit: $<span class="money-var equity" id="projected-hysa">0</span></li>
-			<li>Projected Debits: $<span class="money-var equity" id="projected-debits">0</span></li>	
+			<li>Typical Paycheck: $<span class="money-var equity" id="typ-equity">0</span></li>
+			<li>Current HYSA: $<span class="money-var equity" id="hys-equity">0</span></li>
+			<li>Current Debits: $<span class="money-var equity" id="dbt-equity">0</span></li>
+			<li>Projected Savings Deposit: $<span class="money-var equity" id="sav-equity">0</span></li>
 
 		</ul>
 	</div>
 
-	<div class="w2-item">
+	<div class="w2-item paycard">
 		<ul id="paycard-list-template">
-			<li class="no-bullet">Paycheck: $<span class="money-var" id="paycheck">4500</span></li>
+			<li class="no-bullet"><span class="upcoming-month">February</span></li>
+			<li class="no-bullet">Paycheck: $<span class="money-var" id="paycheck">4000</span></li>
 			<hr>
 			<!-- CAR PAYMENT -->
 			<li>CAR = $<span class="money-var expense" id="car-cost">0</span>
@@ -103,11 +103,16 @@
 			<!-- GYM MEMBERSHIP -->
 			<li>GYM = $<span class="money-var expense" id="gym-cost">0</span>
 			</li>
-			<br>
 			<!-- TOTAL AFTER DEDUCTIONS -->
 			<li class="no-bullet">Total Monthly Expenses: $<span id="total-monthly-expenses">0</span>
 			</li>
+			<hr>
+			<li class="no-bullet">Pre-Savings Remainder: $<span id="pre-savings"></span></li>
+			<li class="no-bullet">Less Savings: $<span id="less-savings"></span></li>
 			<li class="no-bullet">Remainder: $<span id="remainder"></span></li>
+			<li class="no-bullet">Total Savings: $<span id="total-savings"></span></li>
+
+
 	</ul>
 	</div>
 

@@ -167,11 +167,15 @@ enablePreceptsButtons();
 
 // ----- BUDGET APP
 
-let hys = 0.00;
-let deb = 0.00;
+// ----- PAYCARD TEMPLATE ----- //
 
-let equities = [hys, deb];
-let equityNames = Array.from("hys deb".split(" "));
+let hys = 8000.00;
+let dbt = 300.00;
+let typ = 4000.00;
+let sav = 1000.00;
+
+let equities = [hys, dbt, typ, sav];
+let equityNames = Array.from("hys dbt typ sav".split(" "));
 
 let car = 0.00;
 let nav = 0.00;
@@ -190,36 +194,34 @@ let gym = 25.05;
 let expenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym];
 let expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym".split(" "));
 
-function generateExpenses(num) {
-	const targetPaycardList = document.getElementById(`paycard-list-${num}`);
-
-	for (let i = 0; i < equityNames.length; i++) {
-
-	}
-	for (let i = 0; i < expenseNames.length; i++) {
-		let span = document.createElement("span");
-		span.setAttribute("class", "money-var");
-		span.setAttribute("id", `${expenseNames[i]}-cost-${num}`);
-		span.innerHTML = expenses[i];
-		let li = document.createElement("li");
-		let text = document.createTextNode(expenseNames[i].toUpperCase() + ": $");
-		li.appendChild(text);
-		li.appendChild(span);
-		targetPaycardList.appendChild(li);
-	}
-};
-
-// paycard template here
-
 const expenseValues = expenseNames.map(string => document.getElementById(string + "-cost"));
 expenseValues.forEach((e, i) => e.innerHTML = expenses[i]);
 let totalMonthlyExpenses = 0;
-expenses.forEach(expense => totalMonthlyExpenses += expense);
-document.getElementById("total-monthly-expenses").innerHTML = totalMonthlyExpenses;
-const remainder = document.getElementById("remainder");
-remainder.innerHTML = document.getElementById("paycheck").innerHTML - totalMonthlyExpenses;
-document.getElementById("projected-debits").innerHTML = remainder.innerHTML * 12;
 
+const preSavings = document.getElementById("pre-savings");
+const lessSavings = document.getElementById("less-savings");
+const remainder = document.getElementById("remainder");
+const totalSavings = document.getElementById("total-savings");
+
+// SHOULD PARSE FLOATS
+// Might be better practice to focus on innerHTML as the js values may take precedence.
+// The JS values are only for pre-population
+
+function updateTemplate() {
+	totalMonthlyExpenses = 0.00;
+	for (let val of expenseValues) {
+		totalMonthlyExpenses += parseFloat(val.innerHTML);
+	}
+	document.getElementById("total-monthly-expenses").innerHTML = totalMonthlyExpenses;
+	preSavings.innerHTML = document.getElementById("paycheck").innerHTML - totalMonthlyExpenses;
+	lessSavings.innerHTML = sav;
+	remainder.innerHTML = preSavings.innerHTML - sav;
+	totalSavings.innerHTML = hys + sav;
+}
+
+updateTemplate();
+
+// ----- VALUE EDITOR ----- //
 
 let editor = 0;
 let editing = false;
@@ -248,9 +250,9 @@ function handle(event) {
 		editor = document.getElementById("editor").value;
 		console.log(editing);
 		itemEdited.textContent = editor;
-		// itemEdited.removeChild();
 		editing = false;
 		alert(editor);
+		updateTemplate();
 	}
 }
 
@@ -262,7 +264,6 @@ function editMoneys() {
 		moneyVar.onmouseleave = function() {
 			moneyVar.classList.remove("highlight");
 		}
-
 		moneyVar.onclick = function() {
 			itemEdited = document.getElementById(moneyVar.id);
 			valueEditor(moneyVar.id);	
@@ -271,6 +272,29 @@ function editMoneys() {
 	});
 }
 editMoneys();
+
+// ----- PAYCARD GENERATOR AND RELOADER ----- //
+
+function generateExpenses(num) {
+	const targetPaycardList = document.getElementById(`paycard-list-${num}`);
+
+	for (let i = 0; i < equityNames.length; i++) {
+
+	}
+	for (let i = 0; i < expenseNames.length; i++) {
+		let span = document.createElement("span");
+		span.setAttribute("class", "money-var");
+		span.setAttribute("id", `${expenseNames[i]}-cost-${num}`);
+		span.innerHTML = expenses[i];
+		let li = document.createElement("li");
+		let text = document.createTextNode(expenseNames[i].toUpperCase() + ": $");
+		li.appendChild(text);
+		li.appendChild(span);
+		targetPaycardList.appendChild(li);
+	}
+
+
+};
 
 function generateTwelvePaycards(){
 	let button = document.querySelector(".paycard-generator");
