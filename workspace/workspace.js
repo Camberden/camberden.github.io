@@ -169,7 +169,7 @@ enablePreceptsButtons();
 
 // ----- PAYCARD TEMPLATE ----- //
 
-let typ = 4000.00;
+let typ = 4400.00;
 
 let sav = 1000.00;
 let hys = 8000.00;
@@ -228,7 +228,7 @@ function updateTemplate() {
 	// }
 }
 
-updateTemplate();
+updateTemplate(); 
 
 // ----- VALUE EDITOR ----- //
 
@@ -262,6 +262,7 @@ function handle(event) {
 		editing = false;
 		alert(editor);
 		updateTemplate();
+		// updatePaycard();
 	}
 }
 
@@ -301,9 +302,28 @@ function generatePaycheckValue(num){
 // can check for classLists 
 function updatePaycard(num) {
 
+	let paycardPaycheck = document.getElementById(`paycheck-${num}`).innerHTML;
+	console.log(paycardPaycheck);
+	let deductions = 0.00;
+	for (let name of expenseNames) {
+		deductions += parseFloat(document.getElementById(`${name}-cost-${num}`).innerHTML);
+	}
+	document.getElementById(`total-monthly-expenses-${num}`).innerHTML = deductions;
+	let preSavings = document.getElementById(`pre-savings-${num}`).innerHTML;
+	preSavings = paycardPaycheck - deductions;
+	if (num === 1) {
+		document.getElementById(`hys-equity-${num}`).innerHTML = hys;
+	} else {
+		const deposit = document.getElementById(`sav-equity-${num}`).innerHTML;
+		const account = document.getElementById(`hys-equity-${num - 1}`).innerHTML; // from previous hys
+		document.getElementById(`hys-equity-${num}`).innerHTML = parseFloat(deposit) + parseFloat(account);
+		document.getElementById(`dbt-equity-${num}`).innerHTML = parseFloat(preSavings) - parseFloat(deposit);
+	}
+	
 }
 
 function generateExpenses(num) {
+	let paycardExpenseTotal = 0.00;
 	const hr1 = document.createElement("hr");
 	const hr2 = document.createElement("hr");
 	const targetPaycardList = document.getElementById(`paycard-list-${num}`);
@@ -317,20 +337,48 @@ function generateExpenses(num) {
 		span.setAttribute("class", "money-var");
 		span.setAttribute("id", `${expenseNames[i]}-cost-${num}`);
 		span.innerHTML = expenses[i];
+		paycardExpenseTotal += expenses[i];
 		let li = document.createElement("li");
 		let text = document.createTextNode(expenseNames[i].toUpperCase() + ": $");
 		li.appendChild(text);
 		li.appendChild(span);
 		targetPaycardList.appendChild(li);
+		if (i === expenseNames.length - 1) {
+			let span = document.createElement("span");
+			span.setAttribute("id", `total-monthly-expenses-${num}`);
+			span.innerHTML = paycardExpenseTotal;
+			let li = document.createElement("li");
+			li.setAttribute("class", "no-bullet");
+			let text = document.createTextNode("Total Monthly Expenses: $");
+			li.appendChild(text);
+			li.appendChild(span);
+			targetPaycardList.appendChild(li);
+		}
 	}
+
 	targetPaycardList.appendChild(hr2);
 
 	for (let i = 0; i < equityNames.length; i++) {
+
+		if (i === 0) {
+			let span = document.createElement("span");
+			span.setAttribute("id", `pre-savings-${num}`);
+			span.innerHTML = typ - paycardExpenseTotal;
+			let li = document.createElement("li");
+			li.setAttribute("class", "no-bullet");
+			let text = document.createTextNode("Pre-Savings: $");
+			li.appendChild(text);
+			li.appendChild(span);
+			targetPaycardList.appendChild(li);
+		}
 		let span = document.createElement("span");
-		span.setAttribute("class", "money-var");
 		span.setAttribute("id", `${equityNames[i]}-equity-${num}`);
+		if (equityNames[i] === "sav") {
+			span.setAttribute("class", "money-var");
+		}
 		span.innerHTML = equities[i];
 		let li = document.createElement("li");
+		li.setAttribute("class", "no-bullet");
 		let text = document.createTextNode(equityNames[i].toUpperCase() + ": $");
 		li.appendChild(text);
 		li.appendChild(span);
@@ -439,7 +487,7 @@ const heartSutraEnglish = [
 	"Avalokiteshvara Bodhisattva,",
 	"when practicing deeply the prajna paramita",
 	"perceived that all five skandhas in their own being are empty",
-	"and was saved from all suff’ring.",
+	"and was saved from all suff'ring.",
 	"O Shariputra,", 
 	"form does not differ from emptiness",
 	"emptiness does not differ from form", 
