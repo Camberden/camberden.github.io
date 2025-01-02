@@ -245,6 +245,7 @@ function valueEditor(budgetItemId) {
 		editorInput.setAttribute("type", "text");
 		editorInput.setAttribute("placeholder", "Edit value!");
 		editorInput.setAttribute("onkeypress", "handle(event)");
+		editorInput.setAttribute("onsubmit", "updatePaycard(budgetItemId)");
 		editorInput.setAttribute("id", "editor");
 		editorForm.appendChild(editorInput);
 		let budgetItem = document.getElementById(budgetItemId);
@@ -255,14 +256,15 @@ function valueEditor(budgetItemId) {
 
 function handle(event) {
 	if (event.keyCode === 13) {
+		let num = itemEdited.id.toString().substring(itemEdited.id.toString().lastIndexOf("-") + 1, itemEdited.id.toString().length);
 		event.preventDefault();
 		editor = document.getElementById("editor").value;
 		console.log(editing);
 		itemEdited.textContent = editor;
 		editing = false;
 		alert(editor);
-		updateTemplate();
-		// updatePaycard();
+		updatePaycard(num);
+		updateSavings(num);
 	}
 }
 
@@ -299,27 +301,51 @@ function generatePaycheckValue(num){
 	return li;
 }
 
+function generateMonth(num) {
+	const months = ["January","February","March","April","May","June","July","August","September","October","November","December"];
+	let date = new Date();
+	let month = date.getMonth() + num;
+	let span = document.createElement("span");
+	if (num > 11) {
+		month -= 12;
+	}
+	span.innerHTML = months[month];
+	let li = document.createElement("li");
+	li.setAttribute("class", "no-bullet");
+	li.appendChild(span);
+	
+	return li;
+}
+
 // can check for classLists 
 function updatePaycard(num) {
 
-	let paycardPaycheck = document.getElementById(`paycheck-${num}`).innerHTML;
+	const paycardPaycheck = document.getElementById(`paycheck-${num}`).innerHTML;
 	console.log(paycardPaycheck);
 	let deductions = 0.00;
 	for (let name of expenseNames) {
 		deductions += parseFloat(document.getElementById(`${name}-cost-${num}`).innerHTML);
 	}
 	document.getElementById(`total-monthly-expenses-${num}`).innerHTML = deductions;
-	let preSavings = document.getElementById(`pre-savings-${num}`).innerHTML;
-	preSavings = paycardPaycheck - deductions;
-	if (num === 1) {
-		document.getElementById(`hys-equity-${num}`).innerHTML = hys;
-	} else {
-		const deposit = document.getElementById(`sav-equity-${num}`).innerHTML;
-		const account = document.getElementById(`hys-equity-${num - 1}`).innerHTML; // from previous hys
-		document.getElementById(`hys-equity-${num}`).innerHTML = parseFloat(deposit) + parseFloat(account);
-		document.getElementById(`dbt-equity-${num}`).innerHTML = parseFloat(preSavings) - parseFloat(deposit);
-	}
+	console.log(deductions);
+	document.getElementById(`pre-savings-${num}`).innerHTML = parseFloat(paycardPaycheck) - parseFloat(deductions);
 	
+}
+
+function updateSavings(num) {
+	for (let i = num; i < 13; i++) {
+		let preSavings = document.getElementById(`pre-savings-${i}`).innerHTML;
+		let deposit = document.getElementById(`sav-equity-${i}`).innerHTML;
+		let account = document.getElementById(`hys-equity-${i}`).innerHTML;
+		console.log(account);
+		if (i > 1) {
+			account = document.getElementById(`hys-equity-${i - 1}`).innerHTML; // from previous hys
+		} else {
+			account = hys;
+		}
+		document.getElementById(`hys-equity-${i}`).innerHTML = parseFloat(deposit) + parseFloat(account);
+		document.getElementById(`dbt-equity-${i}`).innerHTML = parseFloat(preSavings) - parseFloat(deposit);
+	}
 }
 
 function generateExpenses(num) {
@@ -327,7 +353,8 @@ function generateExpenses(num) {
 	const hr1 = document.createElement("hr");
 	const hr2 = document.createElement("hr");
 	const targetPaycardList = document.getElementById(`paycard-list-${num}`);
-
+	
+	targetPaycardList.appendChild(generateMonth(num));
 	targetPaycardList.appendChild(generatePaycheckValue(num));
 
 	targetPaycardList.appendChild(hr1);
@@ -404,6 +431,7 @@ function generateTwelvePaycards(){
 			editMoneys();
 		}
 		console.log(button.value);
+		updateSavings(1);
 	}
 }
 
