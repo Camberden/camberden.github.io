@@ -339,5 +339,41 @@ const blogData = [
 	I would deserve to surface as a refined instance of self, yes? oof.
 	`
 	,
+	`
+	| January 3rd, 2025…
+	| Pittsboro, NC
+	| 0334HRS
+	| &emsp;
+	It's a new year, and though the common greeting is "Happy" New Year, its happy quality is to-be-determined.
+	That isn't to say that I'm not optimistic: I'm beyond grateful for my current situation and am still working to create a 
+	routine here at my new place conducive to fostering those good habits and dropping those bad habits. So far, though, I've been
+	struggling to achieve a satisfactory lifestyle. Why? I've been lax in adjusting to a consistent sleep schedule, and my minor tasks
+	have taken priority. Driving the distance to the gym has been oddly unnerving, and I've drifted away from my practice. I have to 
+	admit to myself that there is nothing wrong with the drive, and that I must better detach from the idea of the lifestyle that I lost.
+	The wear on my vehicle is bound to happen no matter what. It's only a matter of time. A few more added commutes on my off days for 
+	the purpose of my health is warranted. Besides, I'm paying for that access now. Even if I do not hit the mark of clearing my student loan
+	by the end of the year, I will still continue to earn, and still continue to make progress. I don't know for how long I could stay here, 
+	but it seems promising that I could eliminate this debt and get myself into a new vehicle, or perhaps take extended leave from work to 
+	get far ahead on my accounting studies. After all, at some point I should focus heavily on my studies when the time comes; I will need to push through 
+	industry certifications after achieving the baseline pre-requisites. Knocking out multiple courses could save me about a year in getting those pre-requisites.
+	It would take four of them, and that's possible, perhaps even during a summer: summer 2026, maybe? I've been digressing.
+	<hr>
+	I recall always asking myself "what did I do wrong here?" and "how did I cause this?" about things within and seemingly outside of my control.
+	People would say I was being too hard on myself. I found the tyrant of the self to be beneficial, especially through my security career. 
+	It reinforced the idea that I must take ownership of the situation. It would afford me a sense of control and of agency of my situation in life.
+	As such, I reaffirm that, of course, a reality could exist where I embody positive habits and endure the momentary, fleeting moments of endured
+	suffering. These days are going quickly. Calendar year 2024 showed much success in many ways, but some habits hadn't stuck around.
+	There were seasons of occupation throughout the year, and the summer proved to be the best of them. By being here, working on my site among other things,
+	I am stirring with a tad more confidence in the possibilty of having an even stronger 2025. I can fall back into a flow state and achieve my freedom.
+	I must take each day without any fear-of-missing-out, and just execute. Just go with my flow, and focus on the few things central to my being.
+	The factors surrounding a lot of my person are very fleeting. I mustn't overvalue the time that passes day-by-day. My sincere wish is freedom: freedom from
+	debts and freedom from temptations. Funnily enough, it can make life much simpler than the one I have now. It doesn't matter if an off day is ending, or if 
+	I just woke up and must hit the road. No mundane situations need to be sensationalized in my head like American news. Relax. All is well, all is fine. 
+	If I don't get a dopamine hit, it's fine: it's a peaceful instance. If I feel a tad of anxiety for something, it's fine: it's an ebb of the flow of life.
+	If I'm suffering, good. I should prove to myself I'm able to get through the situation. I may have proven myself in the past as a past self but I mustn't excuse my 
+	present self from doing the same. "The struggle is not mine anymore" does not quite apply here. By demonstrating a life well lived, in my flow state, I am
+	aimlessly aiming. Attached, yet detached. I experienced the sense of this last summer. Let's <b-title>do it again</b-title>.
+	`
+	,
 
 ];

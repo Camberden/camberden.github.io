@@ -133,7 +133,7 @@ th {
 	border-color: var(--clr-secondary);
 }
 td {
-	padding: 1rem;
+	padding: 0.7rem;
 	border-top: none;
 	border-bottom: solid;
 	border-left: none;
