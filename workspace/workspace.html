@@ -176,19 +176,21 @@
 		</div>
 		<div class="w2-item">
 			<ul>
-				<p>Annually: $<span id="annual-pension"></span></p>
-				<p>Monthly: $<span id="monthly-pension"></span></p>
+				<p>Full Pension: <span class="pension-reduction-highlight" id="full-pension"></span></p>
 				<p>Reduction Percentage: <span id="reduction-percentage"></span>%</p>
 				<p>Amount Reduced: <span id="reduction-amount"></span></p>
+				<p>Annually: $<span id="annual-pension"></span></p>
+				<p>Monthly: $<span id="monthly-pension"></span></p>
+				
 			</ul>
 			<ul>
 				<li class="no-bullet"><input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension" ></li>
 				<li class="no-bullet"><input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension" ></li>
 				<li class="no-bullet"><input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension" ></li>
 				<li class="no-bullet"><input type="text" placeholder="68224.61" value="68224.61" class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension" ></li>
-				<!-- <button class="pension-calculator-button" onclick=calculateAverageForPension()>Average!</button> -->
+				<br>
+				<button onclick="generatePension()">Generate Pension</button>
 			</ul>
-			<button onclick="generatePension()">Generate Pension</button>
 		</div>
 		<div class="w2-item grid-col-span-2">
 			<table id="pension-table"></table>

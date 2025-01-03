@@ -507,18 +507,30 @@ generatePensionTable();
 
 function generatePension() {
 	const pensionModifier =  0.0182;
-	let serviceYears = 30;
+	let serviceYears = 24;
+	let retirementAge = 50;
 	let fourSalariesAverage = 0.00;
 	const fourSalaries = document.querySelectorAll(".salary-for-pension");
 	for (let salary of fourSalaries) {
 		fourSalariesAverage += parseFloat(salary.value);
 	}
 	fourSalariesAverage /= 4;
+	const fullPension = (fourSalariesAverage * pensionModifier * 30).toFixed(2);
 	let annualPension = (fourSalariesAverage * pensionModifier * serviceYears).toFixed(2);
+	document.getElementById("full-pension").innerHTML = fullPension;
 	document.getElementById("annual-pension").innerHTML = annualPension;
 	document.getElementById("monthly-pension").innerHTML = (annualPension / 12).toFixed(2);
-	document.getElementById("percentage-reduction").innerHTML = fourSalariesAverage / fourSalariesAverage;
-	document.getElementById("reduction-amount").innerHTML = fourSalariesAverage - fourSalariesAverage;
+	const percentageReduction = document.getElementById(`pension-age-${retirementAge}-service-${serviceYears}`).innerHTML;
+	console.log(percentageReduction);
+	document.getElementById("reduction-percentage").innerHTML = parseInt(percentageReduction);
+	document.getElementById("reduction-amount").innerHTML = (annualPension * (percentageReduction / 100)).toFixed(2);
+	highlightPensionReduction(retirementAge, serviceYears);
+}
+
+function highlightPensionReduction(age, service) {
+	document.querySelector(".pension-reduction-highlight").classList.remove("pension-reduction-highlight");
+	let cell = document.getElementById(`pension-age-${age}-service-${service}`);
+	cell.classList.add("pension-reduction-highlight");
 }
 
 

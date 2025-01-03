@@ -123,6 +123,28 @@ body {
 
 }
 
+/* ----- PENSION STUFF ----- */
+
+table {
+	border-style: solid;
+}
+th {
+	border-style: solid;
+	border-color: var(--clr-secondary);
+}
+td {
+	padding: 1rem;
+	border-top: none;
+	border-bottom: solid;
+	border-left: none;
+	border-right: solid;
+}
+
+.pension-reduction-highlight {
+	background-color: var(--clr-quaternary);
+}
+
+
 /* ----- LIST TRAVERSAL AND ITEM SELECTION ----- */
 
 .highlight {
