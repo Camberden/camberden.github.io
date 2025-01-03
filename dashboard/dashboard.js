@@ -508,7 +508,7 @@ document.getElementById('weeks-lived').innerHTML = 'Weeks lived: ' + Math.floor(
 
 let retirementAge = 56;
 // from 50 to 65
-let serviceCredit = 26;
+let serviceCredit = 24;
 let averageForPension = 70000;
 
 // REDO
@@ -553,6 +553,22 @@ function calculateAverageForPension() {
 	
 	highlightPensionTable();
 };
+
+function generatePension() {
+	const pensionModifier =  0.0182;
+	let serviceYears = 30;
+	let fourSalariesAverage = 0.00;
+	const fourSalaries = document.querySelectorAll(".salary-for-pension");
+	for (let salary of fourSalaries) {
+		fourSalariesAverage += parseFloat(salary.value);
+	}
+	fourSalariesAverage /= 4;
+	let annualPension = (fourSalariesAverage * pensionModifier * serviceYears).toFixed(2);
+	document.getElementById("annual-pension").innerHTML = annualPension;
+	document.getElementById("monthly-pension").innerHTML = (annualPension / 12).toFixed(2);
+	document.getElementById("percentage-reduction").innerHTML = fourSalariesAverage / fourSalariesAverage;
+	document.getElementById("reduction-amount").innerHTML = fourSalariesAverage - fourSalariesAverage;
+}
 
 function highlightPensionTable(){
 	pensionReductionVisual.classList.remove("salary-highlight");

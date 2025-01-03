@@ -285,7 +285,7 @@ function editMoneys() {
 }
 editMoneys();
 
-// ----- PAYCARD GENERATOR AND RELOADER ----- //
+// ---------- PAYCARD GENERATOR AND RELOADER ---------- //
 
 function generatePaycheckValue(num){
 
@@ -445,6 +445,83 @@ function terminatePaycards() {
 		}
 	}
 }
+
+// ---------- PENSION CALCULATOR UTILITY ---------- //
+
+function generatePensionTable() {
+	const table = document.getElementById("pension-table");
+	while (table.lastChild) {
+		table.removeChild(table.lastChild);
+	}
+	let retirementAge = 60;
+	let retirementService = 30;
+	const reductionIncrements = [95, 90, 85, 80, 75, 70, 65, 60, 55, 52, 50];
+
+	let reductionLow = 3; // 59 years
+	console.log(reductionIncrements[reductionLow]);
+
+	for (let i = 0, j = 0; i < 11; i++) {
+		let tr = document.createElement("tr");
+		tr.setAttribute("id", `pension-row-${retirementAge}`);
+		let th = document.createElement("th");
+		th.setAttribute("id", `pension-age-${retirementAge}`);
+		let text = document.createTextNode(retirementAge);
+		th.appendChild(text);
+		tr.appendChild(th);
+
+		if (i === 0) {
+			while (j < 10) {
+				let th = document.createElement("th");
+				th.setAttribute("id", `pension-service-${--retirementService}`);
+				let text = document.createTextNode(retirementService);
+				th.appendChild(text);
+				tr.appendChild(th);
+				j++
+			}
+			j = 0;
+		} else {
+			while (j < 10) {
+				let td = document.createElement("td");
+				td.setAttribute("id", `pension-age-${retirementAge}-service-${--retirementService}`);
+				let reduction = reductionLow >= j ? reductionIncrements[j] : reductionIncrements[reductionLow];
+				let text = document.createTextNode(reduction);
+				td.appendChild(text);
+				tr.appendChild(td);
+				j++;
+			}
+			j = 0;
+			reductionLow++;
+			// Accounts for 52% for Age 53 @ 20 years of service.
+			if (retirementAge === 53) {
+				reductionIncrements[reductionLow - 1] = reductionIncrements[reductionLow]
+			}
+		}
+		retirementService = 30;
+		table.appendChild(tr);
+		retirementAge--;
+	}
+	retirementAge = 60;
+	retirementService = 30;
+}
+generatePensionTable();
+
+function generatePension() {
+	const pensionModifier =  0.0182;
+	let serviceYears = 30;
+	let fourSalariesAverage = 0.00;
+	const fourSalaries = document.querySelectorAll(".salary-for-pension");
+	for (let salary of fourSalaries) {
+		fourSalariesAverage += parseFloat(salary.value);
+	}
+	fourSalariesAverage /= 4;
+	let annualPension = (fourSalariesAverage * pensionModifier * serviceYears).toFixed(2);
+	document.getElementById("annual-pension").innerHTML = annualPension;
+	document.getElementById("monthly-pension").innerHTML = (annualPension / 12).toFixed(2);
+	document.getElementById("percentage-reduction").innerHTML = fourSalariesAverage / fourSalariesAverage;
+	document.getElementById("reduction-amount").innerHTML = fourSalariesAverage - fourSalariesAverage;
+}
+
+
 
 // ---------- SUTRA UTILITY ---------- //
 
