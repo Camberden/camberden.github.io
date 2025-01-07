@@ -198,6 +198,14 @@ a:hover {
 	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 }
 
+.hr-custom {
+	width: 5rem;
+	height: 0.1rem;
+	margin: 0.5rem;
+	/* border: 0.1rem solid var(--clr-quaternary); */
+	background-color: var(--clr-secondary);
+}
+
 /* ----- SITE-WIDE BUTTON COMPONENT ----- */
 
 button {

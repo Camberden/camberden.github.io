@@ -10,6 +10,7 @@ const accountingNotes = document.getElementById("accounting-notes");
 const accountingNotesButtons = document.querySelectorAll(".accounting-notes-button");
 const formulasList = document.getElementById("formulas-list");
 let formulas = "";
+let formulaTotals = 0;
 let currentNotesSet = 0;
 /** @type {AccountingChapter[]} */
 let accountingChapters = [];
@@ -51,7 +52,7 @@ function initAccountingNotes(tag, attributes) {
 			section = section.substring(section.indexOf(`</${tag}>`) + tag.length + 3), section.indexOf(`${tag} ${attributes}`);
 		}
 		// console.log("1", accChap);
-		console.log("2", accChap.formulas);
+		// console.log("2", accChap.formulas);
 
 		accChap.notes = datum.substring(datum.indexOf("&emsp;"), datum.length);
 		accountingChapters[i] = accChap;
@@ -112,3 +113,37 @@ function parseAccountingFormulas(tag, attributes) {
 	}
 }
 parseAccountingFormulas("mark", `class="formula"`);
+
+
+function promptAccountingFormula() {
+	for (let chapter of accountingChapters) {
+		formulaTotals += chapter.formulas.length;
+	}
+	console.log("formula totals: " + formulaTotals);
+}
+promptAccountingFormula();
+
+function loadQuiz() {
+	const textArea = document.createElement("textarea");
+	textArea.setAttribute("id", "quiz-field");
+	const accountingQuizText = document.getElementById("accounting-quiz-text");
+	const quizInput = document.getElementById("quiz-input");
+	const showAnswer = document.getElementById("show-answer");
+	quizInput.innerHTML = "";
+	quizInput.appendChild(textArea);
+	showAnswer.innerHTML = "";
+	let r = Math.random();
+	let formulaRandom = Math.round(formulaTotals * r);
+	let answer = formulasList.children.item(formulaRandom).textContent;
+	let problem = answer.substring(0, answer.indexOf("=") + 1);
+	accountingQuizText.innerHTML = problem;
+	const showAnswerButton = document.createElement("button");
+	showAnswerButton.onclick = function () {
+		accountingQuizText.innerHTML = "<br>" + answer;
+		quizInput.innerHTML = document.getElementById("quiz-field").value;
+		showAnswer.innerHTML = "";
+	}
+	const text = document.createTextNode("Show Answer");
+	showAnswerButton.appendChild(text);
+	showAnswer.appendChild(showAnswerButton);
+}
