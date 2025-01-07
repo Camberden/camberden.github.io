@@ -974,3 +974,93 @@ function sutraType() {
 	}
 
 }
+
+// ---------- SEGREGATION MAP ---------- //
+
+const segWest = document.getElementById("seg-west");
+const segWestLow = document.getElementById("seg-west-low");
+const segWestHigh = document.getElementById("seg-west-high");
+
+const segEast = document.getElementById("seg-east");
+const segEastLow = document.getElementById("seg-east-low");
+const segEastHigh = document.getElementById("seg-east-high");
+
+function generateCells() {
+
+	for (let i = 1, j = 0, k = 6; j < 7; i++) {
+		const cell = document.createElement("div");
+		if (j < 2 && i < 3) {
+			cell.classList.add("empty-box");
+			cell.setAttribute("id", `west-${j}-${i}`);
+		} else if (j > 1 && i > 2) {
+			cell.classList.add("empty-box");
+			cell.setAttribute("id", `west-${j}-${i}`);
+		} else {
+			cell.classList.add("cell-box");
+			if (i === 7) {
+				cell.setAttribute("id", `scw-${(2 - j) + "10"}`);
+				k = 6;
+			} else if (j < 2) {
+				cell.setAttribute("id", `scw-${(2 - j) + "0" + k}`);
+				k++;
+			} else if (i === 1) {
+				cell.setAttribute("id", `scw-${(i + 1) + "0" + k - (j - 1)}`);
+			} else {
+				cell.setAttribute("id", `scw-${(i - 1) + "0" + k - (j - 1)}`);
+			}
+		}
+		segWest.appendChild(cell);
+		if (i % 7 === 0) {
+			const br = document.createElement("br");
+			segWest.appendChild(br);
+			j++;
+			i = 0; //increments to 1 on loop start
+			k = 6;
+		}
+	}
+
+	for (let i = 1, j = 0; j < 7; i++) {
+		const cell = document.createElement("div");
+		if (j < 2 && i > 5) {
+			cell.classList.add("empty-box");
+			cell.setAttribute("id", `east-${j}-${i}`);
+		} else if (j > 1 && i < 6) {
+			cell.classList.add("empty-box");
+			cell.setAttribute("id", `east-${j}-${i}`);
+		} else {
+			cell.classList.add("cell-box");
+			if (j === 6 && i >= 6) {
+				cell.setAttribute("id", `sce-${(i - 5) + "20"}`);
+			} else if (j <= 1 && i <= 5) {
+				cell.setAttribute("id", `sce-${(2 - j) + "1" + i}`);
+			} else if (j >= 2 && i >= 6) {
+				cell.setAttribute("id", `sce-${(i - 5) + "1" + (j + 4)}`);
+			}
+		}
+		
+
+		segEast.appendChild(cell);
+		if (i % 7 === 0) {
+			const br = document.createElement("br");
+			segEast.appendChild(br);
+			j++;
+			i = 0;
+		}
+	}
+}
+
+generateCells();
+
+function populateCells() {
+
+	const cells = document.querySelectorAll(".cell-box");
+
+	for (let cell of cells) {
+		let text = document.createTextNode(cell.id);
+		let span = document.createElement("span");
+		span.appendChild(text);
+		cell.appendChild(span);
+
+
+	}
+}

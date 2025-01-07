@@ -1789,7 +1789,146 @@ Rolled Budgets: revises entire set of budgets as a quarterly budget elapses.	`
 	| Chapter 21
 	| TAGS
 	| &emsp;
-	Notes Input
+	Standard Cost
+Costs to deliver products under normal circumstances.
+
+When actual costs vary from standard costs, they are logged. Management focuses on main differences between actual and standard costs. 
+
+Standards for Direct Labor: Time and Motion Studies
+
+Standards for Direct Materials: Quantity, Grade, and Cost of Each Material Used
+
+Standards for Overhead: to support production activities
+
+Standards are challenging but attainable and acknowledge machine breakdowns.
+
+Sales Variances: 
+
+Fixed and Flexible Budgets: options for preparing a Master Budget.
+
+Cost Variance: Favorable (F) or Unfavorable (U). 
+
+Flow of Events in Variance Analysis:
+- Prepare Reports
+- Analyze Variances
+- Questions and Answers
+- Take Action
+
+Cost Variance (CV) Analysis:
+Actual Cost (AC) is Actual Quantity (AQ) * Actual Price (AP) and Standard Cost (SC) is Standard Quantity (SQ) * Standard Price (SP)
+
+Factors that Cause a Cost Variance
+1. Price or rate variance. Difference between SP and AP
+2. Quantity or usage or efficiency variance. Difference between SQ and AQ
+
+<mark class="formula">Price Variance (PV) = (Actual Price (AP) - Standard Price (SP) * Actual Quantity (AQ))</mark>
+
+<mark class="formula">Quantity Variance (QV) = (Actual Quantity (AQ) - Standard Quantity(SQ)) * Standard Price (SP)</mark>
+
+Purchasing Department: responsible for quantity and quality of materials obtained.
+Production Department: responsible for quantity of materials used and direct labor cost.
+
+<mark class="formula">Standard Overhead Applied = Actual Production * Standard Amount of Allocation Base * Standard Overhead Rate</mark>
+
+Overhead Variance Report: Shows Var and Fixed OH, not Sales Figures
+	`
+	,
+	`
+	| ACC 121
+	| Chapter 22
+	| TAGS
+	| &emsp;
+	Responsibility Accounting
+- Companies are divided into smaller units like departments. 
+- Types of Departments are a Cost Center (incurs costs without generating revenue), Profit Center, and Investment Center
+	
+
+	`
+	,
+	`
+	| ACC 121
+	| Chapter 23
+	| TAGS
+	| &emsp;
+	Managerial Decision Making
+Five Steps: 
+1. Define
+2. Identify Alternatives
+3. Analyse Alternatives
+4. Select Course of Action
+5. Analyze and Assess Decisions made
+
+Obviously financial and non-financial information is relevant in this case. 
+
+Relevant and Irrelevant Costs and Benefits. Future oriented with incremental effects.
+Incremental Effects, like incremental revenues, costs, and income.
+
+Irrelevant Costs: sunk costs, out-of-pocket costs
+Relevant Costs: opportunity cost, avoidable cost.
+	`
+	,
+	`
+	| ACC 121
+	| Chapter 24
+	| TAGS
+	| &emsp;
+	Capital Investment
+
+Break-Even Time: when present value of net cash flows = initial investment
+
+Capital Budgeting Process
+- Submit Proposal, Evaluate Proposal, Approve or Reject
+- Risky:
+1. outcome uncertain
+2. large amounts of money involved
+3. long-term commitment
+4. difficult or impossible to reverse
+- to return satisfactory ROI
+
+Acquire: - initial investmnet
+Use: + sales - expenses
+Dispose: + salvage value
+
+Payback Period Method
+- shorter payback periods are preferred to increase return and reduce risk
+- shouldn't be the only consideration: ignores the time-value of money, ignores cash flows after payback period, may have no cash inflow after period
+
+<mark>Accounting Rate of Return = Annual Income / Average Investment</mark>
+
+<mark>Average Investment = Initial Investment + Salvage Value / 2</mark>
+
+<mark>Payback Period = Initial Investment / Annual Net Cash Flow</mark>
+
+Accounting Rate of Return Method:
+- simple computation
+- consider weaknesses:
+ignores time-value of money, does not directly consider cash flows and their timing
+
+Net Present Value Analysis
+- maps time-value of money to future cash inflows and cash outflows
+<mark>NPV = Discounted Future Net Cash Flows - Initial Amount Invested (NPV > 0 ? Invest : Do Not Invest)</mark>
+
+Required Rate of Return (Hurdle Rate): typically its cost of capital which must be paid.
+
+Salvage Value: an additional cash inflow to expect
+
+Profitability Index: used to compare investment projects
+
+<mark> Profitability Index = Present Value of Net Cash Flows / Initial Investment</mark>
+
+- use when amounts invested differ substantially
+- higher profitability index suggests a more desirable project
+- eliminate investments with profitability index < 1
+- accept all positive NPV projects if possible
+
+Internal Rate of Return (IRR)
+- Machine: init $41000, useful life 5yr, net cash flow $10000yr
+- 2-steps with even cash flows:
+1. Compute Present Value Factor:
+41000/10000 = 4.1
+2. Locate Present Value Factor in PV of Annuity Table closest.
+
+If IRR - Hurdle Rate ≥ 0%, invest.
 	`
 	,
 
