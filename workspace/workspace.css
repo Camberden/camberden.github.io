@@ -203,14 +203,14 @@ td {
 	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(4, 25%); /* repeat(4, 25%) */
 
-	/* padding-block: 2rem; */
-	width: min(95%, 70rem);
+	padding-block: 2rem;
+	width: min(95%, 80rem);
 	margin-inline: auto;
 	max-height: min-content;
 }
 
 .sm-item {
-	padding: 1rem;
+	/* padding: 1rem; */
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-color: grey;
 	border-style: double;
@@ -218,19 +218,20 @@ td {
 
 .cell-box {
 	display: inline-block;
-	width: 3rem;
-	height: 5rem;
+	font-size: 0.7rem;
+	width: 5rem;
+	height: 8rem;
 	border-radius: 0.5rem;
-	margin: 0.5rem;
+	/* margin: 0.5rem; */
 	border: 0.5rem solid #444;
 	color: chartreuse;
-	overflow: auto;
+	overflow:visible;
 }
 
 .empty-box {
 	display: inline-block;
-	width: 2rem;
-	height: 2rem;
+	width: 3rem;
+	height: 3rem;
 	border-radius: 0.5rem;
 	margin: 0.5rem;
 	border: 0.5rem solid transparent;

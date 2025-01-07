@@ -1051,6 +1051,68 @@ function generateCells() {
 
 generateCells();
 
+
+/**
+ * @param {string} name
+ * @param {number} number
+ * @param {string} bunk
+ * @param {string} photo
+ */
+class Inmate {
+	constructor(name, number, bunk, photo) {
+		this.name = name;
+		this.number = number;
+		this.bunk = bunk;
+		this.photo = photo;
+	}
+}
+
+/**
+ * 
+ * @param {HTMLElement} element 
+ */
+function createCellCard (element) {
+	
+	const img = document.createElement("img");
+	const nameSpan = document.createElement("span");
+	const numberSpan = document.createElement("span");
+	const bunkSpan = document.createElement("span");
+	const text1 = document.createTextNode("Camberden, Chrispy");
+	const text2 = document.createTextNode("2278263");
+	const text3 = document.createTextNode(element.id);
+	const hr1 = document.createElement("hr");
+	const hr2 = document.createElement("hr");
+	// const hr3 = document.createElement("hr");
+
+	img.setAttribute("src", "../assets/image-crystal-chrispy-favicon.png");
+	img.setAttribute("width", "50px");
+	img.setAttribute("height", "50px");
+
+	nameSpan.setAttribute("id", "assigned-" + element.id + "-name");
+	numberSpan.setAttribute("id", "assigned-" + element.id + "-number");
+	bunkSpan.setAttribute("id", "assigned-" + element.id + "-bunk");
+
+	nameSpan.appendChild(text1);
+	numberSpan.appendChild(text2);
+	bunkSpan.appendChild(text3);
+
+	element.appendChild(img);
+	element.appendChild(nameSpan);
+	element.appendChild(hr1);
+	element.appendChild(numberSpan);
+	element.appendChild(hr2);
+	element.appendChild(bunkSpan);
+}
+
+// a more detailed populateCells()
+function loadCurrentInmates() {
+	const cells = document.querySelectorAll(".cell-box");
+	for (let cell of cells) {
+		createCellCard(cell);
+	}
+}
+
+
 function populateCells() {
 
 	const cells = document.querySelectorAll(".cell-box");
@@ -1060,7 +1122,6 @@ function populateCells() {
 		let span = document.createElement("span");
 		span.appendChild(text);
 		cell.appendChild(span);
-
 
 	}
 }
