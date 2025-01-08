@@ -81,6 +81,7 @@ function findDaysSinceBirthday(present, birth) {
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
 console.log("Since Birth: " + daysSinceBirth);
 console.log("Years Since Birth: " + (daysSinceBirth / 365));
+console.log("Weeks since Birth: " + (daysSinceBirth / 7));
 
 currentDateField.innerHTML = currentDate;
 function getMonthText(val){
@@ -100,6 +101,7 @@ function generateCalendar(year) {
 		div.appendChild(hr);
 		for (let j = 0; j < getDaysInMonthOfYear(year, i + 1); j++) {
 			const span = document.createElement("span");
+			span.setAttribute("id", `${year}-${i + 1}-${j + 1}`);
 			span.setAttribute("class", "calendar-date");
 			const text = document.createTextNode(j + 1);
 			span.appendChild(text);
@@ -137,3 +139,5 @@ function enableLifecraftButtons() {
 	});
 }
 enableLifecraftButtons();
+
+// TODO: Function to Populate Events by Year; link to blogData
