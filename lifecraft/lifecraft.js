@@ -24,6 +24,7 @@ const birthDate = currentUser.birthday.getDate();
 
 const date = new Date();
 const currentYear = date.getFullYear();
+let changeYear = currentYear;
 const currentMonth = date.getMonth();
 const currentDay = date.getDate();
 const currentDate = date.toDateString();
@@ -88,17 +89,20 @@ function getMonthText(val){
 }
 console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
 
-function generateCalendar() {
+function generateCalendar(year) {
+	clearLifecraftField();
 	for (let i = 0; i < 12; i++) {
 		const div = document.createElement("div");
 		div.setAttribute("class", "calendar-month");
-		const text = document.createTextNode(getMonthText(i + 1) + " " + currentYear);
+		const text = document.createTextNode(getMonthText(i + 1) + " " + year);
 		const hr = document.createElement("hr");
 		div.appendChild(text);
 		div.appendChild(hr);
-		for (let j = 0; j < getDaysInMonthOfYear(currentYear, i + 1); j++) {
+		for (let j = 0; j < getDaysInMonthOfYear(year, i + 1); j++) {
 			const span = document.createElement("span");
 			span.setAttribute("class", "calendar-date");
+			const text = document.createTextNode(j + 1);
+			span.appendChild(text);
 			div.appendChild(span);
 		}
 		
@@ -106,4 +110,30 @@ function generateCalendar() {
 	}
 	
 }
-generateCalendar();
+generateCalendar(currentYear);
+
+function enableLifecraftButtons() {
+	document.querySelectorAll(".lifecraft-button").forEach(button => {
+		
+		button.onclick = function () {
+			ButtonInterface.buttonOnClick(button);
+			switch (button.value) {
+				case "next":
+					generateCalendar(++changeYear);
+				break;
+				case "previous":
+					generateCalendar(--changeYear);
+				break;
+				default:
+					console.log("Default Switch Triggered");
+			}
+		}
+		button.onmouseenter = function () {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function () {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+	});
+}
+enableLifecraftButtons();
