@@ -588,6 +588,9 @@ highlightPensionTable();
 // ---------- REFDOCS DISPLAY ----------//
 
 const refdocs = [
+	"../assets/refdoc-acc220-schedule.pdf",
+	"../assets/refdoc-acc220-syllabus.pdf",
+	"../assets/refdoc-acc220-acronyms.pdf",
 	"../assets/refdoc-acc121-schedule.pdf",
 	"../assets/refdoc-chzc-chant2020.pdf",
 	"../assets/refdoc-cti110-key.pdf",

@@ -162,23 +162,6 @@ p {
 	font-family: Permanent Marker, serif;
 }
 
-#header-and-return {
-	padding: 2rem;
-}
-
-#return {
-	font-size: 1em;
-	text-align: left;
-	display: flex;
-	flex: 0.1rem;
-	align-items: left;
-	justify-content: left;
-}
-
-#return a:hover {
-	color: var(--clr-tertiary);
-}
-
 a {
 	text-decoration: solid;
 	outline: 0;
@@ -204,6 +187,95 @@ a:hover {
 	margin: 0.5rem;
 	/* border: 0.1rem solid var(--clr-quaternary); */
 	background-color: var(--clr-secondary);
+}
+
+.load-padding-transition {
+	padding: 0.2rem;
+	transition: padding 0.3s ease-in;
+}
+
+/* --- HEADER AND GRID --- */
+
+#header-and-return {
+	padding: 2rem;
+}
+
+#return {
+	font-size: 1em;
+	text-align: left;
+	display: flex;
+	flex: 0.1rem;
+	align-items: left;
+	justify-content: left;
+}
+
+#return a:hover {
+	color: var(--clr-tertiary);
+}
+
+#page-header {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border: grey, double, .3rem;
+	border-bottom: none;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+.page-grid {
+	padding: 2rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	/* border: 0.1rem solid var(--clr-tertiary); */
+	border-radius: 1rem;
+	gap: 1rem;
+}
+
+.page-item {
+	flex: 1; 
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-width: 20rem;
+	min-height: 20rem;
+	padding: 2rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border: grey, double, .3rem;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+#quick-links {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	/* box-sizing: border-box; */
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border: grey, solid, .3rem;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+.quick-links-grid-item {
+	padding: 1rem;
+	/* box-sizing: border-box; */
+	border: 0.3rem, solid, var(--clr-secondary-400);
+
+	border-top: none;
+	border-bottom: none;
+}
+
+.quick-links-buttons {
+	padding-left: 1rem;
+	padding-right: 1rem;
 }
 
 /* ----- SITE-WIDE BUTTON COMPONENT ----- */

@@ -26,19 +26,6 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
-.quick-links-grid-item {
-	padding: 1rem;
-	border: grey, double, .3rem;
-	border-top: none;
-	border-bottom: none;
-}
-
-.quick-links-buttons {
-	padding-left: 1rem;
-	padding-right: 1rem;
-
-}
-
 .blog-grid {
 	padding: 2rem;
 	display: flex;

@@ -65,7 +65,7 @@
 
 /* ---------- GRID CONTENT ---------- */
 
-.music-grid {
+.music-grid-old {
 	display: grid;
 	gap: 1rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
@@ -73,6 +73,17 @@
 	padding-block: 2rem;
 	width: min(95%, 70rem);
 	margin-inline: auto;
+}
+
+.music-grid {
+	padding: 2rem;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: center;
+	/* border: 0.1rem solid var(--clr-tertiary); */
+	border-radius: 1rem;
+	gap: 1rem;
 }
 
 .grid-col-span-2 {
@@ -91,7 +102,7 @@
 .music-item {
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
+	border: grey, solid, .3rem;
 	background: rgba(144, 229, 238, 0.1);
 
 }

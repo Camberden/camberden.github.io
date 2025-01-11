@@ -23,18 +23,6 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
-.quick-links-grid-item {
-	padding: 1rem;
-	border: grey, double, .3rem;
-	border-top: none;
-	border-bottom: none;
-}
-
-.quick-links-buttons {
-	padding-left: 1rem;
-	padding-right: 1rem;
-}
-
 .accounting-grid {
 	padding: 2rem;
 	display: flex;
@@ -75,11 +63,6 @@
 	transition: border-right-width 0.3s ease-in-out;
 	transition: border-bottom-width 0.3s ease-in-out;
 } */
-
-.load-padding-transition {
-	padding: 0.2rem;
-	transition: padding 0.3s ease-in;
-}
 
 #formulas-list {
 	list-style-type: none;

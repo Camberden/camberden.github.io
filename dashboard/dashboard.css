@@ -18,7 +18,7 @@ input[type=text]:focus {
 	background-color: #f6f3ed;
 }
 
-.dashboard-header {
+#dashboard-header {
 	display: flex;
 	flex: 1;
 	flex-direction: row;
@@ -41,13 +41,6 @@ input[type=text]:focus {
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border: grey, double, .3rem;
 	background: rgba(144, 229, 238, 0.1);
-}
-
-.quick-links-grid-item {
-	padding: 1rem;
-	border: grey, double, .3rem;
-	border-top: none;
-	border-bottom: none;
 }
 
 .dashboard-grid {
