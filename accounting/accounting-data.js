@@ -18,7 +18,7 @@ const accountingData = [
 	| Chapter 1
 	| TAGS
 	| &emsp;
-	Didn't make notes for Chapter 1!
+	Assets are liabilities plus equity. This is "The accounting formula."
 	`
 	,
 	`
@@ -26,7 +26,7 @@ const accountingData = [
 	| Chapter 2
 	| TAGS
 	| &emsp;
-	Didn't make notes for Chapter 2!
+	Assets are liabilities plus equity. This is "The accounting formula."
 	`
 	,
 
@@ -1929,6 +1929,15 @@ Internal Rate of Return (IRR)
 2. Locate Present Value Factor in PV of Annuity Table closest.
 
 If IRR - Hurdle Rate ≥ 0%, invest.
+	`
+	,
+
+	`
+	| ACC 220
+	| Chapter 25
+	| TAGS
+	| &emsp;
+	Pending
 	`
 	,
 

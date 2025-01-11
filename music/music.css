@@ -102,7 +102,9 @@
 .music-item {
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, solid, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 
 }
@@ -117,8 +119,9 @@
 
 .sub-music-item {
 	place-self: center;
-	border-color: grey;
+	border-width: 0.3rem;
 	border-style: double;
+	border-color: grey;
 }
 
 #photo-box > img {

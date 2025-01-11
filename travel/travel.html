@@ -15,32 +15,40 @@
 
 <body>
 
-   <div id="return">
-      <a class="marker" href="../index.html">Return</a>
-   </div>
+   <div id="header-and-return">
+		<div id="return">
+			<a class="marker" href="../index.html">Return</a>
+		</div>
+		<div id="page-header">
+			<h1 class="marker">Travel Log</h1>
+		</div>
+		<div id="quick-links">
+			<div class="quick-links-grid-item">
+				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+			</div>
+		
+			<div class="quick-links-buttons">
+				<button class="map-display-buttons" value="world-map">World</button>
+            <button class="map-display-buttons" value="us-map">US</button>
+			</div>
+         <div class="quick-links-buttons">
+				<button class="map-highlight-buttons" value="to-visit">To Consider Visiting</button>
+            <button class="map-highlight-buttons" value="to-retire">To Consider Retirement</button>
+			</div>
 
-   <div>
-      <h1 class="marker">Travel Log</h1>
-   </div>
+         <div class="quick-links-grid-item">
+            <span id="political-division"></span><span id="visited-total"></span>
+         </div>
+		</div>
+	</div>
 
    <div class="travel-grid">
 
-      <div class="travel-item">
-         <button class="map-display-buttons" value="world-map">World</button>
-         <button class="map-display-buttons" value="us-map">US</button>
-      </div>
-
-      <div class="travel-item">
-         <button class="map-highlight-buttons" value="to-visit">To Consider Visiting</button>
-         <button class="map-highlight-buttons" value="to-retire">To Consider Retirement</button>
-      </div>
 
       <div class="travel-item grid-col-span-2">
 
         
          <!-- <button class="map-display-button" value="nc-map">NC</button> -->
-
-         <p><span id="political-division"></span><span id="visited-total"></span></p>
 
          <div id="map-display">
             <div id="display-world-map">

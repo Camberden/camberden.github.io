@@ -34,7 +34,27 @@ class AccountingChapter {
 	}
 }
 
+function parseAccountingFormulas(formulaArray) {
 
+	while (formulasList.lastChild) {
+		formulasList.removeChild(formulasList.lastChild);
+	}
+	for (let formula of formulaArray) {
+		if (formula != "") {
+			formula = formula.substring(formula.indexOf(">") + 1, formula.length);
+			let li = document.createElement("li");
+			let hr = document.createElement("hr");
+			let br = document.createElement("br");
+			let solution = document.createTextNode(formula.substring(0, formula.indexOf("=") + 1));
+			let variables = document.createTextNode(formula.substring(formula.indexOf("=") + 1, formula.length));
+			li.appendChild(solution);
+			li.appendChild(br);
+			li.appendChild(variables);
+			li.appendChild(hr);
+			formulasList.appendChild(li);
+		}
+	}
+}
 
 function initAccountingNotes(tag, attributes) {
 	accountingNotes.innerHTML = "Select a chapter to load notes!";
@@ -51,8 +71,6 @@ function initAccountingNotes(tag, attributes) {
 			formulas += section.substring(section.indexOf(`<${tag} ${attributes}>`), section.indexOf(`</${tag}>`)) + "…";
 			section = section.substring(section.indexOf(`</${tag}>`) + tag.length + 3), section.indexOf(`${tag} ${attributes}`);
 		}
-		// console.log("1", accChap);
-		// console.log("2", accChap.formulas);
 
 		accChap.notes = datum.substring(datum.indexOf("&emsp;"), datum.length);
 		accountingChapters[i] = accChap;
@@ -68,6 +86,15 @@ function initAccountingNotes(tag, attributes) {
 			document.getElementById("accounting-course").textContent = accountingChapters[currentNotesSet].course;
 			document.getElementById("accounting-chapter").textContent = accountingChapters[currentNotesSet].chapter;
 			document.getElementById("accounting-chapter-title").textContent = accountingChapters[currentNotesSet].title;
+			parseAccountingFormulas(accountingChapters[currentNotesSet].formulas);
+			// for (let formula of accountingChapters[currentNotesSet].formulas) {
+			// 	const li = document.createElement("li");
+			// 	const span = document.createElement("span");
+			// 	const text = document.createTextNode(formula);
+			// 	span.appendChild(text);
+			// 	li.appendChild(text);
+			// 	formulasList.appendChild(li);
+			// }
 			accountingNotes.innerHTML = accountingChapters[currentNotesSet].notes;
 			ButtonInterface.buttonOnClick(button);
 
@@ -82,37 +109,10 @@ function initAccountingNotes(tag, attributes) {
 }
 initAccountingNotes("mark", `class="formula"`);
 
-function parseAccountingFormulas(tag, attributes) {
+console.log(accountingChapters[4].formulas[0]);
 
-	// for(let i = 0; i < accountingData.length; i++) {
-	// 	let section = accountingData[i];
-	// 	while (section.indexOf(`</${tag}>`) !== -1) {
-	// 		formulas += section.substring(section.indexOf(`<${tag} ${attributes}>`), section.indexOf(`</${tag}>`)) + "…";
-	// 		section = section.substring(section.indexOf(`</${tag}>`) + tag.length + 3), section.indexOf(`${tag} ${attributes}`);
-	// 	}
-	// }
-	// formulas = formulas.trim();
-	// formulas = formulas.split("…");
 
-	// TODO: find by chapter
-	for (let formula of formulas) {
-		if (formula != "") {
-			formula = formula.substring(formula.indexOf(">") + 1, formula.length);
-			let li = document.createElement("li");
-			let hr = document.createElement("hr");
-			let br = document.createElement("br");
-			let solution = document.createTextNode(formula.substring(0, formula.indexOf("=") + 1));
-			let variables = document.createTextNode(formula.substring(formula.indexOf("=") + 1, formula.length));
-			li.appendChild(solution);
-			li.appendChild(br);
-			li.appendChild(variables);
-			li.appendChild(hr);
-			formulasList.appendChild(li);
-		}
-
-	}
-}
-parseAccountingFormulas("mark", `class="formula"`);
+// parseAccountingFormulas("mark", `class="formula"`);
 
 
 function promptAccountingFormula() {

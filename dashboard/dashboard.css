@@ -25,7 +25,9 @@ input[type=text]:focus {
 	align-items: center;
 	justify-content: center;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	border-bottom: none;
 	background: rgba(144, 229, 238, 0.1);
 }
@@ -39,7 +41,9 @@ input[type=text]:focus {
 	justify-content: center;
 
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
 
@@ -64,7 +68,9 @@ input[type=text]:focus {
 	min-height: 20rem;
 	padding: 2rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
 

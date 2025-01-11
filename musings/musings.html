@@ -14,22 +14,30 @@
 </head>
 
 <body>
-	<div id="return">
-		<a class="marker" href="../index.html">Return</a>
-	</div>
-	<div class="marker">
-		<h2>Just Miscellany</h2>
+	<div id="header-and-return">
+		<div id="return">
+			<a class="marker" href="../index.html">Return</a>
+		</div>
+		<div id="page-header">
+			<h1 class="marker">Just Miscellany</h1>
+		</div>
+		<div id="quick-links">
+			<div class="quick-links-grid-item">
+				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<span id="sutra-panel">Template</span>
+			</div>
+			<div class="quick-links-buttons">
+				<button class="marker-for-menu" onclick="previousPoem()">Previous</button>
+				<button class="marker-for-menu" onclick="nextPoem()">Next</button>
+			</div>
+		</div>
 	</div>
 
-	<main class="tools-grid">
-		<div class="tools-item grid-col-span-2">
-			<h2 id="sutra-panel">test</h2>
-		</div>
-		<div class="tools-item">
-			<button class="marker-for-menu" onclick="previousPoem()">Previous</button>
-			<button class="marker-for-menu" onclick="nextPoem()">Next</button>
-		</div>
-		<div class="tools-item grid-col-span-2">
+	<main class="page-grid">
+	
+		<div class="page-item grid-col-span-2">
 			<div class="poem" style="user-select: none;">
 				<p>
 				<div class="writing" id="fortyping">
@@ -37,7 +45,7 @@
 				</p>
 			</div>
 		</div>
-		<div class="tools-item">
+		<div class="page-item">
 			<span class="marker-for-menu" id="poemnum"></span><br>
 			<form onSubmit="return false;" style="user-select: none; color: grey;">
 				<div class="typingfield" style="text-align: center; user-select: none;">

@@ -220,7 +220,9 @@ a:hover {
 	align-items: center;
 	justify-content: center;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	border-bottom: none;
 	background: rgba(144, 229, 238, 0.1);
 }
@@ -246,7 +248,9 @@ a:hover {
 	min-height: 20rem;
 	padding: 2rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
 
@@ -260,15 +264,17 @@ a:hover {
 
 	/* box-sizing: border-box; */
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, solid, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
 
 .quick-links-grid-item {
 	padding: 1rem;
-	/* box-sizing: border-box; */
-	border: 0.3rem, solid, var(--clr-secondary-400);
-
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	border-top: none;
 	border-bottom: none;
 }
