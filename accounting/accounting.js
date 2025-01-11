@@ -134,7 +134,8 @@ function loadQuiz() {
 	showAnswer.innerHTML = "";
 	let r = Math.random();
 	let formulaRandom = Math.round(formulaTotals * r);
-	let answer = formulasList.children.item(formulaRandom).textContent;
+	let answer = formulas[formulaRandom];
+	answer = answer.substring(answer.indexOf(">") + 1, answer.length);
 	let problem = answer.substring(0, answer.indexOf("=") + 1);
 	accountingQuizText.innerHTML = problem;
 	const showAnswerButton = document.createElement("button");
