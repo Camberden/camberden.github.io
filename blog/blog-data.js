@@ -375,5 +375,43 @@ const blogData = [
 	aimlessly aiming. Attached, yet detached. I experienced the sense of this last summer. Let's <b-title>do it again</b-title>.
 	`
 	,
+	`
+	| January 11th, 2025…
+	| Pittsboro, NC
+	| 2236HRS
+	| &emsp;
+	Here's to the weekend! Three days off, mostly been productive on programming and language learning.
+	I just learned that for setting classes dynamically, I should <code>setAttribute</code> first for specific cases that require
+	a local scope variable in the class name, and then apply <code>classList.add()</code> afterwards for classes without
+	variables. I really just wanted to drop this note, but aside from that, <b-title>Clozemaster</b-title> is an awesome site and it's 
+	almost perfect for my pace of learning. Being barraged with real world sentences replete with various contexts seems
+	to expedite retention without being particularly demanding. The gaps in knowledge presented by real world sentences
+	are exciting, and that excitement coaxes learning and attention, and the frequency at which patterns tend to repeat
+	across multiple sentences help reinforce the novel structures in memory. Having found this tool makes me feel so relieved 
+	to no longer need Duolingo to aid in progress; I've grown really disenchanted with its model. 
+	My biggest critique is that processing the content of a passage on Duolingo happens much quicker than actually
+	answering the question, which mostly involves hunt-and-pecking English words from a bank to construct a translation
+	that the passage author explicitly wrote. It's especially discouraging to have pecked one wrong English word
+	from the bank even though I understood the content of the passage in the target language. In such case, I would be
+	awarded no points. Nothing. Heck! I also didn't like how it became overdone with design, animations, characters,
+	sounds, messages -- essentially pointless fluff that slows things down and distracts. The noded learning paths are long
+	and disorienting, and how heavily monetized it is from the "heart" system to accessibility to challenges further
+	make approaching learning a headache. Clozemaster does away with all the fluff and nonsense. It's direct from
+	large sentence banks across the web, focused on input in target language only, integrated with AI to assist with context,
+	and has plenty, plenty more languages than Duolingo. No node-like paths or excessive elementary review, just select
+	a large bank at current competence and go. For me, I've been able to brush up so fast with Japanese and even Spanish.
+	I've included Polish with which I'm not really at any competence, but it's still fun. I could imagine attaining
+	a fair competency rather quickly in future languages with this approach. I will say, though, that for establishing
+	a fundamental knowledge of basic words and structures, Duolingo may yet be helpful. My glossing over Polish would
+	still be well served by Duolingo.
+	<hr>
+	So I started Intermediate Accounting I and I plan to knock out the first chapter for the remainder of the weekend.
+	I'm not awfully nervous, but I recognize that I really do need to brush up on plenty of concepts. I'll give myself
+	some grace, since I'm still getting situated at this new place and this course serves to reintroduce topics.
+	No worries. So, in the grand scheme, I've recovered my preoccupation with personal endeavors, made my space even
+	cozier, and am on an upward trajectory. Health-wise, I still have work to do to recover the likeness of last summer, 
+	but that time will come; I'm not worried. It's only been a month since uprooting. Progress. Huzzah.
+	`
+	,
 
 ];

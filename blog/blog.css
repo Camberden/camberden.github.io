@@ -88,3 +88,7 @@
 .listing-highlight {
 	background-color: var(--clr-quaternary);
 }
+
+.listing-none {
+	display: none;
+}

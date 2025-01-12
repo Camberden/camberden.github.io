@@ -109,9 +109,6 @@ function initAccountingNotes(tag, attributes) {
 }
 initAccountingNotes("mark", `class="formula"`);
 
-// parseAccountingFormulas("mark", `class="formula"`);
-
-
 function promptAccountingFormula() {
 	for (let chapter of accountingChapters) {
 		formulaTotals += chapter.formulas.length;
@@ -119,9 +116,6 @@ function promptAccountingFormula() {
 	console.log("formula totals: " + formulaTotals);
 }
 promptAccountingFormula();
-
-
-
 
 // ----- QUIZ MODULES ----- //
 
@@ -218,7 +212,7 @@ function acronymQuiz() {
 	accountingQuizText.innerHTML = problem;
 	const showAnswerButton = document.createElement("button");
 	showAnswerButton.onclick = function () {
-		accountingQuizText.innerHTML = problem + "&nbsp" + answer + "&nbsp" + significance;
+		accountingQuizText.innerHTML = "<span> " + problem + "<br>" + answer + "<br><br> Significance: " + significance + "</span>";
 		quizInput.innerHTML = document.getElementById("quiz-field").value;
 		showAnswer.innerHTML = "";
 	}

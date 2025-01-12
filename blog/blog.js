@@ -3,6 +3,7 @@ let activeBlogPost = document.getElementById("active-blog-post");
 let activeBlogPostNumber = blogData.length - 1;
 let blogPostList = document.getElementById("blog-post-list");
 let blogPostTitle = document.getElementById("blog-post-title");
+let listedYears = [];
 
 
 function displayActiveBlogPostNumber() {
@@ -41,7 +42,13 @@ function extractHeaderData(increment) {
 function initBlogData(dataLength) {
 	for (i = 0; i <= dataLength - 1; i++) {
 		let listedBlogPost = document.createElement("li");
-		listedBlogPost.setAttribute("class", "blog-post-inside-list");
+		let listedYear = blogData[i].substring(blogData[i].indexOf(",") + 2, blogData[i].indexOf("…"));
+		if (!listedYears.includes(listedYear) && listedYear){
+			listedYears += listedYear + " ";
+		}
+		listedBlogPost.setAttribute("class", `bp-year-${listedYear}`);
+		listedBlogPost.classList.add("blog-post-inside-list");
+		
 		listedBlogPost.setAttribute("value", i);
 		listedBlogPost.setAttribute("id", `bp-${i}`);
 		blogPostList.appendChild(listedBlogPost);
@@ -55,6 +62,8 @@ function initBlogData(dataLength) {
 	}
 }
 initBlogData(blogData.length);
+listedYears = Array.from(listedYears.trim().split(" "));
+console.log(listedYears);
 
 function chooseActiveBlogPost() {
 	document.querySelectorAll(".blog-post-inside-list").forEach(listing => {
@@ -103,3 +112,26 @@ function enableBlogButtons() {
 	});
 }
 enableBlogButtons();
+
+function enableBlogSelect() {
+	const blogPostYearSelect = document.getElementById("blog-post-year-select");
+	for (let i = 0; i < listedYears.length; i++) {
+		let option = document.createElement("option");
+		option.setAttribute("value", listedYears[i]);
+		let text = document.createTextNode(listedYears[i]);
+		option.appendChild(text);
+		blogPostYearSelect.appendChild(option);
+	}
+	blogPostYearSelect.onchange = function() {
+		for (let li of blogPostList.children) {
+			if (li.classList.contains("listing-none")) {
+				li.classList.remove("listing-none");
+			} 
+			if (!li.classList.contains(`bp-year-${blogPostYearSelect.value}`)){
+				li.classList.add("listing-none");
+			} 
+		}
+	};
+	
+}
+enableBlogSelect();
