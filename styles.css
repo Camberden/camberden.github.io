@@ -78,7 +78,6 @@
 
 .index-grid {
 	display: grid;
-	
 	gap: 0.5rem;
 	grid-template-columns: repeat(1, 100%); /* repeat(4, 25%) */
 	width: min(60%, 70rem);
@@ -133,7 +132,7 @@
 
 .eremoran-kiptascript {
 	font-family: eremoran-kiptascript;
-	font-size: 5rem;
+	font-size: 4rem;
 }
 
 /* ----- SITE-WIDE GENERAL STYLE COMPONENT ----- */
@@ -335,3 +334,28 @@ button {
 	border-right-style: groove;
 }
 
+
+/* ----- MEDIA QUERIES ---- */
+
+
+@media screen and (max-width: 500px) {
+	body {
+		background-image: none; 
+	}
+
+	#camberden {
+		font-size: 3rem;
+	}
+	.eremoran-kiptascript {
+		font-family: eremoran-kiptascript;
+		font-size: 3rem;
+	}
+	.index-grid {
+		display: grid;
+		gap: 0.3rem;
+		grid-template-columns: repeat(1, 100%);
+		/* repeat(4, 25%) */
+		width: min(100%, 70rem);
+		margin-inline: auto;
+	}
+}

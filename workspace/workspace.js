@@ -29,6 +29,13 @@ function enableToyButtons() {
 					e.style.color = "white";
 			}
 		}
+		e.onmouseenter = function() {
+			e.classList.add("w-item-over");
+		}
+		e.onmouseleave = function() {
+			e.classList.remove("w-item-over");
+			e.classList.add("w-item-leave");
+		}
 	});
 }
 enableToyButtons();

@@ -76,18 +76,21 @@ body {
 
 }
 
-.w-item:hover {
+.w-item-over {
 	padding: 0.2rem;
 	border-radius: 0.5rem;
 	border-top-width: 0.5rem;
 	border-left-width: 0.5rem;
 	border-bottom-width: 0.5rem;
 	border-right-width: 0.5rem;
-	transition: border-right-width 0.3s ease-in;
-	transition: border-bottom-width 0.3s ease-in;
+	transition: border-right-width 0.2s ease-in;
+	transition: border-bottom-width 0.2s ease-in;
 	transition: padding 0.3s ease-in;
-
-
+}
+.w-item-leave {
+	transition: border-right-width 0.2s ease-out;
+	transition: border-bottom-width 0.2s ease-out;
+	transition: padding 0.2s ease-out;
 }
 
 .w-item:last-child {

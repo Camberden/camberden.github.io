@@ -20,7 +20,7 @@ function randomizeMonicker(){
 		camberden.removeAttribute("font-family");
 		camberden.innerHTML = monickers[0].replace("c", "k");
 		camberden.classList.add("eremoran-kiptascript");
-		camberden.setAttribute("style", "font-family: eremoran-kiptascript; font-size: 7rem;");
+		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
 	} 
 	else {
 		camberden.innerHTML = monickers[0];
