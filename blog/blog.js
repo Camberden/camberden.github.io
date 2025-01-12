@@ -113,8 +113,8 @@ function enableBlogButtons() {
 }
 enableBlogButtons();
 
+const blogPostYearSelect = document.getElementById("blog-post-year-select");
 function enableBlogSelect() {
-	const blogPostYearSelect = document.getElementById("blog-post-year-select");
 	for (let i = 0; i < listedYears.length; i++) {
 		let option = document.createElement("option");
 		option.setAttribute("value", listedYears[i]);
@@ -127,7 +127,7 @@ function enableBlogSelect() {
 			if (li.classList.contains("listing-none")) {
 				li.classList.remove("listing-none");
 			} 
-			if (!li.classList.contains(`bp-year-${blogPostYearSelect.value}`)){
+			if (!li.classList.contains(`bp-year-${blogPostYearSelect.value}`) && blogPostYearSelect.value != "all-years"){
 				li.classList.add("listing-none");
 			} 
 		}
@@ -135,3 +135,9 @@ function enableBlogSelect() {
 	
 }
 enableBlogSelect();
+
+function reEnableBlogPostList(){
+	for (let li of blogPostList.children) {
+		li.classList.remove("listing-none");
+	}
+}
