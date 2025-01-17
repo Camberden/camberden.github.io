@@ -1058,6 +1058,16 @@ function generateCells() {
 
 generateCells();
 
+/**
+ * @param {string} name
+ * @param {string} photo
+ */
+class Character {
+	constructor(name, photo) {
+		this.name = name;
+		this.photo = photo;
+	}
+}
 
 /**
  * @param {string} name
@@ -1074,48 +1084,97 @@ class Inmate {
 	}
 }
 
+function generateSimpleNames() {
+	let firstName = "";
+	let lastName = "";
+	let fullName = "";
+	const syllables = [
+		"ka", "ki", "ku", "ke", "ko", "keu",
+		"ra", "ri", "ru", "re", "ro", "reu",
+		"ta", "ti", "tu", "te", "to", "teu",
+		"sa", "si", "su", "se", "so", "seu",
+		"ma", "mi", "mu", "me", "mo", "meu"
+	];
+	const vowels = ["a", "i", "u", "e", "o", "eu"];
+	const clusters = ["sh", "zm", "sr", "s", "j", "kr", "ks", "ksh"]
+	
+	for(let i = 0; i < 2; i++) {
+		let ran1 = ((syllables.length - 1) * Math.random()).toFixed(0);
+		let ran2 = ((vowels.length - 1) * Math.random()).toFixed(0);
+		let ran3 = ((clusters.length - 1) * Math.random()).toFixed(0);
+		console.log(ran1);
+		console.log(syllables[ran1]);
+		if (i === 0) {
+			firstName += syllables[ran1] + clusters[ran3];
+		}
+		if (i === 1) {
+			lastName += (vowels[ran2] + clusters[ran3] + syllables[ran1] + syllables[ran1]);
+		}
+	}
+	fullName = firstName + " " + lastName;
+	return fullName;
+
+}
+let residents = [];
+
+function createCharacters(){
+	for (let i = 0; i < 40; i++) {
+		let c = new Character();
+		c.name = generateSimpleNames();
+		c.photo = `../assets/segregation-residents/resident-${i}.jpg`;
+		residents[i] = c;
+	}
+}
+createCharacters();
+console.log(residents[2]);
+
+
+
 /**
  * 
- * @param {HTMLElement} element 
+ * @param {HTMLElement} assignment 
+ * @param {Character} resident
  */
-function createCellCard (element) {
-	
+function createCellCard (assignment, resident) {
+	let docnum = ((Math.random(0) * 123) + 1234567);
+	docnum = docnum.toFixed(0);
 	const img = document.createElement("img");
 	const nameSpan = document.createElement("span");
 	const numberSpan = document.createElement("span");
 	const bunkSpan = document.createElement("span");
-	const text1 = document.createTextNode("Camberden, Chrispy");
-	const text2 = document.createTextNode("2278263");
-	const text3 = document.createTextNode(element.id);
+	const text1 = document.createTextNode(resident.name);
+	const text2 = document.createTextNode(docnum++);
+	const text3 = document.createTextNode(assignment.id);
 	const hr1 = document.createElement("hr");
 	const hr2 = document.createElement("hr");
 	// const hr3 = document.createElement("hr");
 
-	img.setAttribute("src", "../assets/image-crystal-chrispy-favicon.png");
+	img.setAttribute("src", `${resident.photo}`);
 	img.setAttribute("width", "50px");
 	img.setAttribute("height", "50px");
 
-	nameSpan.setAttribute("id", "assigned-" + element.id + "-name");
-	numberSpan.setAttribute("id", "assigned-" + element.id + "-number");
-	bunkSpan.setAttribute("id", "assigned-" + element.id + "-bunk");
+	nameSpan.setAttribute("id", "assigned-" + assignment.id + "-name");
+	numberSpan.setAttribute("id", "assigned-" + assignment.id + "-number");
+	bunkSpan.setAttribute("id", "assigned-" + assignment.id + "-bunk");
 
 	nameSpan.appendChild(text1);
 	numberSpan.appendChild(text2);
 	bunkSpan.appendChild(text3);
 
-	element.appendChild(img);
-	element.appendChild(nameSpan);
-	element.appendChild(hr1);
-	element.appendChild(numberSpan);
-	element.appendChild(hr2);
-	element.appendChild(bunkSpan);
+	assignment.appendChild(img);
+	assignment.appendChild(nameSpan);
+	assignment.appendChild(hr1);
+	assignment.appendChild(numberSpan);
+	assignment.appendChild(hr2);
+	assignment.appendChild(bunkSpan);
 }
 
 // a more detailed populateCells()
 function loadCurrentInmates() {
 	const cells = document.querySelectorAll(".cell-box");
-	for (let cell of cells) {
-		createCellCard(cell);
+
+	for (let i = 0; i < cells.length; i++) {
+		createCellCard(cells[i], residents[i]);
 	}
 }
 
