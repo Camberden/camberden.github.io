@@ -342,7 +342,7 @@ const blogData = [
 	`
 	| January 3rd, 2025…
 	| Pittsboro, NC
-	| 0334HRS
+	| 0334 HRS
 	| &emsp;
 	It's a new year, and though the common greeting is "Happy" New Year, its happy quality is to-be-determined.
 	That isn't to say that I'm not optimistic: I'm beyond grateful for my current situation and am still working to create a 
@@ -378,7 +378,7 @@ const blogData = [
 	`
 	| January 11th, 2025…
 	| Pittsboro, NC
-	| 2236HRS
+	| 2236 HRS
 	| &emsp;
 	Here's to the weekend! Three days off, mostly been productive on programming and language learning.
 	I just learned that for setting classes dynamically, I should <code>setAttribute</code> first for specific cases that require
@@ -411,6 +411,22 @@ const blogData = [
 	No worries. So, in the grand scheme, I've recovered my preoccupation with personal endeavors, made my space even
 	cozier, and am on an upward trajectory. Health-wise, I still have work to do to recover the likeness of last summer, 
 	but that time will come; I'm not worried. It's only been a month since uprooting. Progress. Huzzah.
+	`
+	,
+
+	`
+	| January 21st, 2025…
+	| Pittsboro, NC
+	| 2324 HRS
+	| &emsp;
+	I've been distressed somewhat over the potential for an upcoming "promotion" which wouldn't serve to afford me more
+	income, but rather just a defined role and location assignment. I've weighed pros and cons: of course, I would have
+	more immediate access to my personal endeavors while completing tasks I know I could likely handle well. I do have
+	some doubts over my ability in the event of some high-stakes, novel situations, but perhaps that's normal. Of course,
+	I am who I am, and so my personality and values will come into play, and as I've said, they're perhaps not the best
+	fit in some situations. I would afford myself some relief from the chaos of <b-title>other roles</b-title> if I did not take the position,
+	but nonetheless, the responsibility is higher. Yet, I am generally a responsible person as it is, and my workplace and
+	indirectly my career at-large could benefit? Heh. Not sure. In any case, I'm going to push.
 	`
 	,
 

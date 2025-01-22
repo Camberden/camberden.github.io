@@ -1129,7 +1129,6 @@ createCharacters();
 console.log(residents[2]);
 
 
-
 /**
  * 
  * @param {HTMLElement} assignment 
@@ -1147,7 +1146,7 @@ function createCellCard (assignment, resident) {
 	const text3 = document.createTextNode(assignment.id);
 	const hr1 = document.createElement("hr");
 	const hr2 = document.createElement("hr");
-	// const hr3 = document.createElement("hr");
+	const hr3 = document.createElement("hr");
 
 	img.setAttribute("src", `${resident.photo}`);
 	img.setAttribute("width", "50px");
@@ -1162,10 +1161,11 @@ function createCellCard (assignment, resident) {
 	bunkSpan.appendChild(text3);
 
 	assignment.appendChild(img);
-	assignment.appendChild(nameSpan);
 	assignment.appendChild(hr1);
-	assignment.appendChild(numberSpan);
+	assignment.appendChild(nameSpan);
 	assignment.appendChild(hr2);
+	assignment.appendChild(numberSpan);
+	assignment.appendChild(hr3);
 	assignment.appendChild(bunkSpan);
 }
 
