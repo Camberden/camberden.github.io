@@ -243,3 +243,21 @@ td {
 .cell-box:hover {
 	border-color: green;
 }
+
+/* ----- T-CARD GENERATOR ----- */
+
+.t-card > table {
+	border-style: none;
+}
+.t-card > table > tr > th {
+	padding: 0rem;
+	border-style: none;
+	border-color: var(--clr-secondary);
+}
+.t-card > table > tr > td {
+	padding: 0rem;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+}

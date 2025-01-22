@@ -1102,8 +1102,8 @@ function generateSimpleNames() {
 		let ran1 = ((syllables.length - 1) * Math.random()).toFixed(0);
 		let ran2 = ((vowels.length - 1) * Math.random()).toFixed(0);
 		let ran3 = ((clusters.length - 1) * Math.random()).toFixed(0);
-		console.log(ran1);
-		console.log(syllables[ran1]);
+		// console.log(ran1);
+		// console.log(syllables[ran1]);
 		if (i === 0) {
 			firstName += syllables[ran1] + clusters[ran3];
 		}
@@ -1126,7 +1126,7 @@ function createCharacters(){
 	}
 }
 createCharacters();
-console.log(residents[2]);
+// console.log(residents[2]);
 
 
 /**
@@ -1191,3 +1191,60 @@ function populateCells() {
 
 	}
 }
+
+// ---------- T-ACCOUNT GENERATOR ---------- //
+
+const accountPrompter = document.getElementById("t-card-grid");
+const generateTAccountButton = document.getElementById("generate-t-account");
+let accountName = document.getElementById("account-name");
+
+generateTAccountButton.onclick = function() {
+	generateTAccount(accountName.innerHTML);
+	accountName.innerHTML = "";
+}
+
+function generateTAccount(account){
+	const div = document.createElement("div");
+	div.setAttribute("class", "t-card");
+	const table = document.createElement("table");
+
+	for (let i = 0; i < 6; i++) {
+		if (i === 0){
+			let tr = document.createElement("tr");
+			let th = document.createElement("th");
+			let text = document.createTextNode(account);
+			th.appendChild(text);
+			tr.appendChild(th);
+			table.appendChild(tr);
+		}
+		let tr = document.createElement("tr");
+		let td1 = document.createElement("td");
+		let td2 = document.createElement("td");
+		let td3 = document.createElement("td");
+		let td4 = document.createElement("td");
+		let inp1 = document.createElement("input");
+		let inp2 = document.createElement("input");
+		let inp3 = document.createElement("input");
+		let inp4 = document.createElement("input");
+		inp1.setAttribute("type", "text");
+		inp2.setAttribute("type", "text");
+		inp3.setAttribute("type", "text");
+		inp4.setAttribute("type", "text");
+		inp1.setAttribute("style", "width:3rem;");
+		inp2.setAttribute("style", "width:3rem;");
+		inp3.setAttribute("style", "width:3rem;");
+		inp4.setAttribute("style", "width:3rem;");
+		td1.appendChild(inp1);
+		td2.appendChild(inp2);
+		td3.appendChild(inp3);
+		td4.appendChild(inp4);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		table.appendChild(tr);
+	}
+	div.appendChild(table);
+	accountPrompter.appendChild(div);
+}
+
