@@ -426,7 +426,45 @@ const blogData = [
 	I am who I am, and so my personality and values will come into play, and as I've said, they're perhaps not the best
 	fit in some situations. I would afford myself some relief from the chaos of <b-title>other roles</b-title> if I did not take the position,
 	but nonetheless, the responsibility is higher. Yet, I am generally a responsible person as it is, and my workplace and
-	indirectly my career at-large could benefit? Heh. Not sure. In any case, I'm going to push.
+	indirectly my career at-large could benefit? Heh. Not sure. My class work and financial progress is paramount, and they are
+	going well enough. Do I not have enough credibility? I surely don't need the role. There's no utility pursuing it for
+	egoic reasons, I recognize. There's no money in it. It's essentially only the location inflexibility plus added 
+	expectations. I am concerned with how teetering my mood seems to be and how that would affect my performance and the
+	morale I could instill on fellow staff. Additionally, I would have to be that exemplar on a day-by-day basis. I do
+	intend on traveling plenty once this burden is cleared later this year. I want my peace of mind, and focus. 
+	This role may bring excess pre-occupation with assuming-the-role and masking, pulling me away from my own endeavors.
+	Would I find it more fulfilling to do a good job at this higher role, and enjoy the occassional peace?
+	Or maintain what I am and have, and enjoy the occassional peace? Either way, I will be afforded occassional peace. My workflow is better at the potential 
+	assignment than the varied assignments. The potential for bad decisions is there and that's what's getting to me.
+	That, coupled with the need to remain harmonious as a "leader" in a higher-stakes profession.
+	Yet, I'm definitely becoming more mindful and incrementally more capable; I have garnered the trust of others both
+	junior and senior. My flow is falling off, I think. I'm not sure what I'll do after writing this. 
+	<hr>
+	My accounting page needs a revamp; the notes are of little use to me. I would rather have something practical and 
+	interactive, as if I were actually performing a technical role, much as I enjoy coding and learning language in 
+	context. Reading over things does not work with my learning style. 
+	That being said, I much enjoyed building my own spreadsheets yesterday. It rekindled my excitement for the contents
+	and helped instill the concepts and patterns in my mind seemingly more effectively.
+	I placed my template worksheet on Sharepoint for use elsewhere, and will use my sheet locally, but I see the utility
+	in having a client-side generator for common accounting patterns to solve questions as they appear and uncommitting
+	the clutter to any memory. Now that I have some templates, I'm sure I could implement them. I believe T-Accounts would
+	be practical to implement on the outset here.
+	<hr>
+	I have not adopted a particular routine yet, but I am productive. I recently identified in a written entry that, yes,
+	my after-work time does not incorporate use of the computer, so no coding or homework, really. That leaves me few other
+	things to do, and I could acknowledge that the period is otherwise bust and should commit to heading to the gym. I must
+	be mindful that the nearby site is not available on weekends at my time, so I must head to Chapel Hill. 
+	I can start on Friday morning. Then, come Monday, the Tuesday morning would be great. 
+	I acknowledge that restarting a habit is rough to approach, but it's doable. I just need to sacrifice.
+	Then again, I must mention this point:
+	<hr>
+	Once I am finished with this role and attain a better schedule, I will much more easily be able to incorporate health-focus
+	into my lifestyle. Though I may have a relatively difficult time incorporating it now, the time is certain to come. 
+	It will come back, anyway. It will come back, anyway, you know. So as long as I continue living responsibly, the 
+	time is bound to come. After all, that's one reason I am in school, yes? That and community integration and 
+	bettering my personal practices. It's the role beyond I aspire to. It's not this opportunity now.
+	In any case, I mustn't attach to the idea of it. Nothing is guaranteed. I am, though, grateful for what I have now.
+	I have a sink basically a meter away from me. I think I want to "relax," whatever that would entail. Good night.
 	`
 	,
 

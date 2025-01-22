@@ -346,6 +346,14 @@ button {
 	#camberden {
 		font-size: 3rem;
 	}
+	#signature {
+		position: absolute;
+		width: 5rem;
+		min-height: 4rem;
+		user-select: none;
+		animation: none;
+
+	}
 	.eremoran-kiptascript {
 		font-family: eremoran-kiptascript;
 		font-size: 3rem;

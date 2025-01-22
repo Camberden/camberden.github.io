@@ -87,21 +87,15 @@ input[type=text]:focus {
 	min-width: 20rem;
 	min-height: 20rem;
 	padding: 2rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
-	background: rgba(144, 229, 238, 0.1)
-}
 
-#dashboard-life-in-weeks {
-	flex: 0.5;
-}
-
-#dashboard-pension-calculator {
-	flex: 4;
 }
 
 #dashboard-refdocs {
 	flex: 0.1;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: center;
 }
 
 /* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
@@ -176,7 +170,6 @@ input[type=text]:focus {
 
 /* ----- STEP PAY PLAN SPECIFIC ----- */
 
-
 /* maybe this is responsible for bad sizing */
 table, th, td {
 	border: 1px solid var(--clr-quinary-body);
@@ -248,8 +241,7 @@ table, th, td {
 }
 
 .planned-or-completed {
-	color: var(--clr-quaternary);
-	background-color: var(--clr-tertiary);
+	color: var(--clr-tertiary);
 }
 
 .taken {
@@ -336,46 +328,6 @@ table, th, td {
 
 .cpa-req-highlight{
 	color: red;
-}
-
-/* ----- LIFE IN WEEKS SPECIFIC ----- */
-
-.momentbox {
-	display: inline-block;
-	width: 2px;
-	height: 5px;
-	border-radius: 1px;
-	margin: 1px;
-	border: 1px solid #444;
-	color: rgba(0, 0, 0, 0);
-}
-
-.momentboxfilled {
-	  background-color: #444;
-}
-
-.momentboxfilled:hover {
-	background: linear-gradient(#f59b60 20%, #a1dbf8 100%);
-	background-size: contain;
-}
-
-.moment {
-	border: 2px solid red;
-	opacity: 1;
-	margin: 0px;
-}
-
-/* ----- PENSION CALCULATOR SPECIFIC ----- */
-
-
-.pension-grid {
-	display: grid;
-	gap: 1.5rem;
-	grid-template-columns: repeat(3, 30%);
-}
-
-#pension-table {
-	margin-inline: auto;
 }
 
 /* ----- REFERENCE DOCUMENTS SPECIFIC ----- */
