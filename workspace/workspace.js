@@ -1197,6 +1197,7 @@ function populateCells() {
 const accountPrompter = document.getElementById("t-card-grid");
 const generateTAccountButton = document.getElementById("generate-t-account");
 let accountName = document.getElementById("account-name");
+let tCardCount = document.querySelectorAll("t-card");length;
 
 generateTAccountButton.onclick = function() {
 	generateTAccount(accountName.innerHTML);
@@ -1230,10 +1231,10 @@ function generateTAccount(account){
 		inp2.setAttribute("type", "text");
 		inp3.setAttribute("type", "text");
 		inp4.setAttribute("type", "text");
-		inp1.setAttribute("style", "width:3rem;");
-		inp2.setAttribute("style", "width:3rem;");
-		inp3.setAttribute("style", "width:3rem;");
-		inp4.setAttribute("style", "width:3rem;");
+		inp1.setAttribute("style", "width:4rem;");
+		inp2.setAttribute("style", "width:4rem;");
+		inp3.setAttribute("style", "width:4rem;");
+		inp4.setAttribute("style", "width:4rem;");
 		td1.appendChild(inp1);
 		td2.appendChild(inp2);
 		td3.appendChild(inp3);
@@ -1244,10 +1245,13 @@ function generateTAccount(account){
 		tr.appendChild(td4);
 		table.appendChild(tr);
 	}
+	
+	table.appendChild(tr);
 	div.appendChild(table);
 	accountPrompter.appendChild(div);
 }
 
+// ----- NEXT TRY WKND
 
 let accountTitle = document.getElementById("account-title-template").textContent;
 console.log(accountTitle);

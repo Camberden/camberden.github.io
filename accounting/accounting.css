@@ -33,6 +33,7 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: start;
+	grid-template-columns: repeat(3, 33%);
 	/* border: 0.1rem solid var(--clr-tertiary); */
 	border-radius: 1rem;
 	gap: 1rem;
@@ -54,9 +55,25 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
+#t-account-prompter {
+	flex: 1 1 100%; 
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: center;
+	min-width: 20rem;
+	min-height: 5rem;
+	padding: 2rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	background: rgba(144, 229, 238, 0.1);
+}
+
 #accounting-notes-item {
 	padding: 0%;
-	flex: 1 1 20%;
+	flex: 1 1 100%;
 	flex-wrap: wrap;
 	flex-direction: column;
 }
@@ -77,4 +94,37 @@
 
 #accounting-formulas-item {
 	flex: 1 1 20%;
+}
+
+
+/* ----- T-ACCOUNT SPECIFIC ----- */
+
+#t-card-grid {
+	display: grid;
+	gap: 0.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+
+	margin-inline: auto;
+	max-height: min-content;
+}
+
+.t-card > table {
+	border-style: none;
+}
+.t-card > table > tr > th {
+	padding: 0rem;
+	border-style: none;
+	border-color: var(--clr-secondary);
+}
+.t-card > table > tr > td {
+	padding: 0rem;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
+	border-right: none;
+}
+
+input[type="text"] {
+	background: var(--clr-grid-box);
+	color: var(--clr-primary);
 }
