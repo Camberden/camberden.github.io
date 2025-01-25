@@ -1248,3 +1248,84 @@ function generateTAccount(account){
 	accountPrompter.appendChild(div);
 }
 
+
+let accountTitle = document.getElementById("account-title-template").textContent;
+console.log(accountTitle);
+let accountTitles = document.querySelectorAll(".account-title").length;
+/**
+ * 
+ * @param {string} account 
+ * @description Uses span id="account-title-${account}".
+ */
+function calculateTAccountValues(account){
+
+	const debitsDisplay = document.getElementById(`t-card-debits-solution-0`);
+	const creditsDisplay = document.getElementById(`t-card-credits-solution-0`);
+
+	const rowCount = document.querySelectorAll(`.t-account-row-${account}`);
+	console.log(rowCount.length);
+
+	let total = 0;
+	for (let i = 0; i < rowCount.length; i++) {
+		let debits = document.getElementById(`debits-${account}-${i}`).innerHTML;
+		let credits = document.getElementById(`credits-${account}-${i}`).innerHTML;
+		console.log(debits);
+		total += parseInt(debits) - parseInt(credits);
+		console.log(total);
+	}
+	if (total < 0) {
+		debitsDisplay.innerHTML = 0;
+		creditsDisplay.innerHTML = total;
+	} else if (total >= 0) {
+		debitsDisplay.innerHTML = total;
+		creditsDisplay.innerHTML = 0;
+	}
+
+}
+
+calculateTAccountValues(accountTitle);
+
+/**
+ * 
+ * @param {string} account 
+ * @param {number} number 
+ * @description Takes an input title of account and uses next value beyond total t-account count.
+ */
+function generateNewTAccount(account, number) {
+
+}
+
+
+function enableTAccountFields() {
+	document.querySelectorAll(".value-edit").forEach(field => {
+		field.onclick = function() {
+			field.classList.add("highlight");
+			tAccountValueEditor(field, field.id);
+		}
+		// field.onchange = function() {
+		// 	calculateTAccountValues(accountTitle);
+		// }
+	});
+}
+enableTAccountFields();
+
+let tAccountEditing = false;
+let tAccountEditedValue = 0;
+function tAccountValueEditor(accountValueElement, accountValueId) {
+	if (!tAccountEditing) {
+		tAccountEditing = true;
+		const editorForm = document.createElement("form");
+		editorForm.setAttribute("action", "#");
+		// editorForm.setAttribute("onsubmit", "handle");
+		const editorInput = document.createElement("input");
+		editorInput.setAttribute("type", "text");
+		editorInput.setAttribute("placeholder", "Edit value!");
+		// editorInput.setAttribute("onkeypress", "handle(event)");
+		editorInput.setAttribute("onsubmit", "updatePaycard(budgetItemId)");
+		editorInput.setAttribute("id", "t-account-editor");
+		editorForm.appendChild(editorInput);
+		// let accountValueElement = document.getElementById(budgetItemId);
+		accountValueElement.appendChild(editorForm);
+		accountValueElement.value = editor;
+	}
+}

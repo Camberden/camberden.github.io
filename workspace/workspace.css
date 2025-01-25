@@ -261,3 +261,52 @@ td {
 	border-left: none;
 	border-right: none;
 }
+
+.t-card-grid {
+	display: grid;
+	gap: 0.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(4, 25%); /* repeat(4, 25%) */
+
+	width: min(95%, 80rem);
+	margin-inline: auto;
+	max-height: min-content;
+}
+
+.t-card-debits-info {
+	display: inline-flex;
+	flex-direction: row;
+	
+}
+
+.t-card-debits {
+	display: inline-flex;
+	flex-direction: row;
+	/* align-items: flex-start;
+    justify-content: flex-start; */
+	border-right: 0.1rem;
+	border-left: 0rem;
+	border-top: 0rem;
+	border-bottom: 0rem;
+	border-style: solid;
+	border-color: white;
+	background: var(--clr-grid-box);
+	
+}
+
+.t-card-credits {
+	display: inline-flex;
+	flex-direction: row;
+	background: var(--clr-grid-box);
+	border-right: 0rem;
+	border-left: 0.1rem;
+	border-top: 0rem;
+	border-bottom: 0rem;
+	border-style: solid;
+	border-color: white;
+}
+
+.t-card-debits-info {
+	display: inline-flex;
+	flex-direction: row;
+}
+
