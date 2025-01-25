@@ -81,6 +81,11 @@
 	width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.secondary-highlight {
+	color: var(--clr-secondary);
+	cursor: pointer;
+}
+
 /* ---------- LIFECRAFT FIELD VALUES ---------- */
 
 .calendar-month {

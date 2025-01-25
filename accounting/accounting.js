@@ -289,12 +289,31 @@ function generateTAccount(account){
 	for (let i = 0; i < 6; i++) {
 		if (i === 0){
 			let tr = document.createElement("tr");
-			let th = document.createElement("th");
+			let th1 = document.createElement("th");
+			let th2 = document.createElement("th");
+			let th3 = document.createElement("th");
+			let th4 = document.createElement("th");
+			let text1 = document.createTextNode("ref#");
+			let text2 = document.createTextNode("dr.");
+			let text3 = document.createTextNode("cr.");
+			let text4 = document.createTextNode("ref#");
+
+			let hr = document.createElement("hr");
+			let span = document.createElement("span");
 			let text = document.createTextNode(account);
-			th.appendChild(text);
-			tr.appendChild(th);
+			span.appendChild(text);
+			th1.appendChild(text1);
+			th2.appendChild(text2);
+			th3.appendChild(text3);
+			th4.appendChild(text4);
+			tr.appendChild(th1);
+			tr.appendChild(th2);
+			tr.appendChild(th3);
+			tr.appendChild(th4);
 			table.appendChild(tr);
-			// table.appendChild(hr);
+			div.appendChild(span);
+			div.appendChild(hr);
+
 		} else {
 		let tr = document.createElement("tr");
 		let td1 = document.createElement("td");
@@ -347,6 +366,7 @@ function generateTAccount(account){
 	tr.appendChild(td4);
 	table.appendChild(tr);
 	div.appendChild(table);
+	div.setAttribute("style", "text-align: left;");
 	tCardGrid.appendChild(div);
 	enableTCardCalculator();
 }

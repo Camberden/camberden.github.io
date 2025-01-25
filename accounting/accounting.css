@@ -101,20 +101,25 @@
 
 #t-card-grid {
 	display: grid;
-	gap: 0.5rem; /* for vertical and horizontal spacing */
+	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
 
-	margin-inline: auto;
+	/* margin-inline: auto; */
 	max-height: min-content;
 }
 
+.t-card {
+	padding: 2rem;
+}
+
 .t-card > table {
-	border-style: none;
+	border-width: 0rem;
 }
 .t-card > table > tr > th {
 	padding: 0rem;
 	border-style: none;
 	border-color: var(--clr-secondary);
+	text-overflow: clip;
 }
 .t-card > table > tr > td {
 	padding: 0rem;
@@ -125,6 +130,7 @@
 }
 
 input[type="text"] {
+	border-width: 0rem;
 	background: var(--clr-grid-box);
 	color: var(--clr-primary);
 }

@@ -7,17 +7,36 @@ const closeModal = document.getElementsByClassName("close-modal")[0];
 
 
 function enableModal() {
+
 	document.querySelectorAll(".modal-prompt").forEach(prompt => {
+
+		prompt.onmouseenter = function() {
+			prompt.classList.add("secondary-highlight");
+		}
+		prompt.onmouseleave = function() {
+			prompt.classList.remove("secondary-highlight");
+		}
+
 		prompt.onclick = function () {
-			modal.style.display = "block";
+			switch (prompt.innerHTML) {
+				case "Life Maintenance":
+				generateMaintenanceList();
+				modal.style.display = "block";
+				break;
+				default:
+					console.log("hi");
+				break;
+			}
 			console.log("hi");
 		};
 		closeModal.onclick = function () {
+			clearModal();
 			modal.style.display = "none";
 		};
 		window.onclick = function (event) {
 			if (event.target === modal) {
 				modal.style.display = "none";
+				clearModal();
 			}
 		};
 	})
@@ -27,6 +46,11 @@ enableModal();
 function clearLifecraftField() {
 	lifecraftField.innerHTML = "";
 	console.log("Lifecraft Field Cleared!");
+}
+
+function clearModal() {
+	document.getElementById("modal-text").innerHTML = "";
+	console.log("Modal Cleared!");
 }
 
 /**
@@ -163,3 +187,44 @@ function enableLifecraftButtons() {
 enableLifecraftButtons();
 
 // TODO: Function to Populate Events by Year; link to blogData
+
+const maintenancePoints = [
+	"Car: Tires",
+	"Car: Wipers",
+	"Car: Engine",
+	"Car: Routine Maintenance",
+	"Car: Registration [October 20XX]",
+	"Place: Paper Towels",
+	"Place: Toilet Tissue",
+	"Place: Shampoo & Conditioner",
+	"Place: Toothpaste & Toothbrushes",
+	"Place: Hand Soap",
+	"Place: Dishwasher Soap",
+	"Place: Sponges",
+	"Place: Razors and Blades",
+	"Place: Deodorant and Cologne",
+	"Place: Printer Ink & Paper",
+	"Place: Incense",
+	"Education: SP Term [December 20XX]",
+	"Education: FA Term [July 20XX]",
+	"Education: SU Term [April 20XX]",
+	"Transponder: Fee [August 29th 20XX]",
+	"SFD: [January 2026]",
+	"SFC: [May 2026]",
+	"SWC: [___ ___]",
+	"AZC: [___ ___]",
+	"Benefits: Enroll [October 20XX]",
+
+
+]
+
+function generateMaintenanceList() {
+	const ul = document.createElement("ul");
+	for (const point of maintenancePoints) {
+		const li = document.createElement("li");
+		const text = document.createTextNode(point);
+		li.appendChild(text);
+		ul.appendChild(li);
+	}
+	document.getElementById("modal-text").appendChild(ul);
+}
