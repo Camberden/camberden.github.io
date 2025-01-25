@@ -262,6 +262,7 @@ initQuizButtons();
 const tCardGrid = document.getElementById("t-card-grid");
 const generateTAccountButton = document.getElementById("generate-t-account-button");
 let accountName = document.getElementById("account-name");
+let accounts = [];
 
 const tCardForm = document.getElementById("t-card-form");
 function handleForm(event) {
@@ -271,20 +272,21 @@ tCardForm.addEventListener("submit", handleForm);
 
 generateTAccountButton.onclick = function() {
 	let account = accountName.value;
+	if (!accounts.includes(account)) {
 	console.log(account);
 	generateTAccount(account);
 	accountName.innerHTML = "";
+	}
 }
 
-
 function generateTAccount(account){
+	accounts.push(account);
 	const div = document.createElement("div");
 	div.setAttribute("class", "t-card");
 	const table = document.createElement("table");
 	table.setAttribute("id", `${account}-table`);
 
 	for (let i = 0; i < 6; i++) {
-		let hr = document.createElement("hr");
 		if (i === 0){
 			let tr = document.createElement("tr");
 			let th = document.createElement("th");
@@ -292,8 +294,8 @@ function generateTAccount(account){
 			th.appendChild(text);
 			tr.appendChild(th);
 			table.appendChild(tr);
-			table.appendChild(hr);
-		}
+			// table.appendChild(hr);
+		} else {
 		let tr = document.createElement("tr");
 		let td1 = document.createElement("td");
 		let td2 = document.createElement("td");
@@ -304,10 +306,14 @@ function generateTAccount(account){
 		let inp3 = document.createElement("input");
 		let inp4 = document.createElement("input");
 		inp1.setAttribute("type", "text");
-		inp2.setAttribute("id", `${account}-debits-${i}`);
 		inp2.setAttribute("type", "text");
-		inp3.setAttribute("id", `${account}-credits-${i}`);
+		inp2.setAttribute("id", `${account}-debits-${i}`);
+		inp2.setAttribute("class", "t-value");
+		inp2.setAttribute("value", 0);
 		inp3.setAttribute("type", "text");
+		inp3.setAttribute("id", `${account}-credits-${i}`);
+		inp3.setAttribute("class", "t-value");
+		inp3.setAttribute("value", 0);
 		inp4.setAttribute("type", "text");
 		inp1.setAttribute("style", "width:3rem;");
 		inp2.setAttribute("style", "width:4rem;");
@@ -322,6 +328,7 @@ function generateTAccount(account){
 		tr.appendChild(td3);
 		tr.appendChild(td4);
 		table.appendChild(tr);
+		}
 	}
 	const tr = document.createElement("tr");
 	const td1 = document.createElement("td");
@@ -341,20 +348,37 @@ function generateTAccount(account){
 	table.appendChild(tr);
 	div.appendChild(table);
 	tCardGrid.appendChild(div);
+	enableTCardCalculator();
+}
+
+function enableTCardCalculator(){
+	document.querySelectorAll(".t-value").forEach(val => {
+		let tId = val.id.toString();
+		tId = tId.substring(0, tId.indexOf("-"));
+		val.onchange = function(){
+			calculateTCardTotals(tId);
+			console.log("hitting change");
+		}
+		val.onsubmit = function(){
+			calculateTCardTotals(tId);
+		}
+	})
 }
 
 function calculateTCardTotals(account){
 	const tableRowCount = document.getElementById(`${account}-table`).children.length;
-	const accountDebitsTotal = document.getElementById(`${account.id}-debits-total`);
-	const accountCreditsTotal = document.getElementById(`${account.id}-credits-total`);
+	const accountDebitsTotal = document.getElementById(`${account}-debits-total`);
+	const accountCreditsTotal = document.getElementById(`${account}-credits-total`);
 	let total = 0;
-	for (let i = 1; i < tableRowCount; i++) {
-		let debits = document.getElementById(`${account}-debits-${i}`).innerHTML;
-		let credits = document.getElementById(`${account}-credits-${i}`).innerHTML;
+	for (let i = 1; i < tableRowCount - 1; i++) {
+		let debits = document.getElementById(`${account}-debits-${i}`).value;
+		let credits = document.getElementById(`${account}-credits-${i}`).value;
 		debits = parseFloat(debits).toFixed(2);
 		credits = parseFloat(credits).toFixed(2);
-		total += (debits + credits);
+		total += parseFloat(debits) - parseFloat(credits);
+		console.log("calculating" + total);
 	}
+	console.log(accountDebitsTotal);
 	if (total >= 0) {
 		accountDebitsTotal.innerHTML = total;
 		accountCreditsTotal.innerHTML = 0;
