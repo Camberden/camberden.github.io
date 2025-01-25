@@ -2,6 +2,28 @@ window.onload = () => console.log("Running!");
 
 const lifecraftField = document.getElementById("lifecraft-field");
 const currentDateField = document.getElementById("current-date-field");
+const modal = document.querySelector(".modal");
+const closeModal = document.getElementsByClassName("close-modal")[0];
+
+
+function enableModal() {
+	document.querySelectorAll(".modal-prompt").forEach(prompt => {
+		prompt.onclick = function () {
+			modal.style.display = "block";
+			console.log("hi");
+		};
+		closeModal.onclick = function () {
+			modal.style.display = "none";
+		};
+		window.onclick = function (event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+			}
+		};
+	})
+}
+enableModal();
+
 function clearLifecraftField() {
 	lifecraftField.innerHTML = "";
 	console.log("Lifecraft Field Cleared!");
