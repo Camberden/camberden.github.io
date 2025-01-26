@@ -12,7 +12,7 @@ let currentMap = "world-map";
 
 const visitedCountries = ["US", "BZ", "GT"];
 const countriesToVisit = ["JP", "NZ", "CA", "GB", "DE", "MU", "PL", "TH", "IN", "CO", "PY", "AR", "UY"];
-const countriesToConsiderRetirement = ["US", "CO", "PY", "JP"];
+const countriesToConsiderRetirement = ["US", "CO", "PY", "UY", "JP"];
 const statesToConsiderRetirement = ["US-NC", "US-PA"];
 const visitedStates = ["US-PA", "US-NJ", "US-NY", "US-MD", "US-DE", "US-VA", "US-WV", "US-TN", "US-NC", "US-SC", "US-GA", "US-IL", "US-CO", "US-NV"];
 const statesToVisit = ["US-CA", "US-ND", "US-AK", "US-VT"];
@@ -34,6 +34,12 @@ function enableMapSelectionButtons() {
 	mapDisplayButtons.forEach(button => {
 		button.onclick = function () {
 			loadInteractiveMaps(button.value);
+		}
+		button.onmouseenter = function () {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function () {
+			ButtonInterface.buttonOnMouseLeave(button);
 		}
 	});
 }
@@ -111,42 +117,13 @@ function enableMapHighlightButtons () {
 		button.onclick = function () {
 			loadMapHighlight(button.value);
 		}
-	});
-}
-enableMapHighlightButtons();
-
-// TODO: Travel Buttons
-function enableButtonStyles() {
-	document.querySelectorAll("button").forEach(button => {
-		button.onclick = () => {
-			ButtonInterface.buttonOnClick(button);
-		switch (button.value) {
-			case ("increase-custody-level"):
-				increaseCustodyLevel();
-				break;
-			case ("decrease-custody-level"):
-				decreaseCustodyLevel();
-				break;
-			case ("increase-years-experience"):
-				increaseYearsExperience();
-				break;
-			case ("decrease-years-experience"):
-				decreaseYearsExperience();
-				break;
-			case ("toggle-experience-bonus"):
-				toggleExperienceBonus();
-				break;
-			default:
-				console.log("Hi");
-				break;
-			};
-		};
-
-		button.onmouseenter = () => {
+		button.onmouseenter = function () {
 			ButtonInterface.buttonOnMouseEnter(button);
 		}
-		button.onmouseleave = () => {
+		button.onmouseleave = function () {
 			ButtonInterface.buttonOnMouseLeave(button);
 		}
 	});
+
 }
+enableMapHighlightButtons();

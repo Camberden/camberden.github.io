@@ -95,13 +95,13 @@ The order of steps in creating financial statements. It's a cycle because it's a
 
 (10). Reverse and Post (Optional)
 
-<mark class="formula"> profitMargin = netIncome / netSales</mark>
+<mark class="formula">Profit Margin = netIncome / netSales</mark>
 
 18000 / 90000 previous year 20%
 
 20000 / 100000 current year: 20%
 
-<mark class="formula">currentRatio = currentAssets / currentLiabilities;</mark>
+<mark class="formula">Current Ratio = currentAssets / currentLiabilities;</mark>
 
 A currentRatio of < .1 = doubt on paying back debt!
 
@@ -780,9 +780,8 @@ Depreciation per unit is reported and the cost of producing each unit is multipl
 30000 / 60000 = .5 per unit
 23000units in 2022 = 11500
 
-<mark class="formula">Declining Balance Method = Straight-Line Method * 2 = Double-Declining Balance Rate</mark>
+<mark class="formula">Double-Declining Rate = Straight-Line Method * 2</mark>
 It's an Accelerated Depreciation Method.
-
 
 <mark class="formula">Depreciation Expense = Double-Declining Rate * Beginning-Period Book Value</mark>
 
@@ -1893,11 +1892,11 @@ Payback Period Method
 - shorter payback periods are preferred to increase return and reduce risk
 - shouldn't be the only consideration: ignores the time-value of money, ignores cash flows after payback period, may have no cash inflow after period
 
-<mark>Accounting Rate of Return = Annual Income / Average Investment</mark>
+<mark class="formula">Accounting Rate of Return = Annual Income / Average Investment</mark>
 
-<mark>Average Investment = Initial Investment + Salvage Value / 2</mark>
+<mark class="formula">Average Investment = Initial Investment + Salvage Value / 2</mark>
 
-<mark>Payback Period = Initial Investment / Annual Net Cash Flow</mark>
+<mark class="formula">Payback Period = Initial Investment / Annual Net Cash Flow</mark>
 
 Accounting Rate of Return Method:
 - simple computation
@@ -1906,7 +1905,7 @@ ignores time-value of money, does not directly consider cash flows and their tim
 
 Net Present Value Analysis
 - maps time-value of money to future cash inflows and cash outflows
-<mark>NPV = Discounted Future Net Cash Flows - Initial Amount Invested (NPV > 0 ? Invest : Do Not Invest)</mark>
+<mark class="formula">NPV = Discounted Future Net Cash Flows - Initial Amount Invested (NPV > 0 ? Invest : Do Not Invest)</mark>
 
 Required Rate of Return (Hurdle Rate): typically its cost of capital which must be paid.
 
@@ -1914,7 +1913,7 @@ Salvage Value: an additional cash inflow to expect
 
 Profitability Index: used to compare investment projects
 
-<mark> Profitability Index = Present Value of Net Cash Flows / Initial Investment</mark>
+<mark class="formula">Profitability Index = Present Value of Net Cash Flows / Initial Investment</mark>
 
 - use when amounts invested differ substantially
 - higher profitability index suggests a more desirable project

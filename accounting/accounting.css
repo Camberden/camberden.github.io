@@ -73,7 +73,7 @@
 
 #accounting-notes-item {
 	padding: 0%;
-	flex: 1 1 100%;
+	flex: 2;
 	flex-wrap: wrap;
 	flex-direction: column;
 }
@@ -93,7 +93,7 @@
 }
 
 #accounting-formulas-item {
-	flex: 1 1 20%;
+	flex: 1;
 }
 
 
@@ -107,11 +107,9 @@
 	/* margin-inline: auto; */
 	max-height: min-content;
 }
-
 .t-card {
 	padding: 2rem;
 }
-
 .t-card > table {
 	border-width: 0rem;
 }

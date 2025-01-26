@@ -81,6 +81,10 @@
 	width: 80%; /* Could be more or less, depending on screen size */
 }
 
+.modal-text > ul > li {
+	list-style-type: none;
+}
+
 .secondary-highlight {
 	color: var(--clr-secondary);
 	cursor: pointer;

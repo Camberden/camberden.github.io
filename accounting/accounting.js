@@ -407,3 +407,28 @@ function calculateTCardTotals(account){
 		accountCreditsTotal.innerHTML = total;
 	}
 }
+
+// ---------- FORMULA AUTO-INPUTS  ---------- //
+
+
+function enableFormulaSelect() {
+const formulaSelect = document.getElementById("formula-select");
+let c = 0;
+formulas.forEach(formula => {
+	const option = document.createElement("option");
+	option.setAttribute("value", c);
+	let text = document.createTextNode(formula.substring(formula.indexOf(">") + 1, formula.lastIndexOf("=")));
+	option.appendChild(text);
+	formulaSelect.appendChild(option);
+	c++;
+
+});
+
+formulaSelect.onchange = function(){
+	console.log("hello from option");
+	document.getElementById("formula-select-display").innerHTML = "";
+	document.getElementById("formula-select-display").innerHTML = formulas[formulaSelect.value];
+}
+
+}
+enableFormulaSelect();

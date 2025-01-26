@@ -233,6 +233,7 @@ a:hover {
 	flex-wrap: wrap;
 	align-items: center;
 	/* border: 0.1rem solid var(--clr-tertiary); */
+	/* grid-template-columns: repeat(3, 33%); */
 	border-radius: 1rem;
 	gap: 1rem;
 }
@@ -315,7 +316,7 @@ button {
 
 .button-depressed {
 
-	color:var(--clr-secondary);
+	color: var(--clr-secondary);
 	background: var(--clr-quaternary-body);
 	border-top-width: 0.3rem;
 	border-top-color: grey;

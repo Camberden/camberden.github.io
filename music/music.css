@@ -81,32 +81,29 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: center;
-	/* border: 0.1rem solid var(--clr-tertiary); */
+	grid-template-columns: repeat(4, 25%);
 	border-radius: 1rem;
 	gap: 1rem;
 }
 
-.grid-col-span-2 {
-	grid-column: span 2;
-}
-
-.grid-col-span-3 {
-	grid-column: span 3;
-	box-shadow: none;
-}
-
-.grid-col-span-3 {
-	grid-column: span 3;
-}
-
 .music-item {
+	flex: 1;
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
+}
 
+.music-item-main {
+	flex: 2;
+	padding: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	background: rgba(144, 229, 238, 0.1);
 }
 
 .sub-music-grid {
@@ -119,9 +116,14 @@
 
 .sub-music-item {
 	place-self: center;
+	display: contents;
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
+}
+
+.grid-col-span-2 {
+	grid-column: 2;
 }
 
 #photo-box > img {
