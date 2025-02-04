@@ -1,4 +1,4 @@
-.jlpt-grid {
+.language-grid {
 	display: grid;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(4, 20%);
@@ -23,7 +23,7 @@
 	margin-inline: auto;
 }
 
-.jlpt-item {
+.language-item {
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-width: 0.3rem;
