@@ -346,6 +346,30 @@ enableCpaProjection();
 
 // ---------- REFERENCE DOCUMENTS ---------- //
 
+// TODO
+
+const seasonTunes = [
+	"January 2025: Nobonoko - Cat Comet",
+	"February 2025: Napcast - People Places",
+	"December 2024: Pet Shop Boys - Suburbia",
+];
+const seasonTunesList = document.getElementById("season-tunes-list");
+// Generates Any Reference Document if Present in Assets
+for (const tune of seasonTunes) {
+	const li = document.createElement("li");
+	const a = document.createElement("a");
+	const text = document.createTextNode(tune);
+	a.classList.add("marker");
+	a.appendChild(text);
+	// a.setAttribute("href", doc);
+	// a.setAttribute("target", "_blank");
+	li.appendChild(a);
+	seasonTunesList.appendChild(li);
+};
+
+
+// ---------- REFERENCE DOCUMENTS ---------- //
+
 const refdocs = [
 	"../assets/refdoc-acc220-schedule.pdf",
 	"../assets/refdoc-acc220-syllabus.pdf",
