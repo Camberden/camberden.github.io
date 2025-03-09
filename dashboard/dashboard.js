@@ -11,14 +11,13 @@ startbalanceupdate.onkeydown = function () {
 		calculateNewBalance();
 };
 
-const car = 0.00;
+const car = 1300.00;
 const nav = 222.07;
 const sal = 884.15;
 const ren = 200.00;
-const hrt = 0.00;
 const rti = 0.00;
-const ins = 70.81;
-const loa = 300.00;
+const ins = 200.00;
+const loa = 0.00;
 const wat = 15.00;
 const ele = 70.27;
 const int = 71.99;
@@ -31,9 +30,9 @@ function updateInp() {
 }
 
 // ADD NEW VARIABLES TO all
-const all = [car, nav, sal, ren, hrt, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
+const all = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
 // ADD NEW VARIABLES TO expenseNames
-const expenseNames = Array.from("car nav sal ren hrt rti ins loa wat ele int mus don gym inp".split(" "));
+const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym inp".split(" "));
 const allElem = expenseNames
 	.map(str => document.getElementById(str + "-cost"));
 // check box element list
@@ -349,9 +348,11 @@ enableCpaProjection();
 // TODO
 
 const seasonTunes = [
+	"July 2022: Orbital - Somewhere Out There, Part 2",
+	"September 2023: Orbital - Nowhere",
+	"December 2024: Pet Shop Boys - Suburbia",
 	"January 2025: Nobonoko - Cat Comet",
 	"February 2025: Napcast - People Places",
-	"December 2024: Pet Shop Boys - Suburbia",
 ];
 const seasonTunesList = document.getElementById("season-tunes-list");
 // Generates Any Reference Document if Present in Assets

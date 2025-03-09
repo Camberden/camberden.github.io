@@ -20,9 +20,13 @@ function enableModal() {
 		prompt.onclick = function () {
 			switch (prompt.innerHTML) {
 				case "Life Maintenance":
-				generateMaintenanceList();
-				modal.style.display = "block";
+					generateMaintenanceList();
+					modal.style.display = "block";
 				break;
+				case "Wish List":
+					generateWishList();
+					modal.style.display = "block";
+					break;
 				default:
 					console.log("hi");
 				break;
@@ -223,6 +227,42 @@ function generateMaintenanceList() {
 	for (const point of maintenancePoints) {
 		const li = document.createElement("li");
 		const text = document.createTextNode(point);
+		li.appendChild(text);
+		ul.appendChild(li);
+	}
+	document.getElementById("modal-text").appendChild(ul);
+}
+
+const wishList = [
+	"Journal Binders",
+	"Magic Mouse",
+	"FMAA Exam Course",
+	"Specialty Display",
+	"Specialized Bicycle",
+	"Honda ADV160/NAVI/NC750X DCT",
+	"Computer Monitor",
+	"Moog 3-Tier Synth with Case",
+	"Ten-Keyed Mechanical Keyboard",
+	"Windows Laptop",
+	"Tablet",
+	"CPA Exam Course",
+	"Raspberry Pi Server",
+	"New Suit",
+	"Smartphone Printer",
+	"New Gym Clothes",
+	"Casual Boots (Garmont, Timberland)",
+	"DeleteMe Service",
+	"Laracasts Lifetime Membership",
+	"Expose PHP Package",
+	"Table Plus",
+	"MAMP Pro 7 Mac",
+]
+
+function generateWishList() {
+	const ul = document.createElement("ul");
+	for (const wish of wishList) {
+		const li = document.createElement("li");
+		const text = document.createTextNode(wish);
 		li.appendChild(text);
 		ul.appendChild(li);
 	}
