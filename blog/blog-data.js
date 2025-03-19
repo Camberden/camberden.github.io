@@ -529,11 +529,29 @@ const blogData = [
 	and my forthcoming trip to Japan. I am finding it beyond difficult to focus on straight-up learning new content here
 	on my laptop at this seaside Starbucks. I am committing to enjoy the remainder of my time after this entry, and to head 
 	home early. I will surely find sufficient time upon arrival home to hunker down before pre-work dormition. This is 
-	an brief trip, not a consistent lifestyle. I shouldn't squander it in front of a screen. By gosh I shall recline on this 
+	a brief trip, not a consistent lifestyle. I shouldn't squander it in front of a screen. By gosh I shall recline on this 
 	beach and get to some writing and reading. I might forego a swim given it's a bit cold. 
 	Anyway, I think I'll head out in just a second. Focused learning and solving complex problems due in a few days just isn't
 	happening right now. This is a place for lighter learning and studying, like language and front-end dev.
 	More interactive stuffs, I suppose. I'm taking my leave now.
+	`
+	,
+	`
+	| March 18th, 2025…
+	| Pittsboro, NC
+	| 2347 HRS
+	| &emsp;
+	Heading onward through March. I'm a bit dishearted to learn the return flight hadn't happened, but I can accept
+	this reality and put it behind me. Tonight is my first day off in five days and I told myself to simply unwind.
+	I suppose I'm doing just that. I've been talking to some new folks and it's been pleasant, though I can't help
+	but notice the expected feeling shortly after a few conversations: the emptiness and the risk
+	of further social obligation and burden. Heck.
+	<hr>
+	I admit, I don't feel quite up to studies of any sort. I am just drained. I need to study quite a bit for the
+	second test this semester. I will. It doesn't need to be today. I am calm and competent.
+	<hr>
+	I reiterated in a conversation my assertion that work and career should be in service to achieving and supporting
+	a daily lifestyle that affords peace of mind and measurable progress. I made the right choice in <b-title>buying my bicycle</b-title>.
 	`
 	,
 
