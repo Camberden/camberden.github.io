@@ -584,5 +584,46 @@ const blogData = [
 	prospective pay scale for work. Woo.
 	`
 	,
-
+	`
+	| April 20th, 2025…
+	| Pittsboro, NC
+	| 2157 HRS	
+	| &emsp;
+	Often times I wonder if it is sensible for someone like myself to be investing much time into technology endeavors.
+	Technology is advancing to the point that many are living in a hyper-reality where real-world experiences lose or have
+	lost their lustre. This is inline with sociological work pre-dating social media that predicted decline in appreciation
+	for the real-world. Baudrillard is a name that comes up. I recently watched videos of those who established simple lives
+	for themselves in places like rural Paraguay and Japan who seem to have brought about a genuine contentment in living and
+	wholehearted appreciation for the simplest of things, like "playing with rice." I ponder then, what do people really want,
+	and what do I really want?
+	<hr>
+	The taste of low-hanging fruit is becoming blander and blander. Pursuits lead to more plateaus which lead to more pursuits
+	which lead to more plateaus. Climbing up this figurative tree that bears such fruit and siting atop a higher branch, the taste
+	of the fruit there is hardly sweeter. Once I reach its top and consume its fruit, will I be amazed at its taste? Even if I would
+	be, shall it go bland like the fruit farther down? There is no peak-euphoria during which the end is met. The taste is impermanent.
+	Nonetheless, I'll keep climbing but maintain no expectations such that I may dispell the suffering of inconvenience and that maybe,
+	just maybe, I'll be pleasantly surprised at the taste of the higher fruit. The surprise in itself would testify to the beauty of
+	that moment, yes?
+	<hr>
+	I remain here in the United States, burdened by obligations I created for my present self while a past self. Upon clearing the 
+	obligations, say, no debts, no continual expenses, no burdensome social requirements, no child-rearing what is left to achieve?
+	What value does legacy, children, and asset-generation even mean to me if all manifests as empty plateaus or unsweetening fruit?
+	With so much achieved by society through governance and technology, it appears fair to return to a simpler mode of being unburdened
+	by what is and what will be; this relative peace affords an adequate space for introspective escape. I keep telling myself that I would
+	travel the world monthly and broaden my perspective on reality as it manifests in the present moment elsewhere. Right now, the sun is 
+	shining when I am not witnessing it. Right now, people, incarcerated and free, are toiling, celebrating, suffering, and sleeping.
+	Right now, there is wind blowing on Jupiter whose sound is unheard, turning a pebble through its flow whose form is unseen. Of course,
+	I will not witness that, yet, there is phenomenal activity, always. There is no need to witness directly phenomena through my lens,
+	though I sense that broadening my perspective may be useful to my understanding of reality. My humanity may grow tiresome of the 
+	compulsion to witness places and people physically. I predict becoming burnt out from travel, and again turning inwardly.
+	Dogen writes that there is no practice but the practice, and that its calling is the beckoning to return to one's true nature.
+	I find parallels in zazen in many phenomena: the passage of time, sickness, happiness, work, money, pain, society, water, trees, wind
+	etc. There is a stillness amid activity: a baseline to all phenomena from which they diverge. The divergence internally would 
+	constitute my form, feelings, perceptions, predilections, and consciousness. In dropping them in practice, I can experience reality
+	as it is, <b-title>unfettered</b-title>, in equanimous being, in solely being, and nothing more. Having tied in my questioning to my practice, I could 
+	foresee taking a leap, once obligations are clear, to a, shall I say, committed absenteeism from external affairs for life. 
+	I could consider it a goal, but it is no goal. At least, right now, I cannot foresee any long-term human endeavor for this skin-bag
+	being meaningful while tied to external affairs.
+	`
+	,
 ];
