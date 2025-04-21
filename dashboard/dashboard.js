@@ -353,6 +353,8 @@ const seasonTunes = [
 	"December 2024: Pet Shop Boys - Suburbia",
 	"January 2025: Nobonoko - Cat Comet",
 	"February 2025: Napcast - People Places",
+	"March 2025: Yu Takahashi - Ashita wa Kitto Ii Hi ni Naru",
+	"April 2025: Huwie Ishizaki - Peanuts Butter",
 ];
 const seasonTunesList = document.getElementById("season-tunes-list");
 // Generates Any Reference Document if Present in Assets
