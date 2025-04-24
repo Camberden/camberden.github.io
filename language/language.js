@@ -3,28 +3,30 @@ window.onload = () => console.log("Running!");
 /**
  * @param {string[]} vocabulary - contains 10 elements
  * @param {string[]} english - contains 10 elements
- * @param {string[]} sentences
+ * @param {string} grouping - topic
+ * @param {string} language - language selected
  */
 class StudyModule {
-	constructor(vocabulary, english, sentences) {
+	constructor(vocabulary, english, grouping, language) {
 		this.vocabulary = vocabulary;
 		this.english = english;
-		this.sentences = sentences;
+		this.grouping = grouping;
+		this.language = language;
 	}
 }
 
-// let demoModuleTen = [
-// 	"",
-// 	"",
-// 	"",
-// 	"",
-// 	"",
-// 	"",
-// 	"",
-// 	"",
-// 	"",
-// 	"",
-// ];
+const groupingField = document.getElementById("grouping-field");
+const vocabField = document.getElementById("vocab-field");
+const englishField = document.getElementById("english-field");
+const sentenceField = document.getElementById("sentence-field");
+const jishoField = document.getElementById("jisho-field");
+const jishoIFrame = document.getElementById("jisho-frame");
+
+let selectedItemNumber = 0;
+let activeModules = [];
+let selectedModule;
+
+const moduleButtons = document.querySelectorAll(".module-button");
 
 const testModuleVocabulary = [
 	"記載「きさい」する",
@@ -52,77 +54,73 @@ const testModuleEnglish = [
 	"nighttime",
 ];
 
-const testModuleSentences = [
-	"姿勢を正して、食卓の上にボウルを並べた。"
-];
-
 const studyModules = [
-	m1 = new StudyModule(testModuleVocabulary, testModuleEnglish, testModuleSentences),
+	jp1 = new StudyModule(testModuleVocabulary, testModuleEnglish, "demo-grouping", "jp"),
 ];
 
-const vocabField = document.getElementById("vocab-field");
-const englishField = document.getElementById("english-field");
-const sentenceField = document.getElementById("sentence-field");
-const jishoField = document.getElementById("jisho-field");
-const jishoIFrame = document.getElementById("jisho-frame");
-
-/**
- * @param {StudyModule} module 
- */
-const loadModule = function(module) {
-	module.vocabulary.forEach(word => {
-		let li = document.createElement("li");
-		let sup = document.createElement("sup");
-		let splitWord = word.match(/「(.*?)」/g);
-		let kanjiText = document.createTextNode(word.replaceAll(/「(.*?)」/g, ""));
-
-		splitWord.forEach(e => {
-			e = e.replace("「", "・");
-			e = e.replace("」", "");
-			let furiganaText = document.createTextNode(e);
-			sup.appendChild(furiganaText);
-			li.appendChild(sup);
-		});
-		li.appendChild(kanjiText);
-		vocabField.appendChild(li);
-	});
-
-	module.english.forEach(word => {
-		let li = document.createElement("li");
-		let text = document.createTextNode(word);
-		li.appendChild(text);
-		englishField.appendChild(li);
-	});
-
-	module.sentences.forEach(sentence => {
-		let li = document.createElement("li");
-		let text = document.createTextNode(sentence);
-		li.appendChild(text);
-		sentenceField.appendChild(li);
-	});
+function loadModuleItem(module, itemNumber) {
+	groupingField.textContent = module.grouping;
+	vocabField.textContent = module.vocabulary[itemNumber];
+	englishField.textContent = module.english[itemNumber];
 }
-loadModule(studyModules[0]);
 
-const parseFurigana = function () {
-	document.querySelectorAll("#vocab-field > li").forEach(e => {
-		e.onclick = function() {
-			// displaySuperScript(e.firstChild);
-			const text = e.lastChild.textContent;
-			navigator.clipboard.writeText(text);
-			// alert("Copied: " + text);
+function generateStudyModules(selectedLanguage) {
+
+	for (let studyModule of studyModules) {
+		if (studyModule.language === selectedLanguage) {
+			activeModules.push(studyModule);
 		}
-	});
+	}
+	selectedModule = activeModules[0];
+	loadModuleItem(selectedModule, selectedItemNumber);
 }
-parseFurigana();
+generateStudyModules("jp");
+
+function enableItemNavigationButtons(){
+	moduleButtons.forEach(button => {
+		button.onclick = function(){
+			ButtonInterface.buttonOnClick(button);
+			switch (button.value) {
+				case "next":
+					if (selectedItemNumber < selectedModule.vocabulary.length - 1) {
+						selectedItemNumber++;
+						loadModuleItem(selectedModule, selectedItemNumber);
+					}
+					break;
+				case "previous":
+					if (selectedItemNumber >= 1) {
+						selectedItemNumber--;
+						loadModuleItem(selectedModule, selectedItemNumber);
+					}
+					break;
+				default:
+					console.log(activeModules.length);
+					break;
+			}
+		}
+		button.onmouseenter = function () {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function () {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+	}
+	)
+}
+enableItemNavigationButtons();
+
+
+
+// loadModule(studyModules[0]);
 
 // TODO: remove
-const displaySuperScript = function (e){
-	if (e.classList.contains("display-sup")) {
-		e.classList.remove("display-sup");
-	} else {
-		e.classList.add("display-sup");
-	}
-}
+// const displaySuperScript = function (e){
+// 	if (e.classList.contains("display-sup")) {
+// 		e.classList.remove("display-sup");
+// 	} else {
+// 		e.classList.add("display-sup");
+// 	}
+// }
 
 // parseFurigana(testModuleVocabulary[8]);
 // Command [ and Command ] is Tab-Based Move
