@@ -1,43 +1,30 @@
-.language-grid {
-	display: grid;
-	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(4, 20%);
-	padding-block: 1rem;
-	width: min(100%, 70rem);
-	margin-inline: auto;
-}
-
-.grid-col-span-2 {
-	grid-column: span 2;
-}
-
-.grid-row-span-2 {
-	grid-row: span 2;
-}
-
-.grid-col-span-4 {
-	grid-column: span 4;
-}
-
-.margin-inline {
-	margin-inline: auto;
-}
-
-.language-item {
-	padding: 1rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	background: rgba(144, 229, 238, 0.1);
-}
-
 ul {
 	text-align: left;
 }
 
 #vocab-field {
-	font-size: 1.5rem;
+	font-size: 3rem;
+}
+
+#language-grid {
+	flex-direction: row;
+}
+#navigation-item {
+	flex: .2;
+	flex-direction: column;
+	/* text-align: left; */
+	/* align-items: baseline; */
+	/* align-content: center; */
+
+	min-width: 2rem;
+	min-height: 2rem;
+	padding: 2rem;
+}
+
+#language-item {
+	flex: .8;
+	align-items: baseline;
+	align-content: baseline;
 }
 
 li:hover {

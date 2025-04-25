@@ -33,26 +33,42 @@
 				<a href="https://www3.nhk.or.jp/news/easy/" target="_blank">NHK Yasashii</a>
 			</div>
 		</div>
-		<div id="jisho-frame">
+		<!-- <div id="jisho-frame">
 			<iframe id="jisho-field" width="1000" height="200" src="https://jisho.org/search/"
 				title="Jisho Loader" frameborder="5"
 				allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="jisho-iframe"></iframe>
-		</div>
+		</div> -->
 	</div>
 
 
-	<div class="page-grid">
+	<div class="page-grid" id="language-grid">
 
-		<div class="page-item">
-			
+
+		<div class="page-item" id="navigation-item">
+
 			<span id="grouping-field">grouping</span>
+			<br>
+			<span>
+				<button class="language-button" value="japanese">Japanese</button>
+				<button class="language-button" value="eremoran">Eremoran</button>
+			</span>
+			<br>
+			<p>
+				<span id="current-grouping-item">item</span> of
+				<span id="current-grouping-total">total</span>
+			</p>
 
-			<button class="module-button" value="previous">Previous</button>
-			<button class="module-button" value="next">Next</button>
+		</div>
+		<div class="page-item" id="language-item">
 
-			<span id="vocab-field">vocab</span>
+			<span class="eremoran-kiptascript" id="vocab-field">vocab</span>
 			<span id="english-field">trans</span>
+			<br>
+			<span>
+				<button class="language-button" value="previous">Previous</button>
+				<button class="language-button" value="next">Next</button>
+			</span>
 
 		</div>
 

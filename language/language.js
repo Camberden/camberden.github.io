@@ -19,6 +19,10 @@ const groupingField = document.getElementById("grouping-field");
 const vocabField = document.getElementById("vocab-field");
 const englishField = document.getElementById("english-field");
 const sentenceField = document.getElementById("sentence-field");
+
+const currentGroupingItem = document.getElementById("current-grouping-item");
+const currentGroupingTotal = document.getElementById("current-grouping-total");
+
 const jishoField = document.getElementById("jisho-field");
 const jishoIFrame = document.getElementById("jisho-frame");
 
@@ -26,7 +30,9 @@ let selectedItemNumber = 0;
 let activeModules = [];
 let selectedModule;
 
-const moduleButtons = document.querySelectorAll(".module-button");
+const languageButtons = document.querySelectorAll(".language-button");
+
+// ----- JAPANESE ----- //
 
 const testModuleVocabulary = [
 	"記載「きさい」する",
@@ -54,20 +60,61 @@ const testModuleEnglish = [
 	"nighttime",
 ];
 
+// ----- EREMORAN ----- //
+
+const testModuleEremoranVocabulary = [
+	"numz",
+	"rurauk",
+	"uluk",
+	"ad",
+	"abat",
+	"balitz",
+	"eremor",
+	"ômorz",
+	"lusik",
+	"morôz",
+	"busk",
+];
+
+const testModuleErEn1 = [
+	"to run",
+	"cat",
+	"black",
+	"on/at/onto",
+	"table",
+	"to break",
+	"Eremor (place)",
+	"to know",
+	"wolf",
+	"to say",
+	"dog",
+];
+
 const studyModules = [
-	jp1 = new StudyModule(testModuleVocabulary, testModuleEnglish, "demo-grouping", "jp"),
+	jp1 = new StudyModule(testModuleVocabulary, testModuleEnglish, "demo-jp-grouping", "jp"),
+	er1 = new StudyModule(testModuleEremoranVocabulary, testModuleErEn1, "demo-er-grouping", "er"),
 ];
 
 function loadModuleItem(module, itemNumber) {
 	groupingField.textContent = module.grouping;
 	vocabField.textContent = module.vocabulary[itemNumber];
 	englishField.textContent = module.english[itemNumber];
+	currentGroupingItem.textContent = itemNumber + 1;
+	currentGroupingTotal.textContent = module.vocabulary.length;
 }
 
 function generateStudyModules(selectedLanguage) {
 
+	while (activeModules.length) {
+		activeModules.pop();
+		console.log("Popping array.");
+	}
+
 	for (let studyModule of studyModules) {
 		if (studyModule.language === selectedLanguage) {
+			// if (studyModule.language === "er") {
+			// 	vocabField.classList.add("eremoran-kiptascript");
+			// }
 			activeModules.push(studyModule);
 		}
 	}
@@ -76,11 +123,20 @@ function generateStudyModules(selectedLanguage) {
 }
 generateStudyModules("jp");
 
-function enableItemNavigationButtons(){
-	moduleButtons.forEach(button => {
+function enableLanguageButtons(){
+	languageButtons.forEach(button => {
 		button.onclick = function(){
 			ButtonInterface.buttonOnClick(button);
 			switch (button.value) {
+				case "japanese":
+					if (activeModules.language != "jp") {
+						generateStudyModules("jp");
+					}
+					break;
+				case "eremoran":
+					if (activeModules.language != "er") {
+						generateStudyModules("er");
+					}
 				case "next":
 					if (selectedItemNumber < selectedModule.vocabulary.length - 1) {
 						selectedItemNumber++;
@@ -107,20 +163,4 @@ function enableItemNavigationButtons(){
 	}
 	)
 }
-enableItemNavigationButtons();
-
-
-
-// loadModule(studyModules[0]);
-
-// TODO: remove
-// const displaySuperScript = function (e){
-// 	if (e.classList.contains("display-sup")) {
-// 		e.classList.remove("display-sup");
-// 	} else {
-// 		e.classList.add("display-sup");
-// 	}
-// }
-
-// parseFurigana(testModuleVocabulary[8]);
-// Command [ and Command ] is Tab-Based Move
+enableLanguageButtons();
