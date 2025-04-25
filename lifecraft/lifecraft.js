@@ -5,7 +5,6 @@ const currentDateField = document.getElementById("current-date-field");
 const modal = document.querySelector(".modal");
 const closeModal = document.getElementsByClassName("close-modal")[0];
 
-
 function enableModal() {
 
 	document.querySelectorAll(".modal-prompt").forEach(prompt => {
@@ -129,16 +128,65 @@ function findDaysSinceBirthday(present, birth) {
 	return totalDaysLived;
 }
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
+console.log("Current Date " + currentYear + "-" + (currentMonth + 1) + "-" + currentDay);
 console.log("Since Birth: " + daysSinceBirth);
 console.log("Years Since Birth: " + (daysSinceBirth / 365));
 console.log("Weeks since Birth: " + (daysSinceBirth / 7));
 
 currentDateField.innerHTML = currentDate;
+
 function getMonthText(val){
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	return months[val - 1];
 }
 console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
+
+// TODO: Function to Populate Events by Year; link to blogData
+
+// ----- LIFE EVENTS BY YEAR ----- //
+
+/**
+ * @param {string} title
+ * @param {string} eventDate - Format: YYYY-MM-DD
+ * @param {string} photo
+ * @param {string[]} description
+ */
+class LifeEvent {
+	constructor(title, eventDate, photo, description) {
+		this.title = title;
+		this.eventDate = eventDate;
+		this.photo = photo;
+		this.description = description;
+	}
+}
+
+const events = [
+	birthEvent = new LifeEvent("My Birth", "1993-11-14", "", "I arrived physically on this planet."),
+	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", "My trusty car was deemed a total loss."),
+];
+
+function addEventsByYear(year) {
+	if (year === currentYear) {
+		document.getElementById(currentYear + "-" + (currentMonth + 1) + "-" + currentDay).classList.add("current-day-highlight");
+		document.getElementById("event-title").textContent = "The Present Moment";
+		document.getElementById("event-date").textContent = currentDate;
+		document.getElementById("event-description").textContent = "This very moment, you are browsing my site.";
+	}
+	for (let event of events) {
+		if (event.eventDate.substring(0,4) == year) {
+			document.getElementById(event.eventDate).classList.add("event");
+			document.getElementById(event.eventDate).onclick = function() {
+				document.getElementById("event-title").textContent = event.title;
+				document.getElementById("event-date").textContent = event.eventDate;
+				document.getElementById("event-photo").textContent = event.photo;
+				document.getElementById("event-description").textContent = event.description;
+			}
+		}
+	}
+
+}
+
+// ----- MAIN GENERATOR ----- //
 
 function generateCalendar(year) {
 	clearLifecraftField();
@@ -160,7 +208,7 @@ function generateCalendar(year) {
 		
 		lifecraftField.appendChild(div);
 	}
-	
+	addEventsByYear(year);
 }
 generateCalendar(currentYear);
 
@@ -190,7 +238,10 @@ function enableLifecraftButtons() {
 }
 enableLifecraftButtons();
 
-// TODO: Function to Populate Events by Year; link to blogData
+
+
+
+// ----- MODAL FUNCTIONS ----- //
 
 const maintenancePoints = [
 	"Car: Tires",

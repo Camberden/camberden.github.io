@@ -54,11 +54,15 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
-#lifecraft-notes-item {
+.lifecraft-notes-item {
+	min-width: 2rem;
+	min-height: 2rem;
 	padding: 0%;
 	flex: 1 1 20%;
 	flex-wrap: wrap;
-	flex-direction: column;
+	flex-direction: row;
+	align-items: baseline;
+	align-content: baseline;
 }
 
 .modal {
@@ -88,6 +92,14 @@
 .secondary-highlight {
 	color: var(--clr-secondary);
 	cursor: pointer;
+}
+
+.current-day-highlight {
+	background-color: var(--clr-quaternary);
+}
+
+.event {
+	background-color: yellow;
 }
 
 /* ---------- LIFECRAFT FIELD VALUES ---------- */
