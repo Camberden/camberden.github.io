@@ -129,9 +129,9 @@ function findDaysSinceBirthday(present, birth) {
 }
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
 console.log("Current Date " + currentYear + "-" + (currentMonth + 1) + "-" + currentDay);
-console.log("Since Birth: " + daysSinceBirth);
-console.log("Years Since Birth: " + (daysSinceBirth / 365));
-console.log("Weeks since Birth: " + (daysSinceBirth / 7));
+document.getElementById("days-lived").textContent = ("Days Lived: " + daysSinceBirth);
+document.getElementById("weeks-lived").textContent = ("Weeks Lived: " + (daysSinceBirth / 7).toFixed(2));
+document.getElementById("years-lived").textContent = ("Years Lived: " + (daysSinceBirth / 365).toFixed(2));
 
 currentDateField.innerHTML = currentDate;
 
@@ -162,7 +162,25 @@ class LifeEvent {
 
 const events = [
 	birthEvent = new LifeEvent("My Birth", "1993-11-14", "", "I arrived physically on this planet."),
+	rofDay = new LifeEvent("R.O.F. Day", "2017-7-9", "", 
+		"Personal Holiday Established: the emotional difficulties encountered marked the very beginning of my self-reinvention"),
+	firingDay = new LifeEvent("Firing Day", "2017-11-14", "", 
+		"I was fired from my first position after college for tardiness. This event, coupled with July 9th, helped set my self-reinvention in motion"),
+	securityCareer = new LifeEvent("Began Security Career", "2017-1-19", "", 
+		"I began my new role in private security where I set out to redeem myself for past failures"),
+	firstSecurityPromotion = new LifeEvent("First Security Promotion", "2018-6-16", "",
+		"I promoted for the first time and donned the white shirt as a shift supervisor."),
+	secondSecurityPromotion = new LifeEvent("Second Security Promotion", "2018-9-8", "",
+		"I promoted a second time to a floating shift supervisor with more intra-region responsibilities"),
+	thirdSecurityPromotion = new LifeEvent("Third Security Promotion", "2018-11-2", "", 
+		"I promoted a third time to assistant operations manager, with intra-regional duties including payroll"),
+	wvRelocation = new LifeEvent("Relocation to West Virginia", "2019-10-24", "",
+		"I relocated to West Virginia to pursue a software development career at a talent-incubator company"),
+	vanceRelocation = new LifeEvent("Relocation to North Carolina", "2020-8-9", "", "I uprooted and took my life to Vance County, NC"),
+	publicCareer = new LifeEvent("Began Public Service", "2020-8-10", "", "I began my career of service."),
+	chathamRelocation = new LifeEvent("Relocation to Chatham County, NC", "2024-12-16", "", "I relocated to Chatham County, NC due to interpersonal events."),
 	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", "My trusty car was deemed a total loss."),
+	whiteCar = new LifeEvent("White Car", "2025-3-4", "", "Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
 ];
 
 function addEventsByYear(year) {
@@ -237,9 +255,6 @@ function enableLifecraftButtons() {
 	});
 }
 enableLifecraftButtons();
-
-
-
 
 // ----- MODAL FUNCTIONS ----- //
 
