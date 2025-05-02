@@ -183,6 +183,28 @@ const events = [
 	whiteCar = new LifeEvent("White Car", "2025-3-4", "", "Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
 ];
 
+class MonthlySummary {
+	constructor(month, summary, tune, tuneLink) {
+		this.month = month;
+		this.summary = summary;
+		this.tune = tune;
+		this.tuneLink = tuneLink;
+	}
+}
+
+const monthlySummaries = [
+	july2022 = new MonthlySummary("July-2022", "pending", "Huwie Ishizaki - Peanuts Butter", ""),
+	september2023 = new MonthlySummary("September-2023", "pending", "Orbital - Nowhere", ""),
+	december2024 = new MonthlySummary ("December-2024", "pending", "Pet Shop Boys - Suburbia", ""),
+	january2025 = new MonthlySummary("January-2025", "pending", "Nobonoko - People Places", ""),
+	feburary2025 = new MonthlySummary("February-2025", "pending", "Napcast - People Places", ""),
+	march2025 = new MonthlySummary("March-2025", "pending", "Yu Takahashi - Ashita wa Kitto Ii Hi ni Naru", ""),
+	april2025 = new MonthlySummary("April-2025", "pending", "Huwie Ishizaki - Peanuts Butter", ""),
+	may2025 = new MonthlySummary("May-2025", "pending", "Yu Takahashi - WINDING MIND", ""),
+
+
+];
+
 function addEventsByYear(year) {
 	if (year === currentYear) {
 		document.getElementById(currentYear + "-" + (currentMonth + 1) + "-" + currentDay).classList.add("current-day-highlight");
@@ -202,8 +224,14 @@ function addEventsByYear(year) {
 		}
 	}
 
+	for (let summaries of monthlySummaries) {
+		if (document.getElementById(summaries.month) != null) {
+		document.getElementById(summaries.month).onclick = function() {
+			document.getElementById("event-photo").textContent = summaries.tune;
+			}
+		}
+	}
 }
-
 // ----- MAIN GENERATOR ----- //
 
 function generateCalendar(year) {
@@ -212,8 +240,12 @@ function generateCalendar(year) {
 		const div = document.createElement("div");
 		div.setAttribute("class", "calendar-month");
 		const text = document.createTextNode(getMonthText(i + 1) + " " + year);
+		const monthSpan = document.createElement("span");
+		monthSpan.setAttribute("class", "these-months");
+		monthSpan.setAttribute("id", `${getMonthText(i+1) + "-" + year}`);
 		const hr = document.createElement("hr");
-		div.appendChild(text);
+		monthSpan.appendChild(text);
+		div.appendChild(monthSpan);
 		div.appendChild(hr);
 		for (let j = 0; j < getDaysInMonthOfYear(year, i + 1); j++) {
 			const span = document.createElement("span");

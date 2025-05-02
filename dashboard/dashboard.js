@@ -343,33 +343,6 @@ function enableCpaProjection(){
 }
 enableCpaProjection();
 
-// ---------- REFERENCE DOCUMENTS ---------- //
-
-// TODO
-
-const seasonTunes = [
-	"July 2022: Orbital - Somewhere Out There, Part 2",
-	"September 2023: Orbital - Nowhere",
-	"December 2024: Pet Shop Boys - Suburbia",
-	"January 2025: Nobonoko - Cat Comet",
-	"February 2025: Napcast - People Places",
-	"March 2025: Yu Takahashi - Ashita wa Kitto Ii Hi ni Naru",
-	"April 2025: Huwie Ishizaki - Peanuts Butter",
-];
-const seasonTunesList = document.getElementById("season-tunes-list");
-// Generates Any Reference Document if Present in Assets
-for (const tune of seasonTunes) {
-	const li = document.createElement("li");
-	const a = document.createElement("a");
-	const text = document.createTextNode(tune);
-	a.classList.add("marker");
-	a.appendChild(text);
-	// a.setAttribute("href", doc);
-	// a.setAttribute("target", "_blank");
-	li.appendChild(a);
-	seasonTunesList.appendChild(li);
-};
-
 
 // ---------- REFERENCE DOCUMENTS ---------- //
 
