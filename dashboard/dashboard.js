@@ -73,30 +73,9 @@ const nowDisplay = now.toLocaleString("en-US");
 const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
 const getYearID = (date = new Date()) => date.getUTCFullYear();
 
-const pslfRequirement = 120;
-const creditedPSLFMonths = 45;
-document.getElementById("pslf-heading").innerHTML = creditedPSLFMonths + " months credited as of " + nowDisplay;
-
-const pslfBoxes = document.getElementById("pslf-boxes");
-
-function populatePSLFBoxes() {
-	for (i = 0; i < pslfRequirement; i++) {
-		if (i % 12 === 0) {
-			const pslfBoxLine = document.createElement("hr");
-			pslfBoxes.appendChild(pslfBoxLine);
-		}
-		const pslfBox = document.createElement("span");
-		pslfBox.classList.add("pslf-box");
-
-		if (i >= pslfRequirement - creditedPSLFMonths) {
-			pslfBox.classList.add("pslf-box-filled");
-		}
-		pslfBoxes.appendChild(pslfBox);
-	}
-
-	pslfBoxes.classList.add("list-background");
-}
-populatePSLFBoxes();
+// const pslfRequirement = 120;
+// const creditedPSLFMonths = 45;
+// document.getElementById("pslf-heading").innerHTML = creditedPSLFMonths + " months credited as of " + nowDisplay;
 
 // ----- STEP PAY PLAN MODULE ----- //
 

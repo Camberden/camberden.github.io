@@ -26,6 +26,10 @@ function enableModal() {
 					generateWishList();
 					modal.style.display = "block";
 					break;
+				case "PSLF Credit":
+					modal.style.display = "block";
+					generatePSLFinfo();
+					break;
 				default:
 					console.log("hi");
 				break;
@@ -127,11 +131,14 @@ function findDaysSinceBirthday(present, birth) {
 	}
 	return totalDaysLived;
 }
+const pslfRequirement = 120;
+const creditedPSLFMonths = 45;
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
 console.log("Current Date " + currentYear + "-" + (currentMonth + 1) + "-" + currentDay);
 document.getElementById("days-lived").textContent = ("Days Lived: " + daysSinceBirth);
 document.getElementById("weeks-lived").textContent = ("Weeks Lived: " + (daysSinceBirth / 7).toFixed(2));
 document.getElementById("years-lived").textContent = ("Years Lived: " + (daysSinceBirth / 365).toFixed(2));
+document.getElementById("pslf").textContent = (": " + creditedPSLFMonths + "/" + pslfRequirement);
 
 currentDateField.innerHTML = currentDate;
 
@@ -143,7 +150,7 @@ console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
 
 // TODO: Function to Populate Events by Year; link to blogData
 
-// ----- LIFE EVENTS BY YEAR ----- //
+// ----- LIFE EVENTS AND MONTHLY SUMMARIES BY YEAR ----- //
 
 /**
  * @param {string} title
@@ -183,6 +190,12 @@ const events = [
 	whiteCar = new LifeEvent("White Car", "2025-3-4", "", "Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
 ];
 
+/**
+ * @param {string} month - Format: Month-YYYY
+ * @param {string} summary
+ * @param {string} tune
+ * @param {string} tuneLink
+ */
 class MonthlySummary {
 	constructor(month, summary, tune, tuneLink) {
 		this.month = month;
@@ -193,15 +206,17 @@ class MonthlySummary {
 }
 
 const monthlySummaries = [
-	july2022 = new MonthlySummary("July-2022", "pending", "Huwie Ishizaki - Peanuts Butter", ""),
-	september2023 = new MonthlySummary("September-2023", "pending", "Orbital - Nowhere", ""),
-	december2024 = new MonthlySummary ("December-2024", "pending", "Pet Shop Boys - Suburbia", ""),
-	january2025 = new MonthlySummary("January-2025", "pending", "Nobonoko - People Places", ""),
-	feburary2025 = new MonthlySummary("February-2025", "pending", "Napcast - People Places", ""),
-	march2025 = new MonthlySummary("March-2025", "pending", "Yu Takahashi - Ashita wa Kitto Ii Hi ni Naru", ""),
-	april2025 = new MonthlySummary("April-2025", "pending", "Huwie Ishizaki - Peanuts Butter", ""),
-	may2025 = new MonthlySummary("May-2025", "pending", "Yu Takahashi - WINDING MIND", ""),
-
+	july2022 = new MonthlySummary("July-2022", "pending", "Orbital - Somewhere out There Part 2", "https://www.youtube.com/watch?v=HRFel2UtyiE"),
+	march2023 = new MonthlySummary("March-2023", "pending", "Depeche Mode - My Little Universe", "https://www.youtube.com/watch?v=_oxm6rfzQaI"),
+	april2023 = new MonthlySummary("April-2023", "pending", "Depeche Mode - Broken", "https://www.youtube.com/watch?v=urbmwI8APdo"),
+	may2023 = new MonthlySummary("May-2023", "pending", "Depeche Mode - Ghosts Again", "https://youtu.be/iIyrLRixMs8?si=owHvGxz8W8BxlJhJ"),
+	september2023 = new MonthlySummary("September-2023", "pending", "Orbital - Nowhere", "https://www.youtube.com/watch?v=ktgznOFpXeY"),
+	december2024 = new MonthlySummary ("December-2024", "pending", "Pet Shop Boys - Suburbia", "https://www.youtube.com/watch?v=hUYfz_cEFzs"),
+	january2025 = new MonthlySummary("January-2025", "pending", "Nobonoko - Cat Comet", "https://youtu.be/6uNkTqNSulY?si=QwNoXLVSVgJFtRRw&t=2342"),
+	feburary2025 = new MonthlySummary("February-2025", "pending", "Napcast - People Places", "https://youtu.be/3MFfqQj3NUE?si=rqsLFwhTzhKhfQ98&t=198"),
+	march2025 = new MonthlySummary("March-2025", "pending", "Yu Takahashi - Ashita wa Kitto Ii Hi ni Naru", "https://www.youtube.com/watch?v=cpIa89_rZoA"),
+	april2025 = new MonthlySummary("April-2025", "pending", "Huwie Ishizaki - Peanuts Butter", "https://www.youtube.com/watch?v=ggCphjT_rPE"),
+	may2025 = new MonthlySummary("May-2025", "pending", "Yu Takahashi - WINDING MIND", "https://www.youtube.com/watch?v=DBGXqqItKko"),
 
 ];
 
@@ -223,12 +238,18 @@ function addEventsByYear(year) {
 			}
 		}
 	}
-
+	// TODO: create new visual for this object's parameters
 	for (let summaries of monthlySummaries) {
 		if (document.getElementById(summaries.month) != null) {
 		document.getElementById(summaries.month).onclick = function() {
-			document.getElementById("event-photo").textContent = summaries.tune;
+			document.getElementById("event-photo").innerHTML = `<a href="${summaries.tuneLink}" target="_blank">${summaries.tune}</a>`;
 			}
+		document.getElementById(summaries.month).onmouseenter = function(){
+			document.getElementById(summaries.month).classList.add("secondary-highlight");
+		}
+		document.getElementById(summaries.month).onmouseleave = function(){
+			document.getElementById(summaries.month).classList.remove("secondary-highlight");
+		}
 		}
 	}
 }
@@ -365,4 +386,26 @@ function generateWishList() {
 		ul.appendChild(li);
 	}
 	document.getElementById("modal-text").appendChild(ul);
+}
+
+function generatePSLFinfo() {
+	const pslfBoxes = document.createElement("div");
+	pslfBoxes.setAttribute("id", "pslf-boxes");
+	const text = document.createTextNode(`PSLF Credit as of ${currentDate}: ${creditedPSLFMonths} of ${pslfRequirement}`);
+	pslfBoxes.appendChild(text);
+
+	for (i = 0; i < pslfRequirement; i++) {
+		if (i % 12 === 0) {
+			const pslfBoxLine = document.createElement("hr");
+			pslfBoxes.appendChild(pslfBoxLine);
+		}
+		const pslfBox = document.createElement("span");
+		pslfBox.classList.add("pslf-box");
+
+		if (i >= pslfRequirement - creditedPSLFMonths) {
+			pslfBox.classList.add("pslf-box-filled");
+		}
+		pslfBoxes.appendChild(pslfBox);
+	}
+	document.getElementById("modal-text").appendChild(pslfBoxes);
 }

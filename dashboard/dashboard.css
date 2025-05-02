@@ -136,22 +136,6 @@ input[type=text]:focus {
 	margin-left: 10px;
 }
 
-/* ----- PSLF DATA AND MANAGEMENT SPECIFIC ----- */
-
-.pslf-box {
-	display: inline-block;
-	width: 1rem;
-	height: 0.5rem;
-	/* border-radius: 1rem; */
-	margin: 0.1rem;
-	border: 1px solid #444;
-	color: rgba(0, 0, 0, 0);
-}
-
-.pslf-box-filled {
-	background-color: var(--clr-primary);
-}
-
 /* ----- STEP PAY PLAN SPECIFIC ----- */
 
 /* maybe this is responsible for bad sizing */

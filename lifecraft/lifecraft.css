@@ -131,3 +131,32 @@
 .calendar-date:hover {
 	border-color: var(--clr-primary);
 }
+
+/* ----- PSLF DATA AND MANAGEMENT SPECIFIC ----- */
+
+.pslf-box {
+	display: inline-block;
+	width: 1rem;
+	height: 0.5rem;
+	/* border-radius: 1rem; */
+	margin: 0.1rem;
+	border: 1px solid #444;
+	color: rgba(0, 0, 0, 0);
+}
+
+.pslf-box-filled {
+	background-color: var(--clr-primary);
+}
+
+/* ----- MEDIA QUERIES ---- */
+
+@media screen and (max-width: 1200px) {
+	
+	.lifecraft-item {
+		flex-direction: column;
+	}
+
+	.calendar-month {
+		height: 8rem;
+	}
+}

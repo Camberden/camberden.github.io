@@ -90,6 +90,9 @@ const testModuleErEn1 = [
 	"dog",
 ];
 
+
+// ----- LOGIC FUNCTIONS ----- //
+
 const studyModules = [
 	jp1 = new StudyModule(testModuleVocabulary, testModuleEnglish, "demo-jp-grouping", "jp"),
 	er1 = new StudyModule(testModuleEremoranVocabulary, testModuleErEn1, "demo-er-grouping", "er"),
