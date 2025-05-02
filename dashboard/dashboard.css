@@ -154,12 +154,6 @@ table, th, td {
 	background: var(--clr-grid-box);
 }
 
-#toggle-bonus:hover {
-	border-left-width: .5rem;
-	border-right-width: .5rem;
-
-}
-
 .button-toggle-enabled {
 	border-style: double;
 	border-color: var(--clr-tertiary);

@@ -148,8 +148,6 @@ function getMonthText(val){
 }
 console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
 
-// TODO: Function to Populate Events by Year; link to blogData
-
 // ----- LIFE EVENTS AND MONTHLY SUMMARIES BY YEAR ----- //
 
 /**

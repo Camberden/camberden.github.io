@@ -119,35 +119,52 @@ const salarySchedule2026 = [
 	["44259", "47358", "50201", "52711", "54819", "56463", "57593"], // C/OIII
 ];
 
-const fiscalYear = 2024;
-const fiscalYearDisplay = document.getElementById("fiscal-year");
-fiscalYearDisplay.innerHTML = `FY ${fiscalYear}-${fiscalYear + 1}`;
+const salarySchedules = [
+	salarySchedule2020, salarySchedule2021, salarySchedule2022, salarySchedule2023, salarySchedule2024, salarySchedule2025, salarySchedule2026,
+];
 
-const salarySchedule = salarySchedule2024;
+let fiscalYear = 2024;
+const fiscalYearDisplay = document.getElementById("fiscal-year");
+fiscalYearDisplay.innerHTML = `${fiscalYear}-${fiscalYear + 1}`;
+
+let currentSchedule = salarySchedules[fiscalYear - 2020];
 let currentSalary;
 let highlightedSalary;
 let custodyLevel = 1;
 let yearsExperience = 4;
-let experienceBonus = 1;
-let adjustedExperience;
-let activeBonus = true;
+
+function nextFiscalYear() {
+		fiscalYear++;
+		fiscalYearDisplay.innerHTML = `${fiscalYear}-${fiscalYear + 1}`;
+		currentSchedule = salarySchedules[fiscalYear - 2020];
+		populateSalaryTable();
+		calculateStep();
+}
+
+function previousFiscalYear() {
+		fiscalYear--;
+		fiscalYearDisplay.innerHTML = `${fiscalYear}-${fiscalYear + 1}`;
+		currentSchedule = salarySchedules[fiscalYear - 2020];
+		populateSalaryTable();
+		calculateStep();
+}
 
 function calculateStep(){
-	adjustedExperience = yearsExperience === 6 ? yearsExperience : (yearsExperience + experienceBonus);
-	currentSalary = salarySchedule2024[custodyLevel - 1][adjustedExperience];
+
+	currentSalary = currentSchedule[custodyLevel - 1][yearsExperience];
 	document.getElementById("current-salary").innerHTML = currentSalary;
 	document.getElementById("monthly-salary").innerHTML = (currentSalary / 12).toFixed(2);
 	let currentHourlyRate = currentSalary / 52 / 40;
 	document.getElementById("hourly-salary").innerHTML = currentHourlyRate.toFixed(2);
 	document.getElementById("gap-pay").innerHTML = (currentHourlyRate * 11).toFixed(2);
-	document.getElementById("overtime-diff").innerHTML = (currentHourlyRate * 1.5).toFixed(2);
+	document.getElementById("overtime-diff").innerHTML = ((currentHourlyRate * 1.5) - currentHourlyRate).toFixed(2);
 	document.getElementById("night-diff").innerHTML = (currentHourlyRate / 10).toFixed(2);
 	document.getElementById("weekend-diff").innerHTML = (currentHourlyRate / 10).toFixed(2);
-	document.getElementById("holiday-diff").innerHTML = (currentHourlyRate / 1.75).toFixed(2);
+	document.getElementById("holiday-diff").innerHTML = ((currentHourlyRate * 1.75) - currentHourlyRate).toFixed(2);
 
 	document.getElementById("custody-level").innerHTML = ("I".repeat(custodyLevel));
 	document.getElementById("years-experience").innerHTML = yearsExperience;
-	highlightedSalary = document.getElementById(`co${custodyLevel}-${adjustedExperience}`);
+	highlightedSalary = document.getElementById(`co${custodyLevel}-${yearsExperience}`);
 	highlightedSalary.classList.add("salary-highlight");
 }
 
@@ -186,23 +203,6 @@ function decreaseYearsExperience() {
 	}
 }
 
-function toggleExperienceBonus(){
-	if (yearsExperience >= 0 && yearsExperience < 6 && !activeBonus) {
-		experienceBonus = 1;
-		activeBonus = true;
-		document.getElementById("toggle-bonus").classList.add("button-toggle-enabled");
-		document.getElementById("toggle-bonus").innerHTML = "Extra Step Enabled";
-	} else if (activeBonus) {
-		experienceBonus = 0;
-		activeBonus = false;
-		document.getElementById("toggle-bonus").classList.remove("button-toggle-enabled");
-		document.getElementById("toggle-bonus").innerHTML = "Add Extra Step";
-	}
-	removeHighlightedSalary();
-	calculateStep();
-}
-toggleExperienceBonus();
-
 function enableStepPayPlanButtons() {
 	document.querySelectorAll(".step-pay-plan-button").forEach(button => {
 		button.onclick = () => {
@@ -220,8 +220,11 @@ function enableStepPayPlanButtons() {
 			case ("decrease-years-experience"):
 				decreaseYearsExperience();
 				break;
-			case ("toggle-experience-bonus"):
-				toggleExperienceBonus();
+			case ("next-fiscal-year"):
+				nextFiscalYear();
+				break;
+			case ("previous-fiscal-year"):
+				previousFiscalYear();
 				break;
 			default:
 				console.log("Hi");
@@ -240,10 +243,10 @@ function enableStepPayPlanButtons() {
 enableStepPayPlanButtons();
 
 function populateSalaryTable(){
-	for (i = 0; i < salarySchedule.length; i++) {
-		for (j = 0; j < salarySchedule[i].length; j++){
-			document.getElementById(`co${i + 1}-${j}`).innerHTML = salarySchedule[i][j];
-			if (salarySchedule[i][j] === currentSalary) {
+	for (i = 0; i < currentSchedule.length; i++) {
+		for (j = 0; j < currentSchedule[i].length; j++){
+			document.getElementById(`co${i + 1}-${j}`).innerHTML = currentSchedule[i][j];
+			if (currentSchedule[i][j] === currentSalary) {
 				document.getElementById(`co${i + 1}-${j}`).classList.add("salary-highlight");
 			}
 		}
