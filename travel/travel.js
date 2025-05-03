@@ -1,5 +1,9 @@
 window.onload = () => console.log("Running!");
 
+const modalText = document.getElementById("modal-text");
+const modal = document.querySelector(".modal");
+const closeModal = document.getElementsByClassName("close-modal")[0];
+
 const mapDisplay = document.getElementById("map-display");
 const politicalDivision = document.getElementById("political-division");
 const visitedTotal = document.getElementById("visited-total");
@@ -63,11 +67,31 @@ function cyclePoliticalDivision(selection) {
 	}
 }
 
+function clearModal() {
+	document.getElementById("modal-text").innerHTML = "";
+	console.log("Modal Cleared!");
+}
+
 function highlightVisitedCountries() {
 	visitedCountries.forEach(country => {
 		let c = worldMap.querySelector("#" + country);
 		c.classList.add("visited");
-		// Add more functionality.
+		c.onclick = function () {
+			console.log("modal activation test");
+			modalText.textContent = country;
+			modal.style.display = "block";
+	
+		};
+		closeModal.onclick = function () {
+			clearModal();
+			modal.style.display = "none";
+		};
+		window.onclick = function (event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+				clearModal();
+			}
+		}
 	});
 }
 highlightVisitedCountries();
@@ -76,7 +100,22 @@ function highlightVisitedStates() {
 	visitedStates.forEach(state => {
 		let s = usMap.querySelector("#" + state);
 		s.classList.add("visited");
-		// Add more functionality.
+		s.onclick = function () {
+			console.log("modal activation test");
+			modalText.textContent = state;
+			modal.style.display = "block";
+	
+		};
+		closeModal.onclick = function () {
+			clearModal();
+			modal.style.display = "none";
+		};
+		window.onclick = function (event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+				clearModal();
+			}
+		}
 	});
 }
 highlightVisitedStates();
