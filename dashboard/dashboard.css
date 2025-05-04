@@ -194,7 +194,7 @@ table, th, td {
 }
 
 .taking {
-	color: blue;
+	color: var(--clr-tertiary);
 	list-style-type: circle;
 }
 
