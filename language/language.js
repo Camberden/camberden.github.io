@@ -60,6 +60,54 @@ const testModuleEnglish = [
 	"nighttime",
 ];
 
+const moduleJp1 = [
+	"最も",
+	"才能",
+	"すでに",
+	"かつて",
+	"準備",
+	"許す",
+	"表現",
+	"想像",
+	"現在",
+	"割って入る",
+	"乾かす",
+	"展望台",
+	"ぶつがる",
+	"居酒屋",
+	"足を組む",
+	"眺める",
+	"逃げる",
+	"商品",
+	"該当",
+	"冒頭",
+	"見本",
+];
+
+const moduleJpEn1 = [
+	"the most",
+	"talent",
+	"already",
+	"used to",
+	"preparation; readiness",
+	"to forgive; to allow",
+	"expression",
+	"imagination; supposition",
+	"at present",
+	"to interrupt",
+	"to dry",
+	"observation deck",
+	"to bump into",
+	"tavern",
+	"to cross legs",
+	"to gaze",
+	"to escape",
+	"merchandise",
+	"corresponding to; queried for",
+	"outset",
+	"sample",
+]
+
 // ----- EREMORAN ----- //
 
 const testModuleEremoranVocabulary = [
@@ -94,7 +142,7 @@ const testModuleErEn1 = [
 // ----- LOGIC FUNCTIONS ----- //
 
 const studyModules = [
-	jp1 = new StudyModule(testModuleVocabulary, testModuleEnglish, "demo-jp-grouping", "jp"),
+	jp1 = new StudyModule(moduleJp1, moduleJpEn1, "rhodia book 1", "jp"),
 	er1 = new StudyModule(testModuleEremoranVocabulary, testModuleErEn1, "demo-er-grouping", "er"),
 ];
 
