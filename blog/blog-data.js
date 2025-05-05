@@ -636,7 +636,7 @@ const blogData = [
 	In any case, here I am, and I'm grateful to have achieved more progress. I'll likely sleep in a moment. 
 	<hr>
 	Throughout the week I have been studying Japanese intensively in preparation for my travel. I have been using Olly Richard's reader, 
-	Tae Kim's guide, and of course, Clozemaster. I'm noticing that I can conjure up sentenses more readily, and that my reading has quickened.
+	Tae Kim's guide, and of course, Clozemaster. I'm noticing that I can conjure up sentences more readily, and that my reading has quickened.
 	I do think I may be somewhat burning out, though. I'm not accustomed to taking in so much input like this. I've coupled study with watching
 	many videos about Japan travel, culture, language, future, and prospects. I must be wary of the <b-title>shiny veneer</b-title> the country tends to have through
 	the eyes of foreigners like myself. First things first: I should just allow myself to experience it, simply. I mustn't conjure up (and definitely

@@ -43,7 +43,7 @@ const countryInformation = [
 		``
 	),
 	// ----- EUROPE ----- //
-	unitedKingdom = new DivisionInformation("UK", "United Kingdom",
+	unitedKingdom = new DivisionInformation("GB", "United Kingdom",
 		``
 	),
 	germany = new DivisionInformation("DE", "Germany",
@@ -140,4 +140,4 @@ const usStateInformation = [
 	california = new DivisionInformation("US-CA", "California",
 		``
 	),
-]
+];

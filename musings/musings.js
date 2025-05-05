@@ -454,6 +454,7 @@ const sutras = [
 	heartSutra = new Sutra("Heart Sutra", "まかはんやはらみったしんぎょう", "摩訶般若波羅蜜多心經"," Maka Hanya Haramitta Shingyou", heartSutraEnglish, heartSutraFurigana, heartSutraKanji, heartSutraRomaji),
 ];
 
+// ----- TODO UPDATE STARTING OPTION
 function initSutraList(){
 	let option = document.createElement("option");
 	let optionText = document.createTextNode("--- Select ---");
@@ -581,5 +582,4 @@ function sutraType() {
 const displaySutras = function () {
 	setInterval(cycleSutraLines, 2000); //DON'T USE FUNCTION PARAENTHESIS FOR INTERVAL ARGUMENT
 }
-
-displaySutras();
+// displaySutras();
