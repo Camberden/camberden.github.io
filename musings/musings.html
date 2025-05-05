@@ -37,15 +37,13 @@
 
 	<main class="page-grid">
 	
-		<div class="page-item grid-col-span-2">
+		<div class="page-item">
 			<div class="poem" style="user-select: none;">
 				<p>
 				<div class="writing" id="fortyping">
 				</div>
 				</p>
 			</div>
-		</div>
-		<div class="page-item">
 			<span class="marker-for-menu" id="poemnum"></span><br>
 			<form onSubmit="return false;" style="user-select: none; color: grey;">
 				<div class="typingfield" style="text-align: center; user-select: none;">
@@ -53,6 +51,42 @@
 				</div>
 			</form>
 		</div>
+
+		<div class="page-item">			
+				<div id="sutra-fields">
+					<span id="sutra-title"></span>
+					<hr>
+					<p><span id="furigana-field" class="sutra-line-highlight"></span></p>
+					<p><span id="kanji-field" class="sutra-line-highlight"></span></p>
+					<p><span id="romaji-field" class="sutra-line-highlight"></span></p>
+					<p><span id="english-field" class="sutra-line-highlight"></span></p>
+				</div>
+		
+				<div class="w2-item">
+					<button id="button-previous-sutra" class="button-sutras" value="previous">Previous Line</button>
+					<button id="button-next-sutra" class="button-sutras" value="next">Next Line</button>
+					<hr>
+					<select id="sutra-options" onchange="loadDifferentSutra()" value="something">
+		
+					</select>
+		
+					<select id="sutra-line-options" onchange="loadDifferentLine()" value="something">
+		
+					</select>
+					<hr>
+		
+					<div class="sutra-typing-div" style="text-align: center; user-select: none;">
+						<input type="text" id="sutra-typing-field" value="" onkeyup="sutraType()" autocomplete="off">
+					</div>
+		
+					<ul id="sutra-list">
+		
+					</ul>
+		
+				</div>
+		</div>
+
+	
 	</main>
 
 </body>

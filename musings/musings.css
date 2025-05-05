@@ -1,4 +1,4 @@
-/*	PAGETITLE	*/
+/* ----- PAGETITLE ----- */
 
 #sutra-panel {
 	font-style: normal;
@@ -37,7 +37,7 @@
 	color:rgb(123, 153, 184);
   }
 
-/*	POEMCONTAINER	*/
+/* ----- POEMCONTAINER ----- */
 
 .poem {
 	color: var(--clr-primary);
@@ -50,11 +50,9 @@
 	min-width: 300px;
 }
 
-/* BUTTON */
-
 /* percents instead of pixels, says mo */
 
-/*	POEMTEXT	 */
+/* ----- POEM WRITING ----- */
   
 .writing {
 	user-select: none;
@@ -81,7 +79,7 @@
 	text-shadow: -5px -2px 0px rgb(133, 132, 132);
 }
 
-/* INPUT FIELD */
+/* ----- INPUT FIELD ----- */
 
 form {
 	padding-bottom: 15px;
@@ -104,7 +102,7 @@ input[type=text]:focus {
 	border: 10px solid #bda5d4;
 }
 
-/*	BOTTOMSIGNATURE	*/
+/* ----- BOTTOMSIGNATURE ----- */
 
 .marker-for-menu {
 	color: #db8044;
@@ -127,7 +125,7 @@ input[type=text]:focus {
 	color: rgb(19, 94, 199);
 }
 
-/* MENUMODAL */
+/* ----- MENUMODAL ----- */
 
 #menulabel {
 	color: #db8044;
@@ -189,23 +187,49 @@ input[type=text]:focus {
 	cursor: pointer;
 }
 
-.tools-grid {
-	display: grid;
-	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+/* ----- WORKSPACE IMPORT ----- */
 
-	padding-block: 1rem;
-	width: min(90%, 70rem);
-	margin-inline: auto;
-}
-
-.tools-item {
-	padding: 1rem;
+.page-item {
+	flex: 2;
+	padding: 2rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border: grey, double, .3rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
 
-.grid-col-span-2 {
-	grid-column: span 2;
+/* ----- LIST TRAVERSAL AND ITEM SELECTION ----- */
+
+.highlight {
+	color: red;
+	letter-spacing: .1em;
+	transition: 0.1s ease-out;
+	background-color: transparent;
+}
+
+#item-list > li {
+	text-align: left;
+	margin-left: 33%;
+	list-style-type: none;
+}
+
+#item-list > li:hover {
+	/* background: var(--clr-quaternary); */
+	background: #9A031E;
+	/* background: #797a9e; */
+}
+
+.sutra-line-highlight {
+	/* THESE CSS PROPERTIES ARE SET AND THEN MANIPULATED IN JS */
+	background-image: linear-gradient(120deg, rgb(245, 155, 96) 0%, rgb(161, 219, 248) 100%); 
+	background-repeat: no-repeat;
+	background-size: 0% 0.1rem;
+	background-position: 0 88%;
+	transition: background-size 0.1s ease-in;
+	width: 100%;
+}
+
+#kanji-field {
+	font-size: 2rem;
 }
