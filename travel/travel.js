@@ -72,6 +72,7 @@ function clearModal() {
 	console.log("Modal Cleared!");
 }
 
+// TODO: possibly remove for loadMapHighlight(var) Consolidation
 function highlightVisitedCountries() {
 	visitedCountries.forEach(country => {
 		let c = worldMap.querySelector("#" + country);
@@ -96,6 +97,7 @@ function highlightVisitedCountries() {
 }
 highlightVisitedCountries();
 
+// TODO: possibly remove for loadMapHighlight(var) Consolidation
 function highlightVisitedStates() {
 	visitedStates.forEach(state => {
 		let s = usMap.querySelector("#" + state);
@@ -138,14 +140,44 @@ function loadMapHighlight(selection) {
 			divisionToVisit.forEach(division => {
 				let d = mapToHighlight.querySelector("#" + division);
 				d.classList.add("to-visit");
-				// Add more functionality.
+				d.onclick = function () {
+					console.log("modal activation test");
+					modalText.textContent = division;
+					modal.style.display = "block";
+			
+				};
+				closeModal.onclick = function () {
+					clearModal();
+					modal.style.display = "none";
+				};
+				window.onclick = function (event) {
+					if (event.target === modal) {
+						modal.style.display = "none";
+						clearModal();
+					}
+				}
 			});
 			break;
 		case "to-retire":
 			divisionToRetire.forEach(division => {
 				let d = mapToHighlight.querySelector("#" + division);
 				d.classList.add("to-retire");
-				// Add more functionality.
+				d.onclick = function () {
+					console.log("modal activation test");
+					modalText.textContent = division;
+					modal.style.display = "block";
+			
+				};
+				closeModal.onclick = function () {
+					clearModal();
+					modal.style.display = "none";
+				};
+				window.onclick = function (event) {
+					if (event.target === modal) {
+						modal.style.display = "none";
+						clearModal();
+					}
+				}
 			});
 		break;
 	}
