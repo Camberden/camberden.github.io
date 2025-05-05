@@ -28,7 +28,8 @@
 }
 
 .to-visit {
-	fill: rgb(174, 218, 112);
+	fill: var(--clr-tertiary);
+	stroke: var(--clr-tertiary);
 }
 
 .to-retire {
@@ -42,7 +43,16 @@
 }
 
 #world-map > :hover {
-	fill: #a1dbf8;
+	fill: var(--clr-primary);
+	stroke: var(--clr-primary);
+
+}
+
+#SG, #MV, #MU {
+	width: 1rem;
+	height: 1rem;
+	/* stroke: grey; */
+	stroke-width: 0.5rem;
 }
 
 /* ----- US MAP ----- */
