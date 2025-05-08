@@ -15,7 +15,7 @@ const usMap = document.getElementById("us-map");
 let currentMap = "world-map";
 
 const visitedCountries = ["US", "BZ", "GT"];
-const countriesToVisit = ["JP", "NZ", "CA", "GB", "DE", "MU", "PL", "TH", "IN", "CO", "PY", "AR", "UY", "AU", "ID", "SG", "MU", "LK", "MV"];
+const countriesToVisit = ["JP", "NZ", "CA", "GB", "DE", "MU", "PL", "TH", "IN", "CO", "PY", "AR", "UY", "AU", "ID", "SG", "MU", "LK", "MV", "AW", "BM"];
 const countriesToConsiderRetirement = ["US", "CO", "PY", "UY", "JP"];
 const statesToConsiderRetirement = ["US-NC", "US-PA"];
 const visitedStates = ["US-PA", "US-NJ", "US-NY", "US-MD", "US-DE", "US-VA", "US-WV", "US-TN", "US-NC", "US-SC", "US-GA", "US-IL", "US-CO", "US-NV"];
@@ -187,6 +187,7 @@ function enableMapHighlightButtons () {
 	mapHighlightButtons.forEach(button => {
 		button.onclick = function () {
 			loadMapHighlight(button.value);
+			ButtonInterface.buttonOnClick(button);
 		}
 		button.onmouseenter = function () {
 			ButtonInterface.buttonOnMouseEnter(button);
