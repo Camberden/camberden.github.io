@@ -1,5 +1,6 @@
 window.onload = () => console.log("Running!");
 
+const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
 const modal = document.querySelector(".modal");
 const closeModal = document.getElementsByClassName("close-modal")[0];
@@ -72,6 +73,7 @@ function clearModal() {
 	console.log("Modal Cleared!");
 }
 
+// FOR INITIALIZATION
 // TODO: possibly remove for loadMapHighlight(var) Consolidation
 function highlightVisitedCountries() {
 	visitedCountries.forEach(country => {
@@ -79,7 +81,7 @@ function highlightVisitedCountries() {
 		c.classList.add("visited");
 		c.onclick = function () {
 			console.log("modal activation test");
-			modalText.textContent = country;
+			displayNotes(country, "world-map");
 			modal.style.display = "block";
 	
 		};
@@ -97,6 +99,7 @@ function highlightVisitedCountries() {
 }
 highlightVisitedCountries();
 
+// FOR INITIALIZATION
 // TODO: possibly remove for loadMapHighlight(var) Consolidation
 function highlightVisitedStates() {
 	visitedStates.forEach(state => {
@@ -104,7 +107,7 @@ function highlightVisitedStates() {
 		s.classList.add("visited");
 		s.onclick = function () {
 			console.log("modal activation test");
-			modalText.textContent = state;
+			displayNotes(state, "us-map");
 			modal.style.display = "block";
 	
 		};
@@ -122,6 +125,7 @@ function highlightVisitedStates() {
 }
 highlightVisitedStates();
 
+// FOR RESULT FILTERING
 function loadMapHighlight(selection) {
 	let divisionToVisit;
 	let divisionToRetire;
@@ -142,7 +146,7 @@ function loadMapHighlight(selection) {
 				d.classList.add("to-visit");
 				d.onclick = function () {
 					console.log("modal activation test");
-					modalText.textContent = division;
+					displayNotes(division, currentMap);
 					modal.style.display = "block";
 			
 				};
@@ -164,7 +168,7 @@ function loadMapHighlight(selection) {
 				d.classList.add("to-retire");
 				d.onclick = function () {
 					console.log("modal activation test");
-					modalText.textContent = division;
+					displayNotes(division, currentMap);
 					modal.style.display = "block";
 			
 				};
@@ -199,3 +203,27 @@ function enableMapHighlightButtons () {
 
 }
 enableMapHighlightButtons();
+
+function displayNotes(selection, map) {
+	switch (map) {
+		case "world-map":
+			for (let country of countryInformation) {
+				if (country.id === selection) {
+					modalTitle.textContent = country.name;
+					modalText.textContent = country.notes;
+				}
+			}
+			break;
+		case "us-map":
+			for (let state of usStateInformation) {
+				if (state.id === selection) {
+					modalTitle.textContent = state.name;
+					modalText.textContent = state.notes;
+				}
+			}
+			break;
+		default:
+			console.log("Note Display Function Triggered");
+			break;
+	}
+}

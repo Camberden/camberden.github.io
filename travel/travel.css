@@ -76,18 +76,40 @@
 	background-color: rgba(0,0,0,0.4); 
 }
 
-.modal-text {
+.modal-field {
 	background-color: var(--clr-quinary-body);
 	margin: 15% auto; /* 15% from the top and centered */
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
 }
 
-.modal-text > ul > li {
+.modal-field > ul > li {
 	list-style-type: none;
+}
+
+.modal-line {
+	width: 25%;
 }
 
 .secondary-highlight {
 	color: var(--clr-secondary);
+	cursor: pointer;
+}
+
+.close-modal {
+	border-top: none;
+	border-bottom: 1px solid #888;
+	border-left: none;
+	border-right: 1px solid #888;
+	color: #888;
+	float: inline-start;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+	color: black;
+	text-decoration: none;
 	cursor: pointer;
 }

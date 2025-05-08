@@ -29,6 +29,12 @@ const countryInformation = [
 	canada = new DivisionInformation("CA", "Canada",
 		``
 	),
+	aruba = new DivisionInformation("AW", "Aruba",
+		``
+	),
+	bermuda = new DivisionInformation("BM", "Bermuda",
+		``
+	),
 	// ----- SOUTH AMERICA ----- //
 	colombia = new DivisionInformation("CO", "Colombia",
 		``
