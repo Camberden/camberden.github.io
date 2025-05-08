@@ -58,8 +58,8 @@
 				<h2>Expense Management</h2>
 			</div>
 			<div>
-				<ul>
-					<li class="no-bullet">PAYCHECK = $<input type="text" placeholder=" Input Value" id="balance" name="balance" label="balance"></li>
+				<ul id="expense-list">
+					<li>PAYCHECK = $<input type="text" placeholder=" Input Value" id="balance" name="balance" label="balance"></li>
 					<br>
 					<!-- CAR PAYMENT -->
 					<li><input type="checkbox" id="car-check">CAR = $<span class="expense"
@@ -69,7 +69,7 @@
 					<!-- FEDERAL STUDENT LOAN -->
 					<li class="not-applicable"><input type="checkbox" id="nav-check">NAV = $<span class="expense"
 							id="nav-cost">0</span>
-						<span class="automated-payment">Automated: 3rd</span>
+						<span class="non-automated-payment">Inactive</span>
 					</li>
 					<!-- PRIVATE STUDENT LOAN -->
 					<li><input type="checkbox" id="sal-check">SAL = $<span class="expense" id="sal-cost">0</span>
@@ -125,7 +125,7 @@
 					</li>
 					<br>
 					<!-- TOTAL AFTER DEDUCTIONS -->
-					<li class="no-bullet">ENDING BALANCE = $<span id="endbalance">0</span>
+					<li>ENDING BALANCE = $<span id="endbalance">0</span>
 					</li>
 				</ul>
 			</div>
@@ -182,8 +182,7 @@
 					</tr>
 				</table>
 			</div>
-			<ul class="list-background">
-				<!-- <li><span id="fiscal-year"></span></p> -->
+			<ul id="salary-values">
 				<li>Base-Rate Salary: $<span id="current-salary"></span></li>
 				<hr>
 				<li>Base-Rate Monthly: $<span id="monthly-salary"></span></li>

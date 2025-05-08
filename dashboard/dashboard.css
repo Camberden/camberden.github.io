@@ -108,6 +108,10 @@ input[type=text]:focus {
 	list-style-type: none;
 }
 
+#expense-list > li {
+	list-style-type: none;
+}
+
 #balance {
 	margin-left: 24px;
 }
@@ -143,21 +147,19 @@ table, th, td {
 	border: 1px solid var(--clr-quinary-body);
 	height: 2rem;
 
-  }
+}
 
 .salary-highlight {
 	color: var(--clr-quaternary);
 	background-color: var(--clr-tertiary);
-  }
+}
+
+#salary-values > li {
+	list-style-type: none;
+}
 
 #salary-table-corner {
 	background: var(--clr-grid-box);
-}
-
-.button-toggle-enabled {
-	border-style: double;
-	border-color: var(--clr-tertiary);
-	background-color: var(--clr-primary);
 }
 
 /* ----- REEDUCATION SPECIFIC ----- */

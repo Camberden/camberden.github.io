@@ -81,6 +81,8 @@ let changeYear = currentYear;
 const currentMonth = date.getMonth();
 const currentDay = date.getDate();
 const currentDate = date.toDateString();
+const presentMoment = new Date(currentYear, currentMonth, currentDay);
+console.log(presentMoment);
 function getDaysInMonthOfYear(year, month) {
 	return new Date(year, month, 0).getDate();
 }
@@ -135,6 +137,7 @@ const pslfRequirement = 120;
 const creditedPSLFMonths = 45;
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
 console.log("Current Date " + currentYear + "-" + (currentMonth + 1) + "-" + currentDay);
+console.log("Current Date: " + new Date(currentYear, currentMonth, currentDay).toDateString);
 document.getElementById("days-lived").textContent = ("Days Lived: " + daysSinceBirth);
 document.getElementById("weeks-lived").textContent = ("Weeks Lived: " + (daysSinceBirth / 7).toFixed(2));
 document.getElementById("years-lived").textContent = ("Years Lived: " + (daysSinceBirth / 365).toFixed(2));
@@ -186,6 +189,11 @@ const events = [
 	chathamRelocation = new LifeEvent("Relocation to Chatham County, NC", "2024-12-16", "", "I relocated to Chatham County, NC due to interpersonal events."),
 	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", "My trusty car was deemed a total loss."),
 	whiteCar = new LifeEvent("White Car", "2025-3-4", "", "Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
+	fy2025 = new LifeEvent("FY 2025", "2025-7-1", "", "Raise"),
+	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "", "To Tokyo, Nara, Kyoto, and Osaka"),
+	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", "Vested me!"),
+	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", ""),
+
 ];
 
 /**
@@ -234,6 +242,9 @@ function addEventsByYear(year) {
 				document.getElementById("event-photo").textContent = event.photo;
 				document.getElementById("event-description").textContent = event.description;
 			}
+		if (presentMoment < new Date(event.eventDate)) {
+			console.log("present moment greater");
+		}
 		}
 	}
 	// TODO: create new visual for this object's parameters

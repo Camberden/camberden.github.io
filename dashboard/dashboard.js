@@ -137,6 +137,7 @@ function nextFiscalYear() {
 		fiscalYear++;
 		fiscalYearDisplay.innerHTML = `${fiscalYear}-${fiscalYear + 1}`;
 		currentSchedule = salarySchedules[fiscalYear - 2020];
+		removeHighlightedSalary();
 		populateSalaryTable();
 		calculateStep();
 }
@@ -145,6 +146,7 @@ function previousFiscalYear() {
 		fiscalYear--;
 		fiscalYearDisplay.innerHTML = `${fiscalYear}-${fiscalYear + 1}`;
 		currentSchedule = salarySchedules[fiscalYear - 2020];
+		removeHighlightedSalary();
 		populateSalaryTable();
 		calculateStep();
 }
@@ -166,6 +168,10 @@ function calculateStep(){
 	document.getElementById("years-experience").innerHTML = yearsExperience;
 	highlightedSalary = document.getElementById(`co${custodyLevel}-${yearsExperience}`);
 	highlightedSalary.classList.add("salary-highlight");
+}
+
+function highlightSalary(level, step) {
+	document.getElementById(`co${level + 1}-${step}`).classList.add("salary-highlight");
 }
 
 function removeHighlightedSalary(){
@@ -246,9 +252,9 @@ function populateSalaryTable(){
 	for (i = 0; i < currentSchedule.length; i++) {
 		for (j = 0; j < currentSchedule[i].length; j++){
 			document.getElementById(`co${i + 1}-${j}`).innerHTML = currentSchedule[i][j];
-			if (currentSchedule[i][j] === currentSalary) {
-				document.getElementById(`co${i + 1}-${j}`).classList.add("salary-highlight");
-			}
+			// if (currentSchedule[i][j] === currentSalary) {
+			// 	document.getElementById(`co${i + 1}-${j}`).classList.add("salary-highlight");
+			// }
 		}
 	}
 }
