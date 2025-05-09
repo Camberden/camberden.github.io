@@ -1,10 +1,64 @@
 window.onload = () => console.log("Running!");
-const lastestUpdatePushed = "Thursday May 8th, 2025";
+const latestUpdatePushed = "Thursday May 8th, 2025";
+const splitDate = latestUpdatePushed.split(" ");
+
+function convertDate(m, d, y){
+	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	const day = d.replace(/[^0-9]/g, ' ');
+	const year = parseInt(y);
+	const date = new Date(year, months.indexOf(m), parseInt(day));
+	
+	return date;
+}
+const formattedDate = convertDate(splitDate[1], splitDate[2], splitDate[3]);
+/**
+ * @param {Date} date 
+ */
+function convertToJapaneseDate(date) {
+	let japaneseDate = "令和";
+	const kanjiNumbers = ["一", "二","三","四","五","六","七","八","九","十",];
+	// ----- YEARS ----- //
+
+	// if (date.getFullYear() - 2018 > 20){
+	// 	const tens = (date.getFullYear() - 2018) / 10;
+	// 	const remainder = (date.getFullYear() - 2018) % 10;
+	// 	japaneseDate += ((kanjiNumbers[tens - 1]) + kanjiNumbers[remainder] + "年");
+	// }
+	// if (date.getFullYear() - 2018 > 10){
+	// 	const tens = (date.getFullYear() - 2018) / 10;
+	// 	const remainder = (date.getFullYear() - 2018) % 10;
+	// 	japaneseDate += ((kanjiNumbers[tens - 1]) + kanjiNumbers[remainder] + "年");
+	// }
+	japaneseDate += (kanjiNumbers[date.getFullYear() - 2019] + "年");
+
+	// ----- MONTHS ----- //
+	if ((date.getMonth() + 1) > 10) {
+		japaneseDate += kanjiNumbers[9] + (kanjiNumbers[date.getMonth() - 10] + "月");
+	} else {
+		japaneseDate += (kanjiNumbers[date.getMonth()] + "月");
+	}
+
+	// ----- DAYS ----- //
+	if (date.getDate() >= 30) {
+		japaneseDate += kanjiNumbers[2] + kanjiNumbers[9] + (kanjiNumbers[date.getDate() % 30] + "日");
+	}
+	if (date.getDate() >= 20) {
+		japaneseDate += kanjiNumbers[1] + kanjiNumbers[9] + (kanjiNumbers[date.getDate() % 20] + "日");
+	}
+	if (date.getDate() > 10) {
+		japaneseDate += kanjiNumbers[9] + (kanjiNumbers[date.getDate() % 10] + "日");
+	} else {
+		japaneseDate += (kanjiNumbers[date.getDate() - 1] + "日");
+	}
+	const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+	document.getElementById("japanese-date").textContent = japaneseDate;
+}
+convertToJapaneseDate(formattedDate);
 
 // --- INFO AND ENTRYWAYS --- //
 
 const latestUpdate = document.getElementById("latest-update");
-latestUpdate.innerHTML = lastestUpdatePushed;
+latestUpdate.innerHTML = latestUpdatePushed;
 
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];

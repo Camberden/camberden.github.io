@@ -123,6 +123,12 @@
 	to {background-position: 100% 0;}
 }
 
+#japanese-date {
+	font-size: .75rem;
+	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-weight: bolder;
+}
+
 /* ----- SITE-WIDE CUSTOM FONT DATA ----- */
 
 @font-face {
