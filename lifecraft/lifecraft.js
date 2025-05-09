@@ -46,7 +46,7 @@ function enableModal() {
 				clearModal();
 			}
 		};
-	})
+	});
 }
 enableModal();
 
@@ -81,8 +81,6 @@ let changeYear = currentYear;
 const currentMonth = date.getMonth();
 const currentDay = date.getDate();
 const currentDate = date.toDateString();
-const presentMoment = new Date(currentYear, currentMonth, currentDay);
-console.log(presentMoment);
 function getDaysInMonthOfYear(year, month) {
 	return new Date(year, month, 0).getDate();
 }
@@ -226,7 +224,12 @@ const monthlySummaries = [
 
 ];
 
+
+/**
+ * @param {number} year 
+ */
 function addEventsByYear(year) {
+	const presentMoment = new Date(currentYear, currentMonth, currentDay);
 	if (year === currentYear) {
 		document.getElementById(currentYear + "-" + (currentMonth + 1) + "-" + currentDay).classList.add("current-day-highlight");
 		document.getElementById("event-title").textContent = "The Present Moment";
@@ -234,17 +237,20 @@ function addEventsByYear(year) {
 		document.getElementById("event-description").textContent = "This very moment, you are browsing my site.";
 	}
 	for (let event of events) {
+		let eventSplit = event.eventDate.split("-");
+		let eventSplitDate = new Date(eventSplit[0], eventSplit[1], eventSplit[2]);
 		if (event.eventDate.substring(0,4) == year) {
 			document.getElementById(event.eventDate).classList.add("event");
+			if (eventSplitDate.getTime() > presentMoment.getTime()) {
+				console.log(event.title + " is in the future");
+				document.getElementById(event.eventDate).classList.add("future-event");
+			}
 			document.getElementById(event.eventDate).onclick = function() {
 				document.getElementById("event-title").textContent = event.title;
 				document.getElementById("event-date").textContent = event.eventDate;
 				document.getElementById("event-photo").textContent = event.photo;
 				document.getElementById("event-description").textContent = event.description;
 			}
-		if (presentMoment < new Date(event.eventDate)) {
-			console.log("present moment greater");
-		}
 		}
 	}
 	// TODO: create new visual for this object's parameters

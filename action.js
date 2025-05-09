@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const latestUpdatePushed = "Thursday May 8th, 2025";
+const latestUpdatePushed = "Friday May 9th, 2025";
 const splitDate = latestUpdatePushed.split(" ");
 
 function convertDate(m, d, y){
@@ -15,7 +15,7 @@ const formattedDate = convertDate(splitDate[1], splitDate[2], splitDate[3]);
  * @param {Date} date 
  */
 function convertToJapaneseDate(date) {
-	let japaneseDate = "令和";
+	let japaneseDate = "最近アップデート令和";
 	const kanjiNumbers = ["一", "二","三","四","五","六","七","八","九","十",];
 	// ----- YEARS ----- //
 
