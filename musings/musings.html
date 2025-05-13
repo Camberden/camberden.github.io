@@ -23,12 +23,9 @@
 		</div>
 		<div id="quick-links">
 			<div class="quick-links-grid-item">
-				<span id="sutra-panel">Template</span>
+				<span id="interval-panel"></span>
 			</div>
-			<div class="quick-links-buttons">
-				<button class="marker-for-menu" onclick="previousPoem()">Previous</button>
-				<button class="marker-for-menu" onclick="nextPoem()">Next</button>
-			</div>
+
 		</div>
 	</div>
 
@@ -42,6 +39,10 @@
 				</p>
 			</div>
 			<span class="marker-for-menu" id="poemnum"></span><br>
+				<div>
+					<button class="poem-buttons" value="previous">Previous</button>
+					<button class="poem-buttons" value="next">Next</button>
+				</div><br>
 			<form onSubmit="return false;" style="user-select: none; color: grey;">
 				<div class="typingfield" style="text-align: center; user-select: none;">
 					<input type="text" id="sampleTypingField" value="" onkeyup="typingTest()" autocomplete="off">
@@ -60,8 +61,8 @@
 				</div>
 		
 				<div class="w2-item">
-					<button id="button-previous-sutra" class="button-sutras" value="previous">Previous Line</button>
-					<button id="button-next-sutra" class="button-sutras" value="next">Next Line</button>
+					<button class="button-sutras" value="previous">Previous Line</button>
+					<button class="button-sutras" value="next">Next Line</button>
 					<hr>
 					<select id="sutra-options" onchange="loadDifferentSutra()" value="something">
 		

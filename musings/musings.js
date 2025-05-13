@@ -141,9 +141,30 @@ function goToPoem() {
 	console.log(poemnumber);
 }
 
+function enablePoemButtons() {
+		document.querySelectorAll(".poem-buttons").forEach(button => {
+		button.onmouseleave = function() {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+		button.onmouseenter = function() {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onclick = function() {
+			console.log(button.value);
+			if (button.value === "next") {
+				nextPoem();
+			} else {
+				previousPoem();
+			}
+			ButtonInterface.buttonOnClick(button);
+		}
+	});
+}
+enablePoemButtons();
+
 
 // ---------- SUTRA UTILITY ---------- //
-let sutraPanel = document.getElementById("sutra-panel");
+
 const nobleTruths = [
 	"Suffering Exists", "The Cause is Attachment", "Suffering can End", "A Path to its End Exists",
 ];
@@ -538,6 +559,21 @@ function cycleSutraLines(boolean){
 	}
 	loadSelectedSutraLines(currentSutra);
 }
+
+const intervalPanel = document.getElementById("interval-panel");
+let panelValue = 0;
+function cyclePanelItems(array) {
+	if (panelValue < array.length - 1) {
+		panelValue++;
+		intervalPanel.textContent = array[panelValue];
+	} else {
+		panelValue = 0;
+		intervalPanel.textContent = array[panelValue];
+	}
+}
+intervalPanel.textContent = robeChantKanji[0];
+setInterval(function() {cyclePanelItems(robeChantKanji)}, 1500);
+
 
 function enableSutraButtons(){
 	document.querySelectorAll(".button-sutras").forEach(button => {
