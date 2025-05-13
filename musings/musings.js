@@ -481,7 +481,10 @@ function initSutraList(){
 	let optionText = document.createTextNode("--- Select ---");
 	option.appendChild(optionText);
 	sutraOptions.appendChild(option);
-	sutraLineOptions.appendChild(option);
+	let option2 = document.createElement("option");
+	let optionText2 = document.createTextNode("--- Select ---");
+	option2.appendChild(optionText2);
+	sutraLineOptions.appendChild(option2);
 
 	for(let i = 0; i < sutras.length; i++) {
 		let option = document.createElement("option");

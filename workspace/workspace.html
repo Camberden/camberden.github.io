@@ -209,59 +209,10 @@
 		</div>
 	</div>
 
-	<main3 class="w2-grid">
-		<div class="w2-item grid-col-span-2">
-			<h3 id="item-title"></h3>
-			<hr>
-			<ul id="item-list">
-
-			</ul>
-		</div>
-		<div class="w2-item">
-			<button id="button-previous-precept" class="button-precepts" value="previous">Previous</button>
-			<button id="button-next-precept" class="button-precepts" value="next">Next</button>
-			<hr>
-			<select id="list-options" onchange="loadSelectedItemArray()" value="something">
-
-			</select>
-		</div>
-		<div id="sutra-fields" class="w2-item grid-col-span-2">
-			<span id="sutra-title"></span>
-			<hr>
-			<p><span id="furigana-field" class="sutra-line-highlight"></span></p>
-			<p><span id="kanji-field" class="sutra-line-highlight"></span></p>
-			<p><span id="romaji-field" class="sutra-line-highlight"></span></p>
-			<p><span id="english-field" class="sutra-line-highlight"></span></p>
-		</div>
-
-		<div class="w2-item">
-			<button id="button-previous-sutra" class="button-sutras" value="previous">Previous Line</button>
-			<button id="button-next-sutra" class="button-sutras" value="next">Next Line</button>
-			<hr>
-			<select id="sutra-options" onchange="loadDifferentSutra()" value="something">
-
-			</select>
-
-			<select id="sutra-line-options" onchange="loadDifferentLine()" value="something">
-
-			</select>
-			<hr>
-
-			<div class="sutra-typing-div" style="text-align: center; user-select: none;">
-				<input type="text" id="sutra-typing-field" value="" onkeyup="sutraType()" autocomplete="off">
-			</div>
-
-			<ul id="sutra-list">
-
-			</ul>
-
-		</div>
-	</main3>
-
 	<div class="sm-grid">
 		<div class="sm-item grid-col-span-4">
 			<h2>Segregation Visualizer</h2>
-			<button onclick="loadCurrentInmates()">Populate</button>
+			<button id="sm-populator">Populate</button>
 		</div>
 		<div class="sm-item grid-col-span-2">
 			
