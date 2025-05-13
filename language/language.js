@@ -19,6 +19,7 @@ const groupingField = document.getElementById("grouping-field");
 const vocabField = document.getElementById("vocab-field");
 const englishField = document.getElementById("english-field");
 const sentenceField = document.getElementById("sentence-field");
+const transliterationField = document.getElementById("transliteration-field");
 
 const currentGroupingItem = document.getElementById("current-grouping-item");
 const currentGroupingTotal = document.getElementById("current-grouping-total");
@@ -147,6 +148,11 @@ const studyModules = [
 ];
 
 function loadModuleItem(module, itemNumber) {
+	if (module.language === "er"){
+		transliterationField.textContent = module.vocabulary[itemNumber];
+	} else {
+		transliterationField.textContent = "";
+	}
 	groupingField.textContent = module.grouping;
 	vocabField.textContent = module.vocabulary[itemNumber];
 	englishField.textContent = module.english[itemNumber];
@@ -163,9 +169,9 @@ function generateStudyModules(selectedLanguage) {
 
 	for (let studyModule of studyModules) {
 		if (studyModule.language === selectedLanguage) {
-			// if (studyModule.language === "er") {
-			// 	vocabField.classList.add("eremoran-kiptascript");
-			// }
+			if (studyModule.language === "er") {
+				vocabField.classList.add("eremoran-kiptascript");
+			}
 			activeModules.push(studyModule);
 		}
 	}

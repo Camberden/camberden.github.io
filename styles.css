@@ -283,6 +283,16 @@ a:hover {
 	border-color: grey;
 	border-top: none;
 	border-bottom: none;
+	border-left: none;
+}
+
+.quick-links-grid-item:first-child {
+	padding: 1rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	border-top: none;
+	border-bottom: none;
 }
 
 .quick-links-buttons {

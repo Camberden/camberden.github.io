@@ -666,8 +666,6 @@ const blogData = [
 	Concerning sense/presence, I notice that, typically, bi-syllabic words would contain a C post-nasal. This applies to my most commonly used words of the group:
 	presence, essence, and sentence. Of course, there's license and insence, aren't in line with this sense.
 	I'd like to consider finding out the reasonings further, later on.
-	<hr>
-	I should also write some common and useful Japanese grammatical structures by which I tend to be confused. _yori _hodo/nohouga
 	`
 	,
 ];
