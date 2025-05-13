@@ -560,8 +560,12 @@ function cycleSutraLines(boolean){
 	loadSelectedSutraLines(currentSutra);
 }
 
+// ----- INTERVAL PANEL ----- //
+
 const intervalPanel = document.getElementById("interval-panel");
+intervalPanel.style.animationDuration = "3s";
 let panelValue = 0;
+
 function cyclePanelItems(array) {
 	if (panelValue < array.length - 1) {
 		panelValue++;
@@ -571,8 +575,23 @@ function cyclePanelItems(array) {
 		intervalPanel.textContent = array[panelValue];
 	}
 }
-intervalPanel.textContent = robeChantKanji[0];
-setInterval(function() {cyclePanelItems(robeChantKanji)}, 1500);
+
+/**
+ * 
+ * @param {string[]} array - collection
+ * @param {number} milliseconds - number in milliseconds
+ * @description - an extension of setInterval() to consolidate with animation duration
+ */
+function cyclePanelCollections(array, milliseconds) {
+	intervalPanel.textContent = robeChantKanji[0];
+	const millisecondString = milliseconds.toString();
+	intervalPanel.style.animationDuration = millisecondString.substring(0, (millisecondString.length - 3)) + "s";
+	setInterval(function() {cyclePanelItems(array)}, milliseconds);
+	console.log(millisecondString.length - 3);
+}
+cyclePanelCollections(robeChantKanji, 3000);
+
+// ----- SUTRA TYPING ----- //
 
 
 function enableSutraButtons(){
@@ -613,7 +632,6 @@ function sutraType() {
 	}
 
 }
-
 
 const displaySutras = function () {
 	setInterval(cycleSutraLines, 2000); //DON'T USE FUNCTION PARAENTHESIS FOR INTERVAL ARGUMENT
