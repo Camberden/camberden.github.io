@@ -635,8 +635,3 @@ function sutraType() {
 	}
 
 }
-
-const displaySutras = function () {
-	setInterval(cycleSutraLines, 2000); //DON'T USE FUNCTION PARAENTHESIS FOR INTERVAL ARGUMENT
-}
-// displaySutras();

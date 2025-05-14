@@ -412,6 +412,11 @@ function displayNotice(age, service) {
 	}
 }
 
+function fadeInData() {
+	document.getElementById("pension-sums").classList.add("fade-in-data");
+	setInterval(function (){document.getElementById("pension-sums").classList.remove("fade-in-data")}, 1000);
+}
+
 function generatePension() {
 
 	const pensionModifier =  0.0182;
@@ -455,6 +460,7 @@ function generatePension() {
 	}
 
 	highlightPensionReduction(retirementAge, serviceYears);
+	fadeInData();
 	
 }
 

@@ -369,3 +369,19 @@ body {
 
 
 }
+
+/* ----- ANIMATION DATA ----- */
+
+@keyframes text-fade-in {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}
+.fade-in-data {
+	animation-name: text-fade-in;
+	animation-duration: 1s;
+	animation-iteration-count: 1;
+}
