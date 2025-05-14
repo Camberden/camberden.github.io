@@ -258,7 +258,6 @@ function populateSalaryTable(){
 		}
 	}
 }
-
 populateSalaryTable();
 
 // ---------- REEDUCATION INFORMATION ----------//
@@ -302,10 +301,10 @@ function displayCpaCredits() {
 	cpaCreditsDisplay.innerHTML = cpaCredits;
 	cpaCompletionPercentage = cpaCredits / 30 * 100;
 	if (cpaCredits >= 30) {
-		console.log("Where's my bar???")
+		// console.log("Where's my bar???")
 		cpaProgressBar.innerHTML = `<span style="width:100%;"></span>`
 	} else {
-		console.log("Stop hiding my bar!!!")
+		// console.log("Stop hiding my bar!!!")
 		cpaProgressBar.innerHTML = `<span style="width:${cpaCompletionPercentage}%;"></span>`;
 	}
 }
@@ -364,3 +363,164 @@ for (const doc of refdocs) {
 	li.appendChild(a);
 	refdocsList.appendChild(li);
 };
+
+
+// ---------- PENSION CALCULATOR UTILITY ---------- //
+
+// TODO: lock in age and service, press up and down arrows to adjust.
+// TODO: add monthly increments, perhaps.
+
+
+function generatePensionTable() {
+	const table = document.getElementById("pension-table");
+	while (table.lastChild) {
+		table.removeChild(table.lastChild);
+	}
+	let retirementAge = 60;
+	let retirementService = 30;
+	const reductionIncrements = [95, 90, 85, 80, 75, 70, 65, 60, 55, 52, 50];
+	let reductionLow = 3; // 59 years
+
+	for (let i = 0, j = 0; i < 11; i++) {
+	
+		let tr = document.createElement("tr");
+		tr.setAttribute("id", `pension-row-${retirementAge}`);
+		let th = document.createElement("th");
+		let text;
+		if (i === 0 && j === 0) {
+			th.setAttribute("id", `pension-age-${retirementAge}-service-${retirementService}`);
+			text = document.createTextNode(retirementAge + "/" + retirementService + `\n100%`);
+		} else {
+			th.setAttribute("id", `pension-age-${retirementAge}`);
+			text = document.createTextNode(retirementAge);
+		}
+		th.appendChild(text);
+		tr.appendChild(th);
+
+		if (i === 0) {
+			while (j < 10) {
+				let th = document.createElement("th");
+				th.setAttribute("id", `pension-service-${--retirementService}`);
+				let text = document.createTextNode(retirementService);
+				th.appendChild(text);
+				tr.appendChild(th);
+				j++
+			}
+			j = 0;
+		} else {
+			while (j < 10) {
+				let td = document.createElement("td");
+				td.setAttribute("id", `pension-age-${retirementAge}-service-${--retirementService}`);
+				let reduction = reductionLow >= j ? reductionIncrements[j] : reductionIncrements[reductionLow];
+				let text = document.createTextNode(reduction + "%");
+				td.appendChild(text);
+				tr.appendChild(td);
+				j++;
+			}
+			j = 0;
+			reductionLow++;
+			// Accounts for 52% for Age 53 @ 20 years of service.
+			if (retirementAge === 53) {
+				reductionIncrements[reductionLow - 1] = reductionIncrements[reductionLow]
+			}
+		}
+		retirementService = 30;
+		table.appendChild(tr);
+		retirementAge--;
+	}
+	retirementAge = 60;
+	retirementService = 30;
+}
+generatePensionTable();
+
+function displayNotice(age, service) {
+	const notice = document.getElementById("pension-notice");
+	notice.textContent = service + " years of service and retiring at " + age;
+
+
+	if (age < 50) {
+		notice.textContent = "Retirement must occur at or beyond age 50.";
+	} else if (service < 20) {
+		notice.textContent = "Retirement must occur at or beyond 20 years of service.";
+	} else if (age >= 60 || service >= 30) {
+		notice.textContent = "Retirement at 60 years of age or 30 years of service is full in most cases (TBD).";
+	}
+}
+
+function generatePension() {
+
+	const pensionModifier =  0.0182;
+	let retirementAge = document.getElementById("retirement-age").value;
+	let serviceYears = document.getElementById("service-years").value;
+	
+	displayNotice(retirementAge, serviceYears);
+	
+	let fourSalariesAverage = 0.00;
+	const fourSalaries = document.querySelectorAll(".salary-for-pension");
+	for (let salary of fourSalaries) {
+		fourSalariesAverage += parseFloat(salary.value);
+	}
+	fourSalariesAverage /= 4;
+
+	const grossPension = (fourSalariesAverage * pensionModifier * serviceYears).toFixed(2);
+	document.getElementById("gross-pension").innerHTML = grossPension;
+
+	let reductionString;
+	if (retirementAge >= 60 || serviceYears >= 30) {
+		reductionString = "0%";
+		document.getElementById("reduction-percentage").textContent = `Full, Unreduced Pension`;
+		document.getElementById("reduction-amount").textContent = `increases with service years`;
+		document.getElementById("net-pension").textContent = `Net Pension: $${grossPension}`;
+		document.getElementById("monthly-pension").textContent = `Net Pension Monthly: $${(grossPension / 12).toFixed(2)}`;
+
+	} else if (retirementAge < 50 || serviceYears < 20) {
+		reductionString = "100%"
+		document.getElementById("reduction-percentage").textContent = `Ineligible`;
+		document.getElementById("reduction-amount").textContent = ``;
+		document.getElementById("net-pension").textContent = `Prospective Full Pension: $${grossPension}`;
+		document.getElementById("monthly-pension").textContent = `Prospective Pension Monthly: $${(grossPension / 12).toFixed(2)}`;
+	} else {
+		reductionString = document.getElementById(`pension-age-${retirementAge}-service-${serviceYears}`).textContent;
+		const percentageReduction = reductionString.substring(0, reductionString.length - 1);
+		document.getElementById("reduction-percentage").textContent = `Reduced to ${parseInt(percentageReduction)}% of Gross Pension`;
+		document.getElementById("reduction-amount").textContent = `Amount Lost: - $${(grossPension - (grossPension * (percentageReduction / 100))).toFixed(2)}`;
+		const annualPension = (grossPension * (percentageReduction / 100)).toFixed(2);
+		document.getElementById("net-pension").textContent = `Net Pension: $${annualPension}`;
+		document.getElementById("monthly-pension").textContent = `Net Pension Monthly: $${(annualPension / 12).toFixed(2)}`;
+	}
+
+	highlightPensionReduction(retirementAge, serviceYears);
+	
+}
+
+// TODO: INCLUDE POST-60YR OLD TABLE
+function highlightPensionReduction(age, service) {
+	document.querySelector(".pension-reduction-highlight").classList.remove("pension-reduction-highlight");
+	let cell;
+	
+	if (age >= 60 || service >= 30) {
+		cell = document.getElementById(`pension-age-60-service-30`);
+	} else if (age < 50 || service < 20) {
+		// TODO: NOTIFICATION BAR AT TOP 
+		cell = document.getElementById(`pension-notice`);
+	} else {
+		cell = document.getElementById(`pension-age-${age}-service-${service}`);
+	}
+	cell.classList.add("pension-reduction-highlight");
+}
+
+function enablePensionButtons() {
+	document.querySelectorAll(".pension-buttons").forEach(button => {
+		button.onclick = () => {
+			generatePension();
+			ButtonInterface.buttonOnClick(button);
+		}
+		button.onmouseenter = () => {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = () => {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+	});
+}
+enablePensionButtons();

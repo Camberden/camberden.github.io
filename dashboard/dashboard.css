@@ -6,7 +6,7 @@ ul {
 }
 
 input[type=text] {
-	background-color: #a1dbf8;
+	background-color: var(--clr-grid-box);
 	color: #f59b60;
 	font-family: Permanent Marker, serif;
 	font-size: 1rem;
@@ -15,7 +15,7 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-	background-color: #f6f3ed;
+	background-color: var(--clr-quinary-body);
 }
 
 #dashboard-header {
@@ -142,11 +142,9 @@ input[type=text]:focus {
 
 /* ----- STEP PAY PLAN SPECIFIC ----- */
 
-/* maybe this is responsible for bad sizing */
-table, th, td {
+:where(#salary-table) :where(tr, th, td) {
 	border: 1px solid var(--clr-quinary-body);
 	height: 2rem;
-
 }
 
 .salary-highlight {
@@ -298,4 +296,36 @@ table, th, td {
 
 #refdocs-list {
 	list-style-type: none;
+}
+
+
+/* ----- PENSION STUFF ----- */
+
+#subgrid-pension-calculator {
+	display:flex;
+	flex-direction: row;
+	justify-content: baseline;
+}
+
+
+#pension-table {
+	margin: 1rem;
+}
+
+#pension-table > tr > th {
+	width: 0.1rem;
+	border-style: double;
+	border-color: var(--clr-secondary);
+}
+
+#pension-table > tr > td {
+	padding: 0.7rem;
+	border-top: none;
+	border-bottom: double;
+	border-left: none;
+	border-right: double;
+}
+
+.pension-reduction-highlight {
+	background-color: var(--clr-quaternary);
 }

@@ -139,7 +139,7 @@
 		</div>
 		<div>
 			<div id="salary-table-div">
-				<table>
+				<table id="salary-table">
 					<tr>
 						<th id="salary-table-corner"></th>
 						<th>Step 0</th>
@@ -321,7 +321,55 @@
 
 			</ul>
 		</div>
-	</div>
+
+		<!-- PENSION CALCULATOR -->
+
+		<div id="dashboard-pension-calculator" class="dashboard-item">
+			<div class="marker">
+				<h2>Pension Calculator</h2>
+			</div>
+
+			<div id="subgrid-pension-calculator">
+
+				<div id="pension-data">
+					<ul id="pension-inputs">
+						<li class="no-bullet">Age at Retirement: <input type="text" placeholder="50" value="50" id="retirement-age"></li>
+						<li class="no-bullet">Service Years: <input type="text" placeholder="24" value="24" id="service-years"></li>
+						<li class="no-bullet">Year 1: <input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension"
+								id="yr1-for-pension" label="yr1-for-pension"></li>
+						<li class="no-bullet">Year 2: <input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension"
+								id="yr2-for-pension" label="yr2-for-pension"></li>
+						<li class="no-bullet">Year 3: <input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension"
+								id="yr3-for-pension" label="yr3-for-pension"></li>
+						<li class="no-bullet">Year 4: <input type="text" placeholder="68224.61" value="68224.61" class="salary-for-pension"
+								id="yr4-for-pension" label="yr4-for-pension"></li>
+						<br>
+						<button class="pension-buttons">Generate Pension</button>
+						<br>
+						<hr>
+						<li class="no-bullet"><span id="pension-notice"></span></li>
+						<hr>
+
+					</ul>
+					<ul id="pension-sums">
+						<p class="pension-reduction-highlight">Gross Pension: $<span id="gross-pension"></span></p>
+						<hr>
+						<p><span id="reduction-percentage"></span></p>
+						<p><span id="reduction-amount"></span></p>
+						<hr>
+						<p><span id="net-pension"></span></p>
+						<p><span id="monthly-pension"></span></p>
+					</ul>
+
+				</div>
+
+				<table id="pension-table"></table>
+			
+			</div> <!-- END SUBGRID-->
+
+		</div> <!-- END PENSION CALCULATOR-->
+
+	</div> <!-- END DASHBOARD ITEM -->
 
 </body>
 </html>

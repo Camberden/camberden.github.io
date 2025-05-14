@@ -326,6 +326,7 @@ button {
 }
 
 .button-highlight {
+	/* cursor: pointer; */
 	color: var(--clr-quaternary);
 	background: var(--clr-tertiary);
 }
