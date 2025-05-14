@@ -103,14 +103,14 @@ function populateTrackList(tracksArray) {
 		const trackListText = document.createTextNode(tracksArray[i].title + " " + tracksArray[i].year);
 		trackListItem.appendChild(trackListText);
 		trackList.appendChild(trackListItem);
-		// console.log(trackListItem.getAttribute("id").substring(2));
 		trackListItem.addEventListener("click", function (e) {
 			if (e.target && e.target.matches("li")) {
-				loadSelectedTrack(tracksArray[trackListItem.getAttribute("id").substring(2)]);
+					loadSelectedTrack(tracksArray[trackListItem.getAttribute("id").substring(2)]);
+					trackListItem.classList.add("track-list-selected-highlight");
 			}
 		});
-		;
 	}
+	document.getElementById("t-0").classList.add("track-list-selected-highlight");
 }
 populateTrackList(loadSortedTracks("finished"));
 
@@ -129,7 +129,8 @@ enableMusicSortButtons();
 	 * @param {Track} trackObject
 **/
 function loadSelectedTrack(trackObject) {
-	nowPlaying.innerHTML = trackObject.title;
+	nowPlaying.textContent = trackObject.title;
+	highlightSelectedTrack();
 	currentAudio = trackObject.audioFileLink;
 	trackPlayerControls.innerHTML = `<audio preload="none" controls>
 	<source src="${currentAudio}" type="audio/mpeg">
@@ -140,6 +141,9 @@ loadSelectedTrack(selectedTrack);
 
 function highlightSelectedTrack() {
 	nowPlaying.classList.add("now-playing-highlight");
+	for (let li of trackList.children) {
+		li.classList.remove("track-list-selected-highlight");
+	}
 }
 highlightSelectedTrack();
 
@@ -175,5 +179,4 @@ function enableSortByYearAndAlbum() {
 		populateTrackList(loadSortedTracks(sortByAlbum.value));
 	}
 }
-
 enableSortByYearAndAlbum();

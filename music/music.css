@@ -137,8 +137,16 @@
 	background-position: 0 88%;
 }
 
+#track-list {
+	list-style-type: none;
+}
+
 #track-list > li:hover {
-	background: lightgreen;
+	background: var(--clr-quinary-body);
+}
+
+.track-list-selected-highlight {
+	background-color: var(--clr-quaternary);
 }
 
 @keyframes songinfomove {
