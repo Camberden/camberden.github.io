@@ -330,42 +330,7 @@ function enableCpaProjection(){
 }
 enableCpaProjection();
 
-
-// ---------- REFERENCE DOCUMENTS ---------- //
-
-const refdocs = [
-	"../assets/refdoc-acc220-schedule.pdf",
-	"../assets/refdoc-acc220-syllabus.pdf",
-	"../assets/refdoc-acc220-acronyms.pdf",
-	"../assets/refdoc-acc121-schedule.pdf",
-	"../assets/refdoc-chzc-chant2020.pdf",
-	"../assets/refdoc-cti110-key.pdf",
-	"../assets/refdoc-duolingo-japanese-vocab.pdf",
-	"../assets/refdoc-mat121-manual.pdf",
-	"../assets/refdoc-mat171-manual.pdf",
-	"../assets/refdoc-mat171-transformations.pdf",
-	"../assets/refdoc-mysql-phpadmin-setup.pdf",
-	"../assets/refdoc-mysql-phpadmin-setup.pdf",
-	"../assets/refdoc-nc-college-equivalence.pdf",
-	"../assets/refdoc-oryoki-guide.pdf",
-	"../assets/refdoc-chzc-condensed.pdf",
-];
-const refdocsList = document.getElementById("refdocs-list");
-// Generates Any Reference Document if Present in Assets
-for (const doc of refdocs) {
-	const li = document.createElement("li");
-	const a = document.createElement("a");
-	const text = document.createTextNode(doc.substring(17, doc.length - 4));
-	a.classList.add("marker");
-	a.appendChild(text);
-	a.setAttribute("href", doc);
-	a.setAttribute("target", "_blank");
-	li.appendChild(a);
-	refdocsList.appendChild(li);
-};
-
-
-// ---------- PENSION CALCULATOR UTILITY ---------- //
+// ---------- PENSION CALCULATOR ---------- //
 
 // TODO: lock in age and service, press up and down arrows to adjust.
 // TODO: add monthly increments, perhaps.

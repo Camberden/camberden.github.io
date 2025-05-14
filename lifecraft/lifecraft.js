@@ -26,7 +26,11 @@ function enableModal() {
 					generateWishList();
 					modal.style.display = "block";
 					break;
-				case "PSLF Credit":
+				case "Documents":
+					generateReferenceDocuments();
+					modal.style.display = "block";
+					break;
+				case "PSLF":
 					modal.style.display = "block";
 					generatePSLFinfo();
 					break;
@@ -352,9 +356,7 @@ const maintenancePoints = [
 	"SWC: [___ ___]",
 	"AZC: [___ ___]",
 	"Benefits: Enroll [October 20XX]",
-
-
-]
+];
 
 function generateMaintenanceList() {
 	const ul = document.createElement("ul");
@@ -412,6 +414,7 @@ function generatePSLFinfo() {
 	for (i = 0; i < pslfRequirement; i++) {
 		if (i % 12 === 0) {
 			const pslfBoxLine = document.createElement("hr");
+			pslfBoxLine.classList.add("modal-line");
 			pslfBoxes.appendChild(pslfBoxLine);
 		}
 		const pslfBox = document.createElement("span");
@@ -423,4 +426,39 @@ function generatePSLFinfo() {
 		pslfBoxes.appendChild(pslfBox);
 	}
 	document.getElementById("modal-text").appendChild(pslfBoxes);
+}
+
+const refdocs = [
+	"../assets/refdoc-acc220-schedule.pdf",
+	"../assets/refdoc-acc220-syllabus.pdf",
+	"../assets/refdoc-acc220-acronyms.pdf",
+	"../assets/refdoc-acc121-schedule.pdf",
+	"../assets/refdoc-chzc-chant2020.pdf",
+	"../assets/refdoc-cti110-key.pdf",
+	"../assets/refdoc-duolingo-japanese-vocab.pdf",
+	"../assets/refdoc-mat121-manual.pdf",
+	"../assets/refdoc-mat171-manual.pdf",
+	"../assets/refdoc-mat171-transformations.pdf",
+	"../assets/refdoc-mysql-phpadmin-setup.pdf",
+	"../assets/refdoc-mysql-phpadmin-setup.pdf",
+	"../assets/refdoc-nc-college-equivalence.pdf",
+	"../assets/refdoc-oryoki-guide.pdf",
+	"../assets/refdoc-chzc-condensed.pdf",
+];
+
+function generateReferenceDocuments() {
+	const ul = document.createElement("ul");
+	for (const doc of refdocs) {
+		const li = document.createElement("li");
+		const a = document.createElement("a");
+		const text = document.createTextNode(doc.substring(17, doc.length - 4));
+		a.classList.add("marker");
+		a.appendChild(text);
+		a.setAttribute("href", doc);
+		a.setAttribute("target", "_blank");
+		li.appendChild(a);
+		ul.appendChild(li);
+	};
+	document.getElementById("modal-text").appendChild(ul);
+
 }

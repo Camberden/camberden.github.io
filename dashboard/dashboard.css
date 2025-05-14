@@ -1,7 +1,6 @@
 /* ----- PAGE SPECIFIC ----- */
 
 ul {
-	/* margin-right: 25%; */
 	text-align: left;
 }
 
@@ -87,7 +86,6 @@ input[type=text]:focus {
 	min-width: 20rem;
 	min-height: 20rem;
 	padding: 2rem;
-
 }
 
 #dashboard-refdocs {
@@ -96,6 +94,11 @@ input[type=text]:focus {
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: center;
+}
+
+#dashboard-pension-calculator {
+	flex: content;
+	min-width: fit-content;
 }
 
 /* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
@@ -119,8 +122,8 @@ input[type=text]:focus {
 .automated-payment {
 	text-align: right;
 	font-family: 'Courier New', Courier, monospace;
-	opacity: 0.5;
-	background-color: var(--clr-tertiary);
+	opacity: .7;
+	color: var(--clr-tertiary);
 }
 
 .non-automated-payment {
@@ -292,14 +295,7 @@ input[type=text]:focus {
 	color: red;
 }
 
-/* ----- REFERENCE DOCUMENTS SPECIFIC ----- */
-
-#refdocs-list {
-	list-style-type: none;
-}
-
-
-/* ----- PENSION STUFF ----- */
+/* ----- PENSION CALCULATOR ----- */
 
 #subgrid-pension-calculator {
 	display:flex;
@@ -307,9 +303,10 @@ input[type=text]:focus {
 	justify-content: baseline;
 }
 
-
 #pension-table {
 	margin: 1rem;
+	max-width: 600px;
+	min-width: 400px;
 }
 
 #pension-table > tr > th {
@@ -319,7 +316,7 @@ input[type=text]:focus {
 }
 
 #pension-table > tr > td {
-	padding: 0.7rem;
+	padding: 0.2rem;
 	border-top: none;
 	border-bottom: double;
 	border-left: none;
@@ -328,4 +325,47 @@ input[type=text]:focus {
 
 .pension-reduction-highlight {
 	background-color: var(--clr-quaternary);
+}
+
+/* ----- MEDIA QUERIES ---- */
+
+@media screen and (max-width: 1350px) {
+
+body {
+	background-image: none; 
+}
+
+#pension-table > tr > td {
+	padding: 0.1rem;
+	border-top: none;
+	border-bottom: double;
+	border-left: none;
+	border-right: double;
+	}
+}
+
+@media screen and (max-width: 750px) {
+
+#subgrid-pension-calculator {
+	flex-direction: column;
+	justify-content: center;
+}
+
+#pension-data {
+	justify-content: center;
+}
+
+#pension-table > tr > td {
+	padding: 0.0rem;
+	border-top: none;
+	border-bottom: double;
+	border-left: none;
+	border-right: double;
+}
+
+.dashboard-item {
+	padding: 1rem;
+}
+
+
 }

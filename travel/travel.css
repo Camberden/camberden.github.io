@@ -76,7 +76,7 @@
 	background-color: rgba(0,0,0,0.4); 
 }
 
-.modal-field {
+#modal-field {
 	background-color: var(--clr-quinary-body);
 	margin: 15% auto; /* 15% from the top and centered */
 	border: 1px solid #888;
