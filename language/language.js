@@ -109,6 +109,35 @@ const moduleJpEn1 = [
 	"sample",
 ]
 
+const moduleJpEn2 = [
+	"to be late",
+	"slow",
+	"to be afraid of (畏)",
+	"to occur/happen",
+	"to get angry",
+	"to wake up",
+	"to be afraid of",
+	"to send",
+	"to place",
+	"late",
+]
+
+const moduleJp2 = [
+	"遅れる okureru",
+	"遅い osoi",
+	"恐れる osoreru",
+	"起こる okoru",
+	"怒る osoru",
+	"起きる ikiru",
+	"怖がる kowagaru",
+	"送る okiru",
+	"置く oku",
+	"遅く osoku (adv)",
+
+];
+
+
+
 // ----- EREMORAN ----- //
 
 const testModuleEremoranVocabulary = [
@@ -144,6 +173,7 @@ const testModuleErEn1 = [
 
 const studyModules = [
 	jp1 = new StudyModule(moduleJp1, moduleJpEn1, "rhodia book 1", "jp"),
+	jp2 = new StudyModule(moduleJp2, moduleJpEn2, "oso-oko confusion", "jp"),
 	er1 = new StudyModule(testModuleEremoranVocabulary, testModuleErEn1, "demo-er-grouping", "er"),
 ];
 

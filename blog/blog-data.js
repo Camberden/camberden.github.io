@@ -668,4 +668,18 @@ const blogData = [
 	I'd like to consider finding out the reasonings further, later on.
 	`
 	,
+	`
+	| May 16th, 2025…
+	| Pittsboro, NC
+	| 2258 HRS
+	| &emsp;
+	I went to meet the group with which I would travel abroad. I had a decent time and definitely had a bit of a nostalgia trip
+	seeing N64 Mario Party on the screen at the game store. Sigh. I would say I'm excited for what's ahead, but I'm mellow.
+	Pretty mellow. I think I need more sleep; I really cut it short trying to make it at a decent time. 
+	<hr>
+	Even now, I feel a bit burnt out despite not having had too many work related stressors. I suspect this may be the isolation
+	taking a toll on me. I'm not sure. I think I should force myself to <b-title>sleep and live</b-title> during the day for a while, while I can. 
+	Heck. I'm grateful to have this unexpected extra time afforded to me. I should go now.
+	`
+	,
 ];

@@ -10,7 +10,7 @@ ul {
 	flex-direction: row;
 }
 #navigation-item {
-	flex: .2;
+	flex: .4;
 	flex-direction: column;
 	/* text-align: left; */
 	/* align-items: baseline; */
@@ -22,7 +22,7 @@ ul {
 }
 
 #language-item {
-	flex: .8;
+	flex: .6;
 	align-items: baseline;
 	align-content: baseline;
 }
