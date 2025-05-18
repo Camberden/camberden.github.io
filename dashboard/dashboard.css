@@ -219,21 +219,14 @@ input[type=text]:focus {
 	grid-template-columns: repeat(11, 8%);
 }
 
-/* MENUMODAL */
+/* MODAL */
 
-#menulabel {
-	color: var(--clr-secondary);
-	text-align: center;
-	font-size: 1rem;
-	font-family: Permanent Marker, serif;
-}
-
-#menulabel:hover {
+.modal-prompt:hover {
 	color: var(--clr-primary);
-	/* font-size: 1.1em; */
 	position: inherit;
 	text-shadow: -2.5px -1px 0px #ff00ff;
 }
+
 
 .modal {
 	display: none; /* To hide by default */
@@ -253,35 +246,35 @@ input[type=text]:focus {
 	gap: 1.5rem;
 	grid-template-columns: repeat(2, 50%);
 }
-  
-.menudialog {
+
+.modal-field {
 	background-color: var(--clr-quinary-body);
 	margin: 15% auto; /* 15% from the top and centered */
-	/* padding: 20px; */
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
 }
 
-.menudialog > li {
-	margin-left: 25px;
+#modal-text > ul > li {
+	list-style-type: none;
 }
 
-.dialogtext {
-	color: var(--clr-secondary);
-	font-size: 1em;
-	margin-left: 30%;
-	font-family: Permanent Marker, serif;
+.modal-line {
+	width: 25%;
 }
 
-.closemenu {
-	color: #aaa;
-	float: right;
-	font-size: 28px;
+.close-modal {
+	border-top: none;
+	border-bottom: 1px solid #888;
+	border-left: none;
+	border-right: 1px solid #888;
+	color: #888;
+	float: inline-start;
+	font-size: 2rem;
 	font-weight: bold;
 }
 
-.closemenu:hover,
-.closemenu:focus {
+.close-modal:hover,
+.close-modal:focus {
 	color: black;
 	text-decoration: none;
 	cursor: pointer;

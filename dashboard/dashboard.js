@@ -262,26 +262,6 @@ populateSalaryTable();
 
 // ---------- REEDUCATION INFORMATION ----------//
 
-// MODAL
-const modal = document.getElementById("menumodal");
-const menuclick = document.getElementById("menulabel");
-const menuclose = document.getElementsByClassName("closemenu")[0];
-
-function cpaModalAccess() {
-	menuclick.onclick = function () {
-		modal.style.display = "block";
-	};
-	menuclose.onclick = function () {
-		modal.style.display = "none";
-	};
-	window.onclick = function (event) {
-		if (event.target === modal) {
-			modal.style.display = "none";
-		}
-	};
-}
-cpaModalAccess();
-
 // PRIMARY CPA DIV
 let cpaCredits = 0;
 const cpaCreditsDisplay = document.getElementById("cpa-credits");
@@ -495,3 +475,138 @@ function enablePensionButtons() {
 	});
 }
 enablePensionButtons();
+
+
+// ----- MODAL ----- //
+
+const modal = document.querySelector(".modal");
+const closeModal = document.getElementsByClassName("close-modal")[0];
+
+function cpaModalAccess() {
+	accModalClick.onclick = function () {
+		accModal.style.display = "block";
+	};
+	closeModal.onclick = function () {
+		accModal.style.display = "none";
+	};
+	window.onclick = function (event) {
+		if (event.target === accModal) {
+			accModal.style.display = "none";
+		}
+	};
+}
+// cpaModalAccess();
+
+function clearModal() {
+	document.getElementById("modal-text").innerHTML = "";
+	console.log("Modal Cleared!");
+}
+
+function displayExpenseModal() {
+	const expenseModalData = "hi";
+
+	document.getElementById("modal-text").innerHTML = expenseModalData;
+}
+
+function displayAccountingModal() {
+	const accountingModalData = `
+	<p>I'm doing Accounting now.<br>
+		I believe that I will more quickly and easily migrate to a non-custody position
+		through this line of work.<br>
+		The opportunities are plentiful, even intra-department, and I'm enjoying these studies.<br>
+		I expect to be eligible for basic non-custody positions after attaining WTCC's Advanced
+		Accounting Core Cert.<br>
+		Around then, I would qualify to study for and then sit for the CPA exam.<br>
+		Cpa Requirements: <a href="https://www.thiswaytocpa.com/licensure/state-requirements/NC/"
+			target="_blank">[link]</a>
+		I would need to work under a CPA to attain mine, necessitating the migration when eligible.<br>
+		WTCC's Diploma and Associate's are optional for me.<br>
+		The Computer Science ship has sailed and the market for that field is absolutely terrible.<br>
+	</p>
+	<div class="modal-grid">
+		<ul>
+			<li class="taken">No more than 6HRS of Accounting Principles</li>
+			<li>No more than 3HRS of Business Law</li>
+			<li>21HRS in other Accounting Courses</li>
+		</ul>
+
+		<ul>
+			<li>1YR EXP under CPA in Public Accounting</li>
+			<li>1YR EXP under CPA in General Accounting</li>
+			<li>4YRS EXP in General Accounting or Teaching it</li>
+		</ul>
+	</div>
+
+	<div class="acc-schedule-grid">
+		<ul>SU2024<hr>
+			<li class="taken">ACC 120</li>
+		</ul>
+		<ul>FA2024<hr>
+			<li class="taken">ACC 121</li>
+		</ul>
+		<ul>SP2025<hr>
+			<li class="taken">ACC 220</li>
+		</ul>
+		<ul>SU2025<hr>
+			<li class="taking">BUS 110 日本中</li>
+		</ul>
+		<ul>FA2025<hr>
+			<li>ACC 221</li>
+		</ul>
+		<ul>SP2026<hr>
+			<li>ACC 269</li>
+		</ul>
+		<ul>SU2026<hr>
+			<li>ACC 129</li>
+		</ul>
+		<ul>FA2026<hr>
+			<li>BUS 115</li>
+		</ul>
+		<ul>SP2027<hr>
+			<li>ACC 149 & 150</li>
+		</ul>
+		<ul>SU2027<hr>
+			<li>ACC 151</li>
+		</ul>
+		<ul>FA2027<hr>
+			<li>ACC 152</li>
+		</ul>
+	</div>
+	`;
+	document.getElementById("modal-text").innerHTML = accountingModalData;
+
+}
+
+function dashboardModalAccess() {
+	document.querySelectorAll(".modal-prompt").forEach(prompt => {
+		prompt.onclick = function() {
+			switch(prompt.id) {
+				case "accounting-modal":
+					displayAccountingModal();
+					modal.style.display = "block";
+				break;
+				case "expense-modal":
+					displayExpenseModal();
+					modal.style.display = "block";
+				break;
+				default:
+					console.log("default");
+				break;
+			}
+			
+		}
+		
+	});
+		closeModal.onclick = function () {
+			clearModal();
+			modal.style.display = "none";
+		};
+		window.onclick = function (event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+				clearModal();
+			}
+		}
+}
+
+dashboardModalAccess();
