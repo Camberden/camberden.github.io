@@ -143,6 +143,27 @@ input[type=text]:focus {
 	margin-left: 10px;
 }
 
+.paycard-grid {
+
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+
+
+	padding-block: 1rem;
+	width: min(90%, 70rem);
+	margin-inline: auto;
+
+}
+
+.paycard-item {
+	padding: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: grey;
+	border-style: double;
+
+}
+
 /* ----- STEP PAY PLAN SPECIFIC ----- */
 
 :where(#salary-table) :where(tr, th, td) {
@@ -219,14 +240,14 @@ input[type=text]:focus {
 	grid-template-columns: repeat(11, 8%);
 }
 
-/* MODAL */
+/* ----- MODAL ----- */
 
 .modal-prompt:hover {
+	cursor: pointer;
 	color: var(--clr-primary);
 	position: inherit;
 	text-shadow: -2.5px -1px 0px #ff00ff;
 }
-
 
 .modal {
 	display: none; /* To hide by default */
@@ -275,9 +296,9 @@ input[type=text]:focus {
 
 .close-modal:hover,
 .close-modal:focus {
+	cursor: pointer;
 	color: black;
 	text-decoration: none;
-	cursor: pointer;
 }
 
 .cpa-req {

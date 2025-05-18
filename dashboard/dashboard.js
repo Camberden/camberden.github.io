@@ -6,7 +6,7 @@ window.onload = () => console.log("Running!");
 let startbalance = document.getElementById("balance").value;
 const startbalanceupdate = document.getElementById("balance");
 
-startbalanceupdate.onkeydown = function () {
+startbalanceupdate.onkeyup = function () {
 	startbalance = document.getElementById("balance").value;
 		calculateNewBalance();
 };
@@ -61,6 +61,9 @@ const calculateNewBalance = function () {
 allElem2.forEach(elem => elem.onclick = calculateNewBalance);
 
 calculateNewBalance();
+
+
+
 
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
@@ -118,7 +121,6 @@ const salarySchedule2026 = [
 	["41385", "44281", "46985", "49285", "51256", "52793", "53793"], // C/OII
 	["44259", "47358", "50201", "52711", "54819", "56463", "57593"], // C/OIII
 ];
-
 const salarySchedules = [
 	salarySchedule2020, salarySchedule2021, salarySchedule2022, salarySchedule2023, salarySchedule2024, salarySchedule2025, salarySchedule2026,
 ];
@@ -141,7 +143,6 @@ function nextFiscalYear() {
 		populateSalaryTable();
 		calculateStep();
 }
-
 function previousFiscalYear() {
 		fiscalYear--;
 		fiscalYearDisplay.innerHTML = `${fiscalYear}-${fiscalYear + 1}`;
@@ -150,7 +151,6 @@ function previousFiscalYear() {
 		populateSalaryTable();
 		calculateStep();
 }
-
 function calculateStep(){
 
 	currentSalary = currentSchedule[custodyLevel - 1][yearsExperience];
@@ -169,17 +169,13 @@ function calculateStep(){
 	highlightedSalary = document.getElementById(`co${custodyLevel}-${yearsExperience}`);
 	highlightedSalary.classList.add("salary-highlight");
 }
-
+calculateStep();
 function highlightSalary(level, step) {
 	document.getElementById(`co${level + 1}-${step}`).classList.add("salary-highlight");
 }
-
 function removeHighlightedSalary(){
 	highlightedSalary.classList.remove("salary-highlight");
 }
-
-calculateStep();
-
 function increaseCustodyLevel() {
 	if (custodyLevel >= 1 && custodyLevel < 3){
 		custodyLevel += 1;
@@ -208,7 +204,6 @@ function decreaseYearsExperience() {
 		calculateStep();
 	}
 }
-
 function enableStepPayPlanButtons() {
 	document.querySelectorAll(".step-pay-plan-button").forEach(button => {
 		button.onclick = () => {
@@ -247,7 +242,6 @@ function enableStepPayPlanButtons() {
 	});
 }
 enableStepPayPlanButtons();
-
 function populateSalaryTable(){
 	for (i = 0; i < currentSchedule.length; i++) {
 		for (j = 0; j < currentSchedule[i].length; j++){
@@ -499,13 +493,29 @@ function cpaModalAccess() {
 
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
+	document.getElementById("modal-text").removeAttribute("class", "paycard-grid");
 	console.log("Modal Cleared!");
 }
 
 function displayExpenseModal() {
-	const expenseModalData = "hi";
+	const expenseModalData = document.createElement("div");
+	document.getElementById("modal-text").setAttribute("class", "paycard-grid");
+	for (let i = 0; i < 12; i++) {
+		let paycard = document.createElement("ul");
+		paycard.setAttribute("class", "paycard-item");
+		paycard.setAttribute("id", `paycard-list-${i}`);
 
-	document.getElementById("modal-text").innerHTML = expenseModalData;
+		expenseNames.forEach(expense => {
+			let li = document.createElement("li");
+			let text = document.createTextNode(expense);
+			li.appendChild(text);
+			paycard.appendChild(li);
+		})
+
+		expenseModalData.appendChild(paycard);
+	}
+
+	document.getElementById("modal-text").innerHTML = expenseModalData.innerHTML;
 }
 
 function displayAccountingModal() {
