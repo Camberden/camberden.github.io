@@ -620,3 +620,46 @@ function dashboardModalAccess() {
 }
 
 dashboardModalAccess();
+
+// ----- MATCH MEDIA ----- //
+
+const width750 = window.matchMedia("(max-width: 750px)");
+
+function enableNavigationBar() {
+	const navbar = document.getElementById("navbar");
+	const navbarAccess = document.getElementById("navbar-access");
+	navbar.innerHTML += document.getElementById("dashboard-header").textContent;
+	document.querySelectorAll(".quick-links-grid-item").forEach(quickLinksItem => {
+	navbar.innerHTML += quickLinksItem.innerHTML;
+});
+	navbarAccess.onclick = function (){
+		navbar.style.display = "flex";;
+	}
+	window.onclick = function (event) {
+		if (event.target === navbar) {
+			navbar.style.display = "none";
+		}
+	}
+}
+enableNavigationBar();
+
+function matchMediaDashboard(config) {
+	if (config.matches) {
+		console.log(config.matches);
+		document.getElementById("dashboard-header").style.display = "none";
+		document.getElementById("dashboard-quick-links").style.display = "none";
+		document.getElementById("return").style.display = "none";
+		document.getElementById("navbar-access").style.display = "flex";
+	} else {
+		document.getElementById("dashboard-header").style.display = "flex";
+		document.getElementById("dashboard-quick-links").style.display = "flex";
+		document.getElementById("return").style.display = "flex";
+		document.getElementById("navbar").style.display = "none";
+		document.getElementById("navbar-access").style.display = "none";
+	}
+}
+matchMediaDashboard(width750);
+
+width750.addEventListener("change", function() {
+	matchMediaDashboard(width750);
+});

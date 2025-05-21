@@ -206,12 +206,40 @@ a:hover {
 }
 
 #return {
+	display: flex;
 	font-size: 1em;
 	text-align: left;
-	display: flex;
 	flex: 0.1rem;
 	align-items: left;
 	justify-content: left;
+}
+
+#navbar {
+	position: fixed;
+	display: none;
+	flex: 1;
+	flex-direction: column;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	background-color: var(--clr-quinary-body);
+}
+
+#navbar-access {
+	display: flex;
+	position: fixed;
+	font-size: 3em;
+	text-align: right;
+	flex: 0.1rem;
+}
+
+#navbar-access:hover {
+	color: var(--clr-secondary);
 }
 
 #return a:hover {
