@@ -2,29 +2,47 @@ ul {
 	text-align: left;
 }
 
-#vocab-field {
-	font-size: 3rem;
-}
-
 #language-grid {
 	flex-direction: row;
 }
-#navigation-item {
-	flex: .4;
-	flex-direction: column;
-	/* text-align: left; */
-	/* align-items: baseline; */
-	/* align-content: center; */
 
-	min-width: 2rem;
-	min-height: 2rem;
+.language-item {
+	flex: 1; 
+	display: flex;
+	flex-direction:row;
+	align-items: left;
+	justify-content: left;
+	min-width: 20rem;
+	min-height: 20rem;
 	padding: 2rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	background: rgba(144, 229, 238, 0.1);
 }
 
-#language-item {
-	flex: .6;
-	align-items: baseline;
-	align-content: baseline;
+#study-tables {
+	text-align: left;
+}
+
+table {
+	padding: 1rem;
+	border-style: double;
+	/* border-left: none;
+	border-right: none; */
+	border-color: var(--clr-primary);
+}
+table > tr > th {
+	width: 0.1rem;
+	border-style: double;
+	border-color: var(--clr-secondary);
+}
+
+table > tr > td {
+	width: 0.1rem;
+	border-style: double;
+	border-color: var(--clr-tertiary);
 }
 
 li:hover {
