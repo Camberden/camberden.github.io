@@ -13,23 +13,15 @@ class VocabularyModule {
 	}
 }
 
-
-
-const groupingField = document.getElementById("grouping-field");
-const vocabField = document.getElementById("vocab-field");
-const englishField = document.getElementById("english-field");
-const sentenceField = document.getElementById("sentence-field");
-const transliterationField = document.getElementById("transliteration-field");
-
 const jishoField = document.getElementById("jisho-field");
 const jishoIFrame = document.getElementById("jisho-frame");
 
 const languageButtons = document.querySelectorAll(".language-button");
+const buttonPool = document.getElementById("button-pool");
 
 
 
 // ----- JAPANESE ----- //
-
 const moduleJp1 = [
 	"遅れる|to be late",
 	"遅い|slow",
@@ -41,37 +33,54 @@ const moduleJp1 = [
 	"送る|to send",
 	"置く|to place",
 	"遅く|late (adv)",
-
+];
+const moduleJp2 = [
+	"あるいは|either",
+	"多分|maybe",
+	"可能性|potential",
+	"かも|maybe",
+	"かもしれない|maybe",
+	"もしかし|maybe",
+	"もしかしたら|maybe",
+	"事によると|depending on circumstances",
+	"考慮に入れれば|things considered",
+	"おそらく|maybe",
 ];
 // ----- EREMORAN ----- //
 // ----- SPANISH ----- //
 // ----- POLISH ----- //
+const modulePl1 = [
+	"Przepraszam|excuse me",
+	"Bardzo dziękuję|thanks much",
+	"Jak się masz?|how are you?",
+	"Ja mówię po angielsku|I speak English",
+	"Naprawdę chcesz to zrobić?|What do you really want?",
+	"Wszystko bęnzie dobrze|All will be well",
+	"Wiem, gdzie to jest|I know where that is",
+	"Teraz jest w porządku?|Is now alright?",
+];
 
 const vocabularyModules = [
 	okoOsoConfusion = new VocabularyModule(moduleJp1, "Oko-Oso Confusion", "jp"),
+	maybesAndPossibilities = new VocabularyModule(moduleJp2, "Maybes & Possibilities", "jp"),
+	commonPolish1 = new VocabularyModule(modulePl1, "Common Polish 1", "pl"),
 ];
-
-// Create Map for removal quiz?
-
-
-const objectTemplate = ["language", "english"]
-
 
 /**
  * @param {VocabularyModule} module
  */
 function generateStudyTable(module) {
-	const span = document.createElement("span");
-	const text = document.createTextNode(module.grouping);
-	span.appendChild(text);
 	const studyTable = document.getElementById("study-tables");
+	const titleTh = document.createElement("th");
+	titleTh.setAttribute("colspan", "2");
+	const titleThText = document.createTextNode(module.grouping);
+	titleTh.appendChild(titleThText);
 	const table = document.createElement("table");
-	table.appendChild(span);
+	table.appendChild(titleTh);
 	const tr = document.createElement("tr");
-
-	for (let i = 0; i < objectTemplate.length; i++){
-		const th = document.createElement("th");
-		let language = "Language";
+	const flTh = document.createElement("th");
+	const enTh = document.createElement("th");
+	let language;
 		switch (module.language) {
 			case "jp":
 				language = "Japanese";
@@ -89,15 +98,19 @@ function generateStudyTable(module) {
 				language = "Language";
 			break;
 		}
-		const text = document.createTextNode(language);
-		th.appendChild(text);
-		tr.appendChild(th);
-	}
+	const flText = document.createTextNode(language);
+	const enText = document.createTextNode("English");
+	flTh.appendChild(flText);
+	enTh.appendChild(enText);
+	tr.appendChild(flTh);
+	tr.appendChild(enTh);
 	table.appendChild(tr);
 
+	// Vocabulary Parser
 	for (let i = 0; i < module.vocabulary.length; i++) {
-		const languageData = module.vocabulary[i].split("|");
 		const tr = document.createElement("tr");
+		
+		const languageData = module.vocabulary[i].split("|");
 		const fl = document.createElement("td");
 		const flText = document.createTextNode(languageData[0]);
 		fl.appendChild(flText);
@@ -110,66 +123,83 @@ function generateStudyTable(module) {
 		table.appendChild(tr);
 	}
 
-
-
 	studyTable.appendChild(table);
-
-}
+};
 
 generateStudyTable(vocabularyModules[0]);
 
+function refreshTables() {
+	document.getElementById("study-tables").innerHTML = "";
+}
 
-// ----- EREMORAN ----- //
+/**
+ * 
+ * @param {string} language 
+ * @returns vocabularyModule[]
+ */
+function filterByLanguage(language) {
+	/**
+	 * @var VocabularyModule[]
+	 */
+	let sortedModules = [];
+	vocabularyModules.forEach(module => {
+		if (module.language === language) {
+			sortedModules.push(module);
+		}
+	});
+	return sortedModules;
+}
 
-// ----- SPANISH ----- //
+/**
+ * 
+ * @param {VocabularyModule[]} modules 
+ */
+function enableButtonPool(modules) {
+	buttonPool.innerHTML = "";
+	modules.forEach(module => {
+		const button = document.createElement("button");
+		const text = document.createTextNode(module.grouping);
+		button.appendChild(text);
+		button.onclick = function() {
+			ButtonInterface.buttonOnClick(button);
+			refreshTables();
+			generateStudyTable(module);
+		}
+		document.getElementById("button-pool").appendChild(button);
 
-// ----- POLISH ----- //
-
-
-
+		button.onmouseenter = function () {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function () {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+	});
+}
 
 // ----- LOGIC FUNCTIONS ----- //
-
-
-
-
-// function generateStudyModules(selectedLanguage) {
-
-// 	while (activeModules.length) {
-// 		activeModules.pop();
-// 		console.log("Popping array.");
-// 	}
-
-// 	for (let studyModule of studyModules) {
-// 		if (studyModule.language === selectedLanguage) {
-// 			if (studyModule.language === "er") {
-// 				vocabField.classList.add("eremoran-kiptascript");
-// 			}
-// 			activeModules.push(studyModule);
-// 		}
-// 	}
-// 	selectedModule = activeModules[0];
-// 	loadModuleItem(selectedModule, selectedItemNumber);
-// }
-// generateStudyModules("jp");
 
 function enableLanguageButtons(){
 	languageButtons.forEach(button => {
 		button.onclick = function(){
 			ButtonInterface.buttonOnClick(button);
 			switch (button.value) {
-				// case "japanese":
-				// 	if (activeModules.language != "jp") {
-				// 		generateStudyModules("jp");
-				// 	}
-				// 	break;
-				// case "eremoran":
-				// 	if (activeModules.language != "er") {
-				// 		generateStudyModules("er");
-				// 	}
-				// 	break;
+				case "all":
+					enableButtonPool(vocabularyModules);
+					break;
+				case "jp":
+					enableButtonPool(filterByLanguage("jp"));
+					break;
+				case "er":
+					enableButtonPool(filterByLanguage("er"));
+					break;
+				case "es":
+					enableButtonPool(filterByLanguage("es"));
+					break;
+				case "pl":
+					enableButtonPool(filterByLanguage("pl"));
+					break;
 				default:
-					console.log(activeModules.length);
+					refreshTables();
 					break;
 			}
 		}
@@ -183,6 +213,7 @@ function enableLanguageButtons(){
 	)
 }
 enableLanguageButtons();
+enableButtonPool(vocabularyModules);
 
 // ----- JOYOU KANJI ----- //
 
