@@ -27,17 +27,6 @@ function convertToJapaneseDate(date) {
 	let japaneseDate = "最近アップデート令和";
 	const kanjiNumbers = ["一", "二","三","四","五","六","七","八","九","十",];
 	// ----- YEARS ----- //
-
-	// if (date.getFullYear() - 2018 > 20){
-	// 	const tens = (date.getFullYear() - 2018) / 10;
-	// 	const remainder = (date.getFullYear() - 2018) % 10;
-	// 	japaneseDate += ((kanjiNumbers[tens - 1]) + kanjiNumbers[remainder] + "年");
-	// }
-	// if (date.getFullYear() - 2018 > 10){
-	// 	const tens = (date.getFullYear() - 2018) / 10;
-	// 	const remainder = (date.getFullYear() - 2018) % 10;
-	// 	japaneseDate += ((kanjiNumbers[tens - 1]) + kanjiNumbers[remainder] + "年");
-	// }
 	japaneseDate += (kanjiNumbers[date.getFullYear() - 2019] + "年");
 
 	// ----- MONTHS ----- //

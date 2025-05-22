@@ -102,7 +102,6 @@ function updateTemplate() {
 	// 	totalMonthlyExpenses += parseFloat(val.innerHTML);
 	// }
 }
-
 updateTemplate(); 
 
 // ----- VALUE EDITOR ----- //

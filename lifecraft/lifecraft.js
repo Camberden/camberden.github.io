@@ -228,7 +228,6 @@ const monthlySummaries = [
 
 ];
 
-
 /**
  * @param {number} year 
  */
@@ -280,9 +279,10 @@ function generateCalendar(year) {
 		const div = document.createElement("div");
 		div.setAttribute("class", "calendar-month");
 		const text = document.createTextNode(getMonthText(i + 1) + " " + year);
+		div.setAttribute("id", `${(getMonthText(i + 1) + "-" + year + "-div")}`);
 		const monthSpan = document.createElement("span");
 		monthSpan.setAttribute("class", "these-months");
-		monthSpan.setAttribute("id", `${getMonthText(i+1) + "-" + year}`);
+		monthSpan.setAttribute("id", `${getMonthText(i + 1) + "-" + year}`);
 		const hr = document.createElement("hr");
 		monthSpan.appendChild(text);
 		div.appendChild(monthSpan);
@@ -295,7 +295,6 @@ function generateCalendar(year) {
 			span.appendChild(text);
 			div.appendChild(span);
 		}
-		
 		lifecraftField.appendChild(div);
 	}
 	addEventsByYear(year);
@@ -310,9 +309,13 @@ function enableLifecraftButtons() {
 			switch (button.value) {
 				case "next":
 					generateCalendar(++changeYear);
+					generateSavingsProjector(currentDeposit, true);
+					console.log(currentBalance);
 				break;
 				case "previous":
 					generateCalendar(--changeYear);
+					generateSavingsProjector(currentDeposit, false);
+					console.log(currentBalance);
 				break;
 				default:
 					console.log("Default Switch Triggered");
@@ -327,6 +330,49 @@ function enableLifecraftButtons() {
 	});
 }
 enableLifecraftButtons();
+
+let currentBalance = 11000;
+const originalBalance = currentBalance;
+let currentDeposit = 1500;
+
+/**
+ * @param {number} deposit - Money to save
+ * @param {boolean} ahead - Whether access next or previous calendar
+ */
+function generateSavingsProjector(deposit, ahead) {
+	if (changeYear < currentYear) {
+		currentBalance = originalBalance;
+	}
+	if (changeYear === currentYear) {
+		if (!ahead) {
+				currentBalance = currentBalance - ((deposit * (12 + ( 12 - (currentMonth)))));
+			}
+		for (let i = (currentMonth + 1), j = 0; i <= document.querySelectorAll(".calendar-month").length; i++, j++) {
+			currentBalance += deposit;
+			const span = document.createElement("span");
+			const text = document.createTextNode(`$${currentBalance}`);
+			span.appendChild(text);
+			const hr = document.createElement("hr");
+			document.getElementById(`${getMonthText(currentMonth + 1 + j)}-${currentYear}-div`).appendChild(hr);
+			document.getElementById(`${getMonthText(currentMonth + 1 + j)}-${currentYear}-div`).appendChild(span);
+		}
+	}
+	if (changeYear > currentYear) {
+		if (!ahead) {
+				currentBalance = currentBalance - ((deposit * 12) * 2);
+			}
+		for (let i = 0; i <= document.querySelectorAll(".calendar-month").length - 1; i++) {
+			currentBalance += deposit;
+			const span = document.createElement("span");
+			const text = document.createTextNode(`$${currentBalance}`);
+			span.appendChild(text);
+			const hr = document.createElement("hr");
+			document.getElementById(`${getMonthText(i + 1)}-${changeYear}-div`).appendChild(hr);
+			document.getElementById(`${getMonthText(i + 1)}-${changeYear}-div`).appendChild(span);
+		}
+	}
+}
+generateSavingsProjector(currentDeposit, true);
 
 // ----- MODAL FUNCTIONS ----- //
 
@@ -462,3 +508,5 @@ function generateReferenceDocuments() {
 	document.getElementById("modal-text").appendChild(ul);
 
 }
+
+

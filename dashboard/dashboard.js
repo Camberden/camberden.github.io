@@ -24,13 +24,13 @@ const int = 71.99;
 const mus = 6.39;
 const don = 10.00;
 const gym = 25.05;
-let inp; // CUSTOM INPUT: INP
+let inp = 0.00; // CUSTOM INPUT: INP
 function updateInp() {
-	all[all.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
+	allExpenses[allExpenses.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
 }
 
 // ADD NEW VARIABLES TO all
-const all = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
+const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
 // ADD NEW VARIABLES TO expenseNames
 const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym inp".split(" "));
 const allElem = expenseNames
@@ -39,12 +39,12 @@ const allElem = expenseNames
 const allElem2 = expenseNames
 	.map(str => document.getElementById(str + "-check"));
 
-allElem.forEach((elem, i) => elem.innerHTML = all[i]);
+allElem.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
 
 const calculateNewBalance = function () {
 	updateInp();
 	let sum = 0;
-	all.forEach((e, i) => {
+	allExpenses.forEach((e, i) => {
 		const elem = allElem2[i];
 		if (elem.checked) {
 			// console.log(`73; e = ${e}; e.checked = ${e.checked}`);
@@ -62,9 +62,6 @@ allElem2.forEach(elem => elem.onclick = calculateNewBalance);
 
 calculateNewBalance();
 
-
-
-
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
 const workAnniversary = new Date(1602156600000);
@@ -75,10 +72,6 @@ const nowDisplay = now.toLocaleString("en-US");
 
 const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getUTCMonth();
 const getYearID = (date = new Date()) => date.getUTCFullYear();
-
-// const pslfRequirement = 120;
-// const creditedPSLFMonths = 45;
-// document.getElementById("pslf-heading").innerHTML = creditedPSLFMonths + " months credited as of " + nowDisplay;
 
 // ----- STEP PAY PLAN MODULE ----- //
 
@@ -305,10 +298,8 @@ function enableCpaProjection(){
 enableCpaProjection();
 
 // ---------- PENSION CALCULATOR ---------- //
-
 // TODO: lock in age and service, press up and down arrows to adjust.
 // TODO: add monthly increments, perhaps.
-
 
 function generatePensionTable() {
 	const table = document.getElementById("pension-table");
@@ -437,7 +428,6 @@ function generatePension() {
 	fadeInData();
 	
 }
-
 // TODO: INCLUDE POST-60YR OLD TABLE
 function highlightPensionReduction(age, service) {
 	document.querySelector(".pension-reduction-highlight").classList.remove("pension-reduction-highlight");
@@ -453,7 +443,6 @@ function highlightPensionReduction(age, service) {
 	}
 	cell.classList.add("pension-reduction-highlight");
 }
-
 function enablePensionButtons() {
 	document.querySelectorAll(".pension-buttons").forEach(button => {
 		button.onclick = () => {
@@ -471,7 +460,7 @@ function enablePensionButtons() {
 enablePensionButtons();
 
 
-// ----- MODAL ----- //
+// ---------- MODAL ---------- //
 
 const modal = document.querySelector(".modal");
 const closeModal = document.getElementsByClassName("close-modal")[0];
@@ -489,14 +478,12 @@ function cpaModalAccess() {
 		}
 	};
 }
-// cpaModalAccess();
 
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
 	document.getElementById("modal-text").removeAttribute("class", "paycard-grid");
 	console.log("Modal Cleared!");
 }
-
 function displayExpenseModal() {
 	const expenseModalData = document.createElement("div");
 	document.getElementById("modal-text").setAttribute("class", "paycard-grid");
@@ -505,12 +492,16 @@ function displayExpenseModal() {
 		paycard.setAttribute("class", "paycard-item");
 		paycard.setAttribute("id", `paycard-list-${i}`);
 
-		expenseNames.forEach(expense => {
+		expenseNames.forEach((expense, j) => {
 			let li = document.createElement("li");
 			let text = document.createTextNode(expense);
+			li.setAttribute("id", `expense-${expense}-${i}`);
 			li.appendChild(text);
+			let span = document.createElement("span");
+			span.textContent = allExpenses[j];
+			li.appendChild(span);
 			paycard.appendChild(li);
-		})
+		});
 
 		expenseModalData.appendChild(paycard);
 	}
