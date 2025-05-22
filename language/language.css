@@ -9,13 +9,9 @@ ul {
 	flex-wrap: wrap;
 	align-items: left;
 	justify-content: baseline;
-	/* border: 0.1rem solid var(--clr-tertiary); */
-	/* grid-template-columns: repeat(3, 33%); */
 	border-radius: 1rem;
 	gap: 1rem;
 }
-
-
 
 .language-item {
 	flex: 1; 
@@ -37,15 +33,14 @@ ul {
 }
 
 #button-pool {
-	/* flex: 0.2; */
 	padding: 1rem;
 	background-color: var(--clr-quinary-body);
 }
+
 #button-pool > button {
 	height: 4rem;
 	width: fit-content;
 	overflow: hidden;
-
 }
 
 #study-tables {

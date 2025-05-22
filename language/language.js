@@ -1,9 +1,10 @@
 window.onload = () => console.log("Running!");
 
 /**
- * @param {string[]} vocabulary - contains 10 elements
- * @param {string} grouping - topic
- * @param {string} language - language selected
+ * @param {string[]} vocabulary - contains foreign language and English separated by pipe
+ * @param {string} grouping - topic or title
+ * @param {string} language - language selected, two letter abbreviation
+ * @example ("foreignText|englishText", "topic","fl")
  */
 class VocabularyModule {
 	constructor(vocabulary, grouping, language) {
@@ -19,7 +20,7 @@ const jishoIFrame = document.getElementById("jisho-frame");
 const languageButtons = document.querySelectorAll(".language-button");
 const buttonPool = document.getElementById("button-pool");
 
-
+// CONSIDER POPULATING TXT DOCUMENT WITH TABLES TO PRINT
 
 // ----- JAPANESE ----- //
 const moduleJp1 = [
@@ -46,6 +47,31 @@ const moduleJp2 = [
 	"考慮に入れれば|things considered",
 	"おそらく|maybe",
 ];
+const moduleJp3 = [
+	"よく|often",
+	"しばしば|often",
+	"たびたび|often",
+	"再々|frequently",
+	"何度も|how many times",
+	"何回も|how many times",
+	"頻りに|often/eagerly",
+	"いつも|always",
+	"何時でも|always",
+	"つねに|always",
+	"毎度|every time",
+	"必ず|always without fail",
+	"決して|never",
+	"時々|sometimes",
+	"どうかすると|occassionally",
+	"時として|in some cases",
+	"よりより|sometimes/often",
+	"間々|now and then",
+	"たまに|now and then",
+	"しばらく|for a while",
+	"しばらく間に|for the time being",
+	"しばらくして|presently",
+	"現在|the present moment",
+];
 // ----- EREMORAN ----- //
 // ----- SPANISH ----- //
 // ----- POLISH ----- //
@@ -63,7 +89,8 @@ const modulePl1 = [
 const vocabularyModules = [
 	okoOsoConfusion = new VocabularyModule(moduleJp1, "Oko-Oso Confusion", "jp"),
 	maybesAndPossibilities = new VocabularyModule(moduleJp2, "Maybes & Possibilities", "jp"),
-	commonPolish1 = new VocabularyModule(modulePl1, "Common Polish 1", "pl"),
+	maybesAndPossibilities = new VocabularyModule(moduleJp3, "Frequencies & Moments", "jp"),
+	commonPolish1 = new VocabularyModule(modulePl1, "Common Polish", "pl"),
 ];
 
 /**

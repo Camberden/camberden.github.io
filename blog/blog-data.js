@@ -682,4 +682,41 @@ const blogData = [
 	Heck. I'm grateful to have this unexpected extra time afforded to me. I should go now.
 	`
 	,
+	`
+	| May 21st, 2025…
+	| Pittsboro, NC
+	| 2023 HRS
+	| &emsp;
+	My Japan trip class has begun and the online content to be finished before the trip is dense but relatively simple. 
+	I've been powering through it while balancing my time with language studies and programming. Gladly during these many off days,
+	my discipline had rearisen and I'm living as I should, making progress in ways meaningful to me. I really cannot understate just
+	how important my diet is to my day-by-day wellbeing. Since fasting - it's been a day and a half - I've felt so much more alive
+	and focused. It's been a long time since I had <b-title>a prolonged fast</b-title>, something I used to do regularly before my current role. I see
+	why doing this was so important to me back then, and it stands to reason that I should do these on occassion as the need arises: 
+	the need to do a hard reset on my body. I will hit two days, and may consider a third. I want to feel my best. It's almost as if 
+	the more food that is consumed, the more food is desired. I am not hungry, and I am doing well. This couples well with my practice
+	and I must acknowledge this again and again. Do what is meaningful, not what is expedient. To feel well is meaningful to me.
+	<hr>
+	I had been working on plentiful updates to the site and I'm glad. The time for moving on to PHP/Laravel projects should be coming
+	soonish. I would say, around the end of this year when hopefully Laracasts would go on sale for Christmastime. By then I should be
+	basically proficient in the front-end side of things enough to make sense of the backend tie-ins, and the next college course should
+	be completed.
+	<hr>
+	Life is progressing okay-ly. I am going to work on financial projections at dashboard and lifecraft. Once my debts are cleared, it's
+	all about generating wealth. That leads me to question my future for that point: should I drop my current role quickly to attain a
+	better lifestyle, or should I maintain it so that I could more rapidly regenerate my finances? Surely with my current role, I could
+	entertain the prospect of frequent travel more expediently, given leave flexibility. Then again, without it, I could have more time
+	in general to establish routines and become more community-integrated. I would say that, yes, I should at least aspire to generating
+	and holding six figures which should provide me the necessary security in life ahead. It would lead me to question then what I would
+	do after attaining even that. I would question my whole retirement through current employer. One of the securities that's provided
+	for medical issues. It's commonly known that, in the US, medical expenses can ruin lives because of the privitization of insurance.
+	It's almost as if the medical benefit exists only to enable people to comfortably stay in the US long-term. If I were change my life
+	by starting anew in a country with a socialized healthcare system, it would be a non-issue. Instead, it would just be a matter of 
+	finding meager pay to sustain living, and maybe a little more. The idea of leaving after 2030 sounds exciting but worrying.
+	The excitement comes from the idea of liberation and personal redemption. The worry comes from the uncertainty of a lifestyle to be
+	lived outside of my norms: language, culture, industry, pressures, stresses etc. It also comes from the socioeconomic factors abroad.
+	Are the socialized systems in other countries going to last given aging populations and system exploitation? I certainly see these
+	concerns growing in Japan and places in Europe. In any case, I can only speculate and see what reality unfolds for me to witness.
+	`
+	,
 ];
