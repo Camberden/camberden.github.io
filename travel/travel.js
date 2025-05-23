@@ -83,7 +83,6 @@ function highlightVisitedCountries() {
 			console.log("modal activation test");
 			displayNotes(country, "world-map");
 			modal.style.display = "block";
-	
 		};
 		closeModal.onclick = function () {
 			clearModal();
@@ -204,13 +203,85 @@ function enableMapHighlightButtons () {
 }
 enableMapHighlightButtons();
 
+// Attempt at SVG parsing
+function parseSVG(svg) {
+
+	const { xMin, xMax, yMin, yMax } = [...svg.children].reduce((acc, el) => {
+	const { x, y, width, height } = el.getBBox();
+	console.log(el.getBBox());
+		if (!acc.xMin || x < acc.xMin){
+			acc.xMin = x;
+		} 
+		if (!acc.xMax || x + width > acc.xMax) {
+			acc.xMax = x + width;
+		} 
+		if (!acc.yMin || y < acc.yMin) {
+			acc.yMin = y;
+		} 
+		if (!acc.yMax || y + height > acc.yMax) {
+			acc.yMax = y + height;
+		}
+		// console.log(acc);
+		return acc;
+		
+	}, {});
+
+	// const geoViewBox = `${xMin} ${yMin} ${xMax - xMin} ${yMax - yMin}`;
+	const viewbox = `${xMin} ${yMin} ${xMax - xMin} ${yMax - yMin}`;
+
+	// svg.setAttribute("mapsvg:geoviewbox", geoViewBox);
+	svg.setAttribute("viewBox", viewbox);
+}
+
+function displaySVGwithinNotes(division, id) {
+	let inlineNotesSVG = "";
+	const pathTag = document.getElementById(id).outerHTML;
+	console.log(pathTag);
+
+	const worldMapWrapper = `
+				<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+                <svg id="world-map-inline" class="interactive-map" xmlns:mapsvg="http://mapsvg.com"
+				xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+				mapsvg:geoViewBox="-169.110266 83.600842 190.486279 -58.508473" width="1009.6727" height="665.96301">
+				`;
+
+	const usMapWrapper = `
+				<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+               	<svg id="us-map-inline" class="interactive-map" xmlns:mapsvg="http://mapsvg.com"
+				xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+				xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg"
+				mapsvg:geoViewBox="-127.55272679845754 50.66828705652597 -64.54920772895363 24.335873369454947"
+				viewBox="477 421 593.3779761904764 318.2870370370371" width="593.3779761904764"
+                height="318.2870370370371">
+				`;
+
+	const svgCloser = `</svg>`;
+
+	switch (division) {
+		case "country":
+			inlineNotesSVG = worldMapWrapper + pathTag + svgCloser;
+		break;
+		case "state":
+			inlineNotesSVG = usMapWrapper + pathTag + svgCloser;
+		break;
+		default:
+			console.log("Notes SVG");
+		break;
+	}
+	return inlineNotesSVG;
+}
+
 function displayNotes(selection, map) {
 	switch (map) {
 		case "world-map":
 			for (let country of countryInformation) {
 				if (country.id === selection) {
 					modalTitle.textContent = country.name;
-					modalText.textContent = country.notes;
+					modalText.innerHTML = country.notes;
+					// document.getElementById("svg-input").innerHTML = displaySVGwithinNotes("state", "US-PA");
+					// let shape = document.querySelector("svg#us-map-inline");
+					// parseSVG(shape);
 				}
 			}
 			break;
@@ -218,7 +289,7 @@ function displayNotes(selection, map) {
 			for (let state of usStateInformation) {
 				if (state.id === selection) {
 					modalTitle.textContent = state.name;
-					modalText.textContent = state.notes;
+					modalText.innerHTML = state.notes;
 				}
 			}
 			break;

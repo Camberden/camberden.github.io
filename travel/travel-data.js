@@ -18,13 +18,25 @@ class DivisionInformation {
 const countryInformation = [
 	// ----- NORTH AMERICA ----- //
 	unitedStates = new DivisionInformation("US", "United States of America",
-		`My birthplace and home.`
+		`My birthplace and home.<br>
+		I spent considerable time in Pennsylvania, the northern state where I was born.<br>
+		Extended visits and my first career took me to New Jersey and New York.<br>
+		During my anticipated career change into technology, I headed to West Virginia and Virginia.<br>
+		Following that, I moved to NC where I am working a career in public service.
+		`
 	),
 	guatemala = new DivisionInformation("GT", "Guatemala",
-		``
+		`I traveled here in 2012.<br>
+		I came here as part of a study trip during my first year in college.<br>
+		I didn't stay in the country. Rather, I came across the border from Belize's Cayo District into 
+		the Patén area of Guatemala where I experienced the grounds of Tikal, a site of ancient ruins of the Mayan civilization.
+		`
 	),
 	belize = new DivisionInformation("BZ", "Belize",
-		``
+		`I traveled here in 2012.<hr>
+		I came here as part of a study trip during my first year in college.<br>
+		I stayed in San Ignacio in the jungled Cayo District, and later in Hopkins Village on the coast in Stann Creek District.
+		I explored the jungle and the Mayan ruins of Xinantunich.`
 	),
 	canada = new DivisionInformation("CA", "Canada",
 		``
