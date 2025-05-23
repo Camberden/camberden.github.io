@@ -22,56 +22,74 @@ const buttonPool = document.getElementById("button-pool");
 
 // CONSIDER POPULATING TXT DOCUMENT WITH TABLES TO PRINT
 
+/*
+const module = [
+	"||",
+	"||",
+	"||",
+	"||",
+	"||",
+];
+*/
+
 // ----- JAPANESE ----- //
 const moduleJp1 = [
-	"遅れる|to be late",
-	"遅い|slow",
-	"恐れる|to be afraid of(畏)",
-	"起こる|to occur/happen",
-	"怒る|to get angry",
-	"起きる|to wake up",
-	"怖がる|to be afraid of",
-	"送る|to send",
-	"置く|to place",
-	"遅く|late (adv)",
+	"遅れる|to be late|おそれる",
+	"遅い|slow|おそい",
+	"恐れる|to be afraid of(畏)|おそれる",
+	"起こる|to occur/happen|おこる",
+	"怒る|to get angry|おそる",
+	"起きる|to wake up|おきる",
+	"怖がる|to be afraid of|こわがる",
+	"送る|to send|おくる",
+	"置く|to place|おく",
+	"遅く|late (adv)|おそく",
 ];
 const moduleJp2 = [
 	"あるいは|either",
-	"多分|maybe",
-	"可能性|potential",
+	"多分|maybe|たぶん",
+	"可能性|potential|かのうせい",
 	"かも|maybe",
 	"かもしれない|maybe",
 	"もしかし|maybe",
 	"もしかしたら|maybe",
-	"事によると|depending on circumstances",
-	"考慮に入れれば|things considered",
+	"事によると|depending on circumstances|ことによると",
+	"考慮に入れれば|things considered|こうりょにいれれば",
 	"おそらく|maybe",
 ];
 const moduleJp3 = [
 	"よく|often",
 	"しばしば|often",
 	"たびたび|often",
-	"再々|frequently",
-	"何度も|how many times",
-	"何回も|how many times",
-	"頻りに|often/eagerly",
+	"再々|frequently|さいさい",
+	"何度も|how many times|なんども",
+	"何回も|how many times|なんかいも",
+	"頻りに|often/eagerly|しきりに",
 	"いつも|always",
-	"何時でも|always",
+	"何時でも|always|いつでも",
 	"つねに|always",
-	"毎度|every time",
-	"必ず|always without fail",
-	"決して|never",
-	"時々|sometimes",
+	"毎度|every time|まいど",
+	"必ず|always without fail|かならず",
+	"決して|never|けっして",
+	"時々|sometimes|ときどき",
 	"どうかすると|occassionally",
-	"時として|in some cases",
+	"時として|in some cases|ときとして",
 	"よりより|sometimes/often",
-	"間々|now and then",
+	"間々|now and then|まま",
 	"たまに|now and then",
 	"しばらく|for a while",
-	"しばらく間に|for the time being",
+	"しばらく間に|for the time being|しばらくあいだに",
 	"しばらくして|presently",
-	"現在|the present moment",
+	"現在|the present moment|げんざい",
 ];
+const moduleJp4 = [
+	"||",
+	"||",
+	"||",
+	"||",
+	"||",
+];
+
 // ----- EREMORAN ----- //
 // ----- SPANISH ----- //
 // ----- POLISH ----- //
@@ -141,6 +159,15 @@ function generateStudyTable(module) {
 		const fl = document.createElement("td");
 		const flText = document.createTextNode(languageData[0]);
 		fl.appendChild(flText);
+		if (module.language === "jp" && languageData[2] != null) {
+			fl.onmouseover = function() {
+				fl.textContent = languageData[2];
+			}
+			fl.onmouseleave = function() {
+				fl.textContent = languageData[0];
+			}
+		}
+
 		const en = document.createElement("td");
 		const enText = document.createTextNode(languageData[1]);
 		en.appendChild(enText);

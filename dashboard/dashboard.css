@@ -147,7 +147,7 @@ input[type=text]:focus {
 
 	display: grid;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+	grid-template-columns: repeat(5, 20%); /* repeat(4, 25%) */
 
 
 	padding-block: 1rem;
@@ -162,6 +162,10 @@ input[type=text]:focus {
 	border-color: grey;
 	border-style: double;
 
+}
+
+#expense-modal {
+	display: none;
 }
 
 /* ----- STEP PAY PLAN SPECIFIC ----- */

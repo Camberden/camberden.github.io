@@ -8,7 +8,8 @@ const startbalanceupdate = document.getElementById("balance");
 
 startbalanceupdate.onkeyup = function () {
 	startbalance = document.getElementById("balance").value;
-		calculateNewBalance();
+	calculateNewBalance();
+	document.getElementById("expense-modal").style.display = "block";
 };
 
 const car = 1291.61;
@@ -36,16 +37,18 @@ const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don
 const allElem = expenseNames
 	.map(str => document.getElementById(str + "-cost"));
 // check box element list
-const allElem2 = expenseNames
+const allCheckboxes = expenseNames
 	.map(str => document.getElementById(str + "-check"));
 
 allElem.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
+// allElem.forEach((elem, i) => elem.value = allExpenses[i]);
+
 
 const calculateNewBalance = function () {
 	updateInp();
 	let sum = 0;
 	allExpenses.forEach((e, i) => {
-		const elem = allElem2[i];
+		const elem = allCheckboxes[i];
 		if (elem.checked) {
 			// console.log(`73; e = ${e}; e.checked = ${e.checked}`);
 			sum += e;
@@ -58,7 +61,7 @@ const calculateNewBalance = function () {
 	document.getElementById("endbalance").innerHTML = endbalance.toFixed(2);
 };
 
-allElem2.forEach(elem => elem.onclick = calculateNewBalance);
+allCheckboxes.forEach(elem => elem.onclick = calculateNewBalance);
 
 calculateNewBalance();
 
@@ -486,26 +489,53 @@ function clearModal() {
 }
 function displayExpenseModal() {
 	const expenseModalData = document.createElement("div");
+	const currentDate = new Date();
+	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	document.getElementById("modal-text").setAttribute("class", "paycard-grid");
-	for (let i = 0; i < 12; i++) {
-		let paycard = document.createElement("ul");
-		paycard.setAttribute("class", "paycard-item");
-		paycard.setAttribute("id", `paycard-list-${i}`);
+	let expenseModalBalance = parseFloat(document.getElementById("balance").value);
+	let expenseModalEndBalance = parseFloat(document.getElementById("endbalance").textContent);
+	let expenseModalExpenses = parseFloat(expenseModalBalance - expenseModalEndBalance).toFixed(2);
+	
+	
+	for (let i = 0; i < 5; i++) {
+		const ul = document.createElement("ul");
+		ul.setAttribute("class", `${currentDate.getFullYear() + i}-projections`);
+		const text = document.createTextNode(currentDate.getFullYear() + i);
+		ul.appendChild(text);
+		const hr = document.createElement("hr");
+		ul.appendChild(hr);
 
-		expenseNames.forEach((expense, j) => {
-			let li = document.createElement("li");
-			let text = document.createTextNode(expense);
-			li.setAttribute("id", `expense-${expense}-${i}`);
-			li.appendChild(text);
-			let span = document.createElement("span");
-			span.textContent = allExpenses[j];
-			li.appendChild(span);
-			paycard.appendChild(li);
-		});
+		if (currentDate.getFullYear() === currentDate.getFullYear() + i) {
+			for (let j = currentDate.getMonth(); j < months.length; j++) {
+				const li = document.createElement("li");
+				const text = document.createTextNode(months[j] + ": $");
+				const span = document.createElement("span");
+				span.setAttribute("class", "projected-monthly-expense");
+				const expenseText = document.createTextNode(expenseModalExpenses);
+				console.log(expenseModalExpenses);
+				span.appendChild(expenseText);
+				li.appendChild(text);
+				li.appendChild(span);
+				ul.appendChild(li);
 
-		expenseModalData.appendChild(paycard);
+			}
+		} else if (currentDate.getFullYear() < currentDate.getFullYear() + i) {
+			for (let j = 0; j < months.length; j++) {
+				const li = document.createElement("li");
+				const text = document.createTextNode(months[j] + ": $");
+				const span = document.createElement("span");
+				span.setAttribute("class", "projected-monthly-expense");
+				const expenseText = document.createTextNode(expenseModalExpenses);
+				span.appendChild(expenseText);
+				li.appendChild(text);
+				li.appendChild(span);
+				ul.appendChild(li);
+			}
+		}
+		expenseModalData.appendChild(ul);
 	}
-
+	
+	
 	document.getElementById("modal-text").innerHTML = expenseModalData.innerHTML;
 }
 
@@ -614,7 +644,7 @@ dashboardModalAccess();
 
 // ----- MATCH MEDIA ----- //
 
-const width750 = window.matchMedia("(max-width: 750px)");
+const width500 = window.matchMedia("(max-width: 500px)");
 
 function enableNavigationBar() {
 	const navbar = document.getElementById("navbar");
@@ -649,8 +679,8 @@ function matchMediaDashboard(config) {
 		document.getElementById("navbar-access").style.display = "none";
 	}
 }
-matchMediaDashboard(width750);
+matchMediaDashboard(width500);
 
-width750.addEventListener("change", function() {
-	matchMediaDashboard(width750);
+width500.addEventListener("change", function() {
+	matchMediaDashboard(width500);
 });
