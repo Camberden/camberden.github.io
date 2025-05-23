@@ -302,6 +302,7 @@ function generateCalendar(year) {
 generateCalendar(currentYear);
 
 function enableLifecraftButtons() {
+	let toggleSavings = false;
 	document.querySelectorAll(".lifecraft-button").forEach(button => {
 		
 		button.onclick = function () {
@@ -310,15 +311,32 @@ function enableLifecraftButtons() {
 				case "next":
 					generateCalendar(++changeYear);
 					generateSavingsProjector(currentDeposit, true);
+					if (toggleSavings) {
+						switchDisplay("savings-projection", true);
+					}
 					console.log(currentBalance);
 				break;
 				case "previous":
 					generateCalendar(--changeYear);
 					generateSavingsProjector(currentDeposit, false);
+					if (toggleSavings) {
+						switchDisplay("savings-projection", true);
+					}
 					console.log(currentBalance);
+				break;
+				case "savings":
+					if (toggleSavings) {
+						switchDisplay("savings-projection", false);
+						toggleSavings = false;
+					} else if (!toggleSavings) {
+						switchDisplay("savings-projection", true);
+						toggleSavings = true;
+					}
+					console.log(toggleSavings);
 				break;
 				default:
 					console.log("Default Switch Triggered");
+				break;
 			}
 		}
 		button.onmouseenter = function () {
@@ -349,12 +367,18 @@ function generateSavingsProjector(deposit, ahead) {
 			}
 		for (let i = (currentMonth + 1), j = 0; i <= document.querySelectorAll(".calendar-month").length; i++, j++) {
 			currentBalance += deposit;
+			const div = document.createElement("div");
+			div.setAttribute("class", "savings-projection");
 			const span = document.createElement("span");
 			const text = document.createTextNode(`$${currentBalance}`);
 			span.appendChild(text);
 			const hr = document.createElement("hr");
-			document.getElementById(`${getMonthText(currentMonth + 1 + j)}-${currentYear}-div`).appendChild(hr);
-			document.getElementById(`${getMonthText(currentMonth + 1 + j)}-${currentYear}-div`).appendChild(span);
+			div.appendChild(hr);
+			div.appendChild(span);
+			document.getElementById(`${getMonthText(currentMonth + 1 + j)}-${currentYear}-div`).appendChild(div);
+
+			// document.getElementById(`${getMonthText(currentMonth + 1 + j)}-${currentYear}-div`).appendChild(hr);
+			// document.getElementById(`${getMonthText(currentMonth + 1 + j)}-${currentYear}-div`).appendChild(span);
 		}
 	}
 	if (changeYear > currentYear) {
@@ -363,17 +387,34 @@ function generateSavingsProjector(deposit, ahead) {
 			}
 		for (let i = 0; i <= document.querySelectorAll(".calendar-month").length - 1; i++) {
 			currentBalance += deposit;
+			const div = document.createElement("div");
+			div.setAttribute("class", "savings-projection");
 			const span = document.createElement("span");
 			const text = document.createTextNode(`$${currentBalance}`);
 			span.appendChild(text);
 			const hr = document.createElement("hr");
-			document.getElementById(`${getMonthText(i + 1)}-${changeYear}-div`).appendChild(hr);
-			document.getElementById(`${getMonthText(i + 1)}-${changeYear}-div`).appendChild(span);
+			div.appendChild(hr);
+			div.appendChild(span);
+			document.getElementById(`${getMonthText(i + 1)}-${changeYear}-div`).appendChild(div);
 		}
 	}
+	switchDisplay("savings-projection", false);
 }
 generateSavingsProjector(currentDeposit, true);
 
+
+function switchDisplay(elements, displayed) {
+	if (displayed) {
+		document.querySelectorAll(`.${elements}`).forEach(element => {
+			element.style.display = "block";
+		});
+	} else if (!displayed) {
+		document.querySelectorAll(`.${elements}`).forEach(element => {
+			element.style.display = "none";
+		});
+	}
+}
+switchDisplay("savings-projection", false);
 // ----- MODAL FUNCTIONS ----- //
 
 const maintenancePoints = [

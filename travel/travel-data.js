@@ -158,4 +158,7 @@ const usStateInformation = [
 	california = new DivisionInformation("US-CA", "California",
 		``
 	),
+	florida = new DivisionInformation("US-FL", "Florida",
+		``
+	),
 ];

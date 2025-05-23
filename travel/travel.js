@@ -20,7 +20,7 @@ const countriesToVisit = ["JP", "NZ", "CA", "GB", "DE", "MU", "PL", "TH", "IN", 
 const countriesToConsiderRetirement = ["US", "CO", "PY", "UY", "JP"];
 const statesToConsiderRetirement = ["US-NC", "US-PA"];
 const visitedStates = ["US-PA", "US-NJ", "US-NY", "US-MD", "US-DE", "US-VA", "US-WV", "US-TN", "US-NC", "US-SC", "US-GA", "US-IL", "US-CO", "US-NV"];
-const statesToVisit = ["US-CA", "US-ND", "US-AK", "US-VT"];
+const statesToVisit = ["US-CA", "US-ND", "US-AK", "US-VT", "US-FL"];
 
 function loadInteractiveMaps(selection) {
 	interactiveMaps.forEach(interactiveMap => {

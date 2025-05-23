@@ -55,6 +55,9 @@
 }
 
 .lifecraft-notes-item {
+	border: double;
+	border-color: grey;
+	border-width: 0.3rem;
 	min-width: 2rem;
 	min-height: 2rem;
 	padding: 0%;
