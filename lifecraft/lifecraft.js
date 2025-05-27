@@ -303,15 +303,66 @@ function generateCalendar(year) {
 }
 generateCalendar(currentYear);
 
-
+let biweeklyCounter = 1;
 /**
  * @todo Assign c based on currentYear param
  */
 function displayBiweeklyRotation() {
+
+	const biweeklyRelationsDemo = [
+		"Long Off 1",
+		"Long Off 2",
+		"Long On 3",
+		"Long On 4",
+		"Long On 5",
+		"Short Off 1",
+		"Short Off 2",
+		"Short On 1",
+		"Short On 2",
+		"Short Off 3",
+		"Short Off 4",
+		"Short Off 5",
+		"Long On 1",
+		"Long On 2",
+	];
+	// Looking for Index
+	// Finding which Relation to start on
+	let year = 2025;
+	let yearMod = (year % 4); // 1
+	let indexer = (Math.round((year % 40) / 4)); // Amount of times leap year hit: 6
+	let eachYearPassedSinceMod40 = Math.round((year % 40));
+	let divideYearsPassedPlusSkippedIndex = (eachYearPassedSinceMod40 + indexer) / 14;
+	console.log(divideYearsPassedPlusSkippedIndex);
+	console.log("Year Mod 4: " + yearMod);
+
+	console.log("Indexer, Year Mod40/4: " + indexer);
+	console.log("Mod + Indexer " + (yearMod + indexer));
+
+
+	console.log("Result: " + biweeklyRelationsDemo[yearMod + indexer])
+
+
 	const calendarDays = document.querySelectorAll(".calendar-date");
-	let c = 1;
+	let c = biweeklyCounter;
 	let e = 1;
-	
+	const biweeklyRelations = [
+		"Default",
+		"Long Off 1",
+		"Long Off 2",
+		"Long On 3",
+		"Long On 4",
+		"Long On 5",
+		"Short Off 1",
+		"Short Off 2",
+		"Short On 1",
+		"Short On 2",
+		"Short Off 3",
+		"Short Off 4",
+		"Short Off 5",
+		"Long On 1",
+		"Long On 2",
+	];
+
 	calendarDays.forEach(calendarDay => {
 		if (c > 14) {
 			c = 1;
@@ -328,18 +379,11 @@ function displayBiweeklyRotation() {
 		}
 		c++;
 		e++;
+		if (e >= 365) {
+			console.log("BiweeklyCounter = " + biweeklyRelations[c] + " ; C index = " + c);
+			biweeklyCounter = c;
+		}
 	});
-}
-
-function determineRotations(year) {
-	
-	let daysInYear = 365;
-	if (year % 4 === 0) {
-		daysInYear = 366;
-	}
-	for (let i = 1; i <= daysInYear; i++) {
-		
-	}
 }
 
 function enableLifecraftButtons() {
