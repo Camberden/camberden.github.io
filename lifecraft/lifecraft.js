@@ -293,6 +293,8 @@ function generateCalendar(year) {
 			span.setAttribute("class", "calendar-date");
 			const text = document.createTextNode(j + 1);
 			span.appendChild(text);
+
+			// TODO for creating E schedule.
 			div.appendChild(span);
 		}
 		lifecraftField.appendChild(div);
@@ -300,6 +302,45 @@ function generateCalendar(year) {
 	addEventsByYear(year);
 }
 generateCalendar(currentYear);
+
+
+/**
+ * @todo Assign c based on currentYear param
+ */
+function displayBiweeklyRotation() {
+	const calendarDays = document.querySelectorAll(".calendar-date");
+	let c = 1;
+	let e = 1;
+	
+	calendarDays.forEach(calendarDay => {
+		if (c > 14) {
+			c = 1;
+		}
+		if (c <= 7) {
+			if (c <= 2 || c >= 6) {
+				calendarDay.textContent += "E";
+			}
+		}
+		if (c > 7) {
+			if (c >= 10 && c <= 12) {
+				calendarDay.textContent += "E";
+			}
+		}
+		c++;
+		e++;
+	});
+}
+
+function determineRotations(year) {
+	
+	let daysInYear = 365;
+	if (year % 4 === 0) {
+		daysInYear = 366;
+	}
+	for (let i = 1; i <= daysInYear; i++) {
+		
+	}
+}
 
 function enableLifecraftButtons() {
 	let toggleSavings = false;
@@ -334,6 +375,9 @@ function enableLifecraftButtons() {
 					}
 					console.log(toggleSavings);
 				break;
+				case "rotation":
+						displayBiweeklyRotation();
+					break;
 				default:
 					console.log("Default Switch Triggered");
 				break;

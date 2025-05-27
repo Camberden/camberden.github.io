@@ -62,7 +62,6 @@ const calculateNewBalance = function () {
 };
 
 allCheckboxes.forEach(elem => elem.onclick = calculateNewBalance);
-
 calculateNewBalance();
 
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
@@ -492,10 +491,9 @@ function displayExpenseModal() {
 	const currentDate = new Date();
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	document.getElementById("modal-text").setAttribute("class", "paycard-grid");
-	let expenseModalBalance = parseFloat(document.getElementById("balance").value);
+	let expenseModalPaycheck = parseFloat(document.getElementById("balance").value);
 	let expenseModalEndBalance = parseFloat(document.getElementById("endbalance").textContent);
-	let expenseModalExpenses = parseFloat(expenseModalBalance - expenseModalEndBalance).toFixed(2);
-	
+	let expenseModalExpenses = parseFloat(expenseModalPaycheck - expenseModalEndBalance).toFixed(2);
 	
 	for (let i = 0; i < 5; i++) {
 		const ul = document.createElement("ul");
@@ -512,7 +510,6 @@ function displayExpenseModal() {
 				const span = document.createElement("span");
 				span.setAttribute("class", "projected-monthly-expense");
 				const expenseText = document.createTextNode(expenseModalExpenses);
-				console.log(expenseModalExpenses);
 				span.appendChild(expenseText);
 				li.appendChild(text);
 				li.appendChild(span);
@@ -605,7 +602,6 @@ function displayAccountingModal() {
 	</div>
 	`;
 	document.getElementById("modal-text").innerHTML = accountingModalData;
-
 }
 
 function dashboardModalAccess() {
