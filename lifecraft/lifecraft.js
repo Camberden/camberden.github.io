@@ -310,36 +310,45 @@ let biweeklyCounter = 1;
 function displayBiweeklyRotation() {
 
 	const biweeklyRelationsDemo = [
-		"Long Off 1",
-		"Long Off 2",
-		"Long On 3",
-		"Long On 4",
-		"Long On 5",
-		"Short Off 1",
-		"Short Off 2",
-		"Short On 1",
-		"Short On 2",
-		"Short Off 3",
-		"Short Off 4",
-		"Short Off 5",
-		"Long On 1",
+		"Default", // XX2023 & i0
+		"Long On 1", // 2024 @ i1
 		"Long On 2",
+		"Long Off 1", // 2025 @ i3
+		"Long Off 2", // 2026 @ i4
+		"Long On 3", // 2027 @ i5
+		"Long On 4", // 2028 @ i6
+		"Long On 5", 
+		"Short Off 1", // 2029 @ i8
+		"Short Off 2", // 2030 @ i9
+		"Short On 1", // 2020, 2031 @ i10
+		"Short On 2", // 2032 @i11
+		"Short Off 3", //2021 @ i12
+		"Short Off 4", //2022, 2033 @ i13
+		"Short Off 5", //2023 @ i14
 	];
 	// Looking for Index
 	// Finding which Relation to start on
-	let year = 2025;
-	let yearMod = (year % 4); // 1
-	let indexer = (Math.round((year % 40) / 4)); // Amount of times leap year hit: 6
-	let eachYearPassedSinceMod40 = Math.round((year % 40));
-	let divideYearsPassedPlusSkippedIndex = (eachYearPassedSinceMod40 + indexer) / 14;
-	console.log(divideYearsPassedPlusSkippedIndex);
-	console.log("Year Mod 4: " + yearMod);
+	// Mod40 = 0 = index13
+	let year = 2033; 
+	// let remainder = year - (year % 40);
+	let indexBase = year % 40; // IndexBase
+	let indexSkip = Math.floor(indexBase / 4); // Amount of times leap year hit
+	let indexSum = indexBase + indexSkip;
+	if (indexBase % 4 === 0) {
+		indexSum -= 1;
+	}
+	let indexProper = indexSum % 14;
+	if (indexProper === 0) {
+		indexProper = 14;
+	}
+	console.log("Year: " + year);
+	console.log("Index Base: " + indexBase);
+	console.log("Index Skip: " + indexSkip);
+	console.log("Index Sum: " + indexSum);
+	console.log("Index Proper: " + indexProper);
 
-	console.log("Indexer, Year Mod40/4: " + indexer);
-	console.log("Mod + Indexer " + (yearMod + indexer));
 
-
-	console.log("Result: " + biweeklyRelationsDemo[yearMod + indexer])
+	console.log("Result: " + biweeklyRelationsDemo[indexProper]);
 
 
 	const calendarDays = document.querySelectorAll(".calendar-date");
@@ -380,7 +389,7 @@ function displayBiweeklyRotation() {
 		c++;
 		e++;
 		if (e >= 365) {
-			console.log("BiweeklyCounter = " + biweeklyRelations[c] + " ; C index = " + c);
+			// console.log("BiweeklyCounter = " + biweeklyRelations[c] + " ; C index = " + c);
 			biweeklyCounter = c;
 		}
 	});
