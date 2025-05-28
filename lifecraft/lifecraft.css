@@ -68,6 +68,12 @@
 	align-content: baseline;
 }
 
+.lifecraft-dropdown {
+	background-color: var(--clr-quinary-body);
+	border: 1px solid #888;
+	width: 66%; /* Could be more or less, depending on screen size */
+}
+
 .modal {
 	display: none; /* To hide by default */
 	position: fixed; /* to stay in place */

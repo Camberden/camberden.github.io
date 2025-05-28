@@ -303,13 +303,14 @@ function generateCalendar(year) {
 }
 generateCalendar(currentYear);
 
-let biweeklyCounter = 1;
+
 /**
  * @todo Assign c based on currentYear param
  */
-function displayBiweeklyRotation() {
+function displayBiweeklyRotation(year) {
 
-	const biweeklyRelationsDemo = [
+	const calendarDays = document.querySelectorAll(".calendar-date");
+	const biweeklyRelations = [
 		"Default", // XX2023 & i0
 		"Long On 1", // 2024 @ i1
 		"Long On 2",
@@ -326,10 +327,8 @@ function displayBiweeklyRotation() {
 		"Short Off 4", //2022, 2033 @ i13
 		"Short Off 5", //2023 @ i14
 	];
-	// Looking for Index
-	// Finding which Relation to start on
-	// Mod40 = 0 = index13
-	let year = 2033; 
+
+	// let year = 2025; 
 	// let remainder = year - (year % 40);
 	let indexBase = year % 40; // IndexBase
 	let indexSkip = Math.floor(indexBase / 4); // Amount of times leap year hit
@@ -346,52 +345,18 @@ function displayBiweeklyRotation() {
 	console.log("Index Skip: " + indexSkip);
 	console.log("Index Sum: " + indexSum);
 	console.log("Index Proper: " + indexProper);
-
-
-	console.log("Result: " + biweeklyRelationsDemo[indexProper]);
-
-
-	const calendarDays = document.querySelectorAll(".calendar-date");
-	let c = biweeklyCounter;
-	let e = 1;
-	const biweeklyRelations = [
-		"Default",
-		"Long Off 1",
-		"Long Off 2",
-		"Long On 3",
-		"Long On 4",
-		"Long On 5",
-		"Short Off 1",
-		"Short Off 2",
-		"Short On 1",
-		"Short On 2",
-		"Short Off 3",
-		"Short Off 4",
-		"Short Off 5",
-		"Long On 1",
-		"Long On 2",
-	];
+	console.log("Result: " + biweeklyRelations[indexProper]);
+	console.log("Includes Off? " + biweeklyRelations[indexProper].includes("Off"));
+	console.log("Includes On? " + biweeklyRelations[indexProper].includes("On"));
 
 	calendarDays.forEach(calendarDay => {
-		if (c > 14) {
-			c = 1;
+		if (indexProper > 14) {
+			indexProper = 1;
 		}
-		if (c <= 7) {
-			if (c <= 2 || c >= 6) {
-				calendarDay.textContent += "E";
-			}
+		if (biweeklyRelations[indexProper].includes("Off")) {
+			calendarDay.textContent += "E";
 		}
-		if (c > 7) {
-			if (c >= 10 && c <= 12) {
-				calendarDay.textContent += "E";
-			}
-		}
-		c++;
-		e++;
-		if (e >= 365) {
-			// console.log("BiweeklyCounter = " + biweeklyRelations[c] + " ; C index = " + c);
-			biweeklyCounter = c;
-		}
+		indexProper++;
 	});
 }
 
@@ -429,7 +394,7 @@ function enableLifecraftButtons() {
 					console.log(toggleSavings);
 				break;
 				case "rotation":
-						displayBiweeklyRotation();
+						displayBiweeklyRotation(changeYear);
 					break;
 				default:
 					console.log("Default Switch Triggered");
