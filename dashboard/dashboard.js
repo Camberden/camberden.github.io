@@ -34,22 +34,20 @@ function updateInp() {
 const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
 // ADD NEW VARIABLES TO expenseNames
 const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym inp".split(" "));
-const allElem = expenseNames
+const allCosts = expenseNames
 	.map(str => document.getElementById(str + "-cost"));
-// check box element list
 const allCheckboxes = expenseNames
 	.map(str => document.getElementById(str + "-check"));
 
-allElem.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
-// allElem.forEach((elem, i) => elem.value = allExpenses[i]);
+allCosts.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
 
 
 const calculateNewBalance = function () {
 	updateInp();
 	let sum = 0;
 	allExpenses.forEach((e, i) => {
-		const elem = allCheckboxes[i];
-		if (elem.checked) {
+		const checkbox = allCheckboxes[i];
+		if (checkbox.checked) {
 			// console.log(`73; e = ${e}; e.checked = ${e.checked}`);
 			sum += e;
 		}
@@ -61,8 +59,20 @@ const calculateNewBalance = function () {
 	document.getElementById("endbalance").innerHTML = endbalance.toFixed(2);
 };
 
-allCheckboxes.forEach(elem => elem.onclick = calculateNewBalance);
+allCheckboxes.forEach(checkbox => checkbox.onclick = calculateNewBalance);
 calculateNewBalance();
+
+function selectApplicable() {
+	document.getElementById("select-applicable").onclick = function() {
+		expenseNames.forEach(expense => {
+			if (document.getElementById(expense + "-cost").classList.contains("applicable")) {
+				document.getElementById(expense + "-check").checked = true;
+			}
+		});
+		calculateNewBalance();
+	}
+};
+selectApplicable();
 
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
@@ -495,7 +505,7 @@ function displayExpenseModal() {
 	let expenseModalEndBalance = parseFloat(document.getElementById("endbalance").textContent);
 	let expenseModalExpenses = parseFloat(expenseModalPaycheck - expenseModalEndBalance).toFixed(2);
 	
-	for (let i = 0; i < 5; i++) {
+	for (let i = 0; i < 4; i++) {
 		const ul = document.createElement("ul");
 		ul.setAttribute("class", `${currentDate.getFullYear() + i}-projections`);
 		const text = document.createTextNode(currentDate.getFullYear() + i);
@@ -509,8 +519,9 @@ function displayExpenseModal() {
 				const text = document.createTextNode(months[j] + ": $");
 				const span = document.createElement("span");
 				span.setAttribute("class", "projected-monthly-expense");
-				const expenseText = document.createTextNode(expenseModalExpenses);
-				span.appendChild(expenseText);
+				// const expenseText = document.createTextNode(expenseModalExpenses);
+				// span.appendChild(expenseText);
+				span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses}<br>=${expenseModalEndBalance}`;
 				li.appendChild(text);
 				li.appendChild(span);
 				ul.appendChild(li);
@@ -522,8 +533,9 @@ function displayExpenseModal() {
 				const text = document.createTextNode(months[j] + ": $");
 				const span = document.createElement("span");
 				span.setAttribute("class", "projected-monthly-expense");
-				const expenseText = document.createTextNode(expenseModalExpenses);
-				span.appendChild(expenseText);
+				// const expenseText = document.createTextNode(expenseModalExpenses);
+				// span.appendChild(expenseText);
+				span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses}<br>=${expenseModalEndBalance}`;
 				li.appendChild(text);
 				li.appendChild(span);
 				ul.appendChild(li);
@@ -635,7 +647,6 @@ function dashboardModalAccess() {
 			}
 		}
 }
-
 dashboardModalAccess();
 
 // ----- MATCH MEDIA ----- //

@@ -88,14 +88,6 @@ input[type=text]:focus {
 	padding: 2rem;
 }
 
-#dashboard-refdocs {
-	flex: 0.1;
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: center;
-}
-
 #dashboard-pension-calculator {
 	flex: content;
 	min-width: fit-content;
@@ -137,6 +129,13 @@ input[type=text]:focus {
 	color: grey;
 	opacity: 0.3;
 	user-select: none;
+}
+
+#select-applicable:hover {
+	cursor: pointer;
+	color: var(--clr-primary);
+	position: inherit;
+	text-shadow: -2.5px -1px 0px #ff00ff;
 }
 
 #inp-cost {

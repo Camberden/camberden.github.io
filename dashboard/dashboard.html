@@ -69,8 +69,9 @@
 				<ul id="expense-list">
 					<li>PAYCHECK = $<input type="text" placeholder=" Input Value" id="balance" name="balance" label="balance"></li>
 					<br>
+					<li><span class="marker" id="select-applicable">Select Applicable</span></li>
 					<!-- CAR PAYMENT -->
-					<li><input type="checkbox" id="car-check">CAR = $<span class="expense"
+					<li><input type="checkbox" id="car-check">CAR = $<span class="expense applicable"
 							id="car-cost">0</span>
 						<span class="automated-payment">Automated: 4th</span>
 					</li>
@@ -80,11 +81,11 @@
 						<span class="non-automated-payment">Inactive</span>
 					</li>
 					<!-- PRIVATE STUDENT LOAN -->
-					<li><input type="checkbox" id="sal-check">SAL = $<span class="expense" id="sal-cost">0</span>
+					<li><input type="checkbox" id="sal-check">SAL = $<span class="expense applicable" id="sal-cost">0</span>
 						<span class="automated-payment">Automated: 1st</span>
 					</li>
 					<!-- MY RENT -->
-					<li><input type="checkbox" id="ren-check">REN = $<span class="expense" id="ren-cost">0</span>
+					<li><input type="checkbox" id="ren-check">REN = $<span class="expense applicable" id="ren-cost">0</span>
 						<span class="non-automated-payment">NOT Automated</span>
 					</li>
 					<!-- RENTER'S INSURANCE -->
@@ -92,7 +93,7 @@
 						<span class="non-automated-payment">Inactive</span>
 					</li>
 					<!-- CAR INSURANCE -->
-					<li><input type="checkbox" id="ins-check">INS = $<span class="expense" id="ins-cost">0</span>
+					<li><input type="checkbox" id="ins-check">INS = $<span class="expense applicable" id="ins-cost">0</span>
 						<span class="automated-payment">Automated: 30th</span>
 					</li>
 					<!-- PERSONAL LOAN -->
@@ -115,15 +116,15 @@
 						<span class="non-automated-payment">Inactive</span>
 					</li>
 					<!-- MUSIC SUBSCRIPTION -->
-					<li><input type="checkbox" id="mus-check">MUS = $<span class="expense" id="mus-cost">0</span>
+					<li><input type="checkbox" id="mus-check">MUS = $<span class="expense applicable" id="mus-cost">0</span>
 						<span class="automated-payment">Automated: 1st</span>
 					</li>
 					<!-- DONATION -->
-					<li><input type="checkbox" id="don-check">DON = $<span class="expense" id="don-cost">0</span>
+					<li><input type="checkbox" id="don-check">DON = $<span class="expense applicable" id="don-cost">0</span>
 					<span class="automated-payment">Automated: 1st</span>
 					</li>
 					<!-- GYM MEMBERSHIP -->
-					<li><input type="checkbox" id="gym-check">GYM = $<span class="expense"
+					<li><input type="checkbox" id="gym-check">GYM = $<span class="expense applicable"
 							id="gym-cost">0</span>
 						<span class="automated-payment">Automated: 17th</span>
 					</li>

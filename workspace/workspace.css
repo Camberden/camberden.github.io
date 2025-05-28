@@ -109,6 +109,10 @@ body {
 
 /* ----- SECOND TESTING GRID ----- */
 
+#expenses-t {
+	list-style-type: none;
+}
+
 .paycard {
 	text-align: left;
 }

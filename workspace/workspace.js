@@ -47,23 +47,28 @@ enableToyButtons();
 let typ = 4400.00;
 
 let sav = 1000.00;
-let hys = 8000.00;
+let hys = 11500.00;
 let dbt = 300.00;
 
 let equities = [sav, hys, dbt];
 let equityNames = Array.from("sav hys dbt".split(" "));
 const equityValues = equityNames.map(string => document.getElementById(string + "-equity-t"));
-equityValues.forEach((e, i) => e.innerHTML = equities[i]);
+equityValues.forEach((e, i) => e.textContent = equities[i]);
+const paycheck = document.getElementById("paycheck-t").textContent;
+const preSavings = document.getElementById("pre-savings-t");
+const lessSavings = document.getElementById("less-savings-t");
+const remainder = document.getElementById("remainder-t");
+const totalSavings = document.getElementById("total-savings-t");
 
-let car = 0.00;
-let nav = 0.00;
+let car = 1291.61;
+let nav = 0.00; // $222.07
 let sal = 884.15;
 let ren = 200.00;
 let rti = 0.00;
-let ins = 70.81;
-let loa = 300.00;
+let ins = 107.13;
+let loa = 0.00;
 let wat = 0.00;
-let ele = 0.00;
+let ele = 70.27;
 let int = 0.00;
 let mus = 6.39;
 let don = 10.00;
@@ -72,35 +77,47 @@ let gym = 25.05;
 let expenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym];
 let expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym".split(" "));
 
+function populateExpenseList() {
+	const expensesDiv = document.getElementById("expenses-t");
+	expenseNames.forEach((expense, i) => {
+		const li = document.createElement("li");
+		const input = document.createElement("input");
+		input.setAttribute("type", "checkbox");
+		input.setAttribute("id", `${expense}-check-t`);
+		input.setAttribute("onclick", "updateTemplate()");
+		const text = document.createTextNode(expense.toLocaleUpperCase() + ": $ ");
+		const span = document.createElement("span");
+		span.textContent = expenses[i];
+		span.setAttribute("class", "expense");
+		span.classList.add("money-var");
+		span.setAttribute("id", `${expense}-cost-t`);
+
+		li.appendChild(input);
+		li.appendChild(text);
+		li.appendChild(span);
+		expensesDiv.appendChild(li);
+	});
+}
+populateExpenseList();
+
 const expenseValues = expenseNames.map(string => document.getElementById(string + "-cost-t"));
-expenseValues.forEach((e, i) => e.innerHTML = expenses[i]);
-let totalMonthlyExpenses = 0;
-
-const preSavings = document.getElementById("pre-savings-t");
-const lessSavings = document.getElementById("less-savings-t");
-const remainder = document.getElementById("remainder-t");
-const totalSavings = document.getElementById("total-savings-t");
-
-// SHOULD PARSE FLOATS
-// Might be better practice to focus on innerHTML as the js values may take precedence.
-// The JS values are only for pre-population
+let totalMonthlyExpenses = 0.00;
 
 function updateTemplate() {
-	totalMonthlyExpenses = 0.00;
-
-		for (let val of expenseValues) {
-			totalMonthlyExpenses += parseFloat(val.innerHTML);
+	sum = 0.00;
+	expenseNames.forEach(expense => {
+		if (document.getElementById(`${expense}-check-t`).checked) {
+			sum += parseFloat(document.getElementById(`${expense}-cost-t`).textContent);
+			console.log(document.getElementById(`${expense}-cost-t`).textContent);
+			console.log(sum);
 		}
-		document.getElementById("total-monthly-expenses-t").innerHTML = totalMonthlyExpenses;
-		preSavings.innerHTML = document.getElementById("paycheck-t").innerHTML - totalMonthlyExpenses;
-		lessSavings.innerHTML = sav;
-		remainder.innerHTML = preSavings.innerHTML - sav;
-		totalSavings.innerHTML = hys + sav;
-
-	// 	const newValues = expenseNames.map(string => document.getElementById(string + `-cost-${budgetItemKey}`));
-	// for (let val of newValues) {
-	// 	totalMonthlyExpenses += parseFloat(val.innerHTML);
-	// }
+	});
+		const discretionary = paycheck - sum;
+		document.getElementById("total-monthly-expenses-t").textContent = sum.toFixed(2);
+		preSavings.textContent = discretionary.toFixed(2);
+		lessSavings.textContent = sav;
+		remainder.textContent = (discretionary - sav).toFixed(2);
+		totalSavings.textContent = hys + sav;
 }
 updateTemplate(); 
 
@@ -134,11 +151,12 @@ function handle(event) {
 		event.preventDefault();
 		editor = document.getElementById("editor").value;
 		console.log(editing);
-		itemEdited.textContent = editor;
+		itemEdited.textContent = parseFloat(editor);
 		editing = false;
 		alert(editor);
-		updatePaycard(num);
-		updateSavings(num);
+		updateTemplate();
+		// updatePaycard(num);
+		// updateSavings(num);
 	}
 }
 
@@ -194,31 +212,31 @@ function generateMonth(num) {
 // can check for classLists 
 function updatePaycard(num) {
 
-	const paycardPaycheck = document.getElementById(`paycheck-${num}`).innerHTML;
+	const paycardPaycheck = document.getElementById(`paycheck-${num}`).textContent;
 	console.log(paycardPaycheck);
 	let deductions = 0.00;
 	for (let name of expenseNames) {
 		deductions += parseFloat(document.getElementById(`${name}-cost-${num}`).innerHTML);
 	}
-	document.getElementById(`total-monthly-expenses-${num}`).innerHTML = deductions;
+	document.getElementById(`total-monthly-expenses-${num}`).textContent = deductions.toFixed(2);
 	console.log(deductions);
-	document.getElementById(`pre-savings-${num}`).innerHTML = parseFloat(paycardPaycheck) - parseFloat(deductions);
+	document.getElementById(`pre-savings-${num}`).textContent = (parseFloat(paycardPaycheck) - parseFloat(deductions)).toFixed(2);
 	
 }
 
 function updateSavings(num) {
 	for (let i = num; i < 13; i++) {
-		let preSavings = document.getElementById(`pre-savings-${i}`).innerHTML;
-		let deposit = document.getElementById(`sav-equity-${i}`).innerHTML;
-		let account = document.getElementById(`hys-equity-${i}`).innerHTML;
+		let preSavings = document.getElementById(`pre-savings-${i}`).textContent;
+		let deposit = document.getElementById(`sav-equity-${i}`).textContent;
+		let account = document.getElementById(`hys-equity-${i}`).textContent;
 		console.log(account);
 		if (i > 1) {
 			account = document.getElementById(`hys-equity-${i - 1}`).innerHTML; // from previous hys
 		} else {
 			account = hys;
 		}
-		document.getElementById(`hys-equity-${i}`).innerHTML = parseFloat(deposit) + parseFloat(account);
-		document.getElementById(`dbt-equity-${i}`).innerHTML = parseFloat(preSavings) - parseFloat(deposit);
+		document.getElementById(`hys-equity-${i}`).textContent = (parseFloat(deposit) + parseFloat(account)).toFixed(2);
+		document.getElementById(`dbt-equity-${i}`).textContent = (parseFloat(preSavings) - parseFloat(deposit)).toFixed(2);
 	}
 }
 
