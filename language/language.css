@@ -43,6 +43,17 @@ ul {
 	overflow: hidden;
 }
 
+#song-button-pool {
+	padding: 1rem;
+	background-color: var(--clr-quinary-body);
+}
+
+#song-button-pool > button {
+	height: 4rem;
+	width: fit-content;
+	overflow: hidden;
+}
+
 #study-tables {
 	flex: 0.5;
 	flex-direction: row;
