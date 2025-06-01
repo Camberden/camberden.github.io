@@ -346,7 +346,7 @@ input[type=text]:focus {
 
 /* ----- MEDIA QUERIES ---- */
 
-@media screen and (max-width: 1350px) {
+/* @media screen and (max-width: 1350px) {
 
 #pension-table > tr > td {
 	padding: 0.1rem;
@@ -383,9 +383,9 @@ body {
 .dashboard-item {
 	padding: 1rem;
 }
-}
+} */
 
-@media screen and (max-width: 500px) {
+@media screen and (max-device-width: 500px) {
 
 body {
 	background-image: none; 

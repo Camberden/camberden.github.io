@@ -651,7 +651,8 @@ dashboardModalAccess();
 
 // ----- MATCH MEDIA ----- //
 
-const width500 = window.matchMedia("(max-width: 500px)");
+// (max-device-width: 500px)
+const width500 = window.matchMedia("(max-device-width: 500px)");
 
 function enableNavigationBar() {
 	const navbar = document.getElementById("navbar");
@@ -673,12 +674,13 @@ enableNavigationBar();
 
 function matchMediaDashboard(config) {
 	if (config.matches) {
-		console.log(config.matches);
+		console.log("Config Matches?: " + config.matches);
 		document.getElementById("dashboard-header").style.display = "none";
 		document.getElementById("dashboard-quick-links").style.display = "none";
 		document.getElementById("return").style.display = "none";
 		document.getElementById("navbar-access").style.display = "flex";
 	} else {
+		console.log("Config Matches?: " + config.matches);
 		document.getElementById("dashboard-header").style.display = "flex";
 		document.getElementById("dashboard-quick-links").style.display = "flex";
 		document.getElementById("return").style.display = "flex";
