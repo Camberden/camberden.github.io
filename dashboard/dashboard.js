@@ -597,19 +597,24 @@ function displayAccountingModal() {
 			<li>ACC 269</li>
 		</ul>
 		<ul>SU2026<hr>
-			<li>ACC 129</li>
-		</ul>
-		<ul>FA2026<hr>
+			<li>ACC 149</li>
 			<li>BUS 115</li>
 		</ul>
+		<ul>FA2026<hr>
+			<li>ACC 129</li>
+			<li>ACC 140</li>
+		</ul>
 		<ul>SP2027<hr>
-			<li>ACC 149 & 150</li>
+			<li>ACC 130</li>
+			<li>ACC 150</li>
 		</ul>
 		<ul>SU2027<hr>
-			<li>ACC 151</li>
+			<li>ACC 240</li>
+			<li>CIS 110</li>
 		</ul>
 		<ul>FA2027<hr>
-			<li>ACC 152</li>
+			<li>ACC 215</li>
+			<li>ECO 251</li>
 		</ul>
 	</div>
 	`;
