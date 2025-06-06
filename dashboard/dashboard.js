@@ -533,9 +533,19 @@ function displayExpenseModal() {
 				const text = document.createTextNode(months[j] + ": $");
 				const span = document.createElement("span");
 				span.setAttribute("class", "projected-monthly-expense");
-				// const expenseText = document.createTextNode(expenseModalExpenses);
-				// span.appendChild(expenseText);
-				span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses}<br>=${expenseModalEndBalance}`;
+				if (currentDate.getFullYear() + i === 2026 && j === 0) {
+					expenseModalExpenses -= car;
+					expenseModalEndBalance += car;
+					ul.innerHTML += " (Car Paid)<hr>";
+				}
+				if (currentDate.getFullYear() + i === 2027 && j === 0) {
+					expenseModalExpenses -= sal;
+					expenseModalEndBalance += sal;
+					ul.innerHTML += " (Sal Paid)<hr>";
+
+				}
+				
+				span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses.toFixed(2)}<br>=${expenseModalEndBalance.toFixed(2)}`;
 				li.appendChild(text);
 				li.appendChild(span);
 				ul.appendChild(li);
