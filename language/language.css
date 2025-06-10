@@ -94,3 +94,9 @@ sup {
 	display: block;
 	background-color: var(--clr-quinary-body);
 }
+@media screen and (max-device-width: 500px) {
+	.language-grid {
+		flex-direction: column;
+	}
+
+}

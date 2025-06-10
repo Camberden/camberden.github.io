@@ -795,7 +795,7 @@ const blogData = [
 	<ol>
 	<li>Being able to read daily</li>
 	<li>Being able to fill downtime with intentional action or inaction</li>
-	<li>Being able to wholly control what I consume entirely</li>
+	<li>Being able to wholly control what I consume</li>
 	<li>Being able to be mindful always what my body is calling for</li>
 	</ol>
 	Just now, Youtube was about to autoplay onto a video about Ireland. It would have played passively in the background while
