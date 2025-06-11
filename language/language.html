@@ -43,6 +43,12 @@
 				allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 				referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 		</div> -->
+		<div class="modal">
+			<div class="modal-field">
+				<span class="close-modal">&times;</span><br>
+				<div id="modal-text"></div>
+			</div>
+		</div>
 	</div>
 
 
@@ -50,7 +56,7 @@
 
 
 		<div class="language-item" id="language-prompter">
-			<span>Vocabulary Modules</span>
+			<span>Vocabulary Modules</span> <span class="marker modal-prompt" id="vocabulary-quiz">Quiz</span>
 			<hr>
 			<div>
 				<button class="language-button" value="all">All Modules</button>
@@ -62,7 +68,7 @@
 			<br>
 			<div class="language-item" id="button-pool"></div>
 			<br>
-			<span>Song Lyrics</span>
+			<span>Song Lyrics</span> <span class="marker modal-prompt" id="song-quiz">Quiz</span>
 			<hr>
 			<span id="notes-field"></span>
 			<div class="language-item" id="song-button-pool"></div>

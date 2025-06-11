@@ -1,4 +1,6 @@
 window.onload = () => console.log("Running!");
+const modal = document.querySelector(".modal");
+const closeModal = document.getElementsByClassName("close-modal")[0];
 
 /**
  * @param {string[]} vocabulary - contains foreign language and English separated by pipe: |
@@ -32,6 +34,7 @@ class SongModule {
 const jishoField = document.getElementById("jisho-field");
 const jishoIFrame = document.getElementById("jisho-frame");
 
+let currentSplitModule;
 const languageButtons = document.querySelectorAll(".language-button");
 const buttonPool = document.getElementById("button-pool");
 const songButtonPool = document.getElementById("song-button-pool");
@@ -273,10 +276,12 @@ function generateStudyTable(module) {
 	table.appendChild(tr);
 
 	// Vocabulary Parser
+	let quizLanguageData = [];
 	for (let i = 0; i < module.vocabulary.length; i++) {
 		const tr = document.createElement("tr");
 		
 		const languageData = module.vocabulary[i].split("|");
+		quizLanguageData.push(languageData);
 		const fl = document.createElement("td");
 		const flText = document.createTextNode(languageData[0]);
 		fl.appendChild(flText);
@@ -299,6 +304,7 @@ function generateStudyTable(module) {
 	}
 
 	studyTable.appendChild(table);
+	currentSplitModule = quizLanguageData;
 };
 
 generateStudyTable(vocabularyModules[0]);
@@ -358,7 +364,6 @@ function enableButtonPool(modules) {
 function enableSongLyricsPool(songs){
 	songButtonPool.innerHTML = "";
 	songs.forEach(song => {
-		console.log(song.lyrics);
 		const splitLyrics = song.lyrics.split("…");
 		const button = document.createElement("button");
 		const text = document.createTextNode(song.title);
@@ -383,6 +388,100 @@ function enableSongLyricsPool(songs){
 			ButtonInterface.buttonOnMouseLeave(button);
 		}
 	});
+}
+
+// ----- MODAL ACCESS ----- //
+/**
+ * 
+ * @param {Array} splitModule 
+ */
+function displayVocabularyQuiz(splitModule) {
+	console.log("vocab quiz");
+	const modalText = document.getElementById("modal-text");
+
+	const modalFocus = document.createElement("span");
+	modalFocus.setAttribute("class", "modal-focus");
+	modalText.appendChild(modalFocus);
+
+	let entry = 0;
+	modalFocus.textContent = splitModule[entry][0];
+
+	const nextVocabularyButton = document.createElement("button");
+	nextVocabularyButton.setAttribute("value", "next");
+	nextVocabularyButton.setAttribute("class", "language-modal-button");
+	nextVocabularyButton.textContent = "Next Item";
+
+	modalText.appendChild(nextVocabularyButton);
+
+	document.querySelectorAll(".language-modal-button").forEach(button => {
+		button.onclick = function(){
+			ButtonInterface.buttonOnClick(button);
+			switch (button.value) {
+				case "next":
+						if (entry === splitModule.length - 1) {
+							entry = 0;
+							modalFocus.textContent = splitModule[entry++][0];
+						} else {
+							modalFocus.textContent = splitModule[++entry][0];
+						}
+					break;
+				default:
+					clearModal();
+					break;
+			}
+		}
+		button.onmouseenter = function () {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function () {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+	}
+	);
+}
+
+function displaySongModule(module) {
+
+}
+
+function languageModalAccess() {
+	document.querySelectorAll(".modal-prompt").forEach(prompt => {
+
+		prompt.onclick = function() {
+			switch(prompt.id) {
+				case "vocabulary-quiz":
+					displayVocabularyQuiz(currentSplitModule);
+					modal.style.display = "block";
+				break;
+				case "song-quiz":
+					// displaySongQuiz();
+					modal.style.display = "block";
+				break;
+				default:
+					console.log("default");
+				break;
+			}
+			
+		}
+		
+	});
+		closeModal.onclick = function () {
+			clearModal();
+			modal.style.display = "none";
+		};
+		window.onclick = function (event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+				clearModal();
+			}
+		}
+}
+languageModalAccess();
+
+function clearModal() {
+	document.getElementById("modal-text").innerHTML = "";
+	// document.getElementById("modal-text").removeAttribute("class", "quiz-grid");
+	console.log("Modal Cleared!");
 }
 
 // ----- ENABLE FUNCTIONS ----- //
@@ -421,6 +520,8 @@ function enableLanguageButtons(){
 	}
 	)
 }
+
 enableLanguageButtons();
 enableButtonPool(vocabularyModules);
 enableSongLyricsPool(songModules);
+
