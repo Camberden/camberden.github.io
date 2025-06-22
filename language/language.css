@@ -15,7 +15,7 @@ ul {
 
 .language-item {
 	flex: 1; 
-	/* flex-direction: row; */
+	flex-direction: row;
 	align-items: center;
 	justify-content: left;
 	min-width: 10rem;
@@ -30,6 +30,12 @@ ul {
 
 #language-prompter {
 	flex: 0.5;
+}
+
+#song-grid {
+	align-items: left;
+	justify-content: left;
+	text-align: left;
 }
 
 #button-pool {
