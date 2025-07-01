@@ -832,8 +832,8 @@ const blogData = [
 	| June 22nd, 2025
 	| Pittsboro, NC
 	| 0200 HRS
-	| &emsp;
 	I sit here an hour before routing to the airport.
+	| &emsp;
 	I have plenty upon which to reflect, and will garner so much more so very soon:
 	<ul>
 	<li>I have made a great new friend who shares a lived experience and future vision akin to my own.</li>
@@ -859,6 +859,32 @@ const blogData = [
 	I feel privileged to do so in such proximity to sites that reinforce such right mindfulness and my practice at large.
 	I will make meaning of my past, experience that present, and to discover new avenues for the future.
 	この十日間には、過去の意味を見出し、現在を経験し、新たな将来の夢を発見するつもりだ。
+	`
+	,
+		`
+	| July 1st, 2025…
+	| Nagoya, Japan
+	| 0833 HRS	
+	| &emsp;
+	This has surely been an adventure.
+	I am making this update on a Tokyo-bound Shinkansen. The countryside, with its towns, mountains,
+	and rice padddies, are passing by at incredible speeds. Right now, I had a view of the Ise Bay.
+	<hr>
+	One thing I surely appreciate is the complete detachment from my labor and nighttime mundanities.
+	They are so distant that their significance in the present moment is negligible. Empty.
+	On Mt. Wakakusayama in Nara Prefecture, I spoke briefly with some natives on its peak. They told me where they are from: Kyoto, Ebisu, Fukuoka etc.
+	Upon explaining where I and my buddy were, they neither knew of North Carolina nor Washington D.C. as a reference point.
+	My life in North Carolina seemed like nothing but a burning memory where even the people around me know nothing of such place.
+	In that observation I felt further relief. 
+	<hr>
+	Were I to ask myself, "Would I want to stay here?" I would likely say "no."
+	This is a theme I would like to continuely explore at another time.
+	The overarching theme of this trip was the poem of the day at the tea ceremony center: 山頃山、水頃水。
+	It really is an expression of the supreme "it is what it is-ness" for "Mountain is Mountain;
+	Water is Water." My buddy finds it silly af. I agree, on a superficial level it sure does seem that way.
+	It's got a silly ring to it. But yes, it comes down to that ruthless acceptance of circumstances.
+	The weather's been hot. I have been too. It's rough, but that's good.
+	<b-title>Mountain is Mountain</b-title>; Water is Water. Heheh. Bye.
 	`
 	,
 ];
