@@ -29,7 +29,7 @@ const blogData = [
 	| &emsp;
 	I'm making considerable progress on my site. I almost feel too occupied with it to begin my fall semester classes.
 	Regardless, I'll give it a break shortly once this blogging module is successfully given to its own separate page.
-	Things seem to be working well: MVP as they'd say. <hr> &emsp;
+	Things seem to be working well: MVP as they'd say. <hr>&emsp; &emsp;
 	Life is funny. More measurable progress is happening in the absense of self-imposed pressures. More so than ever before.
 	Fitness, language study, reading, work, and coding: all of these things are going well. Nothing is difficult to approach.
 	I feel no anxiety. I am content.
@@ -63,14 +63,14 @@ const blogData = [
 	I've being doing okay this weekend, though a bit somber at having missed out on a lot of sunshine and opportunity for
 	hiking or long walks. I've gotten <b-title>over a week ahead</b-title> on my coursework, and have been continually doing other activities
 	relevant to me, such as coding and language practice. There's still so much that deserves time. Even though I've
-	done well to restrict my interests, they at times seem too numerous. <hr> &emsp;
+	done well to restrict my interests, they at times seem too numerous. <hr>&emsp; &emsp;
 	I decided to drop the Business Law course because I did not want to be overburdened by coursework for these next few
 	months. Gladly I will be getting a full refund, and will be able to better balance personal interests, work, and health.
 	That extra course would have surely affected my mental health negatively in retrospect. Am I in no rush, after all.
 	My lateral move will happen at some point, likely around late 2026. By then I will be more than ready for entry-level.
 	Would I not like to enjoy the income and vacation time that my current position affords me during 2026 and perhaps beyond?
 	It would be sensible, when of course I am free from SAL. So, overall: I will be selecting one and only one course per
-	semester. Were I to take off most of summer 2026, I may do more; such classes then would be mostly prose/legal/reading.<hr>
+	semester. Were I to take off most of summer 2026, I may do more; such classes then would be mostly prose/legal/reading.<hr>&emsp;
 	I pushed my Laravel project again. I enabled CSS and images by moving such files to the 'Public' directory and interpolating
 	in the blades as {{'asset(/css/app.css')}} for instance. I had to update database credentials in the .env file. 
 	For sql, I needed to mysql -uroot following reset and follow mysql_secure_installation instructions.
@@ -87,17 +87,17 @@ const blogData = [
 	operations across shifts and teams. I anticipate my learning journey with coding to manifest my idea for a simple
 	pay and pension prediction utility once I gain enough confidence in Laravel and attain the ability to deploy on an
 	internet-accessible server, cloud or not.
-	<hr> &emsp;
+	<hr>&emsp; &emsp;
 	I wouldn't say I have too many interests or anything, but the amount of creative things I want to do can seem like much 
 	though not to an overwhelming degree that would cause me to freeze up like I have prior to my brain's software update, 
 	so to speak. I would like to gain a modest competence in creating digital assets, in producing music again, in font design,
 	in simple game design (likely educational), in video creation, among others that may arise as this worldly self further 
 	develops. 
-	<hr> &emsp;
+	<hr>&emsp; &emsp;
 	I've learned through writing the pension calculator about document.getElementById("").children.item(#) which will be 
 	able to target and access the nth index tag within the gotten element's child. Cool! I can't wait to see how these all
 	work with database connectivity through Laravel. Well, I actually can wait, and will. 
-	<hr> &emsp;
+	<hr>&emsp; &emsp;
 	I am secure; I am safe; I am content. 
 	Missu.
 	`
@@ -116,7 +116,7 @@ const blogData = [
 	undertoned by the relief of it, for myself and for others. I take solace in this realization. Nonetheless, the sensation is 
 	<b-title>emotionally burdensome</b-title>. I aim to act well as things become situated again, but I hold a sense that I would become excessively
 	cautious with my speech to the extent it could be considered 'masking.' Such masking surely wouldn't be healthy for me.
-	<hr>
+	<hr>&emsp;
 	I'm going to put on a smile as I approach my tomorrow, and power through. I am tired. That is fine. 
 	`
 	,
@@ -136,7 +136,7 @@ const blogData = [
 	it's that my off days are inconsistent on a week-by-week basis, 
 	a basis that would be helpful in establishing myself as a reliable regular both online and in-person.
 	Being more reliably regular seems to be the best for developing one's sense of community, especially within third spaces.
-	<hr>
+	<hr>&emsp;
 	I affirm that there can be multiple "selves" through which one's life is lived. 
 	My experience has shown me that the Chrispy of 2018 who highly desired such a lifestyle is simply not the Chrispy of 2024.
 	Though "I" share the same life-lens as that previous self,  I couldn't agree that that person is "me" or the present self.
@@ -159,7 +159,7 @@ const blogData = [
 	I was really hoping to find my Finale music program files from 2007-2010 but sadly they're not present. Some compositions I forgot,
 	like Mission Themes I and II, Floccinaucinilipilificated Tune, and Organ Composition I (my first produced tune).
 	Needless to say, I'm <b-title>feeling the nostalgia</b-title> of that time, though I affirm that I am content in my current place in life.
-	<hr>
+	<hr>&emsp;
 	During this time, I have successfully reloaded all my music plugins into my DAW, Logic Pro. Having been programming consistently, my DAW
 	and its tools have become much easier to manage. I can now see the sense in how many parameters are interconnected and can muster
 	the patience to learn the features that go beyond simply inputting MIDI data. My curiosity for what lies underneath the raw musicality 
@@ -170,13 +170,13 @@ const blogData = [
 	explore. My time is limited. I long for weeks or months at a time where I can better catch up to who I could have become. Putting it that
 	way seems a bit remorseful, rather, I long for weeks or months at a time where I can become who I will to be. I intend at nothing groundbreaking,
 	but just will to aim my life skillfully.
-	<hr>
+	<hr>&emsp;
 	Overall, I'm feeling okay. It's been a decent weekend so far, and I would like to produce a little thing shortly and place it on my website.
 	I also would like to update the music page, and add a few more tracks. I should sort all lists by year. I should also update the dashboard 
 	and use a different border style site-wide, because on mobile some borders do not appear properly. In addition, I want my JLPT page to 
 	be able to prompt a Jisho iFrame by marshalling a chosen word to its URI query. This way, I could essentially use it as an API without
 	a direct external call which would be permissible by github pages.
-	<hr>
+	<hr>&emsp;
 	Work is going okay. I'm definitely improving in my role and am happy to have really established myself. I'm grateful to know that I am secure,
 	and with that security my peace of mind is maintained. Randomly I feel uneasy about American politics and economy and it escalates to
 	active worrying about societal collapse. This peace I enjoy, like all things, is impermanent. I need to keep working and fulfill my 
@@ -201,14 +201,14 @@ const blogData = [
 	to the daytime which I had not been able to do successfully. These led to confusion resulting in <b-title>exacerbated executive dysfunction</b-title> and a 
 	disruption to my sense of peace. I need to be careful; I need to reflect more, and I need to clear my head more. It is evident that ideas
 	and thoughts have become too numerous. It is for that very reason I previously determined that I must remain consistent with my emptiness practice.
-	<hr>
+	<hr>&emsp;
 	I prefaced by saying that this month has been fine. I had made considerable strides in programming and coursework. I am glad to have
 	gotten full CRUD working in Laravel and had learned Rust basics. I should not forget <code>{{auth()->user()->name}}</code> for direct
 	session user name access. I've also been pushing forward with the Accounting page and it's almost at the point where I could use it a as
 	a passive study tool as I desire for it to become. I mustn't forget that any modules I make on the github.io can be ported over to 
 	Laravel or other frameworks that would permit independent server hosting and deployment such that I could integrate user profiles, saving,
 	and other database-enabled services.
-	<hr>
+	<hr>&emsp;
 	As I have many times in the past, I should see the positives in my not having traveled far away during these seven days. No Home in PA,
 	Outer Banks in NC, Bogotá in Colombia, or Baggs in Wyoming, heheh. Just here. Things are fine. Financially, I must be mindful of increased
 	burden for the next year. Yes, I have been mindful of finances and saving very much, but I have a feeling that I will have to maintain the
@@ -234,7 +234,7 @@ const blogData = [
 	Should I be loyal to people, or is no one but myself worth trusting? Should I concern myself with heated world affairs?
 	Shall I have such affairs influence where I take myself?
 	Do I enjoy my work, or do I revile it? Am I dwelling too much in the future at the moment, or am I being responsible in doing so?
-	<hr>
+	<hr>&emsp;
 	Yet again in life, I'm forced to consider another move. Yet another move. My relocation to this place felt so right, and I do enjoy it, but
 	I must be responsible and achieve my freedom, and aiming towards that steadily would require another drastic action. I have some plans.
 	There is no plan that doesn't involve sacrifice of some sort. I am hopeful that I am mentally prepared for detaching to some of the 
@@ -263,7 +263,7 @@ const blogData = [
 	certainly not considering returning, and I'm sure they all knew that. I have a feeling that I may be perceived as an inspiration
 	for staff there to change their situation, and that management is aware of that. I feel such would be perogative for management
 	to keep me more separated from staff. Anywho, I'm grateful for having had the opportunity to revisit and to glean this perspective.
-	<hr>
+	<hr>&emsp;
 	I'm going to do some homework tonight, and give this digital nomad location browsing a little break. After all, it's my accounting
 	studies that will help enable that lifestyle down the road. In this moment, I am feeling quite roasty inside. Ever since the return
 	flight, I've not kept up with my routines and principles as well. But no worries, I can get the ball rolling again, so to speak.
@@ -286,13 +286,13 @@ const blogData = [
 	My health has been poor, not only because of family and friend visits but because of lackluster discipline on
 	any given day. My loss of workout routine has made way for excess consumption, passivity, and general carelessness to creep.
 	My proactivity has dwindled drastically. 
-	<hr>
+	<hr>&emsp;
 	I am writing now such that I may take note of these problems, and because I have procrastiated on physically writing an entry for weeks: 
 	I am in trouble. I need to force a fast or some sort of detox to get back on track. 
 	I must avoid specific things I know to cause me harm: cereals are no good, sugary foods including ice cream are no good, eating 
 	near midnight in general is no good. I must encourage specific things that I know to benefit me: <b-title>high protein</b-title> upon waking, 
 	diversified caffeine sources, and fitting some sort of exercise in no matter what.
-	<hr>
+	<hr>&emsp;
 	With the above in mind, I am hopeful to recover my better mode of being that I experienced when making this blog.
 	I surely have the means to do so; this is merely another ebb of the flow of my life. I recall around this time last year I endured
 	a similar situation with regard to self-care. Meh. In that case and in all other cases, I was able to recover and feel the 
@@ -357,7 +357,7 @@ const blogData = [
 	get far ahead on my accounting studies. After all, at some point I should focus heavily on my studies when the time comes; I will need to push through 
 	industry certifications after achieving the baseline pre-requisites. Knocking out multiple courses could save me about a year in getting those pre-requisites.
 	It would take four of them, and that's possible, perhaps even during a summer: summer 2026, maybe? I've been digressing.
-	<hr>
+	<hr>&emsp;
 	I recall always asking myself "what did I do wrong here?" and "how did I cause this?" about things within and seemingly outside of my control.
 	People would say I was being too hard on myself. I found the tyrant of the self to be beneficial, especially through my security career. 
 	It reinforced the idea that I must take ownership of the situation. It would afford me a sense of control and of agency of my situation in life.
@@ -404,7 +404,7 @@ const blogData = [
 	a fair competency rather quickly in future languages with this approach. I will say, though, that for establishing
 	a fundamental knowledge of basic words and structures, Duolingo may yet be helpful. My glossing over Polish would
 	still be well served by Duolingo.
-	<hr>
+	<hr>&emsp;
 	So I started Intermediate Accounting I and I plan to knock out the first chapter for the remainder of the weekend.
 	I'm not awfully nervous, but I recognize that I really do need to brush up on plenty of concepts. I'll give myself
 	some grace, since I'm still getting situated at this new place and this course serves to reintroduce topics.
@@ -439,7 +439,7 @@ const blogData = [
 	That, coupled with the need to remain harmonious as a "leader" in a higher-stakes profession.
 	Yet, I'm definitely becoming more mindful and incrementally more capable; I have garnered the trust of others both
 	junior and senior. My flow is falling off, I think. I'm not sure what I'll do after writing this. 
-	<hr>
+	<hr>&emsp;
 	My accounting page needs a revamp; the notes are of little use to me. I would rather have something practical and 
 	interactive, as if I were actually performing a technical role, much as I enjoy coding and learning language in 
 	context. Reading over things does not work with my learning style. 
@@ -449,7 +449,7 @@ const blogData = [
 	in having a client-side generator for common accounting patterns to solve questions as they appear and uncommitting
 	the clutter to any memory. Now that I have some templates, I'm sure I could implement them. I believe T-Accounts would
 	be practical to implement on the outset here.
-	<hr>
+	<hr>&emsp;
 	I have not adopted a particular routine yet, but I am productive. I recently identified in a written entry that, yes,
 	my after-work time does not incorporate use of the computer, so no coding or homework, really. That leaves me few other
 	things to do, and I could acknowledge that the period is otherwise bust and should commit to heading to the gym. I must
@@ -457,7 +457,7 @@ const blogData = [
 	I can start on Friday morning. Then, come Monday, the Tuesday morning would be great. 
 	I acknowledge that restarting a habit is rough to approach, but it's doable. I just need to sacrifice.
 	Then again, I must mention this point:
-	<hr>
+	<hr>&emsp;
 	Once I am finished with this role and attain a better schedule, I will much more easily be able to incorporate health-focus
 	into my lifestyle. Though I may have a relatively difficult time incorporating it now, the time is certain to come. 
 	It will come back, anyway. It will come back, anyway, you know. So as long as I continue living responsibly, the 
@@ -483,7 +483,7 @@ const blogData = [
 	Can I accept this? Well, either way I am flowing onward. I must, however, continue to hit a baseline for my accounting studies,
 	and even though I'm only self-imposing attainment of a baseline, I am compelled to achieve the highest grade. This is one proving ground
 	on my <b-title>multi-layered redemption arc</b-title>. I suppose I'll detail some of that here:
-	<hr>
+	<hr>&emsp;
 	My life was in complete disarray during and shortly following my college years. There were the following earlier aspects to fix:
 	work ethic, control of psychoactives, physicality, commitment to language learning, commitment to career ascension. The following are
 	later aims: commitment to career change, commitment to spirituality, commitment to health maintenance, and commitment to creativity.
@@ -494,7 +494,7 @@ const blogData = [
 	plenty is ahead, but the foundation is clearer just as my mind. From those two lists, I forewent "socialization and interpersonal 
 	connectivity." I know that my time is coming to redeem that, perhaps years from now; I refuse to welcome externally sourced pressures
 	to any degree that would threaten the integrity of my peace of mind which I treasure.
-	<hr>
+	<hr>&emsp;
 	In any case, before I head to work, I would like to note programming todos. I want to add a clozemaster-esque module for Eremoran at 
 	the language page, to note the music that sets the tone for each season of my life, to create a gitlab alternate page for my webtools,
 	and to eventually apply a PHP tunnel to host this site with my own domain and URI endpoints.
@@ -524,7 +524,7 @@ const blogData = [
 	I'm not particularly volatile right now, but my security must be well managed, not sufficiently managed. It will be.
 	I've laboured plenty to arrive at this point. This point marks the <b-title>outset of new journeys</b-title>, and gladly it coincides
 	with successes met with family and friends.
-	<hr>
+	<hr>&emsp;
 	I will admit, I had surely procrastinated on my accounting homework amid coordinating the car booking, the new purchase,
 	and my forthcoming trip to Japan. I am finding it beyond difficult to focus on straight-up learning new content here
 	on my laptop at this seaside Starbucks. I am committing to enjoy the remainder of my time after this entry, and to head 
@@ -546,10 +546,10 @@ const blogData = [
 	I suppose I'm doing just that. I've been talking to some new folks and it's been pleasant, though I can't help
 	but notice the expected feeling shortly after a few conversations: the emptiness and the risk
 	of further social obligation and burden. Heck.
-	<hr>
+	<hr>&emsp;
 	I admit, I don't feel quite up to studies of any sort. I am just drained. I need to study quite a bit for the
 	second test this semester. I will. It doesn't need to be today. I am calm and competent.
-	<hr>
+	<hr>&emsp;
 	I reiterated in a conversation my assertion that work and career should be in service to achieving and supporting
 	a daily lifestyle that affords peace of mind and measurable progress. I made the right choice in <b-title>buying my bicycle</b-title>.
 	`
@@ -566,7 +566,7 @@ const blogData = [
 	this present moment, I'm particularly unmotivated and drained, but I did at the very least incorporate a new DNS 
 	configuration and enabled this site to route directly to my domain. I will see if this alone was sufficient to 
 	reenable a convenience I had previously lost. I'm going to take a caffeine pill now. Alright.
-	<hr>
+	<hr>&emsp;
 	I observe a few insufficiencies in my studyflow. Where earlier this year I approached language at least on Clozemaster
 	daily, I am now not keeping up with the habit. I attribute this to not only my assignment to a different post at work, 
 	but also my note-taking. I have been treating my note taking for both accounting and languages the same way I would 
@@ -577,7 +577,7 @@ const blogData = [
 	Rhodia book for Japanese ready to go. Gotta refine a <b-title>note-taking method</b-title> for it still. Fitting characters into the
 	cells is unlikely. I may just need to write using my Pilot Frixions as I would with Accounting notes. Erasability 
 	is necessary. 
-	<hr>
+	<hr>&emsp;
 	Aside from that, the gym will be closed during my times this weekend so I'll be riding my bike instead. Woo.
 	That being said, it looks like I got myself into a decent off-day routine again. I anticipate keeping it up
 	despite this weekend being what it is. Also, before I head out for a friend visit, I'll incorporate the new
@@ -596,7 +596,7 @@ const blogData = [
 	for themselves in places like rural Paraguay and Japan who seem to have brought about a genuine contentment in living and
 	wholehearted appreciation for the simplest of things, like "playing with rice." I ponder then, what do people really want,
 	and what do I really want?
-	<hr>
+	<hr>&emsp;
 	The taste of low-hanging fruit is becoming blander and blander. Pursuits lead to more plateaus which lead to more pursuits
 	which lead to more plateaus. Climbing up this figurative tree that bears such fruit and siting atop a higher branch, the taste
 	of the fruit there is hardly sweeter. Once I reach its top and consume its fruit, will I be amazed at its taste? Even if I would
@@ -604,7 +604,7 @@ const blogData = [
 	Nonetheless, I'll keep climbing but maintain no expectations such that I may dispell the suffering of inconvenience and that maybe,
 	just maybe, I'll be pleasantly surprised at the taste of the higher fruit. The surprise in itself would testify to the beauty of
 	that moment, yes?
-	<hr>
+	<hr>&emsp;
 	I remain here in the United States, burdened by obligations I created for my present self while a past self. Upon clearing the 
 	obligations, say, no debts, no continual expenses, no burdensome social requirements, no child-rearing what is left to achieve?
 	What value does legacy, children, and asset-generation even mean to me if all manifests as empty plateaus or unsweetening fruit?
@@ -634,14 +634,14 @@ const blogData = [
 	So, I just wrapped up my first intermediate accounting course. I'm tired, but certainly feeling somewhat at ease knowing that it won't be
 	looming over me anymore. Though I have been enjoying a week off from work, the pressure to get through the content had been routinely bothersome.
 	In any case, here I am, and I'm grateful to have achieved more progress. I'll likely sleep in a moment. 
-	<hr>
+	<hr>&emsp;
 	Throughout the week I have been studying Japanese intensively in preparation for my travel. I have been using Olly Richard's reader, 
 	Tae Kim's guide, and of course, Clozemaster. I'm noticing that I can conjure up sentences more readily, and that my reading has quickened.
 	I do think I may be somewhat burning out, though. I'm not accustomed to taking in so much input like this. I've coupled study with watching
 	many videos about Japan travel, culture, language, future, and prospects. I must be wary of the <b-title>shiny veneer</b-title> the country tends to have through
 	the eyes of foreigners like myself. First things first: I should just allow myself to experience it, simply. I mustn't conjure up (and definitely
 	not attach to) too many ideas of another personal reinvention on that side of the planet. It may not be for me, but the appeal is surely there.
-	<hr>
+	<hr>&emsp;
 	I'm going to write a letter today, just sit, and relax. That is all.
 	`
 	,
@@ -652,11 +652,11 @@ const blogData = [
 	| &emsp;
 	Look at me, starting my off day at the same time I'd start an on day. Honestly I'm glad.
 	I've been yearning for more time for personal attention badly over the last couple of days.
-	<hr>
+	<hr>&emsp;
 	When I write, there are words whose <b-title>spelling</b-title> always manages to confuse me.
 	These words are fairly frequently used, too. Though I have them written in my planner, I want to address them here
 	as well with a little more detail. Also, I just happened to use among those words in the last sentence... and now this one.
-	<hr>
+	<hr>&emsp;
 	Writing, but written; sense, tense, intense, but pence, presence, sentence, but license, incense; essence, essential, but finance, financial.
 	It's mostly monosyllabic present progressive orthographic consonant doubling and ense/ance words that trip me up. 
 	When writing, I routinely stop after the first T in "writing." I should think of the verb "to hope"
@@ -676,7 +676,7 @@ const blogData = [
 	I went to meet the group with which I would travel abroad. I had a decent time and definitely had a bit of a nostalgia trip
 	seeing N64 Mario Party on the screen at the game store. Sigh. I would say I'm excited for what's ahead, but I'm mellow.
 	Pretty mellow. I think I need more sleep; I really cut it short trying to make it at a decent time. 
-	<hr>
+	<hr>&emsp;
 	Even now, I feel a bit burnt out despite not having had too many work related stressors. I suspect this may be the isolation
 	taking a toll on me. I'm not sure. I think I should force myself to <b-title>sleep and live</b-title> during the day for a while, while I can. 
 	Heck. I'm grateful to have this unexpected extra time afforded to me. I should go now.
@@ -696,12 +696,12 @@ const blogData = [
 	the need to do a hard reset on my body. I will hit two days, and may consider a third. I want to feel my best. It's almost as if 
 	the more food that is consumed, the more food is desired. I am not hungry, and I am doing well. This couples well with my practice
 	and I must acknowledge this again and again. Do what is meaningful, not what is expedient. To feel well is meaningful to me.
-	<hr>
+	<hr>&emsp;
 	I had been working on plentiful updates to the site and I'm glad. The time for moving on to PHP/Laravel projects should be coming
 	soonish. I would say, around the end of this year when hopefully Laracasts would go on sale for Christmastime. By then I should be
 	basically proficient in the front-end side of things enough to make sense of the backend tie-ins, and the next college course should
 	be completed.
-	<hr>
+	<hr>&emsp;
 	Life is progressing okay-ly. I am going to work on financial projections at dashboard and lifecraft. Once my debts are cleared, it's
 	all about generating wealth. That leads me to question my future for that point: should I drop my current role quickly to attain a
 	better lifestyle, or should I maintain it so that I could more rapidly regenerate my finances? Surely with my current role, I could
@@ -734,7 +734,7 @@ const blogData = [
 	<li>The forth order of business is to do pushups immediately after getting out of bed.</li>
 	<li>The fifth order of business is to head to the gym after work if I do not hold over; this includes preparing a gym bag.</li>
 	</ol>
-	<hr>
+	<hr>&emsp;
 	Starting a new campaign would likely bring me a new sense of conviction and consistency. I am confident to be able to deliver, 
 	especially that I am only requiring myself for just about three weeks.
 	I've noticed that some days I would do well, and some days very badly, almost to the point of wasting them.
@@ -747,7 +747,7 @@ const blogData = [
 	end to such things. I do not need this. I don't need to "kill time." I need to ground myself in the present moment with my time.
 	Passive browsing as mentioned only serves as a dopamine farm. Paying little attention to videos doesn't lead to internalizing
 	knowledge for the most part.
-	<hr>
+	<hr>&emsp;
 	I am informed here and there that I am among the more responsible people they know, and yet, I fall short on my own expectations for myself.
 	I don't particularly have people in my life that I look up to so much. Sure, there are some qualities I admire in others, but as an overall
 	model I don't have such person. I've used former friends, bosses, figures in media, among others. The ideation of a former friend had inspired me 
@@ -765,7 +765,7 @@ const blogData = [
 	me better. I have crossed that inadequacy complex hurdle of the past, and am simply flowing aimlessly but forward still. Yet, I would say I do not want
 	another hurdle in inadequacy's likeness; rather, I just want a role model who I feel is in this struggle with me and progressing similarly.
 	It sounds egoic to claim I'm not normal.
-	<hr>
+	<hr>&emsp;
 	My hurdle right now is to pay off two things and to complete my final year, 2026, in my current job role.
 	<ol>Projections from now till then:
 	<li>Come December 2025, I will have one debt removed and will be about 47% CPA pre-requisites completed.</li>
@@ -790,7 +790,7 @@ const blogData = [
 	Following up on that subtle call is part of practice. 
 	I must accept that my role is a training ground for this, as is the rest of my life.
 	Practice is everything, and to avoid that subtle call is not skillful, right action.
-	<hr>
+	<hr>&emsp;
 	Now, envisioning this self, I will outline some qualities:
 	<ol>
 	<li>Being able to read daily</li>
@@ -805,7 +805,7 @@ const blogData = [
 	I am thinking of incorporating this strategy into this blog and elsewhere on the site.
 	I'll admit that I went tangential the other day on some world politics topics and may have made some half-baked points. 
 	Were I to write on the relevant topics, I would have had more confidence in my delivery.
-	<hr>
+	<hr>&emsp;
 	I am feeling a bit better now, having detoxxed a bit I'd say. I have been delivering on my June goals, but there has been some
 	wavering on some points. For instance, there was an appreciation dinner and I attended, loading up on some foods. 
 	I recall a day in my previous career where there was delicious catered food all around, and I resisted the temptation for the 
@@ -813,7 +813,7 @@ const blogData = [
 	circumstances messing with my conviction. I'm tired of rationalization. It's tiresome. Screw it all. Just do what I must, silly.
 	What am I really missing? Nothing. I am <b-title>missing nothing</b-title>. All would be better were I to just do as I know I should, damn it.
 	In retrospect, my resistance reinforces my own character. Such is practice, no?
-	<hr>
+	<hr>&emsp;
 	Lately I've felt on the down-low about my situation and the day-by-day being filled with just so much darkness and isolation and work.
 	Obligation, responsibility, and ethics: all have been weighing on me. I have not been able to satisfy my own expectations of myself.
 	Upon consideration, I ruminate over whether or not it's worth the effort. Some responsibilities of mine seem to have little value to
@@ -829,7 +829,7 @@ const blogData = [
 	,
 
 	`
-	| June 22nd, 2025
+	| June 22nd, 2025…
 	| Pittsboro, NC
 	| 0200 HRS
 	I sit here an hour before routing to the airport.
@@ -854,14 +854,14 @@ const blogData = [
 	be fostered without dramatic forays into new territory; in fact, that was an aspect that kept me relatively isolated in recent seasons of life.
 	There's so much to explore, every day, in spaces vast and confined. I should remember this point. By no means should I internalize fear
 	of more restrictive moments.
-	<hr>
+	<hr>&emsp;
 	I will endeavor to enjoy the exciting and the peaceful, the ebb and flow of the present moment as it unfolds abroad.
 	I feel privileged to do so in such proximity to sites that reinforce such right mindfulness and my practice at large.
 	I will make meaning of my past, experience that present, and to discover new avenues for the future.
 	この十日間には、過去の意味を見出し、現在を経験し、新たな将来の夢を発見するつもりだ。
 	`
 	,
-		`
+	`
 	| July 1st, 2025…
 	| Nagoya, Japan
 	| 0833 HRS	
@@ -869,26 +869,26 @@ const blogData = [
 	This has surely been an adventure.
 	I am making this update on a Tokyo-bound Shinkansen. The countryside, with its towns, mountains,
 	and rice padddies, are passing by at incredible speeds. Right now, I had a view of the Ise Bay.
-	<hr>
+	<hr>&emsp;
 	One thing I surely appreciate is the complete detachment from my labor and nighttime mundanities.
 	They are so distant that their significance in the present moment is negligible. Empty.
-	On Mt. Wakakusayama in Nara Prefecture, I spoke briefly with some natives on its peak. They told me where they are from: Kyoto, Ebisu, Fukuoka etc.
+	On Mt. Wakakusayama「若草山」in Nara Prefecture, I spoke briefly with some natives on its peak. They told me where they are from: Kyoto, Ebisu, Fukuoka etc.
 	Upon explaining where I and my buddy were, they neither knew of North Carolina nor Washington D.C. as a reference point.
 	My life in North Carolina seemed like nothing but a burning memory where even the people around me know nothing of such place.
-	In that observation I felt further relief. 
-	<hr>
+	In that observation I felt further relief.
+	<hr>&emsp;
 	Were I to ask myself, "Would I want to stay here?" I would likely say "no."
 	This is a theme I would like to continuely explore at another time.
-	The overarching theme of this trip was the poem of the day at the tea ceremony center: 山は山、水は水。
+	The overarching theme of this trip was the poem of the day at the tea ceremony center:「山是山、水是水」
 	It really is an expression of the supreme "it is what it is-ness" for "Mountain is Mountain;
 	Water is Water." My buddy finds it silly af. I agree, on a superficial level it sure does seem that way.
-	It's got a silly ring to it. But yes, it comes down to that ruthless acceptance of circumstances.
+	It's got a silly ring to it, but yes, it comes down to that ruthless acceptance of circumstances.
 	The weather's been hot. I have been too. It's rough, but that's good.
 	<b-title>Mountain is Mountain</b-title>; Water is Water. Heheh. Bye.
 	`
 	,
 	`
-	| July 3rd, 2025
+	| July 3rd, 2025…
 	| Pittsboro, NC
 	| 2343 HRS	
 	| &emsp;
@@ -896,7 +896,7 @@ const blogData = [
 	It's refreshing to know that during my nighttime life here, there is so much life being lived actively under the sun,
 	in another world on the same planet. Though it's an obvious thing, having lived in that other world is profound.
 	I am presently unpacking things both physical and mental, and the former is happening much more quickly. 
-	<hr>
+	<hr>&emsp;
 	I spoke with the tour guide personally for a while as the rest of the group took different trains. 
 	He felt comfortable enough to disclose some of his personal challenges as tour leader; I was empathetic.
 	He like myself is a very inwardly-focused individual. He felt the need to apologize and seek avenues to improve, much 
@@ -904,14 +904,70 @@ const blogData = [
 	tempered by hardship and past mistakes, and is very reality-grounded, detached from the rose-colored glow of "Japan as a playground."
 	There are real lives being lived. Real hardships. Real emotions. They underlie any society and its people.
 	I referenced our experience at the tea ceremony again, and the simple profundity of Mountain is Mountain, <b-title>Water is Water</b-title>.
-	We both understood that we should enjoy the stillness, more. I happy to have made that superficially simple scroll's message the theme for my
+	We both understood that we should enjoy the stillness, more. I am happy to have made that superficially simple scroll's message the theme for my
 	trip, and perhaps, the theme for others in my group.
 	We proceeded to investigate the Kanji used in that wall scroll, and I provided him my recommended Japanese reference app, for 
-	which he expressed gratitude. I'm hoping he'll make great use of it. He then shared with me his recommended spots for me to visit, 
-	including Takayama city, the Shikoku Henrou pilgrimage, and the Nakasendou. He supposed that they would fit my vibe very well, having 
-	gauged me throughout this trip. He suggested those places over my original plan to Hokkaidou, which he said is more like the US being 
+	which he expressed gratitude. I'm hoping he'll make great use of it.
+	I supposed the middle character was "goro" or「頃」from the Japanese though "shì" from the Chinese「是」would make more sense semantically and is consistent
+	with its use historically in Zen sutras through Sino-Sanskrit as "ze", even though it had not the likeness in appearance.
+	I just discovered here that it was in fact「是」, though written in what is called sousho or 「草書」, a highly-cursive form of calligraphy also
+	called grass-style. I learned of two others, kaisho 「楷書」, the square style or block style, or standard style, and of reisho 「隷書」, the clerical script which
+	is an ancient and highly angular style. <a href="https://drawingandpaintingstudio.com/brushing-mountains-and-waters-at-shodo-japanese-calligraphy">I found this information here</a>,
+	and I will share it with him shortly. Surprisingly enough, it comes from the Shobogenzo "Mountains and Waters Sutra"「山水経」by Dogen himself.
+	<hr>&emsp;
+	He then shared with me his recommended spots for me to visit,
+	including Takayama city 「高山市」, the Shikoku Henrou 「四国遍路」 pilgrimage, and the Nakasendo 「中山道」. He supposed that they would fit my vibe very well, having 
+	gauged me throughout this trip. He suggested those places over my original plan to Hokkaido「北海道」, which he said is more like the US being 
 	the open frontier of Japan; "it's not very Japanese," he said.
 	He amicably called me an old man, and for once I took that solely as a compliment, and smiled.
+	`
+	,
+		`
+	| July 4th, 2025…
+	| Pittsboro, NC
+	| 0322 HRS
+	| &emsp;
+	So I'm still really obsessed with digesting findings on the Mountain is Mountain, Water is Water thing, and delved further into historical orthography.
+	I'm surprised that the "wa" particle is omitted in 「山是山、水是水」, which would be "yama wa kore yama; mizu wa kore mizu." It seems that some particles 
+	were implicit in older Japanese, and I am continuing to investigate this. Along the way, I've learned more of Kana itself:
+	<a href="https://en.wikipedia.org/wiki/Man%27y%C5%8Dgana">Manyougana</a> is an ancient form of Kana used previously to Hiragana and Katakana. 
+	Katakana developed directly from its sound-mapped characters, from either the first strokes or the last strokes of each character, 
+	and Hiragana developed from the sousho versions of such characters. Such really reflects the rigidity of Katakana and the fluidity of Hiragana.
+	The city of Nara「奈良」which I visited uses the direct mappings from Manyougana. 
+	<hr>&emsp;
+	Nara is a town where the deer have been revered for generations, and have learned to live alongside the human population and even 
+	acclimated to the cultural norm of bowing. There, the deer would bow to humans, and may bow back if one bows first.
+	There they sold shika-senbei, or deer cookies that the deer would clamour for. I bought my first stack of senbei and I essentially 
+	got mugged by four deer before even walking a short distance to my seat. Heck!
+	I would say, the experience in Japan has shown that properly getting accustomed required plenty of failure at first, from transactions 
+	with natives to being served at a restaurant, from navigating the train lines to feeding the deer.
+	I learned that I must pocket the senbei immediately, and only feed pieces of each cookie at any one time, concealing them shortly thereafter.
+	<hr>&emsp;
+	Upon hiking through the Nara temple grounds en route to the Kikuichi knife shop for a scheduled business visit, I encountered a kind deer among the bunch
+	and isolated from the rest. I feed her a piece of sanbei, and she proceeded to follow me. I continued to feed her pieces, and she continued to follow, 
+	more and more. I spoke to her and encouraged her to continue in Japanese, and she well complied. We walked together for a solid 20 minutes through
+	multiple sites and up many hills! I gave her the nickname Shikaka 「鹿蚊」because she was a deer who'd stick close like a desirous mosquito, wanting another hit.
+	Shikaka and I made it to the narrow street where the knife shop was, and decided to part ways with me. I thanked her for the memory; she alone deserved
+	my sanbei, and though others were trying to butt in, they got the message that Shikaka was the only deer I'd provide for, and left.
+	<hr>&emsp;
+	Following our visit to the knife shop, I made the personal decision to hike the nearby mountain called Wakakusayama.
+	My buddy tagged with me, and endured the hike together. The summer sun was relentless, but we had a short respite through a 
+	forested ascent from one level to the next.
+	Many deer lived at all levels of the mountain, and once I reached its summit, I was graced by a gorgeous view of the valley.
+	I took at seat underneath a tree overlooking it all, and there, a deer with a great rack of antlers approached me and 
+	greeted me with copious bows. I bowed back, and reached into my pocket for whatever senbei crumbs I'd have to repay the kindness.
+	This deer decided to receive payment his own way though. He shot his muzzle forward, and ripped my highlighter straight from my 
+	pocket! He backed away and chewed on it rigorously, and I couldn't help but order him to stop! My orders were to no avail, but soon
+	he understood that it surely was no senbei. He dropped it from his mouth, and I pet him, glad that he hadn't decided to swallow it. 
+	I picked it up, and decided to call him Bakaka「馬鹿鹿」, or "dumb deer," literally "horse deer deer" lol. But, shortly thereafter, 
+	I realized how special the moment really was. He chose that ordinary item of mine, and graced it with his teethmarks. 
+	Given the reverred status of such deer in Nara, I consider my highlighter specially chosen by deer, and thus, in a sense, blessed. 
+	I now call him Tashikaka 「確鹿」, or "trustworthy deer," because in retrospect I could have trusted his action given that he so politely greeted me. 
+	He bestowed upon me this great memory, and enchanted my highlighter into a truly special souvenir.
+	<hr>&emsp;
+	I will never forget <b-title>Shikaka & Tashikaka</b-title>, or any friends made along the way.
+	Surely there is more to digest, and that'll come in coming days and weeks. 
+	Shikaka, too, has a lot to digest, but she's probably done with all of that.
 	`
 	,
 ];
