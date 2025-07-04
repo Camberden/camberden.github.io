@@ -879,12 +879,39 @@ const blogData = [
 	<hr>
 	Were I to ask myself, "Would I want to stay here?" I would likely say "no."
 	This is a theme I would like to continuely explore at another time.
-	The overarching theme of this trip was the poem of the day at the tea ceremony center: 山頃山、水頃水。
+	The overarching theme of this trip was the poem of the day at the tea ceremony center: 山は山、水は水。
 	It really is an expression of the supreme "it is what it is-ness" for "Mountain is Mountain;
 	Water is Water." My buddy finds it silly af. I agree, on a superficial level it sure does seem that way.
 	It's got a silly ring to it. But yes, it comes down to that ruthless acceptance of circumstances.
 	The weather's been hot. I have been too. It's rough, but that's good.
 	<b-title>Mountain is Mountain</b-title>; Water is Water. Heheh. Bye.
+	`
+	,
+	`
+	| July 3rd, 2025
+	| Pittsboro, NC
+	| 2343 HRS	
+	| &emsp;
+	I returned from Japan. There is very much for me to process yet. 
+	It's refreshing to know that during my nighttime life here, there is so much life being lived actively under the sun,
+	in another world on the same planet. Though it's an obvious thing, having lived in that other world is profound.
+	I am presently unpacking things both physical and mental, and the former is happening much more quickly. 
+	<hr>
+	I spoke with the tour guide personally for a while as the rest of the group took different trains. 
+	He felt comfortable enough to disclose some of his personal challenges as tour leader; I was empathetic.
+	He like myself is a very inwardly-focused individual. He felt the need to apologize and seek avenues to improve, much 
+	as I would in the course of my own working-life. We discussed life and societal differences. His perspective has been
+	tempered by hardship and past mistakes, and is very reality-grounded, detached from the rose-colored glow of "Japan as a playground."
+	There are real lives being lived. Real hardships. Real emotions. They underlie any society and its people.
+	I referenced our experience at the tea ceremony again, and the simple profundity of Mountain is Mountain, <b-title>Water is Water</b-title>.
+	We both understood that we should enjoy the stillness, more. I happy to have made that superficially simple scroll's message the theme for my
+	trip, and perhaps, the theme for others in my group.
+	We proceeded to investigate the Kanji used in that wall scroll, and I provided him my recommended Japanese reference app, for 
+	which he expressed gratitude. I'm hoping he'll make great use of it. He then shared with me his recommended spots for me to visit, 
+	including Takayama city, the Shikoku Henrou pilgrimage, and the Nakasendou. He supposed that they would fit my vibe very well, having 
+	gauged me throughout this trip. He suggested those places over my original plan to Hokkaidou, which he said is more like the US being 
+	the open frontier of Japan; "it's not very Japanese," he said.
+	He amicably called me an old man, and for once I took that solely as a compliment, and smiled.
 	`
 	,
 ];

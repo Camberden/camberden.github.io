@@ -88,7 +88,8 @@ const countryInformation = [
 		``
 	),
 	japan = new DivisionInformation("JP", "Japan",
-		``
+		`Visited 06/23/2025 to 07/02/2025<br>
+		Visited Tokyo, Kyoto, Nara, & Osaka. Details to come.`
 	),
 	indonesia = new DivisionInformation("ID", "Indonesia",
 		``
