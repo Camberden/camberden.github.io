@@ -137,6 +137,15 @@
 	background-color: aliceblue;
 }
 
+.obligation {
+	color: magenta;
+	font-size: xx-small;
+	display: inline;
+	width: 5rem;
+	height: 0.5rem;
+	border: 1px solid #444;
+}
+
 /* ---------- LIFECRAFT FIELD VALUES ---------- */
 
 .calendar-month {

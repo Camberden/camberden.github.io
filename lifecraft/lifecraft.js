@@ -191,9 +191,8 @@ const events = [
 	chathamRelocation = new LifeEvent("Relocation to Chatham County, NC", "2024-12-16", "", "I relocated to Chatham County, NC due to interpersonal events."),
 	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", "My trusty car was deemed a total loss."),
 	whiteCar = new LifeEvent("White Car", "2025-3-4", "", "Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
-	fy2025 = new LifeEvent("FY 2025", "2025-7-1", "", "Raise"),
 	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "", "To Tokyo, Nara, Kyoto, and Osaka"),
-	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", "Vested me!"),
+	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", "Raise & Vesting"),
 	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", ""),
 
 ];
@@ -213,6 +212,22 @@ class MonthlySummary {
 	}
 }
 
+/**
+ * @param {string} obligation
+ * @param {string} startMonth - Format: Month-YYYY
+ * @param {string} endMonth - Format: Month-YYYY
+ * @param {string} summary
+ */
+class MonthlyObligation {
+	constructor(obligation, startMonth, endMonth, summary) {
+		this.obligation = obligation;
+		this.startMonth = startMonth;
+		this.endMonth = endMonth;
+		this.summary = summary;
+
+	}
+}
+
 const monthlySummaries = [
 	july2022 = new MonthlySummary("July-2022", "pending", "Orbital - Somewhere out There Part 2", "https://www.youtube.com/watch?v=HRFel2UtyiE"),
 	march2023 = new MonthlySummary("March-2023", "pending", "Depeche Mode - My Little Universe", "https://www.youtube.com/watch?v=_oxm6rfzQaI"),
@@ -225,7 +240,35 @@ const monthlySummaries = [
 	march2025 = new MonthlySummary("March-2025", "pending", "Yu Takahashi - Ashita wa Kitto Ii Hi ni Naru", "https://www.youtube.com/watch?v=cpIa89_rZoA"),
 	april2025 = new MonthlySummary("April-2025", "pending", "Huwie Ishizaki - Peanuts Butter", "https://www.youtube.com/watch?v=ggCphjT_rPE"),
 	may2025 = new MonthlySummary("May-2025", "pending", "Yu Takahashi - WINDING MIND", "https://www.youtube.com/watch?v=DBGXqqItKko"),
+	june2025 = new MonthlySummary("June-2025", "pending", "Yu Takahashi - Open World", "https://www.youtube.com/watch?v=JwBWxcWP3BU"),
+	july2025 = new MonthlySummary("July-2025", "pending", "Huwie Ishizaki - Bokugairuzo", "https://www.youtube.com/watch?v=BfoXJiHigl0"),
+	// august2025 = new MonthlySummary("August-2025", "pending", "pending", "https://www.youtube.com/watch?v=BfoXJiHigl0"),
+	// september2025 = new MonthlySummary("September-2025", "pending", "pending", "pending"),
+	// october2025 = new MonthlySummary("October-2025", "pending", "pending", "pending"),
+	// november2025 = new MonthlySummary("November-2025", "pending", "pending", "pending"),
+	// december2025 = new MonthlySummary("December-2025", "pending", "pending", "pending"),
+	// january2026 = new MonthlySummary("January-2026", "pending", "pending", "pending"),
+	// february2026 = new MonthlySummary("February-2026", "pending", "pending", "pending"),
+	// march2026 = new MonthlySummary("March-2026", "pending", "pending", "pending"),
+	// april2026 = new MonthlySummary("April-2026", "pending", "pending", "pending"),
+	// may2026 = new MonthlySummary("May-2026", "pending", "pending", "pending"),
+	// june2026 = new MonthlySummary("June-2026", "pending", "pending", "pending"),
+	// july2026 = new MonthlySummary("July-2026", "pending", "pending", "pending"),
+	// august2026 = new MonthlySummary("August-2026", "pending", "pending", "pending"),
+	// september2026 = new MonthlySummary("September-2026", "pending", "pending", "pending"),
+	// october2026 = new MonthlySummary("October-2026", "pending", "pending", "pending"),
+	// november2026 = new MonthlySummary("November-2026", "pending", "pending", "pending"),
+	// december2026 = new MonthlySummary("December-2026", "pending", "pending", "pending"),
+	// january2027 = new MonthlySummary("January-2027", "pending", "pending", "pending"),
+];
 
+const monthlyObligations = [
+	sp2026 = new MonthlyObligation("ACC220", "January-2025", "April-2025", "Intermediate Accounting I"),
+	su2025 = new MonthlyObligation("BUS110", "May-2025", "July-2025", "Study abroad Japan course."),
+	fa2025 = new MonthlyObligation("ACC221", "August-2025", "December-2025", "Intermediate Accounting II"),
+	sp2026 = new MonthlyObligation("ACC269", "January-2026", "April-2026", "Auditing & Assurance Services"),
+	su2026 = new MonthlyObligation("ACC149&BUS115", "May-2026", "July-2026", "Intro to ACC Spreadsheets & Business Law I"),
+	fa2026 = new MonthlyObligation("ACC129&ACC140", "August-2026", "December-2026", "Individual Income Taxes & Payroll Accounting"),
 ];
 
 /**
@@ -241,11 +284,13 @@ function addEventsByYear(year) {
 	}
 	for (let event of events) {
 		let eventSplit = event.eventDate.split("-");
-		let eventSplitDate = new Date(eventSplit[0], eventSplit[1], eventSplit[2]);
+		// eventSplit - 1 compels proper month
+		let eventSplitDate = new Date(eventSplit[0], eventSplit[1] - 1, eventSplit[2]);
 		if (event.eventDate.substring(0,4) == year) {
 			document.getElementById(event.eventDate).classList.add("event");
 			if (eventSplitDate.getTime() > presentMoment.getTime()) {
 				console.log(event.title + " is in the future");
+				// console.log("Times: " + eventSplitDate.toDateString() + " " + presentMoment.toDateString());
 				document.getElementById(event.eventDate).classList.add("future-event");
 			}
 			document.getElementById(event.eventDate).onclick = function() {
@@ -270,7 +315,22 @@ function addEventsByYear(year) {
 		}
 		}
 	}
+
+	addObligations();
 }
+
+function addObligations(){
+	let theseMonths = document.querySelectorAll(".these-months");
+	
+	theseMonths.forEach(thisMonth => {
+		for (let task of monthlyObligations) {
+			if (task.startMonth === thisMonth.id) {
+				document.getElementById(thisMonth.id).innerHTML += `<span class="obligation">${task.obligation}</span>`;
+		}
+	}
+	});
+}
+
 // ----- MAIN GENERATOR ----- //
 
 function generateCalendar(year) {
@@ -411,9 +471,9 @@ function enableLifecraftButtons() {
 }
 enableLifecraftButtons();
 
-let currentBalance = 11000;
+let currentBalance = 10000;
 const originalBalance = currentBalance;
-let currentDeposit = 1500;
+let currentDeposit = 1000;
 
 /**
  * @param {number} deposit - Money to save

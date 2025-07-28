@@ -950,7 +950,7 @@ const blogData = [
 	Shikaka and I made it to the narrow street where the knife shop was, and decided to part ways with me. I thanked her for the memory; she alone deserved
 	my sanbei, and though others were trying to butt in, they got the message that Shikaka was the only deer I'd provide for, and left.
 	<hr>&emsp;
-	Following our visit to the knife shop, I made the personal decision to hike the nearby mountain called Wakakusayama.
+	Following our visit to the knife shop, I made the personal decision to hike the nearby mountain called Wakakusayama 「若草山」
 	My buddy tagged with me, and endured the hike together. The summer sun was relentless, but we had a short respite through a 
 	forested ascent from one level to the next.
 	Many deer lived at all levels of the mountain, and once I reached its summit, I was graced by a gorgeous view of the valley.
@@ -968,6 +968,65 @@ const blogData = [
 	I will never forget <b-title>Shikaka & Tashikaka</b-title>, or any friends made along the way.
 	Surely there is more to digest, and that'll come in coming days and weeks. 
 	Shikaka, too, has a lot to digest, but she's probably done with all of that.
+	`
+	,
+		`
+	| July 27th, 2025…
+	| Pittsboro, NC
+	| 2045 HRS
+	| &emsp;
+	Certainly feeling a bit relieved to know that the bulk of writing and reflection is done for the study abroad class. I spent most of this 
+	off weekend exploring Raleigh, dabbling with new feelings, and getting a sense for a new life ahead. What's true is that I'm continuing 
+	my pursuit of career change despite many of the comforts afforded to me in the present. I must ask myself, would I feel content in jumping ship
+	immediately upon my ability to, or rather, to continue my current role such that I may explore the world while maintaining my schedule that well 
+	accomodates my leave? I like to say in jest that I have "dangerous" amounts of leave, the utility of which would much better serve me in my current
+	role than in the first role of my nascent career change. There would be the implicit expectation of proving myself yet again. Yes, I like to 
+	believe that I have done that already and figuratively am resting on laurels, but this would be something entirely different. 
+	I know that it's best that I remain doing what I'm doing at least until killing my newest obligation which would afford me very much peace of 
+	mind; I always stress peace of mind as its own currency. I won't have that if I jump ship too early; my pondering over this, though a bit 
+	recurring and seemingly excessive, serves to assist in reminding myself of a structured and responsible course of action. It's needed because
+	the temptation to seek alternatives arises with a regular frequency due to stresses and lifestyle plans. Leaving now may be convenient and
+	comfortable; convenience and comfort breeds weakness. These temptations that arise are but an instance of training; life is the training ground.
+	I must train, and must train harder. I need to re-adopt this framework. As with any framework, there is structure. Structure requires discipline.
+	I am working an 80HR week starting tomorrow. I must forge rituals. I must get up, and simply do, much like I have in those hotel rooms in a
+	previous life. I must ritualize more. In doing so, I'll glean the freedom from chaos that it'll afford me. It'll be a satisfaction greater than
+	that of my present flow. I can do, and will do. Silly. How I do anything would be how I do everything.
+	I will restart my <b-title>previous tradition</b-title> of cold showers. I will establish a healthy flow this week and rekindle discipline. I have no class; no 
+	external obligations. It's a great time to do so.
+	<hr>
+	Grounding in the present moment, I am sitting here, typing. All is okay. I have little pressures; the only tasks I have are those that I create
+	for myself. I am not tired, but I am not enthused. This is fine. There is no fire; only the subtle one that propells me to continue my "day-job"
+	restarting for tomorrow. Perhaps I could read a book and have some tea. I have license to enjoy the silence. It's often small habit building over 
+	which I guilt myself, such as reading books instead of browsing phone. I mustn't forget that the career change will aid in that end;
+	after all, 8HR workdays would afford me so much more freedom to incorporate more with minimized barriers and hustle.
+	My practice too would likely improve. Such are among the purposes of this endeavor, yes?
+	<hr>
+	I have been talking with my roommate in Japan, now friend, about his plan to return for language school for a period of 3 months.
+	His enthusiasm for the prospect seems boundless as evidenced through his talks with me and his written reflections.
+	I am being highly considered for joining him in the trip, though I have my doubts. Principally, it's the time frame: he's choosing early-mid 2026.
+	This entry speaks to the fact I must remain on-track with my plan, and this would only serve to disrupt it and swallow over half of my leave quotas.
+	I do affirm that 2027 seems much, much more possible. For whatever reason, I haven't been firm on saying no about 2026. I believe this is due
+	to my "keeping options open." I don't feel as if he would defer his enthusiastic planning for so farther into the future. 
+	Regardless, that future will come, he should know. We're both young. In addition, I'm not too keen on the choice of location, that being Tokyo.
+	Not only is this from a financial perspective, but from a cultural one. A better fit for me would be somewhere like Kawazaki, a recommendation by 
+	my tour guide where there is more calmness and nature, and where there is fewer accomodation for foreigners. Nearly all of Japan is a train ride
+	away anyway, in the event a Tokyo visit was a desire. Furthermore, I question my own motivations. I may already have the foundations for a secure
+	and stable life here, and so the prospect of living abroad, particularly in a country such as Japan, may not be part of my long-term career or 
+	living, but rather just a recurring travel destination for self-development. Were I to have a stronger tie an committment to the land, then maybe
+	I would feel more compelled to pursue language school full-time. While it's true I still consider Antai-ji from time to time, I wonder if 
+	current and developing attachments would disuade me from that pursuit. Even now, that avenue remains, and holds precendent over present attachments, 
+	yet I couldn't be sure until such time comes. I feel that my friend and I may go separate ways as our motivations are quite different. 
+	It's almost as if my involvment with Japan at this point is mostly through a spiritual motivator, whereas his is through potential careers, dating
+	partners, and unabashed fun.
+	<hr>
+	I am going to continue my work through 2026 until hitting my 6th year work anniversary and a little beyond. I should have most obligations purged by
+	that time, and 2027 would become the most explorative year of my life. I would be 33 years old.
+	On my lifecraft page, I will consider making time-frame bars for months to better display ongoing tasks that occur during them, such as semester
+	progress visualized throughout the years. On my travel page, I could write on 2027 plans. Trips in the Americas could be arraged with 24.5HRS of leave
+	for one week off. Trips beyond to Europe and Asia could use 61.25HRS of leave for 12 consecutive days off. 
+	I could do something like, Americas, Americas, Europe/Asia, Americas, Americas, Europe/Asia, etc.
+	I will lastly just say that I'm glad that I restructured my aspirations following the ruin of my previous car.
+
 	`
 	,
 ];

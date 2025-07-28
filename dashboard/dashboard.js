@@ -598,10 +598,10 @@ function displayAccountingModal() {
 			<li class="taken">ACC 220</li>
 		</ul>
 		<ul>SU2025<hr>
-			<li class="taking">BUS 110 日本中</li>
+			<li class="taken">BUS 110 日本中</li>
 		</ul>
 		<ul>FA2025<hr>
-			<li>ACC 221</li>
+			<li class="taking">ACC 221</li>
 		</ul>
 		<ul>SP2026<hr>
 			<li>ACC 269</li>
