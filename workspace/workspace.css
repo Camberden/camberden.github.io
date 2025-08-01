@@ -226,10 +226,12 @@ body {
 	border-color: green;
 }
 
-#resident-investigation {
+#mainframe-grid {
 	text-align: left;
 	font-family: monospace;
 }
+
+
 
 /* ----- T-CARD GENERATOR ----- */
 

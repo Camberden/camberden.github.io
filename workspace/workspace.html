@@ -154,38 +154,45 @@
 		</div>
 	</div>
 
-	<div class="w2-grid">
+	<div class="w2-grid" id="mainframe-grid">
 		<div class="w2-item">
-			<ul id="generated-residents">
-				
+			<ul style="font-family: monospace">
+				<li></li>
 			</ul>
+			
 		</div>
 		<div class="w2-item" id="mainframe">
 			<p>Mainframe</p>
 			<span><input type="text"></span>
+			<ul id="generated-residents">
+				
+			</ul>
 			
 		</div>
-		<div class="w2-item">
-			<ul style="font-family: monospace;">
+		<div class="w2-item" id="mainframe-helper">
+			<ul id="investigation-process" style="display: none; font-family: monospace;">
 				<li>Health Data: HS50 0 1234567</li>
 				<li>By Resident: IS01 0 1234567</li>
 				<li>By Facility: IS08 0 4240</li>
 				<hr>
 				<li>Update: u => ENTER</li>
-				<li>Officiate: 0 = 2</li>
+				<li>Officiate: 0 (not input) or 1 (pending investigation) => 2 (under investigation)</li>
+				<ul>OR 
+					<li>IS02 2 1234567 MMDDYY TIME</li>
+				</ul>
 				<li>Enter Date & Time</li>
 				<li>F11: To Comments Screen</li>
 				<li>Next Paragraph: ENTER ENTER</li>
 				<hr>
 				<li>IS02 3 1234567</li>
-				<li>F4 (print) => F8 (finalization) => j 45 Investigation</li>
+				<li>F4 ( pending print) => F8 (finalization) => j 45 (batch job) Investigation</li>
 				<li>Input Start Date, Resident #, Infraction Time, and Sequence #</li>
 				<li>Overview: OR14 2 1234567</li>
-				
 			</ul>
 		</div>
 
 		<div class="w2-item grid-col-span-3" id="mainframe-excess">
+			<p>VERBAL COUNSELING: IS02 5 1234567 MMDDYY TIME</p>
 			<div id="resident-investigation" style="display:none;">
 				<p>AN EXTENSION WAS REQUESTED AND APPROVED BY RANK SURNAME (ABC12) ON MM/DD/YYY FOR ## DAYS
 					DUE TO REASON.
@@ -193,6 +200,7 @@
 				<p>I WORKER INTIAL SURNAME (DEF24) READ AND VERIFIED THE REPORTING PARTY'S STATEMENTS.
 					ON MM/DD/YYY AT APPROXIMATELY ####HRS, WORKER INTIAL SURNAME (GHI56) STATES THAT HE WAS ALERTED
 					BY OTHER RESIDENTS THAT RESIDENT FELONIOUS, MISTER (#1234567) WAS STEALING PRODUCT FROM A PLACE.
+					CONFIDENTIAL INFORMATION HAS BEEN RECEIVED FROM A CONFIDENTIAL, RELIABLE SOURCE.
 					CAMERA FOOTAGE FROM MM/DD/YYYY AT APPROXIMATELY ####HRS DISPLAYS RESIDENT FELONIOUS, MISTER (#1234567)
 					STEALING PRODUCT FROM THAT PLACE. WORKER-IN-CHARGE WAS NOTIFIED.
 				</p>
