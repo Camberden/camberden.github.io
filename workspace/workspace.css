@@ -226,6 +226,11 @@ body {
 	border-color: green;
 }
 
+#resident-investigation {
+	text-align: left;
+	font-family: monospace;
+}
+
 /* ----- T-CARD GENERATOR ----- */
 
 .t-card > table {

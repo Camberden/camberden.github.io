@@ -46,11 +46,12 @@
 	</main>
 
 	<!---------- BUGETTING APP ---------->
+	<!--####### DISABLED DISPLAY #######-->
 
-	<main2 class="w2-grid">
+	<main2 class="w2-grid" style="display:none;">
 		<div class="w2-item grid-col-span-3">
 		</div>
-
+	
 		<div class="w2-item">
 			<ul>
 				<li>Upcoming Month: <span class="upcoming-month">February</span></li>
@@ -58,48 +59,45 @@
 				<li>Current HYSA: $<span class="money-var equity" id="hys-equity-t">0</span></li>
 				<li>Current Debits: $<span class="money-var equity" id="dbt-equity-t">0</span></li>
 				<li>Projected Savings Deposit: $<span class="money-var equity" id="sav-equity-t">0</span></li>
-
+	
 			</ul>
 		</div>
-
+	
 		<div class="w2-item paycard">
 			<ul id="paycard-list-template">
 				<li class="no-bullet"><span class="upcoming-month-t">February</span></li>
 				<li class="no-bullet">Paycheck: $<span class="money-var" id="paycheck-t">4000</span></li>
 				<hr>
 				<div id="expenses-t">
-				
+	
 				</div>
-
+	
 				<!-- TOTAL AFTER DEDUCTIONS -->
 				<li class="no-bullet">Total Monthly Expenses: $<span id="total-monthly-expenses-t">0</span>
 				</li>
-				
+	
 				<hr>
 				<li class="no-bullet">Pre-Savings: $<span id="pre-savings-t"></span></li>
 				<li class="no-bullet">Less Savings: $<span id="less-savings-t"></span></li>
 				<li class="no-bullet">Remainder: $<span id="remainder-t"></span></li>
 				<li class="no-bullet">Total Savings: $<span id="total-savings-t"></span></li>
-
-
+	
+	
 			</ul>
 		</div>
-
+	
 		<div class="w2-item">
 			<ul>
 				<li>Current Private Loan: $<span class="money-var liability" id="loan">0</span></li>
 				<li>High Dollar Item: $<span class="money-var liability" id="high-dollar-item">0</span></li>
 			</ul>
-
+	
 		</div>
-
-		<!-- PAYCARD GENERATOR BUTTON -->
+	
+		<!-- PAYCARDS & GENERATOR BUTTON -->
 		<div class="w2-item grid-col-span-3">
 			<button class="paycard-generator">Generate Paycards</button>
 		</div>
-
-
-		<!-- PAYCARDS -->
 		<div class="w2-item paycard">
 			<ul id="paycard-list-1"></ul>
 		</div>
@@ -136,9 +134,9 @@
 		<div class="w2-item paycard">
 			<ul id="paycard-list-12"></ul>
 		</div>
-
 	</main2>
-
+	
+	<!---------- SEGREGATON VISUALIZER ---------->
 	<div class="sm-grid">
 		<div class="sm-item grid-col-span-4">
 			<h2>Segregation Visualizer</h2>
@@ -154,6 +152,71 @@
 			<div id="seg-east">
 			</div>
 		</div>
+	</div>
+
+	<div class="w2-grid">
+		<div class="w2-item">
+			<ul id="generated-residents">
+				
+			</ul>
+		</div>
+		<div class="w2-item" id="mainframe">
+			<p>Mainframe</p>
+			<span><input type="text"></span>
+			
+		</div>
+		<div class="w2-item">
+			<ul style="font-family: monospace;">
+				<li>Health Data: HS50 0 1234567</li>
+				<li>By Resident: IS01 0 1234567</li>
+				<li>By Facility: IS08 0 4240</li>
+				<hr>
+				<li>Update: u => ENTER</li>
+				<li>Officiate: 0 = 2</li>
+				<li>Enter Date & Time</li>
+				<li>F11: To Comments Screen</li>
+				<li>Next Paragraph: ENTER ENTER</li>
+				<hr>
+				<li>IS02 3 1234567</li>
+				<li>F4 (print) => F8 (finalization) => j 45 Investigation</li>
+				<li>Input Start Date, Resident #, Infraction Time, and Sequence #</li>
+				<li>Overview: OR14 2 1234567</li>
+				
+			</ul>
+		</div>
+
+		<div class="w2-item grid-col-span-3" id="mainframe-excess">
+			<div id="resident-investigation" style="display:none;">
+				<p>AN EXTENSION WAS REQUESTED AND APPROVED BY RANK SURNAME (ABC12) ON MM/DD/YYY FOR ## DAYS
+					DUE TO REASON.
+				</p>
+				<p>I WORKER INTIAL SURNAME (DEF24) READ AND VERIFIED THE REPORTING PARTY'S STATEMENTS.
+					ON MM/DD/YYY AT APPROXIMATELY ####HRS, WORKER INTIAL SURNAME (GHI56) STATES THAT HE WAS ALERTED
+					BY OTHER RESIDENTS THAT RESIDENT FELONIOUS, MISTER (#1234567) WAS STEALING PRODUCT FROM A PLACE.
+					CAMERA FOOTAGE FROM MM/DD/YYYY AT APPROXIMATELY ####HRS DISPLAYS RESIDENT FELONIOUS, MISTER (#1234567)
+					STEALING PRODUCT FROM THAT PLACE. WORKER-IN-CHARGE WAS NOTIFIED.
+				</p>
+				<p>A CHECK OF MAINFRAME HEALTH SCREEN HS50 SHOWS THAT RESIDENT FELONIOUS, MISTER (#1234567) IS NEITHER
+					A.D.A. NOR D.D.
+				</p>
+				<p>I READ RESIDENT FELONIOUS, MISTER (#1234567) HIS RIGHTS IN ACCORDANCE WITH THE RESIDENT DISCIPLINARY PROCESS.
+					RESIDENT FELONIOUS, MISTER (#1234567) SIGNED FORM DC-138A, ACKNOWLEDGING HIS HAVING UNDERSTOOD HIS RIGHTS
+					AND
+					WAS GIVEN THE FORM'S YELLOW COPY AS A RECEIPT.
+				</p>
+				<p>RESIDENT FELONIOUS, MISTER (#1234567) WAS PROVIDED FORM DC-138B ON WHICH TO PROVIDE A STATEMENT.
+					RESIDENT FELONIOUS, MISTER (#1234567) DID NOT REQUEST WRITEN STATEMENTS, LIVE WITNESSES, PHYSICAL EVIDENCE,
+					OR STAFF ASSISTANCE. RESIDENT FELONIOUS, MISTER (#1234567) STATES: "NO STATEMENT."
+				</p>
+				<p>I, WORKER INTIAL SURNAME (DEF24) RECOMMEND CHARGING FOR INFRACTION Z99: "willfully steal a thing"; I
+					RECOMMEND
+					FURTHER CHARGING FOR INFRACTION Y99: "damage to property." ALL FINDINGS SUBMITTED FOR FURTHER REVIEW;
+					EVIDENCE
+					IS ATTACHED TO THE INVESTIGATION PACKET.
+				</p>
+			</div>
+		</div>
+		
 	</div>
 
 

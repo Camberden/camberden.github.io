@@ -18,10 +18,10 @@ function enableModal() {
 
 		prompt.onclick = function () {
 			switch (prompt.innerHTML) {
-				case "Life Maintenance":
-					generateMaintenanceList();
+				case "Routine Tester":
+					generateRoutineTester();
 					modal.style.display = "block";
-				break;
+					break;	
 				case "Wish List":
 					generateWishList();
 					modal.style.display = "block";
@@ -34,6 +34,10 @@ function enableModal() {
 					modal.style.display = "block";
 					generatePSLFinfo();
 					break;
+				case "Life Maintenance":
+					generateMaintenanceList();
+					modal.style.display = "block";
+				break;
 				default:
 					console.log("hi");
 				break;
@@ -537,6 +541,8 @@ function switchDisplay(elements, displayed) {
 	}
 }
 switchDisplay("savings-projection", false);
+
+
 // ----- MODAL FUNCTIONS ----- //
 
 const maintenancePoints = [
@@ -578,6 +584,24 @@ function generateMaintenanceList() {
 	document.getElementById("modal-text").appendChild(ul);
 }
 
+const routines = [
+	"SU2024",
+	"SP2025",
+	"SU2025",
+];
+
+function generateRoutineTester() {
+	const ul = document.createElement("ul");
+	for (let routine of routines) {
+		const li = document.createElement("li");
+		const text = document.createTextNode(routine);
+		li.appendChild(text);
+		ul.appendChild(li);
+	}
+	document.getElementById("modal-text").appendChild(ul);
+
+}
+
 const wishList = [
 	"Journal Binders",
 	"Magic Mouse",
@@ -601,13 +625,16 @@ const wishList = [
 	"Expose PHP Package",
 	"Table Plus",
 	"MAMP Pro 7 Mac",
-]
+];
 
 function generateWishList() {
 	const ul = document.createElement("ul");
 	for (const wish of wishList) {
 		const li = document.createElement("li");
+		const inp = document.createElement("input");
+		inp.setAttribute("type", "checkbox");
 		const text = document.createTextNode(wish);
+		li.appendChild(inp);
 		li.appendChild(text);
 		ul.appendChild(li);
 	}

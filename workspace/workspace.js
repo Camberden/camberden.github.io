@@ -45,7 +45,6 @@ enableToyButtons();
 // ----- PAYCARD TEMPLATE ----- //
 
 let typ = 4400.00;
-
 let sav = 1000.00;
 let hys = 11500.00;
 let dbt = 300.00;
@@ -178,6 +177,7 @@ function editMoneys() {
 editMoneys();
 
 // ---------- PAYCARD GENERATOR AND RELOADER ---------- //
+
 
 function generatePaycheckValue(num){
 
@@ -540,6 +540,10 @@ function loadCurrentInmates() {
 
 	for (let i = 0; i < cells.length; i++) {
 		createCellCard(cells[i], residents[i]);
+		// const li = document.createElement("li");
+		// const text = document.createTextNode(residents[i].number);
+		// li.appendChild(text);
+		// document.getElementById("generated-residents").appendChild(li);
 	}
 }
 
@@ -554,4 +558,8 @@ function populateCells() {
 		cell.appendChild(span);
 
 	}
+}
+
+document.getElementById("mainframe-excess").onclick = function() {
+	document.getElementById("resident-investigation").style.display = "block";
 }
