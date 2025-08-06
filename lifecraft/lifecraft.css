@@ -188,8 +188,11 @@
 	color: rgba(0, 0, 0, 0);
 }
 
-.pslf-box-filled {
+.pslf-box-filled-credited {
 	background-color: var(--clr-primary);
+}
+.pslf-box-filled-uncredited {
+	background-color: var(--clr-secondary);
 }
 
 /* ----- MEDIA QUERIES ---- */

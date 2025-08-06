@@ -141,6 +141,8 @@ function findDaysSinceBirthday(present, birth) {
 }
 const pslfRequirement = 120;
 const creditedPSLFMonths = 45;
+const uncreditedPSLFMonths = 15;
+
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
 console.log("Current Date " + currentYear + "-" + (currentMonth + 1) + "-" + currentDay);
 console.log("Current Date: " + new Date(currentYear, currentMonth, currentDay).toDateString);
@@ -197,7 +199,7 @@ const events = [
 	whiteCar = new LifeEvent("White Car", "2025-3-4", "", "Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
 	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "", "To Tokyo, Nara, Kyoto, and Osaka"),
 	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", "Raise & Vesting"),
-	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", ""),
+	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", "Maxxed; Advanced Cert"),
 
 ];
 
@@ -657,7 +659,9 @@ function generatePSLFinfo() {
 		pslfBox.classList.add("pslf-box");
 
 		if (i >= pslfRequirement - creditedPSLFMonths) {
-			pslfBox.classList.add("pslf-box-filled");
+			pslfBox.classList.add("pslf-box-filled-credited");
+		} else if (i >= (pslfRequirement - (creditedPSLFMonths + uncreditedPSLFMonths))) {
+			pslfBox.classList.add("pslf-box-filled-uncredited");
 		}
 		pslfBoxes.appendChild(pslfBox);
 	}
