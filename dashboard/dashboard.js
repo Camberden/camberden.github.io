@@ -14,7 +14,7 @@ startbalanceupdate.onkeyup = function () {
 
 const car = 1291.61;
 const nav = 222.07;
-const sal = 884.15;
+const sal = 900.00;
 const ren = 200.00;
 const rti = 0.00;
 const ins = 107.13;

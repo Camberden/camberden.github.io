@@ -1936,7 +1936,660 @@ If IRR - Hurdle Rate ≥ 0%, invest.
 	| Chapter 25
 	| TAGS
 	| &emsp;
-	Pending
+	ACC220 Ch01
+
+Environment and Theoretical Structure<br>
+
+Assets: something with probably future economic benefit.<br>
+
+Assets = Liability + Equity, of course.<br>
+
+A firm can be perceived as a collection of assets.<br>
+
+Liability: probable future sacrifice of economic benefit ie. Debt, Salaries, Taxes, Accounts<br>
+
+Sarbanes-Oxley Act (SOX): (Public Company Accounting Reform and Investor Protection Act of 2002): Created PCAOB (Public Company Accounting Oversight Board) to regulate auditors and the types of non-audit services they furnish to clients and requires rotation of the lead partner on an audit every 5 years. Provides: accountability for corporate execs, addresses conflicts of interest for securities analysts, and criminal penalties for violators.
+
+Section 404: controversial: requires management to document internal controls and report on adequacy. Auditors must express an opinion on whether effective control over financial reporting is being done.
+
+The Conceptual Framework: "Accounting Constitution": doesn't prescribe GAAP, but is a framework of interrelated objectives. Prescribes nature, function, and limits of accounting and reporting. 
+
+FASB shows framework through SFAC's (Statements of Financial Accounting Concepts). SFAC(1) through (8).
+
+SFAC(8): objective, qualitative chars
+SFAC(7): cash flows, PV in making measurements
+SFAC(6): 10 elements; accrual acc concepts in statements
+SFAC(5): recognition
+
+The Objective: to provide financial information to external entities that is useful.
+
+Investors & Creditors: interested in amount, timing, and uncertainty of future cash flows
+
+Qualitative Chars
+Decision Usefulness = [Relevance = [Predictive Value, Confirmatory Value, Materiality], Faithful Representation = [Completeness, Neutrality, Free from Error]]
+
+Assumptions:
+- Economic Entity (about only entity)
+- Going Concern (business will continue)
+- Periodicity (timeliness)
+- Monetary Unit (currency assumed stable)
+
+Parent and Subsidiaries are ONE accounting entity but SEPARATE legal entities.
+
+General Recognition Criteria [SFAC(5)]:
+1. Definition: item meets definition of element in financial statements
+2. Measurability: has relevant attribute that is measurable with reliability
+3. Relevance: can make difference in decision making
+4. Reliability: info is faithful, verifiable, and neutral
+
+Measurement Attributes [SFAC(5)]:
+1. Historical Cost: original transaction value
+2. Net Realizable Value: estimated selling price in ordinary course of business less reasonably predicable costs
+3. Current Cost: cost incurred to purchase or reproduce the asset
+4. Present (or Discounted) value of Future Cash Flows: uses future cash flows as the basis for accounting measurement
+5. Fair Value: price that would be paid or received at measurement date
+
+Disclosure: including pertinent information in Financial Statements and Accompanying Notes. It is INTEGRAL to financial statements.
+
+Full Disclosure Principle: reports should include any information that could affect external decision making, as long as cost of preparation does not exceed usefulness
+
+Methods to Disclose Information:
+1. Parenthetical Comments or Modifying Comments: placed on the face of the financial statements
+2. Disclosure Notes: conveying additional insights about operations, agreements, litigation, accounting principles at play etc.
+3. Supplemental Schedules and Tables: reports more details than shown in primary Financial Statements
+
+IASC 1973 International Accounting Standards Committee became IASC 2001 International Accounting Standards Board
+
+IASB Objective: develop single set of high-quality, understandable, enforceable global accounting standards.
+
+IASB Standards are IFRS (International Financial Reporting Standards).
+
+Should US adopt IFRS?
+- a single set would improve comparability of reporting and facilitate access to global capital.
+BUT
+- US standards should remain customized to fit legal and regulatory requirements of US environment
+- Differences in implementation and enforcement may make IFRS accounting appear more uniform than it actually is
+- Competition between multiple standard-setting regimes is healthy and could improve standards overall
+- Political pressures on the IASB's process are severe 
+
+IFRS Conceptual Framework
+- provides explicit definitions of concepts like materiality, reporting entity, and executory contracts. DOES NOT take guidance from elsewhere like GAAP, such as ASC
+- includes explicit criteria for DE-RECOGNITION of assets and liabilities ie. DOES NOT consider PROBABILITY of cash inflows and outflows.
+
+// ---------- Hw ---------- //
+
+Cash-Basis Accounting: expenses are registered for the periods paid. Focuses on cash inflows and outflows.
+
+Accrual Accounting: expenses are registered for the periods applied
+
+Standards for Transaction Logging:
+
+Principles-Based: following a rigid set of rules; was skirted at Enron.
+
+Objectives-Oriented: emphasizes using professional judgement. This model was chosen following the SEC's study in July 2003 following the Sarbanes-Oxley Act. 
+	`
+	,
+
+		`
+	| ACC 220
+	| Chapter 26
+	| TAGS
+	| &emsp;
+ACC220 Ch02
+
+Accounting Cycle Review
+
+There are 10 Steps to the Accounting Processing Cycle:
+DURING PERIOD
+Step 1: Obtain information about external transactions from source documents (receipts, invoices)
+Step 2: Analyze the transaction
+Step 3: Record the transaction in a journal
+Step 4: Post from the journal to the general ledger accounts
+
+AT END OF ACCOUNTING PERIOD
+Step 5: Prepare and unadjusted trail balance
+Step 6: Record adjusting entries and post to the general ledger accounts
+Step 7: Prepare an adjusted trial balance
+Step 8: Prepare financial statements
+
+AT END OF YEAR
+Step 9: Close the temporary accounts to retained earnings.
+Step 10: Prepare a post-closing trial balance.
+
+HW --- off by $180
+	`
+	,
+
+		`
+	| ACC 220
+	| Chapter 27
+	| TAGS
+	| &emsp;
+	ACC220 Ch03
+
+Balance Sheet: Snapshot @ End of Period
+
+Liquidity: ability to convert assets to cash to pay current liabilities
+
+Long-Term Solvency: Ability to pay ALL liabilities
+
+Risk increases as liabilities increase
+
+Solvency => Financial Flexibility: ability to alter cash flows in order to take advantage of unexpected opportunities and needs.
+
+More Financial Responsibility, Less Risk of Failure (JUST LIKE IN ONE'S LIFE)
+
+Limitations of Balance Sheet:
+1. Company's Book Value: is Assets - Liabilities: does not represent the Market Value (price at which it could be sold @ market)
+2. Valuable Resources can have ZERO value like trained employees, experienced management, loyal customer relationships, product knowledge etc.
+3. Many items are reliant on Estimates
+
+Market Value = Trading price of a share of corporation's stock
+
+<mark class="formula">Overall Market Value = Share Price * Number of Shares Outstanding</mark>
+
+Book Value ≠ Market Value
+- Many assets are measured at their historical costs
+- Many aspects of a company represent valuable resources but are not recorded as assets in balance sheet.
+
+Current Assets:
+- Cash & Equivalents
+- Short-Term Investments
+- Accounts Receivable (net)
+- Inventories
+- Prepaid Expenses
+
+Long-Term Assets:
+- Investments (not used in operations)
+- Property, Plant, & Equipment: tangible 
+- Intangible: patents, copyrights, franchises, trademarks
+- Goodwill: arises during company purchase (Goodwill = Acquisition Price - Fair Value)
+- Other Long-Term Assets: two common types: 1. Long-Term Operating Leases, 2. Long-Term Prepaid Expenses 
+
+Current Liabilities: obligations due in the next year or operating cycle
+- Accounts Payable
+- Notes Payable
+- Unearned Revenues
+- Accrued Liabilities (salaries owed @ FY end, Interest Payable, Utilities Payable, Legal Fees Payable)
+
+Long-Term Liabilities: obligations in farther future. Beyond 12months, like 2 years.
+- Reported as notes in financial statements
+
+Equities: residual interest in assets
+- Total Equity = Shareholder's Equity
+- Paid-In Capital
+- Retained Earnings
+- AOCI (Accumulated Other Comprehensive Income): Not reported in Income Statement!
+
+Disclosure Notes: End of FY: Further discussion and calculations.
+- allowance for uncollectible accounts
+- information about common stock
+- pension plans
+- leases
+- long-term debt
+- investments
+- income taxes
+- property, plant, & equipment
+- employee benefit plans
+- related party transactions
+- errors, fraud, illegal acts
+
+After FY End but BEFORE Statements: Subsequent Event Disclosure Note.
+
+Management's Discussion and Analysis: 
+Their views on:
+- significant events
+- trends
+- Uncertainties: 1. Results of Operations 2. Liquidity 3. Capital Resources 4. Off-Balance Sheet Arrangements  5. Critical Accounting Estimates
+
+Prepares and is responsible for annual report:
+- Asserts responsibility of management for information contained in annual report
+- assessment of company's internal controls
+
+SARBANES-OXLEY ACT: C-Suite Execs must personally certify the financial statements!
+- false statements are punishable up to 20 years in prison
+
+Proxy Statement to Shareholders
+- provides compensation information for directors and top executives
+- invites shareholders to the annual meeting to: elect board members & vote on issues before the shareholders
+
+Auditor's Report
+Auditors: examine financial statements and internal control procedures => Attest to fairness of company's financial statements => results in opinion stated in auditor's report
+
+Types of Auditor's Reports
+1. Unqualified
+2. Unqualified with an explanatory or emphasis paragraph (Financial Statements are in conformity with GAAP; Auditor feels that other important information needs to be emphasized)
+3. Qualified
+4. Adverse or Disclaimer
+
+Unqualified:
+- Financial Information conforms with GAAP
+
+Unqualified w/ Explanatory:
+- Lack of Consistency
+- Going Concern
+- Material Misstatement in previously issued financial statements has been corrected
+
+Unqualified w/ Emphasis of Matter:
+- significant transactions with related parties
+- important events subsequent to the balance sheet date, uncertainty relating to the future outcome of significant litigation or regulatory actions
+
+Qualified:
+- audit process has been limited
+- there has been a departure from GAAP
+- NEITHER is of sufficient seriousness to invalidate the financial statements as a whole.
+
+Adverse Opinion:
+- Specific Knowledge that Financial Statements or disclosures are seriously MISSTATED or MISLEADING
+- Rare, because auditors usually are able to persuade management to rectify the problems
+
+Disclaimer: auditor is not able to gather sufficient information that financial statements are in conformity with GAAP
+
+Risk Analysis
+- users are most interested in info about future
+- Default Risk: risk that company couldn't pay due obligations
+- Operational Risk: how company can withstand events that impair earning potential
+
+Methods of Analyzing:
+- Comparative Financial Statements: current statement & corresponding statement of preceding year
+- Horizontal Analysis: each item in a statement is expressed as a percentage of that same item of another year's statement
+- Vertical Analysis: each item is a percentage of a total or base amount in the same year
+- Ratio Analysis: financial statement items are converted to ratios for evaluating performance and risk of a company
+
+Liquidity Ratio
+<mark class="formula">Working Capital = Current Assets - Current Liabilities</mark>
+
+Current Ratio = Current Assets / Current Liabilities
+Acid-Test (Quick) Ratio: excludes:
+- Inventories
+- Prepaid Items
+- Restricted Cash
+- Deferred Taxes
+
+Acid-Test Ratio = (Unrestricted Cash + Short-Term Investments + Accounts Receivable) / Current Liabilities
+REMOVES LESS LIQUID ASSETS FROM CALC
+
+Solvency Ratio
+<mark class="formula">Debt-to-Equity Ratio = Total Liabilities / Shareholder's Equity</mark>
+- Suggests company might be underutilizing debt
+
+Times-Interest-Earned Ratio = Income before Interest & Taxes / Interest Expense
+
+Balance Sheet Presentation
+IFRS: minimum list of items; GAAP: none
+IFRS: "statement of financial position"; GAAP: none
+IFRS: Most often report non-current items first; GAAP: current assets and liabilities before non-current assets and liabilities
+
+---------- HW ----------
+
+- Auditors attest to the FAIRNESS not the accuracy of financial statements
+ACC220 Ch03 DB
+
+Key Concern: "short productive lives"
+
+ASC 905-330-25-3: Animals with short productive lives, such as poultry, may be classified as inventory. Due to the short productive life of poultry, the cost of flocks may be classified as inventory. The accounting principles for poultry operations are much the same as those for other production animals (see paragraph 905-360-25-4), although the operating cycles are much shorter.
+
+ASC 905-360-25-4: Except for animals with short productive lives classified as inventory under paragraph 905-330-25-3all of the following shall be recognized as fixed assets: a. Breeding animals, b. All livestock (which includes cattle, hogs, sheep, and goats), c. Production animals
+
+	`
+	,
+		`
+	| ACC 220
+	| Chapter 28
+	| TAGS
+	| &emsp;
+	ACC220 Ch04
+
+Income from Continuing Operations
+
+Photo: proceeds from "bank" loan or just loan?
+
+
+	`
+	,
+		`
+	| ACC 220
+	| Chapter 29
+	| TAGS
+	| &emsp;
+	ACC220 Ch05
+
+Time Value of Money: it can be invested today to earn interest and grow
+
+Simple Interest: initial investment * applicable interest rate * period of time
+
+Interest: can be thought of as "rent" for money
+
+Future Value: what the payment will become
+
+-----
+Formula Parameters:
+i, n, ZERO, V
+Interest Rate, Number of Payments, Payment (ZERO), Future/Present Value
+
+=-FV(i, n, 0, PV)
+=-PV(i, n, 0, FV)
+=RATE(i, 3, 0, FV)
+=NPER(i, 0, -PV, FV)
+-----
+
+Monetary Assets and Liabilities are money and claims whose amounts are fixed and determinable.
+
+All valued at the PRESENT value of FUTURE cash flows.
+
+Long-Term Bonds: 
+- promise to repay a lump-sum at maturity and periodic stated interest payments
+
+Stated Interest Payments: stated interest rate * face amount
+
+Price of Bonds: based on market rate of interest for other bonds with similar characteristics
+
+
+
+
+
+	`
+	,
+		`
+	| ACC 220
+	| Chapter 30
+	| TAGS
+	| &emsp;
+ACC220 Ch06
+
+Revenue Recognition: recognized when goods or services are transferred to customers. It is a transfer of control following contract.
+
+Control: the customer is more likely to control a good or service if the customer has:
+- An obligation to pay the seller
+- legal title to the asset
+- physical possession of the asset
+- assumed risks and rewards of ownership
+- accepted the asset
+
+Performance Obligation: when the goods and services are distinct; makes sense to consider it separate from others. QA Warrantees and Registration Fees are not obligations. An Extended Warrantee is priced and sold separately and considered distinct; a separate sales transaction and thus performance obligation. Performance obligations provide a customer right that they would not have received otherwise. 
+
+Contract Option & Transaction Price: if a contract includes an option that provides a material right, the seller must allocate part of the contract's transaction price to the option. The stand-alone price of the option must be estimated, and the likelihood of the customer realizing the option. Discount with coupon creates a performance obligation and its takers to non-takers ratio should be taken. 
+
+ASC 606-10-05-4
+Core Principle + 5 Steps to Apply
+1. Identify the contract with a customer
+2. Identify the performance obligation in contract
+3. Determine the transaction price
+4. Allocate the transaction price to each performance obligation
+5. Recognize revenue when each performance obligation is satisfied
+
+Transaction Price is the entitlement to receive revenue.
+Stand-Alone Price is the price under similar circumstances elsewhere.
+
+Separating Promises: financial statements better reflect timing of transfer, and those than can be viewed on a stand-alone basis should be separated.
+
+Prepayment: included in transaction price, allocated to the various performance obligations, initially recorded as deferred revenue, and recognized as revenue when (or as) each performance obligation is satisfied.
+
+----- HW 2 -----
+
+
+
+	`
+	,
+		`
+	| ACC 220
+	| Chapter 31
+	| TAGS
+	| &emsp;
+	ACC220 Ch07
+
+Cash and Receivables
+
+Internal Control:
+
+A: encourage adherence to policy
+B: promote operational efficiency
+C: Minimize errors and theft
+D: Enhance the reliability and accuracy of accounting data
+
+COSO: Committee of Sponsoring Organizations => dedicated to improving quality of financial reporting and provides a framework for designing an internal control system
+=> Defines Internal Control as:
+- Effectiveness and efficiency of operations
+- Reliability of financial reporting
+- Compliance with applicable laws and regulations
+// done by board of directors, management, and other personnel
+
+Cash: most liquid of all assets
+
+Separation of Duties: individuals that have physical responsibility for assets should not have access to accounting records and they should also not be those who reconcile cash and bank balances
+
+Cash Disbursements:
+- Disbursements should be made by check
+- All expenditures should be authorized before a check is prepared
+- ledger accounts being debited should be verified 
+- checks should be signed only by authorized individuals
+
+Separation of Duties in Cash Disbursements:
+Check writing, check signing, check mailing, disbursement documenting, and record keeping should all be segregated.
+
+Restrictions on Cash
+Cash available for current operations or to satisfy current liabilities = Current Asset
+Cash that is restricted and not available for current use = Non-Current Asset (usually)
+
+Informal Restrictions: based on management's intent and classify as non-current assets.
+Formal Restrictions: contractually imposed and classification depends: if debt is current, restricted cash is current; if debt is non-current, restricted cash is non-current.
+
+Disclosure Notes: include:
+- Any material restrictions of cash
+- amounts and line items where they appear in the balance sheet
+
+Lines of Credit (loans/ loan commitments) frequently require cash restrictions
+=> borrower is asked to maintain a specified balance in an account known as a Compensating Balance
+
+Compensating Balances: if the restriction is legally binding, it may be either current or non-current; if the restriction is informal, it may be reported as part of current assets
+
+Accounting for Cash Discounts
+Two Common Types:
+1. Trade Discounts (not variable consideration/ not dependent on outcome)
+2. Sales (Cash) Discounts (reductions in amount collect if customer pays within a specified period of time)
+
+Sales Discount provides incentive for quick payment.
+
+<mark class="formula">2/10 / n/30 = 2% within 10 days, otherwise pay within 30 days at normal price</mark>
+
+Methods for Sales Discounts
+Gross Method: seller initially records revenue and related receivable at full agreed-upon price.
+Net Method: seller initially records revenue and related receivable at agreed-upon price less (net of) the discount offered. 
+
+Credit Losses (Bad Debts) exist as uncollectible accounts.
+
+<mark class="formula"> Notes Receivable = Face Amount * Annual Rate * Fraction of Annual Period</mark>
+(9/12)*.06*2000
+GAAP requires their fair value in disclosure notes. Fair value changes over time can be recognized as gains or losses in the income statements.
+GAAP = More Disaggregation.
+
+Bank Overdrafts: US GAAP treats them as liabilities, but IFRS lets them be offset against other cash accounts when payable on demand
+
+Effective Interest Method: outstanding balance is increased by interest rate
+
+Selling Arrangements: factoring & securitization
+
+
+
+	`
+	,
+		`
+	| ACC 220
+	| Chapter 32
+	| TAGS
+	| &emsp;
+	ACC220 Ch08
+
+Inventories & Measurement
+
+Inventory
+- assets the company intends to sell in the normal course of business
+- has in production for future sale
+- uses currently in the production of goods to be sold
+
+Inventory Systems
+1) Perpetual Inventory System: inventory and cogs updated with every transaction 
+
+2) Periodic Inventory System: physical count
+
+DVL LIFO: Dollar-Value LIFO consists of pools of items that are likely to face the same cost change pressures, not similar physical units.
+- upon adoption, the first year is the base year, with cost index set at 1:00. Indexes rise across years; methods exists, such as double-extension method or link-chain method. 
+- a LIFO layer is added wen current period ending inventory at base-year cost has increased
+
+
+---------- HW2 
+
+FOB Shipping Point: legal ownership transfers upon shipment
+FOB Destination: legal ownership transfers upon receipt by buyer
+
+Purchase Discounts:
+- Gross Method: inventory debited, accounts payable credited for whole amount, 
+
+- Net Method: inventory debited, accounts payable credited for discounted amount. Purchase Discounts Lost debited for difference at end of payment.
+	`
+	,
+		`
+	| ACC 220
+	| Chapter 33
+	| TAGS
+	| &emsp;
+ACC220 Ch09
+
+Inventories: Additional Issues
+- Inventory Write-downs: GAAP requires evaluation of inventory at period end, and unsold items may need discounting
+
+Two Methods:
+- Lower of Cost or Net Realizable Value: for non-LIFO & non-RIM (retail inventory method)
+- Lower of Cost or Market: for LIFO & RIM
+-- both reduce reported inventory & net income, and amount varies between them
+
+
+
+Net Realizable Value (NRV): estimated selling price of inventory in ordinary course of business, reduced by reasonably predictable costs of Completion, Disposal, & Transportation (commissions & shipping)
+
+Lower of Cost or Market (LCM): based on inventory's current replacement cost by purchase or reproduction
+- should not be greater than Net Realizable Value; Market CEILING
+- should not be less than Net Realizable Value reduction by an Allowance for an approximate normal profit margin (NPM); Market FLOOR
+
+	`
+	,
+			`
+	| ACC 220
+	| Chapter 34
+	| TAGS
+	| &emsp;
+	ACC220 Ch10
+
+Property, Plant & Equipment and Intangible Assets: Acquisition
+
+Initial Valuation: include purchase price and all expenditures necessary to bring the asset to its desired condition and location
+
+Lump-Sum: many assets could be purchased with a lump-sum, but they must be individually evaluated based on their fair values. 
+- greater fair values by item are scaled by percentage to lump sum 
+
+Non-Cash Acquisitions: bought with =>
+- deferred payments (notes payable)
+- issuance of equity securities 
+- donated assets
+- exchanges of non-monetary assets for other assets
+-- Asset acquired is recorded at its fair value!
+1. Fair value of assets given 2. of assets received, if more clearly evident
+
+Realistic Interest Rate: provided a face value, with interest reflected in annual due payments. Dr. Property, Cr. Notes payable (face). Equipment Value = Face Value of Note
+
+Exchanges
+Non-monetary Asset Exchange: if asset values are not equal, cash will equalize values. E.g. trading old truck for new one.
+1. Record new asset at Fair Value
+2. Remove Book Value of Non-monetary asset given (Book Value = recorded cost of old asset - accumulated depreciation)
+3. Record any Cash received or paid
+4. Record any Gain or Loss: difference between Fair Value & Book Value of Asset given up. Fair Value > Book Value ? Gain : Loss
+
+Fair Value Not Determinable?
+- Modified Step 1.: Book value of Assets given up + Cash to record new Asset
+
+Self-Constructed Asset: no external transaction to establish exchange price.
+1. Determining the amount of the company's indirect manufacturing costs (overhead) to be allocated to the construction
+2. Deciding on the proper treatment of interest (actual or implicit) incurred during construction
+
+Donation: asset received, revenue recognized since it's implicit that the donor is receiving a benefit. GAAP specifies no specific offsetting account
+
+Average Accumulated Expenditures
+- the amount capitalized is only the portion of interest cost incurred during construction that could have been avoided if expenditures for the asset had not been made. Average is used for evenly spaced expenditures.
+- Not evenly incurred? Then a weighted average is used by time-weighting individual expenditures or groups by number of months from their incurrence to the end of the construction period.
+
+R&D
+- high degree of uncertainty of future benefit
+- expensed in periods as incurred, as per FASB taking a conservative approach
+- assets may be understated and expenses overstated
+- includes salaries, wages, other personnel labor in R&D activity, and cost of materials, equipment, facilities, intangibles, services, allocation of indirect cost. 
+- General & Administrative Costs should NOT be included unless closely tied.
+
+	`
+	,
+			`
+	| ACC 220
+	| Chapter 35
+	| TAGS
+	| &emsp;
+ACC220 Ch11
+
+Cost Allocation
+- process of costing over periods used to produce revenues
+- purchase value is included in asset value
+
+PP&E: Depreciation
+Natural Resources: Depletion
+Intangible Assets: Amortization
+- all are product costs to be included as part of cost of Inventory IN MANUFACTURE 
+Support Equipment (in office e.g.): period expenses in Income Statement
+
+Factors in Process
+1. Service Life (can be below physical life or legal life for intangibles)
+2. Allocation Base
+3. Allocation Method
+- Residual Value: amount expected to receive after service life
+- Depreciable Base = Capitalized Cost - Estimated Residual Value (determine amount expected to use up per period) [GAAP: should be systematic and rational]
+- Methods: time-based & activity-based
+
+Straight-Line Method:
+- equal amount of depreciable base is allocated to each year of service life
+Annual Depreciation = Depreciable Base / # Years in Asset's Life
+
+Declining Balance Method
+Book Value * Depreciation Rate (100 / yrs)
+Double-Declining Rate: 200%
+
+<mark class="formula">Sum-of-Years'-Digits =
+(Yrs of Service Life) / 
+(Yrs of Service Life digits sum)</mark>
+
+Activity-Based Method:
+Units of Production Method:
+- <mark class="formula">AVG Depreciation Rate = Depreciable Base / Total # Units to Produce</mark>
+
+Software Amortization
+1. <mark class="formula">Percentage-of-Revenue Method = 
+(Revenue / Estimated Product Revenue) * Costs Incurred</mark>
+2. Straight-Line Method
+ - Do both; Choose higher amount
+
+Impairment Loss
+1. Recoverability Test: estimated non-discounted future cash flows would be less than book value
+2. Measurement: recorded for difference between book value and its DISCOUNTED fair value (discounted PV of future cash flows)
+- if recognized: written-down book value becomes new cost base
+- later recovery is prohibited
+
+
+
+
+	`
+	,
+			`
+	| ACC 221
+	| Chapter 36
+	| TAGS
+	| &emsp;
+	Notes Input
 	`
 	,
 
