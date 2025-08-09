@@ -138,7 +138,7 @@ let currentSchedule = salarySchedules[fiscalYear - 2020];
 let currentSalary;
 let highlightedSalary;
 let custodyLevel = 1;
-let yearsExperience = 4;
+let yearsExperience = 5;
 
 function nextFiscalYear() {
 		fiscalYear++;
