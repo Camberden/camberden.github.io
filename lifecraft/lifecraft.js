@@ -177,7 +177,8 @@ class LifeEvent {
 }
 
 const events = [
-	birthEvent = new LifeEvent("My Birth", "1993-11-14", "", "I arrived physically on this planet."),
+	birthEvent = new LifeEvent("My Birth", "1993-11-14", "", 
+		"I arrived physically on this planet."),
 	rofDay = new LifeEvent("R.O.F. Day", "2017-7-9", "", 
 		"Personal Holiday Established: the emotional difficulties encountered marked the very beginning of my self-reinvention"),
 	firingDay = new LifeEvent("Firing Day", "2017-11-14", "", 
@@ -192,14 +193,22 @@ const events = [
 		"I promoted a third time to assistant operations manager, with intra-regional duties including payroll"),
 	wvRelocation = new LifeEvent("Relocation to West Virginia", "2019-10-24", "",
 		"I relocated to West Virginia to pursue a software development career at a talent-incubator company"),
-	vanceRelocation = new LifeEvent("Relocation to North Carolina", "2020-8-9", "", "I uprooted and took my life to Vance County, NC"),
-	publicCareer = new LifeEvent("Began Public Service", "2020-8-10", "", "I began my career of service."),
-	chathamRelocation = new LifeEvent("Relocation to Chatham County, NC", "2024-12-16", "", "I relocated to Chatham County, NC due to interpersonal events."),
-	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", "My trusty car was deemed a total loss."),
-	whiteCar = new LifeEvent("White Car", "2025-3-4", "", "Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
-	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "", "To Tokyo, Nara, Kyoto, and Osaka"),
-	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", "Raise & Vesting"),
-	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", "Maxxed; Advanced Cert"),
+	vanceRelocation = new LifeEvent("Relocation to North Carolina", "2020-8-9", "", 
+		"I uprooted and took my life to Vance County, NC"),
+	publicCareer = new LifeEvent("Began Public Service", "2020-8-10", "", 
+		"I began my career of service."),
+	chathamRelocation = new LifeEvent("Relocation to Chatham County, NC", "2024-12-16", "", 
+		"I relocated to Chatham County, NC due to interpersonal events."),
+	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", 
+		"My trusty car was deemed a total loss."),
+	whiteCar = new LifeEvent("White Car", "2025-3-4", "", 
+		"Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
+	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "", 
+		"To Tokyo, Nara, Kyoto, and Osaka"),
+	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", 
+		"Raise & Vesting"),
+	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", "", 
+		"Maxxed; Advanced Cert"),
 
 ];
 
