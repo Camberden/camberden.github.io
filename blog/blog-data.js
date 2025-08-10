@@ -993,14 +993,14 @@ const blogData = [
 	that of my present flow. I can do, and will do. Silly. How I do anything would be how I do everything.
 	I will restart my <b-title>previous tradition</b-title> of cold showers. I will establish a healthy flow this week and rekindle discipline. I have no class; no 
 	external obligations. It's a great time to do so.
-	<hr>
+	<hr> &emsp;
 	Grounding in the present moment, I am sitting here, typing. All is okay. I have little pressures; the only tasks I have are those that I create
 	for myself. I am not tired, but I am not enthused. This is fine. There is no fire; only the subtle one that propells me to continue my "day-job"
 	restarting for tomorrow. Perhaps I could read a book and have some tea. I have license to enjoy the silence. It's often small habit building over 
 	which I guilt myself, such as reading books instead of browsing phone. I mustn't forget that the career change will aid in that end;
 	after all, 8HR workdays would afford me so much more freedom to incorporate more with minimized barriers and hustle.
 	My practice too would likely improve. Such are among the purposes of this endeavor, yes?
-	<hr>
+	<hr> &emsp;
 	I have been talking with my roommate in Japan, now friend, about his plan to return for language school for a period of 3 months.
 	His enthusiasm for the prospect seems boundless as evidenced through his talks with me and his written reflections.
 	I am being highly considered for joining him in the trip, though I have my doubts. Principally, it's the time frame: he's choosing early-mid 2026.
@@ -1018,7 +1018,7 @@ const blogData = [
 	yet I couldn't be sure until such time comes. I feel that my friend and I may go separate ways as our motivations are quite different. 
 	It's almost as if my involvment with Japan at this point is mostly through a spiritual motivator, whereas his is through potential careers, dating
 	partners, and unabashed fun.
-	<hr>
+	<hr> &emsp;
 	I am going to continue my work through 2026 until hitting my 6th year work anniversary and a little beyond. I should have most obligations purged by
 	that time, and 2027 would become the most explorative year of my life. I would be 33 years old.
 	On my lifecraft page, I will consider making time-frame bars for months to better display ongoing tasks that occur during them, such as semester
@@ -1036,7 +1036,7 @@ const blogData = [
 	| &emsp;
 	So I'm thinking of foreign residencies and todos on this site again. Been delving into the histories of the immigration issue in Japan
 	and the demarkation lines of southern South American nations.
-	<hr>
+	<hr> &emsp;
 	I'm finding myself <b-title>a bit disenchanted</b-title> with Japan at the moment. 
 	I allow myself the liberty to accept this disenchantment as just another instance of learning myself.
 	Though yes, I enjoyed my experience very much, I'm seeing little return on investment in my case for continuing to learn the language as a hobby.
@@ -1044,7 +1044,7 @@ const blogData = [
 	Japan is unlikely to become a place of future residency as a global citizen amid the growing but sensible anti-foreigner sentiment in the 
 	national politics which I can respect. Attaining some job over there would require such a hefty, hefty investment of valuable attention 
 	just to attain a similar quality of life I enjoy here, right now, in the present moment.
-	<hr>
+	<hr> &emsp;
 	Earlier today I was heckled and called some slur. I find it funny that the individual prefaced their solicitation with: "I'm not asking
 	for money." She then explained that she wants food for her not-currently-present 13-year old daughter. I happened to be near a fairly 
 	expensive food hall. "You'll have to ask someone else, ma'am," was my response. I'm grateful to have not wasted my time or resources
@@ -1059,17 +1059,17 @@ const blogData = [
 	| 0853 HRS
 	| &emsp;
 	Today marks five years of having been in the Carolinas as a resident.
-	I once again returned to the Grand Strand, a spo I'd visit randomly since 2020, and this time meeting with some family; it's also my first time here on-season.
+	I once again returned to the Grand Strand, a spot I'd visit randomly since 2020, and this time meeting with some family; it's also my first time here on-season.
 	It's definitely a bit busier, warmer, and active with businesses open later than I remember. At least I will have liberty
 	to relax a bit more, if I could. I gladly don't have classes running at the moment, but I am fuzzy in the head from melatonin used
 	such that I may adjust to the sun. Meh, I suppose I also had a bit too much at the breakfast joint.
-	<hr>
+	<hr> &emsp;
 	I'm glad that I no longer highly value minor dining experiences so much, especially on my own. Oh, what a time and money sink it
 	all collectively was in the past. I'll enjoy a single, modestly portioned plate tomorrow morning instead of what I did today.
 	This reminds me of something I told myself that I occassionally forget: There is no need to get "my money's worth" by overloading
 	on food items, as there is value in reaching satiety or near-satiety in the sense of wellbeing following the fact. 
 	Expense on food is to be had regardless. It's a "bill" that could never vanish anyway.
-	<hr>
+	<hr> &emsp;
 	Tomorrow will mark my fifth year anniversary in public service and I formally vest. I'm truly grateful to have made it this far
 	and to be officially vested. Though I have plenty to learn ahead for both my current role and for my future role, my tact and 
 	composure is improving. I've been enthusiastic and proactive with bodies of knowledge to which I was previously adverse.
@@ -1081,6 +1081,21 @@ const blogData = [
 	overhead. The waves are a greenish blue-grey in tone; their tide is moderate. There is a pier a short walk from my tower undergoing
 	construction. A tank empties a continuous, arching stream of water; <b-title>a red crane</b-title> stands tall.
 	In the direction from this seat to that red crane, Nassau, Bahamas would lie far beyond the horizon.
+	`
+	,
+		`
+	| August 10th, 2025…
+	| Myrtle Beach, SC
+	| 0858 HRS
+	| &emsp;
+	So today I am <b-title>vested</b-title> and bear more leverage in my career. My feet are not only in the door but also settled inside the space.
+	I hit my five years. During my time here in 2020, when I was newly trained, I wouldn't've thought that I would endure this
+	role for as long as I had. Yet, I did. I am grateful. It's a strange feeling, knowing that I came here near the beginning of 
+	this journey, and made it to this point, and it has in fact been five entire years. All that had occurred within these five years
+	was profound.
+	<hr> &emsp;
+	The rain has just begun and the beachgoers are clearing out; the tide intensifies. 
+	I'll be checking out shortly. I anticipate getting wet just a little. 
 	`
 	,
 ];
