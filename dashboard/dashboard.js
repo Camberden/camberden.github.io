@@ -164,7 +164,7 @@ function calculateStep(){
 	let currentHourlyRate = currentSalary / 52 / 40;
 	document.getElementById("hourly-salary").innerHTML = currentHourlyRate.toFixed(2);
 	document.getElementById("gap-pay").innerHTML = (currentHourlyRate * 11).toFixed(2);
-	document.getElementById("overtime-diff").innerHTML = ((currentHourlyRate * 1.5) - currentHourlyRate).toFixed(2);
+	document.getElementById("overtime-diff").innerHTML = ((currentHourlyRate * 1.5) - currentHourlyRate).toFixed(2) + " ($" + (12.25 * (currentHourlyRate * 1.5)).toFixed(2) + ")";
 	document.getElementById("night-diff").innerHTML = (currentHourlyRate / 10).toFixed(2);
 	document.getElementById("weekend-diff").innerHTML = (currentHourlyRate / 10).toFixed(2);
 	document.getElementById("holiday-diff").innerHTML = ((currentHourlyRate * 1.75) - currentHourlyRate).toFixed(2);
