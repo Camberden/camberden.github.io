@@ -181,6 +181,36 @@ body {
 	font-size: 2rem;
 }
 
+/* ----- GREAT REGIONS INFO ----- */
+
+.gr-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+
+	padding-block: 2rem;
+	width: min(95%, 80rem);
+	margin-inline: auto;
+	max-height: min-content;
+}
+
+.gr-item{
+	/* padding: 1rem; */
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: grey;
+	border-style: double;
+}
+
+#gr-img {
+	max-width: 80rem;
+	max-height: 80rem;
+}
+
+.gr-list{ 
+	list-style-type: none;
+	text-align: left;
+}
+
 /* ----- SEGREGATION MAP ----- */
 
 .sm-grid {
