@@ -206,9 +206,15 @@ body {
 	max-height: 80rem;
 }
 
-.gr-list{ 
+.gr-list { 
 	list-style-type: none;
 	text-align: left;
+}
+
+.gr-mask-1 {
+	/* -webkit-mask-image: url(w3logo.png);
+	mask-image: url(w3logo.png); */
+	mask-repeat: no-repeat;
 }
 
 /* ----- SEGREGATION MAP ----- */
