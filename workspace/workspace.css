@@ -194,27 +194,22 @@ body {
 	max-height: min-content;
 }
 
-.gr-item{
+.gr-item {
 	/* padding: 1rem; */
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-color: grey;
 	border-style: double;
 }
 
-#gr-img {
-	max-width: 80rem;
-	max-height: 80rem;
+#gr-world-map {
+	fill: grey;
+	fill-opacity: 50%;
+	background-image: url("../assets/image-gr-overview-3.png");
 }
 
 .gr-list { 
 	list-style-type: none;
 	text-align: left;
-}
-
-.gr-mask-1 {
-	/* -webkit-mask-image: url(w3logo.png);
-	mask-image: url(w3logo.png); */
-	mask-repeat: no-repeat;
 }
 
 /* ----- SEGREGATION MAP ----- */

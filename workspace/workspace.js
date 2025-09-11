@@ -40,7 +40,43 @@ function enableToyButtons() {
 }
 enableToyButtons();
 
-// ----- BUDGET APP
+// ----- MC WORLD MAP EDITOR ----- //
+
+function targetPaths() {
+	const regions = document.querySelectorAll(".gr-region");
+	const capitals = document.querySelectorAll(".gr-capital");
+	const regionTitle = document.getElementById("region-title");
+	const divisionTitle = document.getElementById("division-title");
+	// const listedRegions = {"farentia":"Farentia C.D.", 
+	// 	"zethro-scheipen":"Claywater", "tendou":"Tendou C.D.",
+	// 	"selunia":"Mokarzmamat", "east-farentia":"Orienton", "cheirica":"Lucidea Town", 
+	// 	"mochadia":"Husisiholkit"};
+		
+	for (let region of regions) {
+		region.style.fill = "grey";
+		region.onmouseenter = function () {
+			region.style.fill = "aqua";
+			region.style.fillOpacity = "80%";
+			regionTitle.textContent = region.id;
+		}
+		region.onmouseleave = function () {
+			region.style.fill = "grey";
+			region.style.fillOpacity = "50%";
+		}
+	}
+	for (let capital of capitals) {
+		capital.onmouseenter = function () {
+			capital.style.fill = "red";
+			divisionTitle.textContent = capital.id;
+		}
+		capital.onmouseleave = function () {
+			capital.style.fill = "#ffeeaa";
+			divisionTitle.textContent = "";
+		}
+	}
+
+}
+targetPaths();
 
 // ----- PAYCARD TEMPLATE ----- //
 
