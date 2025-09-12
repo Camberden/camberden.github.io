@@ -81,6 +81,25 @@ const countryInformation = [
 		During the last three months, months 21-24, one could apply for permanent residency which
 		requires at least one full day of physical presence within a three-year period to maintain.
 		After 3 years of permanent residency, one could apply for citizenship and attain a passport.</p>
+		<h3>Note Dump</h3>
+			<p>Property 
+			- properstar.com
+			- https://www.properstar.com/listing/109889150
+			- https://www.properstar.com/listing/108426941
+			- infocasas.com.py
+			- https://larespy.com
+			- https://www.zuba.com.py
+			- https://www.youtube.com/watch?v=tz_0j8OMpZ8
+
+			~ ₲ 350,000 /mo gated community fee
+			~ Electricity bill from state
+
+			Residency: 
+			- https://paraguayresidencyservices.com
+			- https://ourlifeinparaguay.com/resources/
+			- https://www.resideparaguay.com/home
+			- https://plan-b-paraguay.com
+			</p>
 		`
 	),
 	// ----- EUROPE ----- //
