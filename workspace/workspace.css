@@ -212,6 +212,11 @@ body {
 	text-align: left;
 }
 
+img {
+	max-width: 20px;
+	max-height: 40px;
+}
+
 /* ----- SEGREGATION MAP ----- */
 
 .sm-grid {

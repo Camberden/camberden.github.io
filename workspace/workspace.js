@@ -47,6 +47,7 @@ function targetPaths() {
 	const capitals = document.querySelectorAll(".gr-capital");
 	const regionTitle = document.getElementById("region-title");
 	const divisionTitle = document.getElementById("division-title");
+	const regionFlag = document.getElementById("region-flag");
 	// const listedRegions = {"farentia":"Farentia C.D.", 
 	// 	"zethro-scheipen":"Claywater", "tendou":"Tendou C.D.",
 	// 	"selunia":"Mokarzmamat", "east-farentia":"Orienton", "cheirica":"Lucidea Town", 
@@ -58,10 +59,12 @@ function targetPaths() {
 			region.style.fill = "aqua";
 			region.style.fillOpacity = "80%";
 			regionTitle.textContent = region.id;
+			regionFlag.innerHTML = `<img src="../assets/banner-${region.id}.svg">`
 		}
 		region.onmouseleave = function () {
 			region.style.fill = "grey";
 			region.style.fillOpacity = "50%";
+			regionFlag.innerHTML = "";
 		}
 	}
 	for (let capital of capitals) {
@@ -77,6 +80,8 @@ function targetPaths() {
 
 }
 targetPaths();
+
+
 
 // ----- PAYCARD TEMPLATE ----- //
 
