@@ -1105,11 +1105,37 @@ const blogData = [
 	| &emsp;
 	For whatever reason, possibly from my disillusionment with travel right now, I've been immersing in my Minecraft world again, and 
 	frankly its been to my detriment. My time in game is just floating around and assessing landscape damage and thinking of fixes 
-	rather than actually building anything or playing anything. Over this weekend, I taught myself the Amulet & <Worldedit mods, and revisted 
+	rather than actually building anything or playing anything. Over this weekend, I taught myself the Amulet & Worldedit mods, and revisted 
 	world painter. Yes, it seems that I can do a lot now that I couldn't've done even in 2017ish, like even use all of these on Mac.
 	Regardless, I may have learned the tools and I've run into fewer errors in the past, the experience is still dead and I find myself
 	overwhelmed because there is simply too much for me to manage. I'm tired already of being overwhelmed. I want to quit again, just as 
 	I angrilly quit No Man's Sky. I'm tired of it all and want to get back to reality already. No more <b-title>chunk manipulation</b-title> for a while.
 	`
 	,
+
+		`
+	| September 21st…
+	| Raleigh, NC
+	| 0357 HRS
+	| &emsp;
+	Time is going by very quickly. Work duties have seemed to increase in demand. School duties too have seemed to increase 
+	in demand. For the first time in a while I recall coming home and immediately crashing. Currently, Black Mirror is playing
+	on the television here, and I'm seeing this episode's protagonist flip through his calendar on which he marked increasingly
+	more days with overtime as the months passed. A few months in, and every day filled with overtime. He then starting 
+	streaming absurd self-injurious behavior for more money. More money all for sustaining the life of the person he loves 
+	just a little longer; a person whose life depended on a company's subscription plan. Huff.
+	The dedication and committment by the protagonist was nothing short of admirable, but alas it ended in tragedy.
+	Debt with no maturity is just contemptable. 
+	<hr> &emsp;
+	I went to the local symphony hall and listened to Dvorak's New World Symphony in concert, and the second movement had 
+	me in tears, especially during the passages featuring the English Horn lead. Oof. 
+	<hr>
+	My dilemma in the present moment is whether or not I will <b-title>pick up</b-title> a shift tomorrow. I don't know. I do need my time to get ahead on other things.
+	Eh. I cannot get myself to commit, oddly. Perhaps I should head back to my normal space to focus or something.
+	I must know that nowadays isn't like years ago; I have much more on which to spend my time, obligations and not.
+	I need to push this already and get to the store. I grow tired of this couch sitting.
+	<hr>
+	`
+	,
+
 ];
