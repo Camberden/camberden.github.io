@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const latestUpdatePushed = "Sunday September 21tst, 2025";
+const latestUpdatePushed = "Wednesday October 1st, 2025";
 const splitDate = latestUpdatePushed.split(" ");
 
 /**
@@ -105,7 +105,7 @@ const sections = [
 	["travel", "Travel Page",],
 	["lifecraft", "Lifecraft Page",],
 	["musings", "Musings Page",],
-	["music", "Original Music",],
+	// ["music", "Original Music",],
 ];
 
 const sectionTitles = document.querySelectorAll(".section-title");

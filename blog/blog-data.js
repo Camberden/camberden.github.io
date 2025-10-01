@@ -1129,12 +1129,29 @@ const blogData = [
 	<hr> &emsp;
 	I went to the local symphony hall and listened to Dvorak's New World Symphony in concert, and the second movement had 
 	me in tears, especially during the passages featuring the English Horn lead. Oof. 
-	<hr>
+	<hr> &emsp;
 	My dilemma in the present moment is whether or not I will <b-title>pick up</b-title> a shift tomorrow. I don't know. I do need my time to get ahead on other things.
 	Eh. I cannot get myself to commit, oddly. Perhaps I should head back to my normal space to focus or something.
 	I must know that nowadays isn't like years ago; I have much more on which to spend my time, obligations and not.
 	I need to push this already and get to the store. I grow tired of this couch sitting.
 	<hr>
+	`
+	,
+	`
+	| October 1st, 2025…
+	| Pittsboro, NC
+	| 0325 HRS
+	| &emsp;
+	The working hours have been coming along easily. My free time has been passing by quickly as I've been highly
+	engaged with my coursework which has taken quite a difficult turn. Yesterday, I had put in 12 HRS on a single
+	assignment. There were just so many intermediate calculations.
+	<hr> &emsp;
+	I'm farther along than I give myself credit for. I've bridged my interest in accounting to investing, and rebooted
+	my additional investment accounts for the third time. A recent chapter stressed the time value of money, and really
+	catalyzed my return to the practice. It's essentially planting seeds and letting them grow, and it's a test of 
+	patience and discipline. For a moment, I was a bit overwhelmed with all the options, but then I remember: it's 
+	the excess options that oppress rather than free. I am going to stick with my choice and that's that. 
+	I will have an inkling of faith for the nation to prevail for its sake and for my <b-title>investments</b-title>.
 	`
 	,
 
