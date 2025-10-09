@@ -567,7 +567,7 @@ function displayAccountingModal() {
 		I expect to be eligible for basic non-custody positions after attaining WTCC's Advanced
 		Accounting Core Cert.<br>
 		Around then, I would qualify to study for and then sit for the CPA exam.<br>
-		Cpa Requirements: <a href="https://www.thiswaytocpa.com/licensure/state-requirements/NC/"
+		Cpa Requirements: <a href="https://nccpaboard.gov/cpa-exam-applicants/"
 			target="_blank">[link]</a>
 		I would need to work under a CPA to attain mine, necessitating the migration when eligible.<br>
 		WTCC's Diploma and Associate's are optional for me.<br>

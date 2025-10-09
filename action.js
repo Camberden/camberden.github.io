@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const latestUpdatePushed = "Wednesday October 1st, 2025";
+const latestUpdatePushed = "Wednesday October 8th, 2025";
 const splitDate = latestUpdatePushed.split(" ");
 
 /**
