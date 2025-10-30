@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const latestUpdatePushed = "Wednesday October 8th, 2025";
+const latestUpdatePushed = "Thursday October 30th, 2025";
 const splitDate = latestUpdatePushed.split(" ");
 
 /**
@@ -38,8 +38,10 @@ function convertToJapaneseDate(date) {
 
 	// ----- DAYS ----- //
 	console.log(date.getDate());
-	if (date.getDate() >= 30) {
+	if (date.getDate() > 30) {
 		japaneseDate += kanjiNumbers[2] + kanjiNumbers[9] + (kanjiNumbers[(date.getDate() % 30) - 1] + "日");
+	} else if (date.getDate() == 30) {
+		japaneseDate += (kanjiNumbers[2] + kanjiNumbers[9] + "日");	
 	} else if (date.getDate() >= 20) {
 		japaneseDate += kanjiNumbers[1] + kanjiNumbers[9] + (kanjiNumbers[(date.getDate() % 20) - 1] + "日");
 	} else if (date.getDate() > 10) {
