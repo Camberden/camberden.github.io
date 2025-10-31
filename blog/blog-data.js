@@ -832,8 +832,8 @@ const blogData = [
 	| June 22nd, 2025…
 	| Pittsboro, NC
 	| 0200 HRS
-	I sit here an hour before routing to the airport.
 	| &emsp;
+	I sit here an hour before routing to the airport.
 	I have plenty upon which to reflect, and will garner so much more so very soon:
 	<ul>
 	<li>I have made a great new friend who shares a lived experience and future vision akin to my own.</li>
@@ -922,7 +922,7 @@ const blogData = [
 	He amicably called me an old man, and for once I took that solely as a compliment, and smiled.
 	`
 	,
-		`
+	`
 	| July 4th, 2025…
 	| Pittsboro, NC
 	| 0322 HRS
@@ -970,7 +970,7 @@ const blogData = [
 	Shikaka, too, has a lot to digest, but she's probably done with all of that.
 	`
 	,
-		`
+	`
 	| July 27th, 2025…
 	| Pittsboro, NC
 	| 2045 HRS
@@ -1029,7 +1029,7 @@ const blogData = [
 
 	`
 	,
-		`
+	`
 	| August 5th, 2025…
 	| Pittsboro, NC
 	| 2303 HRS
@@ -1083,7 +1083,7 @@ const blogData = [
 	In the direction from this seat to that red crane, Nassau, Bahamas would lie far beyond the horizon.
 	`
 	,
-		`
+	`
 	| August 10th, 2025…
 	| Myrtle Beach, SC
 	| 0858 HRS
@@ -1098,7 +1098,7 @@ const blogData = [
 	I'll be checking out shortly. I anticipate getting wet just a little. 
 	`
 	,
-		`
+	`
 	| August 24th, 2025…
 	| Raleigh, NC
 	| 1907 HRS
@@ -1113,8 +1113,8 @@ const blogData = [
 	`
 	,
 
-		`
-	| September 21st…
+	`
+	| September 21st, 2025…
 	| Raleigh, NC
 	| 0357 HRS
 	| &emsp;
@@ -1154,5 +1154,31 @@ const blogData = [
 	I will have an inkling of faith for the nation to prevail for its sake and for my <b-title>investments</b-title>.
 	`
 	,
-
+	`
+	| October 31st, 2025…
+	| Pittsboro, NC
+	| 1717 HRS
+	| &emsp;
+	This October had been the best month for advancing my accounting skillset. Not only had I spent the majority of my off time working relentlessly
+	on completing my coursework, I've been seeking practice beyond what my class provides and lately had my first interview for an accounting related
+	position. Though I'm hopeful for a positive outcome, I mustn't allow myself to grow dejected over a possible rejection, if that would end up being
+	the case. I was reassured by the hiring manager that I was a top candidate and that it's all just a waiting game now. Perhaps I'll be able to 
+	close out this year in my current role so that I may preserve my income.
+	<hr> &emsp;
+	I have my sights set on this career move more so than ever before. As my confident builds, it all seems closer. That being said, yesterday I went
+	ahead and reviewed my current coursework pathway. Seven (7) of the elective credits can be of any combination of courses to qualify to sit for 
+	the CPA exam. Now that I have nearer sights set on trying out for the FMAA exam en route to the CPA, my perceived value of knocking out some 
+	prescribed community college diploma/associate's has quite lessened. The fact remains that I will need an accounting related role to even be 
+	granted the licensure upon completing the CPA exam. Say, if I don't get the position I interviewed for, I will still try to remain as persistent
+	as I have been this month to find my opportunity. It stands that I do need more leverage in order to have a fair shot at plenty available lower-level
+	roles, either an associate's or "<b-title>equivalent education</b-title> and/or experience." To achieve that end without a poor investment in mandated & undesired courses 
+	such as "Intro to Computers," I could obtain an FMAA certification through the Institute of Management Accountants. I'd say, all I'd want for my 
+	birthday is an FMAA study package, and I'm seriously eyeing one right now. Huff.
+	<hr> &emsp;
+	Aside from all this career rambling, I have been feeling unwell physically lately and felt it necessary to stay home and recover, as was also
+	evident to medical staff upon seeing me. This is an odd medication but it has relieved my aching, fever, and exhaustion. It also turns out 
+	that it acts as a contra-melatonin, like what the heck. Well, I'll accept for now, but I do sincerely want some more quality sleep again this 
+	weekend and take a break from obsessing about accounting.
+	`
+	,
 ];
