@@ -176,6 +176,16 @@
 	border-color: var(--clr-primary);
 }
 
+.aRotation {
+	font-family: 'Courier New', Courier, monospace;
+	color: cyan;
+}
+
+.bRotation {
+	font-family: 'Courier New', Courier, monospace;
+	color: orangered;
+}
+
 /* ----- PSLF DATA AND MANAGEMENT SPECIFIC ----- */
 
 .pslf-box {

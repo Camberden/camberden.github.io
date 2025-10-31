@@ -452,14 +452,19 @@ function displayBiweeklyRotation(year) {
 			indexProper = 1;
 		}
 		if (biweeklyRelations[indexProper].includes("Off")) {
-			calendarDay.textContent += "E";
+			calendarDay.innerHTML += `<span class="aRotation">A</span>`;
+		} else if (biweeklyRelations[indexProper].includes("On")){
+			calendarDay.innerHTML += `<span class="bRotation">B</span>`;;
+
 		}
 		indexProper++;
 	});
-}
+} 
+displayBiweeklyRotation(changeYear);
 
 function enableLifecraftButtons() {
 	let toggleSavings = false;
+	let toggleRotation = false;
 	document.querySelectorAll(".lifecraft-button").forEach(button => {
 		
 		button.onclick = function () {
@@ -467,6 +472,9 @@ function enableLifecraftButtons() {
 			switch (button.value) {
 				case "next":
 					generateCalendar(++changeYear);
+					displayBiweeklyRotation(changeYear);
+					switchDisplay("aRotation", toggleRotation);
+					switchDisplay("bRotation", toggleRotation);
 					generateSavingsProjector(currentDeposit, true);
 					if (toggleSavings) {
 						switchDisplay("savings-projection", true);
@@ -475,6 +483,9 @@ function enableLifecraftButtons() {
 				break;
 				case "previous":
 					generateCalendar(--changeYear);
+					displayBiweeklyRotation(changeYear);
+					switchDisplay("aRotation", toggleRotation);
+					switchDisplay("bRotation", toggleRotation);
 					generateSavingsProjector(currentDeposit, false);
 					if (toggleSavings) {
 						switchDisplay("savings-projection", true);
@@ -492,7 +503,16 @@ function enableLifecraftButtons() {
 					console.log(toggleSavings);
 				break;
 				case "rotation":
-						displayBiweeklyRotation(changeYear);
+						// displayBiweeklyRotation(changeYear);
+						if (toggleRotation) {
+							switchDisplay("aRotation", false);
+							switchDisplay("bRotation", false);
+							toggleRotation = false;
+						} else if (!toggleRotation) {
+							switchDisplay("aRotation", true);
+							switchDisplay("bRotation", true);
+							toggleRotation = true;
+						};
 					break;
 				default:
 					console.log("Default Switch Triggered");
@@ -566,7 +586,7 @@ generateSavingsProjector(currentDeposit, true);
 function switchDisplay(elements, displayed) {
 	if (displayed) {
 		document.querySelectorAll(`.${elements}`).forEach(element => {
-			element.style.display = "block";
+			element.style.display = "inline";
 		});
 	} else if (!displayed) {
 		document.querySelectorAll(`.${elements}`).forEach(element => {
@@ -575,6 +595,8 @@ function switchDisplay(elements, displayed) {
 	}
 }
 switchDisplay("savings-projection", false);
+switchDisplay("aRotation", false);
+switchDisplay("bRotation", false);
 
 
 // ----- MODAL FUNCTIONS ----- //
