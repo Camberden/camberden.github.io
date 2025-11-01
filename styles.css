@@ -354,28 +354,34 @@ button {
 }
 
 .button-highlight {
-	/* cursor: pointer; */
+	cursor: pointer;
+	position: relative;
 	color: var(--clr-quaternary);
 	background: var(--clr-tertiary);
 }
 
 .button-depressed {
 
+	position: static;
 	color: var(--clr-secondary);
 	background: var(--clr-quaternary-body);
 	border-top-width: 0.3rem;
+	margin-top: 0.3rem;
 	border-top-color: grey;
 	border-top-style:groove;
 
 	border-left-width: 0.3rem;
+	margin-left: 0.3rem;
 	border-left-color: black;
 	border-left-style: groove;
 
 	border-bottom-width: 0.7rem;
+	margin-bottom: 0.3rem;
 	border-bottom-color: black;
 	border-bottom-style: groove;
 
 	border-right-width: 0.7rem;
+	margin-right: 0.3rem;
 	border-right-color: grey;
 	border-right-style: groove;
 }
