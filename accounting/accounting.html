@@ -31,71 +31,42 @@
 				<a href="../assets/refdoc-acc221-schedule.pdf" target="_blank">Schedule</a>
 			</div>
 			<div class="quick-links-buttons">
-				<button class="accounting-notes-button" value="previous">Previous</button>
-				<button class="accounting-notes-button" value="next">Next</button>
+				<button class="accounting-button" value="previous">Previous</button>
+				<button class="accounting-button" value="next">Next</button>
 			</div>
 			<div class="quick-links-grid-item">
-				<div id="accounting-course">ACC120 & ACC121</div>
+				<div id="accounting-course">ACC221</div>
 			</div>
 			<div class="quick-links-grid-item">
-				<div id="accounting-chapter">Chapter</div>
+				<div id="accounting-chapter">Ch19</div>
 			</div>
 			<div class="quick-links-grid-item">
-				<div id="accounting-chapter-title">Title</div>
+				<div id="accounting-chapter-title">DilutedEPS</div>
 			</div>
 		</div>
 	</div>
 
 	<div class="accounting-grid">
 
-		<div id="t-account-prompter">
-			<p>Generate T-Accounts</p>
-			<form id="t-card-form">
-				<input id="account-name" type="text" placeholder="Account Name!"> 
-				<br>
-				<button id="generate-t-account-button" class="t-account-button">Generate!</button>
-			</form>
-			<div id="t-card-grid">
+		<div id="general-ledger"class="accounting-item">
+			<p>General Ledger Workspace</p>
+			<div class="accounting-sub-item">
+
+				<div id="ledger-prompter"></div>
 
 			</div>
-			
 		</div>
 
-		<div class="accounting-item">
-			<div>
-				<select id="formula-select"></select><br><br>
-				<input type="text" placeholder="parameter-1">
-				<input type="text" placeholder="parameter-2"><br><br>
-				<div id="formula-select-display"></div>
-			
+			<div id="t-account-prompter" class="accounting-item">
+				<p>T-Account Generation</p>
+				<form id="t-card-form">
+					<input id="account-name" type="text" placeholder="Account Name!">
+					<br><br>
+					<button id="generate-t-account" class="accounting-button">Generate!</button>
+				</form><br>
+				<div id="t-card-grid" class="accounting-sub-item">
+				</div>
 			</div>
-
-		</div>
-
-		<div id="accounting-inputs" class="accounting-item">
-			<p id="accounting-quiz-text">Accounting Quizes</p>
-			<span class="hr-custom"></span>
-			<div id="quiz-input"></div>
-			<div id="show-answer"></div>
-			<span class="hr-custom"></span>
-			<button id="formula-quiz" class="accounting-quiz-button" value="formula-quiz">Formula Quiz</button>
-			<button id="acronym-quiz" class="accounting-quiz-button" value="acronym-quiz">Acronym Quiz</button>
-			<button id="exit-quiz" class="accounting-quiz-button" value="exit-quiz">Exit Quiz</button>
-			<br>
-		</div>
-
-		<div id="accounting-formulas-item" class="accounting-item">
-			<p>Formulas by Chapter</p>
-			<ul id="formulas-list">
-				
-			</ul>
-		</div>
-
-		<div id="accounting-notes-item" class="accounting-item">
-			<p id="accounting-notes">Note Dump</p>
-		</div>
-
-
 	</div>
 
 </body>

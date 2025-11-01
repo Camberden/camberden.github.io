@@ -91,6 +91,21 @@ camberden.onclick = function(){
 	alert("Hi! :D");
 }
 
+function generateSiteInfo() {
+	const siteInfo = document.getElementById("site-info");
+	siteInfo.innerHTML = `
+	<p>	
+		Welcome to camberden's personal page.<br>
+		Here you will find musics and musings,<br>
+		and an assortment of modest software projects.<br>
+		Whatever I place here is a morsel of what I do<br>
+		and it's my intent that what is placed here<br>
+		is meaningful enough to me to justify its existence.<br>
+	</p>
+`
+}
+generateSiteInfo();
+
 /**
  * [["var/var.html","Var Page"],],
  * @var
@@ -108,6 +123,7 @@ const sections = [
 	["lifecraft", "Lifecraft Page",],
 	["musings", "Musings Page",],
 	// ["music", "Original Music",],
+	// ["ledger", "Ledger Workspace"],
 ];
 
 const sectionTitles = document.querySelectorAll(".section-title");

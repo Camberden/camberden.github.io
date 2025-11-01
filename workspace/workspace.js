@@ -81,8 +81,6 @@ function targetPaths() {
 }
 targetPaths();
 
-
-
 // ----- PAYCARD TEMPLATE ----- //
 
 let typ = 4400.00;

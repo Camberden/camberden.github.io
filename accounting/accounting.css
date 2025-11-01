@@ -34,32 +34,14 @@
 	flex-wrap: wrap;
 	align-items: start;
 	grid-template-columns: repeat(3, 33%);
-	/* border: 0.1rem solid var(--clr-tertiary); */
-	border-radius: 1rem;
 	gap: 1rem;
 }
 
 .accounting-item {
-	flex: 1; 
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	min-width: 20rem;
-	min-height: 5rem;
-	padding: 2rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	background: rgba(144, 229, 238, 0.1);
-}
-
-#t-account-prompter {
 	flex: 1 1 100%; 
 	display: flex;
 	flex-direction: column;
-	align-items: left;
+	align-items: center; /* Aligns the Ledger Table */
 	justify-content: center;
 	min-width: 20rem;
 	min-height: 5rem;
@@ -71,42 +53,59 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
-#accounting-notes-item {
-	padding: 0%;
-	flex: 2;
-	flex-wrap: wrap;
-	flex-direction: column;
-}
-/* .accounting-item:hover {
-	border-radius: 0.5rem;
-	border-top-width: 0.5rem;
-	border-left-width: 0.5rem;
-	border-bottom-width: 0.5rem;
-	border-right-width: 0.5rem;
-	transition: border-right-width 0.3s ease-in-out;
-	transition: border-bottom-width 0.3s ease-in-out;
-} */
-
-#formulas-list {
-	list-style-type: none;
-	text-align: left;
+.accounting-sub-item {
+	display: grid;
+	grid-template-columns: repeat(2, 50%); 
+	/* padding: 1rem; */
+	background-color: var(--clr-quinary-body);
+	/* margin-inline: auto; */
+	max-height: min-content;
+	max-width: max-content;
 }
 
-#accounting-formulas-item {
-	flex: 1;
+#ledger-prompter {
+	padding: 0.2rem;
+	/* border: 0.1rem solid var(--clr-quaternary); */
+	max-width: fit-content;
+
+}
+#ledger-prompter > table {
+	padding: 1rem;
+	/* border: 0.1rem solid var(--clr-tertiary); */
+	width: 45rem;
+
+}
+#ledger-prompter > table > tr > th {
+	padding: 1rem;
+	border: 0.3rem double darkgray;
+	text-overflow: clip;
+}
+#ledger-prompter > table > tr > td {
+	padding: 0.2rem;
+	border: 0.3rem double grey;
 }
 
+#ledger-prompter > table > tr > td > input {
+	width: 100%;
+}
+
+.th1-w {
+	width: 60%;
+}
+.th2-w {
+	width: 20%;
+}
+
+input[type=text]:focus {
+	/* border-width: 0rem; */
+	background: var(--clr-grid-box);
+	color: #f59b60;
+	font-family: Permanent Marker, serif;
+	background-repeat: no-repeat;
+}
 
 /* ----- T-ACCOUNT SPECIFIC ----- */
 
-#t-card-grid {
-	display: grid;
-	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
-
-	/* margin-inline: auto; */
-	max-height: min-content;
-}
 .t-card {
 	padding: 2rem;
 }
