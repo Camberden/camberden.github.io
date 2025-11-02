@@ -1,13 +1,3 @@
-const allGridBlocks = document.querySelectorAll(".accounting-item");
-
-window.onload = function () {
-	console.log("Running!");
-	allGridBlocks.forEach(gridBlock => {
-		gridBlock.classList.add("load-padding-transition");
-	});
-}
-
-
 // ---------- LEDGER GENERATOR  ---------- //
 
 /**
@@ -27,7 +17,7 @@ function generateLedger(number) {
 	th2.setAttribute("class", "th2-w");
 	const th3 = document.createElement("th");
 	th3.setAttribute("class", "th2-w");
-	th1.innerHTML += `<button id="ledger-settings" class="accounting-button">Ledger Settings</button><select></select>`;
+	th1.innerHTML += `<button id="ledger-settings" class="accounting-button">Ledger Settings</button><select id="ledger-account-select"></select>`;
 	th2.innerHTML += "Dr.";
 	th3.innerHTML += "Cr.";
 	tr.appendChild(th1);
@@ -38,19 +28,19 @@ function generateLedger(number) {
 	for (i = 0; i < number; i++) {
 		const tr1 = document.createElement("tr");
 		const td1 = document.createElement("td");
-		td1.innerHTML = `<input type="text">`;
+		td1.innerHTML = `<input id="upper-info-row-${i + 1}" type="text">`;
 		const td2 = document.createElement("td");
-		td2.innerHTML = `<input type="text">`;
+		td2.innerHTML = `<input id="upper-debits-row-${i + 1}" type="text">`;
 		const td3 = document.createElement("td");
-		td3.innerHTML = `<input type="text">`;
+		td3.innerHTML = `<input id="upper-credits-row-${i + 1}" type="text">`;
 
 		const tr2 = document.createElement("tr");
 		const td4 = document.createElement("td");
-		td4.innerHTML = `<input type="text">`;
+		td4.innerHTML = `<input id="lower-info-row-${i + 1}" type="text">`;
 		const td5 = document.createElement("td");
-		td5.innerHTML = `<input type="text">`;
+		td5.innerHTML = `<input id="lower-debits-row-${i + 1}" type="text">`;
 		const td6 = document.createElement("td");
-		td6.innerHTML = `<input type="text">`;
+		td6.innerHTML = `<input id="lower-credits-row-${i + 1}" type="text">`;
 
 
 		tr1.appendChild(td1);
@@ -72,6 +62,29 @@ function generateLedger(number) {
 
 generateLedger(3);
 
+// ---------- STOCK WORKSHEET  ---------- //
+
+const stockDashboard = document.getElementById("stock-dashboard");
+const stockGeneratorForm = document.getElementById("stock-generator");
+
+function generateStockItem() {
+	const inputIssue = document.querySelectorAll(".stock-input");
+	let stockIssue = "";
+	if (inputIssue[0].value === "Common Stock") {
+		stockIssue = new Stock(inputIssue[0].value, inputIssue[1].value, inputIssue[2].value, inputIssue[3].value, inputIssue[4].value);
+	} else if (inputIssue[0].value === "Preferred Stock") {
+		stockIssue = new Stock(inputIssue[0].value, inputIssue[1].value, inputIssue[2].value, inputIssue[3].value, inputIssue[4].value, 
+			inputIssue[5].value, inputIssue[6].value, inputIssue[7].value, inputIssue[8].value);
+	}
+	inputIssue.forEach(item => {
+		item.value = "";
+	});
+	
+	console.log(stockIssue);
+	issueStock(stockIssue);
+}
+
+
 // ---------- T-ACCOUNT GENERATOR  ---------- //
 
 const tCardGrid = document.getElementById("t-card-grid");
@@ -80,10 +93,11 @@ let accountName = document.getElementById("account-name");
 let accounts = [];
 
 const tCardForm = document.getElementById("t-card-form");
-function handleForm(event) {
-	event.preventDefault();
-}
-tCardForm.addEventListener("submit", handleForm);
+// function handleForm(event) {
+// 	event.preventDefault();
+// }
+
+
 
 function generateTAccount(account){
 	accounts.push(account);
@@ -214,7 +228,7 @@ function calculateTCardTotals(account){
 	}
 }
 
-// ---------- BUTTON MODULES ---------- //
+// ---------- BUTTON & GLOBAL MODULES ---------- //
 
 function initAccountingButtons() {
 	document.querySelectorAll(".accounting-button").forEach(button => {
@@ -224,8 +238,8 @@ function initAccountingButtons() {
 			case "one":
 				console.log("pending!");
 			break;
-			case "two":
-				console.log("pending!");
+			case "generate-stock":
+				generateStockItem();
 			break;
 			case "generate-t-account":
 				let account = accountName.value;
@@ -236,7 +250,7 @@ function initAccountingButtons() {
 				}
 			break;
 			default:
-				console.log("pending!");
+				alert("pending!");
 			break;
 		}
 	}
@@ -251,3 +265,6 @@ function initAccountingButtons() {
 	});
 }
 initAccountingButtons();
+
+// tCardForm.addEventListener("submit", handleForm);
+// stockGeneratorForm.addEventListener("submit", handleForm);

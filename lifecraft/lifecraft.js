@@ -401,7 +401,6 @@ function generateCalendar(year) {
 }
 generateCalendar(currentYear);
 
-
 /**
  * @todo Assign c based on currentYear param
  */
@@ -434,18 +433,21 @@ function displayBiweeklyRotation(year) {
 	if (indexBase % 4 === 0) {
 		indexSum -= 1;
 	}
+	if (indexBase === 0 ) {
+		indexSum = 0;
+	}
 	let indexProper = indexSum % 14;
 	if (indexProper === 0) {
 		indexProper = 14;
 	}
-	console.log("Year: " + year);
-	console.log("Index Base: " + indexBase);
-	console.log("Index Skip: " + indexSkip);
-	console.log("Index Sum: " + indexSum);
-	console.log("Index Proper: " + indexProper);
-	console.log("Result: " + biweeklyRelations[indexProper]);
-	console.log("Includes Off? " + biweeklyRelations[indexProper].includes("Off"));
-	console.log("Includes On? " + biweeklyRelations[indexProper].includes("On"));
+	// console.log("Year: " + year);
+	// console.log("Index Base: " + indexBase);
+	// console.log("Index Skip: " + indexSkip);
+	// console.log("Index Sum: " + indexSum);
+	// console.log("Index Proper: " + indexProper);
+	// console.log("Result: " + biweeklyRelations[indexProper]);
+	// console.log("Includes Off? " + biweeklyRelations[indexProper].includes("Off"));
+	// console.log("Includes On? " + biweeklyRelations[indexProper].includes("On"));
 
 	calendarDays.forEach(calendarDay => {
 		if (indexProper > 14) {

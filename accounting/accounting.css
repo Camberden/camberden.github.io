@@ -55,13 +55,18 @@
 
 .accounting-sub-item {
 	display: grid;
-	grid-template-columns: repeat(2, 50%); 
+	/* grid-template-columns: repeat(2, 50%);  */
 	/* padding: 1rem; */
 	background-color: var(--clr-quinary-body);
 	/* margin-inline: auto; */
 	max-height: min-content;
 	max-width: max-content;
 }
+
+
+
+/* ----- LEDGER SPECIFIC ----- */
+
 
 #ledger-prompter {
 	padding: 0.2rem;
@@ -102,6 +107,15 @@ input[type=text]:focus {
 	color: #f59b60;
 	font-family: Permanent Marker, serif;
 	background-repeat: no-repeat;
+}
+
+/* ----- STOCK WORKSHEET SPECIFIC ----- */
+
+#stock-prompter {
+	padding: 0.2rem;
+	/* border: 0.1rem solid var(--clr-quaternary); */
+	max-width: fit-content;
+
 }
 
 /* ----- T-ACCOUNT SPECIFIC ----- */

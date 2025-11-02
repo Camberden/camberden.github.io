@@ -1,5 +1,5 @@
 window.onload = () => console.log("Running!");
-const latestUpdatePushed = "Saturday November 1st, 2025";
+const latestUpdatePushed = "Sunday November 2nd, 2025";
 const splitDate = latestUpdatePushed.split(" ");
 
 /**
@@ -154,5 +154,4 @@ function initSections() {
 
 	});
 }
-
 initSections();

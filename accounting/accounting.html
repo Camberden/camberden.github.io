@@ -48,11 +48,27 @@
 
 	<div class="accounting-grid">
 
-		<div id="general-ledger"class="accounting-item">
+		<div id="general-ledger" class="accounting-item">
 			<p>General Ledger Workspace</p>
 			<div class="accounting-sub-item">
 
 				<div id="ledger-prompter"></div>
+
+			</div>
+		</div>
+
+			<div id="stock-worksheet"class="accounting-item">
+			<p>Stock Worksheet</p>
+			<div id="stock-prompter" class="accounting-sub-item">
+				<form id="stock-generator">
+					<input id="stock-gen-type" class="stock-input" type="text" placeholder="stockType">
+					<input id="stock-gen-amount" class="stock-input" type="text" placeholder="amount">
+					<input id="stock-gen-par-value" class="stock-input" type="text" placeholder="parValue">
+					<input id="stock-gen-book-value" class="stock-input" type="text" placeholder="bookValue">
+					<input id="stock-gen-fair-value" class="stock-input" type="text" placeholder="fairValue">
+					<br><br>
+					<button id="generate-stock" class="accounting-button">Generate!</button>
+				</form><br>
 
 			</div>
 		</div>
