@@ -31,18 +31,17 @@
 	padding: 2rem;
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
+	/* flex-wrap: wrap; */
 	align-items: start;
-	grid-template-columns: repeat(3, 33%);
 	gap: 1rem;
 }
 
 .accounting-item {
-	flex: 1 1 100%; 
-	display: flex;
-	flex-direction: column;
+	/* flex: 1 1 100%;  */
+	/* display: flex; */
+	flex-direction: row;
 	align-items: center; /* Aligns the Ledger Table */
-	justify-content: center;
+	/* justify-content: center; */
 	min-width: 20rem;
 	min-height: 5rem;
 	padding: 2rem;
@@ -54,7 +53,7 @@
 }
 
 .accounting-sub-item {
-	display: grid;
+	/* flex: 33%; */
 	/* grid-template-columns: repeat(2, 50%);  */
 	/* padding: 1rem; */
 	background-color: var(--clr-quinary-body);
@@ -77,7 +76,7 @@
 #ledger-prompter > table {
 	padding: 1rem;
 	/* border: 0.1rem solid var(--clr-tertiary); */
-	width: 45rem;
+	width: fit-content; /* Fixed Table Sizing Issue! */
 
 }
 #ledger-prompter > table > tr > th {
@@ -112,10 +111,9 @@ input[type=text]:focus {
 /* ----- STOCK WORKSHEET SPECIFIC ----- */
 
 #stock-prompter {
-	padding: 0.2rem;
+	/* padding: 0.2rem; */
 	/* border: 0.1rem solid var(--clr-quaternary); */
-	max-width: fit-content;
-
+	/* max-width: fit-content; */
 }
 
 /* ----- T-ACCOUNT SPECIFIC ----- */

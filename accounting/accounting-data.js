@@ -1,5 +1,7 @@
 /* exported chartOfAccounts accountingData */
 
+
+// TODO: Make parsable questions in prose.
 /*
 	`
 	| ACC
@@ -10,6 +12,9 @@
 	`
 	,
 */
+
+// TODO: Divide workspace into multiple segments with, say, 3 modules per segment.
+
 
 let commonStockOutstanding = 0;
 let earningsPerShare = 0;
@@ -63,11 +68,9 @@ class PreferredStock extends Stock {
 
 /**
  * @var Stock[]
+ * @var PreferredStock
  */
 const totalStocks = [];
-
-
-// TODO Generate stock from form:
 
 
 /**
@@ -78,29 +81,30 @@ function issueStock(stockItem) {
 	totalStocks.push(stockItem);
 	if (stockItem.stockType === "Common Stock") {
 		commonStockOutstanding += stockItem.amount;
-	} 
+		document.getElementById("common-stock-outstanding").innerHTML = commonStockOutstanding;
+	}
 }
 
 /**
- * 
  * @param {Stock} stockItem 
  */
 function generateStockDescription(stockItem) {
 	let stockDescription = ``;
-	switch(stockItem){
+	switch(stockItem.stockType) {
 		case "Common Stock":
-			stockDescription = `${stockItem.amount} shares of ${stockItem.parValue} par ${stockItem.stockType} (${stockItem.fairValue} fair value)`;
+			stockDescription = `${stockItem.amount} shares of $${stockItem.parValue} par ${stockItem.stockType} ($${stockItem.fairValue} fair value)`;
 		break;
 		case "Preferred Stock":
-			stockDescription = `${stockItem.amount} shares of ${stockItem.parValue} par ${stockItem.stockType} (${stockItem.fairValue} fair value)`;
+			stockDescription = `${stockItem.amount} shares of $${stockItem.parValue} par ${stockItem.stockType} ($${stockItem.fairValue} fair value)`;
+		break;
 		default:
-			stockDescription = `${stockItem.stockType}`;
+			stockDescription = `${stockItem.amount} shares of $${stockItem.parValue} par ${stockItem.stockType} ($${stockItem.fairValue} fair value)`;
 		break;
 	}
-	const stockDescriptionDisplay = document.getElementById("stock-hover");
-	stockDescriptionDisplay.textContent = stockDescription;
+	return stockDescription;
+	// const stockDescriptionDisplay = document.getElementById("stock-hover");
+	// stockDescriptionDisplay.textContent = stockDescription;
 }
-
 
 const chartOfAccounts = [
 	"Cash",

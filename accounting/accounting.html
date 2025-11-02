@@ -31,8 +31,8 @@
 				<a href="../assets/refdoc-acc221-schedule.pdf" target="_blank">Schedule</a>
 			</div>
 			<div class="quick-links-buttons">
-				<button class="accounting-button" value="previous">Previous</button>
-				<button class="accounting-button" value="next">Next</button>
+				<button id="previous-grid" class="accounting-button" value="previous">Previous</button>
+				<button id="next-grid" class="accounting-button" value="next">Next</button>
 			</div>
 			<div class="quick-links-grid-item">
 				<div id="accounting-course">ACC221</div>
@@ -57,23 +57,54 @@
 			</div>
 		</div>
 
-			<div id="stock-worksheet"class="accounting-item">
+		<div id="stock-worksheet"class="accounting-item">
 			<p>Stock Worksheet</p>
 			<div id="stock-prompter" class="accounting-sub-item">
 				<form id="stock-generator">
-					<input id="stock-gen-type" class="stock-input" type="text" placeholder="stockType">
+					<!-- <input id="stock-gen-type" class="stock-input" type="text" placeholder="stockType"> -->
+					 <select id="stock-gen-type" class="stock-input" type="text" placeholder="stockType">
+						<option></option>
+					</select>
 					<input id="stock-gen-amount" class="stock-input" type="text" placeholder="amount">
 					<input id="stock-gen-par-value" class="stock-input" type="text" placeholder="parValue">
 					<input id="stock-gen-book-value" class="stock-input" type="text" placeholder="bookValue">
 					<input id="stock-gen-fair-value" class="stock-input" type="text" placeholder="fairValue">
 					<br><br>
+					<div id="preferred-parameters" style="display:none">
+						<input id="stock-gen-convertible" class="stock-input" type="text" placeholder="convertible">
+						<input id="stock-gen-cumulative" class="stock-input" type="text" placeholder="cumulative">
+						<input id="stock-gen-participating" class="stock-input" type="text" placeholder="participating">
+						<input id="stock-gen-callable" class="stock-input" type="text" placeholder="callable">
+					</div>
 					<button id="generate-stock" class="accounting-button">Generate!</button>
 				</form><br>
-
 			</div>
 		</div>
 
-			<div id="t-account-prompter" class="accounting-item">
+					<div class="accounting-item">
+							<p>Total Holdings</p>
+							<hr class="hr-custom">
+							
+								<p>Common Stock Outstanding: <span id="common-stock-outstanding"></span></p>
+								<p>Earnings Per Share: <span id="earnings-per-share"></span></p>
+								<p>Diluted Earnings Per Share: <span id="diluted-earnings-per-share"></span></p>
+								<hr class="hr-custom">
+							<div class="accounting-sub-item">
+								<ul id="holdings-list" style="font-family: 'Courier New', Courier, monospace; text-align: left;">
+
+								</ul>
+							</div>
+					</div>
+
+	</div>
+
+	<div class="accounting-grid">
+
+		<div class="accounting-item"></div>
+
+		<div class="accounting-item"></div>
+
+		<div id="t-account-prompter" class="accounting-item">
 				<p>T-Account Generation</p>
 				<form id="t-card-form">
 					<input id="account-name" type="text" placeholder="Account Name!">
@@ -82,7 +113,8 @@
 				</form><br>
 				<div id="t-card-grid" class="accounting-sub-item">
 				</div>
-			</div>
+		</div>
+
 	</div>
 
 </body>

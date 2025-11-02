@@ -60,12 +60,31 @@ function generateLedger(number) {
 	document.getElementById("ledger-prompter").appendChild(table);
 }
 
-generateLedger(3);
+generateLedger(2);
 
 // ---------- STOCK WORKSHEET  ---------- //
 
 const stockDashboard = document.getElementById("stock-dashboard");
 const stockGeneratorForm = document.getElementById("stock-generator");
+const stockTypes = ["Common Stock", "Preferred Stock", "Treasury Stock"];
+
+function populateOptions() {
+	stockTypes.forEach(type => {
+		let option = document.createElement("option");
+		let text = document.createTextNode(type);
+		option.appendChild(text);
+		document.getElementById("stock-gen-type").appendChild(option);
+	});
+
+	document.getElementById("stock-gen-type").onchange = function () {
+		if (document.getElementById("stock-gen-type").value === "Preferred Stock") {
+			document.getElementById("preferred-parameters").style.display = "block";
+		} else {
+			document.getElementById("preferred-parameters").style.display = "none";
+		}
+	}
+}
+populateOptions();
 
 function generateStockItem() {
 	const inputIssue = document.querySelectorAll(".stock-input");
@@ -82,22 +101,40 @@ function generateStockItem() {
 	
 	console.log(stockIssue);
 	issueStock(stockIssue);
+	const li = document.createElement("li");
+	const text = document.createTextNode(generateStockDescription(stockIssue));
+	li.appendChild(text);
+	document.getElementById("holdings-list").appendChild(li);
 }
 
+function demoStockDataset() {
+	const stockMix = [
+	s1 = new Stock("Common Stock", 1000, 1, 1, 2),
+	s2 = new Stock("Common Stock", 5000, 1, 1, 2),
+	s3 = new Stock("Common Stock", 2500, 1, 1, 2),
+	s4 = new Stock("Common Stock", 4250, 1, 1, 2),
+	s5 = new PreferredStock("Preferred Stock", 1750, 5, 5, 12, false, true, true, false),
+	s6 = new PreferredStock("Preferred Stock", 900, 5, 5, 12, true, false, true, false),
+	s7 = new PreferredStock("Preferred Stock", 100, 5, 5, 11, false, false, false, false),
+	];
+	stockMix.forEach(stockItem => {
+		issueStock(stockItem);
+		console.log(totalStocks.at(6));
+		const li = document.createElement("li");
+		const text = document.createTextNode(generateStockDescription(stockItem));
+		li.appendChild(text);
+		document.getElementById("holdings-list").appendChild(li);
+	});
+}
+demoStockDataset();
 
 // ---------- T-ACCOUNT GENERATOR  ---------- //
 
 const tCardGrid = document.getElementById("t-card-grid");
 const generateTAccountButton = document.getElementById("generate-t-account-button");
+const tCardForm = document.getElementById("t-card-form");
 let accountName = document.getElementById("account-name");
 let accounts = [];
-
-const tCardForm = document.getElementById("t-card-form");
-// function handleForm(event) {
-// 	event.preventDefault();
-// }
-
-
 
 function generateTAccount(account){
 	accounts.push(account);
@@ -228,15 +265,37 @@ function calculateTCardTotals(account){
 	}
 }
 
-// ---------- BUTTON & GLOBAL MODULES ---------- //
+// ---------- BUTTON MODULES ---------- //
+
+let displayedWorkspace = 0;
+function selectAccountingGrid(selection) {
+	const accountingGrids = document.querySelectorAll(".accounting-grid");
+		if (selection >= accountingGrids.length) {
+			selection = 0;
+		}
+		if (selection < 0) {
+			selection = accountingGrids.length - 1;
+		}
+		accountingGrids.forEach(grid => {
+			grid.style.display = "none";
+		});
+	displayedWorkspace = selection;
+	console.log("displayedworkspace " + displayedWorkspace);
+	console.log("selection " + selection);
+	accountingGrids[selection].style.display = "flex";
+	}
+selectAccountingGrid(displayedWorkspace);
 
 function initAccountingButtons() {
 	document.querySelectorAll(".accounting-button").forEach(button => {
 	button.onclick = function() {
 		ButtonInterface.buttonOnClick(button);
 		switch(button.id) {
-			case "one":
-				console.log("pending!");
+			case "next-grid":
+				selectAccountingGrid(++displayedWorkspace);
+			break;
+			case "previous-grid":
+				selectAccountingGrid(--displayedWorkspace);
 			break;
 			case "generate-stock":
 				generateStockItem();
@@ -265,6 +324,3 @@ function initAccountingButtons() {
 	});
 }
 initAccountingButtons();
-
-// tCardForm.addEventListener("submit", handleForm);
-// stockGeneratorForm.addEventListener("submit", handleForm);

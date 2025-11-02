@@ -147,6 +147,7 @@ function highlightSelectedTrack() {
 }
 highlightSelectedTrack();
 
+// USEFUL FUNCTION !
 function depopulateTrackList() {
 	while (trackList.lastChild) {
 		trackList.removeChild(trackList.lastChild);
