@@ -1,6 +1,5 @@
 /* exported chartOfAccounts accountingData */
 
-
 // TODO: Make parsable questions in prose.
 /*
 	`
@@ -13,8 +12,99 @@
 	,
 */
 
-// TODO: Divide workspace into multiple segments with, say, 3 modules per segment.
+/* ---------- GENERAL ACCOUNTING CONCEPTS ---------- */
 
+const chartOfAccounts = [
+	"Cash",
+	"Accounts Receivable",
+	"Accounts Payable",
+	"Inventory",
+	"Cost of Goods Sold",
+	"Sales Revenue",
+	"Common Stock",
+	"Preferred Stock",
+
+];
+const accountingData = [
+	"Diluted EPS",
+	"Preferred Stock",
+];
+
+const accountingProcessingCycle = [
+	"Obtain information about external transactions from source documents",
+	"Analyze the transaction",
+	"Record the transaction in a journal",
+	"Post from the journal to the general ledger accounts",
+
+	"Prepare an unadjusted trial balance",
+	"Record adjusting entries and post to the general ledger accounts",
+	"Prepare an adjusted trial balance",
+	"Prepare financial statements",
+
+	"Close the temporary accounts to retained earnings",
+	"Prepare a post-closing trial balances"
+];
+
+/* ---------- BALANCE SHEET ---------- */
+
+let entityName = "Demonstration Entity";
+let balanceSheetDate = "November 2nd, 2025";
+let balanceSheetTemplate = `
+
+<h5>${entityName}</h5>
+<p>Balance Sheet</p>
+<p>At ${balanceSheetDate}</p>
+<hr class="hr-custom">
+<div id="balance-sheet-assets">
+<p>Assets</p>
+<span>Current Assets:</span>
+<ul id="balance-sheet-current-assets">
+
+</ul>
+<p>Total Current Assets:</p>
+<p>Property, Plant, & Equipment:</p>
+<ul id="balance-sheet-ppe-assets">
+
+
+</ul>
+<span>Total Assets:</span>
+<hr class="hr-custom">
+</div>
+
+<div id="balance-sheet-liabilities-and-shareholders-equity">
+<p>Liabilities & Shareholders' Equity</p>
+
+<span>Current Liabilities:</span>
+<ul id="balance-sheet-current-liabilities">
+
+</ul>
+<span>Total Current Liabilities</span>
+<span>Long-term Liabilities</span>
+<ul id="balance-sheet-noncurrent-liabilities>
+
+</ul>
+<p>Shareholders' Equity</p>
+<ul id="balance-sheet-shareholders-equity>
+
+</ul>
+<p>Total Shareholders' Equity:</p>
+<p>Total Liabilities & Shareholders' Equity:</p>
+<hr class="hr-custom">
+</div>
+
+`;
+
+function generateBalanceSheetTemplate() {
+	document.getElementById("balance-sheet").innerHTML = balanceSheetTemplate;
+}
+
+/* ---------- INCOME STATEMENT ---------- */
+/* ---------- STATEMENT OF CASH FLOWS ---------- */
+
+
+
+
+/* ---------- STATEMENT OF SHAREHOLDERS' EQUITY ---------- */
 
 let commonStockOutstanding = 0;
 let earningsPerShare = 0;
@@ -105,19 +195,3 @@ function generateStockDescription(stockItem) {
 	// const stockDescriptionDisplay = document.getElementById("stock-hover");
 	// stockDescriptionDisplay.textContent = stockDescription;
 }
-
-const chartOfAccounts = [
-	"Cash",
-	"Accounts Receivable",
-	"Accounts Payable",
-	"Inventory",
-	"Cost of Goods Sold",
-	"Sales Revenue",
-	"Common Stock",
-	"Preferred Stock",
-
-];
-const accountingData = [
-	"Diluted EPS",
-	"Preferred Stock",
-];

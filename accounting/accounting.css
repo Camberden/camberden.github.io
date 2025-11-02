@@ -27,6 +27,51 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
+#accounting-overview {
+	padding: 2rem;
+	display: flex;
+	flex-direction: row;
+	/* flex-wrap: wrap; */
+	align-items: start;
+	gap: 1rem;
+}
+
+#balance-sheet {
+	font-size: smaller;
+	font-family: 'Courier New', Courier, monospace;
+	line-height: 0.2rem;
+	flex-direction: row;
+	align-items: left; /* Aligns the Ledger Table */
+	text-align: left;
+	/* justify-content: center; */
+	min-width: 25%;
+	min-height: 5rem;
+}
+
+#income-statement {
+	flex-direction: row;
+	align-items: center; /* Aligns the Ledger Table */
+	/* justify-content: center; */
+	min-width: 25%;
+	min-height: 5rem;
+}
+
+#statement-of-shareholders-equity {
+	flex-direction: row;
+	align-items: center; /* Aligns the Ledger Table */
+	/* justify-content: center; */
+	min-width: 25%;
+	min-height: 5rem;
+}
+
+#statement-of-cash-flows {
+	flex-direction: row;
+	align-items: center; /* Aligns the Ledger Table */
+	/* justify-content: center; */
+	min-width: 25%;
+	min-height: 5rem;
+}
+
 .accounting-grid {
 	padding: 2rem;
 	display: flex;
@@ -110,10 +155,10 @@ input[type=text]:focus {
 
 /* ----- STOCK WORKSHEET SPECIFIC ----- */
 
-#stock-prompter {
-	/* padding: 0.2rem; */
-	/* border: 0.1rem solid var(--clr-quaternary); */
-	/* max-width: fit-content; */
+#holdings-list {
+	font-size: smaller;
+	list-style-type: none;
+	text-indent: -2rem;
 }
 
 /* ----- T-ACCOUNT SPECIFIC ----- */

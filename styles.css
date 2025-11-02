@@ -187,9 +187,10 @@ a:hover {
 }
 
 .hr-custom {
+	
 	width: 5rem;
 	height: 0.1rem;
-	margin: 0.5rem;
+	/* margin: 0.5rem; */
 	/* border: 0.1rem solid var(--clr-quaternary); */
 	background-color: var(--clr-secondary);
 }

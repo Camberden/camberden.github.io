@@ -1,5 +1,7 @@
 // ---------- LEDGER GENERATOR  ---------- //
 
+generateBalanceSheetTemplate();
+
 /**
  * 
  * @param {number} number Amount of double-entry lines to generate
