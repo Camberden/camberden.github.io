@@ -48,16 +48,36 @@
 
 	<div class="accounting-grid">
 
-		<div id="general-ledger" class="accounting-item">
-			<p>General Ledger Workspace</p>
+		<div id="journal" class="accounting-item">
+			<p>General Journal</p>
 			<div class="accounting-sub-item">
 
-				<div id="ledger-prompter"></div>
+				<div id="journal-table"></div>
 
 			</div>
 		</div>
 
-		<div id="stock-worksheet"class="accounting-item">
+		<div class="accounting-item">
+			<p>General Ledger</p>
+			<div class="accounting-sub-item">
+
+				<div id="general-ledger"></div>
+
+			</div>
+
+		</div>
+
+		<div class="accounting-item">
+		</div>
+
+	</div>
+
+	<div class="accounting-grid">
+
+		<div class="accounting-item">
+		</div>
+
+		<div id="stock-worksheet" class="accounting-item">
 			<p>Stock Worksheet</p>
 			<div id="stock-prompter" class="accounting-sub-item">
 				<form id="stock-generator">
@@ -81,29 +101,32 @@
 			</div>
 		</div>
 
-					<div class="accounting-item">
-							<p>Total Holdings</p>
-							<hr class="hr-custom">
-							
-								<p>Common Stock Outstanding: <span id="common-stock-outstanding"></span></p>
-								<p>Earnings Per Share: <span id="earnings-per-share"></span></p>
-								<span>Formula</span>
-								<p>Diluted Earnings Per Share: <span id="diluted-earnings-per-share"></span></p>
-								<hr class="hr-custom">
-							<div class="accounting-sub-item">
-								<ul id="holdings-list" style="font-family: 'Courier New', Courier, monospace; text-align: left;">
+		<div class="accounting-item">
+				<p>Total Holdings</p>
+				<hr class="hr-custom">
+				
+					<p>Common Stock Outstanding: <span id="common-stock-outstanding"></span></p>
+					<p>Earnings Per Share: <span id="earnings-per-share"></span></p>
+					<span>Formula</span>
+					<p>Diluted Earnings Per Share: <span id="diluted-earnings-per-share"></span></p>
+					<hr class="hr-custom">
+				<div class="accounting-sub-item">
+					<ul id="holdings-list" style="font-family: 'Courier New', Courier, monospace; text-align: left;">
 
-								</ul>
-							</div>
-					</div>
+					</ul>
+				</div>
+		</div>
+
 
 	</div>
 
 	<div class="accounting-grid">
 
-		<div class="accounting-item"></div>
+		<div class="accounting-item">
+		</div>
 
-		<div class="accounting-item"></div>
+		<div class="accounting-item">
+		</div>
 
 		<div id="t-account-prompter" class="accounting-item">
 				<p>T-Account Generation</p>

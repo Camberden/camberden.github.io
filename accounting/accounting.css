@@ -64,14 +64,6 @@
 
 /* ---------- MAIN SEGMENT ---------- */
 
-.debit {
-
-}
-
-.credit {
-	text-indent: 1rem;
-}
-
 .asset {
 	color: cornflowerblue;
 }
@@ -140,32 +132,32 @@
 
 
 
-/* ----- LEDGER SPECIFIC ----- */
+/* ----- JOURNAL & LEDGER SPECIFIC ----- */
 
 
-#ledger-prompter {
+#journal-table {
 	padding: 0.2rem;
 	/* border: 0.1rem solid var(--clr-quaternary); */
 	max-width: fit-content;
 
 }
-#ledger-prompter > table {
+#journal-table > table {
 	padding: 1rem;
 	/* border: 0.1rem solid var(--clr-tertiary); */
 	width: fit-content; /* Fixed Table Sizing Issue! */
 
 }
-#ledger-prompter > table > tr > th {
+#journal-table > table > tr > th {
 	padding: 1rem;
 	border: 0.3rem double darkgray;
 	text-overflow: clip;
 }
-#ledger-prompter > table > tr > td {
+#journal-table > table > tr > td {
 	padding: 0.2rem;
 	border: 0.3rem double grey;
 }
 
-#ledger-prompter > table > tr > td > input {
+#journal-table > table > tr > td > input {
 	width: 100%;
 }
 

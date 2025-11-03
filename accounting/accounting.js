@@ -2,14 +2,10 @@
 
 generateBalanceSheetTemplate();
 
-let generalLedger = [];
-
 /**
  * @param {number} number Amount of double-entry lines to generate
  */
-function generateLedger(number) {
-	const div = document.createElement("div");
-	// specify the above div
+function generateJournal(number) {
 	const table = document.createElement("table");
 	// table.setAttribute("class", "entry");
 	// specify the above table
@@ -20,7 +16,7 @@ function generateLedger(number) {
 	th2.setAttribute("class", "th2-w");
 	const th3 = document.createElement("th");
 	th3.setAttribute("class", "th2-w");
-	th1.innerHTML += `<button id="ledger-settings" class="accounting-button">Ledger Settings</button><select id="ledger-account-select"></select>`;
+	th1.innerHTML += `<button id="post-to-ledger" class="accounting-button">Post to Ledger</button>`;
 	th2.innerHTML += "Dr.";
 	th3.innerHTML += "Cr.";
 	tr.appendChild(th1);
@@ -45,7 +41,7 @@ function generateLedger(number) {
 		table.appendChild(tr1);
 
 	}
-	document.getElementById("ledger-prompter").appendChild(table);
+	document.getElementById("journal-table").appendChild(table);
 }
 
 /**
@@ -74,12 +70,13 @@ function journalize(entries) {
 			
 			j++;
 		}
-	}
+}
 
-generateLedger(5);
+generateJournal(10);
 const stagedEntries = [];
 const demoEntries = [
-	demoCash = new JournalEntry("Cash", "Asset", "Debit", 100),
+	demoCash = new JournalEntry("Cash", "Asset", "Debit", 75),
+	demoSupplies = new JournalEntry("Supplies", "Asset", "Debit", 25),
  	demoAccountsPayable = new JournalEntry("Accounts Payable", "Liability", "Credit", 100),
 ];
 demoEntries.forEach(entry => {
@@ -88,6 +85,72 @@ demoEntries.forEach(entry => {
 console.log(stagedEntries);
 journalize(stagedEntries);
 console.log("info row for indent: " + document.getElementById(`info-row-${1}`).value);
+
+function initGeneralLedger() {
+	const table = document.createElement("table");
+	table.setAttribute("id", "ledger-table");
+	const tr = document.createElement("tr");
+	const th1 = document.createElement("th");
+	th1.setAttribute("class", "th1-w");
+	const th2 = document.createElement("th");
+	th2.setAttribute("class", "th2-w");
+	const th3 = document.createElement("th");
+	th3.setAttribute("class", "th2-w");
+	th1.innerHTML += `Account`;
+	th2.innerHTML += "Dr.";
+	th3.innerHTML += "Cr.";
+	tr.appendChild(th1);
+	tr.appendChild(th2);
+	tr.appendChild(th3);
+	table.appendChild(tr);
+	document.getElementById("general-ledger").appendChild(table);
+}
+
+initGeneralLedger();
+
+/**
+ * @param JournalEntry
+ */
+function commitToLedger(entry) {
+
+	const tr = document.createElement("tr");
+	// tr.setAttribute("class", "journal-entry");
+	const td1 = document.createElement("td");
+	const td2 = document.createElement("td");
+	const td3 = document.createElement("td");
+
+	td1.textContent = entry.account;
+	if (entry.debitOrCredit == "Debit") {
+		td2.textContent = entry.balance;
+		td1.style.textIndent = "none";
+
+	}
+	if (entry.debitOrCredit == "Credit") {
+		td3.textContent = entry.balance;
+		td1.style.textIndent = "1rem";
+	}
+
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+
+	document.getElementById("ledger-table").appendChild(tr);
+
+}
+
+
+/**
+ * @param {JournalEntry[]} entries 
+ */
+function postToLedger(entries) {
+	entries.forEach(entry => {
+		postEntry(entry);
+		commitToLedger(entry)
+		entries.pop();
+	});
+	document.getElementById("journal-table").innerHTML = "";
+	generateJournal(10);
+}
 
 
 // ---------- STOCK WORKSHEET  ---------- //
@@ -159,7 +222,6 @@ demoStockDataset();
 // ---------- T-ACCOUNT GENERATOR  ---------- //
 
 const tCardGrid = document.getElementById("t-card-grid");
-const generateTAccountButton = document.getElementById("generate-t-account-button");
 const tCardForm = document.getElementById("t-card-form");
 let accountName = document.getElementById("account-name");
 let accounts = [];
@@ -325,6 +387,8 @@ function initAccountingButtons() {
 			case "previous-grid":
 				selectAccountingGrid(--displayedWorkspace);
 			break;
+			case "post-to-ledger":
+				postToLedger(stagedEntries);
 			case "generate-stock":
 				generateStockItem();
 			break;

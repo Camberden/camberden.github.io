@@ -58,11 +58,7 @@ class JournalEntry {
 		this.debitOrCredit = debitOrCredit;
 		this.balance = balance;
 	}
-	}
-	function get(param) {
-		return this.account;
-	}
-
+}
 
 /**
  * @type JournalEntry[]
