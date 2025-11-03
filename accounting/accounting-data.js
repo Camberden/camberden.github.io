@@ -1,4 +1,4 @@
-/* exported chartOfAccounts accountingData */
+/* exported chartOfAccounts */
 
 // TODO: Make parsable questions in prose.
 /*
@@ -18,16 +18,14 @@ const chartOfAccounts = [
 	"Cash",
 	"Accounts Receivable",
 	"Accounts Payable",
+	"Restricted Cash",
 	"Inventory",
 	"Cost of Goods Sold",
 	"Sales Revenue",
+	"Service Revenue",
 	"Common Stock",
 	"Preferred Stock",
-
-];
-const accountingData = [
-	"Diluted EPS",
-	"Preferred Stock",
+	"Treasury Stock",
 ];
 
 const accountingProcessingCycle = [
@@ -44,6 +42,60 @@ const accountingProcessingCycle = [
 	"Close the temporary accounts to retained earnings",
 	"Prepare a post-closing trial balances"
 ];
+
+// placing balance in dr. or cr. gives a class that determines deb or cred
+class JournalEntry {
+	/**
+	 * 
+	 * @param {string} account - Account name in Chart of Accounts
+	 * @param {string} accountType - Asset, Liability, Equity, Revenue, or Expense?
+	 * @param {string} debitOrCredit - Debit or Credit?
+	 * @param {number} balance - Carrying balance of entry
+	 */
+	constructor(account, accountType, debitOrCredit, balance) {
+		this.account = account;
+		this.accountType = accountType;
+		this.debitOrCredit = debitOrCredit;
+		this.balance = balance;
+	}
+	}
+	function get(param) {
+		return this.account;
+	}
+
+
+/**
+ * @type JournalEntry[]
+ */
+let journalEntries = [];
+/**
+ * @param {JournalEntry[]} entryArray 
+ */
+function accountingFormula(entryArray) {
+	let sumAssets = 0;
+	let sumLiabilities = 0;
+	let sumEquities = 0;
+	entryArray.forEach(entry => {
+		if(entry.accountType === "Asset" && entry.debitOrCredit === "Debit") {
+			sumAssets += parseInt(entry.balance);
+		}
+		if(entry.accountType === "Liability" && entry.debitOrCredit === "Credit") {
+			sumLiabilities += parseInt(entry.balance);
+		}
+		if(entry.accountType === "Equity" && entry.debitOrCredit === "Credit") {
+			sumEquities += parseInt(entry.balance);
+		}
+	});
+	console.log(`Assets (${sumAssets}) = Liabilities (${sumLiabilities}) + Equity (${sumEquities})`);
+	return (sumAssets === sumLiabilities + sumEquities);
+}
+
+/**
+ * @param {JournalEntry} entry 
+ */
+function postEntry(entry) {
+	journalEntries.push(entry);
+}
 
 /* ---------- BALANCE SHEET ---------- */
 
@@ -157,11 +209,9 @@ class PreferredStock extends Stock {
 }
 
 /**
- * @var Stock[]
- * @var PreferredStock
+ * @type Stock[]
  */
 const totalStocks = [];
-
 
 /**
  * 
@@ -170,7 +220,7 @@ const totalStocks = [];
 function issueStock(stockItem) {
 	totalStocks.push(stockItem);
 	if (stockItem.stockType === "Common Stock") {
-		commonStockOutstanding += stockItem.amount;
+		commonStockOutstanding = parseInt(stockItem.amount) + parseInt(commonStockOutstanding);
 		document.getElementById("common-stock-outstanding").innerHTML = commonStockOutstanding;
 	}
 }

@@ -2,8 +2,9 @@
 
 generateBalanceSheetTemplate();
 
+let generalLedger = [];
+
 /**
- * 
  * @param {number} number Amount of double-entry lines to generate
  */
 function generateLedger(number) {
@@ -29,40 +30,65 @@ function generateLedger(number) {
 
 	for (i = 0; i < number; i++) {
 		const tr1 = document.createElement("tr");
+		tr1.setAttribute("class", "journal-entry");
 		const td1 = document.createElement("td");
-		td1.innerHTML = `<input id="upper-info-row-${i + 1}" type="text">`;
+		td1.innerHTML = `<input id="info-row-${i}" class="journal-${i}" type="text"><span id="indent-entry-${i}"></span>`;
 		const td2 = document.createElement("td");
-		td2.innerHTML = `<input id="upper-debits-row-${i + 1}" type="text">`;
+		td2.innerHTML = `<input id="debits-row-${i}" class="journal-${i}" type="text">`;
 		const td3 = document.createElement("td");
-		td3.innerHTML = `<input id="upper-credits-row-${i + 1}" type="text">`;
-
-		const tr2 = document.createElement("tr");
-		const td4 = document.createElement("td");
-		td4.innerHTML = `<input id="lower-info-row-${i + 1}" type="text">`;
-		const td5 = document.createElement("td");
-		td5.innerHTML = `<input id="lower-debits-row-${i + 1}" type="text">`;
-		const td6 = document.createElement("td");
-		td6.innerHTML = `<input id="lower-credits-row-${i + 1}" type="text">`;
-
+		td3.innerHTML = `<input id="credits-row-${i}" class="journal-${i}" type="text">`;
 
 		tr1.appendChild(td1);
 		tr1.appendChild(td2);
 		tr1.appendChild(td3);
 
-		tr2.appendChild(td4);
-		tr2.appendChild(td5);
-		tr2.appendChild(td6);
-
-		
-
 		table.appendChild(tr1);
-		table.appendChild(tr2);
 
 	}
 	document.getElementById("ledger-prompter").appendChild(table);
 }
 
-generateLedger(2);
+/**
+ * 
+ * @param {JournalEntry[]} entries 
+ */
+function journalize(entries) {
+	for (let i = 0, j = 0; i < document.querySelectorAll(".journal-entry").length - 1; i++) {
+		if (j === entries.length) {
+			console.log(entries.length);
+			console.log("Ended journal import!");
+			break;
+		}
+		console.log("Triggering empty row? " + (document.getElementById(`info-row-${i}`).value == ""));
+		if (document.getElementById(`info-row-${i}`).value == "" && entries[j].debitOrCredit == "Debit") {
+				document.getElementById(`info-row-${i}`).value = entries[j].account;
+				document.getElementById(`debits-row-${i}`).value = entries[j].balance;
+				document.getElementById(`credits-row-${i}`).value = "";
+				document.getElementById(`info-row-${i}`).style.textIndent = "0rem";
+		} else if (document.getElementById(`info-row-${i}`).value == "" && entries[j].debitOrCredit == "Credit") {
+				document.getElementById(`info-row-${i}`).value = entries[j].account;
+				document.getElementById(`debits-row-${i}`).value = "";
+				document.getElementById(`credits-row-${i}`).value = entries[j].balance;
+				document.getElementById(`info-row-${i}`).style.textIndent = "1rem";
+			}
+			
+			j++;
+		}
+	}
+
+generateLedger(5);
+const stagedEntries = [];
+const demoEntries = [
+	demoCash = new JournalEntry("Cash", "Asset", "Debit", 100),
+ 	demoAccountsPayable = new JournalEntry("Accounts Payable", "Liability", "Credit", 100),
+];
+demoEntries.forEach(entry => {
+	stagedEntries.push(entry);
+});
+console.log(stagedEntries);
+journalize(stagedEntries);
+console.log("info row for indent: " + document.getElementById(`info-row-${1}`).value);
+
 
 // ---------- STOCK WORKSHEET  ---------- //
 
@@ -91,7 +117,7 @@ populateOptions();
 function generateStockItem() {
 	const inputIssue = document.querySelectorAll(".stock-input");
 	let stockIssue = "";
-	if (inputIssue[0].value === "Common Stock") {
+	if (inputIssue[0].value === "Common Stock" || inputIssue[0].value === "Treasury Stock") {
 		stockIssue = new Stock(inputIssue[0].value, inputIssue[1].value, inputIssue[2].value, inputIssue[3].value, inputIssue[4].value);
 	} else if (inputIssue[0].value === "Preferred Stock") {
 		stockIssue = new Stock(inputIssue[0].value, inputIssue[1].value, inputIssue[2].value, inputIssue[3].value, inputIssue[4].value, 

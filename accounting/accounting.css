@@ -27,6 +27,71 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
+.accounting-grid {
+	padding: 2rem;
+	display: flex;
+	flex-direction: row;
+	/* flex-wrap: wrap; */
+	align-items: start;
+	gap: 1rem;
+}
+
+.accounting-item {
+	/* flex: 1 1 100%;  */
+	/* display: flex; */
+	flex-direction: row;
+	align-items: center; /* Aligns the Ledger Table */
+	/* justify-content: center; */
+	min-width: 20rem;
+	min-height: 5rem;
+	padding: 2rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+.accounting-sub-item {
+	/* flex: 33%; */
+	/* grid-template-columns: repeat(2, 50%);  */
+	/* padding: 1rem; */
+	background-color: var(--clr-quinary-body);
+	/* margin-inline: auto; */
+	max-height: min-content;
+	max-width: max-content;
+}
+
+/* ---------- MAIN SEGMENT ---------- */
+
+.debit {
+
+}
+
+.credit {
+	text-indent: 1rem;
+}
+
+.asset {
+	color: cornflowerblue;
+}
+
+.liability {
+	color: goldenrod;
+}
+
+.equity {
+	color: greenyellow;
+}
+
+.revenue {
+	color: green;
+}
+
+.expense {
+	color: lightcoral;
+}
+
 #accounting-overview {
 	padding: 2rem;
 	display: flex;
@@ -72,40 +137,6 @@
 	min-height: 5rem;
 }
 
-.accounting-grid {
-	padding: 2rem;
-	display: flex;
-	flex-direction: row;
-	/* flex-wrap: wrap; */
-	align-items: start;
-	gap: 1rem;
-}
-
-.accounting-item {
-	/* flex: 1 1 100%;  */
-	/* display: flex; */
-	flex-direction: row;
-	align-items: center; /* Aligns the Ledger Table */
-	/* justify-content: center; */
-	min-width: 20rem;
-	min-height: 5rem;
-	padding: 2rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	background: rgba(144, 229, 238, 0.1);
-}
-
-.accounting-sub-item {
-	/* flex: 33%; */
-	/* grid-template-columns: repeat(2, 50%);  */
-	/* padding: 1rem; */
-	background-color: var(--clr-quinary-body);
-	/* margin-inline: auto; */
-	max-height: min-content;
-	max-width: max-content;
-}
 
 
 
