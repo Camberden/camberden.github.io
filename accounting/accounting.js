@@ -146,7 +146,6 @@ function postToLedger(entries) {
 	for (let i = 0; i < entries.length; i++) {
 		writeLedgerLine(entries[i]);
 	}
-	stagedEntries = [];
 	document.getElementById("journal-module").innerHTML = "";
 	generateJournal(10);
 	initAccountingButtons();
@@ -223,11 +222,26 @@ demoStockDataset();
 
 const tCardGrid = document.getElementById("t-card-grid");
 const tCardForm = document.getElementById("t-card-form");
-let accountName = document.getElementById("account-name");
-let accounts = [];
+let tAccountName = document.getElementById("t-account-name");
 
+/**
+ * 
+ * @param {JournalEntry[]} entries 
+ */
+function sendLedgerToTAccounts(entries) {
+	// const uniqueAccounts = gatherUniqueAccountNames();
+	// console.log(uniqueAccounts);
+	for (let i = 0; i < entries.length; i++) {
+			populateTAccountsFromLedger(entries[i]);
+	}
+}
+
+/**
+ * 
+ * @param {string} account 
+ */
 function generateTAccount(account){
-	accounts.push(account);
+	// accounts.push(account);
 	const div = document.createElement("div");
 	div.setAttribute("class", "t-card");
 	const table = document.createElement("table");
@@ -318,6 +332,106 @@ function generateTAccount(account){
 	enableTCardCalculator();
 }
 
+/**
+ * 
+ * @param {JournalEntry} entry 
+ */
+function populateTAccountsFromLedger(entry){
+	const div = document.createElement("div");
+	div.setAttribute("class", "t-card");
+	const table = document.createElement("table");
+	table.setAttribute("id", `${entry.account}-table`);
+	const sameAccounts = gatherCountOfSameAccounts(entry.account);
+	console.log("Same Accounts: " + sameAccounts);
+	console.log("Entry Info: " + entry.account + " " + entry.accountType + " " + entry.debitOrCredit + " " + entry.balance);
+
+	for (let i = 0; i <= sameAccounts; i++) {
+		if (i === 0){
+			let tr = document.createElement("tr");
+			let th1 = document.createElement("th");
+			let th2 = document.createElement("th");
+			let th3 = document.createElement("th");
+			let th4 = document.createElement("th");
+			let text1 = document.createTextNode("ref#");
+			let text2 = document.createTextNode("dr.");
+			let text3 = document.createTextNode("cr.");
+			let text4 = document.createTextNode("ref#");
+
+			let hr = document.createElement("hr");
+			let span = document.createElement("span");
+			let text = document.createTextNode(entry.account);
+			span.appendChild(text);
+			th1.appendChild(text1);
+			th2.appendChild(text2);
+			th3.appendChild(text3);
+			th4.appendChild(text4);
+			tr.appendChild(th1);
+			tr.appendChild(th2);
+			tr.appendChild(th3);
+			tr.appendChild(th4);
+			table.appendChild(tr);
+			div.appendChild(span);
+			div.appendChild(hr);
+
+		} else {
+		let tr = document.createElement("tr");
+		let td1 = document.createElement("td");
+		let td2 = document.createElement("td");
+		let td3 = document.createElement("td");
+		let td4 = document.createElement("td");
+		let inp1 = document.createElement("input");
+		let inp2 = document.createElement("input");
+		let inp3 = document.createElement("input");
+		let inp4 = document.createElement("input");
+		inp1.setAttribute("type", "text");
+		inp2.setAttribute("type", "text");
+		inp2.setAttribute("id", `${entry.account}-debits-${i}`);
+		inp2.setAttribute("class", "t-value");
+		entry.debitOrCredit === "Debit" ? inp2.setAttribute("value", `${entry.balance}`) : 0; // First Instance of Debits
+		inp3.setAttribute("type", "text");
+		inp3.setAttribute("id", `${entry.account}-credits-${i}`);
+		inp3.setAttribute("class", "t-value");
+		entry.debitOrCredit === "Credit" ? inp3.setAttribute("value", `${entry.balance}`) : 0; // First Instance of Debits
+		inp4.setAttribute("type", "text");
+		inp1.setAttribute("style", "width:3rem;");
+		inp2.setAttribute("style", "width:4rem;");
+		inp3.setAttribute("style", "width:4rem;");
+		inp4.setAttribute("style", "width:3rem;");
+		td1.appendChild(inp1);
+		td2.appendChild(inp2);
+		td3.appendChild(inp3);
+		td4.appendChild(inp4);
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		tr.appendChild(td4);
+		table.appendChild(tr);
+		}
+	}
+	const tr = document.createElement("tr");
+	const td1 = document.createElement("td");
+	const td2 = document.createElement("td");
+	const td3 = document.createElement("td");
+	const td4 = document.createElement("td");
+	const debitsText = document.createTextNode("Debits");
+	const creditsText = document.createTextNode("Credits");
+	td1.appendChild(debitsText);
+	td2.setAttribute("id", `${entry.account}-debits-total`);
+	td3.setAttribute("id", `${entry.account}-credits-total`);
+	td4.appendChild(creditsText);
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+	tr.appendChild(td4);
+	table.appendChild(tr);
+	div.appendChild(table);
+	div.setAttribute("style", "text-align: left;");
+	tCardGrid.appendChild(div);
+	enableTCardCalculator();
+	calculateTCardTotals(entry.account);
+
+}
+
 function enableTCardCalculator(){
 	document.querySelectorAll(".t-value").forEach(val => {
 		let tId = val.id.toString();
@@ -329,7 +443,7 @@ function enableTCardCalculator(){
 		val.onsubmit = function(){
 			calculateTCardTotals(tId);
 		}
-	})
+	});
 }
 
 function calculateTCardTotals(account){
@@ -384,7 +498,6 @@ function displayAccountingModal(selection) {
 	const pageHTML = document.querySelector("html");
 	selection ? accountingModal.style.display = "block" : accountingModal.style.display = "none";
 	selection ? pageHTML.style.height = "150%" : pageHTML.style.height = "100%";
-
 }
 
 function initAccountingButtons() {
@@ -407,15 +520,18 @@ function initAccountingButtons() {
 			case "post-to-ledger":
 				journalize();
 				postToLedger(stagedEntries);
+				sendLedgerToTAccounts(stagedEntries);
+				stagedEntries = []
+
 			case "generate-stock":
 				generateStockItem();
 			break;
 			case "generate-t-account":
-				let account = accountName.value;
-				if (!accounts.includes(account)) {
-					console.log(account);
-					generateTAccount(account);
-					accountName.innerHTML = "";
+				let customAccountName = tAccountName.value;
+				let existantAccounts = gatherUniqueAccountNames();
+				if (!existantAccounts.includes(customAccountName)) {
+					generateTAccount(customAccountName);
+					tAccountName.innerHTML = "";
 				}
 			break;
 			default:

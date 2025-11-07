@@ -48,28 +48,28 @@
 	</div>
 
 	<div id="accounting-modal">
-		<p>Financial Statements</p>
-		<button id="hide-accounting-modal" class="accounting-button">Modal Test</button>
+		<button id="hide-accounting-modal" class="accounting-button">Hide</button>
 		<main id="accounting-overview">
-		<div id="balance-sheet">
 
-		</div>
-		<div id="income-statement">
-			<p>Income Statement</p>
-			<hr class="hr-custom">
+			<div id="balance-sheet">
 
-		</div>
-		<div id="statement-of-shareholders-equity">
-			<p>Statement of Shareholders' Equity</p>
-			<hr class="hr-custom">
+			</div>
+			<div id="income-statement">
+				<p>Income Statement</p>
+				<hr class="hr-custom">
 
-		</div>
-		<div id="statement-of-cash-flows">
-			<p>Statement of Cash Flows</p>
-			<hr class="hr-custom">
+			</div>
+			<div id="statement-of-shareholders-equity">
+				<p>Statement of Shareholders' Equity</p>
+				<hr class="hr-custom">
 
-		</div>
-	</main>
+			</div>
+			<div id="statement-of-cash-flows">
+				<p>Statement of Cash Flows</p>
+				<hr class="hr-custom">
+
+			</div>
+		</main>
 	</div>
 
 	<div class="accounting-grid">
@@ -93,8 +93,16 @@
 
 		</div>
 
-		<!-- <div class="accounting-item">
-		</div> -->
+		<div id="t-account-prompter" class="accounting-item">
+				<p>T-Account Generation</p>
+				<form id="t-card-form">
+					<input id="t-account-name" type="text" placeholder="Account Name!">
+					<br><br>
+					<button id="generate-t-account" class="accounting-button">Generate!</button>
+				</form><br>
+				<div id="t-card-grid" class="accounting-sub-item">
+				</div>
+		</div>
 
 	</div>
 
@@ -143,27 +151,6 @@
 				</div>
 		</div>
 
-
-	</div>
-
-	<div class="accounting-grid">
-
-		<div class="accounting-item">
-		</div>
-
-		<div class="accounting-item">
-		</div>
-
-		<div id="t-account-prompter" class="accounting-item">
-				<p>T-Account Generation</p>
-				<form id="t-card-form">
-					<input id="account-name" type="text" placeholder="Account Name!">
-					<br><br>
-					<button id="generate-t-account" class="accounting-button">Generate!</button>
-				</form><br>
-				<div id="t-card-grid" class="accounting-sub-item">
-				</div>
-		</div>
 
 	</div>
 

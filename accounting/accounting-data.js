@@ -75,6 +75,39 @@ const journalEntries = [];
 let stagedEntries = [];
 
 /**
+ * @description Gathers all Journal Entry account names
+ * @returns number[]
+ */
+function gatherUniqueAccountNames() {
+	/**
+	 * @type string[]
+	 */
+	const accountNames = []
+	journalEntries.forEach(entry => {
+		if (!accountNames.includes(entry.account)) {
+			accountNames.push(entry.account);
+		}
+	});
+	return accountNames;
+}
+/**
+ * @description Returns the amount entries of the same account
+ * @param {string} name 
+ * @returns number
+ */
+function gatherCountOfSameAccounts(name) {
+	let c = 0;
+	journalEntries.forEach(entry => {
+		console.log(entry);
+		if (name === entry.account) {
+			c++;
+		}
+	});
+	return c;
+}
+
+
+/**
  * @description Loads a JournalEntry[] into stagedEntries
  * @returns stagedEntries
  */
@@ -127,15 +160,14 @@ function writeLedgerLine(entry) {
 	document.getElementById("ledger-table").appendChild(tr);
 }
 
-
 /**
  * @param {JournalEntry[]} entryArray 
  */
-function accountingFormula(entryArray) {
+function accountingFormula(entries) {
 	let sumAssets = 0;
 	let sumLiabilities = 0;
 	let sumEquities = 0;
-	entryArray.forEach(entry => {
+	entries.forEach(entry => {
 		if(entry.accountType === "Asset" && entry.debitOrCredit === "Debit") {
 			sumAssets += parseInt(entry.balance);
 		}
