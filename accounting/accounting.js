@@ -376,11 +376,28 @@ function selectAccountingGrid(selection) {
 	}
 selectAccountingGrid(displayedWorkspace);
 
+/**
+ * @param {boolean} selection 
+ */
+function displayAccountingModal(selection) {
+	const accountingModal = document.getElementById("accounting-modal");
+	const pageHTML = document.querySelector("html");
+	selection ? accountingModal.style.display = "block" : accountingModal.style.display = "none";
+	selection ? pageHTML.style.height = "150%" : pageHTML.style.height = "100%";
+
+}
+
 function initAccountingButtons() {
 	document.querySelectorAll(".accounting-button").forEach(button => {
 	button.onclick = function() {
 		ButtonInterface.buttonOnClick(button);
 		switch(button.id) {
+			case "display-accounting-modal":
+				displayAccountingModal(true);
+			break;
+			case "hide-accounting-modal":
+				displayAccountingModal(false);
+			break;
 			case "next-grid":
 				selectAccountingGrid(++displayedWorkspace);
 			break;
