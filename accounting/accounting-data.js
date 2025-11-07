@@ -1,5 +1,3 @@
-/* exported chartOfAccounts */
-
 // TODO: Make parsable questions in prose.
 /*
 	`
@@ -43,10 +41,11 @@ const accountingProcessingCycle = [
 	"Prepare a post-closing trial balances"
 ];
 
-// placing balance in dr. or cr. gives a class that determines deb or cred
+
+/* ---------- JOURNAL ENTRY & GENERAL LEDGER MODULE ---------- */
+
 class JournalEntry {
 	/**
-	 * 
 	 * @param {string} account - Account name in Chart of Accounts
 	 * @param {string} accountType - Asset, Liability, Equity, Revenue, or Expense?
 	 * @param {string} debitOrCredit - Debit or Credit?
@@ -63,7 +62,72 @@ class JournalEntry {
 /**
  * @type JournalEntry[]
  */
-let journalEntries = [];
+const journalEntries = [];
+
+/**
+ * @type JournalEntry[]
+ * @description 
+ * - Non-constant Array of Journal Entries currently written on Ledger Workspace
+ * - These are not yet committed to the General Ledger Module
+ * - Fire postToLedger() to send from stagedEntries to journalEntries
+ * @see journalEntries
+ */
+let stagedEntries = [];
+
+/**
+ * @description Loads a JournalEntry[] into stagedEntries
+ * @returns stagedEntries
+ */
+function generateDemoJournalEntries() {
+	const demoEntries = [
+		demoCash = new JournalEntry("Cash", "Asset", "Debit", 75),
+		demoSupplies = new JournalEntry("Supplies", "Asset", "Debit", 25),
+		demoAccountsPayable = new JournalEntry("Accounts Payable", "Liability", "Credit", 100),
+	];
+	// demoEntries.forEach(entry => {
+	// 	stagedEntries.push(entry);
+	// });
+
+	// console.log(stagedEntries);
+	return(demoEntries);
+}
+
+/**
+ * @param JournalEntry
+ * @description
+ * - Writes one line in the General Ledger
+ * - Pushes each entry into the journalEntries Array
+ */
+function writeLedgerLine(entry) {
+
+	const tr = document.createElement("tr");
+	const td1 = document.createElement("td");
+	const td2 = document.createElement("td");
+	const td3 = document.createElement("td");
+
+	td1.textContent = entry.account;
+	if (entry.debitOrCredit === "Debit") {
+		td1.style.textIndent = "none";
+		td2.textContent = entry.balance;
+		td3.textContent = "";
+
+	}
+	if (entry.debitOrCredit === "Credit") {
+		td1.style.textIndent = "1rem";
+		td2.textContent = "";
+		td3.textContent = entry.balance;
+	}
+
+	tr.appendChild(td1);
+	tr.appendChild(td2);
+	tr.appendChild(td3);
+
+	journalEntries.push(entry);
+
+	document.getElementById("ledger-table").appendChild(tr);
+}
+
+
 /**
  * @param {JournalEntry[]} entryArray 
  */
@@ -84,13 +148,6 @@ function accountingFormula(entryArray) {
 	});
 	console.log(`Assets (${sumAssets}) = Liabilities (${sumLiabilities}) + Equity (${sumEquities})`);
 	return (sumAssets === sumLiabilities + sumEquities);
-}
-
-/**
- * @param {JournalEntry} entry 
- */
-function postEntry(entry) {
-	journalEntries.push(entry);
 }
 
 /* ---------- BALANCE SHEET ---------- */

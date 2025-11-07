@@ -135,29 +135,30 @@
 /* ----- JOURNAL & LEDGER SPECIFIC ----- */
 
 
-#journal-table {
+#journal-module {
 	padding: 0.2rem;
 	/* border: 0.1rem solid var(--clr-quaternary); */
 	max-width: fit-content;
 
 }
-#journal-table > table {
+#journal-module > table {
 	padding: 1rem;
 	/* border: 0.1rem solid var(--clr-tertiary); */
 	width: fit-content; /* Fixed Table Sizing Issue! */
 
 }
-#journal-table > table > tr > th {
+#journal-module > table > tr > th {
 	padding: 1rem;
 	border: 0.3rem double darkgray;
 	text-overflow: clip;
 }
-#journal-table > table > tr > td {
+#journal-module > table > tr > td {
+	/* width: fit-content; */
 	padding: 0.2rem;
 	border: 0.3rem double grey;
 }
 
-#journal-table > table > tr > td > input {
+#journal-module > table > tr > td > input {
 	width: 100%;
 }
 

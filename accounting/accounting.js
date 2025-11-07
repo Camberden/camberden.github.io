@@ -1,91 +1,11 @@
+
 // ---------- LEDGER GENERATOR  ---------- //
 
 generateBalanceSheetTemplate();
 
 /**
- * @param {number} number Amount of double-entry lines to generate
+ * @description - Generates the General Ledger Module
  */
-function generateJournal(number) {
-	const table = document.createElement("table");
-	// table.setAttribute("class", "entry");
-	// specify the above table
-	const tr = document.createElement("tr");
-	const th1 = document.createElement("th");
-	th1.setAttribute("class", "th1-w");
-	const th2 = document.createElement("th");
-	th2.setAttribute("class", "th2-w");
-	const th3 = document.createElement("th");
-	th3.setAttribute("class", "th2-w");
-	th1.innerHTML += `<button id="post-to-ledger" class="accounting-button">Post to Ledger</button>`;
-	th2.innerHTML += "Dr.";
-	th3.innerHTML += "Cr.";
-	tr.appendChild(th1);
-	tr.appendChild(th2);
-	tr.appendChild(th3);
-	table.appendChild(tr);
-
-	for (i = 0; i < number; i++) {
-		const tr1 = document.createElement("tr");
-		tr1.setAttribute("class", "journal-entry");
-		const td1 = document.createElement("td");
-		td1.innerHTML = `<input id="info-row-${i}" class="journal-${i}" type="text"><span id="indent-entry-${i}"></span>`;
-		const td2 = document.createElement("td");
-		td2.innerHTML = `<input id="debits-row-${i}" class="journal-${i}" type="text">`;
-		const td3 = document.createElement("td");
-		td3.innerHTML = `<input id="credits-row-${i}" class="journal-${i}" type="text">`;
-
-		tr1.appendChild(td1);
-		tr1.appendChild(td2);
-		tr1.appendChild(td3);
-
-		table.appendChild(tr1);
-
-	}
-	document.getElementById("journal-table").appendChild(table);
-}
-
-/**
- * 
- * @param {JournalEntry[]} entries 
- */
-function journalize(entries) {
-	for (let i = 0, j = 0; i < document.querySelectorAll(".journal-entry").length - 1; i++) {
-		if (j === entries.length) {
-			console.log(entries.length);
-			console.log("Ended journal import!");
-			break;
-		}
-		console.log("Triggering empty row? " + (document.getElementById(`info-row-${i}`).value == ""));
-		if (document.getElementById(`info-row-${i}`).value == "" && entries[j].debitOrCredit == "Debit") {
-				document.getElementById(`info-row-${i}`).value = entries[j].account;
-				document.getElementById(`debits-row-${i}`).value = entries[j].balance;
-				document.getElementById(`credits-row-${i}`).value = "";
-				document.getElementById(`info-row-${i}`).style.textIndent = "0rem";
-		} else if (document.getElementById(`info-row-${i}`).value == "" && entries[j].debitOrCredit == "Credit") {
-				document.getElementById(`info-row-${i}`).value = entries[j].account;
-				document.getElementById(`debits-row-${i}`).value = "";
-				document.getElementById(`credits-row-${i}`).value = entries[j].balance;
-				document.getElementById(`info-row-${i}`).style.textIndent = "1rem";
-			}
-			
-			j++;
-		}
-}
-
-generateJournal(10);
-const stagedEntries = [];
-const demoEntries = [
-	demoCash = new JournalEntry("Cash", "Asset", "Debit", 75),
-	demoSupplies = new JournalEntry("Supplies", "Asset", "Debit", 25),
- 	demoAccountsPayable = new JournalEntry("Accounts Payable", "Liability", "Credit", 100),
-];
-demoEntries.forEach(entry => {
-	stagedEntries.push(entry);
-});
-console.log(stagedEntries);
-journalize(stagedEntries);
-console.log("info row for indent: " + document.getElementById(`info-row-${1}`).value);
-
 function initGeneralLedger() {
 	const table = document.createElement("table");
 	table.setAttribute("id", "ledger-table");
@@ -105,51 +25,131 @@ function initGeneralLedger() {
 	table.appendChild(tr);
 	document.getElementById("general-ledger").appendChild(table);
 }
-
 initGeneralLedger();
 
 /**
- * @param JournalEntry
+ * @param {number} number Amount of single-entry lines to generate
+ * @description - Creates the Journal Module with specified amount of entries
  */
-function commitToLedger(entry) {
-
+function generateJournal(number) {
+	
+	const table = document.createElement("table");
+	// table.setAttribute("id", "journal-table");
 	const tr = document.createElement("tr");
-	// tr.setAttribute("class", "journal-entry");
-	const td1 = document.createElement("td");
-	const td2 = document.createElement("td");
-	const td3 = document.createElement("td");
+	const th1 = document.createElement("th");
+	th1.setAttribute("class", "th1-w");
+	const th2 = document.createElement("th");
+	th2.setAttribute("class", "th2-w");
+	const th3 = document.createElement("th");
+	th3.setAttribute("class", "th2-w");
+	th1.innerHTML += `<button id="post-to-ledger" class="accounting-button">Post to Ledger</button>`;
+	th2.innerHTML += "Dr.";
+	th3.innerHTML += "Cr.";
+	tr.appendChild(th1);
+	tr.appendChild(th2);
+	tr.appendChild(th3);
+	table.appendChild(tr);
 
-	td1.textContent = entry.account;
-	if (entry.debitOrCredit == "Debit") {
-		td2.textContent = entry.balance;
-		td1.style.textIndent = "none";
-
+	for (i = 0; i < number; i++) {
+		
+		const tr = document.createElement("tr");
+		tr.setAttribute("class", "journal-entry");
+		const td1 = document.createElement("td");
+		td1.innerHTML = `<input id="info-row-${i}" class="journal-${i}" type="text"><span id="indent-entry-${i}"></span>`;
+		const td2 = document.createElement("td");
+		td2.innerHTML = `<input id="debits-row-${i}" class="journal-${i}" type="text">`;
+		const td3 = document.createElement("td");
+		td3.innerHTML = `<input id="credits-row-${i}" class="journal-${i}" type="text">`;
+		tr.appendChild(td1);
+		tr.appendChild(td2);
+		tr.appendChild(td3);
+		table.appendChild(tr);
 	}
-	if (entry.debitOrCredit == "Credit") {
-		td3.textContent = entry.balance;
-		td1.style.textIndent = "1rem";
-	}
 
-	tr.appendChild(td1);
-	tr.appendChild(td2);
-	tr.appendChild(td3);
-
-	document.getElementById("ledger-table").appendChild(tr);
+	document.getElementById("journal-module").appendChild(table);
 
 }
+generateJournal(10);
 
+/**
+ * @todo Find type by Chart of Accounts
+ * @description 
+ * - Parses each staged journal entry from the Journal Module into a JournalEntry object
+ * @see stagedEntries
+ * @returns stagedEntries
+ */
+function journalize() {
+	for (let i = 0; i < document.querySelectorAll(".journal-entry").length - 1; i++) {
+		const entry = new JournalEntry();
+
+		if (document.getElementById(`info-row-${i}`).value !== "") {
+				entry.account = document.getElementById(`info-row-${i}`).value.toString();
+				// TODO: FIND TYPE BY CHART OF ACCOUNTS OR INPUT
+				entry.accountType = "Asset";
+				if (document.getElementById(`debits-row-${i}`).value > 0) {
+					entry.balance = document.getElementById(`debits-row-${i}`).value;
+					entry.debitOrCredit = "Debit";
+				} else {
+					entry.balance = document.getElementById(`credits-row-${i}`).value;
+					entry.debitOrCredit = "Credit";
+				}
+				stagedEntries.push(entry);
+				// console.log(stagedEntries[i].account+stagedEntries[i].accountType+stagedEntries[i].balance+stagedEntries[i].debitOrCredit);
+		}		
+	}
+}
+
+/**
+ * @param {JournalEntry[]} entries
+ * @description 
+ * - Parses each staged journal entry into the Journal Module
+ * - Can take a function returning a demonstration data set
+ * @see stagedEntries
+ * @example journalize(stagedEntries);
+ * @example journalize(generateDemoJournalEntries());
+ */
+function journalizeImportedEntries(entries) {
+	for (let i = 0, j = 0; i < document.querySelectorAll(".journal-entry").length - 1; i++) {
+		if (j === entries.length) {
+			console.log(entries.length);
+			console.log("Ended journal import!");
+			break;
+		}
+		if (document.getElementById(`info-row-${i}`).value === "" && entries[j].debitOrCredit === "Debit") {
+				document.getElementById(`info-row-${i}`).value = entries[j].account;
+				document.getElementById(`debits-row-${i}`).value = entries[j].balance;
+				document.getElementById(`credits-row-${i}`).value = "";
+				document.getElementById(`info-row-${i}`).style.textIndent = "0rem";
+		} else if (document.getElementById(`info-row-${i}`).value === "" && entries[j].debitOrCredit === "Credit") {
+				document.getElementById(`info-row-${i}`).value = entries[j].account;
+				document.getElementById(`debits-row-${i}`).value = "";
+				document.getElementById(`credits-row-${i}`).value = entries[j].balance;
+				document.getElementById(`info-row-${i}`).style.textIndent = "1rem";
+				//console.log("info row for indent: " + document.getElementById(`info-row-${j}`).value);
+			}
+			
+			j++;
+		}
+}
+journalizeImportedEntries(generateDemoJournalEntries());
 
 /**
  * @param {JournalEntry[]} entries 
+ * @description
+ * - Posts current Journal Entry Module data to the General Ledger
+ * - Refreshes stagedEntries array
+ * @fires writeLedgerLine()
+ * @fires generateJournal(10)
+ * @fires initAccountingButtons() - Due to retargetting of Post to Ledger button necessary
  */
 function postToLedger(entries) {
-	entries.forEach(entry => {
-		postEntry(entry);
-		commitToLedger(entry)
-		entries.pop();
-	});
-	document.getElementById("journal-table").innerHTML = "";
+	for (let i = 0; i < entries.length; i++) {
+		writeLedgerLine(entries[i]);
+	}
+	stagedEntries = [];
+	document.getElementById("journal-module").innerHTML = "";
 	generateJournal(10);
+	initAccountingButtons();
 }
 
 
@@ -388,6 +388,7 @@ function initAccountingButtons() {
 				selectAccountingGrid(--displayedWorkspace);
 			break;
 			case "post-to-ledger":
+				journalize();
 				postToLedger(stagedEntries);
 			case "generate-stock":
 				generateStockItem();
