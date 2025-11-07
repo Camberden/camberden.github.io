@@ -17,14 +17,13 @@
 	flex: 1;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: auto;
 	justify-content: center;
 
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
-	background: rgba(144, 229, 238, 0.1);
+	background: var(--clr-grid-box);
 }
 
 .accounting-grid {
@@ -196,13 +195,6 @@
 .th2-w {
 	width: 20%;
 }
-input[type=text]:focus {
-	/* border-width: 0rem; */
-	background: var(--clr-grid-box);
-	color: #f59b60;
-	font-family: Permanent Marker, serif;
-	background-repeat: no-repeat;
-}
 
 /* ----- STOCK WORKSHEET SPECIFIC ----- */
 
@@ -224,27 +216,32 @@ input[type=text]:focus {
 
 /* ----- T-ACCOUNT SPECIFIC ----- */
 
-.t-card {
-	padding: 2rem;
+#t-card-grid {
+	max-height: 30rem;
+	overflow: scroll;
+	overflow-anchor: auto;
 }
-.t-card > table {
-	border-width: 0rem;
+
+:where(#t-card-grid) :where(tr, th, td) {
+	border: 1px double var(--clr-quinary-body);
+	height: 2rem;
 }
-.t-card > table > tr > th {
-	padding: 0rem;
-	border-style: none;
-	border-color: var(--clr-secondary);
-	text-overflow: clip;
+
+/* ----- MISCELLANEOUS ----- */
+
+input[type=text] {
+	background-color: var(--clr-grid-box);
+	color: #f59b60;
+	font-family: Permanent Marker, serif;
+	font-size: 1rem;
+	border: none;
+	width: 8rem;
 }
-.t-card > table > tr > td {
-	padding: 0rem;
-	border-top: none;
-	border-bottom: none;
-	border-left: none;
-	border-right: none;
-}
-input[type="text"] {
-	border-width: 0rem;
+
+input[type=text]:focus {
 	background: var(--clr-grid-box);
-	color: var(--clr-primary);
+	background-color: var(--clr-quinary-body);
+	color: var(--clr-tertiary);
+	font-family: Permanent Marker, serif;
+	background-repeat: no-repeat;
 }

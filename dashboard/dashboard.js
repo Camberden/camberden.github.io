@@ -39,6 +39,8 @@ const allCosts = expenseNames
 const allCheckboxes = expenseNames
 	.map(str => document.getElementById(str + "-check"));
 
+console.log(allCheckboxes);
+
 allCosts.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
 
 

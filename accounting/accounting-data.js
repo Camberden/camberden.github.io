@@ -21,9 +21,17 @@ const chartOfAccounts = [
 	"Cost of Goods Sold",
 	"Sales Revenue",
 	"Service Revenue",
+	// Equity
 	"Common Stock",
 	"Preferred Stock",
 	"Treasury Stock",
+	"Paid-in Capital—Excess of Par",
+	"Paid-in Capital—Excess of Par, Common",
+	"Paid-in Capital—Excess of Par, Preferred",
+	"Paid-in Capital—Share Repurchase",
+	"Paid-in Capital—Stock Options",
+	"Paid-in Capital—Expiration of Stock Options",
+
 ];
 
 const accountingProcessingCycle = [
@@ -90,6 +98,7 @@ function gatherUniqueAccountNames() {
 	});
 	return accountNames;
 }
+
 /**
  * @description Returns the amount entries of the same account
  * @param {string} name 
@@ -106,7 +115,6 @@ function gatherCountOfSameAccounts(name) {
 	return c;
 }
 
-
 /**
  * @description Loads a JournalEntry[] into stagedEntries
  * @returns stagedEntries
@@ -117,12 +125,15 @@ function generateDemoJournalEntries() {
 		demoSupplies = new JournalEntry("Supplies", "Asset", "Debit", 25),
 		demoAccountsPayable = new JournalEntry("Accounts Payable", "Liability", "Credit", 100),
 	];
-	// demoEntries.forEach(entry => {
-	// 	stagedEntries.push(entry);
-	// });
 
-	// console.log(stagedEntries);
-	return(demoEntries);
+	const acc221Ch19UnexercizedOptions = [
+		a = new JournalEntry("Cash", "Asset", "Debit", 175),
+		b = new JournalEntry("Paid-in Capital—Stock Options", "Equity", "Debit", 40),
+		c = new JournalEntry("Common Stock", "Equity", "Credit", 5),
+		d = new JournalEntry("Paid-in Capital—Excess of Par", "Equity", "Credit", 210),
+	]
+
+	return(acc221Ch19UnexercizedOptions);
 }
 
 /**
@@ -184,13 +195,13 @@ function accountingFormula(entries) {
 
 /* ---------- BALANCE SHEET ---------- */
 
-let entityName = "Demonstration Entity";
-let balanceSheetDate = "November 2nd, 2025";
-let balanceSheetTemplate = `
-
+function generateStatementTemplates() {
+	let entityName = "Demonstration";
+	const statementTemplates = [
+	balanceSheetTemplate = `
 <h5>${entityName}</h5>
 <p>Balance Sheet</p>
-<p>At ${balanceSheetDate}</p>
+<p>At ${new Date().toLocaleDateString("en-US")}</p>
 <hr class="hr-custom">
 <div id="balance-sheet-assets">
 <p>Assets</p>
@@ -228,18 +239,20 @@ let balanceSheetTemplate = `
 <p>Total Liabilities & Shareholders' Equity:</p>
 <hr class="hr-custom">
 </div>
+`,	incomeStatementTemplate = `
+`,	statementOfCashFlowsTemplate = `
+`,	statementOfShareholdersEquityTemplate = `
+`,
+	];
+	document.getElementById("balance-sheet").innerHTML = statementTemplates[0];
+	document.getElementById("income-statement").innerHTML = statementTemplates[1];
+	document.getElementById("statement-of-cash-flows").innerHTML = statementTemplates[2];
+	document.getElementById("statement-of-shareholders-equity").innerHTML = statementTemplates[3];
 
-`;
-
-function generateBalanceSheetTemplate() {
-	document.getElementById("balance-sheet").innerHTML = balanceSheetTemplate;
 }
 
 /* ---------- INCOME STATEMENT ---------- */
 /* ---------- STATEMENT OF CASH FLOWS ---------- */
-
-
-
 
 /* ---------- STATEMENT OF SHAREHOLDERS' EQUITY ---------- */
 
@@ -305,8 +318,8 @@ const totalStocks = [];
 function issueStock(stockItem) {
 	totalStocks.push(stockItem);
 	if (stockItem.stockType === "Common Stock") {
-		commonStockOutstanding = parseInt(stockItem.amount) + parseInt(commonStockOutstanding);
-		document.getElementById("common-stock-outstanding").innerHTML = commonStockOutstanding;
+		commonStockOutstanding = parseFloat(stockItem.amount).toFixed(2) + parseFloat(commonStockOutstanding).toFixed(2);
+		document.getElementById("common-stock-outstanding").innerHTML = `$ ${parseFloat(commonStockOutstanding).toFixed(2)}`;
 	}
 }
 

@@ -36,7 +36,7 @@ input[type=text]:focus {
 	flex: 1;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: auto;
 	justify-content: center;
 
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
@@ -108,7 +108,7 @@ input[type=text]:focus {
 }
 
 #balance {
-	margin-left: 24px;
+	margin-left: 2rem;
 }
 
 .automated-payment {
@@ -383,7 +383,7 @@ body {
 .dashboard-item {
 	padding: 1rem;
 }
-} */
+*/
 
 @media screen and (max-device-width: 500px) {
 

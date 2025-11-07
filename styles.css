@@ -294,7 +294,7 @@ a:hover {
 	flex: 1;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: auto;
 	justify-content: center;
 
 	/* box-sizing: border-box; */
@@ -303,6 +303,14 @@ a:hover {
 	border-style: double;
 	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
+}
+
+.quick-links-grid-item:first-child {
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	border-top: none;
+	border-bottom: none;
 }
 
 .quick-links-grid-item {
@@ -315,7 +323,7 @@ a:hover {
 	border-left: none;
 }
 
-.quick-links-grid-item:first-child {
+.quick-links-buttons:first-child {
 	padding: 1rem;
 	border-width: 0.3rem;
 	border-style: double;
@@ -325,8 +333,13 @@ a:hover {
 }
 
 .quick-links-buttons {
-	padding-left: 1rem;
-	padding-right: 1rem;
+	padding: 1rem;
+	border-width: 0.3rem;
+	border-style: double;
+	border-color: grey;
+	border-top: none;
+	border-bottom: none;
+	border-left: none;
 }
 
 /* ----- SITE-WIDE BUTTON COMPONENT ----- */

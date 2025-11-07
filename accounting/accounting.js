@@ -1,7 +1,4 @@
-
 // ---------- LEDGER GENERATOR  ---------- //
-
-generateBalanceSheetTemplate();
 
 /**
  * @description - Generates the General Ledger Module
@@ -94,7 +91,6 @@ function journalize() {
 					entry.debitOrCredit = "Credit";
 				}
 				stagedEntries.push(entry);
-				// console.log(stagedEntries[i].account+stagedEntries[i].accountType+stagedEntries[i].balance+stagedEntries[i].debitOrCredit);
 		}		
 	}
 }
@@ -226,11 +222,18 @@ let tAccountName = document.getElementById("t-account-name");
 
 /**
  * 
+ * @param {String} name 
+ */
+function convertToKebabCase(name){
+	const str = name.replaceAll(" ", "-").trim();
+	return str;
+}
+
+/**
+ * @todo Specify for Unique Accounts
  * @param {JournalEntry[]} entries 
  */
 function sendLedgerToTAccounts(entries) {
-	// const uniqueAccounts = gatherUniqueAccountNames();
-	// console.log(uniqueAccounts);
 	for (let i = 0; i < entries.length; i++) {
 			populateTAccountsFromLedger(entries[i]);
 	}
@@ -240,14 +243,14 @@ function sendLedgerToTAccounts(entries) {
  * 
  * @param {string} account 
  */
-function generateTAccount(account){
-	// accounts.push(account);
+function generateTAccount(identifier){
+	const accountId = convertToKebabCase(identifier);
 	const div = document.createElement("div");
 	div.setAttribute("class", "t-card");
 	const table = document.createElement("table");
-	table.setAttribute("id", `${account}-table`);
+	table.setAttribute("id", `${accountId}-table`);
 
-	for (let i = 0; i < 6; i++) {
+	for (let i = 0; i < 3; i++) {
 		if (i === 0){
 			let tr = document.createElement("tr");
 			let th1 = document.createElement("th");
@@ -261,7 +264,7 @@ function generateTAccount(account){
 
 			let hr = document.createElement("hr");
 			let span = document.createElement("span");
-			let text = document.createTextNode(account);
+			let text = document.createTextNode(identifier);
 			span.appendChild(text);
 			th1.appendChild(text1);
 			th2.appendChild(text2);
@@ -287,11 +290,11 @@ function generateTAccount(account){
 		let inp4 = document.createElement("input");
 		inp1.setAttribute("type", "text");
 		inp2.setAttribute("type", "text");
-		inp2.setAttribute("id", `${account}-debits-${i}`);
+		inp2.setAttribute("id", `${accountId}&debits-${i}`);
 		inp2.setAttribute("class", "t-value");
 		inp2.setAttribute("value", 0);
 		inp3.setAttribute("type", "text");
-		inp3.setAttribute("id", `${account}-credits-${i}`);
+		inp3.setAttribute("id", `${accountId}&credits-${i}`);
 		inp3.setAttribute("class", "t-value");
 		inp3.setAttribute("value", 0);
 		inp4.setAttribute("type", "text");
@@ -318,8 +321,8 @@ function generateTAccount(account){
 	const debitsText = document.createTextNode("Debits");
 	const creditsText = document.createTextNode("Credits");
 	td1.appendChild(debitsText);
-	td2.setAttribute("id", `${account}-debits-total`);
-	td3.setAttribute("id", `${account}-credits-total`);
+	td2.setAttribute("id", `${accountId}-debits-total`);
+	td3.setAttribute("id", `${accountId}-credits-total`);
 	td4.appendChild(creditsText);
 	tr.appendChild(td1);
 	tr.appendChild(td2);
@@ -340,10 +343,12 @@ function populateTAccountsFromLedger(entry){
 	const div = document.createElement("div");
 	div.setAttribute("class", "t-card");
 	const table = document.createElement("table");
-	table.setAttribute("id", `${entry.account}-table`);
+
+	const accountId = convertToKebabCase(entry.account);
+
+	table.setAttribute("id", `${accountId}-table`);
 	const sameAccounts = gatherCountOfSameAccounts(entry.account);
-	console.log("Same Accounts: " + sameAccounts);
-	console.log("Entry Info: " + entry.account + " " + entry.accountType + " " + entry.debitOrCredit + " " + entry.balance);
+	console.log(`Same accounts for ${entry.account} account: ${sameAccounts}`);
 
 	for (let i = 0; i <= sameAccounts; i++) {
 		if (i === 0){
@@ -385,13 +390,13 @@ function populateTAccountsFromLedger(entry){
 		let inp4 = document.createElement("input");
 		inp1.setAttribute("type", "text");
 		inp2.setAttribute("type", "text");
-		inp2.setAttribute("id", `${entry.account}-debits-${i}`);
+		inp2.setAttribute("id", `${accountId}&debits-${i}`);
 		inp2.setAttribute("class", "t-value");
-		entry.debitOrCredit === "Debit" ? inp2.setAttribute("value", `${entry.balance}`) : 0; // First Instance of Debits
+		entry.debitOrCredit === "Debit" ? inp2.setAttribute("value", `${entry.balance}`) : inp2.setAttribute("value", 0);; // First Instance of Debits
 		inp3.setAttribute("type", "text");
-		inp3.setAttribute("id", `${entry.account}-credits-${i}`);
+		inp3.setAttribute("id", `${accountId}&credits-${i}`);
 		inp3.setAttribute("class", "t-value");
-		entry.debitOrCredit === "Credit" ? inp3.setAttribute("value", `${entry.balance}`) : 0; // First Instance of Debits
+		entry.debitOrCredit === "Credit" ? inp3.setAttribute("value", `${entry.balance}`) : inp3.setAttribute("value", 0); // First Instance of Debits
 		inp4.setAttribute("type", "text");
 		inp1.setAttribute("style", "width:3rem;");
 		inp2.setAttribute("style", "width:4rem;");
@@ -416,8 +421,8 @@ function populateTAccountsFromLedger(entry){
 	const debitsText = document.createTextNode("Debits");
 	const creditsText = document.createTextNode("Credits");
 	td1.appendChild(debitsText);
-	td2.setAttribute("id", `${entry.account}-debits-total`);
-	td3.setAttribute("id", `${entry.account}-credits-total`);
+	td2.setAttribute("id", `${accountId}-debits-total`);
+	td3.setAttribute("id", `${accountId}-credits-total`);
 	td4.appendChild(creditsText);
 	tr.appendChild(td1);
 	tr.appendChild(td2);
@@ -428,40 +433,37 @@ function populateTAccountsFromLedger(entry){
 	div.setAttribute("style", "text-align: left;");
 	tCardGrid.appendChild(div);
 	enableTCardCalculator();
-	calculateTCardTotals(entry.account);
-
 }
 
 function enableTCardCalculator(){
 	document.querySelectorAll(".t-value").forEach(val => {
-		let tId = val.id.toString();
-		tId = tId.substring(0, tId.indexOf("-"));
+		let tId = val.id.substring(0, val.id.lastIndexOf("&"));
+		tIdInitial = tId;
+		val.onkeyup = function(){
+			calculateTCardTotals(tId);
+		}
 		val.onchange = function(){
 			calculateTCardTotals(tId);
-			console.log("hitting change");
 		}
-		val.onsubmit = function(){
-			calculateTCardTotals(tId);
-		}
+		calculateTCardTotals(tId);
 	});
 }
 
-function calculateTCardTotals(account){
-	const tableRowCount = document.getElementById(`${account}-table`).children.length;
-	const accountDebitsTotal = document.getElementById(`${account}-debits-total`);
-	const accountCreditsTotal = document.getElementById(`${account}-credits-total`);
+function calculateTCardTotals(identifier){
+	const tableRowCount = document.getElementById(`${identifier}-table`).children.length;
+	const accountDebitsTotal = document.getElementById(`${identifier}-debits-total`);
+	const accountCreditsTotal = document.getElementById(`${identifier}-credits-total`);
 	let total = 0;
 	for (let i = 1; i < tableRowCount - 1; i++) {
-		let debits = document.getElementById(`${account}-debits-${i}`).value;
-		let credits = document.getElementById(`${account}-credits-${i}`).value;
+		let debits = document.getElementById(`${identifier}&debits-${i}`).value;
+		let credits = document.getElementById(`${identifier}&credits-${i}`).value;
 		debits = parseFloat(debits).toFixed(2);
 		credits = parseFloat(credits).toFixed(2);
-		total += parseFloat(debits) - parseFloat(credits);
-		console.log("calculating" + total);
+		total += (parseFloat(debits) - parseFloat(credits));
+		// console.log("Calculating: " + parseFloat(total).toFixed(2));
 	}
-	console.log(accountDebitsTotal);
 	if (total >= 0) {
-		accountDebitsTotal.innerHTML = total;
+		accountDebitsTotal.innerHTML = parseFloat(total).toFixed(2);
 		accountCreditsTotal.innerHTML = 0;
 	} else if (total < 0) {
 		accountDebitsTotal.innerHTML = 0;
@@ -484,8 +486,7 @@ function selectAccountingGrid(selection) {
 			grid.style.display = "none";
 		});
 	displayedWorkspace = selection;
-	console.log("displayedworkspace " + displayedWorkspace);
-	console.log("selection " + selection);
+	console.log("Workspace Grid Index#" + displayedWorkspace);
 	accountingGrids[selection].style.display = "flex";
 	}
 selectAccountingGrid(displayedWorkspace);
@@ -519,6 +520,7 @@ function initAccountingButtons() {
 		switch(button.id) {
 			case "display-accounting-modal":
 				displayAccountingModal(true);
+				generateStatementTemplates();
 			break;
 			case "hide-accounting-modal":
 				displayAccountingModal(false);
