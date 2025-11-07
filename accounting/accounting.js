@@ -471,7 +471,7 @@ function calculateTCardTotals(account){
 
 // ---------- BUTTON MODULES ---------- //
 
-let displayedWorkspace = 0;
+let displayedWorkspace = 1;
 function selectAccountingGrid(selection) {
 	const accountingGrids = document.querySelectorAll(".accounting-grid");
 		if (selection >= accountingGrids.length) {
@@ -500,6 +500,18 @@ function displayAccountingModal(selection) {
 	selection ? pageHTML.style.height = "150%" : pageHTML.style.height = "100%";
 }
 
+function displayTaskModal(selection) {
+	const taskModal = document.getElementById("task-modal");
+	const pageHTML = document.querySelector("html");
+	selection ? taskModal.style.display = "block" : taskModal.style.display = "none";
+	selection ? pageHTML.style.height = "150%" : pageHTML.style.height = "100%";
+
+	const taskModalField = document.getElementById("task-field");
+	const accountingDropzone = document.getElementById("accounting-dropzone");
+	taskModalField.textContent = accountingDropzone.value;
+	accountingDropzone.textContent = "";
+}
+
 function initAccountingButtons() {
 	document.querySelectorAll(".accounting-button").forEach(button => {
 	button.onclick = function() {
@@ -510,6 +522,12 @@ function initAccountingButtons() {
 			break;
 			case "hide-accounting-modal":
 				displayAccountingModal(false);
+			break;
+			case "display-task-modal":
+				displayTaskModal(true);
+			break;
+			case "hide-task-modal":
+				displayTaskModal(false);
 			break;
 			case "next-grid":
 				selectAccountingGrid(++displayedWorkspace);

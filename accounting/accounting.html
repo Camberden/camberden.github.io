@@ -47,7 +47,7 @@
 		
 	</div>
 
-	<div id="accounting-modal">
+	<div id="accounting-modal" class="accounting-modal">
 		<button id="hide-accounting-modal" class="accounting-button">Hide</button>
 		<main id="accounting-overview">
 
@@ -71,6 +71,12 @@
 			</div>
 		</main>
 	</div>
+
+	<div id="task-modal" class="accounting-modal">
+		<button id="hide-task-modal" class="accounting-button">Hide</button>
+		<p id="task-field"></p>
+	</div>
+
 
 	<div class="accounting-grid">
 
@@ -109,6 +115,9 @@
 	<div class="accounting-grid">
 
 		<div class="accounting-item">
+			<p>Task Dropzone</p>
+			<textarea id="accounting-dropzone"></textarea>
+			<button id="display-task-modal" class="accounting-button">Display Task</button>
 		</div>
 
 		<div id="stock-worksheet" class="accounting-item">
