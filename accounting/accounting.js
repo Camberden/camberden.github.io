@@ -473,7 +473,11 @@ function calculateTCardTotals(identifier){
 
 // ---------- BUTTON MODULES ---------- //
 
-let displayedWorkspace = 1;
+/**
+ * @type number
+ * @description Incremented to fire selectAccountingGrid() to change viewed workspace modules.
+ */
+let displayedWorkspace = 0;
 function selectAccountingGrid(selection) {
 	const accountingGrids = document.querySelectorAll(".accounting-grid");
 		if (selection >= accountingGrids.length) {

@@ -25,15 +25,23 @@ const int = 71.99;
 const mus = 6.39;
 const don = 10.00;
 const gym = 25.05;
+let cre = 0.00; // CUSTOM INPUT: CRE
+let sav = 0.00; // CUSTOM INPUT: SAV
 let inp = 0.00; // CUSTOM INPUT: INP
-function updateInp() {
+
+/**
+ * @description Reads all user input values in input fields.
+ */
+function updateCustomExpenses() {
+	allExpenses[allExpenses.length - 3] = cre = parseFloat(document.getElementById("cre-cost").value);
+	allExpenses[allExpenses.length - 2] = sav = parseFloat(document.getElementById("sav-cost").value);
 	allExpenses[allExpenses.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
 }
 
 // ADD NEW VARIABLES TO all
-const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
+const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, cre, sav, inp];
 // ADD NEW VARIABLES TO expenseNames
-const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym inp".split(" "));
+const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym cre sav inp".split(" "));
 const allCosts = expenseNames
 	.map(str => document.getElementById(str + "-cost"));
 const allCheckboxes = expenseNames
@@ -45,7 +53,7 @@ allCosts.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
 
 
 const calculateNewBalance = function () {
-	updateInp();
+	updateCustomExpenses();
 	let sum = 0;
 	allExpenses.forEach((e, i) => {
 		const checkbox = allCheckboxes[i];

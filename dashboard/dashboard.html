@@ -23,7 +23,7 @@
 		</div>
 		<div id="dashboard-quick-links">
 			<div class="quick-links-grid-item">
-				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+				<a href="https://www.youtube.com/watch?v=XgqTrvcAySA" target="_blank">Checkpoint</a>
 			</div>
 			<div class="quick-links-grid-item">
 				<a href="https://www.clozemaster.com" target="_blank">Clozemaster</a>
@@ -65,7 +65,7 @@
 			
 			<div>
 				<ul id="expense-list">
-					<li>PAYCHECK = $<input type="text" placeholder=" Input Value" id="balance" name="balance" label="balance"></li>
+					<li>PAYCHECK = $&emsp;<input type="text" placeholder=" Input Value" id="balance" name="balance" label="balance"></li>
 					<br>
 					<li><span class="marker" id="select-applicable">Select Applicable</span></li>
 					<!-- CAR PAYMENT -->
@@ -126,14 +126,18 @@
 							id="gym-cost">0</span>
 						<span class="automated-payment">Automated: 17th</span>
 					</li>
-					<!-- MISCELLANEOUS OBLIGATIONS -->
-					<li><input type="checkbox" id="inp-check">INP = $<input type="text" placeholder=" Input Value"
-							id="inp-cost">
+					<!-- CREDIT -->
+					<li>
+						<input type="checkbox" id="cre-check">CRE = $&emsp;<input type="text" placeholder="Input Credit" id="cre-cost">
 					</li>
-					<!-- <li style="list-style-type: circle; margin-left: 1.3rem;">SAV = $<input type="text" placeholder=" Input Value"
-							id="sav-cost">
-					</li> -->
-					<br>
+					<!-- SAVINGS -->
+					<li>
+						<input type="checkbox" id="sav-check">SAV = $&emsp;<input type="text" placeholder="Input Savings" id="sav-cost">
+					</li>
+					<!-- MISCELLANEOUS OBLIGATIONS -->
+					<li>
+						<input type="checkbox" id="inp-check">INP = $&emsp;<input type="text" placeholder="Input Value" id="inp-cost">
+					</li>
 					<!-- TOTAL AFTER DEDUCTIONS -->
 					<li>ENDING BALANCE = $<span id="endbalance">0</span>
 					</li>

@@ -107,10 +107,6 @@ input[type=text]:focus {
 	list-style-type: none;
 }
 
-#balance {
-	margin-left: 2rem;
-}
-
 .automated-payment {
 	text-align: right;
 	font-family: 'Courier New', Courier, monospace;

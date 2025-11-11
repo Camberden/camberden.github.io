@@ -170,34 +170,34 @@ const countryInformation = [
 const usStateInformation = [
 
 	pennsylvania = new DivisionInformation("US-PA", "Pennsylvania",
-		``
+		`Birthplace.`
 	),
 	newYork = new DivisionInformation("US-NY", "New York",
-		``
+		`School from 2015 to 2017.`
 	),
 	newJersey = new DivisionInformation("US-NJ", "New Jersey",
-		``
+		`Workplace from 2019 to 2020.`
 	),
 	maryland = new DivisionInformation("US-MD", "Maryland",
-		``
+		`Frequenty crossed.`
 	),
 	virginia = new DivisionInformation("US-VA", "Virginia",
-		``
+		`Workplace in 2020.`
 	),
 	westVirginia = new DivisionInformation("US-WV", "West Virginia",
-		``
+		`Workplace in 2019.`
 	),
 	tennessee = new DivisionInformation("US-TN", "Tennessee",
-		``
+		`Occassionally crossed.`
 	),
 	illinois = new DivisionInformation("US-IL", "Illinois",
-		``
+		`Occassionally visited.`
 	),
 	northCarolina = new DivisionInformation("US-NC", "North Carolina",
-		``
+		`Residence from 2020 to present.`
 	),
 	southCarolina = new DivisionInformation("US-SC", "South Carolina",
-		``
+		`Occassionally visited.`
 	),
 	georgia = new DivisionInformation("US-GA", "Georgia",
 		``
