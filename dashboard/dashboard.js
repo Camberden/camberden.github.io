@@ -1,88 +1,175 @@
 window.onload = () => console.log("Running!");
 
 // ---------- EXPENSE MANAGEMENT ---------- //
-// TODO Load balance after last typed character
 
-let startbalance = document.getElementById("balance").value;
-const startbalanceupdate = document.getElementById("balance");
-
-startbalanceupdate.onkeyup = function () {
-	startbalance = document.getElementById("balance").value;
-	calculateNewBalance();
-	document.getElementById("expense-modal").style.display = "block";
-};
-
-const car = 1291.61;
-const nav = 222.07;
-const sal = 900.00;
-const ren = 200.00;
-const rti = 0.00;
-const ins = 97.68;
-const loa = 0.00;
-const wat = 15.00;
-const ele = 70.27;
-const int = 71.99;
-const mus = 6.39;
-const don = 10.00;
-const gym = 25.05;
-let cre = 0.00; // CUSTOM INPUT: CRE
-let sav = 0.00; // CUSTOM INPUT: SAV
-let inp = 0.00; // CUSTOM INPUT: INP
-
-/**
- * @description Reads all user input values in input fields.
- */
-function updateCustomExpenses() {
-	allExpenses[allExpenses.length - 3] = cre = parseFloat(document.getElementById("cre-cost").value);
-	allExpenses[allExpenses.length - 2] = sav = parseFloat(document.getElementById("sav-cost").value);
-	allExpenses[allExpenses.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
+class DashboardExpense {
+	/**
+	 * 
+	 * @param {String} name - Three-letter name of string
+	 * @param {Number} amount - Expense balance
+	 * @param {Boolean} applicable - Expense incurred in current lifestyle?
+	 * @param {Number} automated - Automated payment scheduled for Nth day of month.
+	 * @param {Boolean} custom - Is this a custom user input field?
+	 */
+	constructor(name, amount, applicable, automated, custom) {
+		this.name = name;
+		this.amount = amount;
+		this.automated = automated;
+		this.applicable = applicable;
+		this.custom = custom;
+	}
 }
 
-// ADD NEW VARIABLES TO all
-const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, cre, sav, inp];
-// ADD NEW VARIABLES TO expenseNames
-const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym cre sav inp".split(" "));
-const allCosts = expenseNames
-	.map(str => document.getElementById(str + "-cost"));
-const allCheckboxes = expenseNames
-	.map(str => document.getElementById(str + "-check"));
+const dashboardExpenses = [
+	new DashboardExpense("car", 1291.61, true, 4, false),
+	new DashboardExpense("nav", 222.07, false, 0, false),
+	new DashboardExpense("sal", 900.00, true, 1, false),
+	new DashboardExpense("ren", 200.00, true, 0, false),
+	new DashboardExpense("rti", 0.00, false, 0, false),
+	new DashboardExpense("ins", 97.68, true, 30, false),
+	new DashboardExpense("loa", 0.00, false, 0, false),
+	new DashboardExpense("wat", 15.00, false, 0, false),
+	new DashboardExpense("ele", 70.27, false, 0, false),
+	new DashboardExpense("int", 71.99, false, 0, false),
+	new DashboardExpense("mus", 6.39, true, 1, false),
+	new DashboardExpense("don", 10.00, true, 1, false),
+	new DashboardExpense("gym", 25.05, true, 17, false),
+	new DashboardExpense("cre", 0.00, false, 0, true),
+	new DashboardExpense("sav", 0.00, false, 0, true),
+	new DashboardExpense("inp", 0.00, false, 0, true),
+];
 
-console.log(allCheckboxes);
+function calculateNewBalance() {
 
-allCosts.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
-
-
-const calculateNewBalance = function () {
-	updateCustomExpenses();
+	let startingBalance = document.getElementById("starting-balance").value;
+	/**
+	 * @type {Number}
+	 */
 	let sum = 0;
-	allExpenses.forEach((e, i) => {
-		const checkbox = allCheckboxes[i];
-		if (checkbox.checked) {
-			// console.log(`73; e = ${e}; e.checked = ${e.checked}`);
-			sum += e;
-		}
-		else {
-			// console.log(`77; i = ${i}; e = ${e}`);
-		}
-	});
-	const endbalance = startbalance - sum;
-	document.getElementById("endbalance").innerHTML = endbalance.toFixed(2);
-};
+	for (let expense of dashboardExpenses) {
+		let checkbox = document.getElementById(expense.name + "-check");
+		let costbox = document.getElementById(expense.name + "-cost");
+		// console.log("Is this one checked? " + document.getElementById(expense.name + "-check").checked);
 
-allCheckboxes.forEach(checkbox => checkbox.onclick = calculateNewBalance);
-calculateNewBalance();
+		if(checkbox.checked && !expense.custom) {
+			sum += parseFloat(costbox.textContent);
+			console.log("Checked Box Cost Value: " + costbox.textContent);
+			console.log(sum);
+		}
+		if (checkbox.checked && expense.custom) {
+			sum += parseFloat(costbox.value);
+			console.log("Checked Box Cost Value: " + costbox.value);
+			console.log(sum);
+		}
+		const endingBalance = parseFloat(startingBalance - sum).toFixed(2);
+		document.getElementById("ending-balance").textContent = endingBalance;
+		// document.getElementById("ending-balance").value = parseFloat(endingBalance.toFixed(2));
+
+		}
+	}
 
 function selectApplicable() {
 	document.getElementById("select-applicable").onclick = function() {
-		expenseNames.forEach(expense => {
-			if (document.getElementById(expense + "-cost").classList.contains("applicable")) {
-				document.getElementById(expense + "-check").checked = true;
+		dashboardExpenses.forEach(expense => {
+			if (expense.applicable) {
+				document.getElementById(expense.name + "-check").checked = true;
 			}
 		});
 		calculateNewBalance();
 	}
 };
 selectApplicable();
+
+/**
+ * 
+ * @param {DashboardExpense[]} expenses 
+ */
+function generateDashboardExpenses(expenses) {
+	const expenseList = document.getElementById("expense-list");
+
+	expenses.forEach(expense => {
+		const li = document.createElement("li");
+		const inputCheckbox = document.createElement("input");
+		const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()}= $`);
+		inputCheckbox.setAttribute("type", "checkbox");
+		inputCheckbox.setAttribute("id", `${expense.name}-check`);
+		//inbuilt func
+		// inputCheckbox.addEventListener("onclick", calculateNewBalance());
+
+		if (!expense.custom) {
+			const spanApplicable = document.createElement("span");
+			spanApplicable.setAttribute("id", `${expense.name}-cost`);
+			spanApplicable.textContent = expense.amount;
+			const spanAutomation = document.createElement("span");
+		
+			if (expense.applicable) {
+				spanApplicable.setAttribute("class", "applicable");
+			}
+		
+			if (expense.automated != 0) {
+				spanAutomation.setAttribute("class", "automated-payment");
+				const textAutomation = document.createTextNode(`Automated: Day ${expense.automated}`);
+				spanAutomation.appendChild(textAutomation);
+			} else {
+				spanAutomation.setAttribute("class", "non-automated-payment");
+				// TODO: Make default condition the non-automated-payment.
+				const textInactive = document.createTextNode(`Inactive`);
+				spanAutomation.appendChild(textInactive);
+			}
+
+			li.appendChild(inputCheckbox);
+			li.appendChild(textCheckbox);
+			li.appendChild(spanApplicable);
+			li.appendChild(spanAutomation);
+			console.log(expense.name);
+			console.log(document.getElementById(`${expense.name}-check`));
+		
+		}
+	
+		if (expense.custom) {
+			const inputCustom = document.createElement("input");
+			inputCustom.setAttribute("type", "text");
+			inputCustom.setAttribute("placeholder", `${expense.name.toUpperCase()} = $&emsp;`);
+			inputCustom.setAttribute("id", `${expense.name}-cost`);
+
+			li.appendChild(inputCheckbox);
+			li.appendChild(textCheckbox);
+			li.appendChild(inputCustom);
+		}
+
+		expenseList.appendChild(li);
+	});
+	// const liEndingBalance = document.createElement("li");
+	// const textEndingBalance = document.createTextNode("Ending Balance = $");
+	// const spanEndingBalance = document.createElement("span");
+	// spanEndingBalance.setAttribute("id","ending-balance");
+	// liEndingBalance.appendChild(textEndingBalance);
+	// liEndingBalance.appendChild(spanEndingBalance);
+	// expenseList.appendChild(liEndingBalance);
+
+	// const spanModal = document.createElement("span");
+	// spanModal.textContent = "Project Expenses";
+	// spanModal.setAttribute("class", "marker");
+	// spanModal.setAttribute("class", "modal-prompt");
+	// spanModal.setAttribute("id", "expense-modal");
+
+	// expenseList.appendChild(spanModal);
+
+	// let startingBalance = document.getElementById("starting-balance").value;
+	document.getElementById("starting-balance").onkeyup = function () {
+		calculateNewBalance();
+		document.getElementById("expense-modal").style.display = "block";
+};
+
+	dashboardExpenses.forEach(expense => {
+		document.getElementById(expense.name + "-check").onclick = function(){
+			calculateNewBalance();
+		}
+	});
+}
+
+generateDashboardExpenses(dashboardExpenses);
+
 
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
@@ -511,8 +598,8 @@ function displayExpenseModal() {
 	const currentDate = new Date();
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	document.getElementById("modal-text").setAttribute("class", "paycard-grid");
-	let expenseModalPaycheck = parseFloat(document.getElementById("balance").value);
-	let expenseModalEndBalance = parseFloat(document.getElementById("endbalance").textContent);
+	let expenseModalPaycheck = parseFloat(document.getElementById("starting-balance").value);
+	let expenseModalEndBalance = parseFloat(document.getElementById("ending-balance").textContent);
 	let expenseModalExpenses = parseFloat(expenseModalPaycheck - expenseModalEndBalance).toFixed(2);
 	
 	for (let i = 0; i < 4; i++) {
@@ -544,13 +631,13 @@ function displayExpenseModal() {
 				const span = document.createElement("span");
 				span.setAttribute("class", "projected-monthly-expense");
 				if (currentDate.getFullYear() + i === 2026 && j === 0) {
-					expenseModalExpenses -= car;
-					expenseModalEndBalance += car;
+					expenseModalExpenses -= 1291.61;
+					expenseModalEndBalance += 1291.61;
 					ul.innerHTML += " (Car Paid)<hr>";
 				}
 				if (currentDate.getFullYear() + i === 2027 && j === 0) {
-					expenseModalExpenses -= sal;
-					expenseModalEndBalance += sal;
+					expenseModalExpenses -= 900.00;
+					expenseModalEndBalance += 900.00;
 					ul.innerHTML += " (Sal Paid)<hr>";
 
 				}
