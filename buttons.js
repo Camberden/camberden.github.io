@@ -1,5 +1,3 @@
-/* exported ButtonInterface */
-
 /**
  * @description Applies event styles to buttons site-wide
  * @interface
@@ -34,8 +32,6 @@ const ButtonInterface = {
 		event.preventDefault();
 	}
 };
-
-/* Global Form Submission Handler */
 
 /**
  * @description Handles all page forms, preventing reload upon form submission

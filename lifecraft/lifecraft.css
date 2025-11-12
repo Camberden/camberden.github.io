@@ -39,14 +39,16 @@
 }
 
 .lifecraft-item {
-	flex: 1; 
+	flex: auto; 
 	display: flex;
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
 	min-width: 20rem;
-	min-height: 5rem;
-	padding: 2rem;
+	min-height: 10rem;
+	padding-top: 2rem;
+	padding-left: 2rem;
+	padding-right: 2rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
 	border-width: 0.3rem;
 	border-style: double;
@@ -70,8 +72,14 @@
 
 .lifecraft-dropdown {
 	background-color: var(--clr-quinary-body);
-	border: 1px solid #888;
-	width: 66%; /* Could be more or less, depending on screen size */
+	border: .3rem solid var(--clr-grid-box);
+	width: fit-content;
+}
+
+#lifecraft-view-grid {
+	padding-top: 0%;
+	padding-bottom: 0%;
+	max-height: 10rem;
 }
 
 .modal {
@@ -125,26 +133,7 @@
 	cursor: pointer;
 }
 
-.current-day-highlight {
-	background-color: var(--clr-quaternary);
-}
 
-.event {
-	background-color: yellow;
-}
-
-.future-event {
-	background-color: aliceblue;
-}
-
-.obligation {
-	color: magenta;
-	font-size: xx-small;
-	display: inline;
-	width: 5rem;
-	height: 0.5rem;
-	border: 1px solid #444;
-}
 
 /* ---------- LIFECRAFT FIELD VALUES ---------- */
 
@@ -152,9 +141,8 @@
 	display: inline-block;
 	font-size: 0.7rem;
 	width: 20rem;
-	height: 20rem;
+	height: 25rem;
 	border-radius: 0.5rem;
-	/* margin: 0.5rem; */
 	border: 0.1rem solid var(--clr-tertiary);
 	color: var(--clr-tertiary);
 	overflow: visible;
@@ -174,6 +162,27 @@
 
 .calendar-date:hover {
 	border-color: var(--clr-primary);
+}
+
+.current-day-highlight {
+	background-color: var(--clr-quaternary);
+}
+
+.event {
+	background-color: yellow;
+}
+
+.future-event {
+	background-color: aliceblue;
+}
+
+.obligation {
+	color: magenta;
+	font-size: xx-small;
+	display: inline;
+	width: 5rem;
+	height: 0.5rem;
+	border: 1px solid #444;
 }
 
 .aRotation {
@@ -214,6 +223,6 @@
 	}
 
 	.calendar-month {
-		height: 8rem;
+		height: 10rem;
 	}
 }

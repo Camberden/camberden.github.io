@@ -345,7 +345,7 @@ a:hover {
 .page-dropdown {
 	background-color: var(--clr-quinary-body);
 	border: 1px solid #888;
-	width: 66%; /* Could be more or less, depending on screen size */
+	width: fit-content; /* Could be more or less, depending on screen size */
 }
 
 /* ----- SITE-WIDE BUTTON COMPONENT ----- */

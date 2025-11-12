@@ -1,7 +1,14 @@
-window.onload = () => console.log("Running!");
-const latestUpdatePushed = "Tuesday November 11th, 2025";
+/** ===> CAMBERDEN.GITHUB.IO UPDATE ===>
+ * @description Personal Website:
+ * - From 2020 to Present
+ * - Primary workspace of my programming hobby
+ * @constant latestUpdatePushed 
+ * - Date is changed for any first update completed on a new day.
+ * @author Camberden (Chrispy | Kippi)
+ */
+const latestUpdatePushed = "Wednesday November 12th 2025";
+document.querySelector("#latest-update").innerHTML = latestUpdatePushed;
 const splitDate = latestUpdatePushed.split(" ");
-
 /**
  * 
  * @param {string} month
@@ -21,14 +28,14 @@ function convertDate(month, calendarDay, year){
 const formattedDate = convertDate(splitDate[1], splitDate[2], splitDate[3]);
 /**
  * @param {Date} date
- * @description Converts date object to Japanese date
+ * @description Converts date object to a Japanese date.
  */
 function convertToJapaneseDate(date) {
 	let japaneseDate = "最近アップデート令和";
 	const kanjiNumbers = ["一", "二","三","四","五","六","七","八","九","十",];
+		
 	// ----- YEARS ----- //
 	japaneseDate += (kanjiNumbers[date.getFullYear() - 2019] + "年");
-
 	// ----- MONTHS ----- //
 	if ((date.getMonth() + 1) > 10) {
 		japaneseDate += kanjiNumbers[9] + (kanjiNumbers[date.getMonth() - 10] + "月");
@@ -56,14 +63,10 @@ function convertToJapaneseDate(date) {
 			japaneseDate += "(" + japaneseDaysOfWeek[i] + ")";
 		}
 	}
-	document.getElementById("japanese-date").textContent = japaneseDate;
+	document.querySelector("#japanese-date").textContent = japaneseDate;
+
 }
 convertToJapaneseDate(formattedDate);
-
-// --- INFO AND ENTRYWAYS --- //
-
-const latestUpdate = document.getElementById("latest-update");
-latestUpdate.innerHTML = latestUpdatePushed;
 
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -72,11 +75,14 @@ function randomizeMonicker(){
 	const m = Math.random();
 	console.log(m);
 	if (m <= 0.1) {
+		camberden.lang = "jp";
 		camberden.innerHTML = monickers[1];
 	} else if (m >= 0.9) {
+		camberden.lang = "jp";
 		camberden.innerHTML = monickers[2];
 	} else if (m < 0.9 && m >= 0.8) {
 		camberden.removeAttribute("font-family");
+		camberden.lang = "la-fonipa";
 		camberden.innerHTML = monickers[0].replace("c", "k");
 		camberden.classList.add("eremoran-kiptascript");
 		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
@@ -90,7 +96,6 @@ randomizeMonicker();
 camberden.onclick = function(){
 	alert("Hi! :D");
 }
-
 function generateSiteInfo() {
 	const siteInfo = document.getElementById("site-info");
 	siteInfo.innerHTML = `
@@ -122,12 +127,10 @@ const sections = [
 	["travel", "Travel Page",],
 	["lifecraft", "Lifecraft Page",],
 	["musings", "Musings Page",],
-	// ["music", "Original Music",],
+	["music", "Original Music",],
 ];
-
 const sectionTitles = document.querySelectorAll(".section-title");
-const sectionLinks = document.getElementById("section-links");
-
+const sectionLinks = document.querySelector("#section-links");
 /**
  * @var
  * Creates clickable link to directory.
