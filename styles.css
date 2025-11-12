@@ -342,6 +342,12 @@ a:hover {
 	border-left: none;
 }
 
+.page-dropdown {
+	background-color: var(--clr-quinary-body);
+	border: 1px solid #888;
+	width: 66%; /* Could be more or less, depending on screen size */
+}
+
 /* ----- SITE-WIDE BUTTON COMPONENT ----- */
 
 button {

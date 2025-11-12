@@ -30,6 +30,12 @@
 	background: rgba(144, 229, 238, 0.1);
 }
 
+.blog-dropdown {
+	background-color: var(--clr-quinary-body);
+	border: 1px solid #888;
+	width: fit-content; /* Could be more or less, depending on screen size */
+}
+
 .blog-grid {
 	padding: 2rem;
 	display: flex;
