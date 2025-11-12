@@ -22,15 +22,15 @@ class DashboardExpense {
 
 const dashboardExpenses = [
 	new DashboardExpense("car", 1291.61, true, 4, false),
-	new DashboardExpense("nav", 222.07, false, 0, false),
+	new DashboardExpense("nav", 222.07, false, -1, false),
 	new DashboardExpense("sal", 900.00, true, 1, false),
 	new DashboardExpense("ren", 200.00, true, 0, false),
-	new DashboardExpense("rti", 0.00, false, 0, false),
+	new DashboardExpense("rti", 0.00, false, -1, false),
 	new DashboardExpense("ins", 97.68, true, 30, false),
-	new DashboardExpense("loa", 0.00, false, 0, false),
-	new DashboardExpense("wat", 15.00, false, 0, false),
-	new DashboardExpense("ele", 70.27, false, 0, false),
-	new DashboardExpense("int", 71.99, false, 0, false),
+	new DashboardExpense("loa", 0.00, false, -1, false),
+	new DashboardExpense("wat", 15.00, false, -1, false),
+	new DashboardExpense("ele", 70.27, false, -1, false),
+	new DashboardExpense("int", 71.99, false, -1, false),
 	new DashboardExpense("mus", 6.39, true, 1, false),
 	new DashboardExpense("don", 10.00, true, 1, false),
 	new DashboardExpense("gym", 25.05, true, 17, false),
@@ -74,10 +74,22 @@ function selectApplicable() {
 			if (expense.applicable) {
 				document.getElementById(expense.name + "-check").checked = true;
 			}
+			document.getElementById("select-applicable").style.display = "none";
+			document.getElementById("deselect-applicable").style.display = "block";
+			calculateNewBalance();
 		});
-		calculateNewBalance();
 	}
-};
+		document.getElementById("deselect-applicable").onclick = function() {
+		dashboardExpenses.forEach(expense => {
+			if (expense.applicable) {
+				document.getElementById(expense.name + "-check").checked = false;
+			}
+			document.getElementById("deselect-applicable").style.display = "none";
+			document.getElementById("select-applicable").style.display = "block";
+			calculateNewBalance();
+		});
+	}
+}
 selectApplicable();
 
 /**
@@ -90,7 +102,7 @@ function generateDashboardExpenses(expenses) {
 	expenses.forEach(expense => {
 		const li = document.createElement("li");
 		const inputCheckbox = document.createElement("input");
-		const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()}= $`);
+		const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()} = $ `);
 		inputCheckbox.setAttribute("type", "checkbox");
 		inputCheckbox.setAttribute("id", `${expense.name}-check`);
 		//inbuilt func
@@ -105,15 +117,21 @@ function generateDashboardExpenses(expenses) {
 			if (expense.applicable) {
 				spanApplicable.setAttribute("class", "applicable");
 			}
-		
-			if (expense.automated != 0) {
+			if (expense.automated > 0) {
 				spanAutomation.setAttribute("class", "automated-payment");
-				const textAutomation = document.createTextNode(`Automated: Day ${expense.automated}`);
+				const textAutomation = document.createTextNode(` Automated: Day ${expense.automated}`);
 				spanAutomation.appendChild(textAutomation);
-			} else {
+			}
+			if (expense.automated === 0) {
+				spanAutomation.setAttribute("class", "non-automated-payment");
+				const textAutomation = document.createTextNode(` NOT Automated`);
+				spanAutomation.appendChild(textAutomation);
+			}  
+			if (expense.automated < 0) {
+				li.setAttribute("class", "inactive-payment");
 				spanAutomation.setAttribute("class", "non-automated-payment");
 				// TODO: Make default condition the non-automated-payment.
-				const textInactive = document.createTextNode(`Inactive`);
+				const textInactive = document.createTextNode(` Inactive `);
 				spanAutomation.appendChild(textInactive);
 			}
 
@@ -121,15 +139,13 @@ function generateDashboardExpenses(expenses) {
 			li.appendChild(textCheckbox);
 			li.appendChild(spanApplicable);
 			li.appendChild(spanAutomation);
-			console.log(expense.name);
-			console.log(document.getElementById(`${expense.name}-check`));
 		
 		}
 	
 		if (expense.custom) {
 			const inputCustom = document.createElement("input");
 			inputCustom.setAttribute("type", "text");
-			inputCustom.setAttribute("placeholder", `${expense.name.toUpperCase()} = $&emsp;`);
+			inputCustom.setAttribute("placeholder", ` Input Value`);
 			inputCustom.setAttribute("id", `${expense.name}-cost`);
 
 			li.appendChild(inputCheckbox);

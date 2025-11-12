@@ -110,6 +110,7 @@ input[type=text]:focus {
 .automated-payment {
 	text-align: right;
 	font-family: 'Courier New', Courier, monospace;
+	font-size: smaller;
 	opacity: .7;
 	color: var(--clr-tertiary);
 }
@@ -117,11 +118,12 @@ input[type=text]:focus {
 .non-automated-payment {
 	text-align: right;
 	font-family: 'Courier New', Courier, monospace;
+	font-size: smaller;
 	opacity: 0.5;
 	color: red;
 }
 
-.not-applicable {
+.inactive-payment {
 	color: grey;
 	opacity: 0.3;
 	user-select: none;
@@ -132,10 +134,6 @@ input[type=text]:focus {
 	color: var(--clr-primary);
 	position: inherit;
 	text-shadow: -2.5px -1px 0px #ff00ff;
-}
-
-#inp-cost {
-	margin-left: 10px;
 }
 
 .paycard-grid {
