@@ -121,7 +121,6 @@ function journalizeImportedEntries(entries) {
 				document.getElementById(`debits-row-${i}`).value = "";
 				document.getElementById(`credits-row-${i}`).value = entries[j].balance;
 				document.getElementById(`info-row-${i}`).style.textIndent = "1rem";
-				//console.log("info row for indent: " + document.getElementById(`info-row-${j}`).value);
 			}
 			
 			j++;
@@ -213,6 +212,53 @@ function demoStockDataset() {
 	});
 }
 demoStockDataset();
+
+
+// ---------- EARNINGS PER SHARE WORKSHEET  ---------- //
+// TODO: nest most of the below functions to tidy
+
+function calculateEarningsPerShare(netIncome, outstandingCommonStock, preferredDividend, convertiblePreferredStock) {
+	
+const eps = (netIncome - preferredDividend) / outstandingCommonStock + convertiblePreferredStock;
+
+return eps.toFixed(2);
+}
+
+const thisEps = calculateEarningsPerShare(212500, 100000, 2500, 0);
+console.log("This EPS: " + thisEps);
+
+/**
+ * 
+ * @param {Number} faceValue Dollar amount of debt instrument
+ * @param {Number} faceRate Decimal percentage of debt instrument interest rate
+ * @param {Number} taxRate Decimal percentage of tax rate
+ * @param {Number} convertibleTo Amount of Common Stock convertible
+ * @see calculateDilutedEarningsPerShare()
+ * @returns {Number[]} [otherDebtInterestTaxSavings, instrumentName, conversionOfSecurities]
+ */
+function calculateDebtInstrumentSavingsForEps(faceValue, faceRate, taxRate, convertibleTo) {
+	const payload = [];
+	payload[0] = (faceValue * faceRate) - ((faceValue * faceRate) * taxRate);
+	payload[1] = convertibleTo;
+	
+	return payload;
+}
+
+function calculateDilutedEarningsPerShare (netIncome, outstandingCommonStock, conversionOfSecurities, otherDebtInterestTaxSavings) {
+
+	const dilutedEps = parseFloat(netIncome + otherDebtInterestTaxSavings) / parseFloat(outstandingCommonStock + conversionOfSecurities);
+
+	return dilutedEps.toFixed(2);
+
+}
+
+/**
+ * @type {Number[]}
+ */
+const dilution = calculateDebtInstrumentSavingsForEps(1000000, .05, .25, 150000);
+
+const dEps = calculateDilutedEarningsPerShare(212500, 100000, dilution[1], dilution[0]);
+console.log("This Diluted EPS: " + dEps);
 
 // ---------- T-ACCOUNT GENERATOR  ---------- //
 

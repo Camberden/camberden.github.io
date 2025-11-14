@@ -1,5 +1,3 @@
-/* exported blogData */
-
 /*
 	`
 	| Date…
@@ -10,6 +8,30 @@
 	`
 	,
 */
+
+class BlogPost {
+	/**
+	 * @since November 12th, 2025
+	 * @description To streamline blogData access.
+	 * @param {String} date A date as String; @TODO Convert to Date Object
+	 * @param {String} location 
+	 * @param {String} time A time as String; @TODO Convert to Number
+	 * @param {String} title 
+	 * @param {Number} number
+	 */
+	constructor(date, location, time, title, number) {
+		this.date = date;
+		this.location = location;
+		this.time = time;
+		this.title = title;
+		this.number = number;
+	}
+}
+
+/**
+ * @type BlogPost[]
+ */
+const blogPosts = [];
 
 const blogData = [
 	
@@ -1179,6 +1201,15 @@ const blogData = [
 	evident to medical staff upon seeing me. This is an odd medication but it has relieved my aching, fever, and exhaustion. It also turns out 
 	that it acts as a contra-melatonin, like what the heck. Well, I'll accept for now, but I do sincerely want some more quality sleep again this 
 	weekend and take a break from obsessing about accounting.
+	`
+	,
+		`
+	| November 12th, 2025…
+	| Raleigh, NC
+	| 0500 HRS
+	| &emsp;
+	Oddly I've dumped excess hours into accounting-unrelated programming, <b-title>sprucing up</b-title> this site plentifully in many
+	little ways. I am not feeling too well as I am feverish; and I think I'll be away from work tomorrow.
 	`
 	,
 ];

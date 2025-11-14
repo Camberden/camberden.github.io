@@ -1,11 +1,9 @@
 .travel-grid {
 	display: flex;
 	flex-direction: column;
-	/* gap: 1.5rem; */
-	grid-template-columns:max-content;
-	/* padding-block: 1rem; */
 	align-items: center;
 	width: min(100%, 70rem);
+	height: 60rem;
 	margin-inline: auto;
 }
 

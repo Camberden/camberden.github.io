@@ -6,7 +6,7 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdatePushed = "Wednesday November 12th 2025";
+const latestUpdatePushed = "Wednesday November 14th 2025";
 document.querySelector("#latest-update").innerHTML = latestUpdatePushed;
 const splitDate = latestUpdatePushed.split(" ");
 /**
@@ -101,11 +101,11 @@ function generateSiteInfo() {
 	siteInfo.innerHTML = `
 	<p>	
 		Welcome to camberden's personal page.<br>
-		Here you will find musics and musings,<br>
-		and an assortment of modest software projects.<br>
-		Whatever I place here is a morsel of what I do<br>
-		and it's my intent that what is placed here<br>
-		is meaningful enough to me to justify its existence.<br>
+		Here you will find music, musings,<br>
+		and an assortment of software projects.<br>
+		Whatever I place here is a reflection of my<br>
+		lifestyle and workflow; its placement is meaningful<br>
+		enough to me and is therefore justified.
 	</p>
 `
 }

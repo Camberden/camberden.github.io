@@ -49,7 +49,6 @@ const accountingProcessingCycle = [
 	"Prepare a post-closing trial balances"
 ];
 
-
 /* ---------- JOURNAL ENTRY & GENERAL LEDGER MODULE ---------- */
 
 class JournalEntry {

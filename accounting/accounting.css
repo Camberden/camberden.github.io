@@ -1,7 +1,7 @@
 .accounting-header {
 	display: flex;
 	flex: 1;
-	flex-direction: row;
+	/* flex-direction: row; */
 	align-items: center;
 	justify-content: center;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
@@ -17,13 +17,14 @@
 	flex: 1;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: auto;
+	align-items: unset;
 	justify-content: center;
 
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
 	background: var(--clr-grid-box);
+	/* width: 50%; */
 }
 
 .accounting-grid {

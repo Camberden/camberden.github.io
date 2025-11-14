@@ -58,11 +58,15 @@
 }
 
 #blog-post-content {
-	flex: 1 1 50%;
+	flex: 1 1 60%;
+	position: sticky;
 }
 
 #blog-post-list-content {
-	flex: 1 1 20%;
+	flex: 1 1 10%;
+	/* display: block; */
+	position: sticky;
+	/* margin-left: 50%; */
 }
 
 .marker-blogging {
@@ -89,6 +93,12 @@
 
 .blog-post-inside-list {
 	text-align: center;
+}
+
+.listed-title {
+	font-family: monospace;
+	font-size: smaller;
+	color: var(--clr-secondary);
 }
 
 .listing-highlight {
