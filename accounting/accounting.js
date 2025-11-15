@@ -217,15 +217,101 @@ demoStockDataset();
 // ---------- EARNINGS PER SHARE WORKSHEET  ---------- //
 // TODO: nest most of the below functions to tidy
 
-function calculateEarningsPerShare(netIncome, outstandingCommonStock, preferredDividend, convertiblePreferredStock) {
-	
-const eps = (netIncome - preferredDividend) / outstandingCommonStock + convertiblePreferredStock;
+/**
+ * 
+ * @param {AccCalculation} calc Selected calculation with pre-written params in prose.
+ */
+function performAccCalculation(calc) {
+	console.log("in performance; calc.pA.length = " + calc.pA.length);
 
-return eps.toFixed(2);
+	let formulaResultField = document.getElementById("formula-result-field");
+	/**
+	 * @type {Number[]}
+	 */
+	let payload = [];
+	for (let i = 0; i < calc.pA.length; i++) {
+		payload[i] = parseFloat(document.getElementById(`${i}-${calc.formula}-value`).value).toFixed(2);
+		console.log("payload: " + payload[i]);
+	}
+
+	switch (calc.formula) {
+		case "EPS":
+			const formulaResult = (parseFloat(payload[0] - payload[1]) / parseFloat(payload[2] + payload[3])).toFixed(2);
+			formulaResultField.innerHTML = formulaResult;
+		break;
+			case "Diluted EPS":
+			console.log("Default!");
+		break;
+		default:
+			console.log("Default!");
+		break;
+	}
 }
 
-const thisEps = calculateEarningsPerShare(212500, 100000, 2500, 0);
-console.log("This EPS: " + thisEps);
+/**
+ * @type {AccCalculation}
+ */
+let selectedCalculation;
+function enableFormulaGenerator() {
+	const formulaSelect = document.getElementById("formula-select");
+	const formulaField = document.getElementById("formula-field");
+	let selectedFormula = "";
+
+	accCalcs.forEach(calc => {
+		const option = document.createElement("option");
+		const text = document.createTextNode(calc.formula);
+		option.appendChild(text);
+		formulaSelect.appendChild(option);
+	});
+
+
+	formulaSelect.onchange = function() {
+		formulaField.innerHTML = "";
+		selectedFormula = formulaSelect.value;
+		accCalcs.forEach(calc => {
+				if (selectedFormula === calc.formula) {
+					selectedCalculation = calc;
+					console.log("Init calc value to selection: " + calc.formula);
+					console.log("Init calc value to selection: " + calc.pA);
+				}
+			});
+
+
+		accCalcs.forEach(calc => {
+			if (selectedFormula === calc.formula) {
+				for(let i = 0; i < calc.pA.length; i++) {
+					const input = document.createElement("input");
+					input.setAttribute("id",`${i}-${calc.formula}-value`);
+					input.setAttribute("type", "text");
+					input.placeholder = calc.pA[i];
+					const br = document.createElement("br");
+					formulaField.appendChild(input);
+					formulaField.appendChild(br);
+				}
+				const button = document.createElement("button");
+				button.setAttribute("id", "calculate-formula-solution");
+				button.setAttribute("class", "accounting-button");
+				const text = document.createTextNode("Submit");
+				button.appendChild(text);
+				formulaField.appendChild(button);
+					console.log("Init selected value to selection: " + selectedCalculation.formula);
+					console.log("Init selected value to selection: " + selectedCalculation.pA);
+
+				initAccountingButtons();
+			}
+		});
+	}
+}
+enableFormulaGenerator();
+
+// function calculateEarningsPerShare(netIncome, outstandingCommonStock, preferredDividend, convertiblePreferredStock) {
+	
+// const eps = (netIncome - preferredDividend) / outstandingCommonStock + convertiblePreferredStock;
+
+// return eps.toFixed(2);
+// }
+// const thisEps = calculateEarningsPerShare(212500, 100000, 2500, 0);
+// console.log("This EPS: " + thisEps);
 
 /**
  * 
@@ -236,29 +322,29 @@ console.log("This EPS: " + thisEps);
  * @see calculateDilutedEarningsPerShare()
  * @returns {Number[]} [otherDebtInterestTaxSavings, instrumentName, conversionOfSecurities]
  */
-function calculateDebtInstrumentSavingsForEps(faceValue, faceRate, taxRate, convertibleTo) {
-	const payload = [];
-	payload[0] = (faceValue * faceRate) - ((faceValue * faceRate) * taxRate);
-	payload[1] = convertibleTo;
+// function calculateDebtInstrumentSavingsForEps(faceValue, faceRate, taxRate, convertibleTo) {
+// 	const payload = [];
+// 	payload[0] = (faceValue * faceRate) - ((faceValue * faceRate) * taxRate);
+// 	payload[1] = convertibleTo;
 	
-	return payload;
-}
+// 	return payload;
+// }
 
-function calculateDilutedEarningsPerShare (netIncome, outstandingCommonStock, conversionOfSecurities, otherDebtInterestTaxSavings) {
+// function calculateDilutedEarningsPerShare (netIncome, outstandingCommonStock, conversionOfSecurities, otherDebtInterestTaxSavings) {
 
-	const dilutedEps = parseFloat(netIncome + otherDebtInterestTaxSavings) / parseFloat(outstandingCommonStock + conversionOfSecurities);
+// 	const dilutedEps = parseFloat(netIncome + otherDebtInterestTaxSavings) / parseFloat(outstandingCommonStock + conversionOfSecurities);
 
-	return dilutedEps.toFixed(2);
+// 	return dilutedEps.toFixed(2);
 
-}
+// }
 
 /**
  * @type {Number[]}
  */
-const dilution = calculateDebtInstrumentSavingsForEps(1000000, .05, .25, 150000);
+// const dilution = calculateDebtInstrumentSavingsForEps(1000000, .05, .25, 150000);
 
-const dEps = calculateDilutedEarningsPerShare(212500, 100000, dilution[1], dilution[0]);
-console.log("This Diluted EPS: " + dEps);
+// const dEps = calculateDilutedEarningsPerShare(212500, 100000, dilution[1], dilution[0]);
+// console.log("This Diluted EPS: " + dEps);
 
 // ---------- T-ACCOUNT GENERATOR  ---------- //
 
@@ -523,7 +609,7 @@ function calculateTCardTotals(identifier){
  * @type number
  * @description Incremented to fire selectAccountingGrid() to change viewed workspace modules.
  */
-let displayedWorkspace = 0;
+let displayedWorkspace = 2;
 function selectAccountingGrid(selection) {
 	const accountingGrids = document.querySelectorAll(".accounting-grid");
 		if (selection >= accountingGrids.length) {
@@ -592,9 +678,11 @@ function initAccountingButtons() {
 				postToLedger(stagedEntries);
 				sendLedgerToTAccounts(stagedEntries);
 				stagedEntries = []
-
 			case "generate-stock":
 				generateStockItem();
+			break;
+			case "calculate-formula-solution":
+				performAccCalculation(selectedCalculation);
 			break;
 			case "generate-t-account":
 				let customAccountName = tAccountName.value;

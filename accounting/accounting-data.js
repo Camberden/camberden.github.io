@@ -12,6 +12,23 @@
 
 /* ---------- GENERAL ACCOUNTING CONCEPTS ---------- */
 
+class AccCalculation {
+	/**
+	 * @param {String} formula 
+	 * @param {String[]} pA 
+	 */
+	constructor(formula, pA) {
+		this.formula = formula;
+		this.pA = pA; // is placeholder string in form element; value to be updated, perhaps?
+	}
+}
+const accCalcs = [
+	eps = new AccCalculation("EPS", ["Net Income", "Preferred Dividends", "Common Shares Outstanding"]),
+	dilutedEps = new AccCalculation("Diluted EPS", ["Net Income", "Other Debt Interest Savings", "Common Stock Outstanding", "Conversion of Securities"]),
+];
+
+
+
 const chartOfAccounts = [
 	"Cash",
 	"Accounts Receivable",
