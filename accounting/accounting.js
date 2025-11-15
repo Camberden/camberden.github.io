@@ -215,16 +215,15 @@ demoStockDataset();
 
 
 // ---------- EARNINGS PER SHARE WORKSHEET  ---------- //
-// TODO: nest most of the below functions to tidy
 
+const formulaResultField = document.getElementById("formula-result-field");
 /**
  * 
  * @param {AccCalculation} calc Selected calculation with pre-written params in prose.
  */
 function performAccCalculation(calc) {
-	console.log("in performance; calc.pA.length = " + calc.pA.length);
-
-	let formulaResultField = document.getElementById("formula-result-field");
+	let formulaResult = 0;
+	const formulaProse = document.getElementById("formula-prose");
 	/**
 	 * @type {Number[]}
 	 */
@@ -236,8 +235,8 @@ function performAccCalculation(calc) {
 
 	switch (calc.formula) {
 		case "EPS":
-			const formulaResult = (parseFloat(payload[0] - payload[1]) / parseFloat(payload[2] + payload[3])).toFixed(2);
-			formulaResultField.innerHTML = formulaResult;
+			formulaResult = (parseFloat(payload[0] - payload[1])) / parseFloat(payload[2]).toFixed(2);
+			formulaProse.innerHTML = `(${calc.pA[0]} - ${calc.pA[1]}) / ${calc.pA[2]})`;
 		break;
 			case "Diluted EPS":
 			console.log("Default!");
@@ -246,6 +245,7 @@ function performAccCalculation(calc) {
 			console.log("Default!");
 		break;
 	}
+	return formulaResult;
 }
 
 /**
@@ -271,8 +271,6 @@ function enableFormulaGenerator() {
 		accCalcs.forEach(calc => {
 				if (selectedFormula === calc.formula) {
 					selectedCalculation = calc;
-					console.log("Init calc value to selection: " + calc.formula);
-					console.log("Init calc value to selection: " + calc.pA);
 				}
 			});
 
@@ -294,8 +292,8 @@ function enableFormulaGenerator() {
 				const text = document.createTextNode("Submit");
 				button.appendChild(text);
 				formulaField.appendChild(button);
-					console.log("Init selected value to selection: " + selectedCalculation.formula);
-					console.log("Init selected value to selection: " + selectedCalculation.pA);
+					// console.log("Init selected value to selection: " + selectedCalculation.formula);
+					// console.log("Init selected value to selection: " + selectedCalculation.pA);
 
 				initAccountingButtons();
 			}
@@ -304,47 +302,6 @@ function enableFormulaGenerator() {
 }
 enableFormulaGenerator();
 
-// function calculateEarningsPerShare(netIncome, outstandingCommonStock, preferredDividend, convertiblePreferredStock) {
-	
-// const eps = (netIncome - preferredDividend) / outstandingCommonStock + convertiblePreferredStock;
-
-// return eps.toFixed(2);
-// }
-// const thisEps = calculateEarningsPerShare(212500, 100000, 2500, 0);
-// console.log("This EPS: " + thisEps);
-
-/**
- * 
- * @param {Number} faceValue Dollar amount of debt instrument
- * @param {Number} faceRate Decimal percentage of debt instrument interest rate
- * @param {Number} taxRate Decimal percentage of tax rate
- * @param {Number} convertibleTo Amount of Common Stock convertible
- * @see calculateDilutedEarningsPerShare()
- * @returns {Number[]} [otherDebtInterestTaxSavings, instrumentName, conversionOfSecurities]
- */
-// function calculateDebtInstrumentSavingsForEps(faceValue, faceRate, taxRate, convertibleTo) {
-// 	const payload = [];
-// 	payload[0] = (faceValue * faceRate) - ((faceValue * faceRate) * taxRate);
-// 	payload[1] = convertibleTo;
-	
-// 	return payload;
-// }
-
-// function calculateDilutedEarningsPerShare (netIncome, outstandingCommonStock, conversionOfSecurities, otherDebtInterestTaxSavings) {
-
-// 	const dilutedEps = parseFloat(netIncome + otherDebtInterestTaxSavings) / parseFloat(outstandingCommonStock + conversionOfSecurities);
-
-// 	return dilutedEps.toFixed(2);
-
-// }
-
-/**
- * @type {Number[]}
- */
-// const dilution = calculateDebtInstrumentSavingsForEps(1000000, .05, .25, 150000);
-
-// const dEps = calculateDilutedEarningsPerShare(212500, 100000, dilution[1], dilution[0]);
-// console.log("This Diluted EPS: " + dEps);
 
 // ---------- T-ACCOUNT GENERATOR  ---------- //
 
@@ -682,7 +639,7 @@ function initAccountingButtons() {
 				generateStockItem();
 			break;
 			case "calculate-formula-solution":
-				performAccCalculation(selectedCalculation);
+				formulaResultField.textContent = performAccCalculation(selectedCalculation);
 			break;
 			case "generate-t-account":
 				let customAccountName = tAccountName.value;

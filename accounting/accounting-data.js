@@ -20,6 +20,7 @@ class AccCalculation {
 	constructor(formula, pA) {
 		this.formula = formula;
 		this.pA = pA; // is placeholder string in form element; value to be updated, perhaps?
+		//ADD FORMULA PARAM: `([0]-[1])/([2]+[3])`;
 	}
 }
 const accCalcs = [
@@ -27,7 +28,22 @@ const accCalcs = [
 	dilutedEps = new AccCalculation("Diluted EPS", ["Net Income", "Other Debt Interest Savings", "Common Stock Outstanding", "Conversion of Securities"]),
 ];
 
-
+/**
+ * @todo Expend for future operability
+ * @param {AccCalculation} calc 
+ * @returns {String} prose
+ */
+function formulaParse(calc) {
+	let procedure = `([0]-[1])/[2]`;
+	for (let i = 0; i < calc.pA.length; i++) {
+		console.log(procedure.includes(`[${i}]`));
+		if (procedure.includes(`[${i}]`)) {
+			procedure = procedure.replaceAll(`[${i}]`, ` ${calc.pA[i]} `);
+		}
+	}
+	return procedure;
+}
+console.log(formulaParse(accCalcs[0]));
 
 const chartOfAccounts = [
 	"Cash",
