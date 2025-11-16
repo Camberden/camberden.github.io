@@ -30,6 +30,15 @@
 	fill: orchid;
 }
 
+#political-division {
+	text-align: right;
+	float: inline-start;
+}
+#visited-total {
+	text-align: right;
+	float: inline-end;
+}
+
 /* ----- WORLD MAP ----- */
 
 #world-map {

@@ -125,18 +125,6 @@
 	float: inline-end;
 }
 
-.close-modal {
-	border-top: none;
-	border-bottom: 1px solid var(--clr-tertiary);
-	border-left: none;
-	border-right: 1px solid var(--clr-tertiary);
-	border-radius: 0.1rem;
-	color: #888;
-	float: inline-start;
-	font-size: 3rem;
-	padding: 0.3rem;
-	font-weight: bold;
-}
 
 .list-dropdown {
 	border-top: none;
@@ -150,10 +138,43 @@
 	font-weight: bold;
 }
 
+.close-modal {
+	border-top: none;
+	border-bottom: 1px solid var(--clr-tertiary);
+	border-left: none;
+	border-right: 1px solid var(--clr-tertiary);
+	border-radius: 0.1rem;
+	color: #888;
+	float: inline-start;
+	font-size: 3rem;
+	padding: 0.3rem;
+	font-weight: bold;
+
+	background-image: linear-gradient(120deg, 0%,  100%);
+	background-repeat: no-repeat;
+	background-size: 25% 0.1rem;
+	background-position: 0 88%;
+	transition: background-size 1s ease-in;
+}
+
+
 .close-modal:hover,
 .close-modal:focus {
-	color: var(--clr-quaternary);
+	/* color: var(--clr-quaternary); */
 	background-color: var(--clr-grid-box);
+
+	background-size: 100% 5%;
+	background-image: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+	background-clip: content-box;
+	/* -webkit-background-clip: content-box; */
+
+
+	text-shadow: -5px -2px 0px #700caa;
+	animation-name: change-text-shadow;
+  	animation-duration: 5s;
+  	animation-iteration-count: infinite;
+	
+	
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -180,9 +201,11 @@
 
 .calendar-date {
 	display: inline-block;
+	text-align: center;
 	font-size: 0.7rem;
 	width: 1.5rem;
-	height: 1.5rem;
+	height: 1.2rem;
+	padding-top: 0.2rem;
 	border-radius: 0.5rem;
 	/* margin: 0.5rem; */
 	border: 0.1rem solid var(--clr-grid-box);
@@ -192,23 +215,24 @@
 
 .calendar-date:hover {
 	border-color: var(--clr-primary);
+
 }
 
 .current-day-highlight {
-	background-color: var(--clr-quaternary);
+	background-color: brown;
 }
 
 .event {
-	background-color: yellow;
+	background-color: khaki;
 }
 
 .future-event {
-	background-color: aliceblue;
+	background-color: cornsilk;
 }
 
 .obligation {
 	color: magenta;
-	font-size: xx-small;
+	font-size: 60%;
 	display: inline;
 	width: 5rem;
 	height: 0.5rem;

@@ -203,14 +203,18 @@ function addEventsByYear(year) {
 }
 
 function addObligations(){
-	let theseMonths = document.querySelectorAll(".these-months");
 	
-	theseMonths.forEach(thisMonth => {
+		document.querySelectorAll(".these-months").forEach(thisMonth => {
+			const span = document.createElement("span");
+			span.setAttribute("class", "obligation");
+			span.innerHTML = ("\&emsp;");
 		for (let task of monthlyObligations) {
 			if (task.startMonth === thisMonth.id) {
-				document.getElementById(thisMonth.id).innerHTML += `<span class="obligation">${task.obligation}</span>`;
+					span.innerHTML = task.obligation;
+				break;
+			}
 		}
-	}
+		thisMonth.appendChild(span);
 	});
 }
 

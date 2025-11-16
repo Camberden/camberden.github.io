@@ -1,5 +1,3 @@
-window.onload = () => console.log("Running!");
-
 const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
 const modal = document.querySelector(".modal");
@@ -53,12 +51,12 @@ enableMapSelectionButtons();
 function cyclePoliticalDivision(selection) {
 	switch (selection) {
 		case "world-map":
-			politicalDivision.innerHTML = "Countries Visited: ";
+			politicalDivision.innerHTML = "Countries Visited:&emsp;";
 			visitedTotal.innerHTML = visitedCountries.length;
 
 		break;
 		case "us-map":
-			politicalDivision.innerHTML = "States Visited: ";
+			politicalDivision.innerHTML = "States Visited:&emsp;";
 			visitedTotal.innerHTML = visitedStates.length;
 		break;
 		default:
