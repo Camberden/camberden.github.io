@@ -34,16 +34,29 @@ const accCalcs = [
  * @returns {String} prose
  */
 function formulaParse(calc) {
+/* 
+from: https://stackoverflow.com/questions/13077923/how-can-i-convert-a-string-into-a-math-operator-in-javascript
+applyOperand['+'](1, 2) == 3;
+*/
 	let procedure = `([0]-[1])/[2]`;
+	const applyOperand = {
+    '+': function (x, y) { return x + y },
+    '-': function (x, y) { return x - y },
+	'/': function (x, y) { return x / y},
+	}
 	for (let i = 0; i < calc.pA.length; i++) {
 		console.log(procedure.includes(`[${i}]`));
 		if (procedure.includes(`[${i}]`)) {
 			procedure = procedure.replaceAll(`[${i}]`, ` ${calc.pA[i]} `);
 		}
 	}
+	if (procedure.includes("/")){
+		procedure = procedure.replace("/", `<hr class="hr-custom">`);
+	}
 	return procedure;
 }
 console.log(formulaParse(accCalcs[0]));
+// document.getElementById("dev-procedure").innerHTML = formulaParse(accCalcs[0]);
 
 const chartOfAccounts = [
 	"Cash",

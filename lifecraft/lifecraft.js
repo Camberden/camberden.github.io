@@ -134,7 +134,7 @@ function findDaysSinceBirthday(present, birth) {
 }
 const pslfRequirement = 120;
 const creditedPSLFMonths = 45;
-const uncreditedPSLFMonths = 15;
+const uncreditedPSLFMonths = 18;
 
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
 console.log("Current Date " + currentYear + "-" + (currentMonth + 1) + "-" + currentDay);
@@ -226,8 +226,10 @@ function generateCalendar(year) {
 		const monthSpan = document.createElement("span");
 		monthSpan.setAttribute("class", "these-months");
 		monthSpan.setAttribute("id", `${getMonthText(i + 1) + "-" + year}`);
+		const br = document.createElement("br");
 		const hr = document.createElement("hr");
 		monthSpan.appendChild(text);
+		monthSpan.appendChild(br);
 		div.appendChild(monthSpan);
 		div.appendChild(hr);
 		for (let j = 0; j < getDaysInMonthOfYear(year, i + 1); j++) {
@@ -429,7 +431,11 @@ function generateSavingsProjector(deposit, ahead) {
 }
 generateSavingsProjector(currentDeposit, true);
 
-
+/**
+ * 
+ * @param {HTMLCollection} elements the HTML Class to target for display triggering
+ * @param {Boolean} displayed whether the values are displayed at associated HTML Class
+ */
 function switchDisplay(elements, displayed) {
 	if (displayed) {
 		document.querySelectorAll(`.${elements}`).forEach(element => {
@@ -505,40 +511,55 @@ function generateRoutineTester() {
 
 }
 
-const wishList = [
-	"Journal Binders",
-	"Magic Mouse",
-	"FMAA Exam Course",
-	"Specialty Display",
-	"Specialized Bicycle",
-	"Honda ADV160/NAVI/NC750X DCT",
-	"Computer Monitor",
-	"Moog 3-Tier Synth with Case",
-	"Ten-Keyed Mechanical Keyboard",
-	"Windows Laptop",
-	"Tablet",
-	"CPA Exam Course",
-	"Raspberry Pi Server",
-	"New Suit",
-	"Smartphone Printer",
-	"New Gym Clothes",
-	"Casual Boots (Garmont, Timberland)",
-	"DeleteMe Service",
-	"Laracasts Lifetime Membership",
-	"Expose PHP Package",
-	"Table Plus",
-	"MAMP Pro 7 Mac",
-];
+
+//TODO: input an iframe
+/**
+ * @type {Map}
+ */
+const wishList = new Map ([
+// EDUCATIONAL SOFTWARE
+	["FMAA Exam Course", "https://www.gleim.com/fmaa-review/test-bank-questions/"],
+	["CPA Exam Course", "https://www.gleim.com/cpa-review/courses/"],
+	["Laracasts Lifetime Membership", "https://laracasts.com"],
+	["Table Plus", "https://tableplus.com/pricing"],
+	// COMPUTERS AND RELATED HARDWARE
+	["Programmers' Computer Monitor", "https://a.co/d/dfedXoM"],
+	["Windows Laptop", "https://a.co/d/dKbYwFv"],
+	["iPad Mini", "https://www.apple.com/shop/buy-ipad/ipad-mini"],
+	["Apple Magic Mouse", "https://a.co/d/bIbsV6I"],
+	["Keychron M7 Wireless Mouse", "https://www.keychron.com/products/keychron-m7-wireless-mouse?variant=42219900928089"],
+	["Keychron Ten-Keyed Mechanical Keyboard", "https://www.keychron.com/products/keychron-k10-qmk-via-wireless-mechanical-keyboard-version-2?variant=42058442473561"],
+	["Raspberry Pi Server", "https://a.co/d/24QcknM"],
+	["Moog 3-Tier Synth with Case", ""],
+	// HOME OFFICE EQUIPMENT AND SUPPLIES
+	["New Home Office Printer", "https://a.co/d/i37gnTR"],
+	["Photo & Label Printer", "https://a.co/d/8rVFTWz"],
+	["Herman Miller Aeron Task Chair, Model B", "https://a.co/d/fOqnQQX"],
+	["More Journal Binders", "https://a.co/d/j8sBrsr"],
+	// APPAREL
+	["New Suit", "https://www.menswearhouse.com/c/mens-clothing/mens-suits/f/fit=slim-fit"],
+	["Garmont Boots 11W", "https://garmonttactical.com/product/34447646/t8-defense-le-wide"],
+	// VEHICLE RELATED
+	["Integra Heated Steering", "https://acura.oempartsonline.com/oem-parts/acura-steering-wheel-heated-8u973s5210a"],
+	["Integra Cover", "https://acura.oempartsonline.com/oem-parts/acura-car-cover-8p343s5200?c=Zz1leHRlcmlvciZzPWNvdmVycyZsPTMmbj1EeW5hbWljIFNFTyBQYWdlJmE9YWN1cmEmbz1pbnRlZ3JhJnk9MjAyNCZ0PWEtc3BlYyZlPTEtNWwtbDQtZ2Fz"],
+	["Integra Front Seat Leathers", "https://a.co/d/f51lHeS"],
+	["Fitcamx Dashcam", "https://a.co/d/8G7Hdbt"],
+	["Honda ADV160/NAVI/NC750X DCT", "https://powersports.honda.com/motorcycle/scooter/adv160/2025/adv160"],
+]); 
 
 function generateWishList() {
 	const ul = document.createElement("ul");
 	for (const wish of wishList) {
 		const li = document.createElement("li");
-		const inp = document.createElement("input");
-		inp.setAttribute("type", "checkbox");
-		const text = document.createTextNode(wish);
-		li.appendChild(inp);
-		li.appendChild(text);
+		const span = document.createElement("span");
+		const a = document.createElement("a");
+		a.setAttribute("href",`${wish[1]}`);
+		a.setAttribute("target", "_blank");
+		const text = document.createTextNode(wish[0]);
+		a.appendChild(text);
+		span.appendChild(a);
+		li.appendChild(span);
+		li.appendChild(a);
 		ul.appendChild(li);
 	}
 	document.getElementById("modal-text").appendChild(ul);
@@ -547,8 +568,11 @@ function generateWishList() {
 function generatePSLFinfo() {
 	const pslfBoxes = document.createElement("div");
 	pslfBoxes.setAttribute("id", "pslf-boxes");
-	const text = document.createTextNode(`PSLF Credit as of ${currentDate}: ${creditedPSLFMonths} of ${pslfRequirement}`);
-	pslfBoxes.appendChild(text);
+	const span = document.createElement("span");
+	span.innerHTML = `Current PSLF Credit: &emsp; <br> ${creditedPSLFMonths} months of ${pslfRequirement} months`;
+	span.setAttribute("class", "modal-list-title");
+	pslfBoxes.appendChild(span);
+
 
 	for (i = 0; i < pslfRequirement; i++) {
 		if (i % 12 === 0) {
@@ -558,6 +582,8 @@ function generatePSLFinfo() {
 		}
 		const pslfBox = document.createElement("span");
 		pslfBox.classList.add("pslf-box");
+		pslfBox.setAttribute("id", `pslf-mo-${i}`);
+		pslfBox.innerText = pslfRequirement - i;
 
 		if (i >= pslfRequirement - creditedPSLFMonths) {
 			pslfBox.classList.add("pslf-box-filled-credited");
@@ -594,7 +620,7 @@ function generateReferenceDocuments() {
 		const li = document.createElement("li");
 		const a = document.createElement("a");
 		const text = document.createTextNode(doc.substring(17, doc.length - 4));
-		a.classList.add("marker");
+		// a.classList.add("marker");
 		a.appendChild(text);
 		a.setAttribute("href", doc);
 		a.setAttribute("target", "_blank");

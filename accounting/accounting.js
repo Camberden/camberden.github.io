@@ -236,7 +236,9 @@ function performAccCalculation(calc) {
 	switch (calc.formula) {
 		case "EPS":
 			formulaResult = (parseFloat(payload[0] - payload[1])) / parseFloat(payload[2]).toFixed(2);
-			formulaProse.innerHTML = `(${calc.pA[0]} - ${calc.pA[1]}) / ${calc.pA[2]})`;
+			formulaProse.innerHTML = `(${calc.pA[0]} - ${calc.pA[1]}) / ${calc.pA[2]}`;
+			const proseHr = formulaProse.innerText.replaceAll("/", "<hr>");
+			formulaProse.innerHTML = proseHr;
 		break;
 			case "Diluted EPS":
 			console.log("Default!");
@@ -245,7 +247,7 @@ function performAccCalculation(calc) {
 			console.log("Default!");
 		break;
 	}
-	return formulaResult;
+	return formulaResult.toFixed(2);
 }
 
 /**

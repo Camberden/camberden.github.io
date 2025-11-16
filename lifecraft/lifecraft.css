@@ -97,33 +97,63 @@
 
 .modal-field {
 	background-color: var(--clr-quinary-body);
-	margin: 15% auto; /* 15% from the top and centered */
-	border: 1px solid #888;
-	width: 50%; /* Could be more or less, depending on screen size */
+	margin: 15% auto; 
+	/* 15% from the top and centered */
+	/* border: 0.5rem double var(--clr-tertiary); */
+	width: 60%; /* Could be more or less, depending on screen size */
+	text-align: left;
+	max-width: fit-content;
+
+	border-radius: 0.5rem;
+	border: 0.1rem solid var(--clr-tertiary);
+	color: var(--clr-secondary);
+	overflow: visible;
 }
 
 #modal-text > ul > li {
 	list-style-type: none;
+	border: 0.5rem double var(--clr-grid-box);
+	padding: 1rem;
+
+}
+.modal-line {
+	width: 100%;
 }
 
-.modal-line {
-	width: 25%;
+.modal-list-title {
+	text-align: right;
+	float: inline-end;
 }
 
 .close-modal {
 	border-top: none;
+	border-bottom: 1px solid var(--clr-tertiary);
+	border-left: none;
+	border-right: 1px solid var(--clr-tertiary);
+	border-radius: 0.1rem;
+	color: #888;
+	float: inline-start;
+	font-size: 3rem;
+	padding: 0.3rem;
+	font-weight: bold;
+}
+
+.list-dropdown {
+	border-top: none;
 	border-bottom: 1px solid #888;
 	border-left: none;
 	border-right: 1px solid #888;
+	border-radius: 0.3rem;
 	color: #888;
 	float: inline-start;
-	font-size: 2rem;
+	font-size: 3rem;
 	font-weight: bold;
 }
 
 .close-modal:hover,
 .close-modal:focus {
-	color: black;
+	color: var(--clr-quaternary);
+	background-color: var(--clr-grid-box);
 	text-decoration: none;
 	cursor: pointer;
 }
@@ -197,20 +227,26 @@
 
 /* ----- PSLF DATA AND MANAGEMENT SPECIFIC ----- */
 
+/* MAKES GOOD MANA BAR UNITS LOL */
 .pslf-box {
 	display: inline-block;
+	font-family: monospace;
+	color: #444;
+	font-size: 10%;
+	text-align: center;
 	width: 1rem;
+	padding: 0.2rem;
 	height: 0.5rem;
-	/* border-radius: 1rem; */
-	margin: 0.1rem;
-	border: 1px solid #444;
-	color: rgba(0, 0, 0, 0);
+	border: 0.2rem solid #444;
 }
 
 .pslf-box-filled-credited {
+	color: var(--clr-quinary-body);
 	background-color: var(--clr-primary);
+	
 }
 .pslf-box-filled-uncredited {
+	color: var(--clr-quinary-body);
 	background-color: var(--clr-secondary);
 }
 
