@@ -110,19 +110,25 @@
 	overflow: visible;
 }
 
+/*TODO: FOR NEXT PUSH; CONSOLIDATE 11/17/2025*/
+#modal-text > div > ul > li {
+	list-style-type: none;
+	border: 0.5rem double var(--clr-grid-box);
+	padding: 1rem;
+}
+
 #modal-text > ul > li {
 	list-style-type: none;
 	border: 0.5rem double var(--clr-grid-box);
 	padding: 1rem;
-
 }
 .modal-line {
 	width: 100%;
 }
 
 .modal-list-title {
-	text-align: right;
-	float: inline-end;
+	text-align: inherit;
+	float: inline-start;
 }
 
 
@@ -154,13 +160,13 @@
 	background-repeat: no-repeat;
 	background-size: 25% 0.1rem;
 	background-position: 0 88%;
-	transition: background-size 1s ease-in;
+	transition: background-size 0.5s ease-in;
 }
 
 
 .close-modal:hover,
 .close-modal:focus {
-	/* color: var(--clr-quaternary); */
+	color: var(--clr-quaternary);
 	background-color: var(--clr-grid-box);
 
 	background-size: 100% 5%;

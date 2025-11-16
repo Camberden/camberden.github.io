@@ -61,7 +61,7 @@ function clearLifecraftField() {
 
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
-	console.log("Modal Cleared!");
+	console.log("Modal Text Cleared!");
 }
 
 
@@ -151,8 +151,6 @@ function getMonthText(val){
 	return months[val - 1];
 }
 console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
-
-
 
 /**
  * @param {number} year 
@@ -458,6 +456,37 @@ switchDisplay("bRotation", false);
 
 // ----- MODAL FUNCTIONS ----- //
 
+/**
+ * @todo Complete & consolidate Modal List functions
+ * @param {String} selection The list to generate
+ */
+function generateModalListHeader(selection) {
+	const div = document.createElement("div");
+	const selectionId = selection.replaceAll(" ", "-");
+	div.setAttribute("id", `${selectionId.toLowerCase()}`);
+	const span = document.createElement("span");
+	span.setAttribute("class", "modal-list-title");
+	switch (selectionId) {
+		case "pslf":
+			span.innerHTML = `Current PSLF Credit: &emsp; <br> ${creditedPSLFMonths} months of ${pslfRequirement} months`;
+		break;
+		case "refdocs":
+
+		break;
+		case "routines":
+				span.innerHTML = `Reference Documents: &emsp; <br> ${routines.length} tested.`;
+		break;
+		case "wish-list":
+			console.log("Wish List");
+		break;
+		default:
+			console.log("Default @ generateModalListHeader(selection)");
+		break;
+	}
+
+	div.appendChild(span);
+}
+
 const maintenancePoints = [
 	"Car: Tires",
 	"Car: Wipers",
@@ -504,16 +533,76 @@ const routines = [
 ];
 
 function generateRoutineTester() {
+	const div = document.createElement("div");
+	div.setAttribute("id", "routines");
+	const span = document.createElement("span");
+	span.innerHTML = `Lifestyle Routines: &emsp; <br> ${routines.length} tested.`;
+	span.setAttribute("class", "modal-list-title");
+	div.appendChild(span);
+
 	const ul = document.createElement("ul");
+	const hr = document.createElement("hr");
+	hr.classList.add("modal-line");
 	for (let routine of routines) {
 		const li = document.createElement("li");
 		const text = document.createTextNode(routine);
 		li.appendChild(text);
 		ul.appendChild(li);
 	}
-	document.getElementById("modal-text").appendChild(ul);
+	div.appendChild(hr);
+	div.appendChild(ul);
+	document.getElementById("modal-text").appendChild(div);
 
 }
+
+/**
+ * @type {Array[[]]}
+ */
+const wishList2 = [
+	["Education",
+		[
+			["FMAA Exam Course", "https://www.gleim.com/fmaa-review/test-bank-questions/"],
+			["CPA Exam Course", "https://www.gleim.com/cpa-review/courses/"],
+			["Laracasts Lifetime Membership", "https://laracasts.com"],
+			["Table Plus", "https://tableplus.com/pricing"],
+		],
+	],
+	["Computers", 
+		[
+			["Programmers' Computer Monitor", "https://a.co/d/dfedXoM"],
+			["Windows Laptop", "https://a.co/d/dKbYwFv"],
+			["iPad Mini", "https://www.apple.com/shop/buy-ipad/ipad-mini"],
+			["Apple Magic Mouse", "https://a.co/d/bIbsV6I"],
+			["Keychron M7 Wireless Mouse", "https://www.keychron.com/products/keychron-m7-wireless-mouse?variant=42219900928089"],
+			["Keychron Ten-Keyed Mechanical Keyboard", "https://www.keychron.com/products/keychron-k10-qmk-via-wireless-mechanical-keyboard-version-2?variant=42058442473561"],
+			["Raspberry Pi Server", "https://a.co/d/24QcknM"],
+			["Moog 3-Tier Synth with Case", ""],
+		],
+	],
+	["Home Office",
+		[
+			["New Home Office Printer", "https://a.co/d/i37gnTR"],
+			["Photo & Label Printer", "https://a.co/d/8rVFTWz"],
+			["Herman Miller Aeron Task Chair, Model B", "https://a.co/d/fOqnQQX"],
+			["More Journal Binders", "https://a.co/d/j8sBrsr"],
+		]
+	],
+	["Apparel",
+		[
+			["New Suit", "https://www.menswearhouse.com/c/mens-clothing/mens-suits/f/fit=slim-fit"],
+			["Garmont Boots 11W", "https://garmonttactical.com/product/34447646/t8-defense-le-wide"],
+		]
+	],
+	["Vehicle Related",
+		[
+			["Integra Heated Steering", "https://acura.oempartsonline.com/oem-parts/acura-steering-wheel-heated-8u973s5210a"],
+			["Integra Cover", "https://acura.oempartsonline.com/oem-parts/acura-car-cover-8p343s5200?c=Zz1leHRlcmlvciZzPWNvdmVycyZsPTMmbj1EeW5hbWljIFNFTyBQYWdlJmE9YWN1cmEmbz1pbnRlZ3JhJnk9MjAyNCZ0PWEtc3BlYyZlPTEtNWwtbDQtZ2Fz"],
+			["Integra Front Seat Leathers", "https://a.co/d/f51lHeS"],
+			["Fitcamx Dashcam", "https://a.co/d/8G7Hdbt"],
+			["Honda ADV160/NAVI/NC750X DCT", "https://powersports.honda.com/motorcycle/scooter/adv160/2025/adv160"],
+		],
+	],
+];
 
 
 //TODO: input an iframe
@@ -619,7 +708,14 @@ const refdocs = [
 ];
 
 function generateReferenceDocuments() {
+	const div = document.createElement("div");
+	div.setAttribute("id", "refdocs");
+	const span = document.createElement("span");
+	span.innerHTML = `Reference Documents: &emsp; <br> ${refdocs.length} filed.`;
+	span.setAttribute("class", "modal-list-title");
 	const ul = document.createElement("ul");
+	const hr = document.createElement("hr");
+	hr.classList.add("modal-line");
 	for (const doc of refdocs) {
 		const li = document.createElement("li");
 		const a = document.createElement("a");
@@ -631,7 +727,10 @@ function generateReferenceDocuments() {
 		li.appendChild(a);
 		ul.appendChild(li);
 	};
-	document.getElementById("modal-text").appendChild(ul);
+	div.appendChild(span);
+	div.appendChild(hr);
+	div.appendChild(ul);
+	document.getElementById("modal-text").appendChild(div);
 
 }
 
