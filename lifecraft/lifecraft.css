@@ -166,7 +166,7 @@
 
 .close-modal:hover,
 .close-modal:focus {
-	color: var(--clr-quaternary);
+	color: var(--clr-quinary-body);
 	background-color: var(--clr-grid-box);
 
 	background-size: 100% 5%;
@@ -189,8 +189,6 @@
 	color: var(--clr-secondary);
 	cursor: pointer;
 }
-
-
 
 /* ---------- LIFECRAFT FIELD VALUES ---------- */
 
@@ -243,6 +241,9 @@
 	width: 5rem;
 	height: 0.5rem;
 	border: 1px solid #444;
+}
+.obligation:hover {
+	border-color: var(--clr-quaternary);
 }
 
 .aRotation {

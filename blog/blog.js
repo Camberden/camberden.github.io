@@ -1,7 +1,7 @@
-let activeBlogPost = document.getElementById("active-blog-post");
-let activeBlogPostNumber = blogData.length - 1;
-let blogPostList = document.getElementById("blog-post-list");
-let blogPostTitle = document.getElementById("blog-post-title");
+const activeBlogPost = document.getElementById("active-blog-post");
+const activeBlogPostNumber = blogData.length - 1;
+const blogPostList = document.getElementById("blog-post-list");
+const blogPostTitle = document.getElementById("blog-post-title");
 let listedYears = [];
 
 
@@ -40,19 +40,19 @@ function extractHeaderData(increment) {
 
 function initBlogData(dataLength) {
 	for (i = 0; i <= dataLength - 1; i++) {
-	const instance = blogData[i];
-	const splitInstance = instance.split("|");
-	const instanceDate = splitInstance[1].trim();
-	const instanceLocation = splitInstance[2].trim();
-	const instanceTime = splitInstance[3].trim();
-	const instanceBlogPost = splitInstance[4].trim();
-	const instanceTitle = gatherTextBetweenTags(instanceBlogPost, "b-title").trim();
-	const listedYear = instanceDate.substring(instanceDate.indexOf(",") + 2, instanceDate.indexOf("…"));
+		const instance = blogData[i];
+		const splitInstance = instance.split("|");
+		const instanceDate = splitInstance[1].trim();
+		const instanceLocation = splitInstance[2].trim();
+		const instanceTime = splitInstance[3].trim();
+		const instanceBlogPost = splitInstance[4].trim();
+		const instanceTitle = gatherTextBetweenTags(instanceBlogPost, "b-title").trim();
+		const listedYear = instanceDate.substring(instanceDate.indexOf(",") + 2, instanceDate.indexOf("…"));
 
-	const bp = new BlogPost(instanceDate, instanceLocation, instanceTime, instanceTitle, i);
-	document.getElementById("blog-post-date").innerHTML = bp.date;
-	document.getElementById("blog-post-location").innerHTML = bp.location;
-	document.getElementById("blog-post-time").innerHTML = bp.time;
+		const bp = new BlogPost(instanceDate, instanceLocation, instanceTime, instanceTitle, i);
+		document.getElementById("blog-post-date").innerHTML = bp.date;
+		document.getElementById("blog-post-location").innerHTML = bp.location;
+		document.getElementById("blog-post-time").innerHTML = bp.time;
 
 
 		let listedBlogPost = document.createElement("li");
@@ -60,12 +60,12 @@ function initBlogData(dataLength) {
 		span.setAttribute("class", "listed-title");
 		span.innerText = bp.title;
 
-		if (!listedYears.includes(listedYear) && listedYear){
+		if (!listedYears.includes(listedYear) && listedYear) {
 			listedYears += listedYear + " ";
 		}
 		listedBlogPost.setAttribute("class", `bp-year-${listedYear}`);
 		listedBlogPost.classList.add("blog-post-inside-list");
-		
+
 		listedBlogPost.setAttribute("value", i);
 		listedBlogPost.setAttribute("id", `bp-${i}`);
 		blogPostList.appendChild(listedBlogPost);

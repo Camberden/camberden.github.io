@@ -62,10 +62,10 @@ const events = [
 ];
 
 /**
- * @param {string} month - Format: Month-YYYY
- * @param {string} summary
- * @param {string} tune
- * @param {string} tuneLink
+ * @param {string} month Format: Month-YYYY
+ * @param {string} summary About the month
+ * @param {string} tune Name of tune associated with month
+ * @param {string} tuneLink Href link to external site
  */
 class MonthlySummary {
 	constructor(month, summary, tune, tuneLink) {
@@ -133,6 +133,7 @@ const monthlySummaries = [
 ];
 
 /**
+ * @todo Consider refactoring as array of arrays
  * @param {string} obligation
  * @param {string} startMonth - Format: Month-YYYY
  * @param {string} endMonth - Format: Month-YYYY

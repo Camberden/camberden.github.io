@@ -24,8 +24,10 @@ class AccCalculation {
 	}
 }
 const accCalcs = [
+	//`([0]-[1])/[2],
 	eps = new AccCalculation("EPS", ["Net Income", "Preferred Dividends", "Common Shares Outstanding"]),
-	dilutedEps = new AccCalculation("Diluted EPS", ["Net Income", "Other Debt Interest Savings", "Common Stock Outstanding", "Conversion of Securities"]),
+	//`([0]-[1])/([2]+[3]),
+	dilutedEps = new AccCalculation("Diluted EPS", ["Net Income", "Other Debt Interest Savings", "Common Stock Outstanding", "Conversion of Securities"]), 
 ];
 
 /**
@@ -36,7 +38,6 @@ const accCalcs = [
 function formulaParse(calc) {
 /* 
 from: https://stackoverflow.com/questions/13077923/how-can-i-convert-a-string-into-a-math-operator-in-javascript
-applyOperand['+'](1, 2) == 3;
 */
 	let procedure = `([0]-[1])/[2]`;
 	const applyOperand = {
@@ -44,6 +45,9 @@ applyOperand['+'](1, 2) == 3;
     '-': function (x, y) { return x - y },
 	'/': function (x, y) { return x / y},
 	}
+
+	
+
 	for (let i = 0; i < calc.pA.length; i++) {
 		console.log(procedure.includes(`[${i}]`));
 		if (procedure.includes(`[${i}]`)) {
@@ -243,7 +247,7 @@ function accountingFormula(entries) {
 function generateStatementTemplates() {
 	let entityName = "Demonstration";
 	const statementTemplates = [
-	balanceSheetTemplate = `
+		balanceSheetTemplate = `
 <h5>${entityName}</h5>
 <p>Balance Sheet</p>
 <p>At ${new Date().toLocaleDateString("en-US")}</p>
@@ -284,16 +288,15 @@ function generateStatementTemplates() {
 <p>Total Liabilities & Shareholders' Equity:</p>
 <hr class="hr-custom">
 </div>
-`,	incomeStatementTemplate = `
-`,	statementOfCashFlowsTemplate = `
-`,	statementOfShareholdersEquityTemplate = `
+`, incomeStatementTemplate = `
+`, statementOfCashFlowsTemplate = `
+`, statementOfShareholdersEquityTemplate = `
 `,
 	];
 	document.getElementById("balance-sheet").innerHTML = statementTemplates[0];
 	document.getElementById("income-statement").innerHTML = statementTemplates[1];
 	document.getElementById("statement-of-cash-flows").innerHTML = statementTemplates[2];
 	document.getElementById("statement-of-shareholders-equity").innerHTML = statementTemplates[3];
-
 }
 
 /* ---------- INCOME STATEMENT ---------- */

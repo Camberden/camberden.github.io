@@ -13,32 +13,30 @@ function enableModal() {
 			prompt.classList.remove("secondary-highlight");
 		}
 		prompt.onclick = function () {
-			switch (prompt.innerHTML) {
-				case "Routine Tester":
-					generateRoutineTester();
-					modal.style.display = "block";
-					break;	
-				case "Wish List":
-					generateWishList();
-					modal.style.display = "block";
-					break;
-				case "Documents":
-					generateReferenceDocuments();
-					modal.style.display = "block";
-					break;
-				case "PSLF":
-					modal.style.display = "block";
-					generatePSLFinfo();
-					break;
-				case "Life Maintenance":
-					generateMaintenanceList();
-					modal.style.display = "block";
-				break;
-				default:
-					console.log("hi");
-				break;
-			}
-			console.log("hi");
+
+			generateModalListHeader(prompt.innerHTML);
+			modal.style.display = "block";
+			// switch (prompt.innerHTML) {
+			// 	case "Wish List":
+			// 		generateModalListHeader(prompt.innerHTML);
+			// 		// generateWishList();
+			// 		modal.style.display = "block";
+			// 		break;
+			// 	case "Documents":
+			// 		generateModalListHeader(prompt.innerHTML);
+			// 		modal.style.display = "block";
+			// 		break;
+			// 	case "PSLF":
+			// 		generateModalListHeader(prompt.innerHTML);
+			// 		modal.style.display = "block";
+			// 	case "Life Maintenance":
+			// 		generateMaintenanceList();
+			// 		modal.style.display = "block";
+			// 	break;
+			// 	default:
+			// 		console.log("hi");
+			// 	break;
+			// }
 		};
 		closeModal.onclick = function () {
 			clearModal();
@@ -54,16 +52,20 @@ function enableModal() {
 }
 enableModal();
 
+/**
+ * @description Removes all elements (close-modal & modal-text) within the modal window
+ */
 function clearLifecraftField() {
 	lifecraftField.innerHTML = "";
 	console.log("Lifecraft Field Cleared!");
 }
-
+/**
+ * @description Removes only the prose within modal 
+ */
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
 	console.log("Modal Text Cleared!");
 }
-
 
 const currentUser = new Person("Chrispy", new Date(1993, 11, 14));
 const birthYear = currentUser.birthday.getFullYear();
@@ -78,18 +80,19 @@ const dateOptions = {
 	day: "2-digit",
 }
 const currentYear = date.getFullYear();
-let changeYear = currentYear;
 const currentMonth = date.getMonth();
 const currentDay = date.getDate();
 const currentDate = date.toLocaleDateString("en-US", dateOptions);
+let changeYear = currentYear;
+
 function getDaysInMonthOfYear(year, month) {
 	return new Date(year, month, 0).getDate();
 }
 
 /**
  * 
- * @param {Date} currentDate 
- * @param {Date} birthDate 
+ * @param {Date} present 
+ * @param {Date} birth 
  */
 function findDaysSinceBirthday(present, birth) {
 	const yearsSinceBirth = present.getFullYear() - birth.getFullYear() - 1; // -1 accounts for present year lived months
@@ -137,8 +140,6 @@ const creditedPSLFMonths = 45;
 const uncreditedPSLFMonths = 18;
 
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
-console.log("Current Date " + currentYear + "-" + (currentMonth + 1) + "-" + currentDay);
-console.log("Current Date: " + new Date(currentYear, currentMonth, currentDay).toDateString);
 document.getElementById("days-lived").textContent = ("Days Lived: " + daysSinceBirth);
 document.getElementById("weeks-lived").textContent = ("Weeks Lived: " + (daysSinceBirth / 7).toFixed(2));
 document.getElementById("years-lived").textContent = ("Years Lived: " + (daysSinceBirth / 365).toFixed(2));
@@ -205,7 +206,7 @@ function addObligations(){
 		document.querySelectorAll(".these-months").forEach(thisMonth => {
 			const span = document.createElement("span");
 			span.setAttribute("class", "obligation");
-			span.innerHTML = ("\&emsp;");
+			span.innerHTML = ("\&emsp;\&emsp;\&emsp;");
 		for (let task of monthlyObligations) {
 			if (task.startMonth === thisMonth.id) {
 					span.innerHTML = task.obligation;
@@ -458,33 +459,91 @@ switchDisplay("bRotation", false);
 
 /**
  * @todo Complete & consolidate Modal List functions
- * @param {String} selection The list to generate
+ * @param {String} selection The list to generate, text
  */
 function generateModalListHeader(selection) {
 	const div = document.createElement("div");
-	const selectionId = selection.replaceAll(" ", "-");
-	div.setAttribute("id", `${selectionId.toLowerCase()}`);
+	const selectionId = selection.replaceAll(" ", "-").toLowerCase();
+	div.setAttribute("id", `${selectionId}`);
 	const span = document.createElement("span");
 	span.setAttribute("class", "modal-list-title");
+	const ul = document.createElement("ul");
+	const hr = document.createElement("hr");
+	hr.classList.add("modal-line");
+	console.log(selectionId);
+	
 	switch (selectionId) {
 		case "pslf":
-			span.innerHTML = `Current PSLF Credit: &emsp; <br> ${creditedPSLFMonths} months of ${pslfRequirement} months`;
-		break;
-		case "refdocs":
+		span.innerHTML = `Current PSLF Credit: &emsp; <br> ${creditedPSLFMonths} months of ${pslfRequirement} months`;
+		// const pslfBoxes = document.createElement("div");
+		// pslfBoxes.setAttribute("id", "pslf-boxes");
+		for (i = 0; i < pslfRequirement; i++) {																
+				if (i % 12 === 0) {
+					const pslfBoxLine = document.createElement("hr");
+					pslfBoxLine.classList.add("modal-line");
+					div.appendChild(pslfBoxLine);
+				}
+				const pslfBox = document.createElement("span");
+				pslfBox.classList.add("pslf-box");
+				pslfBox.setAttribute("id", `pslf-mo-${i}`);
+				pslfBox.innerText = pslfRequirement - i;
 
+				if (i >= pslfRequirement - creditedPSLFMonths) {
+					pslfBox.classList.add("pslf-box-filled-credited");
+				} else if (i >= (pslfRequirement - (creditedPSLFMonths + uncreditedPSLFMonths))) {
+					pslfBox.classList.add("pslf-box-filled-uncredited");
+				}									
+				div.appendChild(pslfBox);
+			}		
 		break;
-		case "routines":
-				span.innerHTML = `Reference Documents: &emsp; <br> ${routines.length} tested.`;
+		case "documents":
+			span.innerHTML = `Reference Documents: &emsp; <br> ${refdocs.length} filed.`;
+			for (const doc of refdocs) {
+				const li = document.createElement("li");
+				const a = document.createElement("a");
+				const text = document.createTextNode(doc.substring(17, doc.length - 4));
+				// a.classList.add("marker");
+				a.appendChild(text);
+				a.setAttribute("href", doc);
+				a.setAttribute("target", "_blank");
+				li.appendChild(a);
+				ul.appendChild(li);
+			};
 		break;
 		case "wish-list":
-			console.log("Wish List");
+			span.innerHTML = `Wish List: &emsp; <br> ${wishList.size} things are still interesting.`;
+			for (const wish of wishList) {
+				const li = document.createElement("li");
+				const span = document.createElement("span");
+				const a = document.createElement("a");
+				a.setAttribute("href",`${wish[1]}`);
+				a.setAttribute("target", "_blank");
+				const text = document.createTextNode(wish[0]);
+				a.appendChild(text);
+				span.appendChild(a);
+				li.appendChild(span);
+				li.appendChild(a);
+				ul.appendChild(li);
+			}
 		break;
+		case "life-maintenance":
+			span.innerHTML = `Maintenance Points: &emsp; <br> ${maintenancePoints.length} things involved.`;
+				for (const point of maintenancePoints) {
+					const li = document.createElement("li");
+					const text = document.createTextNode(point);
+					li.appendChild(text);
+					ul.appendChild(li);
+				}
+			break;
 		default:
 			console.log("Default @ generateModalListHeader(selection)");
 		break;
 	}
 
 	div.appendChild(span);
+	div.appendChild(hr);
+	div.appendChild(ul);
+	document.getElementById("modal-text").appendChild(div);
 }
 
 const maintenancePoints = [
@@ -524,35 +583,6 @@ function generateMaintenanceList() {
 		ul.appendChild(li);
 	}
 	document.getElementById("modal-text").appendChild(ul);
-}
-
-const routines = [
-	"SU2024",
-	"SP2025",
-	"SU2025",
-];
-
-function generateRoutineTester() {
-	const div = document.createElement("div");
-	div.setAttribute("id", "routines");
-	const span = document.createElement("span");
-	span.innerHTML = `Lifestyle Routines: &emsp; <br> ${routines.length} tested.`;
-	span.setAttribute("class", "modal-list-title");
-	div.appendChild(span);
-
-	const ul = document.createElement("ul");
-	const hr = document.createElement("hr");
-	hr.classList.add("modal-line");
-	for (let routine of routines) {
-		const li = document.createElement("li");
-		const text = document.createTextNode(routine);
-		li.appendChild(text);
-		ul.appendChild(li);
-	}
-	div.appendChild(hr);
-	div.appendChild(ul);
-	document.getElementById("modal-text").appendChild(div);
-
 }
 
 /**
@@ -641,7 +671,16 @@ const wishList = new Map ([
 ]); 
 
 function generateWishList() {
+	const div = document.createElement("div");
+	div.setAttribute("id", "wish-list");
+	const span = document.createElement("span");
+	span.innerHTML = `Wish List: &emsp; <br> ${wishList.size} things are still interesting.`;
+	span.setAttribute("class", "modal-list-title");
 	const ul = document.createElement("ul");
+	const hr = document.createElement("hr");
+	hr.classList.add("modal-line");
+
+
 	for (const wish of wishList) {
 		const li = document.createElement("li");
 		const span = document.createElement("span");
@@ -655,7 +694,10 @@ function generateWishList() {
 		li.appendChild(a);
 		ul.appendChild(li);
 	}
-	document.getElementById("modal-text").appendChild(ul);
+	div.appendChild(span);
+	div.appendChild(hr);
+	div.appendChild(ul);
+	document.getElementById("modal-text").appendChild(div);
 }
 
 function generatePSLFinfo() {
