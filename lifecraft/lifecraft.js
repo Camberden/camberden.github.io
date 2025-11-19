@@ -467,25 +467,27 @@ function generateModalListHeader(selection) {
 	div.setAttribute("id", `${selectionId}`);
 	const span = document.createElement("span");
 	span.setAttribute("class", "modal-list-title");
-	const ul = document.createElement("ul");
+	let ul = document.createElement("ul");
 	const hr = document.createElement("hr");
 	hr.classList.add("modal-line");
 	console.log(selectionId);
 	
 	switch (selectionId) {
+
 		case "pslf":
-		span.innerHTML = `Current PSLF Credit: &emsp; <br> ${creditedPSLFMonths} months of ${pslfRequirement} months`;
+		span.innerHTML = `&emsp;Current PSLF Credit: &emsp; <br> &emsp; ${creditedPSLFMonths} months of ${pslfRequirement} months`;
 		// const pslfBoxes = document.createElement("div");
 		// pslfBoxes.setAttribute("id", "pslf-boxes");
-		for (i = 0; i < pslfRequirement; i++) {																
+		ul = document.createElement("div");
+		for (let i = 0; i < pslfRequirement; i++) {																
 				if (i % 12 === 0) {
 					const pslfBoxLine = document.createElement("hr");
 					pslfBoxLine.classList.add("modal-line");
-					div.appendChild(pslfBoxLine);
+					ul.appendChild(pslfBoxLine);
 				}
 				const pslfBox = document.createElement("span");
 				pslfBox.classList.add("pslf-box");
-				pslfBox.setAttribute("id", `pslf-mo-${i}`);
+				pslfBox.setAttribute("id", `pslf-mo-${pslfRequirement - i}`);
 				pslfBox.innerText = pslfRequirement - i;
 
 				if (i >= pslfRequirement - creditedPSLFMonths) {
@@ -493,11 +495,11 @@ function generateModalListHeader(selection) {
 				} else if (i >= (pslfRequirement - (creditedPSLFMonths + uncreditedPSLFMonths))) {
 					pslfBox.classList.add("pslf-box-filled-uncredited");
 				}									
-				div.appendChild(pslfBox);
+				ul.appendChild(pslfBox);
 			}		
 		break;
 		case "documents":
-			span.innerHTML = `Reference Documents: &emsp; <br> ${refdocs.length} filed.`;
+			span.innerHTML = `&emsp;Reference Documents: &emsp; <br> &emsp; ${refdocs.length} filed.`;
 			for (const doc of refdocs) {
 				const li = document.createElement("li");
 				const a = document.createElement("a");
@@ -511,7 +513,7 @@ function generateModalListHeader(selection) {
 			};
 		break;
 		case "wish-list":
-			span.innerHTML = `Wish List: &emsp; <br> ${wishList.size} things are still interesting.`;
+			span.innerHTML = `&emsp; Wish List: &emsp; <br> &emsp; ${wishList.size} things are still interesting.`;
 			for (const wish of wishList) {
 				const li = document.createElement("li");
 				const span = document.createElement("span");
@@ -527,7 +529,7 @@ function generateModalListHeader(selection) {
 			}
 		break;
 		case "life-maintenance":
-			span.innerHTML = `Maintenance Points: &emsp; <br> ${maintenancePoints.length} things involved.`;
+			span.innerHTML = `&emsp; Maintenance Points: &emsp; <br> &emsp; ${maintenancePoints.length} things involved.`;
 				for (const point of maintenancePoints) {
 					const li = document.createElement("li");
 					const text = document.createTextNode(point);
