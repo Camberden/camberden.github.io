@@ -1,5 +1,5 @@
 const activeBlogPost = document.getElementById("active-blog-post");
-const activeBlogPostNumber = blogData.length - 1;
+let activeBlogPostNumber = blogData.length - 1;
 const blogPostList = document.getElementById("blog-post-list");
 const blogPostTitle = document.getElementById("blog-post-title");
 let listedYears = [];

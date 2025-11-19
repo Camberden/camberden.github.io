@@ -288,9 +288,31 @@ function generateStatementTemplates() {
 <p>Total Liabilities & Shareholders' Equity:</p>
 <hr class="hr-custom">
 </div>
-`, incomeStatementTemplate = `
-`, statementOfCashFlowsTemplate = `
-`, statementOfShareholdersEquityTemplate = `
+`,
+
+incomeStatementTemplate = `
+`,
+
+statementOfCashFlowsTemplate = `
+`,
+
+statementOfShareholdersEquityTemplate = `
+<h5>${entityName}</h5>
+<p>Statement of Shareholder's Equity</p>
+<p>At ${new Date().toLocaleDateString("en-US")}</p>
+<hr class="hr-custom">
+<div id="balance-sheet-assets">
+<p>Shareholders' Equity:</p>
+
+<span>Capital Stock</span>
+<ul id="shareholders-equity-stock">
+</ul>
+<span>Acculumlated Other Comprehensive Income</span>
+<ul id="shareholders-equity-aoci">
+
+<li>Retained Earnings</li>
+</ul>
+
 `,
 	];
 	document.getElementById("balance-sheet").innerHTML = statementTemplates[0];

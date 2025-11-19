@@ -63,7 +63,7 @@
 }
 
 #blog-post-list-content {
-	flex: 1 1 10%;
+	flex: 1 1 20%;
 	/* display: block; */
 	position: sticky;
 	/* margin-left: 50%; */

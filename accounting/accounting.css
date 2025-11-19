@@ -136,24 +136,36 @@
 }
 
 #income-statement {
+	font-size: smaller;
+	font-family: 'Courier New', Courier, monospace;
+	line-height: 0.2rem;
 	flex-direction: row;
-	align-items: center; /* Aligns the Ledger Table */
+	align-items: left; /* Aligns the Ledger Table */
+	text-align: left;
 	/* justify-content: center; */
 	min-width: 25%;
 	min-height: 5rem;
 }
 
 #statement-of-shareholders-equity {
+	font-size: smaller;
+	font-family: 'Courier New', Courier, monospace;
+	line-height: 0.2rem;
 	flex-direction: row;
-	align-items: center; /* Aligns the Ledger Table */
+	align-items: left; /* Aligns the Ledger Table */
+	text-align: left;
 	/* justify-content: center; */
 	min-width: 25%;
 	min-height: 5rem;
 }
 
 #statement-of-cash-flows {
+	font-size: smaller;
+	font-family: 'Courier New', Courier, monospace;
+	line-height: 0.2rem;
 	flex-direction: row;
-	align-items: center; /* Aligns the Ledger Table */
+	align-items: left; /* Aligns the Ledger Table */
+	text-align: left;
 	/* justify-content: center; */
 	min-width: 25%;
 	min-height: 5rem;
