@@ -124,7 +124,7 @@ const sections = [
 	["blog", "Blogging Page",],
 	["language", "Language Resource",],
 	["accounting", "Accounting Resource",],
-	["travel", "Travel Page",],
+	// ["travel", "Travel Page",],
 	["lifecraft", "Lifecraft Page",],
 	["musings", "Musings Page",],
 	["music", "Original Music",],

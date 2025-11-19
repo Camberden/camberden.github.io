@@ -1,4 +1,4 @@
-// ----- LIFE EVENTS AND MONTHLY SUMMARIES BY YEAR ----- //
+// ---------- LIFE EVENTS AND MONTHLY SUMMARIES BY YEAR ---------- //
 
 /**
  * @param {string} name
@@ -155,4 +155,162 @@ const monthlyObligations = [
 	sp2026 = new MonthlyObligation("ACC269", "January-2026", "April-2026", "Auditing & Assurance Services"),
 	su2026 = new MonthlyObligation("ACC149&BUS115", "May-2026", "July-2026", "Intro to ACC Spreadsheets & Business Law I"),
 	fa2026 = new MonthlyObligation("ACC129&ACC140", "August-2026", "December-2026", "Individual Income Taxes & Payroll Accounting"),
+];
+
+// ---------- VARIABLES ---------- //
+
+const date = new Date();
+const currentUser = new Person("Chrispy", new Date(1993, 11, 14));
+const birthYear = currentUser.birthday.getFullYear();
+const birthMonth = currentUser.birthday.getMonth();
+const birthDate = currentUser.birthday.getDate();
+const dateOptions = {
+	weekday: "short", //long, narrow
+	year: "numeric", //
+	month: "2-digit", //long, short, narrow, numeric
+	day: "2-digit",
+}
+const currentYear = date.getFullYear();
+const currentMonth = date.getMonth();
+const currentDay = date.getDate();
+const currentDate = date.toLocaleDateString("en-US", dateOptions);
+let changeYear = currentYear;
+
+const pslfRequirement = 120;
+const creditedPSLFMonths = 45;
+const uncreditedPSLFMonths = 18;
+
+
+// ---------- MODAL LISTS ---------- //
+
+const maintenancePoints = [
+	"Car: Tires",
+	"Car: Wipers",
+	"Car: Engine",
+	"Car: Routine Maintenance",
+	"Car: Registration [October 20XX]",
+	"Place: Paper Towels",
+	"Place: Toilet Tissue",
+	"Place: Shampoo & Conditioner",
+	"Place: Toothpaste & Toothbrushes",
+	"Place: Hand Soap",
+	"Place: Dishwasher Soap",
+	"Place: Sponges",
+	"Place: Razors and Blades",
+	"Place: Deodorant and Cologne",
+	"Place: Printer Ink & Paper",
+	"Place: Incense",
+	"Education: SP Term [December 20XX]",
+	"Education: FA Term [July 20XX]",
+	"Education: SU Term [April 20XX]",
+	"Transponder: Fee [August 29th 20XX]",
+	"SFD: [January 2026]",
+	"SFC: [May 2026]",
+	"SWC: [___ ___]",
+	"AZC: [___ ___]",
+	"Benefits: Enroll [October 20XX]",
+];
+
+/**
+ * @type {Array[[]]}
+ */
+const wishList2 = [
+	["Education",
+		[
+			["FMAA Exam Course", "https://www.gleim.com/fmaa-review/test-bank-questions/"],
+			["CPA Exam Course", "https://www.gleim.com/cpa-review/courses/"],
+			["Laracasts Lifetime Membership", "https://laracasts.com"],
+			["Table Plus", "https://tableplus.com/pricing"],
+		],
+	],
+	["Computers", 
+		[
+			["Programmers' Computer Monitor", "https://a.co/d/dfedXoM"],
+			["Windows Laptop", "https://a.co/d/dKbYwFv"],
+			["iPad Mini", "https://www.apple.com/shop/buy-ipad/ipad-mini"],
+			["Apple Magic Mouse", "https://a.co/d/bIbsV6I"],
+			["Keychron M7 Wireless Mouse", "https://www.keychron.com/products/keychron-m7-wireless-mouse?variant=42219900928089"],
+			["Keychron Ten-Keyed Mechanical Keyboard", "https://www.keychron.com/products/keychron-k10-qmk-via-wireless-mechanical-keyboard-version-2?variant=42058442473561"],
+			["Raspberry Pi Server", "https://a.co/d/24QcknM"],
+			["Moog 3-Tier Synth with Case", ""],
+		],
+	],
+	["Home Office",
+		[
+			["New Home Office Printer", "https://a.co/d/i37gnTR"],
+			["Photo & Label Printer", "https://a.co/d/8rVFTWz"],
+			["Herman Miller Aeron Task Chair, Model B", "https://a.co/d/fOqnQQX"],
+			["More Journal Binders", "https://a.co/d/j8sBrsr"],
+		]
+	],
+	["Apparel",
+		[
+			["New Suit", "https://www.menswearhouse.com/c/mens-clothing/mens-suits/f/fit=slim-fit"],
+			["Garmont Boots 11W", "https://garmonttactical.com/product/34447646/t8-defense-le-wide"],
+		]
+	],
+	["Vehicle Related",
+		[
+			["Integra Heated Steering", "https://acura.oempartsonline.com/oem-parts/acura-steering-wheel-heated-8u973s5210a"],
+			["Integra Cover", "https://acura.oempartsonline.com/oem-parts/acura-car-cover-8p343s5200?c=Zz1leHRlcmlvciZzPWNvdmVycyZsPTMmbj1EeW5hbWljIFNFTyBQYWdlJmE9YWN1cmEmbz1pbnRlZ3JhJnk9MjAyNCZ0PWEtc3BlYyZlPTEtNWwtbDQtZ2Fz"],
+			["Integra Front Seat Leathers", "https://a.co/d/f51lHeS"],
+			["Fitcamx Dashcam", "https://a.co/d/8G7Hdbt"],
+			["Honda ADV160/NAVI/NC750X DCT", "https://powersports.honda.com/motorcycle/scooter/adv160/2025/adv160"],
+		],
+	],
+];
+
+//TODO: input an iframe
+/**
+ * @type {Map}
+ */
+const wishList = new Map ([
+// EDUCATIONAL SOFTWARE
+	["FMAA Exam Course", "https://www.gleim.com/fmaa-review/test-bank-questions/"],
+	["CPA Exam Course", "https://www.gleim.com/cpa-review/courses/"],
+	["Laracasts Lifetime Membership", "https://laracasts.com"],
+	["Table Plus", "https://tableplus.com/pricing"],
+	// COMPUTERS AND RELATED HARDWARE
+	["Programmers' Computer Monitor", "https://a.co/d/dfedXoM"],
+	["Windows Laptop", "https://a.co/d/dKbYwFv"],
+	["iPad Mini", "https://www.apple.com/shop/buy-ipad/ipad-mini"],
+	["Apple Magic Mouse", "https://a.co/d/bIbsV6I"],
+	["Keychron M7 Wireless Mouse", "https://www.keychron.com/products/keychron-m7-wireless-mouse?variant=42219900928089"],
+	["Keychron Ten-Keyed Mechanical Keyboard", "https://www.keychron.com/products/keychron-k10-qmk-via-wireless-mechanical-keyboard-version-2?variant=42058442473561"],
+	["Raspberry Pi Server", "https://a.co/d/24QcknM"],
+	["Moog 3-Tier Synth with Case", ""],
+	// HOME OFFICE EQUIPMENT AND SUPPLIES
+	["New Home Office Printer", "https://a.co/d/i37gnTR"],
+	["Photo & Label Printer", "https://a.co/d/8rVFTWz"],
+	["Herman Miller Aeron Task Chair, Model B", "https://a.co/d/fOqnQQX"],
+	["More Journal Binders", "https://a.co/d/j8sBrsr"],
+	// APPAREL
+	["New Suit", "https://www.menswearhouse.com/c/mens-clothing/mens-suits/f/fit=slim-fit"],
+	["Garmont Boots 11W", "https://garmonttactical.com/product/34447646/t8-defense-le-wide"],
+	// VEHICLE RELATED
+	["Integra Heated Steering", "https://acura.oempartsonline.com/oem-parts/acura-steering-wheel-heated-8u973s5210a"],
+	["Integra Cover", "https://acura.oempartsonline.com/oem-parts/acura-car-cover-8p343s5200?c=Zz1leHRlcmlvciZzPWNvdmVycyZsPTMmbj1EeW5hbWljIFNFTyBQYWdlJmE9YWN1cmEmbz1pbnRlZ3JhJnk9MjAyNCZ0PWEtc3BlYyZlPTEtNWwtbDQtZ2Fz"],
+	["Integra Front Seat Leathers", "https://a.co/d/f51lHeS"],
+	["Fitcamx Dashcam", "https://a.co/d/8G7Hdbt"],
+	["Honda ADV160/NAVI/NC750X DCT", "https://powersports.honda.com/motorcycle/scooter/adv160/2025/adv160"],
+]); 
+
+
+const refdocs = [
+	"../assets/refdoc-acc221-schedule.pdf",
+	"../assets/refdoc-acc220-schedule.pdf",
+	"../assets/refdoc-acc220-syllabus.pdf",
+	"../assets/refdoc-acc220-acronyms.pdf",
+	"../assets/refdoc-acc121-schedule.pdf",
+	"../assets/refdoc-chzc-chant2020.pdf",
+	"../assets/refdoc-cti110-key.pdf",
+	"../assets/refdoc-duolingo-japanese-vocab.pdf",
+	"../assets/refdoc-mat121-manual.pdf",
+	"../assets/refdoc-mat171-manual.pdf",
+	"../assets/refdoc-mat171-transformations.pdf",
+	"../assets/refdoc-mysql-phpadmin-setup.pdf",
+	"../assets/refdoc-mysql-phpadmin-setup.pdf",
+	"../assets/refdoc-nc-college-equivalence.pdf",
+	"../assets/refdoc-oryoki-guide.pdf",
+	"../assets/refdoc-chzc-condensed.pdf",
 ];

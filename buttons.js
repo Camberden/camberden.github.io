@@ -1,5 +1,6 @@
 /**
  * @description Applies event styles to buttons site-wide
+ * - Adds modal styles, WIP 11/18/2025
  * @interface
  * @global
  */
@@ -22,6 +23,45 @@ const ButtonInterface = {
 		setTimeout(() => {
 			button.classList.remove("button-depressed");
 		  }, 100);
+	},
+
+	modalOnMouseEnter: function(modalPrompt) {
+		modalPrompt.classList.add("secondary-highlight");
+	},
+	modalOnMouseLeave: function(modalPrompt) {
+		modalPrompt.classList.remove("secondary-highlight");
+	},
+
+	/**
+	 * 
+	 * @param {HTMLElement} modalPrompt The tag representing the clickable, modal generating text link: .modal-prompt
+	 * @param {HTMLElement} modal The tag representing the modal window: .modal
+	 * @example ButtonInterface.modalOnClick(document.querySelector(".modal-prompt"), document.querySelector(".modal"));
+	 */
+	modalOnClick: function(modalPrompt, modal) {
+		modalPrompt.classList.add("secondary-highlight");
+		modal.style.display = "block";
+		setTimeout(() => {
+			modalPrompt.classList.remove("secondary-highlight");
+			}, 100);
+	},
+
+	modalOnClickClear: function(modal, modalText) {
+		modalText.innerHTML = "";
+		modal.style.display = "none";
+	},
+
+	/**
+	 * 
+	 * @param {HTMLElement} modal The tag representing the modal window: .modal
+	 * @param {HTMLElement} modalText The nested tag within the modal window whose contents will be removed
+	 * @param {Event} event The event handler
+	 */
+	modalOnClickOut: function (modal, modalText, event) {
+		if (event.target === modal) {
+			modalText.innerHTML = "";
+			modal.style.display = "none";
+		}
 	},
 
 	/**
