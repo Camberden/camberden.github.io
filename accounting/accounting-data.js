@@ -16,19 +16,72 @@ class AccCalculation {
 	/**
 	 * @param {String} formula 
 	 * @param {String[]} pA 
+	 * @param {String} procedure
 	 */
-	constructor(formula, pA) {
+	constructor(formula, pA, procedure) {
 		this.formula = formula;
 		this.pA = pA; // is placeholder string in form element; value to be updated, perhaps?
 		//ADD FORMULA PARAM: `([0]-[1])/([2]+[3])`;
+		this.procedure = procedure;
 	}
 }
 const accCalcs = [
 	//`([0]-[1])/[2],
-	eps = new AccCalculation("EPS", ["Net Income", "Preferred Dividends", "Common Shares Outstanding"]),
+	eps = new AccCalculation("EPS", ["Net Income", "Preferred Dividends", "Common Shares Outstanding"], `([0]-[1])/[2]`),
 	//`([0]-[1])/([2]+[3]),
-	dilutedEps = new AccCalculation("Diluted EPS", ["Net Income", "Other Debt Interest Savings", "Common Stock Outstanding", "Conversion of Securities"]), 
+	dilutedEps = new AccCalculation("Diluted EPS", ["Net Income", "Other Debt Interest Savings", "Common Stock Outstanding", "Conversion of Securities"], `([0]-[1])/([2]+[3])`), 
 ];
+
+/**
+ * @todo Determine amount of "(", perform each operation independently
+ * @param {String[]} content 
+ * @returns 
+ */
+function gatherParentheticalOperations(content) {
+	let purgedProcedure = content;
+	console.log(purgedProcedure);
+	const parenCount = purgedProcedure;
+	console.log("ParenCount: " + parenCount);
+	const val = Array.from(parenCount).map((char, index) => {
+		if (char === "(") {
+			++index;
+		}
+		return index; 
+	});
+	console.log("New ParenString val: " + val);
+	console.log(val); // with this, I can use a for loop for a defined amount of times on any procedure
+	
+	let parsedProcedure = [];
+
+
+	// Change to while
+	if(purgedProcedure.includes("(")) {
+		let startIndex = purgedProcedure.indexOf("(");
+		let endIndex = purgedProcedure.indexOf(")");
+			// Change to while
+		if (purgedProcedure[startIndex + 1] === "(") {
+			startIndex = content[startIndex + 1];
+		}
+		let pushedOperation = purgedProcedure.substring(purgedProcedure[startIndex], purgedProcedure[endIndex]);
+		console.log(pushedOperation);
+		parsedProcedure += pushedOperation;
+		purgedProcedure.replace(pushedOperation, "");
+	}
+	
+
+
+	const applyOperand = {
+    '+': function (x, y) { return x + y },
+    '-': function (x, y) { return x - y },
+	'/': function (x, y) { return x / y},
+	}
+
+
+	return parsedProcedure;
+
+}
+// gatherParentheticalOperations(`([0]-[1])/[2]`);
+
 
 /**
  * @todo Expend for future operability

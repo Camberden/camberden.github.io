@@ -270,6 +270,7 @@ function enableFormulaGenerator() {
 	formulaSelect.onchange = function() {
 		formulaField.innerHTML = "";
 		selectedFormula = formulaSelect.value;
+		formulaParse(selectedFormula.procedure);
 		accCalcs.forEach(calc => {
 				if (selectedFormula === calc.formula) {
 					selectedCalculation = calc;
