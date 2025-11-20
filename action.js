@@ -49,10 +49,14 @@ function convertToJapaneseDate(date) {
 		japaneseDate += kanjiNumbers[2] + kanjiNumbers[9] + (kanjiNumbers[(date.getDate() % 30) - 1] + "日");
 	} else if (date.getDate() == 30) {
 		japaneseDate += (kanjiNumbers[2] + kanjiNumbers[9] + "日");	
-	} else if (date.getDate() >= 20) {
+	} else if (date.getDate() > 20) {
 		japaneseDate += kanjiNumbers[1] + kanjiNumbers[9] + (kanjiNumbers[(date.getDate() % 20) - 1] + "日");
+	} else if (date.getDate() == 20) {
+		japaneseDate += (kanjiNumbers[1] + kanjiNumbers[9] + "日");
 	} else if (date.getDate() > 10) {
 		japaneseDate += kanjiNumbers[9] + (kanjiNumbers[(date.getDate() % 10) - 1] + "日");
+	} else if (date.getDate() == 10) {
+		japaneseDate += (kanjiNumbers[9] + "日");
 	} else {
 		japaneseDate += (kanjiNumbers[date.getDate() - 1] + "日");
 	}
