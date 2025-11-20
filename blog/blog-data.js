@@ -1204,12 +1204,53 @@ const blogData = [
 	`
 	,
 		`
-	| November 12th, 2025…
-	| Raleigh, NC
-	| 0500 HRS
+	| November 20th, 2025…
+	| Weatherly, PA
+	| 0428 HRS
 	| &emsp;
-	Oddly I've dumped excess hours into accounting-unrelated programming, <b-title>sprucing up</b-title> this site plentifully in many
-	little ways. I am not feeling too well as I am feverish; and I think I'll be away from work tomorrow.
+	The lamp beside me emits a light at such an angle that I feel distressed. I will turn it off, and power on the portable mushroom-lamp.
+	Portabella lamp. Heh. Well now, as I lie here, I'm pent up with unsorted thoughts and felt the call to write something here.
+	I'll expound on paper later. I'll start by listing some things of import lately:
+	<ul>
+	<li>I have been excessively focused on both accounting studies and programming.</li>
+	<li>Those activities have taken over my life to such a degree that 
+	I chose them over much else and become anxious when occupied elsewhere.</li>
+	<li>I accept that this season of life is dedicated to progress in those domains.</li>
+	<li>I do not desire to continue this lifestyle indefinitely.</li>
+	<li>I am not in the best health lately, having been very sedentary, mostly <b-title>screen-facing</b-title>, and prone to illness.</li>
+	<li>I have been lax in my practices such as journaling, reflection, and reading.</li>
+	<li>I have been struggling to achieve peace of mind and mental wellbeing, often compromising my quality and duration of sleep.</li>
+	<li>I have been unsettled by familial events that unfolded lately.</li>
+	<li>I have become dejected at the idea of continuing my current job assignment for another year.</li>
+	<li>I now regularly apply to alternative positions that will provide experience for my new career.</li>
+	<li>My age again upticked and I feel somewhat stirred with urgency to escape this unrelated job.</li>
+	<li>I am engrossed by shame when pondering my use of leave for personal and familial illness in spite of its legitimacy.</li>
+	<li>I completed 4 of 5 tests for the last 4-credit accounting course; I'm on track.</li>
+	<li>The course has been highly demanding of my time, moreso than ever before.
+	In fact, I believe I have never invested this much time into a course.</li>
+	<li>Due to the demand, I am pressured and naturally that presents an impediment to peace of mind.</li>
+	<li>I have been leveraging programming to augment my accounting studies, but often I'd digress and pursue
+	novel ideas and projects in technology.</li>
+	<li>I had configured web hosting and VPS services and can now develop multiple sites concurrently.</li>
+	<li>I have a long drive ahead of me, and I must return to work on Friday.</li>
+	<li>I must develop a sort of plan to breathe some more structure and routine into my life, because the
+	excessive screen-facing, despite the benefits in learning, are to the detriment of other life facets.</li>
+	<li>I should also make a plan for 2026.</li>
+	<li>I have been spending time with some good company, but can't help but feel detached and contently blasé.
+	Any emotive expression is inhibited now more than ever.</li>
+	<li>Old friends and cherished companions are still long gone.</li>
+	<li>It seems this lifestyle is causing increasingly avoidant and awkward tendencies.</li>
+	</ul>
+	&emsp;
+	I believe that my peace is disrupted recently primarily due to the coursework and secondarily due to workplace
+	dissatisfaction. I just imagined for a brief moment no longer having the obligation to complete coursework and
+	I felt quite at ease doing so. I'm almost there; relax. In the present, all is quiet, all is safe. I am secure.
+	<hr>
+	Though I mentioned wanting to create potential 2026 plans, I need to afford myself some respite and time away from 
+	this computer. I have gotten very ahead again with my coursework and I have programmed plenty. I can afford to focus 
+	my energy elsewhere for over a week ahead; perhaps I could muster a renewed enthusiasm for my current role and discard
+	the frustrations for a time. Well, 2026 ideas for next time, and perhaps then I'll recap some experiences in Raleigh.
+	Cheers,
 	`
 	,
 ];

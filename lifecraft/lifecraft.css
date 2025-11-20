@@ -113,8 +113,17 @@
 /*TODO: FOR NEXT PUSH; CONSOLIDATE 11/17/2025*/
 #modal-text > div > ul > li {
 	list-style-type: none;
-	border: 0.5rem double var(--clr-grid-box);
+	/* border: 0.5rem double var(--clr-grid-box); */
+	/* padding: 1rem; */
+
+	font-family: monospace;
+	color: #444;
+	font-size: 1rem;
+	text-align: left;
+	/* width: 100%; */
 	padding: 1rem;
+	/* height: 0.5rem; */
+	border: 0.2rem solid #444;
 }
 
 #modal-text > ul > li {
@@ -269,6 +278,10 @@
 	padding: 0.2rem;
 	height: 0.5rem;
 	border: 0.2rem solid #444;
+}
+
+.pslf-box:hover {
+	border-color: aquamarine;
 }
 
 .pslf-box-filled-credited {
