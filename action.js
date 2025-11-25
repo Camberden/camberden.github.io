@@ -6,7 +6,7 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdatePushed = "Thursday November 20th 2025";
+const latestUpdatePushed = "Tuesday November 25th, 2025";
 document.querySelector("#latest-update").innerHTML = latestUpdatePushed;
 const splitDate = latestUpdatePushed.split(" ");
 /**
