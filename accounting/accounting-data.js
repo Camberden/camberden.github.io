@@ -1,15 +1,3 @@
-// TODO: Make parsable questions in prose.
-/*
-	`
-	| ACC
-	| Chapter
-	| TAGS
-	| &emsp;
-	Notes Input
-	`
-	,
-*/
-
 /* ---------- GENERAL ACCOUNTING CONCEPTS ---------- */
 
 class AccCalculation {
@@ -82,7 +70,6 @@ function gatherParentheticalOperations(content) {
 }
 // gatherParentheticalOperations(`([0]-[1])/[2]`);
 
-
 /**
  * @todo Expend for future operability
  * @param {AccCalculation} calc 
@@ -104,7 +91,7 @@ from: https://stackoverflow.com/questions/13077923/how-can-i-convert-a-string-in
 	for (let i = 0; i < calc.pA.length; i++) {
 		console.log(procedure.includes(`[${i}]`));
 		if (procedure.includes(`[${i}]`)) {
-			procedure = procedure.replaceAll(`[${i}]`, ` ${calc.pA[i]} `);
+			procedure = procedure.replaceAll(`[${i}]`, ` ${calc[i]} `);
 		}
 	}
 	if (procedure.includes("/")){
@@ -112,7 +99,7 @@ from: https://stackoverflow.com/questions/13077923/how-can-i-convert-a-string-in
 	}
 	return procedure;
 }
-console.log(formulaParse(accCalcs[0]));
+formulaParse(accCalcs[0]);
 // document.getElementById("dev-procedure").innerHTML = formulaParse(accCalcs[0]);
 
 const chartOfAccounts = [
@@ -209,7 +196,7 @@ function gatherUniqueAccountNames() {
 function gatherCountOfSameAccounts(name) {
 	let c = 0;
 	journalEntries.forEach(entry => {
-		console.log(entry);
+		console.log(entry.account);
 		if (name === entry.account) {
 			c++;
 		}

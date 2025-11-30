@@ -2,13 +2,13 @@
  * @description Personal Website:
  * - From 2020 to Present
  * - Primary workspace of my programming hobby
- * @constant latestUpdatePushed 
+ * @constant latestUpdate
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdatePushed = "Tuesday November 25th, 2025";
-document.querySelector("#latest-update").innerHTML = latestUpdatePushed;
-const splitDate = latestUpdatePushed.split(" ");
+const latestUpdate = "Saturday November 29th, 2025";
+document.querySelector("#latest-update").innerHTML = latestUpdate;
+const splitDate = latestUpdate.split(" ");
 /**
  * 
  * @param {string} month

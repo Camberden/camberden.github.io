@@ -333,7 +333,7 @@ function sendLedgerToTAccounts(entries) {
 
 /**
  * 
- * @param {string} account 
+ * @param {string} identifier 
  */
 function generateTAccount(identifier){
 	const accountId = convertToKebabCase(identifier);
