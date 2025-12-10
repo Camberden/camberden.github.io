@@ -172,10 +172,9 @@
 	transition: background-size 0.5s ease-in;
 }
 
-
 .close-modal:hover,
 .close-modal:focus {
-	color: var(--clr-quinary-body);
+	color: var(--clr-tertiary);
 	background-color: var(--clr-grid-box);
 
 	background-size: 100% 5%;
@@ -183,12 +182,10 @@
 	background-clip: content-box;
 	/* -webkit-background-clip: content-box; */
 
-
-	text-shadow: -5px -2px 0px #700caa;
+	text-shadow: -5px -2px 0px var(--clr-grid-box);
 	animation-name: change-text-shadow;
   	animation-duration: 5s;
   	animation-iteration-count: infinite;
-	
 	
 	text-decoration: none;
 	cursor: pointer;

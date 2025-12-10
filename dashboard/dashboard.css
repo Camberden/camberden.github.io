@@ -47,11 +47,11 @@ input[type=text]:focus {
 }
 
 .dashboard-grid {
-	padding: 2rem;
 	display: flex;
+	padding: 2rem;
 	flex-direction: row;
 	flex-wrap: wrap;
-	align-items: center;
+	align-items: auto;
 	/* border: 0.1rem solid var(--clr-tertiary); */
 	border-radius: 1rem;
 	gap: 1rem;
@@ -61,8 +61,8 @@ input[type=text]:focus {
 	flex: 1; 
 	display: flex;
 	flex-direction: column;
-	align-items: center;
-	justify-content: center;
+	align-items: auto;
+	justify-content: baseline;
 	min-width: 20rem;
 	min-height: 20rem;
 	padding: 2rem;
@@ -82,7 +82,7 @@ input[type=text]:focus {
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
-	justify-content: center;
+	justify-content: baseline;
 	min-width: 20rem;
 	min-height: 20rem;
 	padding: 2rem;
@@ -311,7 +311,7 @@ input[type=text]:focus {
 #subgrid-pension-calculator {
 	display:flex;
 	flex-direction: row;
-	justify-content: baseline;
+	justify-content: center;
 }
 
 #pension-table {
@@ -388,6 +388,12 @@ body {
 #subgrid-pension-calculator {
 	flex-direction: column;
 	justify-content: center;
+}
+
+#pension-table {
+	margin: 1rem;
+	max-width: 300px;
+	min-width: 200px;
 }
 
 #pension-data {

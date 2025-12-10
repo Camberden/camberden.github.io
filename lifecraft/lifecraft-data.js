@@ -280,8 +280,8 @@ const wishList = new Map ([
 // EDUCATIONAL SOFTWARE
 	["FMAA Exam Course", "https://www.gleim.com/fmaa-review/test-bank-questions/"],
 	["CPA Exam Course", "https://www.gleim.com/cpa-review/courses/"],
-	["Laracasts Lifetime Membership", "https://laracasts.com"],
-	["Table Plus", "https://tableplus.com/pricing"],
+	// ["Laracasts Lifetime Membership", "https://laracasts.com"],
+	// ["Table Plus", "https://tableplus.com/pricing"],
 	// COMPUTERS AND RELATED HARDWARE
 	["Programmers' Computer Monitor", "https://a.co/d/dfedXoM"],
 	["Windows Laptop", "https://a.co/d/dKbYwFv"],
