@@ -1,0 +1,201 @@
+body {
+	min-height: 100vh;
+}
+
+.w-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 25%); /* repeat(4, 25%) */
+
+	/* padding-block: 2rem; */
+	width: min(95%, 70rem);
+	margin-inline: auto;
+	max-height: min-content;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}
+
+.grid-col-span-3 {
+	grid-column: span 3;
+}
+
+.grid-col-span-4 {
+	grid-column: span 4;
+}
+
+.grid-row-span-2 {
+	grid-row: span 2;
+}
+
+.grid-row-span-3 {
+	grid-row: span 3;
+}
+
+.grid-row-span-4 {
+	grid-row: span 4;
+}
+
+/* ----- FONT TESTING ----- */
+
+@font-face {
+	font-family: eremoran-kiptascript;
+	src: url("../assets/font-eremoran-kiptascript.otf") format("opentype");
+}
+
+.eremoran-kiptascript {
+	font-family: eremoran-kiptascript;
+	font-size: 3rem;
+}
+
+/* ----- FIRST TESTING GRID ----- */
+
+.w-item {
+	border-radius: 0.5rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	
+	border-top-width: 0.5rem;
+	border-top-color: grey;
+	border-top-style:groove;
+
+	border-left-width: 0.5rem;
+	border-left-color: black;
+	border-left-style: groove;
+
+
+	border-bottom-width: 1rem;
+	border-bottom-color: black;
+	border-bottom-style: groove;
+
+	border-right-width: 1.5rem;
+	border-right-color: grey;
+	border-right-style: groove;
+	
+	max-height: fit-content;
+
+}
+
+.w-item-over {
+	padding: 0.2rem;
+	border-radius: 0.5rem;
+	border-top-width: 0.5rem;
+	border-left-width: 0.5rem;
+	border-bottom-width: 0.5rem;
+	border-right-width: 0.5rem;
+	transition: border-right-width 0.2s ease-in;
+	transition: border-bottom-width 0.2s ease-in;
+	transition: padding 0.3s ease-in;
+}
+.w-item-leave {
+	transition: border-right-width 0.2s ease-out;
+	transition: border-bottom-width 0.2s ease-out;
+	transition: padding 0.2s ease-out;
+}
+
+.w-item:last-child {
+	background: red !important;
+	/* grid-column: span 2; goes across 2 gridspaces */
+	grid-column-start: 4; /* starts after gridspace 4 */
+	/* grid-row-start: 1; places it on first row */
+	grid-row-start: 1;
+	grid-row-end: span 2; /* goes across 2 rows, expanding column!  can just say grid-row: 1 / 3 (based on grid lines) */
+}
+
+.w-item:nth-child(3) {
+	background: blue !important;
+
+}
+
+/* ----- SECOND TESTING GRID ----- */
+
+.no-bullet {
+	list-style-type: none;
+}
+
+.w2-grid {
+
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+
+
+	padding-block: 1rem;
+	width: min(90%, 70rem);
+	margin-inline: auto;
+
+}
+
+.w2-item {
+	padding: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: grey;
+	border-style: double;
+
+}
+
+/* ----- LIST TRAVERSAL AND ITEM SELECTION ----- */
+
+.highlight {
+	color: red;
+	letter-spacing: .1em;
+	transition: 0.1s ease-out;
+	background-color: transparent;
+}
+
+#item-list > li {
+	text-align: left;
+	margin-left: 33%;
+	list-style-type: none;
+}
+
+#item-list > li:hover {
+	/* background: var(--clr-quaternary); */
+	background: #9A031E;
+	/* background: #797a9e; */
+}
+
+/* ----- SEGREGATION SPECIFIC ----- */
+
+.sm-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(4, 25%); /* repeat(4, 25%) */
+
+	padding-block: 2rem;
+	width: min(95%, 80rem);
+	margin-inline: auto;
+	max-height: min-content;
+}
+
+.sm-item {
+	/* padding: 1rem; */
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: grey;
+	border-style: double;
+}
+
+.cell-box {
+	display: inline-block;
+	font-size: 0.7rem;
+	width: 5rem;
+	height: 8rem;
+	border-radius: 0.5rem;
+	/* margin: 0.5rem; */
+	border: 0.5rem solid #444;
+	color: chartreuse;
+	overflow:visible;
+}
+
+.empty-box {
+	display: inline-block;
+	width: 3rem;
+	height: 3rem;
+	border-radius: 0.5rem;
+	margin: 0.5rem;
+	border: 0.5rem solid transparent;
+}
+
+.cell-box:hover {
+	border-color: green;
+}

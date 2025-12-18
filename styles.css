@@ -88,21 +88,45 @@
 	font-size: 1rem;
 	cursor: pointer;
 
+	background-image: linear-gradient(var(--clr-gradient-common));
+
+	background-size: 100% 5%;
+	background-position: 0 88%;
+	background-repeat: no-repeat;
+
 	border-bottom: 0.1rem solid var(--clr-tertiary);
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
+	box-sizing: border-box;
 
-	
-	background-repeat: no-repeat;
-	background-size: 25% 0.1em;
-	background-position: 0 88%;
 }
 
 .section-title:hover {
 	color: var(--clr-secondary);
-	background-size: 100% 5%;
 	background-image: linear-gradient(var(--clr-gradient-common));
+	background-size: 100% 5%;
 	transition: background-size 0.3s ease-in;
+	
+}
+
+.section-title:not(:hover) {
+	background-image: transparent;
+	background-size: 0% 5%;
+	animation-name: sectionsizer;
+	animation-duration: 1s;
+	animation-direction: normal;
+	animation-iteration-count: 1;
+}
+
+@keyframes sectionsizer { 
+	from {
+		background-size: 100% 10%;
+		background-position: 0% 100%;
+	}
+	to {
+		background-size: 0% 0%;
+		background-position: 100% 100%;
+	}
 }
 
 .footer {

@@ -206,7 +206,7 @@ const usStateInformation = [
 		``
 	),
 	nevada = new DivisionInformation("US-NV", "Nevada",
-		``
+		`Visited June 2024.`
 	),
 	vermont = new DivisionInformation("US-VT", "Vermont",
 		``

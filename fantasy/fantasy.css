@@ -1,0 +1,96 @@
+body {
+	min-height: 100vh;
+}
+
+.w-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 25%); /* repeat(4, 25%) */
+
+	/* padding-block: 2rem; */
+	width: min(95%, 70rem);
+	margin-inline: auto;
+	max-height: min-content;
+}
+
+.grid-col-span-2 {
+	grid-column: span 2;
+}
+
+.grid-col-span-3 {
+	grid-column: span 3;
+}
+
+.grid-col-span-4 {
+	grid-column: span 4;
+}
+
+.grid-row-span-2 {
+	grid-row: span 2;
+}
+
+.grid-row-span-3 {
+	grid-row: span 3;
+}
+
+.grid-row-span-4 {
+	grid-row: span 4;
+}
+
+/* ----- LIST TRAVERSAL AND ITEM SELECTION ----- */
+
+.highlight {
+	color: red;
+	letter-spacing: .1em;
+	transition: 0.1s ease-out;
+	background-color: transparent;
+}
+
+#item-list > li {
+	text-align: left;
+	margin-left: 33%;
+	list-style-type: none;
+}
+
+#item-list > li:hover {
+	/* background: var(--clr-quaternary); */
+	background: #9A031E;
+	/* background: #797a9e; */
+}
+
+
+/* ----- GREAT REGIONS INFO ----- */
+
+.gr-grid {
+	display: grid;
+	gap: 1.5rem; /* for vertical and horizontal spacing */
+	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
+
+	padding-block: 2rem;
+	width: min(95%, 80rem);
+	margin-inline: auto;
+	max-height: min-content;
+}
+
+.gr-item {
+	padding: 1rem;
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	border-color: grey;
+	border-style: double;
+}
+
+#gr-world-map {
+	fill: grey;
+	fill-opacity: 50%;
+	background-image: url("../assets/image-gr-overview-3.png");
+}
+
+.gr-list { 
+	list-style-type: none;
+	text-align: left;
+}
+
+img {
+	max-width: 20px;
+	max-height: 40px;
+}

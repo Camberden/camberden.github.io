@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../mainframe/mainframe.css" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
+	<script src="../buttons.js" async></script>
+	<title>Chrispy's Mainframe</title>
+</head>
+
+<body>
+	<span id="navbar-access">&times;</span>
+	<div id="navbar"></div>
+	<div id="header-and-return">
+		<div id="return">
+			<a class="marker" href="../index.html">Return</a>
+		</div>
+		<div id="page-header">
+			<h1 class="marker">Chrispy's _____ Page</h1>
+		</div>
+		<div id="quick-links">
+			<div class="quick-links-grid-item">
+				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<span>Template</span>
+			</div>
+			<div class="quick-links-grid-item">
+				<span>Template</span>
+			</div>
+			<div class="quick-links-buttons">
+				<button class="page-button" value="previous">Previous</button>
+				<button class="page-button" value="next">Next</button>
+			</div>
+			<div class="modal">
+				<div class="modal-field">
+					<span class="close-modal">&times;</span><br>
+					<div id="modal-text"></div>
+				</div>
+			</div>
+		</div>
+			<div class="page-dropdown">
+				<button class="page-button" value="previous">Previous</button>
+				<button class="page-button" value="next">Next</button>
+		</div>
+	</div>
+
+	<div class="w2-grid" id="mainframe-grid">
+
+		<div class="w2-item grid-col-span-2" id="mainframe">
+			<div id="mainframe-header">
+			<p>Mainframe</p>
+			<p>IS02 0 1234567 MMDDYY TIME 1 <span style="text-align:right;">CR12345 MM/DD/YY TI:ME:SS</span></p>
+			<p>ISS002 DISCIPLINARY INVESTIGATION NC/DOC PAGE 001</p>
+			<hr>
+			<p>DOC# 1234567 NAME: FELONIOUS, MISTER CURLOC: 1234 PROJ. REL: 01/01/2030</p>
+			<p>FELON W/M CASE MGR. SMITH, BLACK ACT: SPC MGMT ADMIN BED: SCW-311 SPL: L2</p>
+			<p>CUST: MIN CNTRL: SMAP SP.CHAR: REG ACUITY:1 ACT.GRD:1 NEXT REV: 01/01/2026</p>
+			<hr></div>
+			<span><input id="mainframe-writing" type="text" placeholder="practice"></span>
+			<ul id="generated-residents">
+				
+			</ul>
+			
+		</div>
+		<div class="w2-item" id="mainframe-helper">
+			<ul id="investigation-process" style="display: none; font-family: monospace;">
+				<li>Health Data: HS50 0 1234567</li>
+				<li>By Resident: IS01 0 1234567</li>
+				<li>By Facility: IS08 0 4240</li>
+				<hr>
+				<li>Update: u => ENTER</li>
+				<li>Officiate: 0 (not input) or 1 (pending investigation) => 2 (under investigation)</li>
+				<ul>OR 
+					<li>IS02 2 1234567 MMDDYY TIME</li>
+				</ul>
+				<li>Enter Date & Time</li>
+				<li>F11: To Comments Screen</li>
+				<li>Next Paragraph: ENTER ENTER</li>
+				<hr>
+				<li>IS02 3 1234567</li>
+				<li>F4 ( pending print) => F8 (finalization) => j 45 (batch job) Investigation</li>
+				<li>Input Start Date, Resident #, Infraction Time, and Sequence #</li>
+				<li>Overview: OR14 2 1234567</li>
+			</ul>
+		</div>
+
+		<div class="w2-item grid-col-span-3" id="mainframe-excess">
+			<p>VERBAL COUNSELING: IS02 5 1234567 MMDDYY TIME</p>
+			<p>ANALYSIS SCREENING: AS02 0 ORP 68 => 1234567 AT RED FIELD</p>
+			<p>ROSTER: AS12 0 IPT 12 (facility) AS12 0 IPT 14 (dorm)</p>
+
+			<div id="resident-investigation" style="display:none;">
+				<p>AN EXTENSION WAS REQUESTED AND APPROVED BY RANK SURNAME (ABC12) ON MM/DD/YYY FOR ## DAYS
+					DUE TO REASON.
+				</p>
+				<p>I WORKER INTIAL SURNAME (DEF24) READ AND VERIFIED THE REPORTING PARTY'S STATEMENTS.
+					ON MM/DD/YYY AT APPROXIMATELY ####HRS, WORKER INTIAL SURNAME (GHI56) STATES THAT HE WAS ALERTED
+					BY OTHER RESIDENTS THAT RESIDENT FELONIOUS, MISTER (#1234567) WAS STEALING PRODUCT FROM A PLACE.
+					CONFIDENTIAL INFORMATION HAS BEEN RECEIVED FROM A CONFIDENTIAL, RELIABLE SOURCE.
+					CAMERA FOOTAGE FROM MM/DD/YYYY AT APPROXIMATELY ####HRS DISPLAYS RESIDENT FELONIOUS, MISTER (#1234567)
+					STEALING PRODUCT FROM THAT PLACE. WORKER-IN-CHARGE WAS NOTIFIED.
+				</p>
+				<p>A CHECK OF MAINFRAME HEALTH SCREEN HS50 SHOWS THAT RESIDENT FELONIOUS, MISTER (#1234567) IS NEITHER
+					A.D.A. NOR D.D.
+				</p>
+				<p>I READ RESIDENT FELONIOUS, MISTER (#1234567) HIS RIGHTS IN ACCORDANCE WITH THE RESIDENT DISCIPLINARY PROCESS.
+					RESIDENT FELONIOUS, MISTER (#1234567) SIGNED FORM DC-138A, ACKNOWLEDGING HIS HAVING UNDERSTOOD HIS RIGHTS
+					AND
+					WAS GIVEN THE FORM'S YELLOW COPY AS A RECEIPT.
+				</p>
+				<p>RESIDENT FELONIOUS, MISTER (#1234567) WAS PROVIDED FORM DC-138B ON WHICH TO PROVIDE A STATEMENT.
+					RESIDENT FELONIOUS, MISTER (#1234567) DID NOT REQUEST WRITEN STATEMENTS, LIVE WITNESSES, PHYSICAL EVIDENCE,
+					OR STAFF ASSISTANCE. RESIDENT FELONIOUS, MISTER (#1234567) STATES: "NO STATEMENT."
+				</p>
+				<p>I, WORKER INTIAL SURNAME (DEF24) RECOMMEND CHARGING FOR INFRACTION Z99: "willfully steal a thing"; I
+					RECOMMEND
+					FURTHER CHARGING FOR INFRACTION Y99: "damage to property." ALL FINDINGS SUBMITTED FOR FURTHER REVIEW;
+					EVIDENCE
+					IS ATTACHED TO THE INVESTIGATION PACKET.
+				</p>
+			</div>
+		</div>
+		
+	</div>
+
+	<script src="mainframe.js" async></script>
+
+</body>

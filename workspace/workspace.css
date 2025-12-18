@@ -1,16 +1,19 @@
 body {
+	box-sizing: border-box;
 	min-height: 100vh;
 }
 
 .w-grid {
 	display: grid;
+	border: 0.5rem darkcyan solid;
+	box-sizing: content-box;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(3, 25%); /* repeat(4, 25%) */
 
 	/* padding-block: 2rem; */
-	width: min(95%, 70rem);
+	width: max(100%, 70rem);
+	/* height: min(100%, 30rem); */
 	margin-inline: auto;
-	max-height: min-content;
 }
 
 .grid-col-span-2 {
@@ -37,23 +40,17 @@ body {
 	grid-row: span 4;
 }
 
-/* ----- FONT TESTING ----- */
-
-@font-face {
-	font-family: eremoran-kiptascript;
-	src: url("../assets/font-eremoran-kiptascript.otf") format("opentype");
-}
-
-.eremoran-kiptascript {
-	font-family: eremoran-kiptascript;
-	font-size: 3rem;
-}
-
 /* ----- FIRST TESTING GRID ----- */
 
+
+
 .w-item {
+	/* padding: 0.4rem; */
 	border-radius: 0.5rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-sizing: border-box;
+
+	margin-inline: auto;
 	
 	border-top-width: 0.5rem;
 	border-top-color: grey;
@@ -72,25 +69,48 @@ body {
 	border-right-color: grey;
 	border-right-style: groove;
 	
-	max-height: fit-content;
-
 }
 
-.w-item-over {
-	padding: 0.2rem;
+.w-item > div{
+	/* max-width: fit-content; */
+	border: 0.5rem chartreuse solid;
+	box-sizing: border-box;
+	padding: 0.5rem;
+}
+
+
+.w-item:hover {
+
+	padding: 0.4rem;
 	border-radius: 0.5rem;
 	border-top-width: 0.5rem;
 	border-left-width: 0.5rem;
 	border-bottom-width: 0.5rem;
 	border-right-width: 0.5rem;
-	transition: border-right-width 0.2s ease-in;
-	transition: border-bottom-width 0.2s ease-in;
-	transition: padding 0.3s ease-in;
+	transition: border-right-width 0.6s ease-in;
+	transition: border-bottom-width 0.6s ease-in;
+	transition: padding 0.6s ease-in;
+
+	:where(.w-item > div) {
+		/* max-inline-size: initial; */
+		color: orange;
+
+		/* ::after {
+			content: "  sudoz";
+		} */
+	}
 }
-.w-item-leave {
-	transition: border-right-width 0.2s ease-out;
-	transition: border-bottom-width 0.2s ease-out;
-	transition: padding 0.2s ease-out;
+
+:not(.w-item:hover) {
+	transition: border-right-width 0.6s ease-out;
+	transition: border-bottom-width 0.6s ease-out;
+	transition: padding 0.6s ease-out;
+	:where(.w-item > div) {
+		/* transition: border-right-width 0.2s ease-out;
+		transition: border-bottom-width 0.2s ease-out;
+		transition: padding 0.6s ease-out; */
+	}
+
 }
 
 .w-item:last-child {
@@ -107,162 +127,72 @@ body {
 
 }
 
-/* ----- SECOND TESTING GRID ----- */
-
-#expenses-t {
-	list-style-type: none;
-}
-
-.paycard {
-	text-align: left;
-}
-
-.no-bullet {
-	list-style-type: none;
-}
-
-.paycard > ul > hr {
-	margin-right: 25%;
-}
-
-.w2-grid {
-
-	display: grid;
-	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
-
-
-	padding-block: 1rem;
-	width: min(90%, 70rem);
-	margin-inline: auto;
-
-}
-
-.w2-item {
-	padding: 1rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: grey;
-	border-style: double;
-
-}
-
 /* ----- LIST TRAVERSAL AND ITEM SELECTION ----- */
 
-.highlight {
-	color: red;
-	letter-spacing: .1em;
-	transition: 0.1s ease-out;
-	background-color: transparent;
-}
-
-#item-list > li {
-	text-align: left;
-	margin-left: 33%;
-	list-style-type: none;
-}
-
-#item-list > li:hover {
-	/* background: var(--clr-quaternary); */
-	background: #9A031E;
-	/* background: #797a9e; */
-}
-
-.sutra-line-highlight {
-	/* THESE CSS PROPERTIES ARE SET AND THEN MANIPULATED IN JS */
-	background-image: linear-gradient(120deg, rgb(245, 155, 96) 0%, rgb(161, 219, 248) 100%); 
-	background-repeat: no-repeat;
-	background-size: 0% 0.1rem;
-	background-position: 0 88%;
-	transition: background-size 0.1s ease-in;
-	width: 100%;
-}
-
-#kanji-field {
-	font-size: 2rem;
-}
-
-/* ----- GREAT REGIONS INFO ----- */
-
-.gr-grid {
+.n-grid {
 	display: grid;
-	gap: 1.5rem; /* for vertical and horizontal spacing */
-	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
-
-	padding-block: 2rem;
-	width: min(95%, 80rem);
-	margin-inline: auto;
-	max-height: min-content;
-}
-
-.gr-item {
-	/* padding: 1rem; */
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: grey;
-	border-style: double;
-}
-
-#gr-world-map {
-	fill: grey;
-	fill-opacity: 50%;
-	background-image: url("../assets/image-gr-overview-3.png");
-}
-
-.gr-list { 
-	list-style-type: none;
-	text-align: left;
-}
-
-img {
-	max-width: 20px;
-	max-height: 40px;
-}
-
-/* ----- SEGREGATION MAP ----- */
-
-.sm-grid {
-	display: grid;
+	border: 0.5rem solid transparent;
+	box-sizing: border-box;
 	gap: 1.5rem; /* for vertical and horizontal spacing */
 	grid-template-columns: repeat(4, 25%); /* repeat(4, 25%) */
 
-	padding-block: 2rem;
-	width: min(95%, 80rem);
+	/* padding-block: 2rem; */
+	width: max(75%, 70rem);
+	/* height: min(100%, 30rem); */
 	margin-inline: auto;
-	max-height: min-content;
 }
 
-.sm-item {
-	/* padding: 1rem; */
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-color: grey;
-	border-style: double;
+.n-item {
+	/* border-top-width: 0.5rem;
+	border-left-width: 0.5rem;
+	border-bottom-width: 0.5rem;
+	border-right-width: 0.5rem; */
+
+	border: 0.5rem double transparent;
+	outline: 0.5rem dotted blue;
+	border-style: groove;
+	border-color: transparent;
+	box-sizing: border-box;
 }
 
-.cell-box {
-	display: inline-block;
-	font-size: 0.7rem;
-	width: 5rem;
-	height: 8rem;
-	border-radius: 0.5rem;
-	/* margin: 0.5rem; */
-	border: 0.5rem solid #444;
-	color: chartreuse;
-	overflow:visible;
+.n-item:hover {
+	border-color: blueviolet;
+
+	transition: border-color 0.6s ease-in;
+	animation-name: groovymove;
+	animation-duration: 0.6s;
+	animation-iteration-count: initial;
+
 }
 
-.empty-box {
-	display: inline-block;
-	width: 3rem;
-	height: 3rem;
-	border-radius: 0.5rem;
-	margin: 0.5rem;
-	border: 0.5rem solid transparent;
+.n-item:not(:hover) {
+	transition: border-color 0.6s ease-out;
 }
 
-.cell-box:hover {
-	border-color: green;
+@keyframes groovymove {
+	33% {
+		background-clip: border-box;
+		border-width: 0.2rem;
+	}
+	66% {
+		border-width: 0.4rem;
+	}
+	100% {
+		/* text-shadow: -5px -2px 0px rgb(112, 12, 170); */
+		border-width: 0.5rem;
+	}	
 }
 
-#mainframe-grid {
-	text-align: left;
-	font-family: monospace;
+@keyframes flashy {
+	33% {
+		text-shadow: -5px -2px 0px rgb(81, 12, 170);
+	}
+	66% {
+		text-shadow: -5px -2px 0px rgb(133, 12, 170);
+	}
+	100% {
+		/* text-shadow: -5px -2px 0px rgb(112, 12, 170); */
+		text-shadow: transparent;
+
+	}
 }

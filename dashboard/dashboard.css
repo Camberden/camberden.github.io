@@ -344,45 +344,6 @@ input[type=text]:focus {
 
 /* ----- MEDIA QUERIES ---- */
 
-/* @media screen and (max-width: 1350px) {
-
-#pension-table > tr > td {
-	padding: 0.1rem;
-	border-top: none;
-	border-bottom: double;
-	border-left: none;
-	border-right: double;
-	}
-}
-
-@media screen and (max-width: 750px) {
-
-body {
-	background-image: none; 
-}
-
-#subgrid-pension-calculator {
-	flex-direction: column;
-	justify-content: center;
-}
-
-#pension-data {
-	justify-content: center;
-}
-
-#pension-table > tr > td {
-	padding: 0.0rem;
-	border-top: none;
-	border-bottom: double;
-	border-left: none;
-	border-right: double;
-}
-
-.dashboard-item {
-	padding: 1rem;
-}
-*/
-
 @media screen and (max-width: 750px) {
 
 body {

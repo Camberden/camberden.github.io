@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../segregation/segregation.css" media="screen" />
+	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
+	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
+	<script src="../buttons.js" defer></script>
+	<title>Chrispy's Seg Scripts</title>
+</head>
+
+<body>
+	<div id="header-and-return">
+		<div id="return">
+			<a class="marker" href="../index.html">Return</a>
+		</div>
+		<div id="page-header">
+			<h1 class="marker">Chrispy's Seg Page</h1>
+		</div>
+		<div id="quick-links">
+			<div class="quick-links-grid-item">
+				<a href="https://www.youtube.com/watch?v=j42T6o-XwMU&t=57s" target="_blank">Strawberry+</a>
+			</div>
+			<div class="quick-links-grid-item">
+				<span>Template</span>
+			</div>
+			<div class="quick-links-grid-item">
+				<span>Template</span>
+			</div>
+			<div class="quick-links-buttons">
+				<button class="page-button" value="previous">Previous</button>
+				<button class="page-button" value="next">Next</button>
+			</div>
+			<div class="modal">
+				<div class="modal-field">
+					<span class="close-modal">&times;</span><br>
+					<div id="modal-text"></div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="page-dropdown">
+			<button class="page-button" value="previous">Previous</button>
+			<button class="page-button" value="next">Next</button>
+		</div>
+	</div>
+
+<!---------- SEGREGATON VISUALIZER ---------->
+	<div class="sm-grid">
+		<div class="sm-item grid-col-span-4">
+			<h2>Segregation Visualizer</h2>
+			<button id="sm-populator">Populate</button>
+		</div>
+		<div class="sm-item grid-col-span-2">
+			
+			<div id="seg-west">
+			</div>
+			
+		</div>
+		<div class="sm-item grid-col-span-2">
+			<div id="seg-east">
+			</div>
+		</div>
+	</div>
+
+	<script src="segregation.js"></script>
+
+	</body>

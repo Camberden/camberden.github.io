@@ -131,6 +131,9 @@ const sections = [
 	["travel", "Travel Page",],
 	["lifecraft", "Lifecraft Page",],
 	["musings", "Musings Page",],
+	["fantasy", "Fantasyland"],
+	["segregation", "Segregation"],
+	["mainframe", "Mainframe"],
 	["music", "Original Music",],
 ];
 const sectionTitles = document.querySelectorAll(".section-title");
@@ -157,7 +160,6 @@ function initSections() {
 		};
 		sectionDiv.appendChild(h3);
 		sectionLinks.appendChild(sectionDiv);
-
 	});
 }
 initSections();
