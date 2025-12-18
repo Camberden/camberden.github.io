@@ -714,18 +714,16 @@ function displayAccountingModal() {
 			<li class="taken">BUS 110 日本中</li>
 		</ul>
 		<ul>FA2025<hr>
-			<li class="taking">ACC 221</li>
+			<li class="taken">ACC 221</li>
 		</ul>
 		<ul>SP2026<hr>
-			<li>ACC 269</li>
+			<li class="taking">BUS 115</li>
 		</ul>
 		<ul>SU2026<hr>
-			<li>ACC 149</li>
-			<li>BUS 115</li>
+			<li>ACC 129</li>
 		</ul>
 		<ul>FA2026<hr>
-			<li>ACC 129</li>
-			<li>ACC 140</li>
+			<li>ACC 269</li>
 		</ul>
 		<ul>SP2027<hr>
 			<li>ACC 130</li>
