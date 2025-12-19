@@ -13,14 +13,12 @@
 </head>
 
 <body>
-	<span id="navbar-access">&times;</span>
-	<div id="navbar"></div>
 	<div id="header-and-return">
 		<div id="return">
 			<a class="marker" href="../index.html">Return</a>
 		</div>
 		<div id="page-header">
-			<h1 class="marker">Chrispy's _____ Page</h1>
+			<h1 class="marker">Chrispy's Pseudomainframe</h1>
 		</div>
 		<div id="quick-links">
 			<div class="quick-links-grid-item">
@@ -32,13 +30,9 @@
 			<div class="quick-links-grid-item">
 				<span>Template</span>
 			</div>
-			<div class="quick-links-buttons">
-				<button class="page-button" value="previous">Previous</button>
-				<button class="page-button" value="next">Next</button>
-			</div>
 			<div class="modal">
 				<div class="modal-field">
-					<span class="close-modal">&times;</span><br>
+					<span class="close-modal"></span><br>
 					<div id="modal-text"></div>
 				</div>
 			</div>
@@ -49,9 +43,9 @@
 		</div>
 	</div>
 
-	<div class="w2-grid" id="mainframe-grid">
+	<div class="w-grid" id="mainframe-grid">
 
-		<div class="w2-item grid-col-span-2" id="mainframe">
+		<div class="w-item grid-col-span-2" id="mainframe">
 			<div id="mainframe-header">
 			<p>Mainframe</p>
 			<p>IS02 0 1234567 MMDDYY TIME 1 <span style="text-align:right;">CR12345 MM/DD/YY TI:ME:SS</span></p>
@@ -61,14 +55,15 @@
 			<p>FELON W/M CASE MGR. SMITH, BLACK ACT: SPC MGMT ADMIN BED: SCW-311 SPL: L2</p>
 			<p>CUST: MIN CNTRL: SMAP SP.CHAR: REG ACUITY:1 ACT.GRD:1 NEXT REV: 01/01/2026</p>
 			<hr></div>
-			<span><input id="mainframe-writing" type="text" placeholder="practice"></span>
+			<textarea id="mainframe-writing" type="text" rows="5" cols="50" placeholder="practice"></textarea>
 			<ul id="generated-residents">
 				
 			</ul>
 			
 		</div>
-		<div class="w2-item" id="mainframe-helper">
-			<ul id="investigation-process" style="display: none; font-family: monospace;">
+
+		<div class="w-item" id="mainframe-helper">
+			<ul id="investigation-process" style="font-family: monospace;">
 				<li>Health Data: HS50 0 1234567</li>
 				<li>By Resident: IS01 0 1234567</li>
 				<li>By Facility: IS08 0 4240</li>
@@ -89,12 +84,15 @@
 			</ul>
 		</div>
 
-		<div class="w2-item grid-col-span-3" id="mainframe-excess">
+		
+
+
+		<div class="w-item grid-col-span-3" id="mainframe-excess">
 			<p>VERBAL COUNSELING: IS02 5 1234567 MMDDYY TIME</p>
 			<p>ANALYSIS SCREENING: AS02 0 ORP 68 => 1234567 AT RED FIELD</p>
 			<p>ROSTER: AS12 0 IPT 12 (facility) AS12 0 IPT 14 (dorm)</p>
 
-			<div id="resident-investigation" style="display:none;">
+			<div id="resident-investigation">
 				<p>AN EXTENSION WAS REQUESTED AND APPROVED BY RANK SURNAME (ABC12) ON MM/DD/YYY FOR ## DAYS
 					DUE TO REASON.
 				</p>
