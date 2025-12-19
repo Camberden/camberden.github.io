@@ -67,7 +67,7 @@ body {
 	grid-template-columns: repeat(3, 33%); /* repeat(4, 25%) */
 
 	padding-block: 2rem;
-	width: min(95%, 80rem);
+	width: min(95%, 90rem);
 	margin-inline: auto;
 	max-height: min-content;
 }
@@ -83,6 +83,7 @@ body {
 	fill: grey;
 	fill-opacity: 50%;
 	background-image: url("../assets/image-gr-overview-3.png");
+	isolation: auto;
 }
 
 .gr-list { 

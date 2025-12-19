@@ -74,6 +74,27 @@ const ButtonInterface = {
 };
 
 /**
+ * 
+ * @param {HTMLElement[]} buttons 
+ * @param {Boolean} includeClick
+ */
+function wireDefaultButtons(buttons, includeClick) {
+	buttons.forEach(button => {
+		button.onmouseenter = () => {
+			ButtonInterface.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = () => {
+			ButtonInterface.buttonOnMouseLeave(button);
+		}
+		if (includeClick) {
+		button.onclick = () => {
+			ButtonInterface.buttonOnClick(button);
+			}
+		}
+	});
+}
+
+/**
  * @description Handles all page forms, preventing reload upon form submission
  * @param {boolean} configured - Toggle boolean for default (reloading) prevention
  * - CONFIGURED: Applies current form submission handling and default prevention

@@ -13,6 +13,7 @@
 	--clr-secondary-400: 217 19% 35%;
 }
 
+
 /* ----- INDEX SPECIFIC COMPONENT ----- */
 
 .signature-div {
@@ -87,8 +88,7 @@
 .section-title {
 	font-size: 1rem;
 	cursor: pointer;
-
-	background-image: linear-gradient(var(--clr-gradient-common));
+	background-image: transparent;
 
 	background-size: 100% 5%;
 	background-position: 0 88%;
@@ -98,25 +98,23 @@
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
 	box-sizing: border-box;
-
 }
 
-.section-title:hover {
+/* .section-title:hover {
 	color: var(--clr-secondary);
 	background-image: linear-gradient(var(--clr-gradient-common));
 	background-size: 100% 5%;
 	transition: background-size 0.3s ease-in;
-	
-}
+} */
 
-.section-title:not(:hover) {
+/* .section-title:not(:hover) {
 	background-image: transparent;
 	background-size: 0% 5%;
 	animation-name: sectionsizer;
 	animation-duration: 1s;
 	animation-direction: normal;
 	animation-iteration-count: 1;
-}
+} */
 
 @keyframes sectionsizer { 
 	from {
@@ -127,6 +125,22 @@
 		background-size: 0% 0%;
 		background-position: 100% 100%;
 	}
+}
+
+.section-highlight {
+	color: var(--clr-secondary);
+	background-image: linear-gradient(var(--clr-gradient-common));
+	background-size: 100% 5%;
+	transition: background-size 0.3s ease-in;
+}
+.section-lose-highlight {
+	background-image: linear-gradient(var(--clr-gradient-common));
+	background-size: 0% 5%;
+	animation-name: sectionsizer;
+	animation-play-state: running;
+	animation-duration: 1s;
+	animation-direction: normal;
+	animation-iteration-count: 1;
 }
 
 .footer {
@@ -235,34 +249,6 @@ a:hover {
 	flex: 0.1rem;
 	align-items: left;
 	justify-content: left;
-}
-
-#navbar {
-	position: fixed;
-	display: none;
-	flex: 1;
-	flex-direction: column;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	background-color: var(--clr-quinary-body);
-}
-
-#navbar-access {
-	display: flex;
-	position: fixed;
-	font-size: 3em;
-	text-align: right;
-	flex: 0.1rem;
-}
-
-#navbar-access:hover {
-	color: var(--clr-secondary);
 }
 
 #return a:hover {

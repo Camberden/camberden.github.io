@@ -46,35 +46,56 @@ function targetPaths() {
 	const regionTitle = document.getElementById("region-title");
 	const divisionTitle = document.getElementById("division-title");
 	const regionFlag = document.getElementById("region-flag");
-	// const listedRegions = {"farentia":"Farentia C.D.", 
-	// 	"zethro-scheipen":"Claywater", "tendou":"Tendou C.D.",
-	// 	"selunia":"Mokarzmamat", "east-farentia":"Orienton", "cheirica":"Lucidea Town", 
-	// 	"mochadia":"Husisiholkit"};
-		
+	const regionChart = [
+		"Farentia"["Farentia", "Farentia CD", "Farentian SIT"],
+		"Zethro-Scheipen"["Zethro-Scheipen", "Claywater"],
+		"Tendou"["Tendou", "Tendou CD", "Tendouese Kinokoland", "Austral Isles", "Rolya Chain", "Rolya"],
+		"Selunia"["Selunia", "Mokarzmamat", "Grand Selunia", "Midselunia"],
+		"Aakse"["Aakse"],
+		"Cheirica"["Cheirica", "Lucidea Town"],
+		"East Farentia"["East Farentia", "Orienton"],
+		"Mochadia"["Mochadia", "Mochadia Major", "Mochadia Minor", "Husisiholkit"],
+	];
+	
 	for (let region of regions) {
 		region.style.fill = "grey";
+		const regionName = region.classList[0];
+
+		const associatedDivision = Array.from(document.querySelectorAll(`.${regionName}`));
+		
 		region.onmouseenter = function () {
-			region.style.fill = "aqua";
-			region.style.fillOpacity = "80%";
-			regionTitle.textContent = region.id;
-			regionFlag.innerHTML = `<img src="../assets/banner-${region.id}.svg">`
+			
+			associatedDivision.map(div => {div.style.fill = "aqua"; div.style.fillOpacity = "60%";});
+			
+			regionTitle.textContent = (regionName.at(0).toUpperCase() + regionName.substring(1,));
+			divisionTitle.textContent = region.getAttribute("title");
+			regionFlag.innerHTML = `<img src="../assets/banner-${regionName}.svg">`
+			
 		}
 		region.onmouseleave = function () {
-			region.style.fill = "grey";
-			region.style.fillOpacity = "50%";
+			// region.style.fill = "grey";
+			// region.style.fillOpacity = "50%";
+			associatedDivision.map(div => {div.style.fill = "grey"; div.style.fillOpacity = "50%";});
+			// if (region.style.tool="star") {
+			// 	region.style.fill = "#ffeeaa";
+			// }
+
 			regionFlag.innerHTML = "";
 		}
 	}
 	for (let capital of capitals) {
 		capital.onmouseenter = function () {
 			capital.style.fill = "red";
-			divisionTitle.textContent = capital.id;
+			divisionTitle.textContent = capital.getAttribute("title");
 		}
 		capital.onmouseleave = function () {
 			capital.style.fill = "#ffeeaa";
-			divisionTitle.textContent = "";
+			divisionTitle.textContent = "_____";
 		}
 	}
 
 }
+
 targetPaths();
+
+wireDefaultButtons(document.querySelectorAll("button"), true);

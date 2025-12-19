@@ -136,7 +136,6 @@ const sections = [
 	["mainframe", "Mainframe"],
 	["music", "Original Music",],
 ];
-const sectionTitles = document.querySelectorAll(".section-title");
 const sectionLinks = document.querySelector("#section-links");
 /**
  * @var
@@ -145,6 +144,7 @@ const sectionLinks = document.querySelector("#section-links");
  * Creates h3 element with text link descriptor.
  */
 function initSections() {
+	console.log("HELLOOOOO");
 	sections.forEach(section => {
 
 		const h3 = document.createElement("h3");
@@ -158,6 +158,20 @@ function initSections() {
 		sectionDiv.onclick = function () {
 			document.location = section[0] + "/" + section[0] + ".html";
 		};
+		sectionDiv.onmouseenter = function () {
+			sectionDiv.classList.contains("section-highlight") ?
+			sectionDiv.classList.add("section-highlight") :
+			sectionDiv.classList.remove("section-lose-highlight");
+			sectionDiv.classList.add("section-highlight")
+			console.log("onmouseenter");
+		}
+		sectionDiv.onmouseleave = function () {
+			sectionDiv.classList.contains("section-highlight") ?
+			sectionDiv.classList.replace("section-highlight", "section-lose-highlight") :
+			console.log("onmouseleave");
+		}
+		
+	
 		sectionDiv.appendChild(h3);
 		sectionLinks.appendChild(sectionDiv);
 	});
