@@ -285,6 +285,7 @@ const wishList = new Map ([
 	// COMPUTERS AND RELATED HARDWARE
 	["Programmers' Computer Monitor", "https://a.co/d/dfedXoM"],
 	["Windows Laptop", "https://a.co/d/dKbYwFv"],
+	["Custom PC", "https://pcpartpicker.com/list/sFnGv4"],
 	["iPad Mini", "https://www.apple.com/shop/buy-ipad/ipad-mini"],
 	["Apple Magic Mouse", "https://a.co/d/bIbsV6I"],
 	["Keychron M7 Wireless Mouse", "https://www.keychron.com/products/keychron-m7-wireless-mouse?variant=42219900928089"],

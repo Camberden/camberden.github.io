@@ -181,6 +181,9 @@ const usStateInformation = [
 	maryland = new DivisionInformation("US-MD", "Maryland",
 		`Frequenty crossed.`
 	),
+	delaware = new DivisionInformation("US-DE", "Delaware",
+		`Frequenty crossed.`
+	),
 	virginia = new DivisionInformation("US-VA", "Virginia",
 		`Workplace in 2020.`
 	),

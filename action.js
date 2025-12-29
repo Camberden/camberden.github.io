@@ -6,7 +6,7 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Friday, December 19th, 2025";
+const latestUpdate = "Sunday, December 28th, 2025";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const splitDate = latestUpdate.split(" ");
 /**
@@ -97,7 +97,7 @@ function randomizeMonicker(){
 }
 randomizeMonicker();
 
-camberden.onclick = function(){
+camberden.onclick = function() {
 	alert("Hi! :D");
 }
 function generateSiteInfo() {

@@ -1,6 +1,9 @@
-/* ----- ROOT VALUES ----- */
+/* NORMALIZATION & ROOT VARIABLES */
+/* * { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit;vertical-align: baseline; } */
+
 
 :root {
+
 	--clr-primary: #a1dbf8;
 	--clr-secondary: #f59b60;
 	--clr-tertiary: #8acb88;
@@ -9,8 +12,27 @@
 
 	--clr-gradient-common: 120deg, #f59b60 0%, #a1dbf8 100%;
 	--clr-grid-box: #90e5ee1a;
-
 	--clr-secondary-400: 217 19% 35%;
+
+	--doi-font-primary: Arial, Helvetica, 'Myriad Pro', Verdana;
+	--doi-font-secondary: 'Times New Roman', 'Minion Pro', Georgia, TIMES;
+
+	--doi-font-regular: normal;
+	--doi-font-italic: italic;
+	--doi-font-bold: bold;
+
+	--doi-blue: #004185;
+	--doi-red: #D71921;
+	--doi-yellow: #F3D9D1;
+	--doi-white: #FFFFFF;
+	--doi-black: #231F20;
+
+	--doi-blue-rgb: rgb(0,65,133);
+	--doi-red-rgb: rgb(215,25,33);
+	--doi-yellow-rgb: rgb(251,227,90);
+	--doi-white-rgb: rgb(255,255,255);
+	--doi-black-rgb: rgb(35,31,32);
+
 }
 
 
