@@ -97,7 +97,6 @@ function findDaysSinceBirthday(present, birth) {
 	return totalDaysLived;
 }
 
-
 const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
 document.getElementById("days-lived").textContent = ("Days Lived: " + daysSinceBirth);
 document.getElementById("weeks-lived").textContent = ("Weeks Lived: " + (daysSinceBirth / 7).toFixed(2));

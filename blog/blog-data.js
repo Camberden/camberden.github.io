@@ -1319,6 +1319,19 @@ const blogData = [
 	seem to show their age in their antagonistic styling and UX-damaging qualities. Well, right before then, I suppose I'll quickly shoot off
 	some messages; I've still been a bit isolated. Actually, I've been very isolated. In summary, I'm glad to have been working hard and have
 	likely burned off the copious Thanksgiving bean pie I had the pleasure of experiencing lately. Cheers,
-
 	`
+	,
+	`
+	| December 31st, 2025…
+	| Pittsboro, NC
+	| 2242 HRS
+	| &emsp;
+	The year is about to end, and I'll be heading to Raleigh again.
+	It's been replete with progress, through shaky concerning balance.
+	The seasons of life during the year were varied and wholly consuming of my focus.
+	<b-title>I'll aspire</b-title> to better balance in the year ahead.
+	Cheers,
+	`
+	,
 ];
+
