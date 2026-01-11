@@ -73,6 +73,7 @@ const ButtonInterface = {
 	}
 };
 
+
 /**
  * 
  * @param {HTMLElement[]} buttons 

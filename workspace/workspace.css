@@ -40,6 +40,41 @@ body {
 	grid-row: span 4;
 }
 
+/* ----- NAVBAR TESTER ----- */
+
+#nav-header {
+	outline: 0.2rem dotted rebeccapurple;
+}
+
+#nav-center {
+	outline: 0.2rem dotted rosybrown;
+}
+
+#nav-footer {
+	outline: 0.2rem dotted cadetblue;
+}
+
+#nav-dropdown {
+	outline: 0.2rem dotted darkgoldenrod;
+	left: 0;
+	height: fit-content;
+	width: 20rem;
+	position: absolute;
+	z-index: 100;
+	/* background-image: linear-gradient(brown, rosybrown); */
+	background-color: rgba(100, 100, 100, 50%);
+}
+
+.nav-opened {
+	content: "Test";
+}
+
+footer {
+	bottom: 0;
+}
+
+
+
 /* ----- FIRST TESTING GRID ----- */
 
 
