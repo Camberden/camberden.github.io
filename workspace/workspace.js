@@ -62,6 +62,7 @@ const sections = [
 ];
 
 const navSections = document.querySelector("#nav-sections");
+const headerSections = document.querySelector("#header-sections");
 
 /**
  * @description Taken from action.js for nav test
@@ -85,7 +86,7 @@ function initSections() {
 		const sectionDiv = document.createElement("div");
 		sectionDiv.setAttribute("class", "section-title");
 		sectionDiv.onclick = function () {
-			document.location = section[0] + "/" + section[0] + ".html";
+			document.location = "../" + section[0] + "/" + section[0] + ".html";
 		};
 		sectionDiv.onmouseenter = function () {
 			sectionDiv.classList.contains("section-highlight") ?
@@ -106,8 +107,35 @@ function initSections() {
 	});
 }
 
+function newSections() {
+	console.log("Testing new sections");
+	sections.forEach(section => {
+
+		const navlink = document.createElement("span");
+		navlink.setAttribute("style", "padding: 0.3rem;");
+		navlink.setAttribute("id", section[0]);
+		const text = document.createTextNode(section[1]);
+		navlink.appendChild(text);
+
+		navlink.onclick = function () {
+			document.location = "../" + section[0] + "/" + section[0] + ".html";
+		};
+		navlink.onmouseenter = function () {
+			navlink.classList.add("common-highlight");
+		}
+		navlink.onmouseleave = function () {
+			navlink.classList.remove("common-highlight");
+		}
+		
+		headerSections.appendChild(navlink);
+	});
+}
+
+newSections();
+
 
 function navAccess() {
+
 	const nav = document.querySelector("#nav-access");
 	nav.onclick = function() {
 		if (! nav.classList.contains("nav-opened")) {
