@@ -6,6 +6,9 @@
 	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../workspace/workspace.css" media="screen" />
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
 	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
 	<script src="workspace.js" async></script>
@@ -14,44 +17,46 @@
 </head>
 
 <body>
-	<div id="nav" class="nav-col-grid">
-
-		<!-- NAV ROW 1 -->
+	<div id="nav-top" class="nav-col-grid">
 		<div id="nav-header" class="nav-row-grid">
-			<img id="nav-image" src="../assets/image-camberden-signature-6.svg" alt="emblem">
+
+			<div id="nav-dropdown">
+				<span id="nav-access">Navigation</span>
+				<div id="nav-sections"></div>
+			</div>
+
+			<span class="inline-signature"></span>
+			<span>&emsp; &emsp; &emsp;</span>
 
 			<h1 class="marker">
-				Chrispy's Code Testing Workspace 
+				<a href="../index.html">camberden.com</a>
 			</h1>
+			<span>&emsp; &RightArrow; &emsp;</span>
+			<h2 id="current-section" class="marker">
+				Chrispy's Code Testing Workspace
+			</h2>
 
-			<!-- DROPDOWN DISABLED 01/11/2026 -->
-			
-			<!-- <span id="nav-access">Navigation</span> -->
-		<div id="nav-dropdown">
-				<span id="nav-access">Navigation</span>
-
-				<div id="nav-sections"></div>
-			
+			<div id="bookmarks-dropdown">
+				<span id="bookmarks-access">Bookmarks</span>
+				<div id="bookmarks-links"></div>
 			</div>
-						
-		</div>
-
-		<!-- NAV ROW 2 -->
-		 			 <hr>
-
-			<div id="nav-center">
-				<div id="header-sections"></div>
-			</div>
-		<!-- NAV ROW 3 -->
-		<div class="nav-row-grid">
-
-
 
 		</div>
 
 	</div>
 
-	<hr>
+	<hr class="hr-cmbr-dark-gradient hr-groove-top">
+	<hr class="hr-cmbr-gradient">
+
+	<div id="nav-center">
+		<div id="external-links" class="nav-row-grid">
+			<!-- <span class="inline-signature"></span> -->
+		</div>
+	</div>
+
+	<hr class="hr-cmbr-gradient">
+	<hr class="hr-cmbr-dark-gradient hr-groove-bottom">
+
 
 	<div class="n-grid">
 		<div class="n-item">
@@ -78,32 +83,71 @@
 		<div class="n-item">
 			<p class="eremoran-kiptascript">kobensid elaôr</p>
 		</div>
-		<div class="n-item">
-			<p class="eremoran-kiptascript">eremôrôm</p>
+
+	</div>
+
+	<hr class="hr-cmbr-gradient">
+
+	<div class="neu-item-grid">
+		<div class="neu-item eremoran-kiptascript">
+			moka
 		</div>
-		<div class="n-item">
-			<p class="eremoran-kiptascript">kiptaôm</p>
+		<div class="neu-item eremoran-kiptascript">
+			luna
 		</div>
-		<div class="n-item">
-			<p class="eremoran-kiptascript">erekanut busmat</p>
+		<div class="neu-item eremoran-kiptascript">
+			kippi
 		</div>
-		<div class="n-item">
-			<p class="eremoran-kiptascript">kobensid elaôr</p>
+
+	</div>
+
+	<hr class="hr-cmbr-gradient">
+
+	<div class="c-grid">
+		<div class="c-item">
+			<p class="kipbox">Burnished Treet</p>
 		</div>
-		<div class="n-item">
-			<p class="eremoran-kiptascript">eremôrôm</p>
-		</div>
-		<div class="n-item">
-			<p class="eremoran-kiptascript">kiptaôm</p>
-		</div>
-		<div class="n-item">
-			<p class="eremoran-kiptascript">erekanut busmat</p>
+		<div class="c-item">
+			<p class="kipbox">Kippy Tea</p>
 		</div>
 	</div>
 
-	<hr>
+	<hr class="hr-cmbr-gradient">
 
+	<div class="gla-item-grid">
+		<div class="gla-item eremoran-kiptascript">
+			moka
+		</div>
+		<div class="gla-item eremoran-kiptascript">
+			luna
+		</div>
+		<div class="gla-item eremoran-kiptascript">
+			kippi
+		</div>
+	</div>
+
+	<hr class="hr-cmbr-gradient">
+
+
+	<div id="dropdown-header" class="dropdown-grid">
+
+		<div id="lorem-dropdown" class="dropdown">
+			<div class="dropdown-curtain"><span id="lorem-access" class="dropdown-access">Lorem Ipsum</span></div>
+			<div id="lorem-content" class="dropdown-content"></div>
+		</div>
+
+		<div id="cheese-dropdown" class="dropdown">
+			<div class="dropdown-curtain"><span id="cheese-access" class="dropdown-access">Cheese Ipsum</span></div>
+			<div id="cheese-content" class="dropdown-content"></div>
+		</div>
+
+	</div>
+
+
+	<hr class="hr-cmbr-dark-gradient hr-groove-top">
+	<hr class="hr-cmbr-gradient">
 	<footer>
+
 		<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
 	</footer>
 

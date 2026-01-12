@@ -14,6 +14,21 @@
 	--clr-grid-box: #90e5ee1a;
 	--clr-secondary-400: 217 19% 35%;
 
+	--cmbr-indigo: #000caa;
+	--cmbr-blue: #a1dbf8;
+	--cmbr-orange: #f59b60;
+	--cmbr-violet: #700caa;
+	--cmbr-degrees: 120deg;
+
+	--cmbr-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-indigo),var(--cmbr-blue),var(--cmbr-orange),var(--cmbr-violet));	
+
+	--cmbr-dark-grey: #0a070f;
+	--cmbr-dark-ash: #182124;
+	--cmbr-dark-iron: #1f312e;
+	--cmbr-dark-steel: #0b313d;
+
+	--cmbr-dark-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-dark-grey),var(--cmbr-dark-ash),var(--cmbr-dark-iron),var(--cmbr-dark-steel));
+
 	--doi-font-primary: Arial, Helvetica, 'Myriad Pro', Verdana;
 	--doi-font-secondary: 'Times New Roman', 'Minion Pro', Georgia, TIMES;
 
