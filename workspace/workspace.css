@@ -1,34 +1,10 @@
 /* NORMALIZATION & ROOT VARIABLES */
 
-* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit;vertical-align: baseline; }
+* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
 
 body {
 	box-sizing: border-box;
 	min-height: 100vh;
-}
-
-.grid-col-span-2 {
-	grid-column: span 2;
-}
-
-.grid-col-span-3 {
-	grid-column: span 3;
-}
-
-.grid-col-span-4 {
-	grid-column: span 4;
-}
-
-.grid-row-span-2 {
-	grid-row: span 2;
-}
-
-.grid-row-span-3 {
-	grid-row: span 3;
-}
-
-.grid-row-span-4 {
-	grid-row: span 4;
 }
 
 /* ----- NAVBAR TESTER ----- */
@@ -36,20 +12,18 @@ body {
 .nav-col-grid {
 	display: flex;
 	flex-flow: column wrap;
-	align-items: baseline;
+	align-items: center;
 }
 
 .nav-row-grid {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: baseline;
-	/* justify-items: baseline; */
 }
 
 .inline-signature {
 	box-sizing: border-box;
 	position: absolute;
-	/* outline: 0.2rem dotted rosybrown; */
 	margin-top: 0.25rem;
 	width: 2rem;
 	height: 2rem;
@@ -64,14 +38,10 @@ body {
 }
 
 #nav-top {
-	background-clip: border-box;
+	box-sizing: border-box;
 	background: linear-gradient(var(--cmbr-degrees), black, #430766, #2c2844, #2a198a, black);
 	fill-opacity: 100%;
 
-}
-
-#nav-header {
-	align-self: center;
 }
 
 #nav-center {
@@ -82,41 +52,54 @@ body {
 
 #nav-dropdown {
 	border: 0.5rem groove black;
-	/* outline: 0.1rem dotted rosybrown; */
-	/* right: 0; */
+	padding: 0.2rem;
 	left: 0;
+	width: fit-content;
 	height: fit-content;
 	text-align: start;
-	width: fit-content;
 	position: fixed;
 	z-index: 100;
 	background-color: black;
-	/* background-color: rgba(0, 0, 0, 80%); */
 }
 
 #nav-access {
 	font-family: "VT323", monospace;
 	right: 0;
-	padding: 0.2rem;
+}
+
+#nav-access:hover {
+	cursor: pointer;
+	background-color: var(--cmbr-curtain-plum);
+	color: var(--cmbr-green);
 }
 
 #bookmarks-dropdown {
 	border: 0.5rem groove black;
-	/* outline: 0.1rem dotted rosybrown; */
-	/* right: 0; */
+	padding: 0.2rem;
 	right: 0;
+	width: fit-content;
 	height: fit-content;
 	text-align: start;
-	width: fit-content;
 	position: fixed;
 	z-index: 100;
 	background-color: black;
+	
 }
 
 #bookmarks-access {
 	font-family: "VT323", monospace;
 	right: 0;
-	padding: 0.2rem;
+	color: var(--cmbr-blue);
+
+}
+
+#bookmarks-access:hover {
+	cursor: pointer;
+	background-color: var(--cmbr-curtain-plum);
+	color: var(--cmbr-green);
+}
+.bookmarks-opened:first-child {
+	text-align: right;
 }
 
 .trigger {
@@ -130,7 +113,6 @@ body {
 	z-index: 10;
 	background-color: rgba(0, 0, 0, 80%);
 }
-
 .trigger-access {
 	font-family: "VT323", monospace;
 	right: 0;
@@ -140,17 +122,12 @@ body {
 .nav-opened {
 	content: normal;
 }
-
 .bookmarks-opened {
 	content: normal;
 }
 
 h1 {
 	font-size: larger;
-}
-
-.common-highlight {
-	color: var(--clr-secondary);
 }
 
 .kipbox {
@@ -162,37 +139,60 @@ h1 {
 	background-repeat: repeat;
 	-webkit-background-clip: content-box;
 }
-
 .kipbox:hover {
 		color: var(--cmbr-indigo);
 }
 
 /* ----- HORIZONTAL RULES ----- */
 
+#chiron {
+	box-sizing: border-box;
+	border: 1rem solid transparent;
+	width: 100%;
+	min-width: 100%;
+	height: 3rem;
+}
+
+#chiron-span {
+	display: block;
+	box-sizing: border-box;
+	opacity: 50%;
+	width: 10rem;
+	height: 2rem;
+	margin-bottom: 1rem;
+	border: 0.1rem solid var(--cmbr-orange);
+	border-radius: 0.1rem;
+	background-image: transparent;
+	background-size: cover;
+	animation-name: chiron-action;
+	animation-duration: 10s;
+	animation-timing-function: ease-in;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	overflow-x: hidden;
+	overflow: hidden;
+}
+
 .hr-cmbr-dark-gradient {
 	background-image: var(--cmbr-dark-gradient);
 	width: 100%;
 	height: 0.5rem;
 }
-
 .hr-groove-top {
 	border-top: 0.5rem groove black;
 }
-
 .hr-groove-bottom {
 	border-bottom: 0.5rem groove black;
 	width: 100%;
 	box-shadow:  1rem 1rem 2rem rgb(25, 23, 144), 0rem 0rem 2rem rgb(221, 122, 94);
 	margin-bottom: 3rem;
 }
-
 .hr-cmbr-gradient {
 	background-image: var(--cmbr-gradient);
 	width: 100%;
 	height: 0.5rem;
 	opacity: 50%;
 }
-
 .hr-cmbr-gradient:nth-of-type(odd) {
 		-webkit-transform: scaleX(-1);
   		transform: scaleX(-1);
@@ -455,5 +455,22 @@ footer {
 		/* text-shadow: -5px -2px 0px rgb(112, 12, 170); */
 		text-shadow: transparent;
 
+	}
+}
+
+@keyframes chiron-action {
+	0% {
+		margin-left: -25rem;
+		margin-right: 0rem;
+		/* left: 0; */
+	/* } 25% {
+		margin-left: 25rem;
+	} 50% {
+		margin-left: 50rem;
+	} 75% {
+		margin-left: 75rem; */
+	} 100% {
+		margin-left: 100rem;
+		margin-right: 10rem;
 	}
 }

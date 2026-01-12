@@ -25,7 +25,6 @@ const sections = [
 	["mainframe", "Mainframe"],
 	["music", "Original Music",],
 ];
-
 const externalLinks = [
 	["https://www.youtube.com/watch?v=XgqTrvcAySA", "Checkpoint"],
 	["https://www.clozemaster.com", "Clozemaster"],
@@ -36,7 +35,6 @@ const externalLinks = [
 	["https://int.dac.nc.gov", "Intranet"],
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
-
 const bookmarks = externalLinks;
 
 /**
@@ -81,7 +79,6 @@ function initSections() {
 		navSections.appendChild(sectionDiv);
 	});
 }
-
 function initBookmarks() {
 	bookmarks.forEach(bookmark => {
 
@@ -116,7 +113,6 @@ function initBookmarks() {
  * @todo Make agnostic function for this:
  */
 function navAccess() {
-
 	const nav = document.querySelector("#nav-access");
 	nav.onclick = function() {
 		if (! nav.classList.contains("nav-opened")) {
@@ -128,12 +124,6 @@ function navAccess() {
 			nav.classList.remove("nav-opened");
 			nav.innerText = "Navigation";
 		}
-	}
-	nav.onmouseenter = function() {
-		ButtonInterface.buttonOnMouseEnter(nav);
-	}
-	nav.onmouseleave = function() {
-		ButtonInterface.buttonOnMouseLeave(nav);
 	}
 }
 navAccess();
@@ -159,7 +149,6 @@ function bookmarksAccess() {
 		ButtonInterface.buttonOnMouseLeave(bookmarking);
 	}
 }
-
 bookmarksAccess();
 
 
@@ -175,7 +164,6 @@ function initExternalLinks() {
 		a.setAttribute("rel", "noopener noreferrer");
 		a.setAttribute("class", "trigger");
 
-		
 		externalLinkDiv.appendChild(a);
 	});
 }
@@ -212,7 +200,6 @@ const loremIpsum = (
 const cheeseIpsum = (
 	"Rubber cheese manchego everyone loves. Edam cheesecake chalk and cheese melted cheese cheesy feet camembert de normandie cheesecake who moved my cheese. Manchego manchego cheese on toast hard cheese st. agur blue cheese cheese strings pepper jack cut the cheese. Cow stinking bishop camembert de normandie when the cheese comes out everybody's happy. Cheddar brie pepper jack. Blue castello emmental edam port-salut parmesan mozzarella blue castello parmesan. Cheese on toast the big cheese emmental macaroni cheese cheeseburger parmesan cheese and wine port-salut. Who moved my cheese chalk and cheese goat dolcelatte."
 );
-
 const ipsumData = {
 	"lorem-content": loremIpsum,
 	"cheese-content": cheeseIpsum,
@@ -258,5 +245,4 @@ function enableDropdowns (){
 		}
 	});
 }
-
 enableDropdowns();
