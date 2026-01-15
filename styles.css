@@ -69,12 +69,18 @@
 	background-size: contain;
 	height: 100%;
 	opacity: 75%;
-	box-shadow: 3rem 3rem 2rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 3rem 3rem 2rem -3rem hsl(var(--cmbr-blue) / 0.25);
 }
 
 #camberden {
 	font-family: Permanent Marker, sans-serif;
 	font-size: 4rem;
+	background: var(--cmbr-gradient);
+	background-image: linear-gradient(
+		to bottom right,
+		var(--doi-red),
+		var(--doi-yellow)
+	);
 	background: linear-gradient(var(--clr-gradient-common));
 	background-clip: border-box;
 	-webkit-background-clip: text;
@@ -106,6 +112,7 @@
 }
 
 .section-title {
+	box-sizing: border-box;
 	font-size: 1rem;
 	cursor: pointer;
 	background-image: transparent;
@@ -117,24 +124,9 @@
 	border-bottom: 0.1rem solid var(--clr-tertiary);
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
-	box-sizing: border-box;
+	
 }
 
-/* .section-title:hover {
-	color: var(--clr-secondary);
-	background-image: linear-gradient(var(--clr-gradient-common));
-	background-size: 100% 5%;
-	transition: background-size 0.3s ease-in;
-} */
-
-/* .section-title:not(:hover) {
-	background-image: transparent;
-	background-size: 0% 5%;
-	animation-name: sectionsizer;
-	animation-duration: 1s;
-	animation-direction: normal;
-	animation-iteration-count: 1;
-} */
 
 @keyframes sectionsizer { 
 	from {
@@ -149,7 +141,7 @@
 
 .section-highlight {
 	color: var(--clr-secondary);
-	background-image: linear-gradient(var(--clr-gradient-common));
+	background-image: var(--cmbr-gradient); /* FORMERLY CLR-GRADIENT-COMMON */
 	background-size: 100% 5%;
 	transition: background-size 0.3s ease-in;
 }
@@ -193,7 +185,6 @@
 	font-family: eremoran-kiptascript;
 	src: url("assets/font-eremoran-kiptascript.otf") format("opentype");
 }
-
 .eremoran-kiptascript {
 	font-family: eremoran-kiptascript;
 	font-size: 4rem;
@@ -243,11 +234,8 @@ a:hover {
 }
 
 .hr-custom {
-	
 	width: 5rem;
 	height: 0.1rem;
-	/* margin: 0.5rem; */
-	/* border: 0.1rem solid var(--clr-quaternary); */
 	background-color: var(--clr-secondary);
 }
 
