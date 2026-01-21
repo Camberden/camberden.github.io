@@ -280,8 +280,6 @@ const wishList = new Map ([
 // EDUCATIONAL SOFTWARE
 	["FMAA Exam Course", "https://www.gleim.com/fmaa-review/test-bank-questions/"],
 	["CPA Exam Course", "https://www.gleim.com/cpa-review/courses/"],
-	// ["Laracasts Lifetime Membership", "https://laracasts.com"],
-	// ["Table Plus", "https://tableplus.com/pricing"],
 	// COMPUTERS AND RELATED HARDWARE
 	["Programmers' Computer Monitor", "https://a.co/d/dfedXoM"],
 	["Windows Laptop", "https://a.co/d/dKbYwFv"],
@@ -289,7 +287,7 @@ const wishList = new Map ([
 	["iPad Mini", "https://www.apple.com/shop/buy-ipad/ipad-mini"],
 	["Apple Magic Mouse", "https://a.co/d/bIbsV6I"],
 	["Keychron M7 Wireless Mouse", "https://www.keychron.com/products/keychron-m7-wireless-mouse?variant=42219900928089"],
-	["Keychron Ten-Keyed Mechanical Keyboard", "https://www.keychron.com/products/keychron-k10-qmk-via-wireless-mechanical-keyboard-version-2?variant=42058442473561"],
+	// ["Keychron Ten-Keyed Mechanical Keyboard", "https://www.keychron.com/products/keychron-k10-qmk-via-wireless-mechanical-keyboard-version-2?variant=42058442932313"],
 	["Raspberry Pi Server", "https://a.co/d/24QcknM"],
 	["Moog 3-Tier Synth with Case", ""],
 	// HOME OFFICE EQUIPMENT AND SUPPLIES

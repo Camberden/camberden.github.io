@@ -3,6 +3,8 @@ let activeBlogPostNumber = blogData.length - 1;
 const blogPostList = document.getElementById("blog-post-list");
 const blogPostTitle = document.getElementById("blog-post-title");
 let listedYears = [];
+let currentYear;
+
 
 
 function displayActiveBlogPostNumber() {
@@ -19,7 +21,6 @@ function displayActiveBlogPostNumber() {
 function gatherTextBetweenTags(content, tag) {
 	const l = tag.length + 2;
 	return content.substring(content.indexOf("<" + tag + ">") + l, content.indexOf("</" + tag + ">"));
-	// return content.substring(content.indexOf("<" + tag + ">"), content.indexOf("</" + tag + ">"));
 
 }
 
@@ -78,6 +79,7 @@ function initBlogData(dataLength) {
 			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
 				extractHeaderData(activeBlogPostNumber) + `</span>`;
 		}
+		currentYear = listedYear;
 	}
 	listedYears = Array.from(listedYears.trim().split(" "));
 }
@@ -132,8 +134,8 @@ function enableBlogButtons() {
 }
 enableBlogButtons();
 
-const blogPostYearSelect = document.getElementById("blog-post-year-select");
 function enableBlogSelect() {
+	const blogPostYearSelect = document.getElementById("blog-post-year-select");
 	for (let i = 0; i < listedYears.length; i++) {
 		let option = document.createElement("option");
 		option.setAttribute("value", listedYears[i]);
