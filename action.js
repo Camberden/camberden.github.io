@@ -9,6 +9,7 @@
 const latestUpdate = "Tuesday, January 21st, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const splitDate = latestUpdate.split(" ");
+const baseDirectory = new URL("https://camberden.com/");
 /**
  * 
  * @param {string} month
@@ -115,65 +116,5 @@ function generateSiteInfo() {
 }
 generateSiteInfo();
 
-/**
- * [["var/var.html","Var Page"],],
- * @var
- * The section link: this is the directory name of the page linked.
- * @name
- * The section name to appear on the page.
- */
-const sections = [
-	["dashboard", "Personal Dashboard",],
-	["workspace", "Coding Workspace",],
-	["blog", "Blogging Page",],
-	["language", "Language Resource",],
-	["accounting", "Accounting Resource",],
-	["travel", "Travel Page",],
-	["lifecraft", "Lifecraft Page",],
-	["musings", "Musings Page",],
-	["fantasy", "Fantasyland"],
-	["segregation", "Segregation"],
-	["mainframe", "Mainframe"],
-	["music", "Original Music",],
-];
 const sectionLinks = document.querySelector("#section-links");
-/**
- * @var
- * Creates clickable link to directory.
- * @name
- * Creates h3 element with text link descriptor.
- */
-function initSections() {
-	console.log("HELLOOOOO");
-	sections.forEach(section => {
-
-		const h3 = document.createElement("h3");
-		h3.setAttribute("class", "section-title-text");
-		h3.setAttribute("id", section[0]);
-		const text = document.createTextNode(section[1]);
-		h3.appendChild(text);
-
-		const sectionDiv = document.createElement("div");
-		sectionDiv.setAttribute("class", "section-title");
-		sectionDiv.onclick = function () {
-			document.location = section[0] + "/" + section[0] + ".html";
-		};
-		sectionDiv.onmouseenter = function () {
-			sectionDiv.classList.contains("section-highlight") ?
-			sectionDiv.classList.add("section-highlight") :
-			sectionDiv.classList.remove("section-lose-highlight");
-			sectionDiv.classList.add("section-highlight")
-			console.log("onmouseenter");
-		}
-		sectionDiv.onmouseleave = function () {
-			sectionDiv.classList.contains("section-highlight") ?
-			sectionDiv.classList.replace("section-highlight", "section-lose-highlight") :
-			console.log("onmouseleave");
-		}
-		
-	
-		sectionDiv.appendChild(h3);
-		sectionLinks.appendChild(sectionDiv);
-	});
-}
-initSections();
+ButtonInterface.actionsProvided(sectionLinks, true);

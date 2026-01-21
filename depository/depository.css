@@ -57,7 +57,7 @@ body {
 	height: fit-content;
 	text-align: start;
 	position: fixed;
-	z-index: 100;
+	z-index: 200;
 	background-color: black;
 }
 
@@ -80,7 +80,7 @@ body {
 	height: fit-content;
 	text-align: start;
 	position: fixed;
-	z-index: 100;
+	z-index: 200;
 	background-color: black;
 	
 }
@@ -144,34 +144,6 @@ h1 {
 
 /* ----- HORIZONTAL RULES ----- */
 
-#chiron {
-	box-sizing: border-box;
-	border: 1rem solid transparent;
-	width: 100%;
-	min-width: 100%;
-	height: 3rem;
-	overflow-x: hidden;
-	overflow: hidden;
-}
-
-#chiron-span {
-	display: block;
-	box-sizing: border-box;
-	opacity: 50%;
-	width: max-content;
-	height: 2rem;
-	margin-bottom: 1rem;
-	border-radius: 0.1rem;
-	background-image: transparent;
-	animation-name: chiron-action;
-	animation-duration: 10s;
-	animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
-	animation-iteration-count: infinite;
-	animation-direction: reverse;
-	overflow-x: hidden;
-	overflow: hidden;
-}
-
 .hr-cmbr-dark-gradient {
 	background-image: var(--cmbr-dark-gradient);
 	width: 100%;
@@ -225,44 +197,6 @@ h1 {
 	transition: color 0.6s ease-out;
 }
 
-/* ----- NEUMORPHISM ----- */
-
-.neu-item-grid {
-	z-index: 10;
-	display: flex;
-	flex-flow: row wrap;
-	padding: 5rem;
-	column-gap: 3rem;
-	background: #25213a;
-}
-
-.neu-item {
-	flex: 1;
-	text-align: center;
-	align-content: center;
-	width: 5rem;
-	height: 5rem;
-	border: 0.5rem groove transparent;
-	border-radius: 1rem;
-	background: linear-gradient(145deg, #2c2844, #25213a);
-	box-shadow:  1rem 1rem 3rem #1d1a2d, -1rem -1rem 3rem #353053;
-}
-
-.neu-item-highlight {
-	color: cadetblue;
-	box-shadow: 1rem 1rem 0.5rem rgba(17, 25, 40, 0.75);
-}
-
-.neu-item-depressed {
-	color: darkred;
-	background: linear-gradient(145deg, #25213a, #2c2844);
-	box-shadow:  1rem 1rem 3rem #1d1a2d, -1rem -1rem 3rem #353053;
-	transition: box-shadow 1s ease-in;
-}
-
-.neu-item-depressed:hover {
-	box-shadow: 0.1rem 0.1rem 0.2rem darkred;
-}
 
 /* ----- CAMBERDEN GRADIENT BARS ----- */
 

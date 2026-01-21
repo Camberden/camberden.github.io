@@ -7,10 +7,10 @@ Double quotations ("") shall be used for html values.
 
 HTML values shall be in kebab-case.
 
-JavaScript values shall be in camelCase.
+JavaScript variables shall be in camelCase.
 
 Meta from styles.css will be inherited in all subsequent css documents.
 
 Git Ignore temporary reference documents.
 
-Background SVG is #EEEFF0 and Background Color is #F4F5F6
+Original Background SVG is #EEEFF0 and Background Color is #F4F5F6.
