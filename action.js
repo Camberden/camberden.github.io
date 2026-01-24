@@ -6,10 +6,40 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Tuesday, January 21st, 2026";
+const latestUpdate = "Saturday, January 24th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
-const splitDate = latestUpdate.split(" ");
-const baseDirectory = new URL("https://camberden.com/");
+const camberden = document.querySelector("#camberden");
+const monickers = ["camberden", "観葉伝", "カンバデン"];
+
+(() => {
+	const m = Math.random();
+	if (m <= 0.1) {
+		camberden.lang = "jp";
+		camberden.innerHTML = monickers[1];
+	} else if (m >= 0.9) {
+		camberden.lang = "jp";
+		camberden.innerHTML = monickers[2];
+	} else if (m < 0.9 && m >= 0.8) {
+		camberden.removeAttribute("font-family");
+		camberden.lang = "la-fonipa";
+		camberden.innerHTML = monickers[0].replace("c", "k");
+		camberden.classList.add("eremoran-kiptascript");
+		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
+	} 
+	else {
+		camberden.innerHTML = monickers[0];
+	}
+})();
+(() => {
+	document.getElementById("site-info").innerHTML = `<p>	
+		Welcome to camberden's personal page.<br>
+		Here you will find music, musings,<br>
+		and an assortment of software projects.<br>
+		Whatever I place here is a reflection of my<br>
+		lifestyle and workflow; its placement is meaningful<br>
+		enough to me and is therefore justified.</p>`;
+})();
+
 /**
  * 
  * @param {string} month
@@ -26,6 +56,7 @@ function convertDate(month, calendarDay, year){
 	
 	return date;
 }
+const splitDate = latestUpdate.split(" ");
 const formattedDate = convertDate(splitDate[1], splitDate[2], splitDate[3]);
 /**
  * @param {Date} date
@@ -45,7 +76,7 @@ function convertToJapaneseDate(date) {
 	}
 
 	// ----- DAYS ----- //
-	console.log(date.getDate());
+	// console.log(date.getDate());
 	if (date.getDate() > 30) {
 		japaneseDate += kanjiNumbers[2] + kanjiNumbers[9] + (kanjiNumbers[(date.getDate() % 30) - 1] + "日");
 	} else if (date.getDate() == 30) {
@@ -69,52 +100,7 @@ function convertToJapaneseDate(date) {
 		}
 	}
 	document.querySelector("#japanese-date").textContent = japaneseDate;
-
 }
 convertToJapaneseDate(formattedDate);
 
-const camberden = document.querySelector("#camberden");
-const monickers = ["camberden", "観葉伝", "カンバデン"];
-
-function randomizeMonicker(){
-	const m = Math.random();
-	console.log(m);
-	if (m <= 0.1) {
-		camberden.lang = "jp";
-		camberden.innerHTML = monickers[1];
-	} else if (m >= 0.9) {
-		camberden.lang = "jp";
-		camberden.innerHTML = monickers[2];
-	} else if (m < 0.9 && m >= 0.8) {
-		camberden.removeAttribute("font-family");
-		camberden.lang = "la-fonipa";
-		camberden.innerHTML = monickers[0].replace("c", "k");
-		camberden.classList.add("eremoran-kiptascript");
-		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
-	} 
-	else {
-		camberden.innerHTML = monickers[0];
-	}
-}
-randomizeMonicker();
-
-camberden.onclick = function() {
-	alert("Hi! :D");
-}
-function generateSiteInfo() {
-	const siteInfo = document.getElementById("site-info");
-	siteInfo.innerHTML = `
-	<p>	
-		Welcome to camberden's personal page.<br>
-		Here you will find music, musings,<br>
-		and an assortment of software projects.<br>
-		Whatever I place here is a reflection of my<br>
-		lifestyle and workflow; its placement is meaningful<br>
-		enough to me and is therefore justified.
-	</p>
-`
-}
-generateSiteInfo();
-
-const sectionLinks = document.querySelector("#section-links");
-ButtonInterface.actionsProvided(sectionLinks, true);
+ButtonInterface.actionsProvided("sections");

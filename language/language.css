@@ -21,7 +21,7 @@ ul {
 	min-width: 10rem;
 	min-height: 10rem;
 	padding: 2rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
@@ -131,7 +131,7 @@ sup {
 
 .modal-focus {
 	border-radius: 0.5rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
 	
 	border-top-width: 0.5rem;
 	border-top-color: grey;

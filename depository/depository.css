@@ -49,58 +49,6 @@ body {
 	padding: 1rem;
 }
 
-#nav-dropdown {
-	border: 0.5rem groove black;
-	padding: 0.2rem;
-	left: 0;
-	width: fit-content;
-	height: fit-content;
-	text-align: start;
-	position: fixed;
-	z-index: 200;
-	background-color: black;
-}
-
-#nav-access {
-	font-family: "VT323", monospace;
-	right: 0;
-}
-
-#nav-access:hover {
-	cursor: pointer;
-	background-color: var(--cmbr-curtain-plum);
-	color: var(--cmbr-green);
-}
-
-#bookmarks-dropdown {
-	border: 0.5rem groove black;
-	padding: 0.2rem;
-	right: 0;
-	width: fit-content;
-	height: fit-content;
-	text-align: start;
-	position: fixed;
-	z-index: 200;
-	background-color: black;
-	
-}
-
-#bookmarks-access {
-	font-family: "VT323", monospace;
-	right: 0;
-	color: var(--cmbr-blue);
-
-}
-
-#bookmarks-access:hover {
-	cursor: pointer;
-	background-color: var(--cmbr-curtain-plum);
-	color: var(--cmbr-green);
-}
-.bookmarks-opened:first-child {
-	text-align: right;
-}
-
 .trigger {
 	flex: 1;
 	font-family: "VT323", monospace;
@@ -118,7 +66,7 @@ body {
 	padding: 0.2rem;
 }
 
-.nav-opened {
+.sections-opened {
 	content: normal;
 }
 .bookmarks-opened {

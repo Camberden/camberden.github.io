@@ -23,7 +23,7 @@ input[type=text]:focus {
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
@@ -39,7 +39,7 @@ input[type=text]:focus {
 	align-items: auto;
 	justify-content: center;
 
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
@@ -66,7 +66,7 @@ input[type=text]:focus {
 	min-width: 20rem;
 	min-height: 20rem;
 	padding: 2rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
 	border-width: 0.3rem;
 	border-style: double;
 	border-color: grey;
@@ -151,7 +151,7 @@ input[type=text]:focus {
 
 .paycard-item {
 	padding: 1rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--clr-secondary-400) / 0.25);
+	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
 	border-color: grey;
 	border-style: double;
 

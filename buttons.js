@@ -1,3 +1,37 @@
+/** [["var/var.html","Var Page"],],
+ * @var
+ * The section link: this is the directory name of the page linked.
+ * @name
+ * The section name to appear on the page.
+ */
+const sections = [
+	["homepage", "Homepage ↺"],
+	["dashboard", "Personal Dashboard"],
+	["workspace", "Coding Workspace"],
+	["blog", "Blogging Page"],
+	["language", "Language Resource"],
+	["accounting", "Accounting Resource"],
+	["travel", "Travel Page"],
+	["lifecraft", "Lifecraft Page"],
+	["musings", "Musings Page"],
+	["depository", "Notes Depository"],
+	["fantasy", "Fantasyland"],
+	["segregation", "Segregation"],
+	["mainframe", "Mainframe"],
+	["music", "Original Music"],
+];
+
+const bookmarks = [
+	["https://www.youtube.com/watch?v=XgqTrvcAySA", "Checkpoint"],
+	["https://www.clozemaster.com", "Clozemaster"],
+	["https://jisho.org", "Jisho"],
+	["https://www3.nhk.or.jp/news/easy/", "NHK Yasashii"],
+	["https://www.mheducation.com", "Coursework"],
+	["https://maps.google.com", "Maps"],
+	["https://int.dac.nc.gov", "Intranet"],
+	["https://portal.osc.nc.gov/app", "Fiori"],
+];
+
 /**
  * @description Applies event styles to buttons site-wide
  * - Adds modal styles, WIP 11/18/2025
@@ -25,45 +59,6 @@ const ButtonInterface = {
 		}, 100);
 	},
 
-	modalOnMouseEnter: function (modalPrompt) {
-		modalPrompt.classList.add("secondary-highlight");
-	},
-	modalOnMouseLeave: function (modalPrompt) {
-		modalPrompt.classList.remove("secondary-highlight");
-	},
-
-	/**
-	 * 
-	 * @param {HTMLElement} modalPrompt The tag representing the clickable, modal generating text link: .modal-prompt
-	 * @param {HTMLElement} modal The tag representing the modal window: .modal
-	 * @example ButtonInterface.modalOnClick(document.querySelector(".modal-prompt"), document.querySelector(".modal"));
-	 */
-	modalOnClick: function (modalPrompt, modal) {
-		modalPrompt.classList.add("secondary-highlight");
-		modal.style.display = "block";
-		setTimeout(() => {
-			modalPrompt.classList.remove("secondary-highlight");
-		}, 100);
-	},
-
-	modalOnClickClear: function (modal, modalText) {
-		modalText.innerHTML = "";
-		modal.style.display = "none";
-	},
-
-	/**
-	 * 
-	 * @param {HTMLElement} modal The tag representing the modal window: .modal
-	 * @param {HTMLElement} modalText The nested tag within the modal window whose contents will be removed
-	 * @param {Event} event The event handler
-	 */
-	modalOnClickOut: function (modal, modalText, event) {
-		if (event.target === modal) {
-			modalText.innerHTML = "";
-			modal.style.display = "none";
-		}
-	},
-
 	/**
 	 * @description Handles an individual form element, preventing default (reloading) upon submission
 	 * @param {Event} event 
@@ -72,109 +67,72 @@ const ButtonInterface = {
 		event.preventDefault();
 	},
 
+	/**
+	 * 
+	 * @param {HTMLElement} target
+	 * @param {Array} data 
+	 */
+	initSections: function (target, data) {
 
-	actionsProvided: function (target, sectionOrBookmark) {
+		target = document.getElementById(target);
+		data.forEach(section => {
 
-		if (sectionOrBookmark) {
+			const h3 = document.createElement("h3");
+			h3.setAttribute("class", "section-title-text");
+			h3.setAttribute("id", section[0]);
+			const text = document.createTextNode(section[1]);
+			h3.appendChild(text);
 
-			/** [["var/var.html","Var Page"],],
-			 * @var
-			 * The section link: this is the directory name of the page linked.
-			 * @name
-			 * The section name to appear on the page.
-			 */
-			sections = [
-				["homepage", "Homepage ↺"],
-				["dashboard", "Personal Dashboard"],
-				["workspace", "Coding Workspace"],
-				["blog", "Blogging Page"],
-				["language", "Language Resource"],
-				["accounting", "Accounting Resource"],
-				["travel", "Travel Page"],
-				["lifecraft", "Lifecraft Page"],
-				["musings", "Musings Page"],
-				["depository", "Notes Depository"],
-				["fantasy", "Fantasyland"],
-				["segregation", "Segregation"],
-				["mainframe", "Mainframe"],
-				["music", "Original Music"],
-			];
+			const sectionDiv = document.createElement("div");
+			sectionDiv.setAttribute("class", "section-title");
+			sectionDiv.onclick = function () {
 
-			if (document.location.href.includes("index.html")) {
-				sections.splice(0, 1);
-			}
-
-			function initSections() {
-
-				this.sections.forEach(section => {
-
-					const h3 = document.createElement("h3");
-					h3.setAttribute("class", "section-title-text");
-					h3.setAttribute("id", section[0]);
-					const text = document.createTextNode(section[1]);
-					h3.appendChild(text);
-
-					const sectionDiv = document.createElement("div");
-					sectionDiv.setAttribute("class", "section-title");
-					sectionDiv.onclick = function () {
-						if (document.location.href.includes("index.html")) {
-							document.location = section[0] + "/" + section[0] + ".html";
-						} else if (section[0] === sections[0][0]) {
-							document.location = "../" + "index.html";
-						} else {
-							document.location = "../" + section[0] + "/" + section[0] + ".html";
-						}
-
-					};
-					sectionDiv.onmouseenter = function () {
-						sectionDiv.classList.contains("section-highlight") ?
-							sectionDiv.classList.add("section-highlight") :
-							sectionDiv.classList.remove("section-lose-highlight");
-						sectionDiv.classList.add("section-highlight")
-					}
-					sectionDiv.onmouseleave = function () {
-						sectionDiv.classList.contains("section-highlight") ?
-							sectionDiv.classList.replace("section-highlight", "section-lose-highlight") :
-							console.log("onmouseleave");
-					}
-
-					sectionDiv.appendChild(h3);
-					target.appendChild(sectionDiv);
-				});
+				if (document.location.href.includes("index.html")) {
+					document.location = section[0] + "/" + section[0] + ".html";
+				} else if (section[0] === data[0][0]) {
+					document.location = "../" + "index.html";
+				} else {
+					document.location = "../" + section[0] + "/" + section[0] + ".html";
+				}
 			};
+			sectionDiv.onmouseenter = function () {
+				sectionDiv.classList.contains("section-highlight") ?
+				sectionDiv.classList.add("section-highlight") :
+				sectionDiv.classList.remove("section-lose-highlight");
+				sectionDiv.classList.add("section-highlight")
+			}
+			sectionDiv.onmouseleave = function () {
+				sectionDiv.classList.contains("section-highlight") ?
+				sectionDiv.classList.replace("section-highlight", "section-lose-highlight") :
+				console.log("onmouseleave");
+			}
+			sectionDiv.appendChild(h3);
+			target.appendChild(sectionDiv);
+		});
+	},
 
-			return initSections();
+	/**
+	 * 
+	 * @param {HTMLElement} target
+	 * @param {Array} data 
+	 */
+	initBookmarks: function (target, data) {
 
-		} else if (! sectionOrBookmark) {
-
-			bookmarks = [
-				["https://www.youtube.com/watch?v=XgqTrvcAySA", "Checkpoint"],
-				["https://www.clozemaster.com", "Clozemaster"],
-				["https://jisho.org", "Jisho"],
-				["https://www3.nhk.or.jp/news/easy/", "NHK Yasashii"],
-				["https://www.mheducation.com", "Coursework"],
-				["https://maps.google.com", "Maps"],
-				["https://int.dac.nc.gov", "Intranet"],
-				["https://portal.osc.nc.gov/app", "Fiori"],
-			];
-
-			function initBookmarks() {
-
-				bookmarks.forEach(bookmark => {
+				target = document.getElementById(target);
+				data.forEach(bookmark => {
 
 					const a = document.createElement("a");
 					a.setAttribute("class", "section-title-text");
 					a.setAttribute("href", bookmark[0]);
 					const text = document.createTextNode(bookmark[1]);
 					a.appendChild(text);
-
 					const bookmarkDiv = document.createElement("div");
 					bookmarkDiv.setAttribute("class", "section-title");
 
 					bookmarkDiv.onmouseenter = function () {
 						bookmarkDiv.classList.contains("section-highlight") ?
-							bookmarkDiv.classList.add("section-highlight") :
-							bookmarkDiv.classList.remove("section-lose-highlight");
+						bookmarkDiv.classList.add("section-highlight") :
+						bookmarkDiv.classList.remove("section-lose-highlight");
 						bookmarkDiv.classList.add("section-highlight")
 						console.log("onmouseenter");
 					}
@@ -187,13 +145,64 @@ const ButtonInterface = {
 					bookmarkDiv.appendChild(a);
 					target.appendChild(bookmarkDiv);
 				});
-			};
+	},
 
-			return initBookmarks();
+	/**
+	 * 
+	 * @param {HTMLElement} target 
+	 * @param {String} name  
+	 * @returns 
+	 */
+	actionsProvided: function (name) {
+		
+		let access = "";
+		switch (name) {
+			case "sections" :
+				if (document.location.href.includes("index.html")) {
+					sections.splice(0, 1);
+					ButtonInterface.initSections(`${name}-links`, sections);
+					break;
+				} 
+				// const access = document.querySelector(`${name}-access`);
+				access = document.querySelector("#sections-access");
+				access.onclick = function() {
+				if (! access.classList.contains("sections-opened")) {
+					// initSections("sections-links", sections);
+					// initSections(`${name}-links`, sections);
+					ButtonInterface.initSections(`${name}-links`, sections);
+					access.classList.add("sections-opened");
+					access.innerText = "Minimize";
+				} else {
+					document.getElementById(`${name}-links`).innerHTML = "";
+					access.classList.remove("sections-opened");
+					access.innerText = "Navigation";
+				}
+			}
+				break;
+			case "bookmarks" :
+				access = document.querySelector("#bookmarks-access");
+				access.onclick = function() {
+				if (! access.classList.contains("bookmarks-opened")) {
+					// initSections("sections-links", sections);
+					// initSections(`${name}-links`, sections);
+					ButtonInterface.initBookmarks(`${name}-links`, bookmarks);
+					access.classList.add("bookmarks-opened");
+					access.innerText = "Minimize";
+				} else {
+					document.getElementById(`${name}-links`).innerHTML = "";
+					access.classList.remove("bookmarks-opened");
+					access.innerText = "Bookmarks";
+				}
+			}
+				break;
+			default :
+				console.log("Default triggered; neither sections nor bookmarks!");
+			break;	
 		}
 	}
-};
+}
 
+const initNav = () => {ButtonInterface.actionsProvided("sections"); ButtonInterface.actionsProvided("bookmarks")}
 
 /**
  * 

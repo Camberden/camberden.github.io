@@ -1,13 +1,4 @@
-/*
-	`
-	| Date…
-	| Location
-	| Time
-	| &emsp;
-	Journal Entry Input
-	`
-	,
-*/
+
 
 const tags = [
 	"accounting",
@@ -48,10 +39,10 @@ function initDepositedNotes() {
 	for (let i = 0; i < depositoryData.length - 1; i++) {
 		console.log("haha");
 	}
-}
 
+}
 const depositoryData = [
-	
+
 	`
 
 	`,

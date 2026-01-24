@@ -4,6 +4,8 @@
 *.srl
 *.crt
 *.cnf
+.clj-kondo
+.lsp
 TODO.txt
 disciplinaries.txt
 node_modules
