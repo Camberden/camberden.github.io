@@ -43,7 +43,8 @@ function enableDropdowns () {
 	});
 }
 
-enableDropdowns();
-
-ButtonInterface.actionsProvided("sections");
-ButtonInterface.actionsProvided("bookmarks");
+(()=>{
+	displaySection();
+	enableDropdowns();
+	initNav();
+})();

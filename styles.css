@@ -36,6 +36,57 @@
 
 /* ----- NAVIGATION STYLES ----- */
 
+nav {
+	display: flex;
+	position: fixed;
+	width: 100%;
+	height: auto;
+	z-index: 200;
+	background-image: url('assets/image-curtain.svg'); 
+}
+
+.inline-signature {
+	display: flex;
+	flex: 1;
+	z-index: 100;
+	box-sizing: border-box;
+	position: fixed;
+	align-items: center;
+	justify-content: center;
+	width: 5rem;
+	height: 5rem;
+	opacity: 70%;
+	background-image: url("./assets/image-camberden-signature-6.svg");
+	background-repeat: no-repeat;
+	transform: rotate(30deg);
+}
+
+.nav-col-grid {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	align-content: center;
+}
+
+.nav-row-grid {
+	display: flex;
+	flex-flow: row wrap;
+	align-items: baseline;
+}
+
+#nav-info {
+	display: flex;
+	margin-top: 1.5rem;
+	font-size: 1.5rem;
+}
+
+#dropdowns {
+	width: 100%;
+	height: 2rem;
+	z-index: 200;
+	border-bottom: 0.5rem groove black;
+}
+
 .section-title {
 	box-sizing: border-box;
 	font-size: 1rem;
@@ -69,12 +120,26 @@
 	animation-iteration-count: 1;
 }
 
-.sections-opened {
-	content: normal;
+.sections-opened::after {
+	content:attr(item) " ↓";
+}
+
+#sections-dropdown {
+	border: 0.5rem groove black;
+	padding: 0.2rem;
+	left: 0;
+	width: fit-content;
+	height: fit-content;
+	text-align: start;
+	position: fixed;
+	z-index: 200;
+	background-color: black;
 }
 
 #sections-access {
 	font-family: "VT323", monospace;
+	width: 100%;
+	height: 1rem;
 	right: 0;
 }
 
@@ -82,6 +147,31 @@
 	cursor: pointer;
 	background-color: var(--cmbr-curtain-plum);
 	color: var(--cmbr-green);
+}
+
+#current-site {
+	display: inline-flex;
+	position: fixed;
+	left: 20%;
+	justify-content: center;
+	/* margin-top: 0.5rem; */
+
+	color: var(--cmbr-dark-grey)
+}
+
+#current-section {
+	display: inline-flex;
+	position: fixed;
+	right: 20%;
+	justify-content: center;
+	/* margin-top: 0.5rem; */
+	color: var(--cmbr-dark-grey)
+
+}
+
+#current-section::before {
+	content:attr(item) "→";	
+
 }
 
 @keyframes sectionsizer { 
@@ -109,6 +199,9 @@
 
 #bookmarks-access {
 	font-family: "VT323", monospace;
+	text-align: center;
+	width: 100%;
+	height: 1rem;
 	right: 0;
 	color: var(--cmbr-blue);
 }
@@ -119,26 +212,44 @@
 	color: var(--cmbr-green);
 }
 
-.bookmarks-opened {
-	content: normal;
+.bookmarks-opened::before {
+	content:attr(item) "↓ ";
 }
 
 .bookmarks-opened:first-child {
 	text-align: right;
 }
 
-#nav-dropdown {
-	border: 0.5rem groove black;
-	padding: 0.2rem;
-	left: 0;
-	width: fit-content;
-	height: fit-content;
-	text-align: start;
-	position: fixed;
-	z-index: 200;
-	background-color: black;
-}
 
+/* ----- HORIZONTAL RULES ----- */
+
+.hr-cmbr-dark-gradient {
+	background-image: var(--cmbr-dark-gradient);
+	width: 100%;
+	height: 0.5rem;
+}
+.hr-groove-top {
+	border-top: 0.5rem groove black;
+}
+.hr-groove-bottom {
+	border-bottom: 0.5rem groove black;
+	width: 100%;
+	box-shadow:  1rem 1rem 2rem rgb(25, 23, 144), 0rem 0rem 2rem rgb(221, 122, 94);
+	margin-bottom: 3rem;
+}
+.hr-cmbr-gradient {
+	background-image: var(--cmbr-gradient);
+	width: 100%;
+	height: 0.5rem;
+	opacity: 50%;
+}
+.hr-cmbr-gradient:nth-of-type(odd) {
+		-webkit-transform: scaleX(-1);
+  		transform: scaleX(-1);
+}
+.hr-nav-pad {
+	padding-bottom: 3rem;
+}
 
 /* ----- SITE-WIDE BUTTON STYLES ----- */
 
@@ -319,7 +430,7 @@ button {
 /* ----- SITE-WIDE GENERAL STYLE COMPONENT ----- */
 
 body {
-	color: var(--clr-primary);
+	color: var(--cmbr-blue);
 	font-family: Lora, Georgia, 'Times New Roman', Times, serif;
 	text-align: center;
 	background-image: url('assets/image-curtain.svg'); 
@@ -358,10 +469,6 @@ p {
 	color: var(--cmbr-orange);
 	font-family: Permanent Marker, sans-serif;
 }
-
-
-
-
 
 .hr-custom {
 	width: 5rem;

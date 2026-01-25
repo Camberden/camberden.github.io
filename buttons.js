@@ -28,6 +28,7 @@ const bookmarks = [
 	["https://www3.nhk.or.jp/news/easy/", "NHK Yasashii"],
 	["https://www.mheducation.com", "Coursework"],
 	["https://maps.google.com", "Maps"],
+	["https://wd108.myworkday.com/wday/authgwy/nc/login.html", "Internal Jobs"],
 	["https://int.dac.nc.gov", "Intranet"],
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
@@ -89,6 +90,7 @@ const ButtonInterface = {
 
 				if (document.location.href.includes("index.html")) {
 					document.location = section[0] + "/" + section[0] + ".html";
+
 				} else if (section[0] === data[0][0]) {
 					document.location = "../" + "index.html";
 				} else {
@@ -124,6 +126,7 @@ const ButtonInterface = {
 					const a = document.createElement("a");
 					a.setAttribute("class", "section-title-text");
 					a.setAttribute("href", bookmark[0]);
+					a.setAttribute("target","_blank");
 					const text = document.createTextNode(bookmark[1]);
 					a.appendChild(text);
 					const bookmarkDiv = document.createElement("div");
@@ -141,7 +144,6 @@ const ButtonInterface = {
 							bookmarkDiv.classList.replace("section-highlight", "section-lose-highlight") :
 							console.log("onmouseleave");
 					}
-
 					bookmarkDiv.appendChild(a);
 					target.appendChild(bookmarkDiv);
 				});
@@ -202,8 +204,6 @@ const ButtonInterface = {
 	}
 }
 
-const initNav = () => {ButtonInterface.actionsProvided("sections"); ButtonInterface.actionsProvided("bookmarks")}
-
 /**
  * 
  * @param {HTMLElement[]} buttons 
@@ -249,3 +249,10 @@ function camberdenConfig(configured) {
 	}
 }
 camberdenConfig(true);
+
+// ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
+
+const initNav = () => {ButtonInterface.actionsProvided("sections"); ButtonInterface.actionsProvided("bookmarks")}
+const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
+const sout = (x) => { console.log("|=====> " + (x ?? " ") + " ")  ; console.log("|=====* "); }
+const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
