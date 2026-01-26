@@ -101,11 +101,10 @@ const randomizeMonicker = () => {
 
 (() => {
 
+	sout(window.crossOriginIsolated);
 	CMBRutil.actionsProvided("sections");
 	displayPageInfo(pageInfo);
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));
 
-
-	
 })();

@@ -5,8 +5,6 @@ const blogPostTitle = document.getElementById("blog-post-title");
 let listedYears = [];
 let currentYear;
 
-
-
 function displayActiveBlogPostNumber() {
 	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
 	document.getElementById(`bp-${activeBlogPostNumber}`).classList.add("listing-highlight");
