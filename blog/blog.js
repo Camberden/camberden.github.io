@@ -104,7 +104,7 @@ chooseActiveBlogPost();
 function enableBlogButtons() {
 	document.querySelectorAll(".blog-button").forEach(button => {
 		button.onclick = function () {
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 
 			switch (button.value) {
 				case "next":
@@ -128,10 +128,10 @@ function enableBlogButtons() {
 			}
 		};
 		button.onmouseenter = function () {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }

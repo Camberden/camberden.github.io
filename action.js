@@ -6,39 +6,18 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Sunday, January 25th, 2026";
+const latestUpdate = "Monday, January 26th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
-
-(() => {
-	const m = Math.random();
-	if (m <= 0.1) {
-		camberden.lang = "jp";
-		camberden.innerHTML = monickers[1];
-	} else if (m >= 0.9) {
-		camberden.lang = "jp";
-		camberden.innerHTML = monickers[2];
-	} else if (m < 0.9 && m >= 0.8) {
-		camberden.removeAttribute("font-family");
-		camberden.lang = "la-fonipa";
-		camberden.innerHTML = monickers[0].replace("c", "k");
-		camberden.classList.add("eremoran-kiptascript");
-		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
-	} 
-	else {
-		camberden.innerHTML = monickers[0];
-	}
-})();
-(() => {
-	document.getElementById("site-info").innerHTML = `<p>	
-		Welcome to camberden's personal page.<br>
-		Here you will find music, musings,<br>
-		and an assortment of software projects.<br>
-		Whatever I place here is a reflection of my<br>
-		lifestyle and workflow; its placement is meaningful<br>
-		enough to me and is therefore justified.</p>`;
-})();
+const pageInfo = (
+	`Welcome to camberden's personal page.
+	Here you will find music, musings,
+	and an assortment of software projects.
+	Whatever I place here is a reflection of my
+	lifestyle and workflow. Its placement is meaningful
+	enough to me and is therefore justified.`
+);
 
 /**
  * 
@@ -56,8 +35,7 @@ function convertDate(month, calendarDay, year){
 	
 	return date;
 }
-const splitDate = latestUpdate.split(" ");
-const formattedDate = convertDate(splitDate[1], splitDate[2], splitDate[3]);
+const formatter = (update) => { x = update.split(" "); return convertDate(x[1], x[2], x[3]); }
 /**
  * @param {Date} date
  * @description Converts date object to a Japanese date.
@@ -95,12 +73,39 @@ function convertToJapaneseDate(date) {
 	const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 	const japaneseDaysOfWeek = ["月","火","水","木","金","土","日"];
 	for (let i = 0; i < daysOfWeek.length; i++) {
-		if (splitDate[0] === daysOfWeek[i]) {
+		if (date[0] === daysOfWeek[i]) {
 			japaneseDate += "(" + japaneseDaysOfWeek[i] + ")";
 		}
 	}
 	document.querySelector("#japanese-date").textContent = japaneseDate;
 }
-convertToJapaneseDate(formattedDate);
 
-ButtonInterface.actionsProvided("sections");
+const randomizeMonicker = () => {
+	const m = Math.random();
+	if (m <= 0.2) {
+		camberden.lang = "jp";
+		camberden.innerHTML = monickers[1];
+	} else if (m <= 0.4) {
+		camberden.lang = "jp";
+		camberden.innerHTML = monickers[2];
+	} else if (m <= 0.6) {
+		camberden.removeAttribute("font-family");
+		camberden.lang = "la-fonipa";
+		camberden.innerHTML = monickers[0].replace("c", "k");
+		camberden.classList.add("eremoran-kiptascript");
+		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
+	} else {
+		camberden.innerHTML = monickers[0];
+	}
+}
+
+(() => {
+
+	CMBRutil.actionsProvided("sections");
+	displayPageInfo(pageInfo);
+	randomizeMonicker();
+	convertToJapaneseDate(formatter(latestUpdate));
+
+
+	
+})();

@@ -197,7 +197,7 @@ let populated = false;
 function initSegButtons() {
 	document.querySelectorAll("button").forEach(button => {
 		button.onclick = function() {
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 			switch (button.id){
 				case "sm-populator" :
 					if (!populated) {
@@ -218,10 +218,10 @@ function initSegButtons() {
 			}
 
 		button.onmouseenter = function() {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function() {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }

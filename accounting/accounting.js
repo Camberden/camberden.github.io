@@ -612,7 +612,7 @@ function displayTaskModal(selection) {
 function initAccountingButtons() {
 	document.querySelectorAll(".accounting-button").forEach(button => {
 	button.onclick = function() {
-		ButtonInterface.buttonOnClick(button);
+		CMBRutil.buttonOnClick(button);
 		switch(button.id) {
 			case "display-accounting-modal":
 				displayAccountingModal(true);
@@ -659,10 +659,10 @@ function initAccountingButtons() {
 	}
 
 	button.onmouseenter = function() {
-		ButtonInterface.buttonOnMouseEnter(button);
+		CMBRutil.buttonOnMouseEnter(button);
 	}
 	button.onmouseleave = function() {
-		ButtonInterface.buttonOnMouseLeave(button);
+		CMBRutil.buttonOnMouseLeave(button);
 	}
 
 	});

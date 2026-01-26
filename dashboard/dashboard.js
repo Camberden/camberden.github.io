@@ -325,7 +325,7 @@ function decreaseYearsExperience() {
 function enableStepPayPlanButtons() {
 	document.querySelectorAll(".step-pay-plan-button").forEach(button => {
 		button.onclick = () => {
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 		switch (button.value) {
 			case ("increase-custody-level"):
 				increaseCustodyLevel();
@@ -352,10 +352,10 @@ function enableStepPayPlanButtons() {
 		};
 
 		button.onmouseenter = () => {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = () => {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }
@@ -572,13 +572,13 @@ function enablePensionButtons() {
 	document.querySelectorAll(".pension-buttons").forEach(button => {
 		button.onclick = () => {
 			generatePension();
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 		}
 		button.onmouseenter = () => {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = () => {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }

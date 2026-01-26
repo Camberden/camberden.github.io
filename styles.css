@@ -1,5 +1,9 @@
-/* NORMALIZATION & ROOT VARIABLES */
-/* * { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit;vertical-align: baseline; } */
+@charset "UTF-8";
+@starting-style {
+	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+}
+@namespace url("http://www.w3.org/1999/xhtml");
+@namespace svg url("http://www.w3.org/2000/svg");
 
 :root {
 
@@ -280,14 +284,12 @@ button {
 	border-right-color: grey;
 	border-right-style: groove;
 }
-
 .button-highlight {
 	cursor: pointer;
 	position: relative;
 	color: var(--clr-quaternary);
 	background: var(--clr-tertiary);
 }
-
 .button-depressed {
 
 	position: static;
@@ -322,14 +324,22 @@ button {
 
 #signature {
 	position: absolute;
+	margin-top: 2rem;
+	margin-left: 3rem;
 	width: 6rem;
 	min-height: 5rem;
 	user-select: none;
-	animation-name: stagger-signature;
-	animation-duration: 10s;
-	animation-iteration-count: infinite;
-}
+	background: rgba(#292540d6);
 
+	border-bottom: 0.1rem solid var(--clr-grid-box);
+	border-left: 0.1rem solid var(--clr-grid-box);
+	border-right: 0.2rem solid var(--clr-grid-box);
+	box-shadow: -0.2rem -0.1rem 0.3rem rgb(12, 11, 71) inset;
+	/* animation-name: stagger-signature;
+	animation-duration: 10s;
+	animation-iteration-count: infinite; */
+
+}
 @keyframes stagger-signature {
 	0% {
 		width: 6rem;
@@ -343,35 +353,83 @@ button {
 	}
 }
 
+#title-container {
+	flex: 1;
+	align-self: center;
+	max-width: 100%;
+	height: fit-content;
+	position: relative;
+	box-sizing: border-box;
+
+	border-top: 0.1rem solid var(--clr-grid-box);
+	border-bottom: 0.5rem solid var(--clr-grid-box);
+	/* border-left: 0.5rem solid var(--clr-grid-box); */
+	border-right: 0.5rem solid var(--clr-grid-box);
+
+	width: 100%;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	margin-bottom: 3rem;
+
+	animation-name: change-box-shadow;
+  	animation-duration: 8s;
+  	animation-iteration-count: infinite;
+
+}
+@keyframes change-box-shadow {
+
+	30% {
+		box-shadow: -0.1rem -0.2rem 1rem rgb(22, 33, 155);
+	}
+	50% {
+		box-shadow: -0.2rem -0.1rem 1rem rgb(25, 23, 144);
+	}
+	80% {
+		box-shadow: -0.1rem -0.2rem 1rem rgb(9, 32, 76);
+	}
+	100% {
+		box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	}
+}
+
+
 #camberden {
-	font-family: Permanent Marker, sans-serif;
-	font-size: 4rem;
+	font-family: "PermanentMarker", sans-serif;
+	font-size: 60px;
 	background: var(--cmbr-gradient);
-	background-image: linear-gradient(
-		to bottom right,
-		var(--doi-red),
-		var(--doi-yellow)
-	);
-	background: linear-gradient(var(--clr-gradient-common));
+	/* outline: 0.5rem dotted red; */
+	/* border: 0.5rem dotted transparent; */
+	/* border-top: 0.1rem solid var(--clr-grid-box); */
+	border-bottom: 0.3rem solid var(--clr-grid-box);
+	border-left: 0.1rem solid var(--clr-grid-box);
+	/* border-right: 0.5rem solid var(--clr-grid-box); */
+
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
-	text-shadow: -5px -2px 0px #700caa;
+	text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum);
 	animation-name: change-text-shadow;
-  	animation-duration: 5s;
+  	animation-duration: 8s;
   	animation-iteration-count: infinite;
 }
-
 @keyframes change-text-shadow {
-	40% {
-		text-shadow: -5px -2px 0px rgb(81, 12, 170);
+	0% {
+		text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum);;
+	}
+	5% {
+		text-shadow: -1rem -1rem 2rem rgb(81, 12, 170);
+	}
+	30% {
+		text-shadow: 0rem 0rem 0.1rem var(--cmbr-curtain-plum);
+	}
+	50% {
+		text-shadow: 0.5rem 0.5rem 0.5rem rgb(133, 12, 170);
 	}
 	80% {
-		text-shadow: -5px -2px 0px rgb(133, 12, 170);
+		text-shadow: -1rem -1rem 2rem rgb(112, 12, 170);
 	}
 	100% {
-		text-shadow: -5px -2px 0px rgb(112, 12, 170);
+		text-shadow: -2rem -2rem 3rem transparent;
 	}
 }
 
@@ -385,10 +443,14 @@ button {
 	box-shadow: 3rem 3rem 2rem -3rem hsl(var(--cmbr-blue) / 0.25);
 }
 
+#info-div {
+	padding-bottom: 3rem;
+}
+
 .index-grid {
 	display: grid;
 	gap: 0.5rem;
-	grid-template-columns: repeat(1, 100%); /* repeat(4, 25%) */
+	grid-template-columns: repeat(1, 100%);
 	width: min(60%, 70rem);
 	margin-inline: auto;
 }
@@ -396,16 +458,15 @@ button {
 .footer {
 	background-color: black;
 	background-position: inherit;
-	border-bottom: 1rem solid var(--clr-grid-box);
-	border-right: 0.5rem solid var(--clr-grid-box);
+	border-bottom: 1rem solid var(--cmbr-grid-box);
+	border-right: 0.5rem solid var(--cmbr-grid-box);
 
 	background-image:
 	linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-	url('assets/image-camberden-signature-small-favicon.ico');
-	animation: small-signature-movement 30s linear infinite;
+	url('assets/cmbr-favicon.ico');
+	animation: icon-passage 30s linear infinite;
 }
-
-@keyframes small-signature-movement {
+@keyframes icon-passage {
 	from {background-position: 0 0;}
 	to {background-position: 100% 0;}
 }
@@ -419,12 +480,59 @@ button {
 /* ----- SITE-WIDE CUSTOM FONT DATA ----- */
 
 @font-face {
-	font-family: eremoran-kiptascript;
-	src: url("assets/font-eremoran-kiptascript.otf") format("opentype");
+	font-family: "eremoran-kiptascript";
+	src: 
+		local("font-eremoran-kiptascript"),
+		url("assets/fonts/font-eremoran-kiptascript.ttf") format("truetype"),
+		url("assets/fonts/font-eremoran-kiptascript.otf") format("opentype");
 }
 .eremoran-kiptascript {
-	font-family: eremoran-kiptascript;
-	font-size: 4rem;
+	font-family: "eremoran-kiptascript", sans-serif;
+	padding-bottom: 2rem;
+}
+
+@font-face {
+	font-family: "Lora";
+	src:
+		local("Lora"),
+		local("Lora-VariableFont_wght"),
+		local("Lora-Italic-VariableFont_wght"),
+		url("assets/fonts/Lora-VariableFont_wght.ttf") format("truetype"),
+		url("assets/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype"),
+		url("assets/fonts/Lora-Regular.ttf") format("truetype"),
+		url("assets/fonts/Lora-Italic.ttf") format("truetype"),
+		url("assets/fonts/Lora-Medium.ttf") format("truetype"),
+		url("assets/fonts/Lora-MediumItalic.ttf") format("truetype"),
+		url("assets/fonts/Lora-Bold.ttf") format("truetype"),
+		url("assets/fonts/Lora-BoldItalic.ttf") format("truetype"),
+		url("assets/fonts/Lora-SemiBold.ttf") format("truetype"),
+		url("assets/fonts/Lora-SemiBoldItalic.ttf") format("truetype");
+}
+.lora-regular {
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-weight: normal; /*400..700*/
+  font-style: normal;
+}
+
+@font-face {
+	font-family: "PermanentMarker";
+	src: 
+		local("PermanentMarker-Regular"),
+		url("assets/fonts/PermanentMarker-Regular.ttf") format("truetype");
+}
+.marker {
+	color: var(--cmbr-orange);
+	font-family: "PermanentMarker", monospace;
+}
+
+@font-face {
+	font-family: "VT323";
+	src: local("VT323"),
+	url("assets/fonts/VT323-Regular.ttf") format("truetype");
+}
+.vt323 {
+	font-family: "VT323", monospace;
 }
 
 /* ----- SITE-WIDE GENERAL STYLE COMPONENT ----- */
@@ -463,11 +571,6 @@ p {
 
 .common-background {
 	background-color: #90e5ee1a;
-}
-
-.marker {
-	color: var(--cmbr-orange);
-	font-family: Permanent Marker, sans-serif;
 }
 
 .hr-custom {

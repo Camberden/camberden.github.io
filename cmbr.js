@@ -1,3 +1,4 @@
+
 /** [["var/var.html","Var Page"],],
  * @var
  * The section link: this is the directory name of the page linked.
@@ -33,13 +34,15 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
+const localhostBaseURL = "http://127.0.0.1:5500/";
+const atIndex = document.location.href === localhostBaseURL ? true : false;
+
 /**
  * @description Applies event styles to buttons site-wide
- * - Adds modal styles, WIP 11/18/2025
  * @interface
  * @global
  */
-const ButtonInterface = {
+const CMBRutil = {
 
 	buttonOnMouseEnter: function (button) {
 		button.classList.add("button-highlight");
@@ -87,10 +90,10 @@ const ButtonInterface = {
 			const sectionDiv = document.createElement("div");
 			sectionDiv.setAttribute("class", "section-title");
 			sectionDiv.onclick = function () {
-
-				if (document.location.href.includes("index.html")) {
+				// FOR INDEX =====>
+				if (document.location.href.includes("index.html") || atIndex) {
 					document.location = section[0] + "/" + section[0] + ".html";
-
+				// FOR DROPDOWN =====>
 				} else if (section[0] === data[0][0]) {
 					document.location = "../" + "index.html";
 				} else {
@@ -136,7 +139,7 @@ const ButtonInterface = {
 						bookmarkDiv.classList.contains("section-highlight") ?
 						bookmarkDiv.classList.add("section-highlight") :
 						bookmarkDiv.classList.remove("section-lose-highlight");
-						bookmarkDiv.classList.add("section-highlight")
+						bookmarkDiv.classList.add("section-highlight");
 						console.log("onmouseenter");
 					}
 					bookmarkDiv.onmouseleave = function () {
@@ -160,18 +163,17 @@ const ButtonInterface = {
 		let access = "";
 		switch (name) {
 			case "sections" :
-				if (document.location.href.includes("index.html")) {
+				if (document.location.href.includes("index.html") || document.location.href === localhostBaseURL) {
 					sections.splice(0, 1);
-					ButtonInterface.initSections(`${name}-links`, sections);
+					CMBRutil.initSections(`${name}-links`, sections);
 					break;
 				} 
-				// const access = document.querySelector(`${name}-access`);
 				access = document.querySelector("#sections-access");
 				access.onclick = function() {
 				if (! access.classList.contains("sections-opened")) {
 					// initSections("sections-links", sections);
 					// initSections(`${name}-links`, sections);
-					ButtonInterface.initSections(`${name}-links`, sections);
+					CMBRutil.initSections(`${name}-links`, sections);
 					access.classList.add("sections-opened");
 					access.innerText = "Minimize";
 				} else {
@@ -185,9 +187,7 @@ const ButtonInterface = {
 				access = document.querySelector("#bookmarks-access");
 				access.onclick = function() {
 				if (! access.classList.contains("bookmarks-opened")) {
-					// initSections("sections-links", sections);
-					// initSections(`${name}-links`, sections);
-					ButtonInterface.initBookmarks(`${name}-links`, bookmarks);
+					CMBRutil.initBookmarks(`${name}-links`, bookmarks);
 					access.classList.add("bookmarks-opened");
 					access.innerText = "Minimize";
 				} else {
@@ -204,6 +204,19 @@ const ButtonInterface = {
 	}
 }
 
+const displayPageInfo = (info) => {
+	const data = (Array.from(info.split("."))).map(str => str.trim()); 
+	data.pop();
+
+	data.forEach(s => {
+		const p = document.createElement("p");
+		const text = document.createTextNode(s + ".");
+		p.appendChild(text);
+		p.appendChild(document.createElement("br"));
+		document.getElementById("page-info").appendChild(p);
+	});
+}
+
 /**
  * 
  * @param {HTMLElement[]} buttons 
@@ -212,14 +225,14 @@ const ButtonInterface = {
 function wireDefaultButtons(buttons, includeClick) {
 	buttons.forEach(button => {
 		button.onmouseenter = () => {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = () => {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 		if (includeClick) {
 			button.onclick = () => {
-				ButtonInterface.buttonOnClick(button);
+				CMBRutil.buttonOnClick(button);
 			}
 		}
 	});
@@ -230,8 +243,8 @@ function wireDefaultButtons(buttons, includeClick) {
  * @param {boolean} configured - Toggle boolean for default (reloading) prevention
  * - CONFIGURED: Applies current form submission handling and default prevention
  * - NONCONFIGURED: Returns page to normal form submission reloading
- * @fires ButtonInterface#handle - Applies the function individually to each form element
- * @fires window#onload - Fires immediately if buttons.js is linked
+ * @fires CMBRutil#handle - Applies the function individually to each form element
+ * @fires window#onload - Fires immediately if cmbr.js is linked
  * @global
  */
 function camberdenConfig(configured) {
@@ -240,7 +253,7 @@ function camberdenConfig(configured) {
 			console.log("Running and configured!");
 			const forms = document.querySelectorAll("form");
 			forms.forEach(form => {
-				form.addEventListener("submit", ButtonInterface.handle);
+				form.addEventListener("submit", CMBRutil.handle);
 			});
 		} else {
 			console.log("Running! (configuration disabled)");
@@ -248,11 +261,10 @@ function camberdenConfig(configured) {
 
 	}
 }
-camberdenConfig(true);
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
 
-const initNav = () => {ButtonInterface.actionsProvided("sections"); ButtonInterface.actionsProvided("bookmarks")}
+const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); }
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("|=====> " + (x ?? " ") + " ")  ; console.log("|=====* "); }
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));

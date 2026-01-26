@@ -144,10 +144,10 @@ function goToPoem() {
 function enablePoemButtons() {
 		document.querySelectorAll(".poem-buttons").forEach(button => {
 		button.onmouseleave = function() {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 		button.onmouseenter = function() {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onclick = function() {
 			console.log(button.value);
@@ -156,7 +156,7 @@ function enablePoemButtons() {
 			} else {
 				previousPoem();
 			}
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 		}
 	});
 }
@@ -600,10 +600,10 @@ cyclePanelCollections(robeChantKanji, 3000);
 function enableSutraButtons(){
 	document.querySelectorAll(".button-sutras").forEach(button => {
 		button.onmouseleave = function() {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 		button.onmouseenter = function() {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onclick = function() {
 			console.log(button.value);
@@ -612,7 +612,7 @@ function enableSutraButtons(){
 			} else {
 				cycleSutraLines(false);
 			}
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 		}
 	});
 }

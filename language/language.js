@@ -348,17 +348,17 @@ function enableButtonPool(modules) {
 		const text = document.createTextNode(module.grouping);
 		button.appendChild(text);
 		button.onclick = function() {
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 			refreshTables();
 			generateStudyTable(module);
 		}
 		buttonPool.appendChild(button);
 
 		button.onmouseenter = function () {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }
@@ -391,7 +391,7 @@ function enableSongLyricsPool(songs){
 		}
 		
 		button.onclick = function() {
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 			refreshSongText();
 			document.getElementById("fl-song-lyrics").appendChild(span);
 			document.getElementById("en-song-translation").appendChild(translation);
@@ -399,10 +399,10 @@ function enableSongLyricsPool(songs){
 		songButtonPool.appendChild(button);
 
 		button.onmouseenter = function () {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }
@@ -432,7 +432,7 @@ function displayVocabularyQuiz(splitModule) {
 
 	document.querySelectorAll(".language-modal-button").forEach(button => {
 		button.onclick = function(){
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 			switch (button.value) {
 				case "next":
 						if (entry === splitModule.length - 1) {
@@ -448,10 +448,10 @@ function displayVocabularyQuiz(splitModule) {
 			}
 		}
 		button.onmouseenter = function () {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	}
 	);
@@ -502,7 +502,7 @@ function clearModal() {
 function enableLanguageButtons(){
 	languageButtons.forEach(button => {
 		button.onclick = function(){
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 			switch (button.value) {
 				case "all":
 					enableButtonPool(vocabularyModules);
@@ -525,10 +525,10 @@ function enableLanguageButtons(){
 			}
 		}
 		button.onmouseenter = function () {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	}
 	)

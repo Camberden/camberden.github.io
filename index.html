@@ -4,10 +4,9 @@
 
 <head>
 	<meta charset="UTF-8" />
-	<link rel="shortcut icon" href="assets/image-crystal-chrispy-favicon.png">
-	<link rel="stylesheet" type="text/css" href="styles.css" media="screen">
-	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
+	<link rel="shortcut icon" href="assets/cmbr-sig.svg">
+	<style> @import "styles.css" screen; </style>
+	<!-- <script type="module" src="/cmbr-mod.js"></script> -->
 	<title>Chrispy's Site</title>
 </head>
 
@@ -15,26 +14,43 @@
 	
 	<main class="index-grid">
 	
-		<div class="signature-div">
-			<img id="signature" src="assets/image-camberden-signature-6.svg" alt="emblem">
+	<div class="signature-div">
+			<img id="signature" src="assets/cmbr-sig.svg" alt="emblem">
 		</div>
-	
-		<h1 id="camberden" lang="en-US">camberden</h1>
-	
-		<div id="site-info" class="index-item"></div>
+			
+		<div class="nav-row-grid">
+			<div id="sections-dropdown" style="display:none;">
+				<div id="sections-access">Navigation</div>
+			</div>
+
+				<div id="title-container">
+					<h1 id="camberden" lang="en-US">camberden</h1>
+				</div>
+
+			<div id="bookmarks-dropdown" style="display: none;">
+				<div id="bookmarks-access">Bookmarks</div>
+				<div id="bookmarks-links"></div>
+
+			</div>
+		</div>
+		<div id="dummy-test"></div>
+			
+		<div id="info-div" class="index-item">
+			<span id="page-info"></span>
+		</div>
 	
 		<div id="sections-links"></div>
 	
 		<div class="index-item footer marker">
 			<p id="footer-text">Made with ♡ by Chrispy</p>
-				<p>Last updated on <span id="latest-update"></span></p>
-				<p><span id="japanese-date"></span></p>
+			<p>Last updated on <span id="latest-update"></span></p>
+			<p><span id="japanese-date"></span></p>
 		</div>
 	
 	</main>
-	<script src="buttons.js"></script>
+
+	<script src="cmbr.js"></script>
 	<script src="action.js"></script>
-	
 
 </body>
 

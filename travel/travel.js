@@ -39,10 +39,10 @@ function enableMapSelectionButtons() {
 			loadInteractiveMaps(button.value);
 		}
 		button.onmouseenter = function () {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }
@@ -188,13 +188,13 @@ function enableMapHighlightButtons () {
 	mapHighlightButtons.forEach(button => {
 		button.onclick = function () {
 			loadMapHighlight(button.value);
-			ButtonInterface.buttonOnClick(button);
+			CMBRutil.buttonOnClick(button);
 		}
 		button.onmouseenter = function () {
-			ButtonInterface.buttonOnMouseEnter(button);
+			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onmouseleave = function () {
-			ButtonInterface.buttonOnMouseLeave(button);
+			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 
