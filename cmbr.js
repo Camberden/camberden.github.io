@@ -1,4 +1,3 @@
-
 /** [["var/var.html","Var Page"],],
  * @var
  * The section link: this is the directory name of the page linked.
@@ -34,7 +33,11 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
-const localhostBaseURL = "http://127.0.0.1:5500/";
+const localhostBaseURL = [
+	"http://127.0.0.1:5500/",
+	"https://camberden.com/",
+	"https://camberden.github.io/",
+];
 const atIndex = document.location.href === localhostBaseURL ? true : false;
 
 /**
@@ -163,7 +166,7 @@ const CMBRutil = {
 		let access = "";
 		switch (name) {
 			case "sections" :
-				if (document.location.href.includes("index.html") || document.location.href === localhostBaseURL) {
+				if (document.location.href.includes("index.html") || document.location.href.contains(localhostBaseURL)) {
 					sections.splice(0, 1);
 					CMBRutil.initSections(`${name}-links`, sections);
 					break;

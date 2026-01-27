@@ -408,9 +408,9 @@ button {
 	color: transparent;
 	user-select: none;
 	text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum);
-	animation-name: change-text-shadow;
+	/* animation-name: change-text-shadow;
   	animation-duration: 8s;
-  	animation-iteration-count: infinite;
+  	animation-iteration-count: infinite; */
 }
 @keyframes change-text-shadow {
 	0% {
