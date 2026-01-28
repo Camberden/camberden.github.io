@@ -33,12 +33,26 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
-const localhostBaseURL = [
+const baseHyperlinks = [
 	"http://127.0.0.1:5500/",
 	"https://camberden.com/",
 	"https://camberden.github.io/",
 ];
-const atIndex = document.location.href === localhostBaseURL ? true : false;
+
+/**
+ * 
+ * @returns {Boolean} boo
+ */
+const atSiteIndex = () => {
+	if (document.location.origin === "file://" && document.location.href.includes("camberden.github.io")) {
+		return true;
+	} else 
+		if (baseHyperlinks.includes(document.location.href)) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
 /**
  * @description Applies event styles to buttons site-wide
@@ -166,7 +180,7 @@ const CMBRutil = {
 		let access = "";
 		switch (name) {
 			case "sections" :
-				if (document.location.href.includes("index.html") || document.location.href.contains(localhostBaseURL)) {
+				if (atSiteIndex()) {
 					sections.splice(0, 1);
 					CMBRutil.initSections(`${name}-links`, sections);
 					break;
@@ -174,8 +188,6 @@ const CMBRutil = {
 				access = document.querySelector("#sections-access");
 				access.onclick = function() {
 				if (! access.classList.contains("sections-opened")) {
-					// initSections("sections-links", sections);
-					// initSections(`${name}-links`, sections);
 					CMBRutil.initSections(`${name}-links`, sections);
 					access.classList.add("sections-opened");
 					access.innerText = "Minimize";
@@ -187,7 +199,7 @@ const CMBRutil = {
 			}
 				break;
 			case "bookmarks" :
-				access = document.querySelector("#bookmarks-access");
+				access = document.getElementById("bookmarks-access");
 				access.onclick = function() {
 				if (! access.classList.contains("bookmarks-opened")) {
 					CMBRutil.initBookmarks(`${name}-links`, bookmarks);

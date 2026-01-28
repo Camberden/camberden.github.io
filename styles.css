@@ -320,6 +320,7 @@ button {
 
 .signature-div {
 	text-align: left;
+	z-index: 10;
 }
 
 #signature {
@@ -329,15 +330,14 @@ button {
 	width: 6rem;
 	min-height: 5rem;
 	user-select: none;
-	background: rgba(#292540d6);
 
-	border-bottom: 0.1rem solid var(--clr-grid-box);
+	/* border-bottom: 0.1rem solid var(--clr-grid-box);
 	border-left: 0.1rem solid var(--clr-grid-box);
 	border-right: 0.2rem solid var(--clr-grid-box);
-	box-shadow: -0.2rem -0.1rem 0.3rem rgb(12, 11, 71) inset;
-	/* animation-name: stagger-signature;
+	box-shadow: -0.2rem -0.1rem 0.3rem rgb(12, 11, 71) inset; */
+	animation-name: stagger-signature;
 	animation-duration: 10s;
-	animation-iteration-count: infinite; */
+	animation-iteration-count: infinite;
 
 }
 @keyframes stagger-signature {
@@ -363,7 +363,7 @@ button {
 
 	border-top: 0.1rem solid var(--clr-grid-box);
 	border-bottom: 0.5rem solid var(--clr-grid-box);
-	/* border-left: 0.5rem solid var(--clr-grid-box); */
+	border-left: 0.1rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
 
 	width: 100%;
@@ -407,10 +407,13 @@ button {
 	-webkit-background-clip: text;
 	color: transparent;
 	user-select: none;
-	text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum);
-	/* animation-name: change-text-shadow;
-  	animation-duration: 8s;
-  	animation-iteration-count: infinite; */
+	/* text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum); */
+	/* text-shadow: 12rem red; */
+	animation-name: cmbr-sectionsizer;
+  	animation-duration: 10s;
+	animation-timing-function: ease-out;
+	animation-direction: alternate;
+  	animation-iteration-count: infinite;
 }
 @keyframes change-text-shadow {
 	0% {
@@ -430,6 +433,16 @@ button {
 	}
 	100% {
 		text-shadow: -2rem -2rem 3rem transparent;
+	}
+}
+@keyframes cmbr-sectionsizer { 
+	from {
+		background-size: 100% 100%;
+		background-position: 0% 100%;
+	}
+	to {
+		background-size: 10% 10%;
+		background-position: 100% 100%;
 	}
 }
 
@@ -488,7 +501,8 @@ button {
 }
 .eremoran-kiptascript {
 	font-family: "eremoran-kiptascript", sans-serif;
-	padding-bottom: 2rem;
+	/* padding-bottom: -2rem; */
+	padding-top: 2rem;
 }
 
 @font-face {
