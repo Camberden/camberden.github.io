@@ -108,7 +108,7 @@ const CMBRutil = {
 			sectionDiv.setAttribute("class", "section-title");
 			sectionDiv.onclick = function () {
 				// FOR INDEX =====>
-				if (document.location.href.includes("index.html") || atIndex) {
+				if (document.location.href.includes("index.html") || window.location.pathname === "/") {
 					document.location = section[0] + "/" + section[0] + ".html";
 				// FOR DROPDOWN =====>
 				} else if (section[0] === data[0][0]) {
