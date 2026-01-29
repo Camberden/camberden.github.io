@@ -1,4 +1,8 @@
-/** [["var/var.html","Var Page"],],
+/* ===== CMBR.JS PERSONAL UTILITIES ===== */
+	
+/** 
+ * @description Site map links.
+ * [["var/var.html","Var Page"],],
  * @var
  * The section link: this is the directory name of the page linked.
  * @name
@@ -33,21 +37,55 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
+/**
+ * 
+ * @param {JSON} json 
+ * @returns 
+ */
+const getConfVal = async (json) => {
+    try {
+        const response = await fetch(json);
+        const jsonObject = await response.json();
+        return jsonObject;
+    } catch (error) {
+        console.error('Error fetching JSON:', error);
+        return null;
+    }
+}
+const cmbrconf = getConfVal("../cmbr.json");
+
+console.log(cmbrconf);
+
+
+
+/**
+ * @description Site-specific links config
+ * @readonly
+ * @global
+ */
 const baseHyperlinks = [
-	"http://127.0.0.1:5500/",
+	"http://127.0.0.1:" + document.location.port,
+	"http://localhost:" + document.location.port,
 	"https://camberden.com/",
 	"https://camberden.github.io/",
 ];
 
+// fetch("test.json")
+//   .then(response => response.json())
+//   .then(jsonObject => console.log(jsonObject));
+
 /**
- * 
- * @returns {Boolean} boo
+ * @description - Reads site index URL and provides
+ * gateway for development servers and all
+ * configured domains
+ * @readonly
+ * @global
+ * @returns {Boolean} boolean
  */
 const atSiteIndex = () => {
-	if (document.location.origin === "file://" && document.location.href.includes("camberden.github.io")) {
+	if (document.location.origin === "file://" && document.location.href.endsWith("index.html")) {
 		return true;
-	} else 
-		if (baseHyperlinks.includes(document.location.href)) {
+	} else if (baseHyperlinks.includes(document.location.href) || baseHyperlinks.includes(document.location.origin)) {
 		return true;
 	} else {
 		return false;
@@ -55,9 +93,13 @@ const atSiteIndex = () => {
 }
 
 /**
- * @description Applies event styles to buttons site-wide
+ * @description Personal Utilities:
+ * - Formally buttons.js.
+ * - Primary global JavaScript handler
+ * - for personal projects
  * @interface
  * @global
+ * @author Camberden (Chrispy | Kippi)
  */
 const CMBRutil = {
 

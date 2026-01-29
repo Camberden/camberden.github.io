@@ -457,7 +457,53 @@ button {
 }
 
 #info-div {
+	flex: 1;
 	padding-bottom: 3rem;
+	flex:content;
+}
+
+#info-div-frame {
+	border-top: 0.1rem solid var(--clr-grid-box);
+	border-bottom: 0.5rem solid var(--clr-grid-box);
+	border-left: 0.1rem solid var(--clr-grid-box);
+	border-right: 0.5rem solid var(--clr-grid-box);
+}
+
+/*TODO: Change image dynamically */
+
+#info-div-background {
+	flex: 0.5;
+	background: var(--cmbr-gradient);
+	background-image: url("assets/image-curtain.svg");
+	background-size: cover;
+	height: 100%;
+	opacity: 0%;
+	animation-name: info-div-shift;
+	animation-duration: 10s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-timing-function: ease-in-out;
+}
+
+@keyframes info-div-shift {
+	0% {
+		opacity: 0%;
+		background-position: 10% 10%;
+	} 20% {
+		opacity: 75%;
+	} 80% {
+		opacity: 75%;
+	} 100% {
+		opacity: 0%;
+		background-position: 100% 100%;
+	}
+}
+
+#page-info {
+	flex: 0.5;
+	font-size: 1.2rem;
+	text-align: left;
 }
 
 .index-grid {
@@ -468,9 +514,24 @@ button {
 	margin-inline: auto;
 }
 
-.footer {
+.index-grid > #sections-links {
+	border-top: 0.9rem solid var(--cmbr-grid-box);
+	opacity: 75%;
+	box-shadow: 0.1rem 0.1rem 0.5rem rgb(12, 11, 71);
+}
+
+.index-item {
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: repeat(2, 50%);
+	width: min(100%, 70rem);
+	margin-inline: auto;
+}
+
+.index-footer {
+	font-family: PermanentMarker;
+	color: var(--cmbr-orange);
 	background-color: black;
-	background-position: inherit;
 	border-bottom: 1rem solid var(--cmbr-grid-box);
 	border-right: 0.5rem solid var(--cmbr-grid-box);
 
@@ -485,7 +546,7 @@ button {
 }
 
 #japanese-date {
-	font-size: .75rem;
+	font-size: 1rem;
 	font-family:"ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro",Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
 	font-weight: bolder;
 }
@@ -501,7 +562,6 @@ button {
 }
 .eremoran-kiptascript {
 	font-family: "eremoran-kiptascript", sans-serif;
-	/* padding-bottom: -2rem; */
 	padding-top: 2rem;
 }
 
@@ -720,6 +780,12 @@ p {
 
 /* ----- MEDIA QUERIES ---- */
 
+.chrispy-likeness-box {
+	fill: var(--clr-primary);
+	border-color: rgb(188, 130, 209);
+	border-left-width: 2rem;
+	border-style: double;
+}
 
 @media screen and (max-width: 500px) {
 	body {

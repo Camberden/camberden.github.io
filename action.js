@@ -6,7 +6,7 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Wednesday, January 28th, 2026";
+const latestUpdate = "Thursday, January 29th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -15,7 +15,7 @@ const pageInfo = (
 	Here you will find music, musings,
 	and an assortment of software projects.
 	Whatever I place here is a reflection of my
-	lifestyle and workflow. Its placement is meaningful
+	lifestyle and workflow, and its placement here is meaningful
 	enough to me and is therefore justified.`
 );
 

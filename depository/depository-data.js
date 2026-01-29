@@ -1,5 +1,3 @@
-
-
 const tags = [
 	"accounting",
 	"programming",
@@ -10,7 +8,6 @@ const tags = [
 	"travel",
 	"recreation",
 ];
-
 
 /**
  * 
@@ -33,7 +30,6 @@ function gatherTextBetweenTags(content, tag) {
 	const l = tag.length + 2;
 	return content.substring(content.indexOf("<" + gatherStylesWithinTag(tag) + ">") + l, content.indexOf("</" + tag + ">"));
 }
-
 
 function initDepositedNotes() {
 	for (let i = 0; i < depositoryData.length - 1; i++) {

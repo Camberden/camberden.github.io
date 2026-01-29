@@ -44,7 +44,6 @@ function enableDropdowns () {
 }
 
 (()=>{
-	displaySection();
 	enableDropdowns();
 	initNav();
 })();

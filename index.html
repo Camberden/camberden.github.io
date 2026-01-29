@@ -5,11 +5,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="assets/cmbr-sig.svg">
-	<style>
-		@import "styles.css" screen;
-	</style>
-	<script type="module" src="https://cdn.jsdelivr.net/npm/liquidjs/dist/liquid.browser.umd.js">
-	</script>
+	<style> @import "styles.css" screen; </style>
 	<title>Chrispy's Site</title>
 </head>
 
@@ -33,30 +29,26 @@
 			<div id="bookmarks-dropdown" style="display: none;">
 				<div id="bookmarks-access">Bookmarks</div>
 				<div id="bookmarks-links"></div>
-
 			</div>
-		</div>
-		
-		<div id="dummy-test">
-			
-</div>
-
-
-<div id="result"></div>
-
 		</div>
 
 		<div id="info-div" class="index-item">
-			<span id="page-info"></span>
+			<div id="page-info"></div>
+			<div id="info-div-frame">
+				<div id="info-div-background">
+				</div>
+			</div>
+
 		</div>
+		<hr class="hr-cmbr-gradient">
 
 		<div id="sections-links"></div>
 
-		<div class="index-item footer marker">
+		<footer class="index-footer">
 			<p id="footer-text">Made with ♡ by Chrispy</p>
 			<p>Last updated on <span id="latest-update"></span></p>
 			<p><span id="japanese-date"></span></p>
-		</div>
+		</footer>
 
 	</main>
 
