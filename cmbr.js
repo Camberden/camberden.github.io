@@ -47,6 +47,7 @@ const baseHyperlinks = [
 	"https://camberden.github.io/",
 	"http://127.0.0.1:" + document.location.port,
 	"http://localhost:" + document.location.port,
+	"http://localhost:" + document.location.port + "/index.html",
 ];
 
 /**
@@ -60,7 +61,9 @@ const baseHyperlinks = [
 const atSiteIndex = () => {
 	if (document.location.origin === "file://" && document.location.href.endsWith("index.html")) {
 		return true;
-	} else if (baseHyperlinks.includes(document.location.href) || baseHyperlinks.includes(document.location.origin)) {
+	} else if (baseHyperlinks.includes(document.location.href)) {
+		return true;
+	} else if (baseHyperlinks.includes(document.location.href.endsWith("index.html"))) {
 		return true;
 	} else if (document.location.href.includes(baseHyperlinks[0])) {
 		return false;
