@@ -3,7 +3,6 @@
 
 Personal webpage including an assortment of visualizers and tools for personal use. Created July 20th, 2020.  
 
-
 ## Tools
 * Expense Management
 * Salary Plan Browser

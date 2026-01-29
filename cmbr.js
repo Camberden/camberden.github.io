@@ -38,41 +38,16 @@ const bookmarks = [
 ];
 
 /**
- * 
- * @param {JSON} json 
- * @returns 
- */
-const getConfVal = async (json) => {
-    try {
-        const response = await fetch(json);
-        const jsonObject = await response.json();
-        return jsonObject;
-    } catch (error) {
-        console.error('Error fetching JSON:', error);
-        return null;
-    }
-}
-const cmbrconf = getConfVal("../cmbr.json");
-
-console.log(cmbrconf);
-
-
-
-/**
  * @description Site-specific links config
  * @readonly
  * @global
  */
 const baseHyperlinks = [
-	"http://127.0.0.1:" + document.location.port,
-	"http://localhost:" + document.location.port,
 	"https://camberden.com/",
 	"https://camberden.github.io/",
+	"http://127.0.0.1:" + document.location.port,
+	"http://localhost:" + document.location.port,
 ];
-
-// fetch("test.json")
-//   .then(response => response.json())
-//   .then(jsonObject => console.log(jsonObject));
 
 /**
  * @description - Reads site index URL and provides
@@ -87,6 +62,8 @@ const atSiteIndex = () => {
 		return true;
 	} else if (baseHyperlinks.includes(document.location.href) || baseHyperlinks.includes(document.location.origin)) {
 		return true;
+	} else if (document.location.href.includes(baseHyperlinks[0])) {
+		return false;
 	} else {
 		return false;
 	}
