@@ -4,10 +4,10 @@
 *.srl
 *.crt
 *.cnf
-TODO.txt
-disciplinaries.txt
+TODO.md
+disciplinaries.md
 node_modules
 template.html
 template.js
-sitenotes.txt
-roster.txt
+sitenotes.md
+roster.md
