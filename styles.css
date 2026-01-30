@@ -260,9 +260,9 @@ nav {
 button {
 	cursor: pointer;
 	user-select: none;
-	font-family: Permanent Marker, serif;
+	font-family: PermanentMarker, serif;
 	box-sizing: border-box;
-	background: linear-gradient(var(--clr-gradient-common));
+	background: var(--cmbr-gradient);
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	color: transparent;
@@ -288,7 +288,7 @@ button {
 	cursor: pointer;
 	position: relative;
 	color: var(--clr-quaternary);
-	background: var(--clr-tertiary);
+	background: var(--cmbr-green);
 }
 .button-depressed {
 
@@ -657,6 +657,20 @@ p {
 	padding: 0.2rem;
 	transition: padding 0.3s ease-in;
 }
+
+.countered-items-reset {
+	counter-reset: item;
+}
+
+.countered-items {
+	list-style-type: none;
+	counter-increment: item;
+}
+
+.countered-items::before {
+	content: counter(item) " → ";
+}
+
 
 /* --- HEADER AND GRID --- */
 

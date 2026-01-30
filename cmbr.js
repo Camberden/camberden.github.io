@@ -23,6 +23,7 @@ const sections = [
 	["segregation", "Segregation"],
 	["mainframe", "Mainframe"],
 	["music", "Original Music"],
+	["anki", "Anki Page (WIP)"],
 ];
 
 const bookmarks = [
@@ -63,7 +64,9 @@ const atSiteIndex = () => {
 		return true;
 	} else if (baseHyperlinks.includes(document.location.href)) {
 		return true;
-	} else if (baseHyperlinks.includes(document.location.href.endsWith("index.html"))) {
+	} else if (document.location.href.endsWith("index.html")) {
+		return true;
+	} else if (document.location.href.endsWith(document.location.port) || document.location.href.endsWith(document.location.port + "/")) {
 		return true;
 	} else if (document.location.href.includes(baseHyperlinks[0])) {
 		return false;

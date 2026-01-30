@@ -6,7 +6,7 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Thursday, January 29th, 2026";
+const latestUpdate = "Friday, January 30th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -99,11 +99,22 @@ const randomizeMonicker = () => {
 	}
 }
 
+function randomizePhotos() {
+	const infoDivBackground = document.getElementById("info-div-background");
+	const m = Math.random();
+	let photoIndex = Math.floor(m.toFixed(1) * 10);
+	infoDivBackground.style.backgroundImage = `url(assets/travel-photos/photo-nc-us-${photoIndex}.jpeg)`;
+}
+
 (() => {
 
 	CMBRutil.actionsProvided("sections");
 	displayPageInfo(pageInfo);
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));
+	randomizePhotos();
+	setInterval(()=> {
+		randomizePhotos();
+	}, 11000 );
 
 })();
