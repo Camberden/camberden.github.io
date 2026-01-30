@@ -4,38 +4,38 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
-	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../depository/depository.css" media="screen" />
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
-	<script src="../cmbr.js" async></script>
+	<style>
+		@import "../styles.css" screen;
+	</style>
+	<link rel="stylesheet" type="text/css" href="./depository.css" media="screen" />
 	<title>Chrispy's Note Depository</title>
 </head>
 
 <body>
+	<nav>
+		<div class="nav-col-grid">
+			<div id="nav-info">
+				<span id="current-site" class="marker">camberden.com</span><span id="current-section" class="marker"></span></div>
+			
+				<div class="nav-row-grid">
 
-	<div class="nav-template">
-		<nav class="nav-col-grid">
-			<div id="nav-info"><span id="current-site" class="marker">camberden.com</span><span id="current-section" class="marker"> </span></div>
-			<div id="dropdowns" class="nav-row-grid">
 				<div id="sections-dropdown">
 					<div id="sections-access">Navigation</div>
 					<div id="sections-links"></div>
 				</div>
+
 				<div id="bookmarks-dropdown">
 					<div id="bookmarks-access">Bookmarks</div>
 					<div id="bookmarks-links"></div>
 				</div>
 			</div>
-			<span class="inline-signature"></span>
-		</nav>
-		<hr class="hr-nav-pad">
-		<hr class="hr-cmbr-gradient">
-	</div>
 
+			<!-- <span class="inline-signature"></span> -->
+			<hr class="hr-nav-pad">
+			<hr class="hr-cmbr-gradient">
+		</div>
+		
+	</nav>
 
 	<div id="dropdown-header" class="dropdown-grid">
 
@@ -53,7 +53,7 @@
 		<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
 	</footer>
 
-
+	<script src="../cmbr.js"></script>
 	<script src="depository.js"></script>
 	<script src="depository-data.js"></script>
 </body>

@@ -123,11 +123,11 @@ const CMBRutil = {
 		target = document.getElementById(target);
 		data.forEach(section => {
 
-			const h3 = document.createElement("h3");
-			h3.setAttribute("class", "section-title-text");
-			h3.setAttribute("id", section[0]);
+			const tag = atSiteIndex() ? document.createElement("h3") : document.createElement("span");
+			tag.setAttribute("class", "section-title-text");
+			tag.setAttribute("id", section[0]);
 			const text = document.createTextNode(section[1]);
-			h3.appendChild(text);
+			tag.appendChild(text);
 
 			const sectionDiv = document.createElement("div");
 			sectionDiv.setAttribute("class", "section-title");
@@ -153,7 +153,7 @@ const CMBRutil = {
 				sectionDiv.classList.replace("section-highlight", "section-lose-highlight") :
 				console.log("onmouseleave");
 			}
-			sectionDiv.appendChild(h3);
+			sectionDiv.appendChild(tag);
 			target.appendChild(sectionDiv);
 		});
 	},

@@ -85,7 +85,7 @@ setInterval(() => {
 (()=>{
 
 	enableNeuButtons();
-	enableDropdowns();
+	// enableDropdowns();
 	displaySection();
 	activateChiron(loremIpsum);
 	initNav();

@@ -1,7 +1,3 @@
-/* NORMALIZATION & ROOT VARIABLES */
-
-* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
-
 body {
 	box-sizing: border-box;
 	min-height: 100vh;
@@ -10,38 +6,8 @@ body {
 
 /* ----- NAVBAR TESTER ----- */
 
-.nav-col-grid {
-	display: flex;
-	flex-flow: column wrap;
-	align-items: center;
-}
-
-.nav-row-grid {
-	display: flex;
-	flex-flow: row wrap;
-	align-items: baseline;
-}
-
-.inline-signature {
-	box-sizing: border-box;
-	position: absolute;
-	margin-top: 0.25rem;
-	width: 2rem;
-	height: 2rem;
-	background-image: url("../assets/image-camberden-signature-6.svg");
-	background-repeat: no-repeat;
-	background-size: auto;
-	transform: rotate(30deg);
-}
-
 #current-section {
 	font-size: 0.9rem;
-}
-
-#nav-top {
-	box-sizing: border-box;
-	background: linear-gradient(var(--cmbr-degrees), black, #430766, #2c2844, #2a198a, black);
-	fill-opacity: 100%;
 }
 
 #nav-center {
@@ -112,31 +78,6 @@ h1 {
 	animation-direction: reverse;
 	overflow-x: hidden;
 	overflow: hidden;
-}
-
-.hr-cmbr-dark-gradient {
-	background-image: var(--cmbr-dark-gradient);
-	width: 100%;
-	height: 0.5rem;
-}
-.hr-groove-top {
-	border-top: 0.5rem groove black;
-}
-.hr-groove-bottom {
-	border-bottom: 0.5rem groove black;
-	width: 100%;
-	box-shadow:  1rem 1rem 2rem rgb(25, 23, 144), 0rem 0rem 2rem rgb(221, 122, 94);
-	margin-bottom: 3rem;
-}
-.hr-cmbr-gradient {
-	background-image: var(--cmbr-gradient);
-	width: 100%;
-	height: 0.5rem;
-	opacity: 50%;
-}
-.hr-cmbr-gradient:nth-of-type(odd) {
-		-webkit-transform: scaleX(-1);
-  		transform: scaleX(-1);
 }
 
 /* ----- OLD GRID BLOCKS ----- */
@@ -361,11 +302,6 @@ footer {
 	bottom: 0;
 	padding: 3rem;
 	background: linear-gradient(var(--cmbr-degrees), black, #430766, #2c2844, #2a198a, black);
-}
-
-.eremoran-kiptascript {
-	font-family: eremoran-kiptascript;
-	font-size: 2rem;
 }
 
 @keyframes groovymove {

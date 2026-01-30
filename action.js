@@ -27,7 +27,7 @@ const pageInfo = (
  * @returns date Object
  * @description Converts my chosen date format for update display into a date Object
  */
-function convertDate(month, calendarDay, year){
+const convertDate = (month, calendarDay, year) => {
 	const convertedMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	const convertedCalendarDay = calendarDay.replace(/[^0-9]/g, ' ');
 	const convertedYear = parseInt(year);
@@ -35,12 +35,17 @@ function convertDate(month, calendarDay, year){
 	
 	return date;
 }
+/**
+ * 
+ * @param {String} update 
+ * @returns {Date} Formatted Date
+ */
 const formatter = (update) => { x = update.split(" "); return convertDate(x[1], x[2], x[3]); }
 /**
  * @param {Date} date
  * @description Converts date object to a Japanese date.
  */
-function convertToJapaneseDate(date) {
+const convertToJapaneseDate = (date) => {
 	let japaneseDate = "最近アップデート令和";
 	const kanjiNumbers = ["一", "二","三","四","五","六","七","八","九","十",];
 		
@@ -52,9 +57,7 @@ function convertToJapaneseDate(date) {
 	} else {
 		japaneseDate += (kanjiNumbers[date.getMonth()] + "月");
 	}
-
 	// ----- DAYS ----- //
-	// console.log(date.getDate());
 	if (date.getDate() > 30) {
 		japaneseDate += kanjiNumbers[2] + kanjiNumbers[9] + (kanjiNumbers[(date.getDate() % 30) - 1] + "日");
 	} else if (date.getDate() == 30) {
@@ -79,7 +82,6 @@ function convertToJapaneseDate(date) {
 	}
 	document.querySelector("#japanese-date").textContent = japaneseDate;
 }
-
 const randomizeMonicker = () => {
 	const m = Math.random();
 	if (m <= 0.2) {
@@ -98,12 +100,13 @@ const randomizeMonicker = () => {
 		camberden.innerHTML = monickers[0];
 	}
 }
-
-function randomizePhotos() {
+const randomizePhotos = () => {
 	const infoDivBackground = document.getElementById("info-div-background");
+	infoDivBackground.style.animationPlayState = "paused";
 	const m = Math.random();
-	let photoIndex = Math.floor(m.toFixed(1) * 10);
-	infoDivBackground.style.backgroundImage = `url(assets/travel-photos/photo-nc-us-${photoIndex}.jpeg)`;
+	infoDivBackground.style.animationPlayState = "running";
+	let photoIndex = Math.round(m.toFixed(1) * 10);
+	photoIndex < 1 ? randomizePhotos : infoDivBackground.style.backgroundImage = `url(assets/travel-photos/photo-nc-us-${photoIndex}.jpeg)`;
 }
 
 (() => {
@@ -115,6 +118,6 @@ function randomizePhotos() {
 	randomizePhotos();
 	setInterval(()=> {
 		randomizePhotos();
-	}, 11000 );
+	}, 10000);
 
 })();

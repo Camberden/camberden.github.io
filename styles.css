@@ -43,26 +43,43 @@
 nav {
 	display: flex;
 	position: fixed;
+	top: 0;
 	width: 100%;
-	height: auto;
-	z-index: 200;
-	background-image: url('assets/image-curtain.svg'); 
+	z-index: 100;
+
 }
 
 .inline-signature {
-	display: flex;
+	display: inline-flex;
 	flex: 1;
-	z-index: 100;
+	z-index: 200;
+	box-sizing: border-box;
+	left: 50%;
+	right: 50%;
+	position: fixed;
+
+	width: 3rem;
+	height: 3rem;
+	background-image: url("./images/cmbr-sig.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	transform: rotate(30deg);
+}
+
+#inline-signature-div {
+	display: inline-flex;
 	box-sizing: border-box;
 	position: fixed;
-	align-items: center;
-	justify-content: center;
-	width: 5rem;
-	height: 5rem;
-	opacity: 70%;
-	background-image: url("./assets/image-camberden-signature-6.svg");
-	background-repeat: no-repeat;
-	transform: rotate(30deg);
+	flex: 1;
+	top: 0;
+	z-index: 100;
+	left: 45%;
+	right: 55%;
+	width: 10rem;
+	height: 3rem;
+	border: 0.5rem groove black;
+	background-color: blaack;
+
 }
 
 .nav-col-grid {
@@ -70,24 +87,28 @@ nav {
 	flex-flow: column wrap;
 	align-items: center;
 	align-content: center;
+	
+	
 }
 
 .nav-row-grid {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: baseline;
+	background-image: url('assets/image-curtain.svg'); 
+
 }
 
 #nav-info {
 	display: flex;
-	margin-top: 1.5rem;
-	font-size: 1.5rem;
+	/* margin-top: 1.5rem;
+	font-size: 1.5rem; */
 }
 
 #dropdowns {
 	width: 100%;
 	height: 2rem;
-	z-index: 200;
+	z-index: 300;
 	border-bottom: 0.5rem groove black;
 }
 
@@ -101,14 +122,14 @@ nav {
 	background-position: 0 88%;
 	background-repeat: no-repeat;
 
-	border-bottom: 0.1rem solid var(--clr-tertiary);
+	border-bottom: 0.1rem solid var(--cmbr-green);
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
 	
 }
 
 .section-highlight {
-	color: var(--clr-secondary);
+	color: var(--cmbr-orange);
 	background-image: var(--cmbr-gradient); /* FORMERLY CLR-GRADIENT-COMMON */
 	background-size: 100% 5%;
 	transition: background-size 0.3s ease-in;
@@ -124,11 +145,19 @@ nav {
 	animation-iteration-count: 1;
 }
 
+.sections-opened {
+	text-align: left;
+	left: 0;
+	padding-bottom: 0.5rem;
+}
+
 .sections-opened::after {
 	content:attr(item) " ↓";
 }
 
 #sections-dropdown {
+	font-family: inherit;
+	font-size: 1rem;
 	border: 0.5rem groove black;
 	padding: 0.2rem;
 	left: 0;
@@ -136,7 +165,7 @@ nav {
 	height: fit-content;
 	text-align: start;
 	position: fixed;
-	z-index: 200;
+	z-index: 300;
 	background-color: black;
 }
 
@@ -145,6 +174,7 @@ nav {
 	width: 100%;
 	height: 1rem;
 	right: 0;
+	color: var(--cmbr-blue);
 }
 
 #sections-access:hover {
@@ -154,22 +184,18 @@ nav {
 }
 
 #current-site {
+	font-family: "PermanentMarker" monospace;
 	display: inline-flex;
 	position: fixed;
 	left: 20%;
-	justify-content: center;
-	/* margin-top: 0.5rem; */
-
-	color: var(--cmbr-dark-grey)
 }
 
 #current-section {
+	font-family: "PermanentMarker" monospace;
 	display: inline-flex;
 	position: fixed;
 	right: 20%;
 	justify-content: center;
-	/* margin-top: 0.5rem; */
-	color: var(--cmbr-dark-grey)
 
 }
 
@@ -222,6 +248,8 @@ nav {
 
 .bookmarks-opened:first-child {
 	text-align: right;
+	right: 0;
+	padding-bottom: 0.5rem;
 }
 
 
@@ -252,6 +280,8 @@ nav {
   		transform: scaleX(-1);
 }
 .hr-nav-pad {
+	color: transparent;
+	border-color: transparent;
 	padding-bottom: 3rem;
 }
 
@@ -391,7 +421,6 @@ button {
 	}
 }
 
-
 #camberden {
 	font-family: "PermanentMarker", sans-serif;
 	font-size: 60px;
@@ -405,6 +434,7 @@ button {
 
 	background-clip: border-box;
 	-webkit-background-clip: text;
+	background-repeat: no-repeat;
 	color: transparent;
 	user-select: none;
 	/* text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum); */
@@ -438,11 +468,11 @@ button {
 @keyframes cmbr-sectionsizer { 
 	from {
 		background-size: 100% 100%;
-		background-position: 0% 100%;
+		background-position: 0% 0%;
 	}
 	to {
-		background-size: 10% 10%;
-		background-position: 100% 100%;
+		background-size: 60% 60%;
+		background-position: 50% 50%;
 	}
 }
 
@@ -457,8 +487,13 @@ button {
 }
 
 #info-div {
-	flex: 1;
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: repeat(2, 50%);
+	width: min(100%, 70rem);
+	margin-inline: auto;
 	padding-bottom: 3rem;
+	flex: 1;
 	flex:content;
 }
 
@@ -469,13 +504,11 @@ button {
 	border-right: 0.5rem solid var(--clr-grid-box);
 }
 
-/*TODO: Change image dynamically */
-
 #info-div-background {
-	flex: 0.5;
 	background: var(--cmbr-gradient);
 	background-image: url("assets/image-curtain.svg");
 	background-size: cover;
+	width: 100%;
 	height: 100%;
 	opacity: 0%;
 	animation-name: info-div-shift;
@@ -484,6 +517,8 @@ button {
 	animation-iteration-count: infinite;
 	animation-direction: normal;
 	animation-timing-function: ease-in-out;
+
+	animation-play-state: running;
 }
 
 @keyframes info-div-shift {
@@ -492,16 +527,15 @@ button {
 		background-position: 10% 10%;
 	} 20% {
 		opacity: 75%;
-	} 80% {
+	} 70% {
 		opacity: 75%;
-	} 100% {
+	} 90% {
 		opacity: 0%;
 		background-position: 100% 100%;
 	}
 }
 
 #page-info {
-	flex: 0.5;
 	font-size: 1.2rem;
 	text-align: left;
 }
@@ -518,14 +552,6 @@ button {
 	border-top: 0.9rem solid var(--cmbr-grid-box);
 	opacity: 75%;
 	box-shadow: 0.1rem 0.1rem 0.5rem rgb(12, 11, 71);
-}
-
-.index-item {
-	display: grid;
-	gap: 0.5rem;
-	grid-template-columns: repeat(2, 50%);
-	width: min(100%, 70rem);
-	margin-inline: auto;
 }
 
 .index-footer {
@@ -583,10 +609,17 @@ button {
 		url("assets/fonts/Lora-SemiBoldItalic.ttf") format("truetype");
 }
 .lora-regular {
-  font-family: "Lora", serif;
-  font-optical-sizing: auto;
-  font-weight: normal; /*400..700*/
-  font-style: normal;
+	font-family: "Lora", serif;
+	font-optical-sizing: auto;
+	font-weight: normal; /*400..700*/
+	font-style: normal;
+}
+
+.lora-italic {
+	font-family: "Lora", serif;
+	font-optical-sizing: auto;
+	font-weight: normal; /*400..700*/
+	font-style: italic;
 }
 
 @font-face {
@@ -625,7 +658,7 @@ a {
 	outline: 0;
 	cursor: pointer;
 
-	color: var(--cmbr-orange);
+	color: unset;
 	background-image: linear-gradient(120deg, 0%,  100%);
 	background-repeat: no-repeat;
 	background-size: 25% 0.1em;
@@ -811,21 +844,27 @@ p {
 	}
 	#signature {
 		position: absolute;
-		width: 5rem;
-		min-height: 4rem;
+		width: 3rem;
+		min-height: 2rem;
 		user-select: none;
 		animation: none;
 	}
-	.eremoran-kiptascript {
-		font-family: eremoran-kiptascript;
-		font-size: 3rem;
+	
+	#info-div {
+		display: flex;
+		flex-flow: row wrap;
+		flex: content;
+		gap: 0.5rem;
+		width: min(100%);
+		padding-bottom: 10rem;
 	}
-	.index-grid {
-		display: grid;
-		gap: 0.3rem;
-		grid-template-columns: repeat(1, 100%);
-		/* repeat(4, 25%) */
-		width: min(100%, 70rem);
-		margin-inline: auto;
+	#info-div-frame {
+		flex: 1;
+		height: 50%;
+		width: 100%;
+		border-top: 0.1rem solid var(--clr-grid-box);
+		border-bottom: 0.5rem solid var(--clr-grid-box);
+		border-left: 0.1rem solid var(--clr-grid-box);
+		border-right: 0.5rem solid var(--clr-grid-box);
 	}
 }
