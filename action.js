@@ -32,7 +32,6 @@ const convertDate = (month, calendarDay, year) => {
 	const convertedCalendarDay = calendarDay.replace(/[^0-9]/g, ' ');
 	const convertedYear = parseInt(year);
 	const date = new Date(convertedYear, convertedMonth.indexOf(month), parseInt(convertedCalendarDay));
-	
 	return date;
 }
 /**
@@ -86,9 +85,11 @@ const randomizeMonicker = () => {
 	const m = Math.random();
 	if (m <= 0.2) {
 		camberden.lang = "jp";
+		camberden.setAttribute("style", "font-family: Yusei Magic;");
 		camberden.innerHTML = monickers[1];
 	} else if (m <= 0.4) {
 		camberden.lang = "jp";
+		camberden.setAttribute("style", "font-family: Yusei Magic;");
 		camberden.innerHTML = monickers[2];
 	} else if (m <= 0.6) {
 		camberden.removeAttribute("font-family");
@@ -99,6 +100,10 @@ const randomizeMonicker = () => {
 	} else {
 		camberden.innerHTML = monickers[0];
 	}
+
+	setInterval(()=>{
+
+	})
 }
 const randomizePhotos = () => {
 	const infoDivBackground = document.getElementById("info-div-background");
@@ -112,6 +117,7 @@ const randomizePhotos = () => {
 (() => {
 
 	CMBRutil.actionsProvided("sections");
+	recognizeFileProtocol();
 	displayPageInfo(pageInfo);
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));

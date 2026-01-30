@@ -18,7 +18,6 @@ const sections = [
 	["travel", "Travel Page"],
 	["lifecraft", "Lifecraft Page"],
 	["musings", "Musings Page"],
-	["depository", "Notes Depository"],
 	["fantasy", "Fantasyland"],
 	["segregation", "Segregation"],
 	["mainframe", "Mainframe"],
@@ -120,11 +119,10 @@ const CMBRutil = {
 	 */
 	initSections: function (target, data) {
 
-		target = document.getElementById(target);
+		target = document.querySelector("." + target);
 		data.forEach(section => {
 
 			const tag = atSiteIndex() ? document.createElement("h3") : document.createElement("span");
-			tag.setAttribute("class", "section-title-text");
 			tag.setAttribute("id", section[0]);
 			const text = document.createTextNode(section[1]);
 			tag.appendChild(text);
@@ -146,7 +144,7 @@ const CMBRutil = {
 				sectionDiv.classList.contains("section-highlight") ?
 				sectionDiv.classList.add("section-highlight") :
 				sectionDiv.classList.remove("section-lose-highlight");
-				sectionDiv.classList.add("section-highlight")
+				sectionDiv.classList.add("section-highlight");
 			}
 			sectionDiv.onmouseleave = function () {
 				sectionDiv.classList.contains("section-highlight") ?
@@ -165,11 +163,11 @@ const CMBRutil = {
 	 */
 	initBookmarks: function (target, data) {
 
-				target = document.getElementById(target);
+				target = document.querySelector("." + target);
 				data.forEach(bookmark => {
 
 					const a = document.createElement("a");
-					a.setAttribute("class", "section-title-text");
+					// a.setAttribute("class", "section-title-text");
 					a.setAttribute("href", bookmark[0]);
 					a.setAttribute("target","_blank");
 					const text = document.createTextNode(bookmark[1]);
@@ -186,8 +184,8 @@ const CMBRutil = {
 					}
 					bookmarkDiv.onmouseleave = function () {
 						bookmarkDiv.classList.contains("section-highlight") ?
-							bookmarkDiv.classList.replace("section-highlight", "section-lose-highlight") :
-							console.log("onmouseleave");
+						bookmarkDiv.classList.replace("section-highlight", "section-lose-highlight") :
+						console.log("onmouseleave");
 					}
 					bookmarkDiv.appendChild(a);
 					target.appendChild(bookmarkDiv);
@@ -217,7 +215,7 @@ const CMBRutil = {
 					access.classList.add("sections-opened");
 					access.innerText = "Minimize";
 				} else {
-					document.getElementById(`${name}-links`).innerHTML = "";
+					document.querySelector(`.${name}-links`).innerHTML = "";
 					access.classList.remove("sections-opened");
 					access.innerText = "Navigation";
 				}
@@ -231,7 +229,7 @@ const CMBRutil = {
 					access.classList.add("bookmarks-opened");
 					access.innerText = "Minimize";
 				} else {
-					document.getElementById(`${name}-links`).innerHTML = "";
+					document.querySelector(`.${name}-links`).innerHTML = "";
 					access.classList.remove("bookmarks-opened");
 					access.innerText = "Bookmarks";
 				}
@@ -303,8 +301,9 @@ function camberdenConfig(configured) {
 }
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
-
+const recognizeFileProtocol = () => { document.location.protocol === "file:" ? document.getElementById("anki").innerHTML += `<pre style="font-size: 0.5rem; color: red;">[disabled in file protocol]</pre>` : console.log(); }
 const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); }
+const displaySite = () => { document.getElementById("current-site").innerHTML = document.location.host };
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("|=====> " + (x ?? " ") + " ")  ; console.log("|=====* "); }
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));

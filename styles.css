@@ -1,6 +1,8 @@
 @charset "UTF-8";
+	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; };
+	body { box-sizing: border-box; min-height: 100vh; };
 @starting-style {
-	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; };
 }
 @namespace url("http://www.w3.org/1999/xhtml");
 @namespace svg url("http://www.w3.org/2000/svg");
@@ -13,7 +15,7 @@
 	--clr-quaternary: #9A031E;
 	--clr-quinary-body: #27233A;
 
-	--clr-gradient-common: 120deg, #f59b60 0%, #a1dbf8 100%;
+	--clr-gradient-common: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 	--clr-grid-box: #90e5ee1a;
 
 	--cmbr-indigo: #000caa;
@@ -29,6 +31,7 @@
 	--cmbr-dark-steel: #0b313d;
 
 	--cmbr-curtain-plum: #292540;
+	--cmbr-grid-box: #90e5ee1a;
 
 	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 	--cmbr-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-indigo),var(--cmbr-blue),var(--cmbr-orange),var(--cmbr-violet));	
@@ -46,7 +49,6 @@ nav {
 	top: 0;
 	width: 100%;
 	z-index: 100;
-
 }
 
 .inline-signature {
@@ -54,7 +56,7 @@ nav {
 	flex: 1;
 	z-index: 200;
 	box-sizing: border-box;
-	left: 50%;
+	left: 20%;
 	right: 50%;
 	position: fixed;
 
@@ -73,12 +75,12 @@ nav {
 	flex: 1;
 	top: 0;
 	z-index: 100;
-	left: 45%;
-	right: 55%;
+	left: 46%;
+	/* right: 55%; */
 	width: 10rem;
 	height: 3rem;
-	border: 0.5rem groove black;
-	background-color: blaack;
+	border: 0.5rem groove transparent;
+	/* background-color: black; */
 
 }
 
@@ -99,24 +101,61 @@ nav {
 
 }
 
-#nav-info {
-	display: flex;
-	/* margin-top: 1.5rem;
-	font-size: 1.5rem; */
-}
-
-#dropdowns {
+#nav-dropdowns {
 	width: 100%;
-	height: 2rem;
+	height: 3rem;
+	font-size: 2rem;
 	z-index: 300;
+	/* border-top: 0.5rem groove black; */
 	border-bottom: 0.5rem groove black;
 }
 
-.section-title {
-	box-sizing: border-box;
+#nav-info {
+	display: flex;
+	font-size: 1.5rem;
+}
+#current-site {
+	z-index: 400;
+	flex: 0.5;
+	align-self: center;
+	justify-self: center;
+	font-family: "PermanentMarker", monospace;
+	display: inline-flex;
+	position: fixed;
+	left: 20%;
+}
+
+#current-section {
+	z-index: 400;
+	flex: 0.5;
 	font-size: 1rem;
+	align-self: baseline;
+	justify-self: baseline;
+	font-family: "PermanentMarker", monospace;
+	display: inline-flex;
+	position: fixed;
+	margin-top: 1rem;
+	right: 20%;
+	justify-content: center;
+
+}
+
+#current-section::before {
+	content:attr(item) "→";	
+}
+
+.index-grid {
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: repeat(1, 100%);
+	width: min(60%, 70rem);
+	margin-inline: auto;
+}
+
+.section-title {
+	box-sizing: content-box;
 	cursor: pointer;
-	background-image: transparent;
+	padding: 1rem;
 
 	background-size: 100% 5%;
 	background-position: 0 88%;
@@ -125,7 +164,6 @@ nav {
 	border-bottom: 0.1rem solid var(--cmbr-green);
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
-	
 }
 
 .section-highlight {
@@ -136,7 +174,7 @@ nav {
 }
 
 .section-lose-highlight {
-	background-image: linear-gradient(var(--clr-gradient-common));
+	background-image: var(--clr-gradient-common);
 	background-size: 0% 5%;
 	animation-name: sectionsizer;
 	animation-play-state: running;
@@ -156,8 +194,9 @@ nav {
 }
 
 #sections-dropdown {
+	z-index: 300;
 	font-family: inherit;
-	font-size: 1rem;
+	height: 2rem;
 	border: 0.5rem groove black;
 	padding: 0.2rem;
 	left: 0;
@@ -165,43 +204,23 @@ nav {
 	height: fit-content;
 	text-align: start;
 	position: fixed;
-	z-index: 300;
 	background-color: black;
+}
+#sections-dropdown > .sections-links > .section-title {
+	padding: 0.5rem !important;
+	font-size: 1rem !important;
 }
 
 #sections-access {
 	font-family: "VT323", monospace;
 	width: 100%;
-	height: 1rem;
 	right: 0;
 	color: var(--cmbr-blue);
 }
-
 #sections-access:hover {
 	cursor: pointer;
 	background-color: var(--cmbr-curtain-plum);
 	color: var(--cmbr-green);
-}
-
-#current-site {
-	font-family: "PermanentMarker" monospace;
-	display: inline-flex;
-	position: fixed;
-	left: 20%;
-}
-
-#current-section {
-	font-family: "PermanentMarker" monospace;
-	display: inline-flex;
-	position: fixed;
-	right: 20%;
-	justify-content: center;
-
-}
-
-#current-section::before {
-	content:attr(item) "→";	
-
 }
 
 @keyframes sectionsizer { 
@@ -215,7 +234,10 @@ nav {
 	}
 }
 
+/* ----- BOOKMARKS UTILITY ----- */
+
 #bookmarks-dropdown {
+	z-index: 300;
 	border: 0.5rem groove black;
 	padding: 0.2rem;
 	right: 0;
@@ -223,18 +245,21 @@ nav {
 	height: fit-content;
 	text-align: start;
 	position: fixed;
-	z-index: 200;
 	background-color: black;
+}
+#bookmarks-dropdown > .bookmarks-links > .section-title {
+	padding: 0.7rem !important;
+	font-size: 1rem !important;
 }
 
 #bookmarks-access {
 	font-family: "VT323", monospace;
 	text-align: center;
 	width: 100%;
-	height: 1rem;
 	right: 0;
 	color: var(--cmbr-blue);
 }
+
 
 #bookmarks-access:hover {
 	cursor: pointer;
@@ -262,12 +287,16 @@ nav {
 }
 .hr-groove-top {
 	border-top: 0.5rem groove black;
-}
-.hr-groove-bottom {
-	border-bottom: 0.5rem groove black;
 	width: 100%;
 	box-shadow:  1rem 1rem 2rem rgb(25, 23, 144), 0rem 0rem 2rem rgb(221, 122, 94);
 	margin-bottom: 3rem;
+}
+.hr-groove-bottom {
+	background-color: black;
+	border-bottom: 0.5rem groove black;
+	width: 100%;
+	box-shadow:  1rem 1rem 2rem rgb(25, 23, 144), 0rem 0rem 2rem rgb(221, 122, 94);
+	margin-top: 3rem;
 }
 .hr-cmbr-gradient {
 	background-image: var(--cmbr-gradient);
@@ -276,8 +305,8 @@ nav {
 	opacity: 50%;
 }
 .hr-cmbr-gradient:nth-of-type(odd) {
-		-webkit-transform: scaleX(-1);
-  		transform: scaleX(-1);
+	-webkit-transform: scaleX(-1);
+	transform: scaleX(-1);
 }
 .hr-nav-pad {
 	color: transparent;
@@ -422,8 +451,10 @@ button {
 }
 
 #camberden {
+	flex: 1;
+	flex-flow: row nowrap;
 	font-family: "PermanentMarker", sans-serif;
-	font-size: 60px;
+	font-size: 5rem;
 	background: var(--cmbr-gradient);
 	/* outline: 0.5rem dotted red; */
 	/* border: 0.5rem dotted transparent; */
@@ -540,20 +571,6 @@ button {
 	text-align: left;
 }
 
-.index-grid {
-	display: grid;
-	gap: 0.5rem;
-	grid-template-columns: repeat(1, 100%);
-	width: min(60%, 70rem);
-	margin-inline: auto;
-}
-
-.index-grid > #sections-links {
-	border-top: 0.9rem solid var(--cmbr-grid-box);
-	opacity: 75%;
-	box-shadow: 0.1rem 0.1rem 0.5rem rgb(12, 11, 71);
-}
-
 .index-footer {
 	font-family: PermanentMarker;
 	color: var(--cmbr-orange);
@@ -632,6 +649,17 @@ button {
 	color: var(--cmbr-orange);
 	font-family: "PermanentMarker", monospace;
 }
+@font-face {
+	font-family: "Yusei Magic";
+	src:
+		local("YuseiMagic-Regular"),
+		url("assets/fonts/YuseiMagic-Regular.ttf") format("truetype");
+}
+.yusei-magic-regular {
+  font-family: "Yusei Magic", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
 
 @font-face {
 	font-family: "VT323";
@@ -673,7 +701,7 @@ a:hover {
 }
 
 p {
-	color: inherit;
+	color: unset;
 }
 
 .common-background {
@@ -834,13 +862,25 @@ p {
 	border-style: double;
 }
 
+@media screen and (max-width: 1200px) {
+	#camberden {
+		font-size: 4rem;
+	}
+}
+
+@media screen and (max-width: 900px) {
+	#camberden {
+		font-size: 3rem;
+	}
+}
+
 @media screen and (max-width: 500px) {
 	body {
 		background-image: none; 
 	}
 
 	#camberden {
-		font-size: 3rem;
+		font-size: 2rem;
 	}
 	#signature {
 		position: absolute;
