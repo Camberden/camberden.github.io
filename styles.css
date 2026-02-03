@@ -97,7 +97,6 @@ nav {
 	display: flex;
 	flex-flow: row wrap;
 	align-items: baseline;
-	background-image: url('assets/image-curtain.svg'); 
 
 }
 
@@ -420,10 +419,10 @@ button {
 	position: relative;
 	box-sizing: border-box;
 
-	border-top: 0.1rem solid var(--clr-grid-box);
+	/* border-top: 0.1rem solid var(--clr-grid-box);
 	border-bottom: 0.5rem solid var(--clr-grid-box);
 	border-left: 0.1rem solid var(--clr-grid-box);
-	border-right: 0.5rem solid var(--clr-grid-box);
+	border-right: 0.5rem solid var(--clr-grid-box); */
 
 	width: 100%;
 	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
@@ -471,7 +470,7 @@ button {
 	/* text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum); */
 	/* text-shadow: 12rem red; */
 	animation-name: cmbr-sectionsizer;
-  	animation-duration: 10s;
+  	animation-duration: 4s;
 	animation-timing-function: ease-out;
 	animation-direction: alternate;
   	animation-iteration-count: infinite;
@@ -498,12 +497,12 @@ button {
 }
 @keyframes cmbr-sectionsizer { 
 	from {
-		background-size: 100% 100%;
-		background-position: 0% 0%;
+		background-size: 70% 60%;
+		background-position: 60% 60%;
 	}
 	to {
-		background-size: 60% 60%;
-		background-position: 50% 50%;
+		background-size: 100% 100%;
+		background-position: 100% 100%;
 	}
 }
 
@@ -863,33 +862,51 @@ p {
 }
 
 @media screen and (max-width: 1200px) {
+	.nav-grow-grid {
+		background-image: none;
+	}
 	#camberden {
 		font-size: 4rem;
 	}
+	#signature { 	
+		width: 2rem;
+	}
+	#info-div-background {
+		background-image: none;
+	}
+	
 }
 
 @media screen and (max-width: 900px) {
+	.nav-grow-grid {
+		background-image: none;
+	}
 	#camberden {
 		font-size: 3rem;
 	}
+	#signature {
+		display: none;
+	}
+	#info-div-background {
+		background-image: none;
+	}
+	
+	
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 700px) {
+	.nav-grow-grid {
+		background-image: none;
+	}
 	body {
 		background-image: none; 
 	}
-
 	#camberden {
 		font-size: 2rem;
 	}
 	#signature {
-		position: absolute;
-		width: 3rem;
-		min-height: 2rem;
-		user-select: none;
-		animation: none;
+		display: none;
 	}
-	
 	#info-div {
 		display: flex;
 		flex-flow: row wrap;
@@ -902,9 +919,13 @@ p {
 		flex: 1;
 		height: 50%;
 		width: 100%;
-		border-top: 0.1rem solid var(--clr-grid-box);
-		border-bottom: 0.5rem solid var(--clr-grid-box);
-		border-left: 0.1rem solid var(--clr-grid-box);
-		border-right: 0.5rem solid var(--clr-grid-box);
+		border-top: 0.1rem solid var(--cmbr-grid-box);
+		border-bottom: 0.5rem solid var(--cmbr-grid-box);
+		border-left: 0.1rem solid var(--cmbr-grid-box);
+		border-right: 0.5rem solid var(--cmbr-grid-box);
 	}
+	#info-div-background {
+		background-image: none;
+	}
+	
 }

@@ -67,14 +67,13 @@ function enableDropdowns () {
 		}
 	});
 }
+
 const activateChiron = (texts) => {
 	document.getElementById("chiron-span").innerText = convertDummyText(texts)[Math.floor(Math.random() * convertDummyText(texts).length)];
+	setInterval(() => {
+		document.getElementById("chiron-span").style = "animation-duration: 10s;";
+	}, 10000);
 }
-
-setInterval(() => {
-	activateChiron(loremIpsum);
-	document.getElementById("chiron-span").style = "animation-duration: 10s;";
-}, 10000);
 
 
 (()=>{

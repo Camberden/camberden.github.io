@@ -1,5 +1,9 @@
 /* ----- WORKSPACE SPECIFIC ----- */
 
+#nav-dropdowns {
+	background-image: url("../assets/image-curtain.svg"); 
+}
+
 .trigger {
 	flex: 1;
 	font-family: "VT323", monospace;

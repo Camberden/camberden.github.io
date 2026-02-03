@@ -1,5 +1,7 @@
 /* ===== CMBR.JS PERSONAL UTILITIES ===== */
 	
+
+
 /** 
  * @description Site map links.
  * [["var/var.html","Var Page"],],
@@ -37,6 +39,8 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
+const basePort = document.location.port.length > 0 ? document.location.port : "__no__port__"
+
 /**
  * @description Site-specific links config
  * @readonly
@@ -45,9 +49,9 @@ const bookmarks = [
 const baseHyperlinks = [
 	"https://camberden.com/",
 	"https://camberden.github.io/",
-	"http://127.0.0.1:" + document.location.port,
-	"http://localhost:" + document.location.port,
-	"http://localhost:" + document.location.port + "/index.html",
+	"http://127.0.0.1:" + basePort,
+	"http://localhost:" + basePort,
+	"http://localhost:" + basePort + "/index.html",
 ];
 
 /**
@@ -65,7 +69,7 @@ const atSiteIndex = () => {
 		return true;
 	} else if (document.location.href.endsWith("index.html")) {
 		return true;
-	} else if (document.location.href.endsWith(document.location.port) || document.location.href.endsWith(document.location.port + "/")) {
+	} else if (document.location.href.endsWith(document.location.port + "/")) {
 		return true;
 	} else if (document.location.href.includes(baseHyperlinks[0])) {
 		return false;
