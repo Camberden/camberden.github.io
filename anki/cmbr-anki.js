@@ -120,6 +120,18 @@ const ankiFileSelect = (txtFiles) => {
 	});
 }
 
+const ankiTagSelect = () => {
+	const ankiTagSelect = document.getElementById("anki-tag-select");
+	const tags = [];
+	document.querySelectorAll(".anki-col-tags").forEach(grouping => {
+		y = grouping.innerText.split(" "); y.forEach(x => {tags.includes(x) ? console.log(y.length) : tags.push(x); })
+	});
+	tags.shift();
+	tags.forEach(tag => {
+		(() => { x = document.createElement("option"); y = document.createTextNode(tag); x.appendChild(y); ankiTagSelect.appendChild(x); })();
+	});
+}
+
 /** @description Reads .txt File as .html @param {String} txt Name of .txt File @implements {Promise<Object>} */
 function routeAnkiData(txt) {
 
@@ -131,7 +143,8 @@ function routeAnkiData(txt) {
 
 		splitTxt(doc);
 	
-		(html => console.log("Rejected Txt File Read in Promise: " + html[0]));
+		ankiTagSelect();
+(html => console.log("Rejected Txt File Read in Promise: " + html[0]));
 	}).catch(error => {
 		console.error('Failed to fetch page: ', error)
 	});
@@ -147,8 +160,8 @@ function enableAnkiButtons(buttons) {
 			CMBRutil.buttonOnMouseLeave(button);
 		}
 		button.onclick = function() {
-		CMBRutil.buttonOnClick(button);
-		switch(button.id) {
+			CMBRutil.buttonOnClick(button);
+			switch(button.id) {
 				case "button1":
 					sout(button.id);
 					break;
@@ -164,12 +177,6 @@ function enableAnkiButtons(buttons) {
 					sout("Default triggered!");
 				break;
 			}
-		}
-		button.onmouseenter = function() {
-			CMBRutil.buttonOnMouseEnter(button);
-		}
-		button.onmouseleave = function() {
-			CMBRutil.buttonOnMouseLeave(button);
 		}
 	});
 }

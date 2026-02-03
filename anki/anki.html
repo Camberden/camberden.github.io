@@ -1,20 +1,19 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<!-- Hi there! :V -->
 
 <head>
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="../assets/cmbr-sig.svg">
 	<style>
 		@import "../styles.css" screen;
-		@import "./anki.css" screen;
+		@import "anki.css" screen;
 	</style>
 	<title>Chrispy's Site</title>
 </head>
 
 <body>
 	<h1 id="current-section">&emsp;Chrispy's Note Depository</h1>
-	<div class="nav-template">
+	<div class="nav-layout">
 		<nav class="nav-col-grid">
 			<div id="nav-dropdowns" class="nav-row-grid">
 
@@ -43,15 +42,16 @@
 
 		<div class="main-row-grid">
 
-			<h3>File Read Button:</h3>
+			<h3>Select File &emsp; &RightArrow; &emsp;</h3>
 
 			<select id="anki-file-select"></select>
 
-			<button id="button3"> Buddin </button>
+			<h3>Filter by Tag &emsp; &RightArrow; &emsp;</h3>
+
+			<select id="anki-tag-select"><option>Select Tag</option></select>
+
 
 		</div>
-
-		<!-- <div id="anki-target" style="text-align: left;">‰ target ‰</div> -->
 
 		<div class="anki-flex-table">
 			<div class="anki-table-header">
@@ -61,15 +61,14 @@
 				<div class="anki-col anki-col-tags">Tags</div>
 			</div>
 
-			<!-- Data Rows (populated dynamically) -->
 			<div class="anki-table-body">
-				<div class="anki-table-row"></div>
+				<div id="anki-target" class="anki-table-row"></div>
 			</div>
 		</div>
 
 	</main>
-</body>
-<script src="../cmbr.js"></script>
-<script src="cmbr-anki.js"></script>
 
+	<script src="../cmbr.js"></script>
+	<script src="cmbr-anki.js"></script>
+</body>
 </html>

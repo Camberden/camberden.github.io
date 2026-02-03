@@ -6,6 +6,7 @@
 *.cnf
 *.json
 .shelf
+.vscode
 
 node_modules/
 package.json

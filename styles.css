@@ -1,24 +1,15 @@
 @charset "UTF-8";
-	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; };
-	body { text-align: center; box-sizing: border-box; min-height: 100vh; };
-	main { display: flex; box-sizing: border-box; outline: 1rem dotted red }
+* { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; };
 
 @starting-style {
-	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; };
+	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: initial; vertical-align: baseline; };
 }
 @namespace url("http://www.w3.org/1999/xhtml");
 @namespace svg url("http://www.w3.org/2000/svg");
 
 :root {
 
-	--clr-primary: #a1dbf8;
-	--clr-secondary: #f59b60;
-	--clr-tertiary: #8acb88;
-	--clr-quaternary: #9A031E;
-	--clr-quinary-body: #27233A;
-
-	--clr-gradient-common: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
-	--clr-grid-box: #90e5ee1a;
+	/* ----- CURRENT 2026 CMBR STYLES ----- */
 
 	--cmbr-indigo: #000caa;
 	--cmbr-blue: #a1dbf8;
@@ -27,17 +18,45 @@
 	--cmbr-green: #8acb88;
 	--cmbr-degrees: 120deg;
 
+	--cmbr-curtain-plum: #292540;
+	--cmbr-grid-box: #90e5ee1a;
+
 	--cmbr-dark-grey: #0a070f;
 	--cmbr-dark-ash: #182124;
 	--cmbr-dark-iron: #1f312e;
 	--cmbr-dark-steel: #0b313d;
 
-	--cmbr-curtain-plum: #292540;
-	--cmbr-grid-box: #90e5ee1a;
-
-	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 	--cmbr-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-indigo),var(--cmbr-blue),var(--cmbr-orange),var(--cmbr-violet));	
 	--cmbr-dark-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-dark-grey),var(--cmbr-dark-ash),var(--cmbr-dark-iron),var(--cmbr-dark-steel));
+
+	/* ----- CMBR FLEX TABLE STYLES ----- */
+
+	--cmbr-flex-table-background: #fff;
+	--cmbr-flex-table-border: #ddd;
+	--cmbr-table-border-bottom: white;
+
+	--cmbr-table-header-background: #f5f5f5;
+	--cmbr-table-header-border-bottom: #ddd;
+
+	--cmbr-table-row-border-bottom: #eee;
+	--cmbr-table-row-hover: #f9f9f9;
+
+	--cmbr-col-deck: #666;
+	--cmbr-col-question: #333;
+	--cmbr-col-answer: #555;
+	--cmbr-col-tags-background: #e8f4f8;
+
+	/* ----- LEGACY ROOT STYLES ----- */
+
+	--clr-primary: #a1dbf8;
+	--clr-secondary: #f59b60;
+	--clr-tertiary: #8acb88;
+	--clr-quaternary: #9A031E;
+	--clr-quinary-body: #27233A;
+	--clr-grid-box: #90e5ee1a;
+
+	--clr-gradient-common: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 }
 
 /* ----- MAIN NAVIGATION STYLES FOR INDEX AND BEYOND ----- */
@@ -145,7 +164,8 @@ nav {
 
 
 .section-title {
-	font-family: "LoraItalic";
+	font-family: "Lora";
+	font-style: italic;
 	box-sizing: content-box;
 	cursor: pointer;
 	padding: 1rem;
@@ -252,7 +272,6 @@ nav {
 	right: 0;
 	color: var(--cmbr-blue);
 }
-
 
 #bookmarks-access:hover {
 	cursor: pointer;
@@ -605,15 +624,18 @@ h3 {
 }
 
 @font-face {
+
 	font-family: "Lora";
 	src:
-		local("Lora"),
-		local("Lora-VariableFont_wght"),
-		local("Lora-Italic-VariableFont_wght"),
+		local("Lora-Regular")
+		local("Lora-Italic"),
+		local("Lora-Medium"),
+		local("Lora-MediumItalic"),
+		local("Lora-Bold"),
+		local("Lora-BoldItalic"),
+		local("Lora-SemiBold"),
+		local("Lora-SemiBoldItalic"),
 		url("assets/fonts/Lora-Regular.ttf") format("truetype"),
-		url("assets/fonts/Lora-VariableFont_wght.ttf") format("truetype"),
-		url("assets/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype");
-	/* 	
 		url("assets/fonts/Lora-Italic.ttf") format("truetype"),
 		url("assets/fonts/Lora-Medium.ttf") format("truetype"),
 		url("assets/fonts/Lora-MediumItalic.ttf") format("truetype"),
@@ -621,13 +643,10 @@ h3 {
 		url("assets/fonts/Lora-BoldItalic.ttf") format("truetype"),
 		url("assets/fonts/Lora-SemiBold.ttf") format("truetype"),
 		url("assets/fonts/Lora-SemiBoldItalic.ttf") format("truetype"); 
-	*/
-
-	font-family: "LoraItalic";
-	src:
-		local("Lora-Italic"),
-		url("assets/fonts/Lora-Italic.ttf") format("truetype");
-
+		/* 	
+			url("assets/fonts/Lora-VariableFont_wght.ttf") format("truetype");
+			url("assets/fonts/Lora-Italic-VariableFont_wght.ttf") format("truetype");
+		*/
 }
 .lora-regular {
 	font-family: "Lora", serif;
@@ -635,7 +654,6 @@ h3 {
 	font-weight: normal; /*400..700*/
 	font-style: normal;
 }
-
 .lora-italic {
 	font-family: "Lora", serif;
 	font-optical-sizing: auto;
@@ -677,12 +695,12 @@ h3 {
 /* ----- SITE-WIDE GENERAL STYLE COMPONENT ----- */
 
 body {
+	text-align: center;
 	color: var(--cmbr-blue);
 	font-family: "Lora", Georgia, 'Times New Roman', Times, serif;
-	text-align: center;
 	background-image: url('assets/image-curtain.svg'); 
-	/* #EEEFF0 in SVG Fill */
 	background-color: var(--clr-quinary-body);
+	/* min-height: 100vh; */
 }
 
 a {

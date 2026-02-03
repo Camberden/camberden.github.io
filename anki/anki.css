@@ -1,32 +1,21 @@
-main {
+.main-col-grid {
 	display: flex;
-	flex-flow: column nowrap;
+	flex-flow: column wrap;
 	margin-inline: auto;
 	justify-content: center;
 	justify-items: center;
 	box-sizing: border-box;
-	outline: 1rem dotted rosybrown;
-	border: 0.5rem dotted red;
+	/* outline: 0.5rem dotted red; */
+  outline: 0.5rem groove black;
 	width: 80%;
-	font-family: "LoraItalic" serif;
 }
-
-/* .main-col-grid {
-	display: flex;
-	flex-flow: column wrap;
-	align-items: center;
-	align-content: center;
-} */
 
 .main-row-grid {
 	display: flex;
 	flex: 1;
 	flex-flow: row wrap;
+  gap: 4rem 2rem;
 	align-items: baseline;
-}
-
-#anki-target {
-	flex: 1;
 }
 
 /* ----- FLEX TABLE PROTOTYPING ----- */
@@ -34,10 +23,10 @@ main {
 .anki-flex-table {
   display: flex;
   flex-direction: column;
-  border: 1px solid #ddd;
+  border: 1px solid var(--cmbr-flex-table-border);
   border-radius: 8px;
   overflow: hidden;
-  background: #fff;
+  background: var(--cmbr-flex-table-background);
   margin-top: 1.5rem;
 }
 
@@ -46,8 +35,8 @@ main {
   grid-template-columns: 1fr 2fr 2fr 1fr;
   gap: 1rem;
   padding: 1rem;
-  background: #f5f5f5;
-  border-bottom: 2px solid #ddd;
+  background: var(--cmbr-table-header-background);
+  border-bottom: 2px solid var(--cmbr-table-header-border-bottom);
   font-weight: bold;
   position: sticky;
   top: 0;
@@ -66,7 +55,7 @@ main {
 	grid-template-columns: 1fr 2fr 2fr 1fr;
 	gap: 1rem;
 	padding: 1rem;
-	border-bottom: 1px solid #eee;
+	border-bottom: 1px solid var(--cmbr-table-row-border-bottom);
 	align-items: start;
 }
 
@@ -80,9 +69,8 @@ main {
 .anki-table-row > .anki-col-deck::before {
 	content: counter(item) " → ";
 }
-
 .anki-table-row:hover {
-  background: #f9f9f9;
+  background: --cmbr-table-row-hover;
 }
 
 .anki-col {
@@ -94,22 +82,22 @@ main {
 .anki-col-deck {
   font-weight: 500;
   font-size: 0.9rem;
-  color: #666;
+  color: var(--cmbr-col-deck);
 }
 
 .anki-col-question {
   font-weight: 500;
-  color: #333;
+  color: var(--cmbr-col-question);
 }
 
 .anki-col-answer {
-  color: #555;
+  color: var(--cmbr-col-answer);
   line-height: 1.4;
 }
 
 .anki-col-tags {
   font-size: 0.85rem;
-  background: #e8f4f8;
+  background: var(--cmbr-col-tags-background);;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   text-align: center;
