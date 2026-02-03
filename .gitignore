@@ -15,6 +15,7 @@ template.html
 template.js
 
 administration/
+.administration/
 generate-docs.js
 cmbr-shell.html
 cmbr-shell.js

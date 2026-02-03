@@ -189,7 +189,7 @@ const CMBRutil = {
 			case "sections" :
 				if (this.atSiteIndex()) {
 					sections.splice(0, 1);
-					basePort === "4240" ? sections.push(["administration", "Administration"]) : console.clear();
+					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("death"); setTimeout(()=>{ document.getElementById("administration").setAttribute("style", "display:block;")}, 2000 )})() : console.clear();
 					CMBRutil.initSections(`sections-links`, sections);
 					break;
 				} 

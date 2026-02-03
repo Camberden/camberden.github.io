@@ -852,6 +852,22 @@ p {
 	width: fit-content; /* Could be more or less, depending on screen size */
 }
 
+#administration {
+	display: none;
+	color: red;
+	background: black;
+	/* fill: var(--cmbr-primary); */
+	border-color: rgb(188, 130, 209);
+	border-left-width: 2rem;
+	border-style: double;
+	margin-right: 2rem;
+}
+#administration:hover {
+	color: darkred;
+	border-color: springgreen;
+	box-shadow: 1rem 1rem 2rem springgreen;;
+}
+
 /* ----- LEGACY CAMBERDEN.COM STYLES ----- */
 
 .chrispy-likeness-box {
