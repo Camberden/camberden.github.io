@@ -1,0 +1,30 @@
+main {
+	display: flex;
+	flex-flow: column nowrap;
+	margin-inline: auto;
+	justify-content: center;
+	justify-items: center;
+	box-sizing: border-box;
+	outline: 1rem dotted rosybrown;
+	border: 0.5rem dotted red;
+	width: 80%;
+	font-family: "LoraItalic" serif;
+}
+
+/* .main-col-grid {
+	display: flex;
+	flex-flow: column wrap;
+	align-items: center;
+	align-content: center;
+} */
+
+.main-row-grid {
+	display: flex;
+	flex: 1;
+	flex-flow: row wrap;
+	align-items: baseline;
+}
+
+#anki-target {
+	flex: 1;
+}

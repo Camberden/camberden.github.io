@@ -1,1 +1,3 @@
-wireDefaultButtons(document.querySelectorAll("button"), true);
+/* ===> MAINFRAME.JS ===> */
+
+CMBRutil.wireDefaultButtons();

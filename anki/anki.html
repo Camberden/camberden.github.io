@@ -5,25 +5,50 @@
 <head>
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="../assets/cmbr-sig.svg">
-	<style> @import "../styles.css" screen; </style>
+	<style> @import "../styles.css" screen; @import "./anki.css" screen; </style>
 	<title>Chrispy's Site</title>
 </head>
 
 <body>
-	<main>
-		<h1>Let's see...</h1>
-		<hr class="hr-cmbr-gradient">
+	<h1 id="current-section">&emsp;Chrispy's Note Depository</h1>
+	<div class="nav-template">
+		<nav class="nav-col-grid">
+			<div id="nav-dropdowns" class="nav-row-grid">
 
-		<div>
+				<div id="sections-dropdown">
+					<div id="sections-access">Navigation</div>
+					<div class="sections-links"></div>
+				</div>
+
+				<div id="bookmarks-dropdown">
+					<div id="bookmarks-access">Bookmarks</div>
+					<div class="bookmarks-links"></div>
+				</div>
+
+				<div id="inline-signature-div">
+					<span class="inline-signature"></span>
+				</div>
+
+			</div>
+		</nav>
+		<hr class="hr-nav-pad">
+		<hr class="hr-cmbr-gradient">
+	</div>
+
+
+	<main class="main-col-grid">
+
+		<div class="main-row-grid">
+
 			<h3>File Read Button:</h3>
 
-			<select id="anki-file-select">
-
-			</select>
-			<button id="anki-read-txt">Read txt</button>
+			<select id="anki-file-select"></select>
 			
-			<p id="anki-target" style="text-align: left;">≤‰ target ‰≥</p>
+			<button id="button1">Read txt</button>
+			
 		</div>
+
+		<div id="anki-target" style="text-align: left;">‰ target ‰</div>
 
 	</main>
 </body>

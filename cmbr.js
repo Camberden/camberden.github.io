@@ -1,19 +1,24 @@
-/* ===== CMBR.JS PERSONAL UTILITIES ===== */
-	
-
+/** === CMBR.JS: GLOBAL PERSONAL UTILITIES ===>
+ * 
+ * @fileOverview Camberden's general site utility toolkit.
+ * @interface CMBRutil
+ * @author Camberden (Chrispy | Kippi)  
+ */ 
+const cmbrjs = (() => { x = ""; y = document.querySelectorAll("script"); y.forEach(script =>{ x = script.getAttribute("src").toString(); }); return ("<‰ " + (x.substring(x.lastIndexOf("/") + 1)) + " ‰>"); })();
 
 /** 
- * @description Site map links.
- * [["var/var.html","Var Page"],],
- * @var
- * The section link: this is the directory name of the page linked.
- * @name
- * The section name to appear on the page.
+ * @description Site Map Links
+ * @readonly
+ * @kind linkArray
+ * @var {String} section: this is the directory name of the page linked.
+ * @var {String} sectionPageName: the name to appear on the page.
+ * @example [["section/section.html","SectionPageName"],],
  */
 const sections = [
 	["homepage", "Homepage ↺"],
 	["dashboard", "Personal Dashboard"],
 	["workspace", "Coding Workspace"],
+	["anki", "Anki & Notes Depository"],
 	["blog", "Blogging Page"],
 	["language", "Language Resource"],
 	["accounting", "Accounting Resource"],
@@ -24,9 +29,16 @@ const sections = [
 	["segregation", "Segregation"],
 	["mainframe", "Mainframe"],
 	["music", "Original Music"],
-	["anki", "Anki Page (WIP)"],
 ];
 
+/** 
+ * @description Links to Frequented External Sites
+ * @readonly
+ * @kind linkArray
+ * @var {String} section: this is the directory name of the page linked.
+ * @var {String} sectionPageName: the name to appear on the page.
+ * @example [["section/section.html","SectionPageName"],],
+ */
 const bookmarks = [
 	["https://www.youtube.com/watch?v=XgqTrvcAySA", "Checkpoint"],
 	["https://www.clozemaster.com", "Clozemaster"],
@@ -39,13 +51,8 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
-const basePort = document.location.port.length > 0 ? document.location.port : "__no__port__"
-
-/**
- * @description Site-specific links config
- * @readonly
- * @global
- */
+const basePort = document.location.port.length ? document.location.port : "";
+/** @global @readonly @description Site-specific Links Configuration */
 const baseHyperlinks = [
 	"https://camberden.com/",
 	"https://camberden.github.io/",
@@ -55,36 +62,9 @@ const baseHyperlinks = [
 ];
 
 /**
- * @description - Reads site index URL and provides
- * gateway for development servers and all
- * configured domains
- * @readonly
- * @global
- * @returns {Boolean} boolean
- */
-const atSiteIndex = () => {
-	if (document.location.origin === "file://" && document.location.href.endsWith("index.html")) {
-		return true;
-	} else if (baseHyperlinks.includes(document.location.href)) {
-		return true;
-	} else if (document.location.href.endsWith("index.html")) {
-		return true;
-	} else if (document.location.href.endsWith(document.location.port + "/")) {
-		return true;
-	} else if (document.location.href.includes(baseHyperlinks[0])) {
-		return false;
-	} else {
-		return false;
-	}
-}
-
-/**
- * @description Personal Utilities:
- * - Formally buttons.js.
- * - Primary global JavaScript handler
- * - for personal projects
- * @interface
- * @global
+ * @global @public @interface
+ * @description - Camberden Personal Utilities:
+ * Formally buttons.js, a Global JavaScript Handler
  * @author Camberden (Chrispy | Kippi)
  */
 const CMBRutil = {
@@ -92,14 +72,12 @@ const CMBRutil = {
 	buttonOnMouseEnter: function (button) {
 		button.classList.add("button-highlight");
 	},
-
 	buttonOnMouseLeave: function (button) {
 		button.classList.remove("button-highlight");
 		if (button.classList.contains("button-depressed")) {
 			button.classList.remove("button-depressed");
 		}
 	},
-
 	buttonOnClick: function (button) {
 		button.classList.add("button-highlight");
 		button.classList.add("button-depressed");
@@ -107,71 +85,87 @@ const CMBRutil = {
 			button.classList.remove("button-depressed");
 		}, 100);
 	},
-
 	/**
 	 * @description Handles an individual form element, preventing default (reloading) upon submission
-	 * @param {Event} event 
+	 * @param {Event} event
+	 * @see CMBRutil.handleFormDefault() for global form configuration
 	 */
 	handle: function (event) {
 		event.preventDefault();
 	},
-
+	/**
+	 * @description Handles all page forms, preventing reload upon form submission
+	 * @param {boolean} configured - Toggle boolean for default (reloading) prevention
+	 * - CONFIGURED: Applies current form submission handling and default prevention
+	 * - NONCONFIGURED: Returns page to normal form submission reloading
+	 * @fires CMBRutil#handle - Applies the function individually to each form element
+	 * @fires window#onload - Fires immediately if cmbr.js is linked
+	 * @global
+	 */
+	handleFormDefault(configured) {
+		window.onload = function () {
+			if (configured) {
+				console.log("Running and configured!");
+				document.querySelectorAll("form").forEach(form => {
+					form.addEventListener("submit", this.handle);
+				});
+			} else {
+				console.log("Running! (configuration disabled)");
+			}
+		}
+	},
 	/**
 	 * 
 	 * @param {HTMLElement} target
-	 * @param {Array} data 
+	 * @param {String[][]} linkArray 
 	 */
-	initSections: function (target, data) {
+	initSections: function (target, linkArray) {
 
 		target = document.querySelector("." + target);
-		data.forEach(section => {
-
-			const tag = atSiteIndex() ? document.createElement("h3") : document.createElement("span");
+		linkArray.forEach(section => {
+			const tag = this.atSiteIndex() ? document.createElement("h3") : document.createElement("span");
 			tag.setAttribute("id", section[0]);
 			const text = document.createTextNode(section[1]);
 			tag.appendChild(text);
 
 			const sectionDiv = document.createElement("div");
-			sectionDiv.setAttribute("class", "section-title");
+			sectionDiv.setAttribute("class", `${Object.keys({section}).toString()}-title`);
 			sectionDiv.onclick = function () {
 				// FOR INDEX =====>
 				if (document.location.href.includes("index.html") || window.location.pathname === "/") {
-					document.location = section[0] + "/" + section[0] + ".html";
+					window.location = section[0] + "/" + section[0] + ".html";
 				// FOR DROPDOWN =====>
-				} else if (section[0] === data[0][0]) {
-					document.location = "../" + "index.html";
+				} else if (section[0] === linkArray[0][0]) {
+					window.location = "../" + "index.html";
 				} else {
-					document.location = "../" + section[0] + "/" + section[0] + ".html";
+					window.location = "../" + section[0] + "/" + section[0] + ".html";
 				}
 			};
 			sectionDiv.onmouseenter = function () {
 				sectionDiv.classList.contains("section-highlight") ?
 				sectionDiv.classList.add("section-highlight") :
-				sectionDiv.classList.remove("section-lose-highlight");
-				sectionDiv.classList.add("section-highlight");
+				sectionDiv.classList.remove("section-lose-highlight"); sectionDiv.classList.add("section-highlight");
 			}
 			sectionDiv.onmouseleave = function () {
-				sectionDiv.classList.contains("section-highlight") ?
-				sectionDiv.classList.replace("section-highlight", "section-lose-highlight") :
-				console.log("onmouseleave");
+				if (sectionDiv.classList.contains("section-highlight")) {
+					sectionDiv.classList.replace("section-highlight", "section-lose-highlight");
+				}
 			}
 			sectionDiv.appendChild(tag);
 			target.appendChild(sectionDiv);
 		});
 	},
-
 	/**
 	 * 
 	 * @param {HTMLElement} target
-	 * @param {Array} data 
+	 * @param {String[][]} linkArray Array of Accessible Links and Their Names
 	 */
-	initBookmarks: function (target, data) {
+	initBookmarks: function (target, linkArray) {
 
 				target = document.querySelector("." + target);
-				data.forEach(bookmark => {
+				linkArray.forEach(bookmark => {
 
 					const a = document.createElement("a");
-					// a.setAttribute("class", "section-title-text");
 					a.setAttribute("href", bookmark[0]);
 					a.setAttribute("target","_blank");
 					const text = document.createTextNode(bookmark[1]);
@@ -184,42 +178,37 @@ const CMBRutil = {
 						bookmarkDiv.classList.add("section-highlight") :
 						bookmarkDiv.classList.remove("section-lose-highlight");
 						bookmarkDiv.classList.add("section-highlight");
-						console.log("onmouseenter");
 					}
 					bookmarkDiv.onmouseleave = function () {
-						bookmarkDiv.classList.contains("section-highlight") ?
-						bookmarkDiv.classList.replace("section-highlight", "section-lose-highlight") :
-						console.log("onmouseleave");
+						if (bookmarkDiv.classList.contains("section-highlight")) {
+							bookmarkDiv.classList.replace("section-highlight", "section-lose-highlight");
+						}
 					}
 					bookmarkDiv.appendChild(a);
 					target.appendChild(bookmarkDiv);
 				});
 	},
-
 	/**
-	 * 
-	 * @param {HTMLElement} target 
-	 * @param {String} name  
-	 * @returns 
+	 * @param {String} linkArrayName 
 	 */
-	actionsProvided: function (name) {
+	actionsProvided: function (linkArrayName) {
 		
 		let access = "";
-		switch (name) {
+		switch (linkArrayName) {
 			case "sections" :
-				if (atSiteIndex()) {
+				if (this.atSiteIndex()) {
 					sections.splice(0, 1);
-					CMBRutil.initSections(`${name}-links`, sections);
+					CMBRutil.initSections(`sections-links`, sections);
 					break;
 				} 
 				access = document.querySelector("#sections-access");
 				access.onclick = function() {
 				if (! access.classList.contains("sections-opened")) {
-					CMBRutil.initSections(`${name}-links`, sections);
+					CMBRutil.initSections(`sections-links`, sections);
 					access.classList.add("sections-opened");
 					access.innerText = "Minimize";
 				} else {
-					document.querySelector(`.${name}-links`).innerHTML = "";
+					document.querySelector(`.sections-links`).innerHTML = "";
 					access.classList.remove("sections-opened");
 					access.innerText = "Navigation";
 				}
@@ -229,11 +218,11 @@ const CMBRutil = {
 				access = document.getElementById("bookmarks-access");
 				access.onclick = function() {
 				if (! access.classList.contains("bookmarks-opened")) {
-					CMBRutil.initBookmarks(`${name}-links`, bookmarks);
+					CMBRutil.initBookmarks(`bookmarks-links`, bookmarks);
 					access.classList.add("bookmarks-opened");
 					access.innerText = "Minimize";
 				} else {
-					document.querySelector(`.${name}-links`).innerHTML = "";
+					document.querySelector(`.bookmarks-links`).innerHTML = "";
 					access.classList.remove("bookmarks-opened");
 					access.innerText = "Bookmarks";
 				}
@@ -243,71 +232,71 @@ const CMBRutil = {
 				console.log("Default triggered; neither sections nor bookmarks!");
 			break;	
 		}
-	}
-}
-
-const displayPageInfo = (info) => {
-	const data = (Array.from(info.split("."))).map(str => str.trim()); 
-	data.pop();
-
-	data.forEach(s => {
-		const p = document.createElement("p");
-		const text = document.createTextNode(s + ".");
-		p.appendChild(text);
-		p.appendChild(document.createElement("br"));
-		document.getElementById("page-info").appendChild(p);
-	});
-}
-
-/**
- * 
- * @param {HTMLElement[]} buttons 
- * @param {Boolean} includeClick
- */
-function wireDefaultButtons(buttons, includeClick) {
-	buttons.forEach(button => {
-		button.onmouseenter = () => {
-			CMBRutil.buttonOnMouseEnter(button);
-		}
-		button.onmouseleave = () => {
-			CMBRutil.buttonOnMouseLeave(button);
-		}
-		if (includeClick) {
-			button.onclick = () => {
-				CMBRutil.buttonOnClick(button);
-			}
-		}
-	});
-}
-
-/**
- * @description Handles all page forms, preventing reload upon form submission
- * @param {boolean} configured - Toggle boolean for default (reloading) prevention
- * - CONFIGURED: Applies current form submission handling and default prevention
- * - NONCONFIGURED: Returns page to normal form submission reloading
- * @fires CMBRutil#handle - Applies the function individually to each form element
- * @fires window#onload - Fires immediately if cmbr.js is linked
- * @global
- */
-function camberdenConfig(configured) {
-	window.onload = function () {
-		if (configured) {
-			console.log("Running and configured!");
-			const forms = document.querySelectorAll("form");
-			forms.forEach(form => {
-				form.addEventListener("submit", CMBRutil.handle);
-			});
+	},
+	/** @returns {Boolean} `true` if file:// protocol | `false` otherwise */
+	acceptableProtocol: function() {
+		if (document.location.protocol === "file:") {
+			// console.log("<‰ File Protocol Detected ‰>");
+			return false;
 		} else {
-			console.log("Running! (configuration disabled)");
+			// console.log("<‰ CORS Acceptable Protocol Detected ‰>");
+			return true;
 		}
+	},
+	/** @global @readonly @returns {Boolean} boolean @description Reads site index URL and provides gateway for development servers and all configured domains */
+	atSiteIndex: function () {
+	if (this.acceptableProtocol() && document.location.href.endsWith("index.html")) {
+		return true;
+	} else if (baseHyperlinks.includes(document.location.href)) {
+		return true;
+	} else if (document.location.href.endsWith("index.html")) {
+		return true;
+	} else if (document.location.href.endsWith(document.location.port + "/")) {
+		return true;
+	} else if (document.location.href.includes(baseHyperlinks[0])) {
+		return false;
+	} else {
+		return false;
+	}
+	},
+	/** @param {String} info */
+	displayPageInfo: function (info) {
+		const data = (Array.from(info.split("."))).map(str => str.trim()); 
+		data.pop();
+		data.forEach(s => {
+			const p = document.createElement("h2");
+			const text = document.createTextNode(s + ".");
+			p.appendChild(text);
+			p.appendChild(document.createElement("br"));
+			document.getElementById(`page-info`).appendChild(p);
+		});
+	},
 
+	/**
+	 * 
+	 * @param {HTMLElement[]} buttons 
+	 * @param {Boolean} includeClick
+	 */
+	wireDefaultButtons: function () {
+		document.querySelectorAll("button").forEach(button => {
+			button.onmouseenter = () => {
+				this.buttonOnMouseEnter(button);
+			}
+			button.onmouseleave = () => {
+				this.buttonOnMouseLeave(button);
+			}
+			button.onclick = () => {
+				this.buttonOnClick(button);
+			}
+		});
 	}
 }
+
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
-const recognizeFileProtocol = () => { document.location.protocol === "file:" ? document.getElementById("anki").innerHTML += `<pre style="font-size: 0.5rem; color: red;">[disabled in file protocol]</pre>` : console.log(); }
+const recognizeFileProtocol = (x) => { y = document.getElementById(x); CMBRutil.acceptableProtocol() ? y.innerHTML += "&check;" : y.innerHTML += `<span style="font-size: 0.8rem; color: red; position: absolute;">[lesser functionality in file protocol]</span>`; }
 const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); }
 const displaySite = () => { document.getElementById("current-site").innerHTML = document.location.host };
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
-const sout = (x) => { console.log("|=====> " + (x ?? " ") + " ")  ; console.log("|=====* "); }
+const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
