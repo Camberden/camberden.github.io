@@ -123,6 +123,8 @@ const CMBRutil = {
 				// FOR INDEX =====>
 				if (document.location.href.includes("index.html") || window.location.pathname === "/") {
 					window.location = section[0] + "/" + section[0] + ".html";
+
+				
 				// FOR DROPDOWN =====>
 				} else if (section[0] === linkArray[0][0]) {
 					window.location = "../" + "index.html";
@@ -187,6 +189,7 @@ const CMBRutil = {
 			case "sections" :
 				if (this.atSiteIndex()) {
 					sections.splice(0, 1);
+					basePort === "4240" ? sections.push(["administration", "Administration"]) : console.clear();
 					CMBRutil.initSections(`sections-links`, sections);
 					break;
 				} 

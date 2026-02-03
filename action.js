@@ -100,10 +100,6 @@ const randomizeMonicker = () => {
 	} else {
 		camberden.innerHTML = monickers[0];
 	}
-
-	setInterval(()=>{
-
-	})
 }
 const randomizePhotos = () => {
 	const infoDivBackground = document.getElementById("info-div-background");

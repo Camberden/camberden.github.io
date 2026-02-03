@@ -1,6 +1,6 @@
 # Documentation Index
 *Auto-generated documentation of site JavaScript functions*
-*Generated: 2/3/2026, 7:52:43 AM*
+*Generated: Tuesday, February 3, 2026*
 
 ---
 
@@ -8,8 +8,7 @@
 
 ## `cmbr.js`
 
-### `cmbrjs()`
-=== CMBR.JS: GLOBAL PERSONAL UTILITIES ===>
+### === CMBR.JS: GLOBAL PERSONAL UTILITIES ===>
 
 ### `sections()`
 Site Map Links
@@ -19,13 +18,6 @@ Links to Frequented External Sites
 
 ### `CMBRutil()`
 - Camberden Personal Utilities: Formally buttons.js, a Global JavaScript Handler
-
-### `handle()`
-Handles an individual form element, preventing default (reloading) upon submission
-**Parameters:**
-- {Event} event
-**See Also:**
-- CMBRutil.handleFormDefault() for global form configuration
 
 ### `handleFormDefault()`
 Handles all page forms, preventing reload upon form submission - CONFIGURED: Applies current form submission handling and default prevention - NONCONFIGURED: Returns page to normal form submission reloading
@@ -200,4 +192,4 @@ Loads a JournalEntry[] into stagedEntries
 *No documented functions found.*
 
 ---
-**Last Updated:** 2/3/2026, 7:52:43 AM
+**Last Updated:** 2/3/2026, 11:36:44 AM
