@@ -1,5 +1,7 @@
 window.onload = () => console.log("Running!");
 
+CMBRutil.handleFormDefault(true);
+
 // ---------- EXPENSE MANAGEMENT ---------- //
 
 class DashboardExpense {

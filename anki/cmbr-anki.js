@@ -1,8 +1,5 @@
 /* ----- NOTES DEPOSITORY / ANKI PAGE ----- */
 
-
-/* ----- NOTES DEPOSITORY / ANKI PAGE ----- */
-
 /** @description Dummy HTML Data if File Protocol Used @constant {String[][]} */
 const dummyExports = [
 	["CMBR_BUS-115",
@@ -85,10 +82,24 @@ const ankiExports = [
 
 /** @description Converts processed .html from .txt for Use in Current Window @param {DOMParserSupportedType} html @returns {String[]} delimited */
 const splitTxt = (html) => {
-	const doc = html.querySelector("body").innerText;
-	const delimited = doc.split("\n");
+	const tableBody = document.querySelector(".anki-table-body");
+	const cellClasses = ["anki-col-deck", "anki-col-question", "anki-col-answer", "anki-col-tags"];
+	let doc = html.querySelector("body").innerText;
+	const delimited = Array.from(doc.split("\n"));
+	delimited.pop();
+	for (let i = 0; i < 4; i++) { delimited.shift(); }
 	delimited.forEach(segment => {
-		segment.split("\t");
+		const row = document.createElement("div");
+		row.setAttribute("class", "anki-table-row");
+		const segmented = Array.from(segment.split("\t"));
+		for (let i = 0; i < segmented.length; i++) { 
+			const div = document.createElement("div"); 
+			div.setAttribute("class", "anki-col"); 
+			div.classList.add(cellClasses[i]); 
+			div.appendChild(document.createTextNode(segmented[i]));
+			row.appendChild(div);
+		}
+		tableBody.appendChild(row);
 	});
 	return delimited;
 }
@@ -111,30 +122,30 @@ const ankiFileSelect = (txtFiles) => {
 
 /** @description Reads .txt File as .html @param {String} txt Name of .txt File @implements {Promise<Object>} */
 function routeAnkiData(txt) {
-	const target = document.getElementById("anki-target");
-	// fetch(`${document.location.origin}/anki/${txt}.txt`).then(response => response.text()).then((data) => {
-	// 	console.log(data);
-  	// });
+
 	fetch(`${document.location.origin}/anki/${txt}.txt`).then(response => {
     	return response.text();
 	}).then(html => {
 		const parser = new DOMParser();
 		const doc = parser.parseFromString(html, "text/html");
 
-		const pieces = splitTxt(doc);
-		console.log(pieces);
-		pieces.forEach(piece => {
-			(()=>{x = document.createElement("p"); y = document.createTextNode(piece); x.appendChild(y); x.classList.add("countered-items"); target.appendChild(x);})();
-		}), (html => console.log("Rejected Txt File Read in Promise: " + html[0]));
+		splitTxt(doc);
+	
+		(html => console.log("Rejected Txt File Read in Promise: " + html[0]));
 	}).catch(error => {
 		console.error('Failed to fetch page: ', error)
 	});
-	
 }
 
 /** @param {HTMLAllCollection} buttons @example enable{function}Buttons("button");*/
 function enableAnkiButtons(buttons) {
 	document.querySelectorAll(buttons).forEach(button => {
+		button.onmouseenter = function() {
+			CMBRutil.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function() {
+			CMBRutil.buttonOnMouseLeave(button);
+		}
 		button.onclick = function() {
 		CMBRutil.buttonOnClick(button);
 		switch(button.id) {
@@ -145,8 +156,10 @@ function enableAnkiButtons(buttons) {
 					sout(button.id);
 					break;
 				case "button3":
-					sout(button.id);
-					break;
+					button.textContent = "✨sparkle✨"
+					setTimeout(() => {
+						button.textContent = "button3";
+					}, 3000);
 				default:
 					sout("Default triggered!");
 				break;
@@ -160,7 +173,6 @@ function enableAnkiButtons(buttons) {
 		}
 	});
 }
-
 
 
 (()=> {

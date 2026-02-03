@@ -5,7 +5,10 @@
 <head>
 	<meta charset="UTF-8" />
 	<link rel="shortcut icon" href="../assets/cmbr-sig.svg">
-	<style> @import "../styles.css" screen; @import "./anki.css" screen; </style>
+	<style>
+		@import "../styles.css" screen;
+		@import "./anki.css" screen;
+	</style>
 	<title>Chrispy's Site</title>
 </head>
 
@@ -43,15 +46,30 @@
 			<h3>File Read Button:</h3>
 
 			<select id="anki-file-select"></select>
-			
-			<button id="button1">Read txt</button>
-			
+
+			<button id="button3"> Buddin </button>
+
 		</div>
 
-		<div id="anki-target" style="text-align: left;">‰ target ‰</div>
+		<!-- <div id="anki-target" style="text-align: left;">‰ target ‰</div> -->
+
+		<div class="anki-flex-table">
+			<div class="anki-table-header">
+				<div class="anki-col anki-col-deck">Deck</div>
+				<div class="anki-col anki-col-question">Question</div>
+				<div class="anki-col anki-col-answer">Answer</div>
+				<div class="anki-col anki-col-tags">Tags</div>
+			</div>
+
+			<!-- Data Rows (populated dynamically) -->
+			<div class="anki-table-body">
+				<div class="anki-table-row"></div>
+			</div>
+		</div>
 
 	</main>
 </body>
 <script src="../cmbr.js"></script>
 <script src="cmbr-anki.js"></script>
+
 </html>

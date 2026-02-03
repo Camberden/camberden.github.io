@@ -6,8 +6,15 @@
 *.cnf
 *.json
 .shelf
+
 node_modules/
+package.json
 package-lock.json
-generate-docs.js
+
 template.html
 template.js
+
+generate-docs.js
+cmbr-shell.html
+cmbr-shell.js
+server.js

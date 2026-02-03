@@ -1,10 +1,8 @@
 /** === CMBR.JS: GLOBAL PERSONAL UTILITIES ===>
- * 
  * @fileOverview Camberden's general site utility toolkit.
  * @interface CMBRutil
  * @author Camberden (Chrispy | Kippi)  
  */ 
-const cmbrjs = (() => { x = ""; y = document.querySelectorAll("script"); y.forEach(script =>{ x = script.getAttribute("src").toString(); }); return ("<‰ " + (x.substring(x.lastIndexOf("/") + 1)) + " ‰>"); })();
 
 /** 
  * @description Site Map Links
@@ -86,19 +84,10 @@ const CMBRutil = {
 		}, 100);
 	},
 	/**
-	 * @description Handles an individual form element, preventing default (reloading) upon submission
-	 * @param {Event} event
-	 * @see CMBRutil.handleFormDefault() for global form configuration
-	 */
-	handle: function (event) {
-		event.preventDefault();
-	},
-	/**
 	 * @description Handles all page forms, preventing reload upon form submission
 	 * @param {boolean} configured - Toggle boolean for default (reloading) prevention
 	 * - CONFIGURED: Applies current form submission handling and default prevention
 	 * - NONCONFIGURED: Returns page to normal form submission reloading
-	 * @fires CMBRutil#handle - Applies the function individually to each form element
 	 * @fires window#onload - Fires immediately if cmbr.js is linked
 	 * @global
 	 */
@@ -107,7 +96,7 @@ const CMBRutil = {
 			if (configured) {
 				console.log("Running and configured!");
 				document.querySelectorAll("form").forEach(form => {
-					form.addEventListener("submit", this.handle);
+					form.addEventListener("submit", (e)=> {e.preventDefault(); });
 				});
 			} else {
 				console.log("Running! (configuration disabled)");
@@ -271,7 +260,6 @@ const CMBRutil = {
 			document.getElementById(`page-info`).appendChild(p);
 		});
 	},
-
 	/**
 	 * 
 	 * @param {HTMLElement[]} buttons 
@@ -287,7 +275,14 @@ const CMBRutil = {
 			}
 			button.onclick = () => {
 				this.buttonOnClick(button);
-			}
+				sout(button.id);
+				if (button.id = "sparkle") {
+					button.textContent = "✨sparkle✨"
+					setTimeout(() => {
+						button.textContent = "sparkle";
+					}, 3000);
+				}
+			};
 		});
 	}
 }

@@ -1,6 +1,6 @@
 # Documentation Index
 *Auto-generated documentation of site JavaScript functions*
-*Generated: 2/3/2026, 4:26:10 AM*
+*Generated: 2/3/2026, 7:52:43 AM*
 
 ---
 
@@ -8,7 +8,8 @@
 
 ## `cmbr.js`
 
-### === CMBR.JS: GLOBAL PERSONAL UTILITIES ===>
+### `cmbrjs()`
+=== CMBR.JS: GLOBAL PERSONAL UTILITIES ===>
 
 ### `sections()`
 Site Map Links
@@ -24,9 +25,9 @@ Handles an individual form element, preventing default (reloading) upon submissi
 **Parameters:**
 - {Event} event
 **See Also:**
-- CMBRutil.camberdenConfig() for global form configuration
+- CMBRutil.handleFormDefault() for global form configuration
 
-### `camberdenConfig()`
+### `handleFormDefault()`
 Handles all page forms, preventing reload upon form submission - CONFIGURED: Applies current form submission handling and default prevention - NONCONFIGURED: Returns page to normal form submission reloading
 **Parameters:**
 - {boolean} configured - Toggle boolean for default (reloading) prevention
@@ -48,15 +49,6 @@ Converts my chosen date format for update display into a date Object
 Converts date object to a Japanese date.
 **Parameters:**
 - {Date} date
-
-## `template.js`
-
-### `convertToPreferredDateFormat()`
-- True: Weekday, Month DDth, YYYY - False: MM/DD/YYYY
-**Parameters:**
-- {Date} d
-- {Boolean} extended Select Shorter or Longer preferred Date format.
-**Returns:** {String}
 
 ## Pages
 
@@ -145,6 +137,9 @@ Returns a list based on user input filter
 
 ## `anki/cmbr-anki.js`
 
+### `dummyExports()`
+Dummy HTML Data if File Protocol Used @constant {String[][]}
+
 ### `ankiExports()`
 String array of Relevant Anki .txt File Names
 
@@ -198,17 +193,6 @@ Loads a JournalEntry[] into stagedEntries
 - {boolean} participating - Whether this stock issue is participating
 - {boolean} callable Whether this stock issue is callable
 
-## `blog/blog-data.js`
-
-### `ructor()`
-To streamline blogData access.
-**Parameters:**
-- {String} date A date as String; @TODO Convert to Date Object
-- {String} location
-- {String} time A time as String; @TODO Convert to Number
-- {String} title
-- {Number} number
-
 ## `lifecraft/lifecraft-data.js`
 *No documented functions found.*
 
@@ -216,4 +200,4 @@ To streamline blogData access.
 *No documented functions found.*
 
 ---
-**Last Updated:** 2/3/2026, 4:26:10 AM
+**Last Updated:** 2/3/2026, 7:52:43 AM
