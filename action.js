@@ -121,5 +121,7 @@ const randomizePhotos = () => {
 		randomizePhotos();
 	}, 10000);
 	recognizeFileProtocol("anki");
-
+	connectCMBRjson("cmbr");
+	setTimeout(()=>{sout(CMBRdata);}, 1000);
+	
 })();

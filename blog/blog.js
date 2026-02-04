@@ -37,8 +37,6 @@ function extractHeaderData(increment) {
 	return instanceBlogPost;
 }
 
-// let url = new URL ("https://camberden.github.io/blog/blog.html?post=1"); 
-// let params = new URLSearchParams(url.search);
 
 function initBlogData(dataLength) {
 	for (i = 0; i <= dataLength - 1; i++) {
@@ -85,6 +83,7 @@ function initBlogData(dataLength) {
 	listedYears = Array.from(listedYears.trim().split(" "));
 }
 initBlogData(blogData.length);
+
 
 
 function chooseActiveBlogPost() {

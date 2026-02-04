@@ -39,15 +39,18 @@ const sections = [
  */
 const bookmarks = [
 	["https://www.youtube.com/watch?v=XgqTrvcAySA", "Checkpoint"],
+	["https://ankiweb.net/", "Anki Web"],
 	["https://www.clozemaster.com", "Clozemaster"],
 	["https://jisho.org", "Jisho"],
 	["https://www3.nhk.or.jp/news/easy/", "NHK Yasashii"],
-	["https://www.mheducation.com", "Coursework"],
+	["https://account.cengage.com/login?", "Coursework"],
 	["https://maps.google.com", "Maps"],
 	["https://wd108.myworkday.com/wday/authgwy/nc/login.html", "Internal Jobs"],
 	["https://int.dac.nc.gov", "Intranet"],
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
+
+
 
 /** @global @readonly @description Determines the Site's Port Number */
 const basePort = document.location.port.length ? document.location.port : "";
@@ -299,3 +302,23 @@ const displaySite = () => { document.getElementById("current-site").innerHTML = 
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
+let CMBRdata = "<‰=== Empty Data ===‰>";
+
+
+/** @description Reads .json File as text 
+ * @param {String} txt Name of .json File 
+ * @implements {Promise<Object>} 
+ * 
+ */
+function connectCMBRjson(name) {
+
+	fetch(`${document.location.origin}/${name}.json`).then(response => {
+    	return response.text();
+	}).then(stuff => {
+		const loaded = JSON.parse(stuff);
+		console.log(typeof(loaded["urls"]));
+		CMBRdata = (Object.keys(loaded.sections).length);
+	}).catch(error => {
+		console.error('Failed to fetch page: ', error)
+	});
+}

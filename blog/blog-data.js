@@ -9,6 +9,16 @@
 	,
 */
 
+/*
+<d‰ ‰d>
+<l‰ ‰l>
+<h‰ ‰h>
+<t‰ ‰t>
+<n‰ ‰n>
+<b‰ ‰b>
+*/
+
+
 class BlogPost {
 	/**
 	 * @since November 12th, 2025
@@ -32,6 +42,7 @@ class BlogPost {
  * @type BlogPost[]
  */
 const blogPosts = [];
+
 
 const blogData = [
 	
