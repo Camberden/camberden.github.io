@@ -49,7 +49,9 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
+/** @global @readonly @description Determines the Site's Port Number */
 const basePort = document.location.port.length ? document.location.port : "";
+
 /** @global @readonly @description Site-specific Links Configuration */
 const baseHyperlinks = [
 	"https://camberden.com/",
@@ -189,7 +191,7 @@ const CMBRutil = {
 			case "sections" :
 				if (this.atSiteIndex()) {
 					sections.splice(0, 1);
-					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("death"); setTimeout(()=>{ document.getElementById("administration").setAttribute("style", "display:block;")}, 2000 )})() : console.clear();
+					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("Express Development Server @ " + document.location.host); setTimeout(()=>{ document.getElementById("administration").setAttribute("style", "display:block;")}, 2000 )})() : console.clear();
 					CMBRutil.initSections(`sections-links`, sections);
 					break;
 				} 

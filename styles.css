@@ -520,21 +520,21 @@ button {
 
 #info-div {
 	display: grid;
-	gap: 0.5rem;
-	grid-template-columns: repeat(2, 48%);
-	/* min-width: 80%; */
+	grid-template-columns: 1fr 1fr;
 	margin-inline: auto;
 	padding-bottom: 3rem;
 	flex: 1;
-	flex:content;
+	/* flex:content; */
 }
 
-/* #info-div-frame {
-	border-top: 0.1rem solid var(--clr-grid-box);
-	border-bottom: 0.5rem solid var(--clr-grid-box);
-	border-left: 0.1rem solid var(--clr-grid-box);
+#info-div-frame {
+	box-sizing: content-box;
+	/* border-top: 0.1rem solid var(--clr-grid-box); */
+	/* border-bottom: 0.5rem solid var(--clr-grid-box); */
+	/* border-left: 0.1rem solid var(--clr-grid-box); */
 	border-right: 0.5rem solid var(--clr-grid-box);
-} */
+	margin-inline-end: 0%;
+}
 
 #info-div-background {
 	background: var(--cmbr-gradient);
@@ -959,18 +959,15 @@ p {
 	#info-div {
 		display: flex;
 		flex-flow: row wrap;
-		flex: content;
-		gap: 0.5rem;
+		/* grid-template-rows: 1fr 1fr; */
 		width: min(100%);
 		padding-bottom: 10rem;
+		/* flex: content; */
 	}
 	#info-div-frame {
 		flex: 1;
 		height: 50%;
 		width: 100%;
-		border-top: 0.1rem solid var(--cmbr-grid-box);
-		border-bottom: 0.5rem solid var(--cmbr-grid-box);
-		border-left: 0.1rem solid var(--cmbr-grid-box);
 		border-right: 0.5rem solid var(--cmbr-grid-box);
 	}
 	#info-div-background {
