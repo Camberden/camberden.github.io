@@ -50,8 +50,6 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 ];
 
-
-
 /** @global @readonly @description Determines the Site's Port Number */
 const basePort = document.location.port.length ? document.location.port : "";
 
