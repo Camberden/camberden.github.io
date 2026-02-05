@@ -1,0 +1,1 @@
+Returned from hospital and salvaged site. Yes, relieved, but I'm entirely still uptight about my need to reduce time doing software. Heck. #tookmuchcode is for real.
