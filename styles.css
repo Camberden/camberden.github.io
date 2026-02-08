@@ -2,7 +2,7 @@
 * { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; };
 
 @starting-style {
-	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: initial; vertical-align: baseline; };
+	* { margin: 0; padding: 0; border: 0; font-size: 100%; font: unset; vertical-align: baseline; };
 }
 @namespace url("http://www.w3.org/1999/xhtml");
 @namespace svg url("http://www.w3.org/2000/svg");
@@ -57,7 +57,26 @@
 
 	--clr-gradient-common: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
 	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+
+	--font-color: #000;
+    --link-color:#1C75B9;
+    --link-white-color:#fff;
+    --bg-color: rgb(243,243,243);
 }
+
+[data-theme="dark"] {
+    --font-color: #c1bfbd;
+    --link-color:#0a86da;
+    --link-white-color:#c1bfbd;
+    --bg-color: #0f0b07;
+}
+
+/* body {
+	color:#000;
+    color:var(--font-color);
+    background:rgb(243,243,243);
+    background:var(--bg-color);
+} */
 
 /* ----- MAIN NAVIGATION STYLES FOR INDEX AND BEYOND ----- */
 
@@ -325,6 +344,17 @@ nav {
 	border-color: transparent;
 	padding-bottom: 3rem;
 }
+.hr-push-down {
+	margin-bottom: 3rem;
+}
+.hr-push-up {
+	margin-top: 3rem;
+}
+.hr-trans {
+	height: 0.5rem;
+	/* background-image: none; */
+	background: cadetblue;
+}
 
 /* ----- SITE-WIDE BUTTON STYLES ----- */
 
@@ -384,6 +414,31 @@ button {
 	border-right-width: 0.7rem;
 	border-right-color: grey;
 	border-right-style: groove;
+}
+
+.click-bar {
+	width: 20rem;
+	height:fit-content;
+	color: burlywood;
+	background: #182124;
+	border: 0.3rem groove cadetblue;
+	margin-inline: auto;
+}
+
+.trigger-box {
+	cursor: pointer;
+	box-sizing: content-box;
+	width: 20rem;
+	height:fit-content;
+	color: burlywood;
+	background: #182124;
+	border: 0.3rem groove cadetblue;
+	margin-inline: auto;
+}
+
+.trigger-box:hover {
+	color: sienna;
+	background: #0b313d;
 }
 
 /* ----- INDEX-SPECIFIC STYLES ----- */
@@ -586,8 +641,18 @@ h3 {
 	margin-inline: auto;
 }
 
+.index-sub-grid {
+	display: grid;
+	gap: 0.5rem;
+	grid-template-columns: 2fr 1fr 1fr;
+	max-width: 60%;
+	margin-inline: auto;
+}
+#localhosts {
+	text-align: right;
+}
 .index-footer {
-	font-family: PermanentMarker;
+	font-family: "PermanentMarker";
 	color: var(--cmbr-orange);
 	background-color: black;
 	border-bottom: 1rem solid var(--cmbr-grid-box);
@@ -663,6 +728,10 @@ h3 {
 
 @font-face {
 	font-family: "PermanentMarker";
+	font-style: normal;
+	font-weight: 400;
+  	font-stretch: 100%;
+  	font-display: swap;
 	src: 
 		local("PermanentMarker-Regular"),
 		url("assets/fonts/PermanentMarker-Regular.ttf") format("truetype");
@@ -670,6 +739,7 @@ h3 {
 .marker {
 	color: var(--cmbr-orange);
 	font-family: "PermanentMarker", monospace;
+	font-size: var(--cmbr-font-size);
 }
 @font-face {
 	font-family: "Yusei Magic";
@@ -700,7 +770,6 @@ body {
 	font-family: "Lora", Georgia, 'Times New Roman', Times, serif;
 	background-image: url('assets/image-curtain.svg'); 
 	background-color: var(--clr-quinary-body);
-	/* min-height: 100vh; */
 }
 
 a {

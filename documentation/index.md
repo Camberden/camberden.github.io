@@ -1,6 +1,6 @@
 # Documentation Index
 *Auto-generated documentation of site JavaScript functions*
-*Generated: Tuesday, February 3, 2026*
+*Generated: Saturday, February 7, 2026*
 
 ---
 
@@ -23,6 +23,11 @@ Links to Frequented External Sites
 Handles all page forms, preventing reload upon form submission - CONFIGURED: Applies current form submission handling and default prevention - NONCONFIGURED: Returns page to normal form submission reloading
 **Parameters:**
 - {boolean} configured - Toggle boolean for default (reloading) prevention
+
+### `connectCMBRjson()`
+Reads .json File as text
+**Parameters:**
+- {String} txt Name of .json File
 
 ## `action.js`
 
@@ -192,4 +197,4 @@ Loads a JournalEntry[] into stagedEntries
 *No documented functions found.*
 
 ---
-**Last Updated:** 2/3/2026, 5:19:37 PM
+**Last Updated:** 2/7/2026, 8:49:34 PM

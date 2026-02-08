@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!-- Hi there! :V -->
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="images/cmbr-sig.svg">
+	<style>
+		@import "../styles.css" screen;
+		@import "depository.css" screen;
+	</style>
+	<script src="htmx.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<title>Chrispy's Corner</title>
+</head>
+
+<body>
+	<!-- NAV & TOP -->
+	<main class="index-grid">
+
+		<div class="signature-div">
+			<img id="signature" src="../images/cmbr-sig.svg" alt="emblem">
+		</div>
+
+		<div class="nav-row-grid">
+			<div id="sections-dropdown" style="display:none;">
+				<div id="sections-access">Navigation</div>
+			</div>
+
+			<div id="title-container">
+				<h1 id="camberden" lang="en-US">camberden</h1>
+			</div>
+
+			<div id="bookmarks-dropdown" style="display: none;">
+				<div id="bookmarks-access">Bookmarks</div>
+				<div id="bookmarks-links"></div>
+			</div>
+		</div>
+
+		<div id="info-div">
+			<div id="page-info">
+
+			</div>
+			<div id="info-div-frame" style="display: none;">
+				<div id="info-div-background" style="display:none;"></div>
+			</div>
+
+		</div><!-- END NAV AND TOP -->
+
+		 <!-- HTMX -->
+		<div>
+			<h1 id="htmx-play">HTMX Play</h1>
+		</div>
+		<hr class="hr-cmbr-gradient hr-push-down">
+
+		<div class="triggers" hx-get="/clicked/1" hx-swap="outerHTML">
+			<div class="trigger-box">Click This
+				<hr class="hr-trans">
+			</div>
+		</div>
+		<div class="triggers" hx-get="/clicked/2" hx-trigger="click[shiftKey]" hx-swap="outerHTML">
+			<div class="trigger-box">Shift Click This
+				<hr class="hr-trans">
+			</div>
+		</div>
+
+		<hr class="hr-cmbr-gradient hr-push-down">
+
+		<div><button class="linkage-box" value="http://localhost:8765" target="_blank" rel="noreferrer">Localhost:8765
+				=> For AnkiConnect Access!</button>
+			<hr class="hr-cmbr-dark-gradient">
+		</div>
+		<div><button class="linkage-box" value="http://localhost:5500" target="_blank" rel="noreferrer">Localhost:5500
+				[for FiveServer]</button>
+			<hr class="hr-cmbr-dark-gradient">
+		</div>
+		<div><button class="linkage-box" value="http://localhost:4240" target="_blank" rel="noreferrer">Localhost:4240
+				[for ExpressServer]</button>
+			<hr class="hr-cmbr-dark-gradient">
+		</div>
+		<div><button class="linkage-box" value="http://localhost:8080" target="_blank" rel="noreferrer">Localhost:8080
+				[for ArtisanServer]</button>
+			<hr class="hr-cmbr-dark-gradient">
+		</div>
+
+		<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
+
+	</main>
+
+	<!-- HTMX MISC BUTTONS -->
+	<div class="index-sub-grid">
+
+		<div style="text-align:left;">
+			<h2 class="marker">Greetings</h2>
+			<hr class="hr-cmbr-dark-gradient">
+
+			<p>I'll ensure to add some functionality to the buttons right here, when the time is right.
+				At this time, I surely need to get on with importing myself some UI components to put
+				an end to this styles.css hell. Haha.
+			</p>
+		</div>
+		<div>
+			<button>Pending 123</button>
+		</div>
+
+		<div>
+			<button>Pending 456</button>
+		</div>
+	</div>
+	<!-- ALPINE.JS -->
+	<div class="index-grid">
+		<hr class="hr-cmbr-gradient hr-push-up">
+		<div>
+			<h1 id="alpinejs-play">AlpineJS Play</h1>
+		</div>
+		<hr class="hr-cmbr-gradient hr-push-down">
+
+		<div class="triggers">
+			<div class="trigger-box">
+
+				<div x-data="{ open: false }">
+					...
+				</div>
+				<hr class="hr-trans">
+			</div>
+
+		</div>
+
+
+		<div class="triggers">
+			<div class="trigger-box">
+				<div x-data="{ open: false }">
+					<div x-data="{ label: 'Content:' }">
+						<span x-text="label"></span>
+						<span x-show="open"></span>
+					</div>
+				</div>
+				<hr class="hr-trans">
+			</div>
+		</div>
+
+
+		<div class="triggers">
+			<div class="trigger-box">
+
+				<div x-data="{ label: 'Click Here, now.' }" x-text="label">
+					...
+				</div>
+				<hr class="hr-trans">
+			</div>
+		</div>
+		<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
+
+	</div>
+
+	<!-- ALPINE.JS MISC BUTTONS -->
+	<div class="index-sub-grid">
+
+		<div style="text-align:left;">
+			<h2 class="marker">Hi Alpine</h2>
+			<hr class="hr-cmbr-dark-gradient">
+			
+			<p>Importing the Alpine framework was easy. Next I'm off to grab some components.
+			</p>
+		</div>
+
+		<div x-data="{ count: 0 }">
+			<span x-text="count"></span>
+			<hr class="hr-groove-bottom">
+			<hr class="hr-groove-top">
+			<button @click="count++">Increment!</button>
+			<!-- <button x-on:click="count++">Increment</button> -->
+		</div>
+
+		<div>
+			<code>You will often see @ instead of x-on:. This is a shorter, friendlier syntax that many prefer. From now on, this documentation will likely use @ instead of x-on:.</code>
+		</div>
+
+	</div>
+
+
+	<!-- FOOTER -->
+	<div class="index-grid">
+		<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
+
+		<footer class="index-footer">
+			<p id="footer-text">Made with ♡ by Chrispy</p>
+		</footer>
+	</div>
+
+
+
+	<script src="../cmbr.js"></script>
+	<script src="depository.js"></script>
+
+</body>
+
+</html>
