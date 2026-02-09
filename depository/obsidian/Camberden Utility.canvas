@@ -1,0 +1,16 @@
+{
+	"nodes":[
+		{"id":"f2d687bdbf4ca216","type":"text","text":"Keychron\n\nBefore Connection: *https://launcher.keychron.com/#/not-connect *\n\nAfter Connection: * https://launcher.keychron.com/#/keymap *","x":-220,"y":-30,"width":620,"height":150},
+		{"id":"cab47295987ba9d3","type":"text","text":"Anki Server\n\nAnki Connect: * http://localhost:8765 *\n\n","x":-380,"y":160,"width":554,"height":194},
+		{"id":"f1205ce9b0480303","type":"text","text":"Obsidian Syncing\n\ncamberden.com: ~/depository/obsidian\nkippi/Library/Mobile\\ Documents/iCloud~md~obsidian/Documents","x":-863,"y":-47,"width":483,"height":184},
+		{"id":"ff16d1a02b7d882d","type":"text","text":"[[Anki]]\n- File Path to Anki App:\n- File Path to camberden.github.io","x":-25,"y":-740,"width":405,"height":180},
+		{"id":"91aed142b910edb1","type":"text","text":"Obsidian\n- File Path to Obsidian App:\n- File Path to iCloud Drive:\n- File Path to Open Source Drive","x":-25,"y":-500,"width":411,"height":180},
+		{"id":"d6eb0e20113cf41f","type":"text","text":"Camberden Utility Overview\n*Camberden.app Title Pending*\n\n-  Execute on Launch\n\t- #Anki *file path*\n\t- Obsidian *file path*\n\n- Remote Server\n\t- Sync  Function\n- All Websites\n\t- camberden.com\n\t- camberden.net\n\t- ncco.us\n- Keyboard/Mouse Utility\n- ---\n\n","x":-760,"y":-720,"width":360,"height":480}
+	],
+	"edges":[
+		{"id":"d2cd0c02ffa7f343","fromNode":"d6eb0e20113cf41f","fromSide":"bottom","toNode":"f1205ce9b0480303","toSide":"top"},
+		{"id":"85e90013a7cc6c9f","fromNode":"d6eb0e20113cf41f","fromSide":"bottom","toNode":"f2d687bdbf4ca216","toSide":"top"},
+		{"id":"a18ac4d4dbbbb69d","fromNode":"d6eb0e20113cf41f","fromSide":"bottom","toNode":"cab47295987ba9d3","toSide":"top"},
+		{"id":"57df94b1e75fa4d1","fromNode":"d6eb0e20113cf41f","fromSide":"right","toNode":"ff16d1a02b7d882d","toSide":"left"}
+	]
+}

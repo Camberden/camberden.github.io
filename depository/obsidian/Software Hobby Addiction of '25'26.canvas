@@ -4,7 +4,7 @@
 		{"id":"855542ab6bb5a9fc","type":"link","url":"https://camberden.com","x":-394,"y":80,"width":327,"height":514},
 		{"id":"e52821150e00c8f9","type":"file","file":"Git Push to One Folder.md","x":560,"y":400,"width":320,"height":800},
 		{"id":"2d632c2dde6f20f4","type":"file","file":"Purple Disaster.md","x":-431,"y":640,"width":401,"height":680},
-		{"id":"cbedf357f710be84","type":"text","text":"# Software Hobby Addiction \n*2025->2026* \nToday I decided to integrate Obsidian into my static site. Heh. ","x":40,"y":400,"width":380,"height":194}
+		{"id":"cbedf357f710be84","type":"text","text":"# Software Hobby Addiction \n---\n\n*2025->2026* \nToday I decided to integrate Obsidian into my static site. Heh. ","x":40,"y":400,"width":380,"height":194}
 	],
 	"edges":[
 		{"id":"64ab6bbb01494d44","fromNode":"cbedf357f710be84","fromSide":"bottom","toNode":"855542ab6bb5a9fc","toSide":"top"},

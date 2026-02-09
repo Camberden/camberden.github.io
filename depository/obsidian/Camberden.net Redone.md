@@ -1,6 +1,6 @@
 So the weekend began and I again set forth on another tech discovery journey. First, I changed camberden.net from a Laravel template to a Vanilla JS site using *HTMX & Alpine JS*.  Honestly I find these tools quite promising and I do much enjoy them. I told myself to steer clear of investing too much time into CSS, because that's trivial at this point. I know plenty to approach fixes. I shouldn't have to reinvent everything which is what I basically had been doing around two weeks ago. I still need to determine where my tech interests would take me. Surely I want the satisfaction of being able to create my own tools and workflows for the future, yet I realize that my interest isn't so much in building some commercial social media intermixed application. I really don't care like that. There's a joy to the building and to the discovery. I want my own place where I can interconnect my life experiences of all sorts. I don't need some major framework stuff; gladly I wouldn't need React. Here I'll write some todos and get some ideas in order. This ideation coincides with my doing an extensive cleaning here at the place.
 
-- [ ] Alpine Ajax
+- [x] Alpine Ajax
 - [ ] Alpine.js UI Components
 - [ ] Sprites & Assets
 	-  Characters
@@ -54,3 +54,4 @@ So the weekend began and I again set forth on another tech discovery journey. Fi
 - [ ] Leave Obsidian?
 	- [ ] Build something better for yourself?
 	- [ ] Integrate Vivaldi Notes and rsync from there?
+---

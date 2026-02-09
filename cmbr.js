@@ -3,7 +3,7 @@
  * @interface CMBRutil
  * @author Camberden (Chrispy | Kippi)  
  */ 
-
+// htmx.config.selfRequestsOnly = false;
 /** 
  * @description Site Map Links
  * @readonly

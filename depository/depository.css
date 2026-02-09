@@ -48,7 +48,18 @@ body {
 	background-size: contain;
 }
 
-
+.other-trigger-box {
+	box-sizing: border-box;
+	width: 20rem;
+	height: fit-content;
+	background: var(--cmbr-grid-box);
+	color: var(--clr-quaternary);
+	border: 0.3rem groove transparent;
+	outline: 0.1rem groove olive;
+	padding: 0.5rem;
+	margin-top: 0.5rem;
+	overflow: wrap;
+}
 
 .marker {
 	font-size: 1.5rem;
@@ -68,6 +79,7 @@ body {
 	color: transparent;
 	user-select: none;
 }
+#planet-data
 #alpinejs-play {
 	font-size: 2rem;
 	font-family: "PermanentMarker", sans-serif;

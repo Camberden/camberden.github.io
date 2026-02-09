@@ -4,14 +4,14 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="images/cmbr-sig.svg">
+	<!-- <meta name="referrer" content="origin" /> -->
+	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<style>
 		@import "../styles.css" screen;
 		@import "depository.css" screen;
 	</style>
-	<script src="htmx.js"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js" defer></script>
+	<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
 	<title>Chrispy's Corner</title>
 </head>
 
@@ -42,25 +42,32 @@
 			<div id="page-info">
 
 			</div>
-			<div id="info-div-frame" style="display: none;">
-				<div id="info-div-background" style="display:none;"></div>
+
+			<div id="info-div-frame">
+				<div>
+					<h1 id="htmx-play">HTMX Play</h1>
+				</div>
+				<!-- <div id="info-div-background"></div> -->
 			</div>
 
 		</div><!-- END NAV AND TOP -->
 
-		 <!-- HTMX -->
-		<div>
-			<h1 id="htmx-play">HTMX Play</h1>
-		</div>
-		<hr class="hr-cmbr-gradient hr-push-down">
-
-		<div class="triggers" hx-get="/clicked/1" hx-swap="outerHTML">
-			<div class="trigger-box">Click This
+		
+		<div class="triggers">
+			<div class="trigger-box">
+				<h2> Click This</h2>
 				<hr class="hr-trans">
 			</div>
 		</div>
-		<div class="triggers" hx-get="/clicked/2" hx-trigger="click[shiftKey]" hx-swap="outerHTML">
-			<div class="trigger-box">Shift Click This
+		<div class="triggers">
+			<div class="trigger-box">
+				<h2>Shift Click This</h2>
+				<hr class="hr-trans">
+			</div>
+		</div>
+		<div class="triggers">
+			<div class="trigger-box">
+				<h2>I'm so done with HTMX</h2>
 				<hr class="hr-trans">
 			</div>
 		</div>
@@ -83,30 +90,63 @@
 				[for ArtisanServer]</button>
 			<hr class="hr-cmbr-dark-gradient">
 		</div>
+		<div><button class="linkage-box" value="https://launcher.keychron.com/#/not-connect" target="_blank" rel="noreferrer">
+			Keychron Configuration</button>
+			<hr class="hr-cmbr-dark-gradient">
+		</div>
 
 		<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
 
 	</main>
 
-	<!-- HTMX MISC BUTTONS -->
+		<!-- HTMX MISC BUTTONS -->
 	<div class="index-sub-grid">
 
 		<div style="text-align:left;">
-			<h2 class="marker">Greetings</h2>
-			<hr class="hr-cmbr-dark-gradient">
-
+			<h2 class="marker">Requests</h2>
+			<hr class="hr-custom">
 			<p>I'll ensure to add some functionality to the buttons right here, when the time is right.
 				At this time, I surely need to get on with importing myself some UI components to put
 				an end to this styles.css hell. Haha.
 			</p>
 		</div>
 		<div>
-			<button>Pending 123</button>
+
+			<button>Planet 1</button>
 		</div>
 
 		<div>
-			<button>Pending 456</button>
+			<button>Planet 2</button>
 		</div>
+
+	</div>
+	<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
+	
+	<!-- HTMX RESPONSE FIELDS -->
+	<div class="index-sub-grid">
+
+		<div style="text-align:left;">
+			<h2 class="marker">Responses</h2>
+			<hr class="hr-custom">
+			<p>I'll ensure to add some functionality to the buttons right here, when the time is right.
+				At this time, I surely need to get on with importing myself some UI components to put
+				an end to this styles.css hell. Haha.
+			</p>
+		</div>
+		<div>
+			<p>Planet Data 1 Below</p>
+			<div class="other-trigger-box">
+			</div>
+				<!-- Planet 1 data will be loaded here -->
+		</div>
+
+		<div>
+			<p>Planet Data 2 Below</p>
+			<div class="other-trigger-box"></div>
+				<!-- Planet 2 data will be loaded here -->
+			</div>
+		</div>
+
 	</div>
 	<!-- ALPINE.JS -->
 	<div class="index-grid">
