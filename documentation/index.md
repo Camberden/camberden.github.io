@@ -1,6 +1,6 @@
 # Documentation Index
 *Auto-generated documentation of site JavaScript functions*
-*Generated: Saturday, February 7, 2026*
+*Generated: Monday, February 9, 2026*
 
 ---
 
@@ -197,4 +197,4 @@ Loads a JournalEntry[] into stagedEntries
 *No documented functions found.*
 
 ---
-**Last Updated:** 2/7/2026, 8:49:34 PM
+**Last Updated:** 2/9/2026, 10:03:03 AM

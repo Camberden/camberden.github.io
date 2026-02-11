@@ -4,14 +4,16 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<!-- <meta name="referrer" content="origin" /> -->
+	<meta name="referrer" content="origin" />
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<style>
 		@import "../styles.css" screen;
 		@import "depository.css" screen;
 	</style>
+	<script src="../htmx.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js" defer></script>
 	<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
+
 	<title>Chrispy's Corner</title>
 </head>
 
@@ -45,29 +47,29 @@
 
 			<div id="info-div-frame">
 				<div>
-					<h1 id="htmx-play">HTMX Play</h1>
+					<h1 class="depository-title">HTMX Play [discontinued Feb 9th]</h1>
 				</div>
 				<!-- <div id="info-div-background"></div> -->
 			</div>
 
 		</div><!-- END NAV AND TOP -->
 
-		
+
 		<div class="triggers">
-			<div class="trigger-box">
-				<h2> Click This</h2>
+			<div class="trigger-box" hx-get="/depository/mouse_entered/index.html" hx-trigger="mouseenter">
+				<h2>Here here, mouse!</h2>
 				<hr class="hr-trans">
 			</div>
 		</div>
 		<div class="triggers">
-			<div class="trigger-box">
-				<h2>Shift Click This</h2>
+			<div class="trigger-box" hx-get="/depository/mouse_entered/alt.html" hx-trigger="mouseenter">
+				<h2>Here here, mouse!</h2>
 				<hr class="hr-trans">
 			</div>
 		</div>
 		<div class="triggers">
-			<div class="trigger-box">
-				<h2>I'm so done with HTMX</h2>
+			<div class="trigger-box" hx-get="/depository/obsidian/Purple Foray.md" hx-trigger="mouseenter">
+				<h2>Here here, mouse!</h2>
 				<hr class="hr-trans">
 			</div>
 		</div>
@@ -90,8 +92,9 @@
 				[for ArtisanServer]</button>
 			<hr class="hr-cmbr-dark-gradient">
 		</div>
-		<div><button class="linkage-box" value="https://launcher.keychron.com/#/not-connect" target="_blank" rel="noreferrer">
-			Keychron Configuration</button>
+		<div><button class="linkage-box" value="https://launcher.keychron.com/#/not-connect" target="_blank"
+				rel="noreferrer">
+				Keychron Configuration</button>
 			<hr class="hr-cmbr-dark-gradient">
 		</div>
 
@@ -99,7 +102,7 @@
 
 	</main>
 
-		<!-- HTMX MISC BUTTONS -->
+	<!-- HTMX MISC BUTTONS -->
 	<div class="index-sub-grid">
 
 		<div style="text-align:left;">
@@ -121,7 +124,7 @@
 
 	</div>
 	<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
-	
+
 	<!-- HTMX RESPONSE FIELDS -->
 	<div class="index-sub-grid">
 
@@ -137,22 +140,22 @@
 			<p>Planet Data 1 Below</p>
 			<div class="other-trigger-box">
 			</div>
-				<!-- Planet 1 data will be loaded here -->
+			<!-- Planet 1 data will be loaded here -->
 		</div>
 
 		<div>
 			<p>Planet Data 2 Below</p>
 			<div class="other-trigger-box"></div>
-				<!-- Planet 2 data will be loaded here -->
-			</div>
+			<!-- Planet 2 data will be loaded here -->
 		</div>
+	</div>
 
 	</div>
 	<!-- ALPINE.JS -->
 	<div class="index-grid">
 		<hr class="hr-cmbr-gradient hr-push-up">
 		<div>
-			<h1 id="alpinejs-play">AlpineJS Play</h1>
+			<h1 class="depository-title">AlpineJS Play</h1>
 		</div>
 		<hr class="hr-cmbr-gradient hr-push-down">
 
@@ -200,17 +203,23 @@
 		<div style="text-align:left;">
 			<h2 class="marker">Hi Alpine</h2>
 			<hr class="hr-cmbr-dark-gradient">
-			
+
 			<p>Importing the Alpine framework was easy. Next I'm off to grab some components.
 			</p>
 		</div>
+
+		
 
 		<div x-data="{ count: 0 }">
 			<span x-text="count"></span>
 			<hr class="hr-groove-bottom">
 			<hr class="hr-groove-top">
-			<button @click="count++">Increment!</button>
-			<!-- <button x-on:click="count++">Increment</button> -->
+			<div class="triggers">
+				<div class="trigger-box">
+					<h2 @click="count++">Increment!</h2>
+					<!-- <button x-on:click="count++">Increment</button> -->
+				</div>
+			</div>
 		</div>
 
 		<div>
@@ -218,6 +227,40 @@
 		</div>
 
 	</div>
+
+	<div class="index-grid">
+		<hr class="hr-cmbr-gradient hr-push-up">
+		<div>
+			<h1 id="alpinejs-components" class="depository-title">AlpineJS Components</h1>
+		</div>
+		<hr class="hr-cmbr-gradient hr-push-down">
+
+		<div class="triggers">
+			<div class="trigger-box">
+				<div x-data="{ label: 'Click Here, now.', banana: 'banana' }" x-text="banana">
+					...
+				</div>
+				<hr class="hr-trans">
+			</div>
+		</div>
+		<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
+<div class="triggers">
+	<div class="trigger-box">
+		<form x-target id="star_repo" method="get" action="/template/">
+			<button>Star Repository</button>
+		</form>
+	</div>
+</div>
+
+<div class="triggers">
+	<div class="trigger-box" hx-get="/template/info.html" hx-trigger="click">
+			Stuff
+	</div>
+</div>
+
+
+
+
 
 
 	<!-- FOOTER -->
