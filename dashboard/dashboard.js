@@ -821,3 +821,9 @@ dashboardModalAccess();
 // width500.addEventListener("change", function() {
 // 	matchMediaDashboard(width500);
 // });
+
+(() => {
+
+	initNav();
+
+})();

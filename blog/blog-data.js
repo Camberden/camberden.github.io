@@ -1438,5 +1438,19 @@ const blogData = [
 	That's right. It's fucking good. I've made it good before;<span class="cmbr-furious"> damn straight I'm gonna make it good again.</span>
 	`
 	,
+
+	`
+	| February 13th, 2026…
+	| Pittsboro, NC
+	| 1634 HRS
+	| &emsp;
+	It's that superstitious <b-title>Friday the 13th</b-title>. Hasn't ever meant much to me, but it's neat how days with some meaning are coinciding: Half-year anniversary
+	on the 10th, A personal holiday on the 10th, a loss of a relationship on the 11th, and dropping this hobby on the 12th. Then of course, Valentine's Day.
+	I've never been one to attribute much to that one, but heck, it did burn for a while knowing that I was ousted right before then. But it was deserved. 
+	I wasn't ready. My hope is that I would not allow dejection to take over me as I recover my better lifestyle. The possibility for saying "if only I were
+	living like this" more, seems likely. But no worries. All is well, all is secure. I do wish I could better pay back, though. There is so much that was
+	undeserved, regardless.
+	`
+	,
 ];
 

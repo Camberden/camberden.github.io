@@ -7,7 +7,7 @@ import { supabase, CMBRdb } from './cmbr-db.js';
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Thursday, February 12th, 2026";
+const latestUpdate = "Friday, February 13th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
