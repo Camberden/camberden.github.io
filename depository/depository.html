@@ -11,9 +11,9 @@
 		@import "depository.css" screen;
 	</style>
 	<script src="../htmx.js" defer></script>
-	<script src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js" defer></script>
-	<script src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js" defer></script>
-
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 	<title>Chrispy's Corner</title>
 </head>
 
@@ -47,7 +47,7 @@
 
 			<div id="info-div-frame">
 				<div>
-					<h1 class="depository-title">HTMX Play [discontinued Feb 9th]</h1>
+					<h1 class="depository-title">HTMX Play</h1>
 				</div>
 				<!-- <div id="info-div-background"></div> -->
 			</div>
@@ -68,11 +68,54 @@
 			</div>
 		</div>
 		<div class="triggers">
-			<div class="trigger-box" hx-get="/depository/obsidian/Purple Foray.md" hx-trigger="mouseenter">
+			<div class="trigger-box" hx-get="/depository/obsidian/Purple Foray.md" hx-trigger="click">
 				<h2>Here here, mouse!</h2>
 				<hr class="hr-trans">
 			</div>
 		</div>
+
+		<div class="triggers">
+			<div id="target-element" class="trigger-box" @click="CMBRdb.querySelect(*)">targ</div>
+				
+			</div>
+		</div>
+		<div class="triggers">
+			<div id="target-element" class="trigger-box">targ</div>
+				
+			</div>
+		</div>
+
+		<div x-data="{ open: false }">
+			<button @click="open = ! open">Toggle Content</button>
+		
+			<div x-show="open">
+				Content...
+			</div>
+		</div>
+
+		<form>
+			<div class="triggers">
+				<div class="trigger-box">
+					<div x-data="{ open: false, label: 'query' }">
+						<input type="text" x-model='query'>
+						<p>You typed: <span x-text='query'></span></p>
+						<submit  @click.prevent="CMBRdb.querySelect('query')" @click="open = ! open">Submit</submit>
+					</div>
+					<hr class="hr-trans">
+					<div x-show="open">
+						Content...
+					</div>
+				</div>
+			</div>
+		</form>
+
+		<ul id="comments">
+			<li>Comment #1</li>
+		</ul>
+		<form x-target="comments" method="post" action="/comment">
+			<input aria-label="Comment text" name="text" required />
+			<button>Submit</button>
+		</form>
 
 		<hr class="hr-cmbr-gradient hr-push-down">
 
@@ -235,26 +278,83 @@
 		</div>
 		<hr class="hr-cmbr-gradient hr-push-down">
 
+	<form>
 		<div class="triggers">
 			<div class="trigger-box">
-				<div x-data="{ label: 'Click Here, now.', banana: 'banana' }" x-text="banana">
-					...
+				<div x-data="{ label: 'Click Here, now.', banana: 'banana' }">
+					<input type="text" x-model="banana">
+					<p>You typed: <span x-text="banana"></span></p>
+					<submit  @click.prevent="alert('Form submitted with: ' + banana)">Submit</submit>
 				</div>
 				<hr class="hr-trans">
 			</div>
 		</div>
+	</form>
 		<hr class="hr-push-up hr-cmbr-gradient hr-push-down">
-<div class="triggers">
-	<div class="trigger-box">
-		<form x-target id="star_repo" method="get" action="/template/">
-			<button>Star Repository</button>
-		</form>
-	</div>
-</div>
+<!---------------- ALPINE COMPONENT -------------------->
+	<div class="index-grid">
+		<div class="" x-data="{ active: 2 }">
+		<div x-data="{
+			id: 1,
+			get expanded() {
+				return this.active === this.id
+			},
+			set expanded(value) {
+				this.active = value ? this.id : null
+			},
+		}" role="region" class="">
+			<h2>
+				<button
+					type="button"
+					x-on:click="expanded = !expanded"
+					:aria-expanded="expanded"
+					class="trigger-box">
+					<div class="trigger-dropdown">
+						<span x-show="expanded" x-cloak>&UpArrow;</span>
+						<span x-show="!expanded" x-cloak>&DownArrow;</span>
+						<span>Question 1</span>
+						<span x-show="expanded">&UpArrow;</span>
+						<span x-show="!expanded">&DownArrow;</span>
+					</div>
 
-<div class="triggers">
-	<div class="trigger-box" hx-get="/template/info.html" hx-trigger="click">
-			Stuff
+				</button>
+			</h2>
+
+			<div x-show="expanded" x-collapse>
+				<div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. In magnam quod natus deleniti architecto eaque consequuntur ex, illo neque iste repellendus modi, quasi ipsa commodi saepe? Provident ipsa nulla earum.</div>
+			</div>
+		</div>
+
+		<div x-data="{
+			id: 2,
+			get expanded() {
+				return this.active === this.id
+			},
+			set expanded(value) {
+				this.active = value ? this.id : null
+			},
+		}" role="region" class="">
+			<h2>
+				<button
+					type="button"
+					x-on:click="expanded = !expanded"
+					:aria-expanded="expanded"
+					class="trigger-box">
+					<div class="trigger-dropdown">
+						<span x-show="expanded" x-cloak>&UpArrow;</span>
+						<span x-show="!expanded" x-cloak>&DownArrow;</span>
+						<span>Question 2</span>
+						<span x-show="expanded">&UpArrow;</span>
+						<span x-show="!expanded">&DownArrow;</span>
+					</div>
+				</button>
+			</h2>
+
+			<div x-show="expanded" x-collapse>
+				<div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. In magnam quod natus deleniti architecto eaque consequuntur ex, illo neque iste repellendus modi, quasi ipsa commodi saepe? Provident ipsa nulla earum.</div>
+			</div>
+		</div>
+		</div>
 	</div>
 </div>
 

@@ -1293,7 +1293,7 @@ const blogData = [
 	All is secure, and I endeavor to make sure of it.
 	`
 	,
-		`
+	`
 	| November 29th, 2025…
 	| Pittsboro, NC
 	| 2107 HRS
@@ -1370,6 +1370,72 @@ const blogData = [
 	have this one tune on the books for Jummbox.
 	<hr>
 	A new-year resolution, I suppose, would be to finally quit biting my damned nails.
+	`
+	,
+
+	`
+	| February 12th, 2026…
+	| Pittsboro, NC
+	| 0952 HRS
+	| &emsp;
+	<br>
+	&emsp;I'm killing this hobby. Today. I've now surfaced a deep resentment for it.
+	I may stop by to blog here and there, but that's about all.
+	I'll use my learning platforms separately.
+	I don't need to care about this nonsense, anymore. 
+	I need to learn how to live again. I failed to be anyone deserving.
+	<hr class="hr-cmbr-gradient">
+	&emsp; It's funny, because throughout most of my life I struggled to focus on learning and creating.
+	It was never anything enduring, and for the last couple years it seems I've been more able to do so.
+	But for what. For what? Just to reclaim my sunshine? What use is it if all I'll do is absolutely nothing
+	but type on this stupid ass keyboard I didn't nead, burning my eyes out "having fun" doing trivial, 
+	meaningless bullshit whose related skills are increasingly made irrelevant by AI as the weeks go by.
+	I am so happy I'm done with all of this. I used to love doing things that would've made my partner happy.
+	But I failed. Instead, I'd succumb to an addiction that'd parallel the one for video games in my teen years.
+	I had completely gone full circle. I stopped journalling, working out, meditating, reading, and enjoying the
+	present moment. I stopped it all, and left nothing but a shitty impression for someone who has given me more than
+	I'd deserve. Were I not over involved with this bullshit coding and server nonsense, I could have done so much
+	more... so much more. I'm sorry, and I failed. I failed myself, and Luna, and Jake. 
+	<hr class="hr-cmbr-gradient">
+	&emsp; I hadn't felt I was so easy to abandon, but a trend emerges that such is the case.
+	Though I wholly take responsibility for failing you both, I do recognize the negative 
+	effect this job has had on my ability to be present for you. My circumstance always had 
+	a way of pushing my priorities away from others. Of course, this job has direct relation
+	to my unfortunate history of heading to college without money: I need public service loan forgiveness.
+	I kept telling myself "I'm not ready, I'm not ready." Come to find out, I was absolutely correct.
+	I wasn't in 2020 for one. I wasn't in 2025 for two. Though, I'm glad I could have at least made them
+	genuinely happy for a chapter in this life. You are missed. This hurts, very much.
+	<hr class="hr-cmbr-gradient">
+	&emsp; I hope either to never be in a relationship ever again, or to be in a position to be able to give one the attention and care it deserves. 
+	I can't say I wasn't cautious. I was: I've been guarded all year last year. I've long believed that love is a <u>strong</u> word not to toy around with.
+	I've also long believed that relationships are very serious business. Though cautious, I just wasn't cautious enough. 
+	Midyear 2025, I was too optimistic, and I was too hopeful. I thought I could do it all, and I thought I could do it all well.
+	I thought I could be a good student, a good hobbyist, a good friend, a good employee, and a good partner:
+	To balance all facets of life. I was wrong. I was not ready to a pitiful extent. I was so confused at how I warranted the love and care of such a wonderfully
+	admirable person whose qualities I aspire to emulate. I was so unsure and took the plunge, knowing it would not the best for this time in my life.
+	I recall saying on the grounds of the NC Museum of Art that, <span class="marker">"I wished you found me just a year or two later,
+	because then life would've just made more sense." </span> I am not decoupling my responsibility by saying this, 
+	I do believe I'd've been in a much better place to provide a better self for another.
+	As the months went on, the last however many months had been among the most imbalanced of my life; I had been so consumed with the idea of redeeming
+	my lost youth and college years. I committed to my hustle to reclaim my potential and my sunshine.
+	I committed for the sake of a better future at the detriment of your better present. During my husting and your push for a big move,
+	the outwardly mutual loving support was so reassuring that I didn't even realize how much I was fucking up until it was too late.
+	<hr class="hr-cmbr-gradient">
+	I'll agree, that some things weren't the most compatible with me either.
+	The dynamic was unfamiliar to me.
+	I do believe I fell short on a few other things I could and will improve. 
+	I had way too many inhibitions in your presence.
+	I was self-conscious of my present-state, knowingly feeling unready, regularly.
+	I wouldn't articulate affection well. Not in this state.
+	I felt too reserved and too much of a "work in progress."
+	<hr class="hr-cmbr-gradient">
+	&emsp; Thank you for everything. I'll miss our chapter in this story of life.
+	Though that's the case, I refuse to give myself grace: I <u>will</u> hold myself accountable.
+	For my temperament, emotional damage is such a delicious catalyst for action.
+	<hr class="hr-cmbr-dark-gradient">
+	Comfort is the thief of my joy. The long suppressed <b-title>tyrant of the self</b-title> had some damn good sense.
+	To paraphrase a yesterdecade icon, "Emotional damage? Good."
+	That's right. It's fucking good. I've made it good before;<span class="cmbr-furious"> damn straight I'm gonna make it good again.</span>
 	`
 	,
 ];

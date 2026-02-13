@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html lang="en-US" data-theme="dark">
+<html lang="en-US">
 <!-- Hi there! :V -->
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="assets/cmbr-sig.svg">
 	<style> @import "styles.css" screen; </style>
-	<script src="htmx.js" defer></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script type="module" src="./cmbr-db.js"></script>
+	<script src="./htmx.js"></script>
 	<title>Chrispy's Site</title>
 </head>
 
@@ -34,11 +38,24 @@
 		</div>
 
 		<div id="info-div">
-			<div id="page-info"></div>
-			<div id="info-div-frame">
-				<div id="info-div-background">
+			<div id="page-info">
+				<p>
+					Welcome to the <u>camberden page.</u><br>
+					I'm the author, <i>Chrispy,</i> and I regrettably spent too much time programming between mid-2025 and early-2026.<br>
+					It was akin to an addiction as it contributed to
+					ignorance of other facets of life and to 
+					deteriorating relationships. <mark>I am abandoning this hobby effective today, 
+					February 12, 2026</mark>, and I will only return for occassional blog updates, 
+					so <span class="cmbr-furious">good riddance!</span><br>
+					Alright, here we go.<br>
+					All the best,<br>
+					<span class="chrispy"> Chrispy ♪ </span>
+				</p>
+		</div>
+				<div id="info-div-frame">
+					<div id="info-div-background">
+					</div>
 				</div>
-			</div>
 
 		</div>
 		<hr class="hr-cmbr-gradient">
@@ -54,7 +71,8 @@
 	</main>
 
 	<script src="cmbr.js"></script>
-	<script src="action.js"></script>
+	<script type="module" src="action.js"></script>
+	
 
 </body>
 

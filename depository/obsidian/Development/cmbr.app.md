@@ -19,6 +19,7 @@ I will be developing a single page async application to be ported as a website, 
 			- HTML
 			- CSS
 			- Alpine.js
+			- MS Excel
 		- Back End
 			- HTMX
 			- Alpine AJAX

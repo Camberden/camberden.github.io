@@ -2,9 +2,9 @@ So while toying with all these new apps, I missed up a git push and erased my st
 
 In any case, there are a few things I would need to do upon getting out of this hospital:
 - [x] Get Obsidian Desktop
-- [ ] Check Obsidian Desktop's Exclusion Rules
+- [x] Check Obsidian Desktop's Exclusion Rules
 - [x] Get the Obsidian config file
 - [x] Consider remote server connection for file offload. 
-- [ ] Amazon =>
-	- [ ] Key Reels
-	- [ ] Consider RaspberryPi
+- [x] Amazon =>
+	- [x] Key Reels
+	- [x] Consider RaspberryPi

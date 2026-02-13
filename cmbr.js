@@ -15,18 +15,18 @@
 const sections = [
 	["homepage", "Homepage ↺"],
 	["dashboard", "Personal Dashboard"],
-	["workspace", "Coding Workspace"],
-	["anki", "Anki & Notes Depository"],
-	["depository", "HTMX & Alpine Depot"],
+	// ["workspace", "Coding Workspace"],
+	// ["anki", "Anki & Notes Depository"],
+	// ["depository", "HTMX & Alpine Depot"],
 	["blog", "Blogging Page"],
-	["language", "Language Resource"],
-	["accounting", "Accounting Resource"],
+	// ["language", "Language Resource"],
+	// ["accounting", "Accounting Resource"],
 	["travel", "Travel Page"],
 	["lifecraft", "Lifecraft Page"],
 	["musings", "Musings Page"],
-	["fantasy", "Fantasyland"],
-	["segregation", "Segregation"],
-	["mainframe", "Mainframe"],
+	// ["fantasy", "Fantasyland"],
+	// ["segregation", "Segregation"],
+	// ["mainframe", "Mainframe"],
 	["music", "Original Music"],
 ];
 
@@ -303,7 +303,6 @@ const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
 let CMBRdata = "<‰=== Empty Data ===‰>";
 
-
 /** @description Reads .json File as text 
  * @param {String} txt Name of .json File 
  * @implements {Promise<Object>} 
@@ -317,6 +316,7 @@ function connectCMBRjson(name) {
 		const loaded = JSON.parse(stuff);
 		console.log(typeof(loaded["urls"]));
 		CMBRdata = (Object.keys(loaded.sections).length);
+		CMBRdata = loaded.sections;
 	}).catch(error => {
 		console.error('Failed to fetch page: ', error)
 	});

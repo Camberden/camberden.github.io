@@ -1,3 +1,4 @@
+import { supabase, CMBRdb } from './cmbr-db.js';
 /** ===> CAMBERDEN.GITHUB.IO UPDATE ===>
  * @description Personal Website:
  * - From 2020 to Present
@@ -6,18 +7,21 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Wednesday, February 11th, 2026";
+const latestUpdate = "Thursday, February 12th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
-const pageInfo = (
-	`Welcome to camberden's personal page.
-	Here you will find music, musings,
-	and an assortment of software projects.
-	Whatever I place here is a reflection of my
-	lifestyle and workflow, and its placement here is meaningful
-	enough to me and is therefore justified.`
-);
+// const pageInfo = (
+// 	`Welcome to the camberden page.
+// 	I'm the author, Chrispy, and I regrettably spent too much time programming between mid-2025 and early-2026.
+// 	It was akin to an addiction as it contributed to
+// 	ignorance of other facets of life and to 
+// 	deteriorating relationships. I am abandoning this hobby effective today, 
+// 	February 12, 2026, and I will only return for occassional blog updates, so good riddance!
+// 	Alright, here we go.
+// 	All the best, Chrispy.
+// 	`
+// );
 
 /**
  * 
@@ -39,7 +43,7 @@ const convertDate = (month, calendarDay, year) => {
  * @param {String} update 
  * @returns {Date} Formatted Date
  */
-const formatter = (update) => { x = update.split(" "); return convertDate(x[1], x[2], x[3]); }
+const formatter = (update) => { const x = update.split(" "); return convertDate(x[1], x[2], x[3]); }
 /**
  * @param {Date} date
  * @description Converts date object to a Japanese date.
@@ -106,22 +110,31 @@ const randomizePhotos = () => {
 	infoDivBackground.style.animationPlayState = "paused";
 	const m = Math.random();
 	infoDivBackground.style.animationPlayState = "running";
-	let photoIndex = Math.round(m.toFixed(1) * 10);
+	let photoIndex = Math.round(m.toFixed(2) * 100);
+	if (photoIndex > 75) {
+		photoIndex -= 75;
+	} else if (photoIndex > 50) {
+		photoIndex -= 50;
+	} else if (photoIndex > 25) {
+		photoIndex -= 25;
+	}
 	photoIndex < 1 ? randomizePhotos : infoDivBackground.style.backgroundImage = `url(assets/travel-photos/photo-nc-us-${photoIndex}.jpeg)`;
 }
 
-(() => {
+(async () => {
 
 	CMBRutil.actionsProvided("sections");
-	CMBRutil.displayPageInfo(pageInfo);
+	// CMBRutil.displayPageInfo(pageInfo);
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos();
 	setInterval(()=> {
 		randomizePhotos();
 	}, 10000);
-	recognizeFileProtocol("anki");
-	connectCMBRjson("cmbr");
-	setTimeout(()=>{sout(CMBRdata);}, 1000);
+	// recognizeFileProtocol("anki");
+	// connectCMBRjson("cmbr");
+
+	// const q = await CMBRdb.querySelect();
+	// console.log(q[0].title);
 	
 })();

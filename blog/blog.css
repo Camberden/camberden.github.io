@@ -1,5 +1,7 @@
 /* ----- BLOG POSTING ----- */
-
+/* body {
+	color: unset;
+} */
 
 .blog-header {
 	display: flex;
@@ -60,6 +62,7 @@
 #blog-post-content {
 	flex: 1 1 60%;
 	position: sticky;
+	background:#0f0b0789;
 }
 
 #blog-post-list-content {
@@ -69,9 +72,15 @@
 	/* margin-left: 50%; */
 }
 
-.marker-blogging {
-	font-family: Permanent Marker, serif;
-	color: var(--clr-tertiary);
+.blogging-font {
+	color: rgb(80, 189, 142);
+	font-family: "Lora", serif;
+	font-optical-sizing: auto;
+	font-weight: normal; /*400..700*/
+	font-style: italic;
+
+	padding-left: 1rem;
+	line-height: 2rem;
 }
 
 .blog-post-header {
