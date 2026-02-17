@@ -1469,8 +1469,9 @@ const blogData = [
 <hr class="hr-cmbr-gradient">&emsp;
 Such an irritating point about all of this is that aspects I've learned of my former person are rendered irrelevant since my remarks are likely unwelcome. What about asking about goals, the family, and how trips are going, now? It's all been soured. It's all behind me. I'm not included in anything, anymore, and yes, I deserve it. I wasn't ready. So what use is sharing anything about me, now, hmm? About my dumbass life, my struggle to ascend to a situation that others share that I do not, hm? 
 Let's be fair to myself, though: I struggled at times to feel <b-title>the spark of compatibility</b-title>. I was hesitant, so very much. I knew of the potential damage to arise, that which I am experiencing now, and proceeded anyway. I struggled to emote and to feel that spark when I would have needed it. I just wasn't ready, okay? I didn't understand how I could've been picked up so fast, anyway. I was perhaps a choice of desperation. Perhaps I should have deleted that profile of mine and spared myself the potential contact. I would have been much safer. My peace of mind is paramount, and I was not protective of it. I traded future peace of mind for a false sense of commitment and being loved. I wasn't certain. I was just not ready. I don't need another chance, just as I don't need another prospect who bears the same name. Well, that last point was just venting. Huff. I was just not ready. Just as I haven't been hungry all day. This'll probably bite me in the ass soon, so I'm going to have a bite soon, yeah? Yeah. 
-<br><hr class="hr-cmbr-gradient">
+<hr class="hr-cmbr-gradient">
 So, describe the kind of person that you should be when it's time to date again:
+<hr class="hr-push-down">
 <ol> 
 	<li>Ensure You are Ready (Pre-Commitment) *[Unburdened by What Has Been]*</li>
 	<br>
@@ -1480,8 +1481,11 @@ So, describe the kind of person that you should be when it's time to date again:
 			<li>You need to be unburdened enough to invest in them plentifully</li>
 			<li>You need to acknowledge that, going forward, life wouldn't be about only you anymore; it'll be about you and them, together.</li>
 		</ul>
+		<hr class="hr-push-down">
+
 	<li>Prove Yourself Desirable (Pre-Commitment & Ongoing) *[What Will Be]*</li>
-	<br>
+<hr class="hr-push-down">
+
 		<ul>
 			<li>You need to make yourself desirable in character</li>
 			<li>You need to make yourself desirable through habits</li>
@@ -1489,8 +1493,11 @@ So, describe the kind of person that you should be when it's time to date again:
 			<li>You need to make yourself desirable physically</li>
 			<li>You need to make yourself desirable through adventure</li>
 		</ul>
+	<hr class="hr-push-down">
+
 	<li>Affirm They are Desirable (Post-Commitment & Ongoing) *[What Will Be]*</li>
-	<br>
+<hr class="hr-push-down">
+
 		<ul>
 			<li>You need to make them feel wanted</li>
 			<li>You need to be undistracted by activities enough</li>
@@ -1505,6 +1512,24 @@ So, describe the kind of person that you should be when it's time to date again:
 
 &emsp; I do believe that I could expound upon these points. There's still plenty to think about, but this should be a fairly decent framework for gauging whether I'm ready and whether I'm on point or entirely fucking up. Each one could be assessed on a regular basis throughout a relationship. It's extremely evident to me right here that I failed on very many points, few from each category.
 If there's anything I should internalize from my dormant practice, it's that "not feeling" like doing something positive is exactly why I should do such thing.
+	`,
+
+	`
+	| 02/15/2026
+	| Hillsborough, NC
+	| 2310 HRS
+	| &emsp;
+I decided that I will simply write my remote blog posts in an email such that they would better conform to my site's format. 
+There's no need for me to be using markdown format. Most of my pernicious coding habit during the last few months only served to overcomplicate otherwise simple processes.
+These include using different means to store my blog data, creating means to display and play Anki data when the resources exist for me to do it easily from any location through Anki web, 
+creating a desktop app with typical utility links that are otherwise available at my Vivaldi splash page, easily accessible, 
+utilizing Obsidian markdown app when in truth I have no need to do my work through markdown formats, and I could create canvases in other ways, 
+perhaps through JSON canvas. I am no longer enthusiastic for much of the little things. I just want a clean, workable site for personal use at this point. 
+I want it to aid me, much as my dashboard does. 
+<hr class="hr-cmbr-gradient">&emsp;
+I will tie in the concept of <b-title>strict-liability</b-title>: the one who caused certain damages is to be held accountable regardless of his intent. 
+I consider myself strictly-liable for my mistakes in the past with Azerai, Luna, and Jake. I am taking action. This is gonna be good, I swear.
+I feel my resolve, a more wholly encompassing resolve, is taking flight again. 
 	`
 	,
 

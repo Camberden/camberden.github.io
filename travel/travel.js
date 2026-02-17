@@ -201,36 +201,6 @@ function enableMapHighlightButtons () {
 }
 enableMapHighlightButtons();
 
-// Attempt at SVG parsing
-function parseSVG(svg) {
-
-	const { xMin, xMax, yMin, yMax } = [...svg.children].reduce((acc, el) => {
-	const { x, y, width, height } = el.getBBox();
-	console.log(el.getBBox());
-		if (!acc.xMin || x < acc.xMin){
-			acc.xMin = x;
-		} 
-		if (!acc.xMax || x + width > acc.xMax) {
-			acc.xMax = x + width;
-		} 
-		if (!acc.yMin || y < acc.yMin) {
-			acc.yMin = y;
-		} 
-		if (!acc.yMax || y + height > acc.yMax) {
-			acc.yMax = y + height;
-		}
-		// console.log(acc);
-		return acc;
-		
-	}, {});
-
-	// const geoViewBox = `${xMin} ${yMin} ${xMax - xMin} ${yMax - yMin}`;
-	const viewbox = `${xMin} ${yMin} ${xMax - xMin} ${yMax - yMin}`;
-
-	// svg.setAttribute("mapsvg:geoviewbox", geoViewBox);
-	svg.setAttribute("viewBox", viewbox);
-}
-
 function displaySVGwithinNotes(division, id) {
 	let inlineNotesSVG = "";
 	const pathTag = document.getElementById(id).outerHTML;

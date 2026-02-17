@@ -68,7 +68,6 @@ const dummyFileSelect = (dump) => {
 	};
 	
 }
-
 /* ----- NOTES & ANKI DATA ----- */
 
 /** @description String array of Relevant Anki .txt File Names */
@@ -180,8 +179,6 @@ function enableAnkiButtons(buttons) {
 		}
 	});
 }
-
-
 
 function invoke(action, version, params={}) {
     return new Promise((resolve, reject) => {

@@ -7,7 +7,7 @@ import { supabase, CMBRdb } from './cmbr-db.js';
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Friday, February 13th, 2026";
+const latestUpdate = "Tuesday, February 17th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -117,6 +117,8 @@ const randomizePhotos = () => {
 		photoIndex -= 50;
 	} else if (photoIndex > 25) {
 		photoIndex -= 25;
+	} else {
+		photoIndex = photoIndex;
 	}
 	photoIndex < 1 ? randomizePhotos : infoDivBackground.style.backgroundImage = `url(assets/travel-photos/photo-nc-us-${photoIndex}.jpeg)`;
 }
@@ -131,10 +133,9 @@ const randomizePhotos = () => {
 	setInterval(()=> {
 		randomizePhotos();
 	}, 10000);
-	// recognizeFileProtocol("anki");
-	// connectCMBRjson("cmbr");
+	connectCMBRjson("cmbr");
 
-	// const q = await CMBRdb.querySelect();
-	// console.log(q[0].title);
+	const q = await CMBRdb.querySelect();
+	console.log(q[0].title);
 	
 })();

@@ -49,6 +49,7 @@ const bookmarks = [
 	["https://wd108.myworkday.com/wday/authgwy/nc/login.html", "Internal Jobs"],
 	["https://int.dac.nc.gov", "Intranet"],
 	["https://portal.osc.nc.gov/app", "Fiori"],
+	["https://alpinejs.dev/components", "Alpine Components"],
 ];
 
 /** @global @readonly @description Determines the Site's Port Number */
