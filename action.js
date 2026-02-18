@@ -7,21 +7,10 @@ import { supabase, CMBRdb } from './cmbr-db.js';
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Tuesday, February 17th, 2026";
+const latestUpdate = "Wednesday, February 18th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
-// const pageInfo = (
-// 	`Welcome to the camberden page.
-// 	I'm the author, Chrispy, and I regrettably spent too much time programming between mid-2025 and early-2026.
-// 	It was akin to an addiction as it contributed to
-// 	ignorance of other facets of life and to 
-// 	deteriorating relationships. I am abandoning this hobby effective today, 
-// 	February 12, 2026, and I will only return for occassional blog updates, so good riddance!
-// 	Alright, here we go.
-// 	All the best, Chrispy.
-// 	`
-// );
 
 /**
  * 

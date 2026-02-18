@@ -10,14 +10,16 @@
 		@import "../styles.css" screen;
 		@import "depository.css" screen;
 	</style>
-	<script src="../htmx.js" defer></script>
+	
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="../htmx.js"></script>
+	<script type="module" src="../cmbr-db.js"></script>
 	<title>Chrispy's Corner</title>
 </head>
 
-<body>
+<body data-theme="dark">
 	<!-- NAV & TOP -->
 	<main class="index-grid">
 
@@ -92,30 +94,6 @@
 				Content...
 			</div>
 		</div>
-
-		<form>
-			<div class="triggers">
-				<div class="trigger-box">
-					<div x-data="{ open: false, label: 'query' }">
-						<input type="text" x-model='query'>
-						<p>You typed: <span x-text='query'></span></p>
-						<submit  @click.prevent="CMBRdb.querySelect('query')" @click="open = ! open">Submit</submit>
-					</div>
-					<hr class="hr-trans">
-					<div x-show="open">
-						Content...
-					</div>
-				</div>
-			</div>
-		</form>
-
-		<ul id="comments">
-			<li>Comment #1</li>
-		</ul>
-		<form x-target="comments" method="post" action="/comment">
-			<input aria-label="Comment text" name="text" required />
-			<button>Submit</button>
-		</form>
 
 		<hr class="hr-cmbr-gradient hr-push-down">
 

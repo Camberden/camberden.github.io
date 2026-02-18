@@ -54,7 +54,7 @@
 	padding: 1rem;
 	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
 	border-width: 0.3rem;
-	border-style: double;
+	/* border-style: double; */
 	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
@@ -111,7 +111,7 @@
 }
 
 .listing-highlight {
-	background-color: var(--clr-quaternary);
+	background-color: var(--cmbr-dark-iron);
 }
 
 .listing-none {

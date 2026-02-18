@@ -17,7 +17,7 @@ const sections = [
 	["dashboard", "Personal Dashboard"],
 	// ["workspace", "Coding Workspace"],
 	// ["anki", "Anki & Notes Depository"],
-	// ["depository", "HTMX & Alpine Depot"],
+	["depository", "HTMX & Alpine Depot"],
 	["blog", "Blogging Page"],
 	// ["language", "Language Resource"],
 	// ["accounting", "Accounting Resource"],

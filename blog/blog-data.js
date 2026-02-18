@@ -16,7 +16,11 @@
 <t‰ ‰t>
 <n‰ ‰n>
 <b‰ ‰b>
+$sql = "INSERT INTO `users`(`id`, `name`, `email`, `password`, `admin`) VALUES (\'id\',\'name\',\'email\',\'password\',\'1\');";
+INSERT INTO `blog`(`title`, `location`, `tags`, `content`, `user_id`) VALUES ('Deebee','Pittsboro, NC, USA','database','This is a post about a database','1')
 */
+
+
 
 
 class BlogPost {
@@ -45,7 +49,7 @@ const blogPosts = [];
 
 
 const blogData = [
-	
+
 	`
 	| August 11th, 2024…
 	| Chapel Hill, NC
@@ -1086,7 +1090,7 @@ const blogData = [
 	She should go forth and labor.
 	`
 	,
-		`
+	`
 	| August 9th, 2025…
 	| Myrtle Beach, SC
 	| 0853 HRS
@@ -1214,7 +1218,7 @@ const blogData = [
 	weekend and take a break from obsessing about accounting.
 	`
 	,
-		`
+	`
 	| November 20th, 2025…
 	| Weatherly, PA
 	| 0428 HRS
@@ -1388,7 +1392,7 @@ const blogData = [
 	&emsp; It's funny, because throughout most of my life I struggled to focus on learning and creating.
 	It was never anything enduring, and for the last couple years it seems I've been more able to do so.
 	But for what. For what? Just to reclaim my sunshine? What use is it if all I'll do is absolutely nothing
-	but type on this stupid ass keyboard I didn't nead, burning my eyes out "having fun" doing trivial, 
+	but type on this stupid ass keyboard I didn't need, burning my eyes out "having fun" doing trivial, 
 	meaningless bullshit whose related skills are increasingly made irrelevant by AI as the weeks go by.
 	I am so happy I'm done with all of this. I used to love doing things that would've made my partner happy.
 	But I failed. Instead, I'd succumb to an addiction that'd parallel the one for video games in my teen years.
@@ -1515,7 +1519,7 @@ If there's anything I should internalize from my dormant practice, it's that "no
 	`,
 
 	`
-	| 02/15/2026
+	| February 15th, 2026…
 	| Hillsborough, NC
 	| 2310 HRS
 	| &emsp;
@@ -1530,6 +1534,103 @@ I want it to aid me, much as my dashboard does.
 I will tie in the concept of <b-title>strict-liability</b-title>: the one who caused certain damages is to be held accountable regardless of his intent. 
 I consider myself strictly-liable for my mistakes in the past with Azerai, Luna, and Jake. I am taking action. This is gonna be good, I swear.
 I feel my resolve, a more wholly encompassing resolve, is taking flight again. 
+	`
+	,
+	`
+	| February 18th, 2026…
+	| Raleigh, NC
+	| 0131 HRS
+	| &emsp;
+	So it was my first <b-title>Bar Hopping</b-title> night, but no drinking alcohol.
+	I was galavanting and catching up with my friend from our Japan adventure, and I got him a drink. 
+	We parked at a special area near the Lagana Burger Bar I once tried with the now-ex; it's standard 
+	burger was probably the highlight, and burger-wise, it's worth a revisit despite my apprehension about
+	retracing his steps so shortly after fallout. It's that place and many in Raleigh that I had allowed my grieving being
+	to negatively charge since the eleventh of the month. I acknowledge that that is no healthy way to move forward, especially 
+	in that the prospect for that job change had resurfaced with another callback, and that my other friendships would call me
+	out eastward. 
+	<hr class="hr-cmbr-gradient">&emsp;
+	We meandered down that road and stopped at the Milk Lab as we awaited karaoke to begin at a bar called Teets. We caught up plenty,
+	discussed school and future plans including Japan, and had ourselves some nifty milk teas. I had a crème-brûlée cream-cheese topped
+	"four-seasons" oolong tea bottomed with taro balls. It was not quite sugary and super smooth, and the topper was fantastic! Of course,
+	he had to shoot some shots cuz he's the type - I lent him my pilot frixion luxe pen and gave him a piece of my kippicard on which he 
+	wrote his contact info, and proceeded to attempt passing it off to the girl at the counter. Haha. I'm definitely intrigued by that 
+	outgoing quality being that it's so outside of my confort zone; it's neat to see someone make it so effortless. Honestly, just as how 
+	I messed up recently, it does take further self-work to get myself into a condition that would enable more forthright expression. 
+	So I think! Of course, I could say that I should just bag the inhibitions altogether and be more outgoing regardless. Yet, I do believe
+	that some self-consciousness is warranted, at least in that I need to ground myself in the reality of my qualities as they may be 
+	deemed appealing to random folks. I recall the day in Kyoto where I overcame my inhibition and spoke to Harape the guitarist at the 
+	river. It was such a good memory of mine, and I wouldn't have had it if I had succumbed. In any case, I'm on the right track now.
+	Huff. Anyway, off to the next node in this adventure.
+	<hr class="hr-cmbr-gradient">&emsp;
+	We arrived at the Teets bar where, at first I was unnerved by the sounds and commotion, felt alright.
+	He's quite outgoing, and took a gander at two karaoke sessions that he totally nailed. Dude sounds just like Bieber haha.
+	Initially I felt that I likely wouldn't do karaoke again, but hell... I didn't teach myself to sing some and produce some
+	tracks just to let it all fade and go unshared, right? Well, I will say that during my time there, listening to him sing and 
+	listening to the DJ sing Creep by Radiohead, I determined that I most definitely would like to partake next time! I'm hoping 
+	for a Wednesday some week, at the Tin Roof Bar, not quite Tin Roof Teas. Until then! Anywho, after Teets, we headed out again.
+	The breeze was mild and pleasant, and the temperature was perfect for our light jackets.
+	<hr class="hr-cmbr-gradient">&emsp;
+	Walking down the streets yielding both few pedestrians and vehicles alike, I felt taken aback to our time in Japan when we would
+	walk the streets of Asakusa and Kyoto after dark. The city bore an aura of peace and fulfilled its role in providing comfort for 
+	its explorers. We happened upon the next bar, the Milk Bar (not the Milk Lab!). The atmosphere was cozy and bathed in warm orange lighting.
+	We took our seats and discussed music ideas and the emotional waves that compell them. He's fairly familiar with many people in the area,
+	having worked a long while around this area of the city, and struck conversation with both staff and a bar-goer. I used the moment
+	to plan out potential "lunch" break walking routes were I to get the Raleigh job. After his talks, he invited me to ping pong which I had
+	never done before. Again, I dropped the inhibition; he has a way of getting me out of my shell a ton, I swear. I paddled away, hitting that
+	little ball poorly from time to time, but incrementally improving as we pushed through three sessions. Heck, he won all of them (best of 21),
+	but I like to believe I fared well given it was my first time haha. First session I think I hit 15, second session was 16, and third session
+	we actually went to a tie-breaker dual at 20-20, but I goofed! Heck, it was a good run, and man was it fun and a good little workout too.
+	<hr class="hr-cmbr-gradient">&emsp;
+	Exiting the Milk Bar, we walked and talked, and almost spontaneously he had the compulsion to enter another one a few stretches down called
+	The District. We entered, and I was greeted with dark, cool tones, marble-esque surfaces, and an overall aesthetic that I would describe as 
+	new Art Deco. Matte gold accents, dark blue suade seating. And there was no one there partaking of the bar: only the security guard, the bartender,
+	and a sleeping wanderer appeared within the area. We took a seat and soon he struck conversation with the bartender. Their discussion covered topics
+	on marriage's significance, the expectation of Raleigh as a developing city, and of "Bahama Mamas." Bartenderman claimed genuinely my buddy shouldn't
+	be so forthright about the prospect of marriage so readily, as in youth, there is plenty of time ahead, and one should best use the time to garner
+	experience in navigating relationships that would aid in one's ability to secure the right one for the right time. Funny seeing that just prior my 
+	buddy said, "don't get married in the morning, because you don't know who you'll meet at night!" Seems to contradict, but heck, planning future emotional
+	energy is quite volatile. I've experienced satisfaction, happiness, disatisfaction, and sadness in both singleness and togetherness. 
+	The urban music continued and my buddy got a Bahama Mama. He would have refused given the $18 price, but I had offered to pay, remembering that
+	I must not let money become a barrier to simple, delightful experiences for others important to me. Bartenderman discussed the recent dissatisfaction
+	of some previous residents in the upper levels of the building. He recounted that some people had moved out because of the music and commotion pumped out
+	by the bar. He believes that there has been much pushback against Raleigh's downtown becoming first class in part due to how some may be adverse to 
+	developing further housing within its downtown. The incident of people moving out was just an echo of that sentiment. Yet, it does stand that an 
+	emerging downtown must have plentiful day and night life offerings, and so it must be an expectation that commotion and activity would be present in 
+	such a place; in other words, it's not the place one should choose to live if one is looking for peace and quiet, anyway. I would agree.
+	My buddy finished up the Bahamanian Mother and we departed. 
+	<hr class="hr-cmbr-gradient">&emsp;
+	We walked around back and forth for a little while, passing by Teets again and pondering another karaoke session. Today was not the day for me though,
+	but next time I'm down. I want to take account of some fairly popular songs that would appear in karaoke records that I know I could handle singing.
+	From Japan, I would certainly say "My Way" right away. I could definitely try "Creep" by Radiohead, but I surely would need to practice stablizing
+	that dramatic passage: "she's running out again, she's running out, she run, run, run, run." Heck. I'm also feeling I could do "Clearest Blue" by
+	Chvrches, an important song in the aftermath of my loss, so as long as I sing in one octave below the original. It's still fairly high enough not 
+	to blend with base and diminish the melodic power of the song. 
+	<hr class="hr-cmbr-gradient">&emsp;
+	We determined that we would be heading back towards our vehicles parked near Lagana. We walked and walked, and to my surprise, he made mention of
+	yet another spot that he had frequented back in his Glenwood working days called the Cardinal. We ascended a small hill en route and there it was,
+	the small hotdog bar. I was sufficiently hungry at this time, and it sure seemed he was as well. Immediately noticable on the inside was a
+	massive tank of pepperoncini and man, I started drooling. Sadly though, it was an alcoholic drink! Heck, no worries! I'll just get some later in 
+	the morning, I thought. Ordering the dogs soon to be hot, the sole staff member took my credit card then passed it back since the tape is so 
+	damaged that it cannot be inserted. That's a todo of mine; it's soon to expire anyway. I paid debit this time. The hotdog was simple, moist, 
+	well relished and slicked with beer onions and some hot sauce I'd only assume was Texas Pete. I wolfed it down relatively hastily and earned a 
+	remark of surprise from my buddy right there, heh! We finished our modest meals and headed down the path and approached the building wherein 
+	Lagana was situated. I wouldn't've thought there would be yet another bar he'd take interest in delving, but there was, right beside Lagana a
+	bar named Stella. A lovely aesthetic and quite packed, it was claimed by my buddy as among is favorite holes in the wall. I asked him, whatever
+	could we do in another bar? He suggested water, but hmm... I do believe we've had a comprehensive outing as is and that we should head on back. 
+	Plenty more opportunities to come, I'm certain!
+	<hr class="hr-cmbr-gradient">&emsp;
+	We both acknoweldged that, yes, part of having this outing is to dispell the negative associations in this city with the loss of people special to us.
+	Another part was our resolve in maintaining our friendship, as we had shared something quite unique in Japan. It was he with whom I climbed Mount 
+	Wakakusayama to meet Tashikaka. And that time was the greatest highlight of my life in 2025. I affirmed my commitment not to vanish as I have before;
+	I like to believe that that time is behind me, now. Onward to the future. Onward to achieve my final form, and to make this world my oyster.
+	The time is soon, and I'm enjoying the experience along the way, regardless of just how bumpy this ride may be. 
+	<hr class="hr-cmbr-gradient">&emsp;
+	Closing out this entry now in Pittsboro, I drove back and listened to some of the songs I mentioned previously. 
+	Bittersweetness was of course there; this was the first time since the falling-out that I had been driving back from Raleigh.
+	I arrived and we chatted over discord a while. He shared with me his music production projects to my enjoyment, and also shared
+	a new single from Harry Styles that bore synthwork much to my liking. I think I'll have a listen again now, and close out this 
+	entry. Thank you, friend. You're more than I'd deserve.
 	`
 	,
 
