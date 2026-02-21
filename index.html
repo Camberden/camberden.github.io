@@ -9,12 +9,11 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-	<script type="module" src="./cmbr-db.js"></script>
 	<script src="./htmx.js"></script>
 	<title>Chrispy's Site</title>
 </head>
 
-<body data-theme="dark">
+<body data-theme="legacy">
 
 	<main class="index-grid">
 
@@ -40,14 +39,12 @@
 		<div id="info-div">
 			<div id="page-info">
 				<p>
-					Welcome to the <u>camberden page.</u><br>
-					I'm the author, <i>Chrispy,</i> and I regrettably spent too much time programming between mid-2025 and early-2026.<br>
-					It was akin to an addiction as it contributed to
-					ignorance of other facets of life and to 
-					deteriorating relationships. <mark>I am abandoning this hobby effective today, 
-					February 12, 2026</mark>, and I will only return for occassional blog updates, 
-					so <span class="cmbr-furious">good riddance!</span><br>
-					Alright, here we go.<br>
+					Welcome to the <u class="marker">camberden</u> corner.<br>
+					I'm the author, <i>Chrispy,</i> and this site serves as my personal
+					corner of the internet where I post my music and musings and an assortment
+					of modest software projects. Whatever I create here is meaningful enough 
+					to me to justify its existence. I mustn't forget that one must endeavor to
+					create meaning and substance for others in the real world, away from a screen.
 					All the best,<br>
 					<span class="chrispy"> Chrispy ♪ </span>
 				</p>
@@ -62,18 +59,25 @@
 
 		<div class="sections-links"></div>
 
+		<div id="test" style="display:none;">
+			<p>Nested Link: <a href="dashboard/dashboard.html" data-route="/dashboard/">Dashboard</a></p>
+		</div>
+
 		<footer class="index-footer">
 			<p id="footer-text">Made with ♡ by Chrispy</p>
 			<p>Last updated on <span id="latest-update"></span></p>
 			<p><span id="japanese-date"></span></p>
+		<!-- <div class="ncts-footer-items"> 
+			<img class="ncts-img" src="/images/nc-flag.svg" alt="Made in North Carolina" width=75 height=50>
+			<img class="ncts-img" src="/images/cmbr-sig.svg" alt="Main Site: camberden.com" width=75 height=50>
+			<img class="ncts-img" src="/images/sig.svg" alt="Made by Chrispy Camberden" width=75 height=50>
+        </div> -->
 		</footer>
 
 	</main>
 
 	<script src="cmbr.js"></script>
 	<script type="module" src="action.js"></script>
-	
-
 </body>
 
 </html>

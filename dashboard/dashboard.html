@@ -10,7 +10,7 @@
 	<title>Chrispy's Dashboard</title>
 </head>
 
-<body data-theme="dark">
+<body data-theme="legacy">
 		<div id="sections-dropdown" style="display:none;">
 			<div id="sections-access">Navigation</div>
 			<div class="sections-links"></div>
@@ -73,14 +73,11 @@
 			<div>
 				<ul id="expense-list">
 					<li>PAYCHECK = $&emsp;
-						<input type="text" placeholder=" Input Value" id="starting-balance" name="balance" label="balance"></li>
+						<input type="text" placeholder=" Input Value" id="starting-balance" name="balance" label="balance">
+					</li>
 					<br>
 					<li><span class="marker" id="select-applicable">Select Applicable</span></li>
 					<li><span class="marker" id="deselect-applicable" style="display: none">Deselect Applicable</span></li>
-
-
-				
-					
 				</ul>
 				<ul><!-- TOTAL AFTER DEDUCTIONS -->
 					<li>ENDING BALANCE = $<span id="ending-balance">0</span>
@@ -180,27 +177,32 @@
 			<div id="cpa-progress-bar"></div>
 
 			<ul id="acc-courses">
-				<span class="marker">Core Requirements</span>
-				<li class="acc-core adv-acc-core taken planned-or-completed" value="3">ACC 120 - Prin of Financial Accounting(3)</li>
-				<li class="acc-core adv-acc-core taken planned-or-completed" value="3">ACC 121 - Prin of Managerial Accounting (3)</li>
-				<li class="taking not-taken acc-core adv-acc-core planned-or-completed" value="3">BUS 115 - Business Law I (3)</li>
-				<li class="adv-acc-core taken planned-or-completed" value="4">ACC 220 - Intermediate Accounting I (4)</li>
+				<span class="marker">Advanced Core Requirements</span>
+				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 120 - Prin of Financial Accounting (3)</li>
+				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 121 - Prin of Managerial Accounting (3)</li>
+				<li class="taking acc-core adv-acc-core planned-or-completed" value="3">BUS 115 - Business Law I (3)</li>
+				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 220 - Intermediate Accounting I (4)</li>
 				<li class="not-taken adv-acc-core" value="3">ACC 129 - Individual Income Taxes (3)</li>
-				<li class="adv-acc-core taken planned-or-completed" value="4">ACC 221 - Intermediate Accounting II (4)</li>
+				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 221 - Intermediate Accounting II (4)</li>
 				<li class="not-taken adv-acc-core" value="3">ACC 269 - Auditing & Assurance Services (3)</li>
-				<hr><span class="marker">Optional Diploma Requirements</span>
+				<hr><span class="marker">To Fulfill CPA Requirements</span>
+				<li class="not-taken acc-dpl" value="3">ACC 240 - Gov & Non-Profit Accounting (3)</li>
 				<li class="not-taken acc-dpl acc-soft-app" value="2">ACC 149 - Intro to ACC Spreadsheets (2)</li>
 				<li class="not-taken acc-dpl acc-soft-app" value="2">ACC 150 - Accounting Software Applications (2)</li>
+				<hr><span class="marker">Optional Diploma Requirements</span>
 				<li class="not-taken acc-dpl" value="2">ACC 140 - Payroll Accounting (2)</li>
 				<li class="not-taken acc-dpl" value="3">ACC 130 - Business Income Taxes (3)</li>
 				<li class="not-taken acc-dpl" value="3">ACC 215 - Ethics in Accounting (3)</li>
-				<li class="not-taken acc-dpl" value="3">ACC 240 - Gov & Non-Profit Accounting (3)</li>
 				<li class="not-taken acc-dpl" value="0">ECO 251 - Prin of Microeconomics (3)</li>
 				<li class="not-taken acc-dpl" value="0">CIS 110 - Intro to Computers (3)</li>
+				<hr><span class="marker">Optional AAS Requirements</span>
+				<li class="not-taken acc-aas" value="3">ACC 227 - Practices in Accounting (3)</li>
+				<li class="not-taken acc-aas" value="0">ENG 112 - Writing/Research in the Disc (3)</li>
+				<li class="not-taken acc-aas" value="0">HUM 115 - Critical Thinking (3)</li>
+				<li class="not-taken acc-aas" value="0">BUS 225 - Business Finance (3)</li>
+
 				<hr><span class="marker">Miscellaneous</span>
-				<li class="taken planned-or-completed">BUS 110 - Intro to Business: Japan</li>
-				<li class="not-taken acc-soft-app" value="2">ACC 151 - Accounting Spreadsheet Applications (2)</li>
-				<li class="not-taken acc-soft-app" value="2">ACC 152 - Advanced Software Applications (2)</li>
+				<li class="taken planned-or-completed" value="0">BUS 110 - Intro to Business: Japan</li>
 			</ul>
 		</div>
 

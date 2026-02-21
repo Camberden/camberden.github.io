@@ -62,7 +62,6 @@ function audioEffects() {
 		document.getElementById("backdrop-low").classList.add("animated-gradient"); 
 	}
 }
-
 /**
  * 
  * @description Returns a list based on user input filter
@@ -118,8 +117,6 @@ function populateTrackList(tracksArray) {
 	}
 	document.getElementById("t-0").classList.add("track-list-selected-highlight");
 }
-populateTrackList(loadSortedTracks("finished"));
-
 
 function enableMusicSortButtons() {
 	document.querySelectorAll(".music-sort-button").forEach(button => {
@@ -129,7 +126,6 @@ function enableMusicSortButtons() {
 		}
 	});
 }
-enableMusicSortButtons();
 
 /**
 	 * @param {Track} trackObject
@@ -143,7 +139,7 @@ function loadSelectedTrack(trackObject) {
 	Your browser does not support the audio element. </audio>`;
 
 }
-loadSelectedTrack(selectedTrack);
+
 
 function highlightSelectedTrack() {
 	nowPlaying.classList.add("now-playing-highlight");
@@ -151,7 +147,6 @@ function highlightSelectedTrack() {
 		li.classList.remove("track-list-selected-highlight");
 	}
 }
-highlightSelectedTrack();
 
 // USEFUL FUNCTION !
 function depopulateTrackList() {
@@ -186,4 +181,14 @@ function enableSortByYearAndAlbum() {
 		populateTrackList(loadSortedTracks(sortByAlbum.value));
 	}
 }
-enableSortByYearAndAlbum();
+
+
+(() => {
+
+	populateTrackList(loadSortedTracks("finished"));
+	enableMusicSortButtons();
+	loadSelectedTrack(selectedTrack);
+	highlightSelectedTrack();
+	enableSortByYearAndAlbum();
+
+})();

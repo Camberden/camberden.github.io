@@ -4,6 +4,7 @@
  * @author Camberden (Chrispy | Kippi)  
  */ 
 // htmx.config.selfRequestsOnly = false;
+
 /** 
  * @description Site Map Links
  * @readonly
@@ -15,15 +16,14 @@
 const sections = [
 	["homepage", "Homepage ↺"],
 	["dashboard", "Personal Dashboard"],
-	// ["workspace", "Coding Workspace"],
-	// ["anki", "Anki & Notes Depository"],
+	["workspace", "Coding Workspace"],
 	["depository", "HTMX & Alpine Depot"],
 	["blog", "Blogging Page"],
-	// ["language", "Language Resource"],
 	// ["accounting", "Accounting Resource"],
 	["travel", "Travel Page"],
 	["lifecraft", "Lifecraft Page"],
 	["musings", "Musings Page"],
+	["template", "Template"],
 	// ["fantasy", "Fantasyland"],
 	// ["segregation", "Segregation"],
 	// ["mainframe", "Mainframe"],
@@ -73,20 +73,33 @@ const baseHyperlinks = [
 const CMBRutil = {
 
 	buttonOnMouseEnter: function (button) {
-		button.classList.add("button-highlight");
+		if (!button.classList.contains("button-toggled")) {
+			button.classList.add("button-highlight");
+		} 
+		// else {
+		// 	button.classList.remove("button-highlight");
+		// }
 	},
 	buttonOnMouseLeave: function (button) {
 		button.classList.remove("button-highlight");
-		if (button.classList.contains("button-depressed")) {
-			button.classList.remove("button-depressed");
-		}
+		// if (button.classList.contains("button-depressed")) {
+		// 	button.classList.remove("button-depressed");
+		// }
 	},
 	buttonOnClick: function (button) {
-		button.classList.add("button-highlight");
+		if (button.classList.contains("toggleable")){
+			 if (button.classList.contains("button-toggled")) {
+				button.classList.remove("button-toggled");
+				button.classList.add("button-highlight");
+			} else {
+				button.classList.add("button-toggled");
+			}
+		} else {
 		button.classList.add("button-depressed");
 		setTimeout(() => {
 			button.classList.remove("button-depressed");
-		}, 100);
+		}, 200);
+		}
 	},
 	/**
 	 * @description Handles all page forms, preventing reload upon form submission
@@ -108,35 +121,71 @@ const CMBRutil = {
 			}
 		}
 	},
+	navigatePages: async function (pathname) {
+		window.location.href = pathname + "/" + "?t=" + Date.now();
+	},
+	/**
+	 * @description Placeholder router prior to full page redux and router.js
+	 * @todo router.js routes
+	 */
+	routePages: function () {
+		// When clicking links to nested pages
+		document.querySelectorAll('a[data-route]').forEach(link => {
+		link.addEventListener('click', (e) => {
+			e.preventDefault();
+			const path = link.dataset.route;
+			const file = link.href;
+			
+			// Fetch and load content
+			fetch(file).then(r => r.text()).then(html => {
+			document.body.innerHTML = html;
+			window.history.pushState({path}, '', path);
+			});
+		});
+		});
+
+		// Handle back button
+		window.addEventListener('popstate', (e) => {
+		location.reload(); // or reload specific content
+		});
+	},
 	/**
 	 * 
 	 * @param {HTMLElement} target
-	 * @param {String[][]} linkArray 
+	 * @param {String[][]} linkArray sections
 	 */
 	initSections: function (target, linkArray) {
-
 		target = document.querySelector("." + target);
 		linkArray.forEach(section => {
-			const tag = this.atSiteIndex() ? document.createElement("h3") : document.createElement("span");
-			tag.setAttribute("id", section[0]);
+			const tag = document.createElement("a");
+			if (section[0] !== "homepage") {
+				tag.setAttribute("href", `/${section[0]}/${section[0]}.html`);
+				tag.setAttribute("data-route", `/${section[0]}`);
+			} else {
+				tag.setAttribute("href", `/index.html`);
+				tag.setAttribute("data-route", `/`);
+			}
+			// tag.setAttribute("id", section[0]);
 			const text = document.createTextNode(section[1]);
 			tag.appendChild(text);
 
 			const sectionDiv = document.createElement("div");
 			sectionDiv.setAttribute("class", `${Object.keys({section}).toString()}-title`);
-			sectionDiv.onclick = function () {
-				// FOR INDEX =====>
-				if (document.location.href.includes("index.html") || window.location.pathname === "/") {
-					window.location = section[0] + "/" + section[0] + ".html";
+			
+			// sectionDiv.onclick = function () {
+			// 	if (window.location.pathname === "/") {
+			// 		window.location = section[0] + "/" + section[0] + ".html";
+			// 		// CMBRutil.navigatePages(section[0]);
 
 				
-				// FOR DROPDOWN =====>
-				} else if (section[0] === linkArray[0][0]) {
-					window.location = "../" + "index.html";
-				} else {
-					window.location = "../" + section[0] + "/" + section[0] + ".html";
-				}
-			};
+			// 	// FOR DROPDOWN =====>
+			// 	} else if (section[0] === linkArray[0][0]) {
+			// 		window.location = "../" + "index.html";
+			// 	} else {
+			// 		window.location = "../" + section[0] + "/" + section[0] + ".html";
+			// 	}
+			// };
+
 			sectionDiv.onmouseenter = function () {
 				sectionDiv.classList.contains("section-highlight") ?
 				sectionDiv.classList.add("section-highlight") :
@@ -194,7 +243,7 @@ const CMBRutil = {
 			case "sections" :
 				if (this.atSiteIndex()) {
 					sections.splice(0, 1);
-					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("Express Development Server @ " + document.location.host); setTimeout(()=>{ document.getElementById("administration").setAttribute("style", "display:block;")}, 2000 )})() : console.clear();
+					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("Express Development Server @ " + document.location.host); setTimeout(()=>{ document.getElementById("administration").setAttribute("style", "display:block;")}, 2000 )})() : console.log("|===>");
 					CMBRutil.initSections(`sections-links`, sections);
 					break;
 				} 
@@ -256,18 +305,6 @@ const CMBRutil = {
 		return false;
 	}
 	},
-	/** @param {String} info */
-	displayPageInfo: function (info) {
-		const data = (Array.from(info.split("."))).map(str => str.trim()); 
-		data.pop();
-		data.forEach(s => {
-			const p = document.createElement("h2");
-			const text = document.createTextNode(s + ".");
-			p.appendChild(text);
-			p.appendChild(document.createElement("br"));
-			document.getElementById(`page-info`).appendChild(p);
-		});
-	},
 	/**
 	 * 
 	 * @param {HTMLElement[]} buttons 
@@ -284,7 +321,7 @@ const CMBRutil = {
 			button.onclick = () => {
 				this.buttonOnClick(button);
 				sout(button.id);
-				if (button.id = "sparkle") {
+				if (button.id === "sparkle") {
 					button.textContent = "✨sparkle✨"
 					setTimeout(() => {
 						button.textContent = "sparkle";
@@ -292,7 +329,27 @@ const CMBRutil = {
 				}
 			};
 		});
+	},
+	/** 
+	 * @description Reads current folder .json File as text 
+	 * @param {String} txt Name of .json File 
+	 * @implements {Promise<Object>} 
+	 * 
+	 */
+	connectCMBRjson: function(name) {
+
+		fetch(`${document.location.origin}/${name}.json`).then(response => {
+			return response.text();
+		}).then(stuff => {
+			const loaded = JSON.parse(stuff);
+			console.log(typeof(loaded["urls"]));
+			CMBRdata = (Object.keys(loaded.sections).length);
+			CMBRdata = loaded.sections;
+		}).catch(error => {
+			console.error('Failed to fetch page: ', error)
+		});
 	}
+
 }
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
@@ -303,22 +360,3 @@ const displaySection = () => { document.getElementById("current-section").innerH
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
 let CMBRdata = "<‰=== Empty Data ===‰>";
-
-/** @description Reads .json File as text 
- * @param {String} txt Name of .json File 
- * @implements {Promise<Object>} 
- * 
- */
-function connectCMBRjson(name) {
-
-	fetch(`${document.location.origin}/${name}.json`).then(response => {
-    	return response.text();
-	}).then(stuff => {
-		const loaded = JSON.parse(stuff);
-		console.log(typeof(loaded["urls"]));
-		CMBRdata = (Object.keys(loaded.sections).length);
-		CMBRdata = loaded.sections;
-	}).catch(error => {
-		console.error('Failed to fetch page: ', error)
-	});
-}

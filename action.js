@@ -1,4 +1,3 @@
-import { supabase, CMBRdb } from './cmbr-db.js';
 /** ===> CAMBERDEN.GITHUB.IO UPDATE ===>
  * @description Personal Website:
  * - From 2020 to Present
@@ -7,7 +6,7 @@ import { supabase, CMBRdb } from './cmbr-db.js';
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Wednesday, February 18th, 2026";
+const latestUpdate = "Saturday, February 21st, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -111,20 +110,20 @@ const randomizePhotos = () => {
 	}
 	photoIndex < 1 ? randomizePhotos : infoDivBackground.style.backgroundImage = `url(assets/travel-photos/photo-nc-us-${photoIndex}.jpeg)`;
 }
+const jsonAndDatabaseDemo = async () => {
+	connectCMBRjson("cmbr");
+	const q = await CMBRdb.querySelect();
+	console.log(q[0].title);
+}
 
 (async () => {
 
 	CMBRutil.actionsProvided("sections");
-	// CMBRutil.displayPageInfo(pageInfo);
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos();
-	setInterval(()=> {
+	const slideshow = setInterval(()=> {
 		randomizePhotos();
 	}, 10000);
-	connectCMBRjson("cmbr");
-
-	const q = await CMBRdb.querySelect();
-	console.log(q[0].title);
 	
 })();

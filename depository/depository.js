@@ -37,7 +37,7 @@ const classMapper = (classNames) => {
 /** @local @function Main */
 (async (/*===*| RUN |===*/) => {
 
-	CMBRutil.displayPageInfo(pageInfo);
+	// CMBRutil.displayPageInfo(pageInfo);
 	buttonMapper();
 	classMapper("linkage-box");
 	

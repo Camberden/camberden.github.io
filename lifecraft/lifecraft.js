@@ -2,6 +2,16 @@ const lifecraftField = document.getElementById("lifecraft-field");
 const currentDateField = document.getElementById("current-date-field");
 const modal = document.querySelector(".modal");
 const closeModal = document.getElementsByClassName("close-modal")[0];
+const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
+document.getElementById("days-lived").textContent = ("Days Lived: " + daysSinceBirth);
+document.getElementById("weeks-lived").textContent = ("Weeks Lived: " + (daysSinceBirth / 7).toFixed(2));
+document.getElementById("years-lived").textContent = ("Years Lived: " + (daysSinceBirth / 366).toFixed(2));
+document.getElementById("pslf").textContent = (": " + creditedPSLFMonths + "/" + pslfRequirement);
+currentDateField.innerHTML = currentDate;
+let currentBalance = 10000;
+const originalBalance = currentBalance;
+let currentDeposit = 1000;
+console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
 
 function enableModal() {
 	document.querySelectorAll(".modal-prompt").forEach(prompt => {
@@ -28,15 +38,6 @@ function enableModal() {
 		};
 	});
 }
-enableModal();
-
-/**
- * @description Removes all elements within the main calerdar window
- */
-function clearLifecraftField() {
-	lifecraftField.innerHTML = "";
-	console.log("Lifecraft Field Cleared!");
-}
 /**
  * @description Removes only the prose within modal 
  */
@@ -44,12 +45,16 @@ function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
 	console.log("Modal Text Cleared!");
 }
-
-
+/**
+ * @description Removes all elements within the main calerdar window
+ */
+function clearLifecraftField() {
+	lifecraftField.innerHTML = "";
+	console.log("Lifecraft Field Cleared!");
+}
 function getDaysInMonthOfYear(year, month) {
 	return new Date(year, month, 0).getDate();
 }
-
 /**
  * 
  * @param {Date} present 
@@ -97,20 +102,10 @@ function findDaysSinceBirthday(present, birth) {
 	return totalDaysLived;
 }
 
-const daysSinceBirth = findDaysSinceBirthday(new Date(currentYear, currentMonth, currentDay), currentUser.birthday);
-document.getElementById("days-lived").textContent = ("Days Lived: " + daysSinceBirth);
-document.getElementById("weeks-lived").textContent = ("Weeks Lived: " + (daysSinceBirth / 7).toFixed(2));
-document.getElementById("years-lived").textContent = ("Years Lived: " + (daysSinceBirth / 366).toFixed(2));
-document.getElementById("pslf").textContent = (": " + creditedPSLFMonths + "/" + pslfRequirement);
-
-currentDateField.innerHTML = currentDate;
-
 function getMonthText(val){
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	return months[val - 1];
 }
-console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
-
 /**
  * @param {number} year 
  */
@@ -158,7 +153,6 @@ function addEventsByYear(year) {
 
 	addObligations();
 }
-
 function addObligations(){
 	
 		document.querySelectorAll(".these-months").forEach(thisMonth => {
@@ -174,8 +168,7 @@ function addObligations(){
 		thisMonth.appendChild(span);
 	});
 }
-
-// ----- MAIN GENERATOR ----- //
+// |==========| MAIN FIELD GENERATOR |====================>
 
 function generateCalendar(year) {
 	clearLifecraftField();
@@ -207,8 +200,6 @@ function generateCalendar(year) {
 	}
 	addEventsByYear(year);
 }
-generateCalendar(currentYear);
-
 /**
  * @todo Assign c based on currentYear param
  */
@@ -270,79 +261,6 @@ function displayBiweeklyRotation(year) {
 		indexProper++;
 	});
 } 
-displayBiweeklyRotation(changeYear);
-
-function enableLifecraftButtons() {
-	let toggleSavings = false;
-	let toggleRotation = false;
-	document.querySelectorAll(".lifecraft-button").forEach(button => {
-		
-		button.onclick = function () {
-			CMBRutil.buttonOnClick(button);
-			switch (button.value) {
-				case "next":
-					generateCalendar(++changeYear);
-					displayBiweeklyRotation(changeYear);
-					switchDisplay("aRotation", toggleRotation);
-					switchDisplay("bRotation", toggleRotation);
-					generateSavingsProjector(currentDeposit, true);
-					if (toggleSavings) {
-						switchDisplay("savings-projection", true);
-					}
-					console.log(currentBalance);
-				break;
-				case "previous":
-					generateCalendar(--changeYear);
-					displayBiweeklyRotation(changeYear);
-					switchDisplay("aRotation", toggleRotation);
-					switchDisplay("bRotation", toggleRotation);
-					generateSavingsProjector(currentDeposit, false);
-					if (toggleSavings) {
-						switchDisplay("savings-projection", true);
-					}
-					console.log(currentBalance);
-				break;
-				case "savings":
-					if (toggleSavings) {
-						switchDisplay("savings-projection", false);
-						toggleSavings = false;
-					} else if (!toggleSavings) {
-						switchDisplay("savings-projection", true);
-						toggleSavings = true;
-					}
-					console.log(toggleSavings);
-				break;
-				case "rotation":
-						// displayBiweeklyRotation(changeYear);
-						if (toggleRotation) {
-							switchDisplay("aRotation", false);
-							switchDisplay("bRotation", false);
-							toggleRotation = false;
-						} else if (!toggleRotation) {
-							switchDisplay("aRotation", true);
-							switchDisplay("bRotation", true);
-							toggleRotation = true;
-						};
-					break;
-				default:
-					console.log("Default Switch Triggered");
-				break;
-			}
-		}
-		button.onmouseenter = function () {
-			CMBRutil.buttonOnMouseEnter(button);
-		}
-		button.onmouseleave = function () {
-			CMBRutil.buttonOnMouseLeave(button);
-		}
-	});
-}
-enableLifecraftButtons();
-
-let currentBalance = 10000;
-const originalBalance = currentBalance;
-let currentDeposit = 1000;
-
 /**
  * @param {number} deposit - Money to save
  * @param {boolean} ahead - Whether access next or previous calendar
@@ -390,8 +308,6 @@ function generateSavingsProjector(deposit, ahead) {
 	}
 	switchDisplay("savings-projection", false);
 }
-generateSavingsProjector(currentDeposit, true);
-
 /**
  * 
  * @param {HTMLCollection} elements the HTML Class to target for display triggering
@@ -408,12 +324,80 @@ function switchDisplay(elements, displayed) {
 		});
 	}
 }
-switchDisplay("savings-projection", false);
-switchDisplay("aRotation", false);
-switchDisplay("bRotation", false);
+function enableLifecraftButtons() {
+	let toggleSavings = false;
+	let toggleRotation = false;
+	document.querySelectorAll(".lifecraft-button").forEach(button => {
+		
+		button.onclick = function () {
+			
+			CMBRutil.buttonOnClick(button);
+			switch (button.value) {
+				case "next":
+					generateCalendar(++changeYear);
+					displayBiweeklyRotation(changeYear);
+					switchDisplay("aRotation", toggleRotation);
+					switchDisplay("bRotation", toggleRotation);
+					generateSavingsProjector(currentDeposit, true);
+					if (toggleSavings) {
+						switchDisplay("savings-projection", true);
+					}
+					console.log(currentBalance);
+				break;
+				case "previous":
+					generateCalendar(--changeYear);
+					displayBiweeklyRotation(changeYear);
+					switchDisplay("aRotation", toggleRotation);
+					switchDisplay("bRotation", toggleRotation);
+					generateSavingsProjector(currentDeposit, false);
+					if (toggleSavings) {
+						switchDisplay("savings-projection", true);
+					}
+					console.log(currentBalance);
+				break;
+				case "savings":
+					if (toggleSavings) {
+						switchDisplay("savings-projection", false);
+						toggleSavings = false;
+					} else if (!toggleSavings) {
+						switchDisplay("savings-projection", true);
+						toggleSavings = true;
+					}
+					console.log(toggleSavings);
+				break;
+				case "rotation":
+						// displayBiweeklyRotation(changeYear);
+						if (toggleRotation) {
+							switchDisplay("aRotation", false);
+							switchDisplay("bRotation", false);
+							toggleRotation = false;
+						} else if (!toggleRotation) {
+							switchDisplay("aRotation", true);
+							switchDisplay("bRotation", true);
+							toggleRotation = true;
+						};
+					break;
+				case "dashboard":
+					clearLifecraftField();
+				case "travel":
+					clearLifecraftField();
+				case "documents":
+					clearLifecraftField();
+				default:
+					console.log("Default Switch Triggered");
+				break;
+			}
+		}
+		button.onmouseenter = function () {
+			CMBRutil.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function () {
+			CMBRutil.buttonOnMouseLeave(button);
+		}
+	});
+}
 
-
-// ----- MODAL FUNCTIONS ----- //
+// |==========| DASHBOARD MIGRATION |====================>
 
 /**
  * @todo Complete & consolidate Modal List functions
@@ -505,4 +489,25 @@ function generateModalListHeader(selection) {
 	div.appendChild(ul);
 	document.getElementById("modal-text").appendChild(div);
 }
+
+// ----- MATCH MEDIA ----- //
+
+// (max-device-width: 500px)
+// const width500 = window.matchMedia("(max-device-width: 500px)");
+
+
+(()=> {
+
+	initNav();
+	CMBRutil.handleFormDefault(true);
+	enableModal();
+	generateCalendar(currentYear);
+	displayBiweeklyRotation(changeYear);
+	enableLifecraftButtons();
+	generateSavingsProjector(currentDeposit, true);
+	switchDisplay("savings-projection", false);
+	switchDisplay("aRotation", false);
+	switchDisplay("bRotation", false);
+
+})();
 

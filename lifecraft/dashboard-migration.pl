@@ -1,21 +1,21 @@
-class DashboardExpense {
-	/**
-	 * 
-	 * @param {String} name - Three-letter name of string
-	 * @param {Number} amount - Expense balance
-	 * @param {Boolean} applicable - Expense incurred in current lifestyle?
-	 * @param {Number} automated - Automated payment scheduled for Nth day of month.
-	 * @param {Boolean} custom - Is this a custom input field?
-	 */
-	constructor(name, amount, applicable, automated, custom) {
-		this.name = name;
-		this.amount = amount;
-		this.automated = automated;
-		this.applicable = applicable;
-		this.custom = custom;
-	}
-}
 
+class DashboardExpense {
+/**
+ * 
+ * @param {String} name - Three-letter name of string
+ * @param {Number} amount - Expense balance
+ * @param {Boolean} applicable - Expense incurred in current lifestyle?
+ * @param {Number} automated - Automated payment scheduled for Nth day of month.
+ * @param {Boolean} custom - Is this a custom input field?
+ */
+constructor(name, amount, applicable, automated, custom) {
+	this.name = name;
+	this.amount = amount;
+	this.automated = automated;
+	this.applicable = applicable;
+	this.custom = custom;
+}
+}
 /**
  * @type {Array} dashboardExpenses
  * 
@@ -38,7 +38,6 @@ const dashboardExpenses = [
 	new DashboardExpense("sav", 0.00, false, 0, true),
 	new DashboardExpense("inp", 0.00, false, 0, true),
 ];
-
 // ----- STEP PAY PLAN MODULE ----- //
 
 // 160 Sick Hours == 1 Month Service
@@ -104,8 +103,8 @@ let cpaCredits = 0;
 const cpaCreditsDisplay = document.getElementById("cpa-credits");
 const cpaProgressBar = document.getElementById("cpa-progress-bar");
 
-const modal = document.querySelector(".modal");
-const closeModal = document.getElementsByClassName("close-modal")[0];
+// const modal = document.querySelector(".modal");
+// const closeModal = document.getElementsByClassName("close-modal")[0];
 
 // ---------- EXPENSE MANAGEMENT ---------- //
 
@@ -252,7 +251,7 @@ function previousFiscalYear() {
 		populateSalaryTable();
 		calculateStep();
 }
-function calculateStep(){
+function calculateStep() {
 
 	currentSalary = currentSchedule[custodyLevel - 1][yearsExperience];
 	document.getElementById("current-salary").innerHTML = currentSalary;
@@ -260,7 +259,7 @@ function calculateStep(){
 	let currentHourlyRate = currentSalary / 52 / 40;
 	document.getElementById("hourly-salary").innerHTML = currentHourlyRate.toFixed(2);
 	document.getElementById("gap-pay").innerHTML = (currentHourlyRate * 11).toFixed(2);
-	document.getElementById("overtime-diff").innerHTML = ((currentHourlyRate * 1.5) - currentHourlyRate).toFixed(2) + " ($" + (12.25 * (currentHourlyRate * 1.5)).toFixed(2) + ")";
+	document.getElementById("overtime-diff").innerHTML = ((currentHourlyRate * 1.5) - currentHourlyRate).toFixed(2) + " ($ " + (12.25 * (currentHourlyRate * 1.5)).toFixed(2) + ")";
 	document.getElementById("night-diff").innerHTML = (currentHourlyRate / 10).toFixed(2);
 	document.getElementById("weekend-diff").innerHTML = (currentHourlyRate / 10).toFixed(2);
 	document.getElementById("holiday-diff").innerHTML = ((currentHourlyRate * 1.75) - currentHourlyRate).toFixed(2);
@@ -269,6 +268,7 @@ function calculateStep(){
 	document.getElementById("years-experience").innerHTML = yearsExperience;
 	highlightedSalary = document.getElementById(`co${custodyLevel}-${yearsExperience}`);
 	highlightedSalary.classList.add("salary-highlight");
+
 }
 function highlightSalary(level, step) {
 	document.getElementById(`co${level + 1}-${step}`).classList.add("salary-highlight");
@@ -734,29 +734,200 @@ function dashboardModalAccess() {
 		}
 }
 
-// ----- MATCH MEDIA ----- //
-
-// (max-device-width: 500px)
-// const width500 = window.matchMedia("(max-device-width: 500px)");
-
-(() => {
-
-	initNav();
-	CMBRutil.handleFormDefault(true);
-
-	selectApplicable();
-	generateDashboardExpenses(dashboardExpenses);
-
-	calculateStep();
-	enableStepPayPlanButtons();
-	populateSalaryTable();
-
-	initCpaCredits();
-	displayCpaCredits();
-	enableCpaProjection();
-
-	generatePensionTable();
-	enablePensionButtons();
-	dashboardModalAccess();
-
+(()=>{
+	// selectApplicable();
+	// generateDashboardExpenses(dashboardExpenses);
+	// calculateStep();
+	// enableStepPayPlanButtons();
+	// populateSalaryTable();
+	// initCpaCredits();
+	// displayCpaCredits();
+	// enableCpaProjection();
+	// generatePensionTable();
+	// enablePensionButtons();
+	// dashboardModalAccess();
 })();
+
+<div class="lifecraft-item">
+	<div class="lifecraft-notes-item">
+		<ul id="expense-list">
+			<li>PAYCHECK = $&emsp;
+				<input type="text" placeholder=" Input Value" id="starting-balance" name="balance" label="balance">
+			</li>
+			<br>
+			<li><span class="marker" id="select-applicable">Select Applicable</span></li>
+			<li><span class="marker" id="deselect-applicable" style="display: none">Deselect Applicable</span></li>
+		</ul>
+		<ul><!-- TOTAL AFTER DEDUCTIONS -->
+			<li>ENDING BALANCE = $<span id="ending-balance">0</span>
+			</li>
+			<span class="marker modal-prompt" id="expense-modal">Project Expenses</span>
+		</ul>
+	</div>
+
+	<!-- STEP PAY PLAN -->
+	<div class="lifecraft-notes-item">
+
+		<div class="marker">
+			<h2>Step Pay Plan</h2>
+		</div>
+		<div>
+			<div id="salary-table-div">
+				<table id="salary-table">
+					<tr>
+						<th id="salary-table-corner"></th>
+						<th>Step 0</th>
+						<th>Step 1</th>
+						<th>Step 2</th>
+						<th>Step 3</th>
+						<th>Step 4</th>
+						<th>Step 5</th>
+						<th>Step 6</th>
+					</tr>
+					<tr>
+						<th>COI</th>
+						<td id="co1-0"></td>
+						<td id="co1-1"></td>
+						<td id="co1-2"></td>
+						<td id="co1-3"></td>
+						<td id="co1-4"></td>
+						<td id="co1-5"></td>
+						<td id="co1-6"></td>
+					</tr>
+					<tr>
+						<th>COII</th>
+						<td id="co2-0"></td>
+						<td id="co2-1"></td>
+						<td id="co2-2"></td>
+						<td id="co2-3"></td>
+						<td id="co2-4"></td>
+						<td id="co2-5"></td>
+						<td id="co2-6"></td>
+					</tr>
+					<tr>
+						<th>COIII</th>
+						<td id="co3-0"></td>
+						<td id="co3-1"></td>
+						<td id="co3-2"></td>
+						<td id="co3-3"></td>
+						<td id="co3-4"></td>
+						<td id="co3-5"></td>
+						<td id="co3-6"></td>
+					</tr>
+				</table>
+			</div>
+			<ul id="salary-values">
+				<li>Base-Rate Salary: $<span id="current-salary"></span></li>
+				<hr>
+				<li>Base-Rate Monthly: $<span id="monthly-salary"></span></li>
+				<li>Base-Rate Hourly: $<span id="hourly-salary"></span></li>
+				<li>Base-Rate 11HR Gap: $<span id="gap-pay"></span></li>
+				<hr>
+				<li>Differential Overtime: $<span id="overtime-diff"></span></li>
+				<li>Differential Nightly: $<span id="night-diff"></span></li>
+				<li>Differential Weekend: $<span id="weekend-diff"></span></li>
+				<li>Differential Holiday: $<span id="holiday-diff"></span></li>
+
+			</ul>
+		</div>
+		<div id="input-step-information">
+			<p>CO<span id="custody-level">_</span> 
+				<button class="step-pay-plan-button" value="decrease-custody-level" >Decrease</button>
+				<button class="step-pay-plan-button" value="increase-custody-level">Increase</button></p>
+			<p>Years Experience: <span id="years-experience" label="years-experience">_</span> 
+				<button class="step-pay-plan-button" value="decrease-years-experience">Decrease</button>
+				<button class="step-pay-plan-button" value="increase-years-experience">Increase</button></p>
+			<p>Fiscal Year: <span id="fiscal-year">_</span> 
+				<button class="step-pay-plan-button" value="previous-fiscal-year">Previous</button>
+				<button class="step-pay-plan-button" value="next-fiscal-year">Next</button></p>
+		</div>
+	</div>
+
+	<!-- RE-EDUCATION INFORMATION -->
+	<div class="lifecraft-notes-item">
+
+		<div class="marker">
+			<h2>Re-Education Information</h2>
+		</div>
+		<span class="marker modal-prompt" id="accounting-modal">Additional Information</span>
+		
+		<div class="list-background">CPA Credits: <span id="cpa-credits"></span>/30</div>
+		<div id="cpa-progress-bar"></div>
+
+		<ul id="acc-courses">
+			<span class="marker">Advanced Core Requirements</span>
+			<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 120 - Prin of Financial Accounting (3)</li>
+			<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 121 - Prin of Managerial Accounting (3)</li>
+			<li class="taking acc-core adv-acc-core planned-or-completed" value="3">BUS 115 - Business Law I (3)</li>
+			<li class="taken adv-acc-core planned-or-completed" value="4">ACC 220 - Intermediate Accounting I (4)</li>
+			<li class="not-taken adv-acc-core" value="3">ACC 129 - Individual Income Taxes (3)</li>
+			<li class="taken adv-acc-core planned-or-completed" value="4">ACC 221 - Intermediate Accounting II (4)</li>
+			<li class="not-taken adv-acc-core" value="3">ACC 269 - Auditing & Assurance Services (3)</li>
+			<hr><span class="marker">To Fulfill CPA Requirements</span>
+			<li class="not-taken acc-dpl" value="3">ACC 240 - Gov & Non-Profit Accounting (3)</li>
+			<li class="not-taken acc-dpl acc-soft-app" value="2">ACC 149 - Intro to ACC Spreadsheets (2)</li>
+			<li class="not-taken acc-dpl acc-soft-app" value="2">ACC 150 - Accounting Software Applications (2)</li>
+			<hr><span class="marker">Optional Diploma Requirements</span>
+			<li class="not-taken acc-dpl" value="2">ACC 140 - Payroll Accounting (2)</li>
+			<li class="not-taken acc-dpl" value="3">ACC 130 - Business Income Taxes (3)</li>
+			<li class="not-taken acc-dpl" value="3">ACC 215 - Ethics in Accounting (3)</li>
+			<li class="not-taken acc-dpl" value="0">ECO 251 - Prin of Microeconomics (3)</li>
+			<li class="not-taken acc-dpl" value="0">CIS 110 - Intro to Computers (3)</li>
+			<hr><span class="marker">Optional AAS Requirements</span>
+			<li class="not-taken acc-aas" value="3">ACC 227 - Practices in Accounting (3)</li>
+			<li class="not-taken acc-aas" value="0">ENG 112 - Writing/Research in the Disc (3)</li>
+			<li class="not-taken acc-aas" value="0">HUM 115 - Critical Thinking (3)</li>
+			<li class="not-taken acc-aas" value="0">BUS 225 - Business Finance (3)</li>
+
+			<hr><span class="marker">Miscellaneous</span>
+			<li class="taken planned-or-completed" value="0">BUS 110 - Intro to Business: Japan</li>
+		</ul>
+	</div>
+
+	<!-- PENSION CALCULATOR -->
+	<div class="lifecraft-notes-item">
+		<div class="marker">
+			<h2>Pension Calculator</h2>
+		</div>
+
+		<div id="subgrid-pension-calculator">
+
+			<div id="pension-data">
+				<ul id="pension-inputs">
+					<li class="no-bullet">Age at Retirement: <input type="text" placeholder="50" value="50" id="retirement-age"></li>
+					<li class="no-bullet">Service Years: <input type="text" placeholder="24" value="24" id="service-years"></li>
+					<li class="no-bullet">Year 1: <input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension"
+							id="yr1-for-pension" label="yr1-for-pension"></li>
+					<li class="no-bullet">Year 2: <input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension"
+							id="yr2-for-pension" label="yr2-for-pension"></li>
+					<li class="no-bullet">Year 3: <input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension"
+							id="yr3-for-pension" label="yr3-for-pension"></li>
+					<li class="no-bullet">Year 4: <input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension"
+							id="yr4-for-pension" label="yr4-for-pension"></li>
+					<br>
+					<button class="pension-buttons">Generate Pension</button>
+					<br>
+					<hr>
+					<li class="no-bullet"><span id="pension-notice"></span></li>
+					<hr>
+
+				</ul>
+				<ul id="pension-sums">
+					<p class="pension-reduction-highlight">Gross Pension: $<span id="gross-pension"></span></p>
+					<hr>
+					<p><span id="reduction-percentage"></span></p>
+					<p><span id="reduction-amount"></span></p>
+					<hr>
+					<p><span id="net-pension"></span></p>
+					<p><span id="monthly-pension"></span></p>
+				</ul>
+
+			</div>
+			<div id="pension-table-div">
+				<table id="pension-table"></table>
+			</div>
+		
+		</div>
+
+	</div>
+</div>
