@@ -6,26 +6,29 @@
 	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../dashboard/dashboard.css" media="screen" />
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 	<script src="../cmbr.js"></script>
 	<title>Chrispy's Dashboard</title>
 </head>
 
-<body data-theme="legacy">
-		<div id="sections-dropdown" style="display:none;">
-			<div id="sections-access">Navigation</div>
-			<div class="sections-links"></div>
-		</div>
-		<div id="bookmarks-dropdown">
-			<div id="bookmarks-access">Bookmarks</div>
-			<div class="bookmarks-links"></div>
-		</div>
+<body data-theme="dark">
+	<div id="sections-dropdown" style="display:none;">
+		<div id="sections-access">Navigation</div>
+		<div class="sections-links"></div>
+	</div>
+	<div id="bookmarks-dropdown">
+		<div id="bookmarks-access">Bookmarks</div>
+		<div class="bookmarks-links"></div>
+	</div>
 
 	<div id="header-and-return">
 		<div id="return">
 			<a class="marker" href="../index.html">Return</a>
 		</div>
 		<div id="dashboard-header">
-			<h1 class="marker-green">Dashboard</h1>
+			<h1 class="multipanel-heading">Dashboard</h1>
 		</div>
 		<div id="dashboard-quick-links">
 			<div class="quick-links-grid-item">
@@ -52,7 +55,7 @@
 			<div class="quick-links-grid-item">
 				<a href="https://portal.osc.nc.gov/app" target="_blank">Fiori</a>
 			</div>
-			
+
 			<div class="modal">
 				<div class="modal-field">
 					<span class="close-modal">&times;</span><br>
@@ -66,120 +69,159 @@
 
 		<!--EXPENSE MANAGEMENT -->
 		<div id="dashboard-expense-management" class="dashboard-item">
-			<div class="marker">
-				<h2>Expense Management</h2>
-			</div>
-			
 			<div>
-				<ul id="expense-list">
-					<li>PAYCHECK = $&emsp;
-						<input type="text" placeholder=" Input Value" id="starting-balance" name="balance" label="balance">
-					</li>
-					<br>
-					<li><span class="marker" id="select-applicable">Select Applicable</span></li>
-					<li><span class="marker" id="deselect-applicable" style="display: none">Deselect Applicable</span></li>
-				</ul>
-				<ul><!-- TOTAL AFTER DEDUCTIONS -->
-					<li>ENDING BALANCE = $<span id="ending-balance">0</span>
-					</li>
-					<span class="marker modal-prompt" id="expense-modal">Project Expenses</span>
-				</ul>
+				<h2 class="marker-green">Expense Management</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+
+			<div class="flex-table">
+				<div class="flex-table-header grid-col-1-1">
+					<span>Paycheck</span>
+					<input type="text" placeholder=" Input Balance" id="starting-balance" name="balance" label="balance">
+				</div>
+
+				<hr class="hr-groove-top">
+				<div class="flex-table-row grid-col-1-1">
+					<div class="triggers">
+						<div id= "select-applicable" class="trigger-box expense-button">
+							<h2>Select Applicable</h2>
+							<hr class="hr-trans">
+						</div>
+						<div id= "deselect-applicable" class="trigger-box expense-button" style="display:none;">
+							<h2>Deselect Applicable</h2>
+							<hr class="hr-cmbr-gradient">
+						</div>
+					</div>
+					
+				</div>
+
+				<hr class="hr-push-down">
+				<div id="expense-display" class="flex-table-body">
+				</div>
+
+				<div class="flex-table-row grid-col-1-1-1">
+					<p>Remainder</p>
+					<span id="ending-balance">0</span>
+					<span class="marker modal-prompt" id="expense-modal"> ← Projection</span>
+				</div>
+				
+
+
 			</div>
 		</div>
 
 		<!-- STEP PAY PLAN -->
 		<div id="dashboard-step-pay-plan" class="dashboard-item">
 
-		<div class="marker">
-			<h2>Step Pay Plan</h2>
-		</div>
-		<div>
-			<div id="salary-table-div">
-				<table id="salary-table">
-					<tr>
-						<th id="salary-table-corner"></th>
-						<th>Step 0</th>
-						<th>Step 1</th>
-						<th>Step 2</th>
-						<th>Step 3</th>
-						<th>Step 4</th>
-						<th>Step 5</th>
-						<th>Step 6</th>
-					</tr>
-					<tr>
-						<th>COI</th>
-						<td id="co1-0"></td>
-						<td id="co1-1"></td>
-						<td id="co1-2"></td>
-						<td id="co1-3"></td>
-						<td id="co1-4"></td>
-						<td id="co1-5"></td>
-						<td id="co1-6"></td>
-					</tr>
-					<tr>
-						<th>COII</th>
-						<td id="co2-0"></td>
-						<td id="co2-1"></td>
-						<td id="co2-2"></td>
-						<td id="co2-3"></td>
-						<td id="co2-4"></td>
-						<td id="co2-5"></td>
-						<td id="co2-6"></td>
-					</tr>
-					<tr>
-						<th>COIII</th>
-						<td id="co3-0"></td>
-						<td id="co3-1"></td>
-						<td id="co3-2"></td>
-						<td id="co3-3"></td>
-						<td id="co3-4"></td>
-						<td id="co3-5"></td>
-						<td id="co3-6"></td>
-					</tr>
-				</table>
+			<div>
+				<h2 class="marker-green">Step Pay Plan</h2>
+				<hr class="hr-cmbr-dark-gradient">
 			</div>
-			<ul id="salary-values">
-				<li>Base-Rate Salary: $<span id="current-salary"></span></li>
-				<hr>
-				<li>Base-Rate Monthly: $<span id="monthly-salary"></span></li>
-				<li>Base-Rate Hourly: $<span id="hourly-salary"></span></li>
-				<li>Base-Rate 11HR Gap: $<span id="gap-pay"></span></li>
-				<hr>
-				<li>Differential Overtime: $<span id="overtime-diff"></span></li>
-				<li>Differential Nightly: $<span id="night-diff"></span></li>
-				<li>Differential Weekend: $<span id="weekend-diff"></span></li>
-				<li>Differential Holiday: $<span id="holiday-diff"></span></li>
+			<div>
+				<div id="salary-table-div">
+					<table id="salary-table">
+						<tr>
+							<th id="salary-table-corner"></th>
+							<th>Step 0</th>
+							<th>Step 1</th>
+							<th>Step 2</th>
+							<th>Step 3</th>
+							<th>Step 4</th>
+							<th>Step 5</th>
+							<th>Step 6</th>
+						</tr>
+						<tr>
+							<th>COI</th>
+							<td id="co1-0"></td>
+							<td id="co1-1"></td>
+							<td id="co1-2"></td>
+							<td id="co1-3"></td>
+							<td id="co1-4"></td>
+							<td id="co1-5"></td>
+							<td id="co1-6"></td>
+						</tr>
+						<tr>
+							<th>COII</th>
+							<td id="co2-0"></td>
+							<td id="co2-1"></td>
+							<td id="co2-2"></td>
+							<td id="co2-3"></td>
+							<td id="co2-4"></td>
+							<td id="co2-5"></td>
+							<td id="co2-6"></td>
+						</tr>
+						<tr>
+							<th>COIII</th>
+							<td id="co3-0"></td>
+							<td id="co3-1"></td>
+							<td id="co3-2"></td>
+							<td id="co3-3"></td>
+							<td id="co3-4"></td>
+							<td id="co3-5"></td>
+							<td id="co3-6"></td>
+						</tr>
+					</table>
+				</div>
+				<ul id="salary-values" class="grid-col-1-1">
+					<li>Base-Rate Salary</li> <span id="current-salary"></span>
+					<li>Base-Rate Monthly:</li> <span id="monthly-salary"></span>
+					<li>Base-Rate Hourly:</li> <span id="hourly-salary"></span>
+					<li>Base-Rate 11HR Gap:</li> <span id="gap-pay"></span>
+					<li>Differential Overtime:</li> <span id="overtime-diff"></span>
+					<li>Differential Nightly:</li><span id="night-diff"></span>
+					<li>Differential Weekend:</li><span id="weekend-diff"></span>
+					<li>Differential Holiday:</li><span id="holiday-diff"></span>
 
-			</ul>
-		</div>
-		<div id="input-step-information">
-			<p>CO<span id="custody-level">_</span> 
-				<button class="step-pay-plan-button" value="decrease-custody-level" >Decrease</button>
-				<button class="step-pay-plan-button" value="increase-custody-level">Increase</button></p>
-			<p>Years Experience: <span id="years-experience" label="years-experience">_</span> 
-				<button class="step-pay-plan-button" value="decrease-years-experience">Decrease</button>
-				<button class="step-pay-plan-button" value="increase-years-experience">Increase</button></p>
-			<p>Fiscal Year: <span id="fiscal-year">_</span> 
-				<button class="step-pay-plan-button" value="previous-fiscal-year">Previous</button>
-				<button class="step-pay-plan-button" value="next-fiscal-year">Next</button></p>
-		</div>
+				</ul>
+			</div>
+			<div class="flex-table">
+
+				<hr class="hr-cmbr-dark-gradient">
+				<div class="grid-col-3-1-1">
+					<div>
+						<p>CO<span id="custody-level">_</span></p>
+					</div>
+					<button class="step-pay-plan-button" value="decrease-custody-level">Decrease</button>
+					<button class="step-pay-plan-button" value="increase-custody-level">Increase</button>
+				</div>
+
+				<hr class="hr-cmbr-dark-gradient">
+				<div class="grid-col-3-1-1">
+					<div>
+						<p>Years Experience: <span id="years-experience" label="years-experience">_</span></p>
+					</div>
+					<button class="step-pay-plan-button" value="decrease-years-experience">Decrease</button>
+					<button class="step-pay-plan-button" value="increase-years-experience">Increase</button>
+				</div>
+				<hr class="hr-cmbr-dark-gradient">
+				<div class="grid-col-3-1-1">
+					<div>
+						<p>Fiscal Year: <span id="fiscal-year">_</span></p>
+					</div>
+					<button class="step-pay-plan-button" value="previous-fiscal-year">Previous</button>
+					<button class="step-pay-plan-button" value="next-fiscal-year">Next</button>
+				</div>
+			</div>
 		</div>
 
 		<!-- RE-EDUCATION INFORMATION -->
 		<div id="dashboard-reeducation-information" class="dashboard-item">
 
-			<div class="marker">
-				<h2>Re-Education Information</h2>
+			<div>
+				<h2 class="marker-green">Re-Education Information</h2>
+				<hr class="hr-cmbr-dark-gradient">
 			</div>
 			<span class="marker modal-prompt" id="accounting-modal">Additional Information</span>
-			
+
 			<div class="list-background">CPA Credits: <span id="cpa-credits"></span>/30</div>
 			<div id="cpa-progress-bar"></div>
 
 			<ul id="acc-courses">
 				<span class="marker">Advanced Core Requirements</span>
-				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 120 - Prin of Financial Accounting (3)</li>
-				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 121 - Prin of Managerial Accounting (3)</li>
+				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 120 - Prin of Financial
+					Accounting (3)</li>
+				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 121 - Prin of Managerial
+					Accounting (3)</li>
 				<li class="taking acc-core adv-acc-core planned-or-completed" value="3">BUS 115 - Business Law I (3)</li>
 				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 220 - Intermediate Accounting I (4)</li>
 				<li class="not-taken adv-acc-core" value="3">ACC 129 - Individual Income Taxes (3)</li>
@@ -216,16 +258,18 @@
 
 				<div id="pension-data">
 					<ul id="pension-inputs">
-						<li class="no-bullet">Age at Retirement: <input type="text" placeholder="50" value="50" id="retirement-age"></li>
-						<li class="no-bullet">Service Years: <input type="text" placeholder="24" value="24" id="service-years"></li>
-						<li class="no-bullet">Year 1: <input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension"
-								id="yr1-for-pension" label="yr1-for-pension"></li>
-						<li class="no-bullet">Year 2: <input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension"
-								id="yr2-for-pension" label="yr2-for-pension"></li>
-						<li class="no-bullet">Year 3: <input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension"
-								id="yr3-for-pension" label="yr3-for-pension"></li>
-						<li class="no-bullet">Year 4: <input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension"
-								id="yr4-for-pension" label="yr4-for-pension"></li>
+						<li class="no-bullet">Age at Retirement: <input type="text" placeholder="50" value="50"
+								id="retirement-age"></li>
+						<li class="no-bullet">Service Years: <input type="text" placeholder="24" value="24"
+								id="service-years"></li>
+						<li class="no-bullet">Year 1: <input type="text" placeholder="74692.84" value="74692.84"
+								class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension"></li>
+						<li class="no-bullet">Year 2: <input type="text" placeholder="71415.51" value="71415.51"
+								class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension"></li>
+						<li class="no-bullet">Year 3: <input type="text" placeholder="74732.21" value="74732.21"
+								class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension"></li>
+						<li class="no-bullet">Year 4: <input type="text" placeholder="75482.28" value="75482.28"
+								class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension"></li>
 						<br>
 						<button class="pension-buttons">Generate Pension</button>
 						<br>
@@ -248,14 +292,14 @@
 				<div id="pension-table-div">
 					<table id="pension-table"></table>
 				</div>
-			
+
 			</div>
 
 		</div>
 
 	</div> <!-- END DASHBOARD GRID -->
 
-<script src="dashboard.js"></script>
+	<script src="dashboard.js"></script>
 </body>
 
 </html>

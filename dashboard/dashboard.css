@@ -1,5 +1,4 @@
 /* ----- PAGE SPECIFIC ----- */
-
 ul {
 	text-align: left;
 }
@@ -10,7 +9,7 @@ input[type=text] {
 	font-family: Permanent Marker, serif;
 	font-size: 1rem;
 	border: none;
-	width: 8rem;
+	width: fit-content;
 }
 
 input[type=text]:focus {
@@ -49,8 +48,7 @@ input[type=text]:focus {
 .dashboard-grid {
 	display: flex;
 	padding: 2rem;
-	flex-direction: row;
-	flex-wrap: wrap;
+	flex-flow: row wrap;
 	align-items: auto;
 	/* border: 0.1rem solid var(--clr-tertiary); */
 	border-radius: 1rem;
@@ -61,16 +59,25 @@ input[type=text]:focus {
 	flex: 1; 
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	align-items: left;
 	justify-content: baseline;
+	text-align: left;
 	min-width: 20rem;
 	min-height: 20rem;
-	padding: 2rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	background: rgba(144, 229, 238, 0.1);
+	padding: 0.5rem;
+	/* background: var(--cmbr-curtain-plum); */
+	border: 0.2rem solid var(--cmbr-dark-ash);
+	box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey);
+}
+
+.dashboard-grid > .dashboard-item {
+	backdrop-filter: blur(0.2rem) saturate(90%);
+    -webkit-backdrop-filter: blur(0.2rem) saturate(90%);
+    background-color: rgba(17, 25, 40, 0.75);
+	background-image: transparent;
+	background-size: cover;
+	/* text-shadow: #f59b60; */
+    border: 1rem solid transparent;
 }
 
 #dashboard-step-pay-plan {
@@ -103,10 +110,6 @@ input[type=text]:focus {
 	list-style-type: none;
 }
 
-#expense-list > li {
-	list-style-type: none;
-}
-
 .automated-payment {
 	text-align: right;
 	font-family: 'Courier New', Courier, monospace;
@@ -124,16 +127,10 @@ input[type=text]:focus {
 }
 
 .inactive-payment {
+	text-align: right;
 	color: grey;
 	opacity: 0.3;
 	user-select: none;
-}
-
-#select-applicable:hover {
-	cursor: pointer;
-	color: var(--clr-primary);
-	position: inherit;
-	text-shadow: -2.5px -1px 0px #ff00ff;
 }
 
 .paycard-grid {

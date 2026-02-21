@@ -109,43 +109,54 @@ const closeModal = document.getElementsByClassName("close-modal")[0];
 
 // ---------- EXPENSE MANAGEMENT ---------- //
 
-function selectApplicable() {
-	document.getElementById("select-applicable").onclick = function() {
-		dashboardExpenses.forEach(expense => {
-			if (expense.applicable) {
-				document.getElementById(expense.name + "-check").checked = true;
+function enableExpenseButtons() {
+	document.querySelectorAll(".expense-button").forEach(button => {
+	
+		button.onclick = function() {
+
+		switch (button.id) {
+			case "select-applicable":
+				dashboardExpenses.forEach(expense => {
+				if (expense.applicable) {
+					document.getElementById(expense.name + "-check").checked = true;
+				}
+				document.getElementById("select-applicable").style.display = "none";
+				document.getElementById("deselect-applicable").style.display = "block";
+				calculateNewBalance();
+			});
+			break;
+			case "deselect-applicable":
+				dashboardExpenses.forEach(expense => {
+					if (expense.applicable) {
+						document.getElementById(expense.name + "-check").checked = false;
+					}
+						document.getElementById("deselect-applicable").style.display = "none";
+						document.getElementById("select-applicable").style.display = "block";
+						calculateNewBalance();
+					});
+				break;
+			default:
+				console.log("Defaulted enableExpenseButtons()");
+			break;
 			}
-			document.getElementById("select-applicable").style.display = "none";
-			document.getElementById("deselect-applicable").style.display = "block";
-			calculateNewBalance();
-		});
-	}
-		document.getElementById("deselect-applicable").onclick = function() {
-		dashboardExpenses.forEach(expense => {
-			if (expense.applicable) {
-				document.getElementById(expense.name + "-check").checked = false;
-			}
-			document.getElementById("deselect-applicable").style.display = "none";
-			document.getElementById("select-applicable").style.display = "block";
-			calculateNewBalance();
-		});
-	}
+		}
+	});
 }
+
 /**
  * 
  * @param {DashboardExpense[]} expenses 
  */
 function generateDashboardExpenses(expenses) {
-	const expenseList = document.getElementById("expense-list");
+	const expenseDisplay = document.getElementById("expense-display");
 
 	expenses.forEach(expense => {
-		const li = document.createElement("li");
+		const expenseEntry = document.createElement("div");
+		expenseEntry.setAttribute("class", "flex-table-row grid-col-1-1-1");
 		const inputCheckbox = document.createElement("input");
-		const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()} = $ `);
+		const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()}`);
 		inputCheckbox.setAttribute("type", "checkbox");
 		inputCheckbox.setAttribute("id", `${expense.name}-check`);
-		//inbuilt func
-		// inputCheckbox.addEventListener("onclick", calculateNewBalance());
 
 		if (!expense.custom) {
 			const spanApplicable = document.createElement("span");
@@ -167,17 +178,19 @@ function generateDashboardExpenses(expenses) {
 				spanAutomation.appendChild(textAutomation);
 			}  
 			if (expense.automated < 0) {
-				li.setAttribute("class", "inactive-payment");
-				spanAutomation.setAttribute("class", "non-automated-payment");
+				// spanAutomation.setAttribute("class", "inactive-payment");
+				spanAutomation.setAttribute("class", "non-automated-payment inactive-payment");
 				// TODO: Make default condition the non-automated-payment.
-				const textInactive = document.createTextNode(` Inactive `);
+				const textInactive = document.createTextNode("Inactive");
 				spanAutomation.appendChild(textInactive);
+				expenseEntry.style.opacity = 0.3;
 			}
-
-			li.appendChild(inputCheckbox);
-			li.appendChild(textCheckbox);
-			li.appendChild(spanApplicable);
-			li.appendChild(spanAutomation);
+			const checkboxWithName = document.createElement("div");
+			checkboxWithName.appendChild(inputCheckbox);
+			checkboxWithName.appendChild(textCheckbox);
+			expenseEntry.appendChild(checkboxWithName);
+			expenseEntry.appendChild(spanApplicable);
+			expenseEntry.appendChild(spanAutomation);
 		
 		}
 	
@@ -187,12 +200,14 @@ function generateDashboardExpenses(expenses) {
 			inputCustom.setAttribute("placeholder", ` Input Value`);
 			inputCustom.setAttribute("id", `${expense.name}-cost`);
 
-			li.appendChild(inputCheckbox);
-			li.appendChild(textCheckbox);
-			li.appendChild(inputCustom);
+			const checkboxWithName = document.createElement("div");
+			checkboxWithName.appendChild(inputCheckbox);
+			checkboxWithName.appendChild(textCheckbox);
+			expenseEntry.appendChild(checkboxWithName);
+			expenseEntry.appendChild(document.createTextNode("→"));
+			expenseEntry.appendChild(inputCustom);
 		}
-
-		expenseList.appendChild(li);
+		expenseDisplay.appendChild(expenseEntry);
 	});
 
 	document.getElementById("starting-balance").onkeyup = function () {
@@ -216,23 +231,45 @@ function calculateNewBalance() {
 	for (let expense of dashboardExpenses) {
 		let checkbox = document.getElementById(expense.name + "-check");
 		let costbox = document.getElementById(expense.name + "-cost");
-		// console.log("Is this one checked? " + document.getElementById(expense.name + "-check").checked);
 
 		if(checkbox.checked && !expense.custom) {
 			sum += parseFloat(costbox.textContent);
-			console.log("Checked Box Cost Value: " + costbox.textContent);
-			console.log(sum);
 		}
 		if (checkbox.checked && expense.custom) {
 			sum += parseFloat(costbox.value);
-			console.log("Checked Box Cost Value: " + costbox.value);
-			console.log(sum);
 		}
 		const endingBalance = parseFloat(startingBalance - sum).toFixed(2);
 		document.getElementById("ending-balance").textContent = endingBalance;
 
 		}
 }
+
+// /**
+//  * 
+//  * @param {Boolean} enabled 
+//  */
+// function selectApplicable(enabled) {
+
+// 	if (!enabled) {
+// 		dashboardExpenses.forEach(expense => {
+// 			if (expense.applicable) {
+// 				document.getElementById(expense.name + "-check").checked = true;
+// 			}
+// 			document.getElementById("select-applicable").style.display = "none";
+// 			document.getElementById("deselect-applicable").style.display = "block";
+// 			calculateNewBalance();
+// 			});
+// 	} else {
+// 		dashboardExpenses.forEach(expense => {
+// 			if (expense.applicable) {
+// 				document.getElementById(expense.name + "-check").checked = false;
+// 			}
+// 			document.getElementById("deselect-applicable").style.display = "none";
+// 			document.getElementById("select-applicable").style.display = "block";
+// 			calculateNewBalance();
+// 			});
+// 	}
+// }
 
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
@@ -744,13 +781,13 @@ function dashboardModalAccess() {
 	initNav();
 	CMBRutil.handleFormDefault(true);
 
-	selectApplicable();
 	generateDashboardExpenses(dashboardExpenses);
+	enableExpenseButtons();
 
 	calculateStep();
-	enableStepPayPlanButtons();
 	populateSalaryTable();
-
+	enableStepPayPlanButtons();
+	
 	initCpaCredits();
 	displayCpaCredits();
 	enableCpaProjection();

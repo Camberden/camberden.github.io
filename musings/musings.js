@@ -1,15 +1,9 @@
-window.onload = () => console.log("Running!");
-
 function focusWriting() {
 	const foc = document.getElementById("sampleTypingField").autofocus = true;
 	document.getElementById("sampleTypingField").innerHTML = foc;
 	console.log("Focus Writing is triggering!");
 }
-focusWriting();
-
 // ---------- POEM SECTION ---------- //
-
-
 /* To associate with an audiofile, use a Map */
 const poems = [
 	"My soul, it comes alive, for just this night. I realize it\'s only now. I do surmise a lack of meaning to come from what I do - the day by day, the black and grey - there\'s just so little sense of meaning to me.",
@@ -28,7 +22,6 @@ let selectedpoem = poems[poemnumber];
 function getPoemNumber() {
 	document.getElementById("poemnum").innerHTML = "Passage #" + (poemnumber + 1);
 }
-getPoemNumber();
 
 /* SETS THE POEM INTO THE FORTYPING ID ELEMENT */
 let englishSutraLine = 0;
@@ -160,8 +153,6 @@ function enablePoemButtons() {
 		}
 	});
 }
-enablePoemButtons();
-
 
 // ---------- SUTRA UTILITY ---------- //
 
@@ -494,7 +485,7 @@ function initSutraList(){
 		sutraOptions.appendChild(option);
 	}
 }
-initSutraList();
+
 
 /**
  * @param {Sutra} sutra
@@ -508,7 +499,6 @@ function initSutraLines(sutra) {
 	englishDisplay.innerHTML = sutra.englishLines[sutraLineLoaded];
 	sutraLinesLength = sutra.englishLines.length;
 }
-initSutraLines(sutras[1]);
 
 /**
  * @param {Sutra} sutra
@@ -541,7 +531,6 @@ function loadLineNumbers(){
 		sutraLineOptions.appendChild(option);
 	}
 }
-loadLineNumbers();
 
 function loadDifferentLine(){
 		sutraLineLoaded = sutraLineOptions.value;
@@ -592,10 +581,8 @@ function cyclePanelCollections(array, milliseconds) {
 	setInterval(function() {cyclePanelItems(array)}, milliseconds);
 	console.log(millisecondString.length - 3);
 }
-cyclePanelCollections(robeChantKanji, 3000);
 
 // ----- SUTRA TYPING ----- //
-
 
 function enableSutraButtons(){
 	document.querySelectorAll(".button-sutras").forEach(button => {
@@ -616,7 +603,6 @@ function enableSutraButtons(){
 		}
 	});
 }
-enableSutraButtons();
 
 // Nice CSS Reference!
 function sutraType() {
@@ -635,3 +621,16 @@ function sutraType() {
 	}
 
 }
+
+(() => {
+
+	focusWriting();
+	getPoemNumber();
+	enablePoemButtons();
+	initSutraList();
+	initSutraLines(sutras[1]);
+	loadLineNumbers();
+	cyclePanelCollections(robeChantKanji, 3000);
+	enableSutraButtons();
+
+})();
