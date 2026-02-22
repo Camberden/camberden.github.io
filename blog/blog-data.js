@@ -20,9 +20,6 @@ $sql = "INSERT INTO `users`(`id`, `name`, `email`, `password`, `admin`) VALUES (
 INSERT INTO `blog`(`title`, `location`, `tags`, `content`, `user_id`) VALUES ('Deebee','Pittsboro, NC, USA','database','This is a post about a database','1')
 */
 
-
-
-
 class BlogPost {
 	/**
 	 * @since November 12th, 2025
@@ -32,15 +29,32 @@ class BlogPost {
 	 * @param {String} time A time as String; @TODO Convert to Number
 	 * @param {String} title 
 	 * @param {Number} number
+	 * @param {Array} tags
+	 * @param {Array} photos
 	 */
-	constructor(date, location, time, title, number) {
+	constructor(date, location, time, title, number, tags = null, photos = null) {
 		this.date = date;
 		this.location = location;
 		this.time = time;
 		this.title = title;
 		this.number = number;
+		this.tags = tags;
+		this.photos = photos;
 	}
 }
+
+const coordinates = {
+	"Chapel Hill, NC": [],
+	"Hillsborough, NC": [],
+	"Raleigh, NC": [],
+	"Marshall, NC": [],
+	"Nesquehoning, PA": [],
+	"Weatherly, PA": [],
+	"Lebanon, PA": [],
+	"Tokyo, Japan": [],
+	"Nagoya, Japan": []
+}
+	
 
 /**
  * @type BlogPost[]

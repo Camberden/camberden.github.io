@@ -15,7 +15,6 @@ class DashboardExpense {
 		this.custom = custom;
 	}
 }
-
 /**
  * @type {Array} dashboardExpenses
  * 
@@ -38,11 +37,9 @@ const dashboardExpenses = [
 	new DashboardExpense("sav", 0.00, false, 0, true),
 	new DashboardExpense("inp", 0.00, false, 0, true),
 ];
-
 // ----- STEP PAY PLAN MODULE ----- //
 
 // 160 Sick Hours == 1 Month Service
-
 const salarySchedule2020 = [
 	["33130", "33130", "33130", "33130", "33130", "33130", "33130"], // C/OI
 	["34220", "34220", "34220", "34220", "34220", "34220", "34220"], // C/OII
@@ -101,8 +98,13 @@ const getMonthID = (date = new Date()) => date.getUTCFullYear() * 12 + date.getU
 const getYearID = (date = new Date()) => date.getUTCFullYear();
 
 let cpaCredits = 0;
+let dplCredits = cpaCredits;
+let aasCredits = dplCredits;
 const cpaCreditsDisplay = document.getElementById("cpa-credits");
 const cpaProgressBar = document.getElementById("cpa-progress-bar");
+const dplProgressBar = document.getElementById("dpl-progress-bar");
+const aasProgressBar = document.getElementById("aas-progress-bar");
+
 
 const modal = document.querySelector(".modal");
 const closeModal = document.getElementsByClassName("close-modal")[0];
@@ -121,7 +123,7 @@ function enableExpenseButtons() {
 					document.getElementById(expense.name + "-check").checked = true;
 				}
 				document.getElementById("select-applicable").style.display = "none";
-				document.getElementById("deselect-applicable").style.display = "block";
+				document.getElementById("deselect-applicable").style.display = "inline-block";
 				calculateNewBalance();
 			});
 			break;
@@ -131,7 +133,7 @@ function enableExpenseButtons() {
 						document.getElementById(expense.name + "-check").checked = false;
 					}
 						document.getElementById("deselect-applicable").style.display = "none";
-						document.getElementById("select-applicable").style.display = "block";
+						document.getElementById("select-applicable").style.display = "inline-block";
 						calculateNewBalance();
 					});
 				break;
@@ -142,7 +144,6 @@ function enableExpenseButtons() {
 		}
 	});
 }
-
 /**
  * 
  * @param {DashboardExpense[]} expenses 
@@ -239,37 +240,15 @@ function calculateNewBalance() {
 			sum += parseFloat(costbox.value);
 		}
 		const endingBalance = parseFloat(startingBalance - sum).toFixed(2);
+
 		document.getElementById("ending-balance").textContent = endingBalance;
-
+		document.getElementById("starting-balance").value;
 		}
+	document.getElementById("paycheck-mirror").innerHTML = startingBalance;
+	document.getElementById("expenses-mirror").innerHTML = sum.toFixed(2);
+	document.getElementById("remainder-mirror").innerHTML = (startingBalance - sum).toFixed(2);
+
 }
-
-// /**
-//  * 
-//  * @param {Boolean} enabled 
-//  */
-// function selectApplicable(enabled) {
-
-// 	if (!enabled) {
-// 		dashboardExpenses.forEach(expense => {
-// 			if (expense.applicable) {
-// 				document.getElementById(expense.name + "-check").checked = true;
-// 			}
-// 			document.getElementById("select-applicable").style.display = "none";
-// 			document.getElementById("deselect-applicable").style.display = "block";
-// 			calculateNewBalance();
-// 			});
-// 	} else {
-// 		dashboardExpenses.forEach(expense => {
-// 			if (expense.applicable) {
-// 				document.getElementById(expense.name + "-check").checked = false;
-// 			}
-// 			document.getElementById("deselect-applicable").style.display = "none";
-// 			document.getElementById("select-applicable").style.display = "block";
-// 			calculateNewBalance();
-// 			});
-// 	}
-// }
 
 // ----- PSLF DATA TABLES AND PROGRESS BAR ----- //
 
@@ -396,34 +375,67 @@ function populateSalaryTable(){
 function initCpaCredits() {
 	document.querySelectorAll(".taken").forEach(course => {
 		cpaCredits += course.value;
+		dplCredits += course.value;
+		aasCredits += course.value;
 	});
 	document.querySelectorAll(".taking").forEach(course => {
 		cpaCredits += course.value;
+		dplCredits += course.value;
+		aasCredits += course.value;
+		if (!course.value && course.classList.contains("acc-dpl")) {
+			dplCredits += 3;
+		}
+		if (!course.value && course.classList.contains("acc-aas")) {
+			aasCredits += 3;
+		}
 	});
 }
 function displayCpaCredits() {
 	cpaCreditsDisplay.innerHTML = cpaCredits;
-	cpaCompletionPercentage = cpaCredits / 30 * 100;
-	if (cpaCredits >= 30) {
-		// console.log("Where's my bar???")
-		cpaProgressBar.innerHTML = `<span style="width:100%;"></span>`
-	} else {
-		// console.log("Stop hiding my bar!!!")
-		cpaProgressBar.innerHTML = `<span style="width:${cpaCompletionPercentage}%;"></span>`;
-	}
+	let cpaCompletionPercentage = cpaCredits / 30 * 100;
+	let dplCompletionPercentage = dplCredits / 44 * 100;
+	let aasCompletionPercentage = aasCredits / 56 * 100;
+
+	cpaCredits >= 30 ? cpaCompletionPercentage = 100 : cpaCompletionPercentage;
+	dplCredits >= 44 ? dplCompletionPercentage = 100 : dplCompletionPercentage;
+	aasCredits >= 56 ? aasCompletionPercentage = 100 : aasCompletionPercentage;
+
+	cpaProgressBar.innerHTML = `<span style="width:${cpaCompletionPercentage}%;"></span>`;
+	dplProgressBar.innerHTML = `<span style="width:${dplCompletionPercentage}%;"></span>`;
+	aasProgressBar.innerHTML = `<span style="width:${aasCompletionPercentage}%;"></span>`;
+
 }
 function enableCpaProjection(){
 	document.querySelectorAll(".not-taken").forEach(course => {
 		let clicked = false;
 		course.onclick = function() {
+
 			if (!clicked) {
-			console.log(course.value);
+
+				if (!course.value && course.classList.contains("acc-dpl")) {
+					dplCredits += 3;
+					aasCredits += 3;
+				}
+				if (!course.value && course.classList.contains("acc-aas")) {
+					aasCredits += 3;
+				}
 			clicked = true;
 			cpaCredits += course.value;
+			dplCredits += course.value;
+			aasCredits += course.value;
 			course.classList.add("planned-or-completed");
 			} else {
 				cpaCredits -= course.value;
+				dplCredits -= course.value;
+				aasCredits -= course.value;
 				clicked = false;
+				if (!course.value && course.classList.contains("acc-dpl")) {
+					dplCredits -= 3;
+					aasCredits -=3;
+				}
+				if (!course.value && course.classList.contains("acc-aas")) {
+					aasCredits -= 3;
+				}
 				course.classList.remove("planned-or-completed");
 			}
 			displayCpaCredits();
@@ -436,61 +448,44 @@ function enableCpaProjection(){
 // TODO: add monthly increments, perhaps.
 
 function generatePensionTable() {
-	const table = document.getElementById("pension-table");
-	while (table.lastChild) {
-		table.removeChild(table.lastChild);
-	}
+	const tbody = document.getElementById("pension-table-body");
 	let retirementAge = 60;
 	let retirementService = 30;
 	const reductionIncrements = [95, 90, 85, 80, 75, 70, 65, 60, 55, 52, 50];
 	let reductionLow = 3; // 59 years
 
-	for (let i = 0, j = 0; i < 11; i++) {
-	
-		let tr = document.createElement("tr");
-		tr.setAttribute("id", `pension-row-${retirementAge}`);
-		let th = document.createElement("th");
-		let text;
-		if (i === 0 && j === 0) {
-			th.setAttribute("id", `pension-age-${retirementAge}-service-${retirementService}`);
-			text = document.createTextNode(retirementAge + "/" + retirementService + `\n100%`);
-		} else {
-			th.setAttribute("id", `pension-age-${retirementAge}`);
-			text = document.createTextNode(retirementAge);
-		}
+	for (let i = 0, j = 0; i < 10; i++) {
+		
+		let tr = document.createElement("div");
+		tr.setAttribute("class", "flex-table-row grid-col-11x-1");
+		tr.setAttribute("id", `pension-row-${--retirementAge}`);
+		let th = document.createElement("div");
+
+		th.setAttribute("id", `pension-age-${retirementAge}`);
+		const text = document.createTextNode(retirementAge);
+
 		th.appendChild(text);
 		tr.appendChild(th);
 
-		if (i === 0) {
-			while (j < 10) {
-				let th = document.createElement("th");
-				th.setAttribute("id", `pension-service-${--retirementService}`);
-				let text = document.createTextNode(retirementService);
-				th.appendChild(text);
-				tr.appendChild(th);
-				j++
-			}
-			j = 0;
-		} else {
-			while (j < 10) {
-				let td = document.createElement("td");
-				td.setAttribute("id", `pension-age-${retirementAge}-service-${--retirementService}`);
-				let reduction = reductionLow >= j ? reductionIncrements[j] : reductionIncrements[reductionLow];
-				let text = document.createTextNode(reduction + "%");
-				td.appendChild(text);
-				tr.appendChild(td);
-				j++;
-			}
+		while (j < 10) {
+			let td = document.createElement("div");
+			td.setAttribute("id", `pension-age-${retirementAge}-service-${--retirementService}`);
+			let reduction = reductionLow >= j ? reductionIncrements[j] : reductionIncrements[reductionLow];
+			let text = document.createTextNode(reduction + "%");
+			td.appendChild(text);
+			tr.appendChild(td);
+			j++;
+		}
 			j = 0;
 			reductionLow++;
 			// Accounts for 52% for Age 53 @ 20 years of service.
 			if (retirementAge === 53) {
-				reductionIncrements[reductionLow - 1] = reductionIncrements[reductionLow]
+				reductionIncrements[reductionLow - 1] = reductionIncrements[reductionLow];
 			}
-		}
+
 		retirementService = 30;
-		table.appendChild(tr);
-		retirementAge--;
+		tbody.appendChild(tr);
+		// retirementAge--;
 	}
 	retirementAge = 60;
 	retirementService = 30;
@@ -606,9 +601,12 @@ function cpaModalAccess() {
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
 	document.getElementById("modal-text").removeAttribute("class", "paycard-grid");
+	document.getElementById("current-section").style.display = "inline-flex";
+
 	console.log("Modal Cleared!");
 }
 function displayExpenseModal() {
+	document.getElementById("current-section").style.display = "none";
 	const expenseModalData = document.createElement("div");
 	const currentDate = new Date();
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

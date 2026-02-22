@@ -9,8 +9,11 @@ const visitedTotal = document.getElementById("visited-total");
 const interactiveMaps = document.querySelectorAll(".interactive-map");
 const mapDisplayButtons = document.querySelectorAll(".map-display-buttons");
 const mapHighlightButtons = document.querySelectorAll(".map-highlight-buttons");
+const mapSymbol = document.getElementById("map-symbol");
+const globeEmojis = ["🌎","🌍","🌏"];
 const worldMap = document.getElementById("world-map");
 const usMap = document.getElementById("us-map");
+const expansiveMap = document.getElementById("expansive-map");
 let currentMap = "world-map";
 
 const visitedCountries = ["US", "BZ", "GT", "JP"];
@@ -30,9 +33,7 @@ function loadInteractiveMaps(selection) {
 			interactiveMap.style.display = "none";
 		}
 	})
-};
-loadInteractiveMaps("world-map");
-
+}
 function enableMapSelectionButtons() {
 	mapDisplayButtons.forEach(button => {
 		button.onclick = function () {
@@ -46,26 +47,29 @@ function enableMapSelectionButtons() {
 		}
 	});
 }
-enableMapSelectionButtons();
-
 function cyclePoliticalDivision(selection) {
 	switch (selection) {
 		case "world-map":
 			politicalDivision.innerHTML = "Countries Visited:&emsp;";
 			visitedTotal.innerHTML = visitedCountries.length;
+			mapSymbol.innerHTML = "🌎";
 
 		break;
 		case "us-map":
 			politicalDivision.innerHTML = "States Visited:&emsp;";
 			visitedTotal.innerHTML = visitedStates.length;
+			mapSymbol.innerHTML = "🇺🇸";
 		break;
+		case "expansive-map":
+			mapSymbol.innerHTML = `<i>🧭🗺️ Browsing Expansive Map! <span id="spinning-globes"><span></i>`;
+			globeEmojiSpin();
+
 		default:
-			politicalDivision.innerHTML = "Regions Visited: ";
-			visitedTotal.innerHTML = 1;
+			politicalDivision.innerHTML = "Regions Visited Online:&emsp;";
+			visitedTotal.innerHTML = "<i> a whole lot.</i>";
 		break;
 	}
 }
-
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
 	console.log("Modal Cleared!");
@@ -94,7 +98,6 @@ function highlightVisitedCountries() {
 		}
 	});
 }
-highlightVisitedCountries();
 
 // FOR INITIALIZATION
 // TODO: possibly remove for loadMapHighlight(var) Consolidation
@@ -120,7 +123,6 @@ function highlightVisitedStates() {
 		}
 	});
 }
-highlightVisitedStates();
 
 // FOR RESULT FILTERING
 function loadMapHighlight(selection) {
@@ -199,7 +201,6 @@ function enableMapHighlightButtons () {
 	});
 
 }
-enableMapHighlightButtons();
 
 function displaySVGwithinNotes(division, id) {
 	let inlineNotesSVG = "";
@@ -266,3 +267,59 @@ function displayNotes(selection, map) {
 			break;
 	}
 }
+
+function globeEmojiSpin() {
+	const spinningGlobes = document.getElementById("spinning-globes");
+	let c = 0;
+	spinningGlobes.innerHTML = globeEmojis[c];
+	setInterval(()=> {
+		(c + 1) === globeEmojis.length ? c = 0 : ++c;
+		spinningGlobes.innerHTML = globeEmojis[c];
+	}, 1000);
+}
+
+
+function viewExpansiveMap() {
+	const map = L.map("expansive-map").setView([51.505, -0.09], 11);
+
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map); 
+
+	const marker = L.marker([51.5, -0.09]).addTo(map);
+
+	const circle = L.circle([51.508, -0.11], {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 500
+	}).addTo(map);
+
+	const polygon = L.polygon([
+		[51.509, -0.08],
+		[51.503, -0.06],
+		[51.51, -0.047]
+	]).addTo(map);
+
+	marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+	circle.bindPopup("I am a circle.");
+	polygon.bindPopup("I am a polygon.");
+
+	const onMapClick = (e) => {
+		alert("You clicked the map at " + e.latlng);
+	}
+
+	map.on('click', onMapClick);
+
+}
+
+(() => {
+
+	loadInteractiveMaps("world-map");
+	enableMapSelectionButtons();
+	highlightVisitedCountries();
+	highlightVisitedStates();
+	enableMapHighlightButtons();
+	viewExpansiveMap();
+
+})();

@@ -1,4 +1,9 @@
 /* ----- PAGE SPECIFIC ----- */
+html {
+	scrollbar-color: var(--cmbr-dark-iron) var(--cmbr-dark-grey);
+	scrollbar-width: thin;
+}
+
 ul {
 	text-align: left;
 }
@@ -6,7 +11,7 @@ ul {
 input[type=text] {
 	background-color: var(--clr-grid-box);
 	color: #f59b60;
-	font-family: Permanent Marker, serif;
+	font-family: monospace, serif;
 	font-size: 1rem;
 	border: none;
 	width: fit-content;
@@ -16,90 +21,70 @@ input[type=text]:focus {
 	background-color: var(--clr-quinary-body);
 }
 
-#dashboard-header {
-	display: flex;
-	flex: 1;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	border-bottom: none;
-	background: rgba(144, 229, 238, 0.1);
-}
-
-#dashboard-quick-links {
-	display: flex;
-	flex: 1;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: auto;
-	justify-content: center;
-
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	background: rgba(144, 229, 238, 0.1);
-}
-
 .dashboard-grid {
 	display: flex;
 	padding: 2rem;
 	flex-flow: row wrap;
 	align-items: auto;
-	/* border: 0.1rem solid var(--clr-tertiary); */
+	justify-items: center;
 	border-radius: 1rem;
 	gap: 1rem;
 }
 
 .dashboard-item {
-	flex: 1; 
 	display: flex;
 	flex-direction: column;
 	align-items: left;
-	justify-content: baseline;
+	justify-content: first baseline;
 	text-align: left;
 	min-width: 20rem;
 	min-height: 20rem;
 	padding: 0.5rem;
-	/* background: var(--cmbr-curtain-plum); */
-	border: 0.2rem solid var(--cmbr-dark-ash);
 	box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey);
 }
 
 .dashboard-grid > .dashboard-item {
 	backdrop-filter: blur(0.2rem) saturate(90%);
     -webkit-backdrop-filter: blur(0.2rem) saturate(90%);
-    background-color: rgba(17, 25, 40, 0.75);
+    background-color: rgba(4, 6, 17, 0.75);
 	background-image: transparent;
 	background-size: cover;
 	/* text-shadow: #f59b60; */
-    border: 1rem solid transparent;
+    border: 0.5rem ridge rgba(22, 17, 17, 0.855);
+
+}
+
+#dashboard-expense-management {
+	/* flex: 1.5; */
 }
 
 #dashboard-step-pay-plan {
-	flex: 2;
+	/* flex: 2.5; */
 }
 
 #dashboard-reeducation-information {
-	flex: 2; 
+	/* flex: 1.5;  */
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	justify-content: baseline;
 	min-width: 20rem;
 	min-height: 20rem;
-	padding: 2rem;
+	/* padding: 2rem; */
 }
 
 #dashboard-pension-calculator {
-	/* flex: content; */
-	min-width: fit-content;
+	/* flex: 3; */
 }
 
+#dashboard-career-insight {
+	/* flex: 2; */
+
+}
+
+#dashboard-taxability-calculator {
+	/* flex: 2; */
+}
 /* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
 
 #p2p {
@@ -158,14 +143,6 @@ input[type=text]:focus {
 	display: none;
 }
 
-/* ----- STEP PAY PLAN SPECIFIC ----- */
-
-:where(#salary-table) :where(tr, th, td) {
-	font-size: 1rem;
-	border: 1px double var(--clr-quinary-body);
-	height: 2rem;
-}
-
 .salary-highlight {
 	color: var(--clr-quaternary);
 	background-color: var(--clr-tertiary);
@@ -183,22 +160,21 @@ input[type=text]:focus {
 
 #cpa-progress-bar {
 	display: block;
-	height: 2em;
+	height: 1.5rem;
   	position: relative;
-  	background: grey;
-	border-radius: 1rem;
-	margin-right: 5%;
-	margin-left: 5%;
-	box-shadow: inset 0 -1px 1px rgba(255, 255, 255, 0.3);
+  	background: var(--cmbr-curtain-plum);
+	/* border-radius: 1rem; */
+	/* margin-right: 5%; */
+	/* margin-left: 5%; */
+	box-shadow: 1.5rem 1rem 1rem -1rem var(--cmbr-dark-grey) inset;
 }
-
 #cpa-progress-bar > span {
 	display: block;
 	height: 100%;
-	border-top-right-radius: 8px;
+	/* border-top-right-radius: 8px;
 	border-bottom-right-radius: 8px;
 	border-top-left-radius: 20px;
-	border-bottom-left-radius: 20px;
+	border-bottom-left-radius: 20px; */
 	background-color: rgb(134, 227, 159);
 	background-image: linear-gradient(
 	  center bottom,
@@ -212,9 +188,59 @@ input[type=text]:focus {
 	overflow: hidden;
 }
 
+#dpl-progress-bar {
+	display: block;
+	height: 1.5rem;
+  	position: relative;
+  	background: var(--cmbr-curtain-plum);
+	box-shadow: 1.5rem 1rem 1rem -1rem var(--cmbr-dark-grey) inset;
+}
+#dpl-progress-bar > span {
+	display: block;
+	height: 100%;
+	background-color: rgb(134, 185, 227);
+	background-image: linear-gradient(
+	  center bottom,
+	  rgb(108, 121, 222) 37%,
+	  rgb(118, 84, 240) 69%
+	);
+	box-shadow: 
+	  inset 0 2px 9px  rgba(255,255,255,0.3),
+	  inset 0 -2px 6px rgba(0,0,0,0.4);
+	position: relative;
+	overflow: hidden;
+}
+
+#aas-progress-bar {
+	display: block;
+	height: 1.5rem;
+  	position: relative;
+  	background: var(--cmbr-curtain-plum);
+	box-shadow: 1.5rem 1rem 1rem -1rem var(--cmbr-dark-grey) inset;
+}
+#aas-progress-bar > span {
+	display: block;
+	height: 100%;
+	background-color: rgb(227, 139, 134);
+	background-image: linear-gradient(
+	  center bottom,
+	  rgb(222, 163, 108) 37%,
+	  rgb(240, 141, 84) 69%
+	);
+	box-shadow: 
+	  inset 0 2px 9px  rgba(255,255,255,0.3),
+	  inset 0 -2px 6px rgba(0,0,0,0.4);
+	position: relative;
+	overflow: hidden;
+}
+
 .taking {
 	color: var(--clr-tertiary);
 	list-style-type: circle;
+}
+
+#acc-courses {
+	padding-left: 1rem;
 }
 
 #acc-courses > li:hover {
@@ -306,37 +332,16 @@ input[type=text]:focus {
 
 /* ----- PENSION CALCULATOR ----- */
 
-#subgrid-pension-calculator {
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-}
-
-
 #pension-table {
-	table-layout: unset;
+	table-layout: fixed;
 	font-size: 1rem;
-	width: 90%;
-	margin: 1rem auto;
-	border-collapse: collapse;
-}
-
-#pension-table > tr > th {
-	width: 0.1rem;
-	border-style: double;
-	border-color: var(--clr-secondary);
-}
-
-#pension-table > tr > td {
-	padding: 0.2rem;
-	border-top: none;
-	border-bottom: double;
-	border-left: none;
-	border-right: double;
 }
 
 .pension-reduction-highlight {
-	background-color: var(--clr-quaternary);
+	color:crimson;
+	background-color: cadetblue;
+	font-family: monospace;
+	font-weight: 800;
 }
 
 /* ----- MEDIA QUERIES ---- */
@@ -347,15 +352,29 @@ body {
 	background-image: none; 
 }
 
-#subgrid-pension-calculator {
-	/* display: flex; */
-	flex-direction: column;
-	justify-content: auto;
+.inline-signature {
+	display: inline-flex;
+	flex: 1;
+	z-index: 200;
+	box-sizing: border-box;
+	left: 47%;
+	right: 30%;
+	position: fixed;
 }
 
+#current-section {
+	display: none;
+}
+
+#salary-table {
+	font-size: 0.7rem;
+}
 
 #pension-table {
 	font-size: 0.7rem;
+	overflow-x: scroll;
+	scrollbar-color: var(--cmbr-dark-iron) var(--cmbr-dark-grey);
+	scrollbar-width: auto;
 }
 
 #pension-table > tr > td {
@@ -366,9 +385,14 @@ body {
 	border-right: double;
 }
 
+.dashboard-grid {
+	align-items: center;
+	justify-items: center;
+	gap: 0;
+}
 
 .dashboard-item {
-	padding: none;
+	padding: 0;
 }
 
 

@@ -1,7 +1,40 @@
-/* ----- BLOG POSTING ----- */
-/* body {
-	color: unset;
-} */
+/* |==========| THE PEN |====================> */
+
+.blogging-font {
+	color: cadetblue;
+	font-family: "Lora", serif;
+	font-optical-sizing: auto;
+	font-weight: normal; /*400..700*/
+	text-align: left;
+
+	padding-left: 1rem;
+	line-height: 2rem;
+}
+
+/* |==========| LIST, CONTENT, AND MEDIA |====================> */
+
+#blog-post-list-content {
+	flex: 1;
+	position: sticky;
+}
+#blog-post-content {
+	flex: 3;
+	position: sticky;
+	background:#0f0b0789;
+}
+#blog-post-media {
+	flex: 1;
+	position: sticky;
+	align-items: center;
+	justify-content: center;
+}
+
+/* |==========| PAGE STRUCTURE |====================> */
+
+a:hover {
+	background-image: none;
+	color: var(--cmbr-violet);
+}
 
 .blog-header {
 	display: flex;
@@ -9,35 +42,9 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: center;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	border-bottom: none;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 	background: rgba(144, 229, 238, 0.1);
 }
-
-#blog-quick-links {
-	display: flex;
-	flex: 1;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
-	border-width: 0.3rem;
-	border-style: double;
-	border-color: grey;
-	background: rgba(144, 229, 238, 0.1);
-}
-
-.blog-dropdown {
-	background-color: var(--clr-quinary-body);
-	border: 1px solid #888;
-	width: fit-content; /* Could be more or less, depending on screen size */
-}
-
 .blog-grid {
 	padding: 2rem;
 	display: flex;
@@ -45,47 +52,18 @@
 	flex-wrap: wrap;
 	align-items: start;
 	justify-content: center;
-	/* border: 0.1rem solid var(--clr-tertiary); */
-	border-radius: 1rem;
 	gap: 1rem;
 }
 
 .blog-item {
 	padding: 1rem;
-	box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 	border-width: 0.3rem;
-	/* border-style: double; */
-	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
 
-#blog-post-content {
-	flex: 1 1 60%;
-	position: sticky;
-	background:#0f0b0789;
-}
+/* |==========| BLOG POST CONTENT STYLES |====================> */
 
-#blog-post-list-content {
-	flex: 1 1 20%;
-	/* display: block; */
-	position: sticky;
-	/* margin-left: 50%; */
-}
-
-.blogging-font {
-	color: rgb(80, 189, 142);
-	font-family: "Lora", serif;
-	font-optical-sizing: auto;
-	font-weight: normal; /*400..700*/
-	font-style: italic;
-
-	padding-left: 1rem;
-	line-height: 2rem;
-}
-
-.blog-post-header {
-	text-align: left;
-}
 
 #active-blog-post {
 	text-align: left;
@@ -95,25 +73,47 @@
 	text-align: left;
 	list-style-type: none;
 }
-
 #blog-post-list > li:hover {
 	background: var(--clr-quinary-body);
 }
-
 .blog-post-inside-list {
 	text-align: center;
 }
-
 .listed-title {
 	font-family: monospace;
 	font-size: smaller;
 	color: var(--clr-secondary);
 }
-
 .listing-highlight {
 	background-color: var(--cmbr-dark-iron);
 }
-
 .listing-none {
 	display: none;
+}
+
+
+/* |==========| BLOG MEDIA STYLES FOR MAPS, PHOTOS, & MORE |====================> */
+
+#blog-tags {
+	height: 5rem;
+	width: 100%;
+	outline: 0.1rem dotted crimson;
+}
+
+#blog-map {
+	height: 10rem;
+	width: 100%;
+	outline: 0.1rem dotted magenta;
+}
+
+#blog-photos {
+	height: 10rem;
+	width: 100%;
+	outline: 0.1rem dotted salmon;
+}
+
+#blog-music {
+	height: 10rem;
+	width: 100%;
+	outline: 0.1rem dotted cyan;
 }

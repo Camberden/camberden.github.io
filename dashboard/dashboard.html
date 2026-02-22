@@ -2,10 +2,9 @@
 <html lang="en-US">
 
 <head>
-	<meta charset="UTF-8">
-	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
-	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../dashboard/dashboard.css" media="screen" />
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
+	<style> @import "../styles.css" screen; @import "dashboard.css" screen; </style>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -14,54 +13,36 @@
 </head>
 
 <body data-theme="dark">
-	<div id="sections-dropdown" style="display:none;">
-		<div id="sections-access">Navigation</div>
-		<div class="sections-links"></div>
-	</div>
-	<div id="bookmarks-dropdown">
-		<div id="bookmarks-access">Bookmarks</div>
-		<div class="bookmarks-links"></div>
-	</div>
+	<h1 id="current-section" class="multipanel-heading">&emsp;Chrispy's Dashboard</h1>
+	<div class="nav-layout">
+		<nav class="nav-col-grid">
+			<div id="nav-dropdowns" class="nav-row-grid">
 
-	<div id="header-and-return">
-		<div id="return">
-			<a class="marker" href="../index.html">Return</a>
-		</div>
-		<div id="dashboard-header">
-			<h1 class="multipanel-heading">Dashboard</h1>
-		</div>
-		<div id="dashboard-quick-links">
-			<div class="quick-links-grid-item">
-				<a href="https://www.youtube.com/watch?v=XgqTrvcAySA" target="_blank">Checkpoint</a>
-			</div>
-			<div class="quick-links-grid-item">
-				<a href="https://www.clozemaster.com" target="_blank">Clozemaster</a>
-			</div>
-			<div class="quick-links-grid-item">
-				<a href="https://jisho.org" target="_blank">Jisho</a>
-			</div>
-			<div class="quick-links-grid-item">
-				<a href="https://www3.nhk.or.jp/news/easy/" target="_blank">NHK Yasashii</a>
-			</div>
-			<div class="quick-links-grid-item">
-				<a href="https://www.mheducation.com" target="_blank">Coursework</a>
-			</div>
-			<div class="quick-links-grid-item">
-				<a href="https://maps.google.com" target="_blank">Maps</a>
-			</div>
-			<div class="quick-links-grid-item">
-				<a href="https://int.dac.nc.gov" target="_blank">Intranet</a>
-			</div>
-			<div class="quick-links-grid-item">
-				<a href="https://portal.osc.nc.gov/app" target="_blank">Fiori</a>
-			</div>
-
-			<div class="modal">
-				<div class="modal-field">
-					<span class="close-modal">&times;</span><br>
-					<div id="modal-text"></div>
+				<div id="sections-dropdown">
+					<div id="sections-access">Navigation</div>
+					<div class="sections-links"></div>
 				</div>
+
+				<div id="bookmarks-dropdown">
+					<div id="bookmarks-access">Bookmarks</div>
+					<div class="bookmarks-links"></div>
+				</div>
+
+				<div id="inline-signature-div">
+					<span class="inline-signature"></span>
+				</div>
+
 			</div>
+		</nav>
+		<hr class="hr-nav-pad">
+		<hr class="hr-cmbr-gradient">
+		<hr class="hr-groove-top">
+	</div>
+
+	<div class="modal">
+		<div class="modal-field">
+			<span class="close-modal">&times;</span><br>
+			<div id="modal-text"></div>
 		</div>
 	</div>
 
@@ -92,7 +73,13 @@
 							<hr class="hr-cmbr-gradient">
 						</div>
 					</div>
-					
+					<div style="width: 100%; text-align: right; font-family: monospace">
+						<p>$<span id="paycheck-mirror">0.00</span></p>
+						<p>-$<span id="expenses-mirror">0.00</span></p>
+						<hr class="hr-cmbr-dark-gradient">
+						<p>$<span id="remainder-mirror">0.00</span></p>
+					</div>
+
 				</div>
 
 				<hr class="hr-push-down">
@@ -119,48 +106,52 @@
 			</div>
 			<div>
 				<div id="salary-table-div">
-					<table id="salary-table">
-						<tr>
-							<th id="salary-table-corner"></th>
-							<th>Step 0</th>
-							<th>Step 1</th>
-							<th>Step 2</th>
-							<th>Step 3</th>
-							<th>Step 4</th>
-							<th>Step 5</th>
-							<th>Step 6</th>
-						</tr>
-						<tr>
-							<th>COI</th>
-							<td id="co1-0"></td>
-							<td id="co1-1"></td>
-							<td id="co1-2"></td>
-							<td id="co1-3"></td>
-							<td id="co1-4"></td>
-							<td id="co1-5"></td>
-							<td id="co1-6"></td>
-						</tr>
-						<tr>
-							<th>COII</th>
-							<td id="co2-0"></td>
-							<td id="co2-1"></td>
-							<td id="co2-2"></td>
-							<td id="co2-3"></td>
-							<td id="co2-4"></td>
-							<td id="co2-5"></td>
-							<td id="co2-6"></td>
-						</tr>
-						<tr>
-							<th>COIII</th>
-							<td id="co3-0"></td>
-							<td id="co3-1"></td>
-							<td id="co3-2"></td>
-							<td id="co3-3"></td>
-							<td id="co3-4"></td>
-							<td id="co3-5"></td>
-							<td id="co3-6"></td>
-						</tr>
-					</table>
+
+					<div id="salary-table" class="flex-table">
+						<div class="grid-col-8x-1">
+							<div id="salary-table-corner" class="flex-table-side-header"></div>
+							<div class="flex-table-header"><span>Step 0</span></div>
+							<div class="flex-table-header">Step 1</div>
+							<div class="flex-table-header">Step 2</div>
+							<div class="flex-table-header">Step 3</div>
+							<div class="flex-table-header">Step 4</div>
+							<div class="flex-table-header">Step 5</div>
+							<div class="flex-table-header">Step 6</div>
+						</div>
+						<div class="flex-table-body">
+							<div class="flex-table-row grid-col-8x-1">
+								<div class="flex-table-side-header">COI</div>
+								<div id="co1-0"></div>
+								<div id="co1-1"></div>
+								<div id="co1-2"></div>
+								<div id="co1-3"></div>
+								<div id="co1-4"></div>
+								<div id="co1-5"></div>
+								<div id="co1-6"></div>
+							</div>
+							<div class="flex-table-row grid-col-8x-1">
+								<div class="flex-table-side-header">COII</div>
+								<div id="co2-0"></div>
+								<div id="co2-1"></div>
+								<div id="co2-2"></div>
+								<div id="co2-3"></div>
+								<div id="co2-4"></div>
+								<div id="co2-5"></div>
+								<div id="co2-6"></div>
+							</div>
+							<div class="flex-table-row grid-col-8x-1">
+								<div class="flex-table-side-header">COIII</div>
+								<div id="co3-0"></div>
+								<div id="co3-1"></div>
+								<div id="co3-2"></div>
+								<div id="co3-3"></div>
+								<div id="co3-4"></div>
+								<div id="co3-5"></div>
+								<div id="co3-6"></div>
+							</div>
+						</div>
+					</div>
+				
 				</div>
 				<ul id="salary-values" class="grid-col-1-1">
 					<li>Base-Rate Salary</li> <span id="current-salary"></span>
@@ -175,7 +166,7 @@
 				</ul>
 			</div>
 			<div class="flex-table">
-
+				<hr class="hr-groove-bottom">
 				<hr class="hr-cmbr-dark-gradient">
 				<div class="grid-col-3-1-1">
 					<div>
@@ -211,10 +202,17 @@
 				<h2 class="marker-green">Re-Education Information</h2>
 				<hr class="hr-cmbr-dark-gradient">
 			</div>
+
 			<span class="marker modal-prompt" id="accounting-modal">Additional Information</span>
 
 			<div class="list-background">CPA Credits: <span id="cpa-credits"></span>/30</div>
+			<hr class="hr-groove-bottom">
 			<div id="cpa-progress-bar"></div>
+			<br>
+			<div id="dpl-progress-bar"></div>
+			<br>
+			<div id="aas-progress-bar"></div>
+			<hr class="hr-groove-top">
 
 			<ul id="acc-courses">
 				<span class="marker">Advanced Core Requirements</span>
@@ -250,51 +248,93 @@
 
 		<!-- PENSION CALCULATOR -->
 		<div id="dashboard-pension-calculator" class="dashboard-item">
-			<div class="marker">
-				<h2>Pension Calculator</h2>
+
+			<div>
+				<h2 class="marker-green">Pension Calculator</h2>
+				<hr class="hr-cmbr-dark-gradient">
 			</div>
 
-			<div id="subgrid-pension-calculator">
+			<div id="pension-table-div">
 
-				<div id="pension-data">
-					<ul id="pension-inputs">
-						<li class="no-bullet">Age at Retirement: <input type="text" placeholder="50" value="50"
-								id="retirement-age"></li>
-						<li class="no-bullet">Service Years: <input type="text" placeholder="24" value="24"
-								id="service-years"></li>
-						<li class="no-bullet">Year 1: <input type="text" placeholder="74692.84" value="74692.84"
-								class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension"></li>
-						<li class="no-bullet">Year 2: <input type="text" placeholder="71415.51" value="71415.51"
-								class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension"></li>
-						<li class="no-bullet">Year 3: <input type="text" placeholder="74732.21" value="74732.21"
-								class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension"></li>
-						<li class="no-bullet">Year 4: <input type="text" placeholder="75482.28" value="75482.28"
-								class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension"></li>
-						<br>
-						<button class="pension-buttons">Generate Pension</button>
-						<br>
-						<hr>
-						<li class="no-bullet"><span id="pension-notice"></span></li>
-						<hr>
+				<div id="pension-table" class="flex-table">
 
-					</ul>
-					<ul id="pension-sums">
-						<p class="pension-reduction-highlight">Gross Pension: $<span id="gross-pension"></span></p>
-						<hr>
-						<p><span id="reduction-percentage"></span></p>
-						<p><span id="reduction-amount"></span></p>
-						<hr>
-						<p><span id="net-pension"></span></p>
-						<p><span id="monthly-pension"></span></p>
-					</ul>
+					<div class="flex-table-row grid-col-11x-1">
+						<div id="pension-age-60-service-30" class="flex-table-anchor-col pension-reduction-highlight">&emsp;</div>
+						<div id="pension-service-29">29</div>
+						<div id="pension-service-28">28</div>
+						<div id="pension-service-27">27</div>
+						<div id="pension-service-26">26</div>
+						<div id="pension-service-25">25</div>
+						<div id="pension-service-24">24</div>
+						<div id="pension-service-23">23</div>
+						<div id="pension-service-22">22</div>
+						<div id="pension-service-21">21</div>
+						<div id="pension-service-20">20</div>
+					</div>
+					<div id="pension-table-body" class="flex-table-body">
+
+
+
+
+
+					</div>
+
+
 
 				</div>
-				<div id="pension-table-div">
-					<table id="pension-table"></table>
+				<hr class="hr-groove-bottom">
+			</div>
+
+			<div id="pension-data" class="grid-col-1-1">
+				<div id="pension-inputs" class="grid-col-1-1">
+					<p>Age at Retirement:</p>
+						<input type="text" placeholder="50" value="50" id="retirement-age">
+					<p>Service Years:</p>
+						<input type="text" placeholder="24" value="24" id="service-years">
+					<p>Year 1:</p> 
+						<input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension">
+					<p>Year 2: </p>
+						<input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension">
+					<p>Year 3: </p>
+						<input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension">
+					<p>Year 4: </p>
+						<input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension">
+				</div>
+				<div id="pension-sums">
+					<p>Gross Pension: $<span id="gross-pension"></span></p>
+					<p><span id="reduction-percentage"></span></p>
+					<p><span id="reduction-amount"></span></p>
+					<p><span id="net-pension"></span></p>
+					<p><span id="monthly-pension"></span></p>
+					<p>
+						<span id="pension-notice"></span>
+					</p>
 				</div>
 
 			</div>
+			<button class="pension-buttons">Generate Pension</button>
 
+		</div>
+
+		<div id="dashboard-career-insight" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Career Option Insight</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div id="career-table" class="flex-table">
+				<p>Career Table</p>
+			</div>
+		</div>
+
+		<div id="dashboard-taxability-calculator" class="dashboard-item">
+
+			<div>
+				<h2 class="marker-green">Taxability Calculator</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div id="taxes-table" class="flex-table">
+				<p>Taxes Table</p>
+			</div>
 		</div>
 
 	</div> <!-- END DASHBOARD GRID -->

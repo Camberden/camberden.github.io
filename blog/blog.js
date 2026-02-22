@@ -37,7 +37,6 @@ function extractHeaderData(increment) {
 	return instanceBlogPost;
 }
 
-
 function initBlogData(dataLength) {
 	for (i = 0; i <= dataLength - 1; i++) {
 		const instance = blogData[i];
@@ -82,9 +81,6 @@ function initBlogData(dataLength) {
 	}
 	listedYears = Array.from(listedYears.trim().split(" "));
 }
-initBlogData(blogData.length);
-
-
 
 function chooseActiveBlogPost() {
 	document.querySelectorAll(".blog-post-inside-list").forEach(listing => {
@@ -95,13 +91,10 @@ function chooseActiveBlogPost() {
 		}
 	})
 }
-chooseActiveBlogPost();
-
 
 function enableBlogButtons() {
 	document.querySelectorAll(".blog-button").forEach(button => {
 		button.onclick = function () {
-			CMBRutil.buttonOnClick(button);
 
 			switch (button.value) {
 				case "next":
@@ -124,15 +117,8 @@ function enableBlogButtons() {
 					console.log("Default Switch Triggered");
 			}
 		};
-		button.onmouseenter = function () {
-			CMBRutil.buttonOnMouseEnter(button);
-		}
-		button.onmouseleave = function () {
-			CMBRutil.buttonOnMouseLeave(button);
-		}
 	});
 }
-enableBlogButtons();
 
 function enableBlogSelect() {
 	const blogPostYearSelect = document.getElementById("blog-post-year-select");
@@ -155,10 +141,53 @@ function enableBlogSelect() {
 	};
 	
 }
-enableBlogSelect();
 
 function reEnableBlogPostList(){
 	for (let li of blogPostList.children) {
 		li.classList.remove("listing-none");
 	}
 }
+
+function viewBlogPostMap() {
+	const map = L.map("blog-map").setView([51.505, -0.09], 11);
+
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map); 
+
+	const marker = L.marker([51.5, -0.09]).addTo(map);
+
+	const circle = L.circle([51.508, -0.11], {
+		color: 'red',
+		fillColor: '#f03',
+		fillOpacity: 0.5,
+		radius: 500
+	}).addTo(map);
+
+	const polygon = L.polygon([
+		[51.509, -0.08],
+		[51.503, -0.06],
+		[51.51, -0.047]
+	]).addTo(map);
+
+	marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+	circle.bindPopup("I am a circle.");
+	polygon.bindPopup("I am a polygon.");
+
+	const onMapClick = (e) => {
+		alert("You clicked the map at " + e.latlng);
+	}
+
+	map.on('click', onMapClick);
+
+}
+
+(()=> {
+
+	initBlogData(blogData.length);
+	chooseActiveBlogPost();
+	enableBlogButtons();
+	enableBlogSelect();
+	viewBlogPostMap();
+
+})();

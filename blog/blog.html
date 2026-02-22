@@ -5,49 +5,33 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="referrer" content="origin" />
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
 	<style> @import "../styles.css" screen; @import "blog.css" screen; </style>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+	 <script src="../cmbr.js"></script>
 	<!-- <script src="../htmx.js"></script> -->
 	<title>Chrispy's Blog</title>
 </head>
 
 <body data-theme="dark">
-
-	<div id="header-and-return">
-		<div id="return">
-			<a class="marker" href="../index.html">Return</a>
-		</div>
+		
 		<div class="blog-header">
 			<h1 class="multipanel-heading">Chrispy's Blog</h1>
 		</div>
-		<div id="blog-quick-links">
-			<div class="quick-links-grid-item">
-				Post <span id="displayed-post"></span>
-			</div>
-			<div class="quick-links-grid-item">
-				<span id="blog-post-title"></span>
-			</div>
-		</div>
 		<div class="blog-dropdown">
-			<button class="blog-button" value="previous">Previous</button>
-			<button class="blog-button" value="next">Next</button>
+			<button class="blog-button trigger-box" value="previous">Previous</button>
+			<button class="blog-button trigger-box" value="next">Next</button>
 		</div>
 	</div>
 
 	<main class="blog-grid">
-
-		<article class="blog-item" id="blog-post-content">
-			<h3 class="blogging-font">
-				<ul class="blog-post-header">
-					<li id="blog-post-date">August 11th, 2024</li>
-					<li id="blog-post-location">Chapel Hill Suite</li>
-					<li id="blog-post-time">2200HRS</li>
-				</ul>
-				<p id="active-blog-post"></p>
-			</h3>
-		</article>
 
 		<div class="blog-item" id="blog-post-list-content">
 			
@@ -59,11 +43,53 @@
 			</ul>
 		</div>
 
+		<article class="blog-item" id="blog-post-content">
+
+			<h3 class="blogging-font">
+				<ul class="blog-post-header">
+					<li id="blog-post-date">August 11th, 2024</li>
+					<li id="blog-post-location">Chapel Hill Suite</li>
+					<li id="blog-post-time">2200HRS</li>
+				</ul>
+				<p id="active-blog-post"></p>
+			</h3>
+
+		</article>
+
+		<div class="blog-item" id="blog-post-media">
+
+			<h3>Post <span id="displayed-post"></span></h3>
+			<h4><span id="blog-post-title"></span></h4>
+
+			<hr class="hr-cmbr-dark-gradient">
+			<hr class="hr-groove-top">
+
+			<div id="blog-tags">
+
+			</div>
+
+			<div id="blog-map">
+
+			</div>
+
+			<div id="blog-photos">
+
+			</div>
+
+			<div id="blog-music">
+
+			</div>
+
+			<hr class="hr-groove-bottom">
+			<hr class="hr-cmbr-dark-gradient">
+			
+
+		</div>
+
 	</main>
 
 <script src="blog-data.js"></script>
 <script src="blog.js"></script>
-<script src="../cmbr.js"></script>
 </body>
 
 </html>

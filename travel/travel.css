@@ -70,6 +70,26 @@
 	fill: #a1dbf8;
 }
 
+/* ----- Expansive Map ----- */
+
+#globe-emojis {
+	background: var(--cmbr-blue);
+}
+
+/* #display-expansive-map {
+	box-sizing: border-box;
+	outline: 0.2rem dotted palevioletred;
+	border: 0.5rem ridge transparent;
+} */
+
+#expansive-map {
+	box-sizing: border-box;
+	outline: 0.2rem dotted palevioletred;
+	border: 0.5rem ridge transparent;
+	width: 100%;
+	height: 100%;
+}
+
 /* ----- MODAL VALUES ----- */
 
 .modal {

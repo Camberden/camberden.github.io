@@ -2,16 +2,20 @@
 <html lang="en-US">
 
 <head>
-   <meta charset="UTF-8">
-   <link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
-   <link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-   <link rel="stylesheet" type="text/css" href="../travel/travel.css" media="screen" />
-   <link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
-   <link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
+   <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="referrer" content="origin" />
+	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+   <style> @import "../styles.css" screen; @import "travel.css" screen; </style>
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+   crossorigin=""></script>
    <title>Chrispy's Travel Log</title>
 </head>
 
-<body data-theme="legacy">
+<body data-theme="dark">
 
    <div id="header-and-return">
 		<div id="return">
@@ -23,12 +27,16 @@
 		<div id="quick-links">
 
          <div class="quick-links-grid-item">
-				<a href="https://maps.google.com" target="_blank">Maps</a>
+				<a href="https://maps.google.com" target="_blank">Google Maps</a>
 			</div>
 
          <div class="quick-links-grid-item" id="division-visitation">
             <div id="political-division"></div><div id="visited-total"></div>
          </div>
+
+         <div class="quick-links-grid-item">
+				<span id="map-symbol">🌏</span>
+			</div>
 
          <div class="modal">
 				<div id="modal-field">
@@ -43,6 +51,7 @@
       <div class="page-dropdown">
          	<button class="map-display-buttons" value="world-map">World</button>
             <button class="map-display-buttons" value="us-map">US</button>
+            <button class="map-display-buttons" value="expansive-map">Expansive Map</button>
             <button class="map-highlight-buttons" value="to-visit">To Consider Visiting</button>
             <button class="map-highlight-buttons" value="to-retire">To Consider Retirement</button>
 		</div>
@@ -980,6 +989,15 @@
                      title="Wyoming" id="US-WY" />
                </svg>
             </div>
+
+            <!-- <div id="display-expansive-map"> -->
+            <!-- </div> -->
+
+            <div id="expansive-map" class="interactive-map">
+
+            </div>
+
+            
 
          </div>
 
