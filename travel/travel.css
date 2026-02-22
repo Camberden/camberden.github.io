@@ -1,35 +1,41 @@
 .travel-grid {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	width: min(100%, 70rem);
-	height: 60rem;
-	margin-inline: auto;
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	/* width: min(100%, 70rem); */
+	height: 100vh;
 }
-
 .travel-item {
-	padding: 1rem;
-	border-color: grey;
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	height: 50%;
+	background: black;
+	box-sizing: border-box;
+	outline: 0.2rem dotted blue;
+	border: 0.5rem solid transparent;
 }
-
+.map-display {
+	box-sizing: border-box;
+	outline: 0.2rem dotted blue;
+	border: 0.5rem solid transparent;
+	vertical-align: middle;
+	left: 30%;
+	right: 30%;
+}
 .map-display-button {
 	width: 3rem;
 	height: 2rem;
 }
-
 .visited {
 	fill: blue;
 }
-
 .to-visit {
 	fill: var(--clr-tertiary);
 	stroke: var(--clr-tertiary);
 }
-
 .to-retire {
 	fill: orchid;
 }
-
 #political-division {
 	text-align: right;
 	float: inline-start;
@@ -64,6 +70,7 @@
 
 #us-map {
 	fill: grey;
+	left: 0.4;
 }
 
 #us-map > :hover {
@@ -72,22 +79,17 @@
 
 /* ----- Expansive Map ----- */
 
-#globe-emojis {
-	background: var(--cmbr-blue);
-}
-
-/* #display-expansive-map {
-	box-sizing: border-box;
-	outline: 0.2rem dotted palevioletred;
-	border: 0.5rem ridge transparent;
-} */
-
 #expansive-map {
 	box-sizing: border-box;
+	display: block;
 	outline: 0.2rem dotted palevioletred;
 	border: 0.5rem ridge transparent;
 	width: 100%;
-	height: 100%;
+	height: 20rem;
+}
+
+#globe-emojis {
+	background: var(--cmbr-blue);
 }
 
 /* ----- MODAL VALUES ----- */

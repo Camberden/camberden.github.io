@@ -27,7 +27,7 @@ function loadInteractiveMaps(selection) {
 	interactiveMaps.forEach(interactiveMap => {
 		if (interactiveMap.id === selection) {
 			currentMap = selection;
-			interactiveMap.style.display = "inline";
+			interactiveMap.style.display = "block";
 			cyclePoliticalDivision(selection);
 		} else {
 			interactiveMap.style.display = "none";
@@ -278,7 +278,6 @@ function globeEmojiSpin() {
 	}, 1000);
 }
 
-
 function viewExpansiveMap() {
 	const map = L.map("expansive-map").setView([51.505, -0.09], 11);
 
@@ -315,7 +314,7 @@ function viewExpansiveMap() {
 
 (() => {
 
-	loadInteractiveMaps("world-map");
+	loadInteractiveMaps(currentMap);
 	enableMapSelectionButtons();
 	highlightVisitedCountries();
 	highlightVisitedStates();

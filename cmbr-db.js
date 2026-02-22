@@ -16,6 +16,16 @@ const supabase = createClient("https://gznwukvlbtjcqwmbnewl.supabase.co", "sb_pu
  */
 const CMBRdb = {
 
+  verify: async () => {
+    const { data, error } = await supabase.auth.linkIdentity({ provider: 'github' });
+    return data;
+  },
+
+  identify: async () => {
+    const { data: identities, error: identitiesError } = await supabase.auth.getUserIdentities();
+    return data;
+  },
+
   querySelect: async (query) => {
     try {
       const { data, error } = await supabase
@@ -43,6 +53,22 @@ const CMBRdb = {
       console.error('Error fetching items:', error);
       throw error;
     }
+  },
+
+  queryInsertPost: async (query) => {
+    const { error } = await supabase
+    .from('cmbr-blog-sbdb')
+    .insert({
+  "created_on": null,
+  "title": "Pending",
+  "date": null,
+  "location": "Pending",
+  "time": null,
+  "tags": [],
+  "image_path": "Pending",
+  "post": "Your post content here",  // Add actual content
+  "user_id": "zzz99"
+});
   }
 
 } //*===*===*===| END |===*===*===*//

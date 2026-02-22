@@ -6,6 +6,7 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
+import { CMBRdb } from "./cmbr-db.js";
 const latestUpdate = "Saturday, February 21st, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
@@ -114,6 +115,31 @@ const jsonAndDatabaseDemo = async () => {
 	connectCMBRjson("cmbr");
 	const q = await CMBRdb.querySelect();
 	console.log(q[0].title);
+}
+const queryButtonDemonstrator = async () => {
+
+	const identity = await CMBRdb.identify();
+	console.log(identity);
+	// const auth = await CMBRdb.verify();
+	// console.log(auth);
+	const button1 = document.createElement("button");
+	button1.setAttribute("id", "query-select-all");
+	button1.appendChild(document.createTextNode("Query Select All"));
+	const button2 = document.createElement("button");
+	button2.setAttribute("id", "query-insert");
+	button2.appendChild(document.createTextNode("Query Insert"));
+	
+	document.getElementById("page-info").appendChild(button1);
+	document.getElementById("page-info").appendChild(button2);
+
+	document.getElementById("query-select-all").onclick = async function() {
+		const sel = await CMBRdb.querySelect();
+		document.getElementById("page-info").appendChild(document.createTextNode(sel[0].location));
+	}
+	document.getElementById("query-insert").onclick = async function() {
+		const sel = await CMBRdb.queryInsertPost();
+		console.log(sel);
+	}
 }
 
 (async () => {
