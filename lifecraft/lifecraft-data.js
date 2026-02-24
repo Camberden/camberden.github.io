@@ -56,7 +56,7 @@ const events = [
 	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", 
 		"Raise & Vesting"),
 	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", "", 
-		"Maxxed; Advanced Cert"),
+		"Maxxed CO Salary"),
 
 ];
 /**

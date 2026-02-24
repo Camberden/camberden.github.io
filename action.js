@@ -7,11 +7,11 @@
  * @author Camberden (Chrispy | Kippi)
  */
 import { CMBRdb } from "./cmbr-db.js";
-const latestUpdate = "Saturday, February 21st, 2026";
+const latestUpdate = "Monday, February 23rd, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
-
+const allPhotos = [];
 /**
  * 
  * @param {string} month
@@ -94,27 +94,25 @@ const randomizeMonicker = () => {
 		camberden.innerHTML = monickers[0];
 	}
 }
-const randomizePhotos = () => {
+/**
+ * @param {Object} album
+ */
+const randomizePhotos = (album) => {
+
 	const infoDivBackground = document.getElementById("info-div-background");
 	infoDivBackground.style.animationPlayState = "paused";
 	const m = Math.random();
 	infoDivBackground.style.animationPlayState = "running";
-	let photoIndex = Math.round(m.toFixed(2) * 100);
-	if (photoIndex > 75) {
-		photoIndex -= 75;
-	} else if (photoIndex > 50) {
-		photoIndex -= 50;
-	} else if (photoIndex > 25) {
-		photoIndex -= 25;
-	} else {
-		photoIndex = photoIndex;
+	let photoIndex = Math.round(m.toFixed(2) * album.length);
+	if (photoIndex < 1) {
+		++photoIndex;
 	}
-	photoIndex < 1 ? randomizePhotos : infoDivBackground.style.backgroundImage = `url(assets/travel-photos/photo-nc-us-${photoIndex}.jpeg)`;
+	infoDivBackground.style.backgroundImage = `url("${album[photoIndex]}")`;
 }
 const jsonAndDatabaseDemo = async () => {
-	connectCMBRjson("cmbr");
-	const q = await CMBRdb.querySelect();
-	console.log(q[0].title);
+	CMBRutil.connectCMBRjson("cmbr");
+	// const q = await CMBRdb.querySelect();
+	// console.log(q[0].title);
 }
 const queryButtonDemonstrator = async () => {
 
@@ -144,12 +142,13 @@ const queryButtonDemonstrator = async () => {
 
 (async () => {
 
+	const photos = await CMBRutil.connectCMBRjson("cmbr");
 	CMBRutil.actionsProvided("sections");
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));
-	randomizePhotos();
+	randomizePhotos(photos);
 	const slideshow = setInterval(()=> {
-		randomizePhotos();
+		randomizePhotos(photos);
 	}, 10000);
-	
+
 })();

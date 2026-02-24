@@ -11,7 +11,6 @@ currentDateField.innerHTML = currentDate;
 let currentBalance = 10000;
 const originalBalance = currentBalance;
 let currentDeposit = 1000;
-console.log(getMonthText(birthMonth) + " " + birthDate + " " + birthYear);
 
 function enableModal() {
 	document.querySelectorAll(".modal-prompt").forEach(prompt => {
@@ -43,14 +42,12 @@ function enableModal() {
  */
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
-	console.log("Modal Text Cleared!");
 }
 /**
  * @description Removes all elements within the main calerdar window
  */
 function clearLifecraftField() {
 	lifecraftField.innerHTML = "";
-	console.log("Lifecraft Field Cleared!");
 }
 function getDaysInMonthOfYear(year, month) {
 	return new Date(year, month, 0).getDate();
@@ -63,19 +60,13 @@ function getDaysInMonthOfYear(year, month) {
 function findDaysSinceBirthday(present, birth) {
 	const yearsSinceBirth = present.getFullYear() - birth.getFullYear() - 1; // -1 accounts for present year lived months
 	
-	console.log(yearsSinceBirth); // Says 32; TODO correct by month.
-	console.log(present.getMonth());
-	console.log(birth.getMonth());
 	const monthOfBirthDaysTotal = new Date(birth.getFullYear(), birth.getMonth(), 0).getDate();
 	const monthOfBirthDaysLived = monthOfBirthDaysTotal - birth.getDate();
 	const presentMonthDaysLived = present.getDate();
 
 	let totalDaysLived = monthOfBirthDaysLived + presentMonthDaysLived;
-	console.log("Birth Month & Current Month Days Lived: " + totalDaysLived + " Nov 1993 Total: " + monthOfBirthDaysTotal + " Nov 1993 Lived: " + monthOfBirthDaysLived);
 	const monthsRemainingInBirthYear = 12 % birth.getMonth();
 	const monthsRemainingInPresentYear = present.getMonth();
-	console.log("Months remaining in Birth Year: " + monthsRemainingInBirthYear);
-	console.log("Remaining in Present Year: " + monthsRemainingInPresentYear);
 
 	const daysRemainingInBirthYear = getDaysInMonthOfYear(birth.getFullYear(), (birth.getMonth() + monthsRemainingInBirthYear));
 
@@ -83,7 +74,6 @@ function findDaysSinceBirthday(present, birth) {
 	for (let i = 1; i <= monthsRemainingInBirthYear; i++) {
 		totalDaysLived += getDaysInMonthOfYear(birth.getFullYear(), (birth.getMonth() + i)); // BIRTH doesn't need +1; it's inbuilt
 	}
-	console.log("Days remaining in birth Year: " + daysRemainingInBirthYear);
 
 	// Gathers days before present month for all lived months of current year.
 	if (present.getMonth() > 0) {
@@ -94,7 +84,6 @@ function findDaysSinceBirthday(present, birth) {
 
 	// Gathers days between birth year and present year.
 	let by = birth.getFullYear() + 1;
-	console.log(by);
 	for (let i = 0; i < yearsSinceBirth; i++) {
 		for (let j = 1; j <= 12; j++)
 		totalDaysLived += getDaysInMonthOfYear(by, j);
@@ -124,8 +113,6 @@ function addEventsByYear(year) {
 		if (event.eventDate.substring(0,4) == year) {
 			document.getElementById(event.eventDate).classList.add("event");
 			if (eventSplitDate.getTime() > presentMoment.getTime()) {
-				console.log(event.title + " is in the future");
-				// console.log("Times: " + eventSplitDate.toDateString() + " " + presentMoment.toDateString());
 				document.getElementById(event.eventDate).classList.add("future-event");
 			}
 			document.getElementById(event.eventDate).onclick = function() {
@@ -239,15 +226,6 @@ function displayBiweeklyRotation(year) {
 	if (indexProper === 0) {
 		indexProper = 14;
 	}
-	// console.log("Year: " + year);
-	// console.log("Index Base: " + indexBase);
-	// console.log("Index Skip: " + indexSkip);
-	// console.log("Index Sum: " + indexSum);
-	// console.log("Index Proper: " + indexProper);
-	// console.log("Result: " + biweeklyRelations[indexProper]);
-	// console.log("Includes Off? " + biweeklyRelations[indexProper].includes("Off"));
-	// console.log("Includes On? " + biweeklyRelations[indexProper].includes("On"));
-
 	calendarDays.forEach(calendarDay => {
 		if (indexProper > 14) {
 			indexProper = 1;
@@ -342,7 +320,6 @@ function enableLifecraftButtons() {
 					if (toggleSavings) {
 						switchDisplay("savings-projection", true);
 					}
-					console.log(currentBalance);
 				break;
 				case "previous":
 					generateCalendar(--changeYear);
@@ -353,7 +330,6 @@ function enableLifecraftButtons() {
 					if (toggleSavings) {
 						switchDisplay("savings-projection", true);
 					}
-					console.log(currentBalance);
 				break;
 				case "savings":
 					if (toggleSavings) {
@@ -363,7 +339,6 @@ function enableLifecraftButtons() {
 						switchDisplay("savings-projection", true);
 						toggleSavings = true;
 					}
-					console.log(toggleSavings);
 				break;
 				case "rotation":
 						// displayBiweeklyRotation(changeYear);
@@ -412,7 +387,6 @@ function generateModalListHeader(selection) {
 	let ul = document.createElement("ul");
 	const hr = document.createElement("hr");
 	hr.classList.add("modal-line");
-	console.log(selectionId);
 	
 	switch (selectionId) {
 

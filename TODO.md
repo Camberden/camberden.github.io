@@ -23,6 +23,8 @@
 - I would like to do init and cleanup for smooth page transitions when the time comes.
 > Need to assign page-specific handlers
 
+- Dealing with my JSON issues
+> The issue is that your connectCMBRjson() function doesn't return the fetch promise chain. When you don't return a promise, await gets undefined.
 
 ---
 

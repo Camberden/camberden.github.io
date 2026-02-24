@@ -54,7 +54,6 @@ const coordinates = {
 	"Tokyo, Japan": [],
 	"Nagoya, Japan": []
 }
-	
 
 /**
  * @type BlogPost[]
@@ -919,7 +918,7 @@ const blogData = [
 	| &emsp;
 	This has surely been an adventure.
 	I am making this update on a Tokyo-bound Shinkansen. The countryside, with its towns, mountains,
-	and rice padddies, are passing by at incredible speeds. Right now, I had a view of the Ise Bay.
+	and rice paddies, are passing by at incredible speeds. Right now, I had a view of the Ise Bay.
 	<hr>&emsp;
 	One thing I surely appreciate is the complete detachment from my labor and nighttime mundanities.
 	They are so distant that their significance in the present moment is negligible. Empty.

@@ -1,7 +1,6 @@
 /* ----- PAGE SPECIFIC ----- */
 html {
-	scrollbar-color: var(--cmbr-dark-iron) var(--cmbr-dark-grey);
-	scrollbar-width: thin;
+	scrollbar-color: rgba(4, 6, 17, 0.75) var(--cmbr-curtain-plum);
 }
 
 ul {
@@ -14,7 +13,7 @@ input[type=text] {
 	font-family: monospace, serif;
 	font-size: 1rem;
 	border: none;
-	width: fit-content;
+	width: 100%;
 }
 
 input[type=text]:focus {
@@ -35,7 +34,7 @@ input[type=text]:focus {
 	display: flex;
 	flex-direction: column;
 	align-items: left;
-	justify-content: first baseline;
+	justify-content: baseline;
 	text-align: left;
 	min-width: 20rem;
 	min-height: 20rem;
@@ -49,42 +48,14 @@ input[type=text]:focus {
     background-color: rgba(4, 6, 17, 0.75);
 	background-image: transparent;
 	background-size: cover;
-	/* text-shadow: #f59b60; */
     border: 0.5rem ridge rgba(22, 17, 17, 0.855);
 
 }
 
-#dashboard-expense-management {
-	/* flex: 1.5; */
+.step-pay-plan-button {
+	width: 100%;
 }
 
-#dashboard-step-pay-plan {
-	/* flex: 2.5; */
-}
-
-#dashboard-reeducation-information {
-	/* flex: 1.5;  */
-	display: flex;
-	flex-direction: column;
-	align-items: stretch;
-	justify-content: baseline;
-	min-width: 20rem;
-	min-height: 20rem;
-	/* padding: 2rem; */
-}
-
-#dashboard-pension-calculator {
-	/* flex: 3; */
-}
-
-#dashboard-career-insight {
-	/* flex: 2; */
-
-}
-
-#dashboard-taxability-calculator {
-	/* flex: 2; */
-}
 /* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
 
 #p2p {
@@ -151,6 +122,7 @@ input[type=text]:focus {
 #salary-values > li {
 	list-style-type: none;
 }
+
 
 #salary-table-corner {
 	background: var(--clr-grid-box);
@@ -332,11 +304,6 @@ input[type=text]:focus {
 
 /* ----- PENSION CALCULATOR ----- */
 
-#pension-table {
-	table-layout: fixed;
-	font-size: 1rem;
-}
-
 .pension-reduction-highlight {
 	color:crimson;
 	background-color: cadetblue;
@@ -344,57 +311,37 @@ input[type=text]:focus {
 	font-weight: 800;
 }
 
+.pension-buttons {
+	width: 100%;
+}
+
 /* ----- MEDIA QUERIES ---- */
 
 @media screen and (max-width: 750px) {
 
-body {
-	background-image: none; 
-}
+	body {
+		background-image: none; 
+	}
 
-.inline-signature {
-	display: inline-flex;
-	flex: 1;
-	z-index: 200;
-	box-sizing: border-box;
-	left: 47%;
-	right: 30%;
-	position: fixed;
-}
+	.inline-signature {
+		display: inline-flex;
+		flex: 1;
+		z-index: 200;
+		box-sizing: border-box;
+		left: 47%;
+		right: 30%;
+		position: fixed;
+	}
 
-#current-section {
-	display: none;
-}
+	.dashboard-grid {
+		align-items: center;
+		justify-items: center;
+		gap: 0;
+	}
 
-#salary-table {
-	font-size: 0.7rem;
-}
-
-#pension-table {
-	font-size: 0.7rem;
-	overflow-x: scroll;
-	scrollbar-color: var(--cmbr-dark-iron) var(--cmbr-dark-grey);
-	scrollbar-width: auto;
-}
-
-#pension-table > tr > td {
-	padding: 0.1rem;
-	border-top: none;
-	border-bottom: double;
-	border-left: none;
-	border-right: double;
-}
-
-.dashboard-grid {
-	align-items: center;
-	justify-items: center;
-	gap: 0;
-}
-
-.dashboard-item {
-	padding: 0;
-}
-
+	.dashboard-item {
+		padding: 0;
+	}
 
 }
 

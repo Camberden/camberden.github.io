@@ -64,6 +64,8 @@ const baseHyperlinks = [
 	"http://localhost:" + basePort + "/index.html",
 ];
 
+var CMBRdata;
+
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -88,14 +90,17 @@ const CMBRutil = {
 	},
 	buttonOnClick: function (button) {
 		if (button.classList.contains("toggleable")){
+
 			 if (button.classList.contains("button-toggled")) {
 				button.classList.remove("button-toggled");
 				button.classList.add("button-highlight");
 			} else {
 				button.classList.add("button-toggled");
 			}
+
 		} else {
 		button.classList.add("button-depressed");
+
 		setTimeout(() => {
 			button.classList.remove("button-depressed");
 		}, 200);
@@ -330,6 +335,7 @@ const CMBRutil = {
 			};
 		});
 	},
+	
 	/** 
 	 * @description Reads current folder .json File as text 
 	 * @param {String} txt Name of .json File 
@@ -337,18 +343,15 @@ const CMBRutil = {
 	 * 
 	 */
 	connectCMBRjson: function(name) {
-
-		fetch(`${document.location.origin}/${name}.json`).then(response => {
-			return response.text();
-		}).then(stuff => {
-			const loaded = JSON.parse(stuff);
-			console.log(typeof(loaded["urls"]));
-			CMBRdata = (Object.keys(loaded.sections).length);
-			CMBRdata = loaded.sections;
-		}).catch(error => {
-			console.error('Failed to fetch page: ', error)
+		return fetch(`${document.location.origin}/${name}.json`)
+		.then(data => data.json())
+		.then(data => {
+			return data;
+		})
+		.then((data) => {
+			return data["travel-photos"].items;
 		});
-	}
+		}
 
 }
 
@@ -359,4 +362,3 @@ const displaySite = () => { document.getElementById("current-site").innerHTML = 
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
-let CMBRdata = "<‰=== Empty Data ===‰>";

@@ -12,6 +12,9 @@ node_modules/
 package.json
 package-lock.json
 
+images/cmbr-sig-play.htm
+images/cmbr-sig-transform.svg
+
 template.html
 template.js
 

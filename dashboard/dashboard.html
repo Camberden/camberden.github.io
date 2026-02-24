@@ -13,14 +13,19 @@
 </head>
 
 <body data-theme="dark">
-	<h1 id="current-section" class="multipanel-heading">&emsp;Chrispy's Dashboard</h1>
 	<div class="nav-layout">
-		<nav class="nav-col-grid">
-			<div id="nav-dropdowns" class="nav-row-grid">
+		<nav> <!-- 1 item -->
+
+			<div id="nav-dropdowns"> <!-- 3 items -->
 
 				<div id="sections-dropdown">
 					<div id="sections-access">Navigation</div>
 					<div class="sections-links"></div>
+				</div>
+
+				<div id="inline-signature-div">
+					<!-- <span class="inline-signature"></span> -->
+					<h1 id="current-section" class="multipanel-heading">Chrispy's Dashboard</h1>
 				</div>
 
 				<div id="bookmarks-dropdown">
@@ -28,11 +33,10 @@
 					<div class="bookmarks-links"></div>
 				</div>
 
-				<div id="inline-signature-div">
-					<span class="inline-signature"></span>
-				</div>
-
 			</div>
+
+
+				
 		</nav>
 		<hr class="hr-nav-pad">
 		<hr class="hr-cmbr-gradient">
@@ -154,14 +158,14 @@
 				
 				</div>
 				<ul id="salary-values" class="grid-col-1-1">
-					<li>Base-Rate Salary</li> <span id="current-salary"></span>
-					<li>Base-Rate Monthly:</li> <span id="monthly-salary"></span>
-					<li>Base-Rate Hourly:</li> <span id="hourly-salary"></span>
-					<li>Base-Rate 11HR Gap:</li> <span id="gap-pay"></span>
-					<li>Differential Overtime:</li> <span id="overtime-diff"></span>
-					<li>Differential Nightly:</li><span id="night-diff"></span>
-					<li>Differential Weekend:</li><span id="weekend-diff"></span>
-					<li>Differential Holiday:</li><span id="holiday-diff"></span>
+					<li>Base-Rate Salary</li> <span id="current-salary"class="money"></span>
+					<li>Base-Rate Monthly:</li> <span id="monthly-salary"class="money"></span>
+					<li>Base-Rate Hourly:</li> <span id="hourly-salary"class="money"></span>
+					<li>Base-Rate 11HR Gap:</li> <span id="gap-pay"class="money"></span>
+					<li>Differential Overtime:</li> <span id="overtime-diff"class="money"></span>
+					<li>Differential Nightly:</li><span id="night-diff"class="money"></span>
+					<li>Differential Weekend:</li><span id="weekend-diff"class="money"></span>
+					<li>Differential Holiday:</li><span id="holiday-diff"class="money"></span>
 
 				</ul>
 			</div>
@@ -172,8 +176,8 @@
 					<div>
 						<p>CO<span id="custody-level">_</span></p>
 					</div>
-					<button class="step-pay-plan-button" value="decrease-custody-level">Decrease</button>
-					<button class="step-pay-plan-button" value="increase-custody-level">Increase</button>
+					<button class="trigger-box step-pay-plan-button" value="decrease-custody-level">Decrease</button>
+					<button class="trigger-box step-pay-plan-button" value="increase-custody-level">Increase</button>
 				</div>
 
 				<hr class="hr-cmbr-dark-gradient">
@@ -181,16 +185,16 @@
 					<div>
 						<p>Years Experience: <span id="years-experience" label="years-experience">_</span></p>
 					</div>
-					<button class="step-pay-plan-button" value="decrease-years-experience">Decrease</button>
-					<button class="step-pay-plan-button" value="increase-years-experience">Increase</button>
+					<button class="trigger-box step-pay-plan-button" value="decrease-years-experience">Decrease</button>
+					<button class="trigger-box step-pay-plan-button" value="increase-years-experience">Increase</button>
 				</div>
 				<hr class="hr-cmbr-dark-gradient">
 				<div class="grid-col-3-1-1">
 					<div>
 						<p>Fiscal Year: <span id="fiscal-year">_</span></p>
 					</div>
-					<button class="step-pay-plan-button" value="previous-fiscal-year">Previous</button>
-					<button class="step-pay-plan-button" value="next-fiscal-year">Next</button>
+					<button class="trigger-box step-pay-plan-button" value="previous-fiscal-year">Previous</button>
+					<button class="trigger-box step-pay-plan-button" value="next-fiscal-year">Next</button>
 				</div>
 			</div>
 		</div>
@@ -307,12 +311,13 @@
 					<p><span id="net-pension"></span></p>
 					<p><span id="monthly-pension"></span></p>
 					<p>
-						<span id="pension-notice"></span>
+					<span id="pension-notice"></span>
 					</p>
 				</div>
+				<div class="trigger-box pension-buttons">GeneratePension</div>
 
 			</div>
-			<button class="pension-buttons">Generate Pension</button>
+			
 
 		</div>
 
