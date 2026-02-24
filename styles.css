@@ -172,11 +172,6 @@ h3 {
 
 /* ----- MAIN NAVIGATION STYLES FOR INDEX AND BEYOND ----- */
 
-/* .nav-layout {
-	display: grid;
-	grid-template-columns: 1fr 6fr 1fr;
-} */
-
 nav {
 	display: flex;
 	position: fixed;
@@ -215,6 +210,9 @@ nav {
 }
 #current-section {
 	text-align: center;
+	box-sizing: border-box;
+	max-height: 3rem;
+	/* max-width: 80%; */
 
 	z-index: 150;
 	width: 100%;
@@ -402,6 +400,27 @@ nav {
 	padding: 0.5rem !important;
 	font-size: 1rem !important;
 }
+.data-theme-button {
+	height: 3rem;
+	box-sizing: border-box;
+	background: var(--cmbr-legacy-gradient);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	background-repeat: no-repeat;
+	color: transparent;
+	user-select: none;
+	width: fit-content;
+	padding: 0;
+}
+.data-theme-button:hover {
+	cursor: pointer;
+	color: crimson;
+}
+.data-theme-button:active {
+	color: transparent;
+}
+
+
 #bookmarks-access {
 	font-family: "VT323", monospace;
 	text-align: center;

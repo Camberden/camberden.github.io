@@ -122,15 +122,15 @@ const CMBRutil = {
 
 	dataTheme: function () {
 		document.querySelectorAll(".data-theme-button").forEach(button => {
-			button.onmouseenter = function() {
-				CMBRutil.buttonOnMouseEnter(button);
-			}
-			button.onmouseleave = function() {
-				CMBRutil.buttonOnMouseLeave(button);
-			}
+			// button.onmouseenter = function() {
+			// 	CMBRutil.buttonOnMouseEnter(button);
+			// }
+			// button.onmouseleave = function() {
+			// 	CMBRutil.buttonOnMouseLeave(button);
+			// }
 			button.onclick = function () {
 				console.log("Data Theme Change");
-				switch (button.value) {
+				switch (button.id) {
 					case "dark":
 						document.querySelector("body").setAttribute("data-theme", "dark");
 					break;
