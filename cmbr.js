@@ -78,22 +78,15 @@ const CMBRutil = {
 		if (!button.classList.contains("button-toggled")) {
 			button.classList.add("button-highlight");
 		} 
-		// else {
-		// 	button.classList.remove("button-highlight");
-		// }
 	},
 	buttonOnMouseLeave: function (button) {
 		button.classList.remove("button-highlight");
-		// if (button.classList.contains("button-depressed")) {
-		// 	button.classList.remove("button-depressed");
-		// }
 	},
 	buttonOnClick: function (button) {
 		if (button.classList.contains("toggleable")){
 
 			 if (button.classList.contains("button-toggled")) {
 				button.classList.remove("button-toggled");
-				button.classList.add("button-highlight");
 			} else {
 				button.classList.add("button-toggled");
 			}
@@ -337,19 +330,33 @@ const CMBRutil = {
 	},
 	
 	/** 
-	 * @description Reads current folder .json File as text 
-	 * @param {String} txt Name of .json File 
+	 * @description Reads cmbr.json
+	 * @borrows cmbr.json
+	 * @param {String} name selected query from cmbr.json acceptable queries
 	 * @implements {Promise<Object>} 
 	 * 
 	 */
-	connectCMBRjson: function(name) {
-		return fetch(`${document.location.origin}/${name}.json`)
+	connectCMBRjson: function(query) {
+		return fetch(`${document.location.origin}/cmbr.json`)
 		.then(data => data.json())
 		.then(data => {
 			return data;
 		})
 		.then((data) => {
-			return data["travel-photos"].items;
+			switch(query) {
+				case "travel-photos":
+					return data["travel-photos"].items;
+				break;
+				case "blog-meta":
+					return data.blog.meta;
+				break;
+				case "events-meta":
+					return data.events.meta;
+				break;
+				default:
+					return data;
+				break;
+			}
 		});
 		}
 

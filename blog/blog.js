@@ -9,7 +9,6 @@ function displayActiveBlogPostNumber() {
 	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
 	document.getElementById(`bp-${activeBlogPostNumber}`).classList.add("listing-highlight");
 }
-
 /**
  * @param content
  * Gathers text within a blog post's content between custom tags such as `<b-title></b-title>`.
@@ -94,7 +93,15 @@ function chooseActiveBlogPost() {
 
 function enableBlogButtons() {
 	document.querySelectorAll(".blog-button").forEach(button => {
+		button.onmouseover = function(){
+			CMBRutil.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function(){
+			CMBRutil.buttonOnMouseLeave(button);
+		}
 		button.onclick = function () {
+			CMBRutil.buttonOnClick(button);
+
 
 			switch (button.value) {
 				case "next":
@@ -149,30 +156,30 @@ function reEnableBlogPostList(){
 }
 
 function viewBlogPostMap() {
-	const map = L.map("blog-map").setView([51.505, -0.09], 11);
+	const map = L.map("blog-map").setView([35.91029565048358, -79.0553474519402], 7);
 
 	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(map); 
 
-	const marker = L.marker([51.5, -0.09]).addTo(map);
+	const marker = L.marker([35.91029565048358, -79.0553474519402]).addTo(map);
 
-	const circle = L.circle([51.508, -0.11], {
+	const circle = L.circle([35.71951016932923, -79.18136391788723], {
 		color: 'red',
 		fillColor: '#f03',
 		fillOpacity: 0.5,
 		radius: 500
 	}).addTo(map);
 
-	const polygon = L.polygon([
-		[51.509, -0.08],
-		[51.503, -0.06],
-		[51.51, -0.047]
-	]).addTo(map);
+	// const polygon = L.polygon([
+	// 	[51.509, -0.08],
+	// 	[51.503, -0.06],
+	// 	[51.51, -0.047]
+	// ]).addTo(map);
 
-	marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+	marker.bindPopup("<b>Hello you,</b><br>I'm around here.").openPopup();
 	circle.bindPopup("I am a circle.");
-	polygon.bindPopup("I am a polygon.");
+	// polygon.bindPopup("I am a polygon.");
 
 	const onMapClick = (e) => {
 		alert("You clicked the map at " + e.latlng);

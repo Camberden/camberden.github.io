@@ -4,13 +4,14 @@
 *.srl
 *.crt
 *.cnf
-*.json
 .shelf
 .vscode
 
 node_modules/
 package.json
 package-lock.json
+*.json
+!cmbr.json
 
 images/cmbr-sig-play.htm
 images/cmbr-sig-transform.svg

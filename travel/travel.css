@@ -83,7 +83,6 @@
 	box-sizing: border-box;
 	display: block;
 	outline: 0.2rem dotted palevioletred;
-	border: 0.5rem ridge transparent;
 	width: 100%;
 	height: 20rem;
 }

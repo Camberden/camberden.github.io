@@ -123,7 +123,6 @@ input[type=text]:focus {
 	list-style-type: none;
 }
 
-
 #salary-table-corner {
 	background: var(--clr-grid-box);
 }

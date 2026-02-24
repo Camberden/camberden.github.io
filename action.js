@@ -7,7 +7,7 @@
  * @author Camberden (Chrispy | Kippi)
  */
 import { CMBRdb } from "./cmbr-db.js";
-const latestUpdate = "Monday, February 23rd, 2026";
+const latestUpdate = "Tuesday, February 24th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -142,7 +142,7 @@ const queryButtonDemonstrator = async () => {
 
 (async () => {
 
-	const photos = await CMBRutil.connectCMBRjson("cmbr");
+	const photos = await CMBRutil.connectCMBRjson("travel-photos");
 	CMBRutil.actionsProvided("sections");
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));

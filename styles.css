@@ -531,23 +531,20 @@ mark {
 button {
 	cursor: pointer;
 	user-select: none;
-	font-family: "PermanentMarker", "monospace";
-	box-sizing: border-box;
-	background-clip: border-box;
-	-webkit-background-clip: text;
-	background-repeat: no-repeat;
-	background-size: 0% 100%;
-	background-position: 0% 88%;
-	color: transparent;
+	font-family: "Lora", "sans-serif";
+	font-weight: 900;
+	color: burlywood;
+	background: #182124;
 
 	padding: 0.5rem;
-	border: 0.5rem solid var(--cmbr-curtain-plum);
+	border: 0.5rem groove cadetblue;
+	box-sizing: border-box;
 	box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--cmbr-dark-grey);
 
-	transition: all 0.2s ease-in;
-	text-shadow: 0rem 0rem var(--cmbr-orange);
-}
+	transition: color 0.2s ease-in;
+	transition: color 0.2s ease-in;
 
+}
 .buttonesque {
 	cursor: pointer;
 	user-select: none;
@@ -578,28 +575,14 @@ button {
 }
 .button-highlight {
 	position: sticky;
-	border: 0.5rem solid var(--cmbr-dark-ash);
-	text-shadow: 0rem 0rem transparent;
-
-
-	box-sizing: border-box;
-	background-clip: border-box;
-	-webkit-background-clip: text;
-
-	background-repeat: no-repeat;
-	background-size: 100% 100%;
-	background-position: 0% 88%;
-	border-bottom: 0.5rem solid var(--doi-red);
+	border-color: black;
+	color: var(--cmbr-orange);
+	background: transparent;
 }
 .button-depressed {
-	background-image: linear-gradient(
-		to top left,
-		rgb(from var(--cmbr-violet) calc(r) calc(g) calc(b + 150)),
-		rgb(from var(--cmbr-blue) calc(r) calc(g) calc(b + 100)),
-		var(--cmbr-orange),
-		rgb(from var(--cmbr-blue) calc(r + 30) calc(g) calc(b)),
-		rgb(from var(--cmbr-violet) calc(r + 100) calc(g) calc(b))
-	);
+	color: grey;
+	background: transparent;
+	border-color: sienna;
 	box-shadow: 0.0rem 0.0rem 0.0rem 0.0rem var(--cmbr-dark-grey);
 	
 }
@@ -652,6 +635,9 @@ button {
 	background: var(--cmbr-dark-steel);
 	border-color: var(--cmbr-green);
 }
+ .trigger-box-lite {
+
+ }
 .button-grid-row {
 	display: flex;
 	flex-flow: row wrap;
