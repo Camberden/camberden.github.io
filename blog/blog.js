@@ -196,5 +196,6 @@ function viewBlogPostMap() {
 	enableBlogButtons();
 	enableBlogSelect();
 	viewBlogPostMap();
+	CMBRutil.dataTheme();
 
 })();

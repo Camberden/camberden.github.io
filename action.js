@@ -1,3 +1,4 @@
+import { CMBRdb } from "./cmbr-db.js";
 /** ===> CAMBERDEN.GITHUB.IO UPDATE ===>
  * @description Personal Website:
  * - From 2020 to Present
@@ -6,7 +7,6 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-import { CMBRdb } from "./cmbr-db.js";
 const latestUpdate = "Tuesday, February 24th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
@@ -150,5 +150,6 @@ const queryButtonDemonstrator = async () => {
 	const slideshow = setInterval(()=> {
 		randomizePhotos(photos);
 	}, 10000);
+	CMBRutil.dataTheme();
 
 })();

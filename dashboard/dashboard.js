@@ -601,12 +601,10 @@ function cpaModalAccess() {
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
 	document.getElementById("modal-text").removeAttribute("class", "paycard-grid");
-	document.getElementById("current-section").style.display = "inline-flex";
 
 	console.log("Modal Cleared!");
 }
 function displayExpenseModal() {
-	document.getElementById("current-section").style.display = "none";
 	const expenseModalData = document.createElement("div");
 	const currentDate = new Date();
 	const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];

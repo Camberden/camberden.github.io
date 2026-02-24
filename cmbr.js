@@ -119,6 +119,35 @@ const CMBRutil = {
 			}
 		}
 	},
+
+	dataTheme: function () {
+		document.querySelectorAll(".data-theme-button").forEach(button => {
+			button.onmouseenter = function() {
+				CMBRutil.buttonOnMouseEnter(button);
+			}
+			button.onmouseleave = function() {
+				CMBRutil.buttonOnMouseLeave(button);
+			}
+			button.onclick = function () {
+				console.log("Data Theme Change");
+				switch (button.value) {
+					case "dark":
+						document.querySelector("body").setAttribute("data-theme", "dark");
+					break;
+					case "light":
+						document.querySelector("body").setAttribute("data-theme", "light");
+					break;
+					case "legacy":
+						document.querySelector("body").setAttribute("data-theme", "legacy");
+					break;
+					default:
+						console.log();
+					break;
+				}
+			}
+		})
+	},
+
 	navigatePages: async function (pathname) {
 		window.location.href = pathname + "/" + "?t=" + Date.now();
 	},
@@ -364,7 +393,7 @@ const CMBRutil = {
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
 const recognizeFileProtocol = (x) => { y = document.getElementById(x); CMBRutil.acceptableProtocol() ? y.innerHTML += " &check;" : y.innerHTML += `<span style="font-size: 0.8rem; color: red; position: absolute;">[lesser functionality in file protocol]</span>`; }
-const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); }
+const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); CMBRutil.dataTheme(); }
 const displaySite = () => { document.getElementById("current-site").innerHTML = document.location.host };
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
