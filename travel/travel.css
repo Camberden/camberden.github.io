@@ -1,17 +1,19 @@
 .travel-grid {
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
-	/* width: min(100%, 70rem); */
+	gap: 1rem;
+	padding: 2rem;
 	height: 100vh;
 }
 .travel-item {
-	display: flex;
-	flex-flow: row wrap;
+	display: block;
+	/* flex-flow: row wrap; */
 	width: 100%;
-	height: 50%;
-	background: black;
+	height: 40rem;
+	gap: 1rem;
+	background:#0f0b0789;
 	box-sizing: border-box;
-	outline: 0.2rem dotted blue;
+	border: 0.2rem ridge burlywood;
 	border: 0.5rem solid transparent;
 }
 .map-display {
@@ -84,7 +86,7 @@
 	display: block;
 	outline: 0.2rem dotted palevioletred;
 	width: 100%;
-	height: 20rem;
+	height: 40rem;
 }
 
 #globe-emojis {

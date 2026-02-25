@@ -230,7 +230,6 @@ nav {
 	-webkit-background-clip: text;
 	background-repeat: no-repeat;
 	color: transparent;
-	user-select: none;
 	/* animation: 30s linear shadow-fade infinite; */
 }
 #nav-dropdowns {

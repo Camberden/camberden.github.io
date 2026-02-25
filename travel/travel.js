@@ -14,7 +14,9 @@ const globeEmojis = ["🌎","🌍","🌏"];
 const worldMap = document.getElementById("world-map");
 const usMap = document.getElementById("us-map");
 const expansiveMap = document.getElementById("expansive-map");
-let currentMap = "world-map";
+const notesPanel = document.getElementById("notes-panel");
+const varietyPanel = document.getElementById("variety-panel");
+let currentMap = "expansive-map";
 
 const visitedCountries = ["US", "BZ", "GT", "JP"];
 const countriesToVisit = ["NZ", "IS", "CA", "GB", "DE", "MU", "PL", "TH", "IN", "CO", "PY", "AR", "UY", "AU", "NA", "ID", "SG", "MU", "LK", "MV", "AW", "BM"];
@@ -50,17 +52,20 @@ function enableMapSelectionButtons() {
 function cyclePoliticalDivision(selection) {
 	switch (selection) {
 		case "world-map":
+			mapHighlightButtons.forEach(b => b.style.display = "inline");
 			politicalDivision.innerHTML = "Countries Visited:&emsp;";
 			visitedTotal.innerHTML = visitedCountries.length;
 			mapSymbol.innerHTML = "🌎";
 
 		break;
 		case "us-map":
+			mapHighlightButtons.forEach(b => b.style.display = "inline");
 			politicalDivision.innerHTML = "States Visited:&emsp;";
 			visitedTotal.innerHTML = visitedStates.length;
 			mapSymbol.innerHTML = "🇺🇸";
 		break;
 		case "expansive-map":
+			mapHighlightButtons.forEach(b => b.style.display = "none");
 			mapSymbol.innerHTML = `<i>🧭🗺️ Browsing Expansive Map! <span id="spinning-globes"><span></i>`;
 			globeEmojiSpin();
 
@@ -188,6 +193,7 @@ function loadMapHighlight(selection) {
 
 function enableMapHighlightButtons () {
 	mapHighlightButtons.forEach(button => {
+
 		button.onclick = function () {
 			loadMapHighlight(button.value);
 			CMBRutil.buttonOnClick(button);
@@ -261,6 +267,12 @@ function displayNotes(selection, map) {
 					modalText.innerHTML = state.notes;
 				}
 			}
+		case "expansive-map":
+			for (let country of countryInformation) {
+				if (country.id === selection) {
+					notesPanel.innerHTML = country.notes;
+				}
+			}
 			break;
 		default:
 			console.log("Note Display Function Triggered");
@@ -279,7 +291,7 @@ function globeEmojiSpin() {
 }
 
 function viewExpansiveMap() {
-	const map = L.map("expansive-map").setView([35.91029565048358, -79.0553474519402], 12);
+	const map = L.map("expansive-map").setView([35.91029565048358, -79.0553474519402], 2);
 
 	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -287,23 +299,30 @@ function viewExpansiveMap() {
 
 	const marker = L.marker([35.77868919025996, -78.63746540620924]).addTo(map);
 
-	const circle = L.circle([35.71951016932923, -79.18136391788723], {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5,
-		radius: 500
-	}).addTo(map);
+	countryInformation.forEach(country => {
+		console.log(country.name);
 
+		if (visitedCountries.includes(country.id)) {
+			console.log((visitedCountries.includes(country.id)));
+			styleVal = {color: 'cornflowerblue',fillColor: 'rgb(32, 159, 222)',fillOpacity: 0.5,radius: 5000};
+		} else {
+			styleVal = {color: 'teal',fillColor: 'rgb(0, 255, 195)',fillOpacity: 0.5,radius: 5000};
+		}
+		 
+		const circle = L.circle(country.position, styleVal).addTo(map);
+		circle.bindPopup(country.name); 
+		
+		// circle.on('click', displayNotes(country.id, "expansive-map"))
+	});
 	// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 	// circle.bindPopup("I am a circle.");
 	// polygon.bindPopup("I am a polygon.");
 
-	// const onMapClick = (e) => {
-	// 	alert("You clicked the map at " + e.latlng);
-	// }
 
-	// map.on('click', onMapClick);
-	//LatLng(35.817813, -78.651064)
+	const onMapClick = (e) => {
+		alert("You clicked the map at " + e.latlng);
+	}
+	map.on('click', onMapClick);
 }
 
 (() => {
@@ -314,5 +333,6 @@ function viewExpansiveMap() {
 	highlightVisitedStates();
 	enableMapHighlightButtons();
 	viewExpansiveMap();
+	console.log(countryInformation.forEach(c => console.log(c.position)));;
 
 })();
