@@ -5,53 +5,251 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
 	<style> @import "../styles.css" screen; @import "workspace.css" screen; </style>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="../cmbr.js"></script>
 	<title>Chrispy's Workspace</title>
 </head>
 
-<body data-theme="legacy">
-	<h1 id="current-section">&emsp;Chrispy's Code Testing Workspace</h1>
-	<div class="nav-layout">
-		<nav class="nav-col-grid">
-			<div id="nav-dropdowns" class="nav-row-grid">
+<body data-theme="dark">
 
-				<div id="sections-dropdown">
-					<div id="sections-access">Navigation</div>
-					<div class="sections-links"></div>
-				</div>
+	<nav>
+		<div class="nav-sail">
 
-				<div id="bookmarks-dropdown">
-					<div id="bookmarks-access">Bookmarks</div>
-					<div class="bookmarks-links"></div>
+			<!-----| NAV 1 |----->
+			<div id="nav-1" x-data="{ active: 0 }">
+				
+				<div x-data="{
+					id: 1,
+					get expanded() {
+						return this.active === this.id
+					},
+					set expanded(value) {
+						this.active = value ? this.id : null
+					},
+					}" role="region" class="">
+						<button
+							type="button"
+							x-on:click="expanded = !expanded"
+							:aria-expanded="expanded"
+							id="chart-access">
+							<div class="trigger-dropdown">
+								<span x-show="expanded" x-cloak>&UpArrow;</span>
+								<span x-show="!expanded" x-cloak>&DownArrow;</span>
+								<span>Options</span>
+								<span x-show="expanded">&UpArrow;</span>
+								<span x-show="!expanded">&DownArrow;</span>
+							</div>
+						</button>
+					<div id="chart-dropdown" x-show="expanded" x-collapse>
+						<div id="chart-links">
+						</div>
+					</div>
 				</div>
-
-				<div id="inline-signature-div">
-					<span class="inline-signature"></span>
-				</div>
+				<span id="nav-sig"></span>
 
 			</div>
-		</nav>
-		<hr class="hr-nav-pad">
-		<hr class="hr-cmbr-gradient">
-		<hr class="hr-groove-bottom">
-	</div>
 
-	<div id="dropdown-header" class="dropdown-grid">
+			<!-----| NAV 2 |----->
+			<div id="nav-2">
+				<h1 class="h1-lamp">
+					<!-- ♪ -->
+				</h1>
+			</div>
 
-		<div id="lorem-dropdown" class="dropdown">
-			<div class="dropdown-curtain"><span id="lorem-access" class="dropdown-access">Lorem Ipsum</span></div>
-			<div id="lorem-content" class="dropdown-content"></div>
+			<!-----| NAV 3 |----->
+			<div id="nav-3">
+				<h1 class="h1-lamp">Workspace</h1>
+			</div>
+
+			<!-----| NAV 4 |----->
+			<div id="nav-4">
+				<h1 class="h1-lamp">
+					<!-- ♫ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 5 |----->
+			<div id="nav-5">
+				<span class="data-theme-button" id="dark">🌙</span>
+				<span class="data-theme-button" id="light">☀️</span>
+				<span class="data-theme-button" id="legacy">🪻</span>
+			</div>
+
 		</div>
 
-		<div id="cheese-dropdown" class="dropdown">
-			<div class="dropdown-curtain"><span id="cheese-access" class="dropdown-access">Cheese Ipsum</span></div>
-			<div id="cheese-content" class="dropdown-content"></div>
+		<div class="nav-hoist">
+			<hr class="hr-nav-pad">
+			<hr class="hr-blass">
+			<hr class="hr-cmbr-gradient">
+			<hr id="nav-anchor" class="hr-groove-top">
 		</div>
 
-	</div>
+	</nav>
 
+	<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  -->
+
+	</div>
 	<div class="iframe-perimeter">
+		<hr class="hr-push-up">
 		
 		<button id="panel">Web Panel Test</button>
+
+	</div>
+
+	<div>
+		<div class="triggers">
+			<div class="trigger-box" hx-get="../depository/obsidian/Purple Foray.md" hx-trigger="click">
+				<h2>foray</h2>
+				<hr class="hr-trans">
+			</div>
+		</div>
+
+		<p>`
+	| September 1st, 2024…
+	| Chapel Hill, NC
+	| 1555HRS
+	| &emsp;
+	Almost finished with another eighty-hour work-week. I'm grateful to have been enjoying work very much.
+	Even so, I maintain <b-title>managed enthusiasm</b-title> for my intended career change, and am learning to better interweave that
+	enthusiasm in my current position through stressing oft-overlooked procedures and offering solutions to streamline
+	operations across shifts and teams. I anticipate my learning journey with coding to manifest my idea for a simple
+	pay and pension prediction utility once I gain enough confidence in Laravel and attain the ability to deploy on an
+	internet-accessible server, cloud or not.
+	<hr>&emsp; &emsp;
+	I wouldn't say I have too many interests or anything, but the amount of creative things I want to do can seem like much 
+	though not to an overwhelming degree that would cause me to freeze up like I have prior to my brain's software update, 
+	so to speak. I would like to gain a modest competence in creating digital assets, in producing music again, in font design,
+	in simple game design (likely educational), in video creation, among others that may arise as this worldly self further 
+	develops. 
+	<hr>&emsp; &emsp;
+	I've learned through writing the pension calculator about document.getElementById("").children.item(#) which will be 
+	able to target and access the nth index tag within the gotten element's child. Cool! I can't wait to see how these all
+	work with database connectivity through Laravel. Well, I actually can wait, and will. 
+	<hr>&emsp; &emsp;
+	I am secure; I am safe; I am content. 
+	Missu.
+	`
+	,
+	`
+	| September 10th, 2024…
+	| Chapel Hill, NC
+	| 0731HRS
+	| &emsp;
+	So, though I have been doing okay for myself, I am experiencing old pangs of inadequacy. I attribute this to the return flight.
+	Thoughts have arisen and continually arise of my 'not having amounted to enough' to merit the continuation of what we had.
+	After years of having been reassured that this wasn't an issue, it had seemingly become among the reasons for separation.
+	I become confused and question where I had made mistakes. Though I could say that I should have followed my gut feeling, it stands
+	true that I am blessed with a very decent situation now, at least intra-personally. I mustn't forget that this course of events
+	was possible because I had not acted on that gut feeling, and instead chose loyalty. This suffering I am enduring now exists 
+	undertoned by the relief of it, for myself and for others. I take solace in this realization. Nonetheless, the sensation is 
+	<b-title>emotionally burdensome</b-title>. I aim to act well as things become situated again, but I hold a sense that I would become excessively
+	cautious with my speech to the extent it could be considered 'masking.' Such masking surely wouldn't be healthy for me.
+	<hr>&emsp;
+	I'm going to put on a smile as I approach my tomorrow, and power through. I am tired. That is fine. 
+	`
+	,
+
+	`
+	| September 14th, 2024…
+	| Hillsborough, NC
+	| 2201 HRS
+	| &emsp;
+	It still holds true that <b-title>community integration</b-title> for me is difficult. 
+	On occasion I find myself disheartened by repeated acceptance that so little works with my schedule.
+	One activity after the next, one event after the next, one person after the next; 
+	I am unable to conform to externally sourced routines with any sort of socially expected consistency. 
+	My schedule is something I enjoy, but no longer wish to maintain long-term; 
+	I recall "wishing" I'd have this type of schedule, and that a 12-hour shift would be the best balance between too much and too little. 
+	It's not only the length or frequency of shifts that causes difficulty, 
+	it's that my off days are inconsistent on a week-by-week basis, 
+	a basis that would be helpful in establishing myself as a reliable regular both online and in-person.
+	Being more reliably regular seems to be the best for developing one's sense of community, especially within third spaces.
+	<hr>&emsp;
+	I affirm that there can be multiple "selves" through which one's life is lived. 
+	My experience has shown me that the Chrispy of 2018 who highly desired such a lifestyle is simply not the Chrispy of 2024.
+	Though "I" share the same life-lens as that previous self,  I couldn't agree that that person is "me" or the present self.
+	My identities and values have shifted quite dramatically since; the actions taken previously I now consider unthinkable.
+	College debt, liberal arts, fast food, luxury goods etc. 
+	`
+	,
+	`
+	| September 21st, 2024…
+	| Chapel Hill, NC
+	| 1952 HRS
+	| &emsp;
+	The weekend began with an overhaul of my digital security across all licenses and websites. I am surprised at just how much peace
+	of mind that afforded me; I suppose it's due to an increased feeling control over my life for years to come, especially as I 
+	increase my time sitting in front of a computer. I've uncovered most of my previously used email accounts and discovered many files
+	and projects my previous selves created including videos, music, college papers, and even silly poems like "Vanilla FOrmula."
+	Aside from things uncovered online, I plugged in my old external harddrive from undergrad, and uncovered my trashed iMac's backup
+	from 2014. Inside, I found more even files to include plugins (like Magic 8-bit Plugin), my Japanese class video recordings,
+	Minecraft multiplayer clips, old desktop screencaps, and albums that got me through my early college years. 
+	I was really hoping to find my Finale music program files from 2007-2010 but sadly they're not present. Some compositions I forgot,
+	like Mission Themes I and II, Floccinaucinilipilificated Tune, and Organ Composition I (my first produced tune).
+	Needless to say, I'm <b-title>feeling the nostalgia</b-title> of that time, though I affirm that I am content in my current place in life.
+	<hr>&emsp;
+	During this time, I have successfully reloaded all my music plugins into my DAW, Logic Pro. Having been programming consistently, my DAW
+	and its tools have become much easier to manage. I can now see the sense in how many parameters are interconnected and can muster
+	the patience to learn the features that go beyond simply inputting MIDI data. My curiosity for what lies underneath the raw musicality 
+	of the production process is actually alive. In years past, I'd hardly care. All of my interests are inteweaving at large, it seems.
+	While typing this, I'm listening to videos on VST design. Heck, I could even consider making my own software synth plugins someday, 
+	were I to engage dabble with C++ or Rust. Again, something to consider, nothing to involve myself deeply into at this time. 
+	I must be wary to keep my interests limited, because at times lately I've noticed that I could overwhelm myself with new creative avenues to 
+	explore. My time is limited. I long for weeks or months at a time where I can better catch up to who I could have become. Putting it that
+	way seems a bit remorseful, rather, I long for weeks or months at a time where I can become who I will to be. I intend at nothing groundbreaking,
+	but just will to aim my life skillfully.
+	<hr>&emsp;
+	Overall, I'm feeling okay. It's been a decent weekend so far, and I would like to produce a little thing shortly and place it on my website.
+	I also would like to update the music page, and add a few more tracks. I should sort all lists by year. I should also update the dashboard 
+	and use a different border style site-wide, because on mobile some borders do not appear properly. In addition, I want my JLPT page to 
+	be able to prompt a Jisho iFrame by marshalling a chosen word to its URI query. This way, I could essentially use it as an API without
+	a direct external call which would be permissible by github pages.
+	<hr>&emsp;
+	Work is going okay. I'm definitely improving in my role and am happy to have really established myself. I'm grateful to know that I am secure,
+	and with that security my peace of mind is maintained. Randomly I feel uneasy about American politics and economy and it escalates to
+	active worrying about societal collapse. This peace I enjoy, like all things, is impermanent. I need to keep working and fulfill my 
+	financial obligations, because only then would I no longer be shackled to this geopolitical division where the negatives to exacerbate.
+	The worry materialized into my having created that Travel Log page to include retirement ideas. I can live on little, now moreso than
+	ever. I am concerned that others may follow a very frugal path, which, though potentially beneficial for individuals' lives, would 
+	leave a negative impact on the economy if there are fewer and fewer consumers out there. If more desires are purged, then there would
+	be fewer jobs geared towards fabricating desire and towards peddling goods for which such desire is fabricated. I am hopeful this 
+	modern world, in all its good and bad, is at least able to avoid collapse. A glipse of collapse would surely increase my consideration
+	for taking a stint at Antaiji. 
+	`
+	,
+	`
+	| October 9th, 2024…
+	| Chapel Hill, NC
+	| 2236 HRS
+	| &emsp;
+	October has been fine so far. I began a vacation which manifested as a staycation, more or less. Anxieties have arisen, possibly due to 
+	the continuation of the acceptable mundane for me. There was little to break the monotony throughout the time; only one day remains.
+	I began my Friday with a mind flooding with fanciful ideas of international travel, car rentals, and beach-bound trips. Perhaps I had
+	gotten a bit too attached to the broad idea of "going somewhere far away." To add, I had consistent self-imposed pressure to adjust my schedule
+	to the daytime which I had not been able to do successfully. These led to confusion resulting in <b-title>exacerbated executive dysfunction</b-title> and a 
+	disruption to my sense of peace. I need to be careful; I need to reflect more, and I need to clear my head more. It is evident that ideas
+	and thoughts have become too numerous. It is for that very reason I previously determined that I must remain consistent with my emptiness practice.
+	<hr>&emsp;
+	I prefaced by saying that this month has been fine. I had made considerable strides in programming and coursework. I am glad to have
+	gotten full CRUD working in Laravel and had learned Rust basics. I should not forget <code>{{auth()->user()->name}}</code> for direct
+	session user name access. I've also been pushing forward with the Accounting page and it's almost at the point where I could use it a as
+	a passive study tool as I desire for it to become. I mustn't forget that any modules I make on the github.io can be ported over to 
+	Laravel or other frameworks that would permit independent server hosting and deployment such that I could integrate user profiles, saving,
+	and other database-enabled services.
+	<hr>&emsp;
+	As I have many times in the past, I should see the positives in my not having traveled far away during these seven days. No Home in PA,
+	Outer Banks in NC, Bogotá in Colombia, or Baggs in Wyoming, heheh. Just here. Things are fine. Financially, I must be mindful of increased
+	burden for the next year. Yes, I have been mindful of finances and saving very much, but I have a feeling that I will have to maintain the
+	stronger sense of frugality throughout 2025; I do not want this staycation to leave me attached to the idea of consistent vacationing.
+	I need to keep my income high, and to do that, I must fulfill my monthly work obligations with minimal leave taken. Besides, my leave accrual
+	will ensure that my quotas are loaded up and ready to go for calendar year 2026! I have a lot to look forward to. The funny thing I'm realizing
+	is that people will always find something to become dissatisfied with, and even someone such as myself armed with detachment practices can
+	fall victim from time to time. All is fine, all is empty. Even if I were shackled for life, what should preclude me from experiencing the 
+	present moment positively?
+	`
+	,</p>
 
 	</div>
 
@@ -64,7 +262,6 @@
 		<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
 	</footer>
 
-<script src="../cmbr.js"></script>
 <script src="workspace.js"></script>
 
 </body>

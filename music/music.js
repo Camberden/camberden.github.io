@@ -190,5 +190,7 @@ function enableSortByYearAndAlbum() {
 	loadSelectedTrack(selectedTrack);
 	highlightSelectedTrack();
 	enableSortByYearAndAlbum();
+	CMBRutil.navigationCharter();
+	CMBRutil.handleFormDefault(true);
 
 })();

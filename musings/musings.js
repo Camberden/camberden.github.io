@@ -632,5 +632,8 @@ function sutraType() {
 	loadLineNumbers();
 	cyclePanelCollections(robeChantKanji, 3000);
 	enableSutraButtons();
+	CMBRutil.navigationCharter();
+	CMBRutil.handleFormDefault(true);
+
 
 })();

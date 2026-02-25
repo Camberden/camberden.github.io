@@ -8,10 +8,14 @@ let blogMapMarker;
 let listedYears = [];
 let currentYear;
 
-
 function displayActiveBlogPostNumber() {
 	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
 	document.getElementById(`bp-${activeBlogPostNumber}`).classList.add("listing-highlight");
+	if (activeBlogPostNumber === blogData.length - 1) {
+		document.getElementById("next-bp").disabled = true;
+	} else {
+		document.getElementById("next-bp").disabled = false;
+	}
 }
 /**
  * @param content
@@ -192,11 +196,11 @@ function changeCoordinates(latLng) {
 
 (()=> {
 
+	CMBRutil.navigationCharter();
 	initBlogMap(activeBlogPostCoordinates);
 	initBlogData(blogData.length);
 	chooseActiveBlogPost();
 	enableBlogButtons();
 	enableBlogSelect();
-	CMBRutil.dataTheme();
 
 })();

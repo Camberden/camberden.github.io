@@ -472,7 +472,7 @@ function generateModalListHeader(selection) {
 
 (()=> {
 
-	initNav();
+	CMBRutil.navigationCharter();
 	CMBRutil.handleFormDefault(true);
 	enableModal();
 	generateCalendar(currentYear);

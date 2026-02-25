@@ -5,71 +5,109 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="referrer" content="origin" />
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
 	<style> @import "../styles.css" screen; @import "blog.css" screen; </style>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-	 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-     crossorigin=""></script>
-	 <script src="../cmbr.js"></script>
+	<script src="../htmx.js"></script>
+	<script src="../cmbr.js"></script>
 	<title>Chrispy's Blog</title>
 </head>
 
 <body data-theme="dark">
 
-		<!-- <nav>
+	<nav>
+		<div class="nav-sail">
 
-			<div id="nav-dropdowns">
-
-				<div id="sections-dropdown">
-					<div id="sections-access">Navigation</div>
-					<div class="sections-links"></div>
-				</div>
-
+			<!-----| NAV 1 |----->
+			<div id="nav-1" x-data="{ active: 0 }">
 				
-				<div id="bookmarks-dropdown">
-					<div id="bookmarks-access">
-						<span>Bookmarks</span>
-					</div>
-					<div class="bookmarks-links">
+				<div x-data="{
+					id: 1,
+					get expanded() {
+						return this.active === this.id
+					},
+					set expanded(value) {
+						this.active = value ? this.id : null
+					},
+					}" role="region" class="">
+						<button
+							type="button"
+							x-on:click="expanded = !expanded"
+							:aria-expanded="expanded"
+							id="chart-access">
+							<div class="trigger-dropdown">
+								<span x-show="expanded" x-cloak>&UpArrow;</span>
+								<span x-show="!expanded" x-cloak>&DownArrow;</span>
+								<span>Options</span>
+								<span x-show="expanded">&UpArrow;</span>
+								<span x-show="!expanded">&DownArrow;</span>
+							</div>
+						</button>
+					<div id="chart-dropdown" x-show="expanded" x-collapse>
+						<div id="chart-links">
+						</div>
 					</div>
 				</div>
+				<span id="nav-sig"></span>
 
 			</div>
-		</nav>
-		<hr class="hr-nav-pad">
-		<hr class="hr-cmbr-gradient">
-		<hr class="hr-groove-top"> -->
-		
-		<div class="blog-header">
-			<h1 class="multipanel-heading">Chrispy's Blog</h1>
-		</div>
-		<div class="blog-dropdown">
-			<button class="blog-button" value="previous">Previous</button>
-			<button class="blog-button" value="next">Next</button>
+
+			<!-----| NAV 2 |----->
+			<div id="nav-2">
+				<h1 class="h1-lamp">
+					<!-- ♪ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 3 |----->
+			<div id="nav-3">
+				<h1 class="h1-lamp">Chrispy's Blog</h1>
+			</div>
+
+			<!-----| NAV 4 |----->
+			<div id="nav-4">
+				<h1 class="h1-lamp">
+					<!-- ♫ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 5 |----->
+			<div id="nav-5">
 				<span class="data-theme-button" id="dark">🌙</span>
 				<span class="data-theme-button" id="light">☀️</span>
 				<span class="data-theme-button" id="legacy">🪻</span>
+			</div>
+
 		</div>
-	</div>
+
+		<div class="nav-hoist">
+			<hr class="hr-nav-pad">
+			<hr class="hr-blass">
+			<hr class="hr-cmbr-gradient">
+			<hr id="nav-anchor" class="hr-groove-top">
+		</div>
+
+	</nav>
+		
 
 	<main class="blog-grid">
 
-		<div class="blog-item" id="blog-post-list-content">
+		<div class="blog-item" id="blog-post-listings">
 			
 			<select id="blog-post-year-select">
 				<option value="all-years">All Years</option>
-			</select> 
+			</select>
 			
 			<ul id="blog-post-list">
 			</ul>
 		</div>
 
-		<article class="blog-item" id="blog-post-content">
+		<article class="blog-item" id="blog-post-articles">
+			<button id="previous-bp" class="blog-button" value="previous">Previous</button>
+			<button id="next-bp" class="blog-button" value="next">Next</button>
 
 			<h3 class="blogging-font">
 				<ul class="blog-post-header">
@@ -99,6 +137,7 @@
 			</div>
 
 			<div id="blog-photos">
+
 
 			</div>
 

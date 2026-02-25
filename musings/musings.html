@@ -2,24 +2,94 @@
 <html lang="en-US">
 
 <head>
-	<meta charset="UTF-8">
-	<link rel="shortcut icon" href="../assets/image-crystal-chrispy-favicon.png">
-	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../musings/musings.css" media="screen" />
-	<link href="https://fonts.googleapis.com/css?family=Lora:400italic" rel="stylesheet" type="text/css">
-	<link href="https://fonts.googleapis.com/css?family=Permanent+Marker:400" rel="stylesheet" type="text/css">
-	<script src="musings.js" async></script>
-	<script src="../cmbr.js" async></script>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
+	<style> @import "../styles.css" screen; @import "musings.css" screen; </style>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="../cmbr.js"></script>
 	<title>Chrispy's Musings</title>
 </head>
 
 <body data-theme="dark">
+	<nav>
+	<div class="nav-sail">
+
+		<!-----| NAV 1 |----->
+		<div id="nav-1" x-data="{ active: 0 }">
+			
+			<div x-data="{
+				id: 1,
+				get expanded() {
+					return this.active === this.id
+				},
+				set expanded(value) {
+					this.active = value ? this.id : null
+				},
+				}" role="region" class="">
+					<button
+						type="button"
+						x-on:click="expanded = !expanded"
+						:aria-expanded="expanded"
+						id="chart-access">
+						<div class="trigger-dropdown">
+							<span x-show="expanded" x-cloak>&UpArrow;</span>
+							<span x-show="!expanded" x-cloak>&DownArrow;</span>
+							<span>Options</span>
+							<span x-show="expanded">&UpArrow;</span>
+							<span x-show="!expanded">&DownArrow;</span>
+						</div>
+					</button>
+				<div id="chart-dropdown" x-show="expanded" x-collapse>
+					<div id="chart-links">
+					</div>
+				</div>
+			</div>
+			<span id="nav-sig"></span>
+
+		</div>
+
+		<!-----| NAV 2 |----->
+		<div id="nav-2">
+			<h1 class="h1-lamp">
+				<!-- ♪ -->
+			</h1>
+		</div>
+
+		<!-----| NAV 3 |----->
+		<div id="nav-3">
+			<h1 class="h1-lamp">Musings</h1>
+		</div>
+
+		<!-----| NAV 4 |----->
+		<div id="nav-4">
+			<h1 class="h1-lamp">
+				<!-- ♫ -->
+			</h1>
+		</div>
+
+		<!-----| NAV 5 |----->
+		<div id="nav-5">
+			<span class="data-theme-button" id="dark">🌙</span>
+			<span class="data-theme-button" id="light">☀️</span>
+			<span class="data-theme-button" id="legacy">🪻</span>
+		</div>
+
+	</div>
+
+	<div class="nav-hoist">
+		<hr class="hr-nav-pad">
+		<hr class="hr-blass">
+		<hr class="hr-cmbr-gradient">
+		<hr id="nav-anchor" class="hr-groove-top">
+	</div>
+
+	</nav>
+
 	<div id="header-and-return">
 		<div id="return">
 			<a class="marker" href="../index.html">Return</a>
-		</div>
-		<div id="page-header">
-			<h1 class="multipanel-heading">Just Miscellany</h1>
 		</div>
 		<div id="quick-links">
 			<div class="quick-links-grid-item">
@@ -87,7 +157,5 @@
 
 	
 	</main>
-
+	<script src="musings.js"></script>
 </body>
-
-</div>

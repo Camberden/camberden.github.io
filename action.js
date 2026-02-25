@@ -7,11 +7,10 @@ import { CMBRdb } from "./cmbr-db.js";
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Tuesday, February 24th, 2026";
+const latestUpdate = "Wednesday, February 25th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
-const allPhotos = [];
 /**
  * 
  * @param {string} month
@@ -150,6 +149,5 @@ const queryButtonDemonstrator = async () => {
 	const slideshow = setInterval(()=> {
 		randomizePhotos(photos);
 	}, 10000);
-	CMBRutil.dataTheme();
 
 })();

@@ -11,30 +11,9 @@
 	line-height: 2rem;
 }
 
-/* |==========| LIST, CONTENT, AND MEDIA |====================> */
+/* |==========| THREE-COLUMN GRID |====================> */
+/* |==========| HEADER, GRID, AND EACH COLUMN |====================> */
 
-#blog-post-list-content {
-	flex: 1;
-	position: sticky;
-}
-#blog-post-content {
-	flex: 3;
-	position: sticky;
-	background:#0f0b0789;
-}
-#blog-post-media {
-	flex: 1;
-	position: sticky;
-	align-items: center;
-	justify-content: center;
-}
-
-/* |==========| PAGE STRUCTURE |====================> */
-
-a:hover {
-	background-image: none;
-	color: var(--cmbr-violet);
-}
 .blog-header {
 	display: flex;
 	flex: 1;
@@ -45,23 +24,69 @@ a:hover {
 	background: rgba(144, 229, 238, 0.1);
 }
 .blog-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
 	padding: 2rem;
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: start;
-	justify-content: center;
 	gap: 1rem;
 }
 .blog-item {
 	padding: 1rem;
 	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 	border-width: 0.3rem;
+	max-height: 40rem;
 	background: rgba(144, 229, 238, 0.1);
 }
 
-/* |==========| BLOG POST CONTENT STYLES |====================> */
 
+/* |==========| CENTER COLUMN |====================> */
+#blog-post-articles {
+	position: sticky;
+	background:#0f0b0789;
+	overflow-y: scroll;
+}
+/* |==========| ACTUAL WRITTEN POSTS |====================> */
+
+.blog-header {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	background: rgba(144, 229, 238, 0.1);
+}
+.blog-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	padding: 2rem;
+	gap: 1rem;
+	
+	
+	/* display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	align-items: start;
+	justify-content: center; */
+	
+}
+.blog-item {
+	padding: 1rem;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	border-width: 0.3rem;
+	max-height: 40rem;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+
+/* |==========| LEFT COLUMN |====================> */
+#blog-post-listings {
+	box-sizing: border-box;
+	flex: 1;
+	position: sticky;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+/* |==========| LIST OF BLOG POSTS AND SELECTIONS |====================> */
 
 #active-blog-post {
 	text-align: left;
@@ -70,8 +95,8 @@ a:hover {
 	text-align: left;
 	list-style-type: none;
 }
-#blog-post-list > li:hover {
-	background: var(--clr-quinary-body);
+#blog-post-inside-list:hover {
+	background: red;
 }
 .blog-post-inside-list {
 	text-align: center;
@@ -82,12 +107,19 @@ a:hover {
 	color: var(--clr-secondary);
 }
 .listing-highlight {
-	background-color: var(--cmbr-dark-iron);
+	background-color: var(--cmbr-dark-grey);
 }
 .listing-none {
 	display: none;
 }
 
+/* |==========| RIGHT COLUMN |====================> */
+#blog-post-media {
+	flex: 1;
+	position: sticky;
+	align-items: center;
+	justify-content: center;
+}
 /* |==========| BLOG MEDIA STYLES FOR MAPS, PHOTOS, & MORE |====================> */
 
 #blog-tags {

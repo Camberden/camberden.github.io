@@ -1,5 +1,26 @@
 /* ----- WORKSPACE SPECIFIC ----- */
-
+.blog-header {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	background: rgba(144, 229, 238, 0.1);
+}
+.blog-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	padding: 2rem;
+	gap: 1rem;
+}
+.blog-item {
+	padding: 1rem;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	border-width: 0.3rem;
+	max-height: 40rem;
+	background: rgba(144, 229, 238, 0.1);
+}
 /* #nav-dropdowns {
 	background-image: url("../assets/image-curtain.svg"); 
 } */
@@ -302,3 +323,142 @@
 		margin-right: 10rem;
 	}
 }
+
+/* |==========| §NAVIGATION CHARTER |====================> */
+/* |==========| LEFT-SIDE DROPDOWN FOR SITE MAP NAVIGATION |====================> */
+html {
+	scrollbar-color: var(--cmbr-curtain-plum) var(--cmbr-blass);
+}
+nav {
+	display: flex;
+	flex-flow: row wrap;
+	width: 100%;
+	height: 3rem;
+	background-image: url("../assets/image-curtain.svg");
+}
+.nav-sail {
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+	-ms-grid-row-span: 2;
+	box-sizing: border-box;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 3rem;
+	max-height: 3rem;
+	z-index: 100;
+	border-bottom: 0.5rem groove black;
+	background-image: url("../assets/image-curtain.svg");
+	/* background: var(--cmbr-grid-box); */
+}
+#nav-1 {
+	contain: style;
+}
+#nav-2 {
+	text-align: right;
+}
+#nav-3 {
+	text-align: center;
+	/* background: rgba(0, 0, 255, 0.131); */
+	/* border-left: 0.5rem ridge black; */
+	/* border-right: 0.5rem ridge black; */
+}
+#nav-4 {
+	text-align: left;
+}
+#nav-5 {
+	position: fixed;
+	right: 0;
+
+}
+.h1-lamp {
+
+	font-size: 2rem;
+	font-family: "PermanentMarker", monospace;
+	background: var(--cmbr-legacy-gradient);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	background-repeat: no-repeat;
+	color: transparent;
+	/* text-shadow: #ffcc00 2rem 1rem 5rem; */
+	/* animation: 30s linear shadow-fade infinite; */
+}
+.hr-blass {
+	width: 100%;
+	height: 1rem;
+	backdrop-filter: blur(0.2rem) saturate(90%);
+    -webkit-backdrop-filter: blur(0.2rem) saturate(90%);
+    background-color: rgba(4, 6, 17, 0.75);
+	background-image: transparent;
+	background-size: cover;
+	position: fixed;
+}
+#nav-sig {
+	display: inline-flex;
+	flex: 1;
+	z-index: 200;
+	box-sizing: content-box;
+	position: fixed;
+	top: 0;
+	width: 3rem;
+	height: 10rem;
+	background-image: url("../images/cmbr-sig.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	transform: rotate(30deg);
+}
+.nav-hoist {
+	width: 100%;
+}
+#nav-anchor {
+	position: fixed;
+}
+.chart-opened::after {
+	content: attr(item) " ↓";
+}
+#chart-access {
+	z-index: 300;
+	position: relative;
+	font-family:  monospace;
+	font-size: 1rem;
+	color: var(--cmbr-blue);
+    margin-inline-end: 100%;
+    max-height: 3rem;
+    width: max-content;
+	box-sizing: border-box;
+	border: 0.3rem solid black;
+	border-bottom: 0.3rem groove black;
+	background: rgb(37, 37, 37);
+	
+}
+#chart-access:hover {
+	cursor: pointer;
+	color: cadetblue;
+	border-bottom: 0.3rem groove black;
+	background-color: var(--cmbr-curtain-plum);
+}
+#chart-access:active {
+	color: burlywood;
+	background-color: rgb(16, 16, 16);
+	
+}
+#chart-dropdown {
+	position: fixed;
+	left: 0;
+	z-index: 300;
+	border: 0.5rem groove black;
+	padding: 0.2rem;
+	width: fit-content;
+	height: auto;
+	text-align: start;
+	background-color: black;
+	/* overflow-y: scroll !important; */
+}
+#chart-dropdown > #chart-links > .section-title {
+	padding: 0.5rem !important;
+	font-size: 1rem !important;
+}
+
+
+
+

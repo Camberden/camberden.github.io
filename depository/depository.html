@@ -9,7 +9,7 @@
 	<style> @import "../styles.css" screen; @import "depository.css" screen; </style>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v${1:2.x.x}/dist/alpine.js" defer></script>
 	<script src="../htmx.js"></script>
 	<script type="module" src="../cmbr-db.js"></script>
 	<title>Chrispy's Corner</title>
@@ -268,66 +268,62 @@
 <!---------------- ALPINE COMPONENT -------------------->
 	<div class="index-grid">
 		<div class="" x-data="{ active: 2 }">
-		<div x-data="{
-			id: 1,
-			get expanded() {
-				return this.active === this.id
-			},
-			set expanded(value) {
-				this.active = value ? this.id : null
-			},
-		}" role="region" class="">
-			<h2>
-				<button
-					type="button"
-					x-on:click="expanded = !expanded"
-					:aria-expanded="expanded"
-					class="trigger-box">
-					<div class="trigger-dropdown">
-						<span x-show="expanded" x-cloak>&UpArrow;</span>
-						<span x-show="!expanded" x-cloak>&DownArrow;</span>
-						<span>Question 1</span>
-						<span x-show="expanded">&UpArrow;</span>
-						<span x-show="!expanded">&DownArrow;</span>
-					</div>
-
-				</button>
-			</h2>
-
-			<div x-show="expanded" x-collapse>
-				<div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. In magnam quod natus deleniti architecto eaque consequuntur ex, illo neque iste repellendus modi, quasi ipsa commodi saepe? Provident ipsa nulla earum.</div>
+			<div x-data="{
+					id: 1,
+					get expanded() {
+						return this.active === this.id
+					},
+					set expanded(value) {
+						this.active = value ? this.id : null
+					},
+					}" role="region" class="">
+				<h2>
+					<button type="button" x-on:click="expanded = !expanded" :aria-expanded="expanded" class="trigger-box">
+						<div class="trigger-dropdown">
+							<span x-show="expanded" x-cloak>&UpArrow;</span>
+							<span x-show="!expanded" x-cloak>&DownArrow;</span>
+							<span>Question 1</span>
+							<span x-show="expanded">&UpArrow;</span>
+							<span x-show="!expanded">&DownArrow;</span>
+						</div>
+		
+					</button>
+				</h2>
+		
+				<div x-show="expanded" x-collapse>
+					<div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. In magnam quod natus deleniti
+						architecto eaque consequuntur ex, illo neque iste repellendus modi, quasi ipsa commodi saepe? Provident
+						ipsa nulla earum.</div>
+				</div>
 			</div>
-		</div>
-
-		<div x-data="{
-			id: 2,
-			get expanded() {
-				return this.active === this.id
-			},
-			set expanded(value) {
-				this.active = value ? this.id : null
-			},
-		}" role="region" class="">
-			<h2>
-				<button
-					type="button"
-					x-on:click="expanded = !expanded"
-					:aria-expanded="expanded"
-					class="trigger-box">
-					<div class="trigger-dropdown">
-						<span x-show="expanded" x-cloak>&UpArrow;</span>
-						<span x-show="!expanded" x-cloak>&DownArrow;</span>
-						<span>Question 2</span>
-						<span x-show="expanded">&UpArrow;</span>
-						<span x-show="!expanded">&DownArrow;</span>
-					</div>
-				</button>
-			</h2>
-
-			<div x-show="expanded" x-collapse>
-				<div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. In magnam quod natus deleniti architecto eaque consequuntur ex, illo neque iste repellendus modi, quasi ipsa commodi saepe? Provident ipsa nulla earum.</div>
+		
+			<div x-data="{
+					id: 2,
+					get expanded() {
+						return this.active === this.id
+					},
+					set expanded(value) {
+						this.active = value ? this.id : null
+					},
+				}" role="region" class="">
+				<h2>
+					<button type="button" x-on:click="expanded = !expanded" :aria-expanded="expanded" class="trigger-box">
+						<div class="trigger-dropdown">
+							<span x-show="expanded" x-cloak>&UpArrow;</span>
+							<span x-show="!expanded" x-cloak>&DownArrow;</span>
+							<span>Question 2</span>
+							<span x-show="expanded">&UpArrow;</span>
+							<span x-show="!expanded">&DownArrow;</span>
+						</div>
+					</button>
+				</h2>
+		
+				<div x-show="expanded" x-collapse>
+					<div class="">Lorem ipsum dolor sit amet consectetur adipisicing elit. In magnam quod natus deleniti
+						architecto eaque consequuntur ex, illo neque iste repellendus modi, quasi ipsa commodi saepe? Provident
+						ipsa nulla earum.</div>
+				</div>
 			</div>
-		</div>
 		</div>
 	</div>
 </div>

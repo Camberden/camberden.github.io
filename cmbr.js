@@ -119,33 +119,78 @@ const CMBRutil = {
 			}
 		}
 	},
-
 	dataTheme: function () {
 		document.querySelectorAll(".data-theme-button").forEach(button => {
-			// button.onmouseenter = function() {
-			// 	CMBRutil.buttonOnMouseEnter(button);
-			// }
-			// button.onmouseleave = function() {
-			// 	CMBRutil.buttonOnMouseLeave(button);
-			// }
 			button.onclick = function () {
-				console.log("Data Theme Change");
 				switch (button.id) {
 					case "dark":
 						document.querySelector("body").setAttribute("data-theme", "dark");
+						button.style.color = "initial";
+						document.getElementById("light").style.color = "transparent";				
+						document.getElementById("legacy").style.color = "transparent";
 					break;
 					case "light":
 						document.querySelector("body").setAttribute("data-theme", "light");
+						button.style.color = "initial";
+						document.getElementById("dark").style.color = "transparent";				
+						document.getElementById("legacy").style.color = "transparent";
 					break;
 					case "legacy":
 						document.querySelector("body").setAttribute("data-theme", "legacy");
+						button.style.color = "initial";
+						document.getElementById("dark").style.color = "transparent";				
+						document.getElementById("light").style.color = "transparent";
 					break;
 					default:
-						console.log();
+						console.log("Light, Dark, and Lavendarium.");
 					break;
 				}
 			}
-		})
+		});
+		document.getElementById(document.querySelector("body").getAttribute("data-theme")).style.color = "initial";
+	},
+
+	/**
+	 * 
+	 * @implements
+	 * @function
+	 * @emits dataTheme();
+	 * @description 2026 Page-Agnostic NavBar Generator
+	 */
+	navigationCharter: function () {
+		const siteMap = document.getElementById("chart-links");
+		const mergeReference = sections.length;
+		console.log(mergeReference);
+		bookmarks.forEach(bookmark => { sections.push(bookmark); })
+		console.log(sections);
+
+		for (let i = 0; i < sections.length - 1; i++) {
+			const a = document.createElement("a");
+			if (i >= mergeReference) {
+				a.setAttribute("href", `${sections[i][0]}`);
+			} else if (sections[i][0] !== "homepage") {
+				a.setAttribute("href", `../${sections[i][0]}/${sections[i][0]}`);
+			} else {
+				a.setAttribute("href", `../index.html`);
+			}
+			a.appendChild(document.createTextNode(sections[i][1]));
+			const div = document.createElement("div"); div.setAttribute("class", "section-title");
+			div.appendChild(a);
+			div.onmouseenter = function () {
+				if (div.classList.contains("section-highlight")) {
+					div.classList.add("section-highlight");
+				} else {
+					div.classList.remove("section-lose-highlight"); div.classList.add("section-highlight");
+				}
+			}
+			div.onmouseleave = function () {
+				if (div.classList.contains("section-highlight")) {
+					div.classList.replace("section-highlight", "section-lose-highlight");
+					}
+				}
+			siteMap.appendChild(div);
+		}
+		this.dataTheme();
 	},
 
 	navigatePages: async function (pathname) {
@@ -393,6 +438,7 @@ const CMBRutil = {
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
 const recognizeFileProtocol = (x) => { y = document.getElementById(x); CMBRutil.acceptableProtocol() ? y.innerHTML += " &check;" : y.innerHTML += `<span style="font-size: 0.8rem; color: red; position: absolute;">[lesser functionality in file protocol]</span>`; }
+//todo Delete initNav();
 const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); CMBRutil.dataTheme(); }
 const displaySite = () => { document.getElementById("current-site").innerHTML = document.location.host };
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };

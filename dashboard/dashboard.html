@@ -13,49 +13,79 @@
 </head>
 
 <body data-theme="dark">
-	<div class="nav-layout">
-		<nav> <!-- 1 item -->
+	<nav>
+		<div class="nav-sail">
 
-			<div id="nav-dropdowns"> <!-- 3 items -->
-
-				<div id="sections-dropdown">
-					<div id="sections-access">Navigation</div>
-					<div class="sections-links"></div>
-				</div>
-
-				<div id="inline-signature-div">
-					<!-- <span class="inline-signature"></span> -->
-					 
-					<div>
-						<div id="current-section" class="multipanel-heading">
-							<span>Chrispy's Dashboard</span>
-							<span class="data-theme-button" id="dark">🌙</span>
-							<span class="data-theme-button" id="light">☀️</span>
-							<span class="data-theme-button" id="legacy">🪻</span>
+			<!-----| NAV 1 |----->
+			<div id="nav-1" x-data="{ active: 0 }">
+				
+				<div x-data="{
+					id: 1,
+					get expanded() {
+						return this.active === this.id
+					},
+					set expanded(value) {
+						this.active = value ? this.id : null
+					},
+					}" role="region" class="">
+						<button
+							type="button"
+							x-on:click="expanded = !expanded"
+							:aria-expanded="expanded"
+							id="chart-access">
+							<div class="trigger-dropdown">
+								<span x-show="expanded" x-cloak>&UpArrow;</span>
+								<span x-show="!expanded" x-cloak>&DownArrow;</span>
+								<span>Options</span>
+								<span x-show="expanded">&UpArrow;</span>
+								<span x-show="!expanded">&DownArrow;</span>
+							</div>
+						</button>
+					<div id="chart-dropdown" x-show="expanded" x-collapse>
+						<div id="chart-links">
 						</div>
 					</div>
 				</div>
-				
-				<div id="bookmarks-dropdown">
-						
-					<div id="bookmarks-access">
-						<span>Bookmarks</span>
-					</div>
-					<div class="bookmarks-links">
-					
-					</div>
-					
-				</div>
+				<span id="nav-sig"></span>
 
 			</div>
 
+			<!-----| NAV 2 |----->
+			<div id="nav-2">
+				<h1 class="h1-lamp">
+					<!-- ♪ -->
+				</h1>
+			</div>
 
-				
-		</nav>
-		<hr class="hr-nav-pad">
-		<hr class="hr-cmbr-gradient">
-		<hr class="hr-groove-top">
-	</div>
+			<!-----| NAV 3 |----->
+			<div id="nav-3">
+				<h1 class="h1-lamp">Workspace</h1>
+			</div>
+
+			<!-----| NAV 4 |----->
+			<div id="nav-4">
+				<h1 class="h1-lamp">
+					<!-- ♫ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 5 |----->
+			<div id="nav-5">
+				<span class="data-theme-button" id="dark">🌙</span>
+				<span class="data-theme-button" id="light">☀️</span>
+				<span class="data-theme-button" id="legacy">🪻</span>
+			</div>
+
+		</div>
+
+		<div class="nav-hoist">
+			<hr class="hr-nav-pad">
+			<hr class="hr-blass">
+			<hr class="hr-cmbr-gradient">
+			<hr id="nav-anchor" class="hr-groove-top">
+		</div>
+
+	</nav>
 
 	<div class="modal">
 		<div class="modal-field">

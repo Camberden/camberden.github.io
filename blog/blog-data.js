@@ -1650,4 +1650,3 @@ I feel my resolve, a more wholly encompassing resolve, is taking flight again.
 	,
 
 ];
-

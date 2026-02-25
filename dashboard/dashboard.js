@@ -774,7 +774,7 @@ function dashboardModalAccess() {
 
 (() => {
 
-	initNav();
+	CMBRutil.navigationCharter();
 	CMBRutil.handleFormDefault(true);
 
 	generateDashboardExpenses(dashboardExpenses);

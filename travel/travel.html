@@ -5,24 +5,97 @@
    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="referrer" content="origin" />
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-     crossorigin=""/>
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
    <style> @import "../styles.css" screen; @import "travel.css" screen; </style>
-   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-   integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-   crossorigin=""></script>
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+   <script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+   <script src="../cmbr.js"></script>
    <title>Chrispy's Travel Log</title>
 </head>
 
 <body data-theme="dark">
 
+<nav>
+		<div class="nav-sail">
+
+			<!-----| NAV 1 |----->
+			<div id="nav-1" x-data="{ active: 0 }">
+				
+				<div x-data="{
+					id: 1,
+					get expanded() {
+						return this.active === this.id
+					},
+					set expanded(value) {
+						this.active = value ? this.id : null
+					},
+					}" role="region" class="">
+						<button
+							type="button"
+							x-on:click="expanded = !expanded"
+							:aria-expanded="expanded"
+							id="chart-access">
+							<div class="trigger-dropdown">
+								<span x-show="expanded" x-cloak>&UpArrow;</span>
+								<span x-show="!expanded" x-cloak>&DownArrow;</span>
+								<span>Options</span>
+								<span x-show="expanded">&UpArrow;</span>
+								<span x-show="!expanded">&DownArrow;</span>
+							</div>
+						</button>
+					<div id="chart-dropdown" x-show="expanded" x-collapse>
+						<div id="chart-links">
+						</div>
+					</div>
+				</div>
+				<span id="nav-sig"></span>
+
+			</div>
+
+			<!-----| NAV 2 |----->
+			<div id="nav-2">
+				<h1 class="h1-lamp">
+					<!-- ♪ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 3 |----->
+			<div id="nav-3">
+				<h1 class="h1-lamp">Travel Page</h1>
+			</div>
+
+			<!-----| NAV 4 |----->
+			<div id="nav-4">
+				<h1 class="h1-lamp">
+					<!-- ♫ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 5 |----->
+			<div id="nav-5">
+				<span class="data-theme-button" id="dark">🌙</span>
+				<span class="data-theme-button" id="light">☀️</span>
+				<span class="data-theme-button" id="legacy">🪻</span>
+			</div>
+
+		</div>
+
+		<div class="nav-hoist">
+			<hr class="hr-nav-pad">
+			<hr class="hr-blass">
+			<hr class="hr-cmbr-gradient">
+			<hr id="nav-anchor" class="hr-groove-top">
+		</div>
+
+	</nav>
+
+
+
    <div id="header-and-return">
 		<div id="return">
 			<a class="marker" href="../index.html">Return</a>
-		</div>
-		<div id="page-header">
-			<h1 class="multipanel-heading">Travel Log</h1>
 		</div>
 		<div id="quick-links">
 
@@ -1018,9 +1091,9 @@
 
    </div>
 
+
 <script src="travel-data.js"></script>
 <script src="travel.js"></script>
-<script src="../cmbr.js"></script>
 
 </body>
 

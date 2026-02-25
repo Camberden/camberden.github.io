@@ -10,7 +10,6 @@ const ipsumData = {
 	"lorem-content": loremIpsum,
 	"cheese-content": cheeseIpsum,
 };
-
 function enableNeuButtons() {
 	document.querySelectorAll(".neu-item").forEach(item => {
 		item.onclick = function() {
@@ -67,7 +66,6 @@ function enableDropdowns () {
 		}
 	});
 }
-
 const activateChiron = (texts) => {
 	document.getElementById("chiron-span").innerText = convertDummyText(texts)[Math.floor(Math.random() * convertDummyText(texts).length)];
 	setInterval(() => {
@@ -75,15 +73,11 @@ const activateChiron = (texts) => {
 	}, 10000);
 }
 
-
 (()=>{
 
 	enableNeuButtons();
 	enableDropdowns();
-	// displaySite();
-	// displaySection();
-	// activateChiron(loremIpsum);
-	initNav();
+	CMBRutil.navigationCharter();
 
 })();
 

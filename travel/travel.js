@@ -77,7 +77,6 @@ function cyclePoliticalDivision(selection) {
 }
 function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
-	console.log("Modal Cleared!");
 }
 
 // FOR INITIALIZATION
@@ -333,6 +332,6 @@ function viewExpansiveMap() {
 	highlightVisitedStates();
 	enableMapHighlightButtons();
 	viewExpansiveMap();
-	console.log(countryInformation.forEach(c => console.log(c.position)));;
+	CMBRutil.navigationCharter();
 
 })();
