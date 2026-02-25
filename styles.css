@@ -653,9 +653,6 @@ button {
 	background: var(--cmbr-dark-steel);
 	border-color: var(--cmbr-green);
 }
- .trigger-box-lite {
-
- }
 .button-grid-row {
 	display: flex;
 	flex-flow: row wrap;

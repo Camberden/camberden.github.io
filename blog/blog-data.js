@@ -44,15 +44,17 @@ class BlogPost {
 }
 
 const coordinates = {
-	"Chapel Hill, NC": [],
-	"Hillsborough, NC": [],
-	"Raleigh, NC": [],
-	"Marshall, NC": [],
-	"Nesquehoning, PA": [],
-	"Weatherly, PA": [],
-	"Lebanon, PA": [],
-	"Tokyo, Japan": [],
-	"Nagoya, Japan": []
+	"Chapel Hill, NC": [35.963193, -79.058806],
+	"Hillsborough, NC": [36.074342, -79.100648],
+	"Pittsboro, NC": [35.71951016932923, -79.18136391788723],
+	"Raleigh, NC": [35.81529, -78.614098],
+	"Marshall, NC": [35.913106, -82.738448],
+	"Myrtle Beach, SC": [33.704501, -78.865456],
+	"Nesquehoning, PA": [40.863396, -75.814703],
+	"Weatherly, PA": [40.942216, -75.830163],
+	"Lebanon, PA": [40.341082, -76.422731],
+	"Tokyo, Japan": [35.69286, -220.300989],
+	"Nagoya, Japan": [34.879172, -222.726984]
 }
 
 /**

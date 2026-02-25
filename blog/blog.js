@@ -1,9 +1,13 @@
 const activeBlogPost = document.getElementById("active-blog-post");
 let activeBlogPostNumber = blogData.length - 1;
+let activeBlogPostCoordinates = [35.71951016932923, -79.18136391788723];
 const blogPostList = document.getElementById("blog-post-list");
 const blogPostTitle = document.getElementById("blog-post-title");
+const blogMap = L.map("blog-map");
+let blogMapMarker;
 let listedYears = [];
 let currentYear;
+
 
 function displayActiveBlogPostNumber() {
 	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
@@ -25,11 +29,19 @@ function extractHeaderData(increment) {
 	const bp = blogPosts[increment];
 	document.getElementById("blog-post-date").innerHTML = bp.date;
 	document.getElementById("blog-post-location").innerHTML = bp.location;
+	if (activeBlogPostCoordinates != coordinates[bp.location]) {
+		changeCoordinates(coordinates[bp.location]);
+		activeBlogPostCoordinates = coordinates[bp.location];
+	} else {
+		activeBlogPostCoordinates = coordinates[bp.location];
+	}
+	document.getElementById("blog-tags").innerHTML = bp.location;
 	document.getElementById("blog-post-time").innerHTML = bp.time;
 	blogPostTitle.innerHTML = bp.title;
 	const instance = blogData[increment];
 	const splitInstance = instance.split("|");
-	const instanceBlogPost = splitInstance[4].trim();	
+	const instanceBlogPost = splitInstance[4].trim();
+	// changeCoordinates(activeBlogPostCoordinates);
 
 	displayActiveBlogPostNumber();
 
@@ -102,7 +114,6 @@ function enableBlogButtons() {
 		button.onclick = function () {
 			CMBRutil.buttonOnClick(button);
 
-
 			switch (button.value) {
 				case "next":
 					if (activeBlogPostNumber < blogData.length - 1) {
@@ -155,47 +166,37 @@ function reEnableBlogPostList(){
 	}
 }
 
-function viewBlogPostMap() {
-	const map = L.map("blog-map").setView([35.91029565048358, -79.0553474519402], 7);
+/**
+ * 
+ * @param {Array[number]} location in coordinates
+ */
+function initBlogMap(latLng) {
+	
+	blogMap.setView(latLng, 7);
 
 	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map); 
+	}).addTo(blogMap); 
+	blogMapMarker = L.marker(latLng).addTo(blogMap);
+}
 
-	const marker = L.marker([35.91029565048358, -79.0553474519402]).addTo(map);
-
-	const circle = L.circle([35.71951016932923, -79.18136391788723], {
-		color: 'red',
-		fillColor: '#f03',
-		fillOpacity: 0.5,
-		radius: 500
-	}).addTo(map);
-
-	// const polygon = L.polygon([
-	// 	[51.509, -0.08],
-	// 	[51.503, -0.06],
-	// 	[51.51, -0.047]
-	// ]).addTo(map);
-
-	marker.bindPopup("<b>Hello you,</b><br>I'm around here.").openPopup();
-	circle.bindPopup("I am a circle.");
-	// polygon.bindPopup("I am a polygon.");
-
-	const onMapClick = (e) => {
-		alert("You clicked the map at " + e.latlng);
-	}
-
-	map.on('click', onMapClick);
-
+/**
+ * 
+ * @param {Array[number]} latLng 
+ */
+function changeCoordinates(latLng) {
+	blogMap.flyTo(latLng);
+	blogMapMarker.remove();
+	blogMapMarker = L.marker(latLng).addTo(blogMap);
 }
 
 (()=> {
 
+	initBlogMap(activeBlogPostCoordinates);
 	initBlogData(blogData.length);
 	chooseActiveBlogPost();
 	enableBlogButtons();
 	enableBlogSelect();
-	viewBlogPostMap();
 	CMBRutil.dataTheme();
 
 })();
