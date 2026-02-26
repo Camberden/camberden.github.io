@@ -1,37 +1,9 @@
 .animated-gradient {
-	background: url(../assets/image-curtain.svg), linear-gradient(45deg, #EE7722, rgb(122, 114, 234), #73bcde, #62dd87);
+	background: url("../images/cmbr-curtain.svg"), linear-gradient(45deg, #EE7722, rgb(122, 114, 234), #73bcde, #62dd87);
 	background-size: 10%, 400%;
 	opacity: 1;
 	position: relative;
 	animation: spectrum 15s ease-in-out infinite, fade-in .25s ease-in;
-}
-
-@keyframes spectrum {
-	0% {
-		background-position: 0 50%;
-	}
-
-	50% {
-		background-position: 100% 50%;
-	}
-
-	100% {
-		background-position: 0 50%;
-	}
-}
-
-@keyframes fade-in {
-	0% {
-		opacity: .5;
-	}
-
-	50% {
-		opacity: .75
-	}
-
-	100% {
-		opacity: 1;
-	}
 }
 
 #music-title {
@@ -149,17 +121,6 @@
 	background-color: var(--clr-quaternary);
 }
 
-@keyframes songinfomove {
-	0% {
-		opacity: .2;
-	}
-	50% {
-		opacity: .4;
-	}
-	100% {
-		opacity: .6;
-	}
-}
 
 /* CURRENTLY PLAYING SETTINGS */
 
@@ -168,19 +129,10 @@
 	background-color: black;
 	background-image:
 		linear-gradient(rgba(105, 89, 89, 0), rgba(1, 0, 0, 0.0)),
-		url('../assets/favicon-32x32 copy.png');
+		url('../images/cmbr-sig-sm.ico');
 	animation: iconmove 25s linear infinite;
 }
 
-@keyframes iconmove {
-	from {
-		background-position: 0 0;
-	}
-
-	to {
-		background-position: 100% 0;
-	}
-}
 
 #soundcloud-link {
 	font-family: 'Courier New', Courier, monospace;

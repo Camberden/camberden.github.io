@@ -23,6 +23,12 @@
 	--cmbr-degrees: 120deg;
 	--cmbr-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-indigo), var(--cmbr-blue), var(--cmbr-orange), var(--cmbr-violet));
 	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+	
+	/* |=====| "CMBR GRID PANEL COMPONENTS" |=====| */
+	--cmbr-com-pnl-padding: 1rem;
+	--cmbr-com-pnl-border-width: 0.3rem;
+	--cmbr-com-pnl-max-height: 50rem;
+	
 	/* |=====| "CMBR DARK" |=====| */
 	--cmbr-dark-grey: #0a070f;
 	--cmbr-dark-ash: #182124;
@@ -73,22 +79,42 @@
 [data-theme="legacy"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
-	--bg-image: url("assets/image-curtain.svg");
+	--bg-image: url("images/cmbr-curtain.svg");
 	--bg-color: var(--clr-quinary-body);
 	--bg-color-svg: var(--cmbr-curtain-plum);
+
+	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
+	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
 [data-theme="dark"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
-	--bg-image: url("assets/image-curtain-dark.svg");
+	--bg-image: url("images/cmbr-curtain-dark.svg");
 	--bg-color: #0f0b07;
 	--bg-color-svg: #120d08;
+
+	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
+	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
 [data-theme="light"] {
 	--font-color: var(--mo-2-1);
 	--link-color: var(--mo-2-5);
 	--bg-image: var(--mosky-2);
-	--bg-color: var(--mo-2-4);
+	--bg-color: none;
+	--bg-color-svg: none;
+
+	--cmbr-com-pnl-background: rgb(50, 65, 67);
+	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+}
+[data-theme="paperesque"] {
+	--font-color: var(--cmbr-blue);
+	--link-color: var(--cmbr-orange);
+	--bg-image: url("images/cmbr-curtain-original.svg");
+	--bg-color: #d6dce1;
+	--bg-color-svg: #F4F5F6;
+
+	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
+	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
 
 .data-theme-button {
@@ -187,13 +213,12 @@ h3 {
 
 /* |==========| §NAVIGATION CHARTER |====================> */
 /* |==========| LEFT-SIDE DROPDOWN FOR SITE MAP NAVIGATION |====================> */
-
 nav {
 	display: flex;
 	flex-flow: row wrap;
 	width: 100%;
 	height: 3rem;
-	background-image: url("../assets/image-curtain.svg");
+	background-image: url("./images/cmbr-curtain.svg");
 }
 .nav-sail {
 	display: grid;
@@ -207,7 +232,7 @@ nav {
 	max-height: 3rem;
 	z-index: 100;
 	border-bottom: 0.5rem groove black;
-	background-image: url("../assets/image-curtain.svg");
+	background-image: url("./images/cmbr-curtain.svg");
 	/* background: var(--cmbr-grid-box); */
 }
 #nav-1 {
@@ -768,9 +793,6 @@ select:hover {
 	border-color: black;
 }
 
-select:active {
-	color: crimson;
-}
 
 /* |==========| §GRID FRAME STRUCTURES grid-template-columns: 1fr; |====================> */
 /* |==========| PRE-WRITTEN FRAME-BASED GRID CLASSES AS CHILDREN TO FLEX TABLES AND GRIDS |====================> */
@@ -967,13 +989,11 @@ select:active {
 
 #administration {
 	display: none;
-	color: red;
+	color: palevioletred;
 	background: black;
-	/* fill: var(--cmbr-primary); */
 	border-color: rgb(188, 130, 209);
 	border-left-width: 2rem;
 	border-style: double;
-	margin-right: 2rem;
 }
 #administration:hover {
 	color: darkred;
@@ -997,7 +1017,7 @@ select:active {
 
 	background-image:
 		linear-gradient(rgba(1, 0, 0, 0.0), rgba(1, 0, 0, 0.0)),
-		url('assets/cmbr-favicon.ico');
+		url('./images/cmbr-sig-sm.ico');
 	animation: icon-passage 30s linear infinite;
 }
 
@@ -1284,7 +1304,7 @@ select:active {
 	border-style: double;
 }
 .glass-pane-backing {
-	background-image: url("assets/sorghum-field.jpg");
+	background-image: url("./assets/fantasy-graphics/pankair-sorghum.jpeg");
 	background-size: cover;
 }
 .glass-pane {
@@ -1470,6 +1490,52 @@ select:active {
 		background: var(--cmbr-legacy-gradient);
 		background-clip: border-box;
 		-webkit-background-clip: text;
+	}
+}
+
+@keyframes spectrum {
+	0% {
+		background-position: 0 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0 50%;
+	}
+}
+
+@keyframes fade-in {
+	0% {
+		opacity: .5;
+	}
+	50% {
+		opacity: .75
+	}
+	100% {
+		opacity: 1;
+	}
+}
+
+@keyframes songinfomove {
+	0% {
+		opacity: .2;
+	}
+	50% {
+		opacity: .4;
+	}
+	100% {
+		opacity: .6;
+	}
+}
+
+@keyframes iconmove {
+	from {
+		background-position: 0 0;
+	}
+
+	to {
+		background-position: 100% 0;
 	}
 }
 

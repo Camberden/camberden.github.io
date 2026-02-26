@@ -5,13 +5,15 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="referrer" content="origin" />
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="./blog.css" media="screen" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
-	<style> @import "../styles.css" screen; @import "blog.css" screen; </style>
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 	<script src="../htmx.js"></script>
+	<!-- <script src="https://unpkg.com/htmx-ext-client-side-templates@2.0.0/client-side-templates.js"></script> -->
 	<script src="../cmbr.js"></script>
 	<title>Chrispy's Blog</title>
 </head>
@@ -51,7 +53,7 @@
 						</div>
 					</div>
 				</div>
-				<span id="nav-sig"></span>
+				<!-- <span id="nav-sig"></span> -->
 
 			</div>
 
@@ -79,6 +81,8 @@
 				<span class="data-theme-button" id="dark">🌙</span>
 				<span class="data-theme-button" id="light">☀️</span>
 				<span class="data-theme-button" id="legacy">🪻</span>
+				<!-- <span class="data-theme-button" id="paperesque">🌾</span> -->
+
 			</div>
 
 		</div>
@@ -91,7 +95,6 @@
 		</div>
 
 	</nav>
-		
 
 	<main class="blog-grid">
 
@@ -100,14 +103,21 @@
 			<select id="blog-post-year-select">
 				<option value="all-years">All Years</option>
 			</select>
+			<hr class="hr-cmbr-dark-gradient">
+			<hr class="hr-groove-top">
 			
 			<ul id="blog-post-list">
 			</ul>
+
+			<hr class="hr-groove-bottom">
+			<hr class="hr-cmbr-dark-gradient">
+
 		</div>
 
 		<article class="blog-item" id="blog-post-articles">
 			<button id="previous-bp" class="blog-button" value="previous">Previous</button>
 			<button id="next-bp" class="blog-button" value="next">Next</button>
+
 
 			<h3 class="blogging-font">
 				<ul class="blog-post-header">
@@ -128,8 +138,9 @@
 			<hr class="hr-cmbr-dark-gradient">
 			<hr class="hr-groove-top">
 
-			<div id="blog-tags">
 
+			<div id="blog-tags">
+				
 			</div>
 
 			<div id="blog-map">

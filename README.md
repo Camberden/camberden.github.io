@@ -9,10 +9,10 @@ Personal webpage including an assortment of visualizers and tools for personal u
 * Certified Public Accountant Prerequisite Progress
 * Pension Calculator
 * Coding Workspace
-* Blog
+* Blog integrating External Map API (Leaflet)
+* Travel Log integrating External Map API (Leaflet)
 * Language Study Page
 * Accounting Study Page
-* Travel Log Page
 * Life Events Calendar
 * Typing Page
 * Notes & Anki Depository
@@ -25,13 +25,9 @@ Personal webpage including an assortment of visualizers and tools for personal u
 *Chapel Hill, NC*  
 *0500HRS*  
 
-* Double quotations ("") shall be used for html values.
-* HTML values shall be in kebab-case.
-* JavaScript variables shall be in camelCase.
+* Double quotations ("") shall be used for HTML values.
 * Meta from styles.css will be inherited in all subsequent css documents.
-* Git Ignore temporary reference documents.
 * Original Background SVG is #EEEFF0 and Background Color is #F4F5F6.
-
 
 ###### Gratitude
 * Special thanks to Luna for being my coding mentor.

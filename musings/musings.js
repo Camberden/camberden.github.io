@@ -1,7 +1,6 @@
 function focusWriting() {
 	const foc = document.getElementById("sampleTypingField").autofocus = true;
 	document.getElementById("sampleTypingField").innerHTML = foc;
-	console.log("Focus Writing is triggering!");
 }
 // ---------- POEM SECTION ---------- //
 /* To associate with an audiofile, use a Map */
@@ -40,7 +39,6 @@ function nextPoem() {
 	else {
 		selectedpoem = poems[++poemnumber];
 	}
-	console.log("Testing nextPoem function!");
 	document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[0] + "</span>" + selectedpoem.substring(1, selectedpoem.length);
 	document.getElementById("sampleTypingField").value = "";
 	focusWriting();
@@ -56,7 +54,6 @@ function previousPoem() {
 	else {
 		selectedpoem = poems[--poemnumber];
 	}
-	console.log("Testing previous function!");
 	document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[0] + "</span>" + selectedpoem.substring(1, selectedpoem.length);
 	document.getElementById("sampleTypingField").value = "";
 	focusWriting();
@@ -71,7 +68,6 @@ function typingTest() {
 	const para = selectedpoem;
 	const typed = document.getElementById("sampleTypingField").value;
 	const typingProgress = document.getElementById("fortyping");
-	console.log("TYPED = " + typed);
 
 	if (typed === selectedpoem.substring(0, typed.length) && typed.length) {
 		typingProgress.innerHTML = para.replace(typed, `<span class="writinginitial" style="color:rgb(123, 153, 184);">` + typed[0] + `</span> <span style="color:rgb(123, 153, 184);">` + typed.substring(1, typed.length) + "</span>");
@@ -123,7 +119,6 @@ function goToPoem() {
 	poemnumber = parseInt(chosenPoem) - 1;
 	selectedpoem = poems[poemnumber];
 
-	console.log("Testing goToPoem function!");
 	document.getElementById("fortyping").innerHTML = `<span class="writinginitial">` + selectedpoem[0] + "</span>" + selectedpoem.substring(1, selectedpoem.length);
 	document.getElementById("sampleTypingField").value = "";
 	focusWriting();
@@ -131,7 +126,6 @@ function goToPoem() {
 	//quoteAudio = new Audio("../assets/quote" + (poemnumber + 1) + ".mp3");
 	modal.style.display = "none";
 	poemSelectionMenu.innerHTML = "";
-	console.log(poemnumber);
 }
 
 function enablePoemButtons() {
@@ -143,7 +137,6 @@ function enablePoemButtons() {
 			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onclick = function() {
-			console.log(button.value);
 			if (button.value === "next") {
 				nextPoem();
 			} else {
@@ -542,7 +535,6 @@ function loadDifferentLine(){
  */
 function cycleSutraLines(boolean){
 	boolean ? sutraLineLoaded++ : sutraLineLoaded--;
-	boolean ? console.log("next!") : console.log("previous!");
 	if (sutraLineLoaded < 0) {
 		sutraLineLoaded = 0;
 	} 
@@ -579,7 +571,6 @@ function cyclePanelCollections(array, milliseconds) {
 	const millisecondString = milliseconds.toString();
 	intervalPanel.style.animationDuration = millisecondString.substring(0, (millisecondString.length - 3)) + "s";
 	setInterval(function() {cyclePanelItems(array)}, milliseconds);
-	console.log(millisecondString.length - 3);
 }
 
 // ----- SUTRA TYPING ----- //
@@ -593,7 +584,6 @@ function enableSutraButtons(){
 			CMBRutil.buttonOnMouseEnter(button);
 		}
 		button.onclick = function() {
-			console.log(button.value);
 			if (button.value === "next") {
 				cycleSutraLines(true);
 			} else {
@@ -606,7 +596,6 @@ function enableSutraButtons(){
 
 // Nice CSS Reference!
 function sutraType() {
-	console.log("TYPED value = " + typed.value);
 	let fieldLength = englishDisplay.innerHTML.length;
 	let typedLength = typed.value.length;
 	let typedCompletion = (typedLength / fieldLength) * 100;

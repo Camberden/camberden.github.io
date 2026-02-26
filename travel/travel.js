@@ -16,7 +16,7 @@ const usMap = document.getElementById("us-map");
 const expansiveMap = document.getElementById("expansive-map");
 const notesPanel = document.getElementById("notes-panel");
 const varietyPanel = document.getElementById("variety-panel");
-let currentMap = "expansive-map";
+let currentMap = "world-map";
 
 const visitedCountries = ["US", "BZ", "GT", "JP"];
 const countriesToVisit = ["NZ", "IS", "CA", "GB", "DE", "MU", "PL", "TH", "IN", "CO", "PY", "AR", "UY", "AU", "NA", "ID", "SG", "MU", "LK", "MV", "AW", "BM"];
@@ -299,10 +299,8 @@ function viewExpansiveMap() {
 	const marker = L.marker([35.77868919025996, -78.63746540620924]).addTo(map);
 
 	countryInformation.forEach(country => {
-		console.log(country.name);
 
 		if (visitedCountries.includes(country.id)) {
-			console.log((visitedCountries.includes(country.id)));
 			styleVal = {color: 'cornflowerblue',fillColor: 'rgb(32, 159, 222)',fillOpacity: 0.5,radius: 5000};
 		} else {
 			styleVal = {color: 'teal',fillColor: 'rgb(0, 255, 195)',fillOpacity: 0.5,radius: 5000};
@@ -313,6 +311,7 @@ function viewExpansiveMap() {
 		
 		// circle.on('click', displayNotes(country.id, "expansive-map"))
 	});
+
 	// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 	// circle.bindPopup("I am a circle.");
 	// polygon.bindPopup("I am a polygon.");

@@ -158,7 +158,7 @@ input[type=text]:focus {
 	padding: 20px;
 	border: 1px solid #888;
 	width: 80%; /* Could be more or less, depending on screen size */
-	background-image: url(../assets/image-chrispy-collage.jpg);
+	background-image: url(../assets/artifacts/chrispy-collage.jpeg);
 	background-size: 200px;
 	background-repeat: no-repeat;
 	background-position-x: 100%;

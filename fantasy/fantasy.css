@@ -82,7 +82,7 @@ body {
 #gr-world-map {
 	fill: grey;
 	fill-opacity: 50%;
-	background-image: url("../assets/image-gr-overview-3.png");
+	background-image: url("../assets/fantasy-graphics/gr-overview.png");
 	isolation: auto;
 }
 

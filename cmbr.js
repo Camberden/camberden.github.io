@@ -29,7 +29,6 @@ const sections = [
 	// ["mainframe", "Mainframe"],
 	["music", "Original Music"],
 ];
-
 /** 
  * @description Links to Frequented External Sites
  * @readonly
@@ -63,9 +62,7 @@ const baseHyperlinks = [
 	"http://localhost:" + basePort,
 	"http://localhost:" + basePort + "/index.html",
 ];
-
 var CMBRdata;
-
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -73,6 +70,8 @@ var CMBRdata;
  * @author Camberden (Chrispy | Kippi)
  */
 const CMBRutil = {
+
+	bananba: [1,2,3,4],
 
 	buttonOnMouseEnter: function (button) {
 		if (!button.classList.contains("button-toggled")) {
@@ -119,6 +118,7 @@ const CMBRutil = {
 			}
 		}
 	},
+
 	dataTheme: function () {
 		document.querySelectorAll(".data-theme-button").forEach(button => {
 			button.onclick = function () {
@@ -128,18 +128,32 @@ const CMBRutil = {
 						button.style.color = "initial";
 						document.getElementById("light").style.color = "transparent";				
 						document.getElementById("legacy").style.color = "transparent";
+						// document.getElementById("paperesque").style.color = "transparent";
+
 					break;
 					case "light":
 						document.querySelector("body").setAttribute("data-theme", "light");
 						button.style.color = "initial";
 						document.getElementById("dark").style.color = "transparent";				
 						document.getElementById("legacy").style.color = "transparent";
+						// document.getElementById("paperesque").style.color = "transparent";
+
 					break;
 					case "legacy":
 						document.querySelector("body").setAttribute("data-theme", "legacy");
 						button.style.color = "initial";
 						document.getElementById("dark").style.color = "transparent";				
 						document.getElementById("light").style.color = "transparent";
+						// document.getElementById("paperesque").style.color = "transparent";
+
+					break;
+					case "paperesque":
+						document.querySelector("body").setAttribute("data-theme", "paperesque");
+						button.style.color = "initial";
+						document.getElementById("dark").style.color = "transparent";				
+						document.getElementById("light").style.color = "transparent";
+						// document.getElementById("legacy").style.color = "transparent";
+
 					break;
 					default:
 						console.log("Light, Dark, and Lavendarium.");
@@ -160,18 +174,19 @@ const CMBRutil = {
 	navigationCharter: function () {
 		const siteMap = document.getElementById("chart-links");
 		const mergeReference = sections.length;
-		console.log(mergeReference);
 		bookmarks.forEach(bookmark => { sections.push(bookmark); })
-		console.log(sections);
 
 		for (let i = 0; i < sections.length - 1; i++) {
 			const a = document.createElement("a");
 			if (i >= mergeReference) {
 				a.setAttribute("href", `${sections[i][0]}`);
 			} else if (sections[i][0] !== "homepage") {
-				a.setAttribute("href", `../${sections[i][0]}/${sections[i][0]}`);
+				a.setAttribute("href", `../${sections[i][0]}/${sections[i][0]}.html`);
+				a.setAttribute("data-route", `/${sections[i][0]}`);
+
 			} else {
 				a.setAttribute("href", `../index.html`);
+				a.setAttribute("data-route", `/`);
 			}
 			a.appendChild(document.createTextNode(sections[i][1]));
 			const div = document.createElement("div"); div.setAttribute("class", "section-title");
@@ -193,34 +208,6 @@ const CMBRutil = {
 		this.dataTheme();
 	},
 
-	navigatePages: async function (pathname) {
-		window.location.href = pathname + "/" + "?t=" + Date.now();
-	},
-	/**
-	 * @description Placeholder router prior to full page redux and router.js
-	 * @todo router.js routes
-	 */
-	routePages: function () {
-		// When clicking links to nested pages
-		document.querySelectorAll('a[data-route]').forEach(link => {
-		link.addEventListener('click', (e) => {
-			e.preventDefault();
-			const path = link.dataset.route;
-			const file = link.href;
-			
-			// Fetch and load content
-			fetch(file).then(r => r.text()).then(html => {
-			document.body.innerHTML = html;
-			window.history.pushState({path}, '', path);
-			});
-		});
-		});
-
-		// Handle back button
-		window.addEventListener('popstate', (e) => {
-		location.reload(); // or reload specific content
-		});
-	},
 	/**
 	 * 
 	 * @param {HTMLElement} target
@@ -237,26 +224,14 @@ const CMBRutil = {
 				tag.setAttribute("href", `/index.html`);
 				tag.setAttribute("data-route", `/`);
 			}
-			// tag.setAttribute("id", section[0]);
+			tag.setAttribute("id", section[0]);
 			const text = document.createTextNode(section[1]);
 			tag.appendChild(text);
 
 			const sectionDiv = document.createElement("div");
+			sectionDiv.setAttribute("id", section[0]);
 			sectionDiv.setAttribute("class", `${Object.keys({section}).toString()}-title`);
 			
-			// sectionDiv.onclick = function () {
-			// 	if (window.location.pathname === "/") {
-			// 		window.location = section[0] + "/" + section[0] + ".html";
-			// 		// CMBRutil.navigatePages(section[0]);
-
-				
-			// 	// FOR DROPDOWN =====>
-			// 	} else if (section[0] === linkArray[0][0]) {
-			// 		window.location = "../" + "index.html";
-			// 	} else {
-			// 		window.location = "../" + section[0] + "/" + section[0] + ".html";
-			// 	}
-			// };
 
 			sectionDiv.onmouseenter = function () {
 				sectionDiv.classList.contains("section-highlight") ?
@@ -315,7 +290,7 @@ const CMBRutil = {
 			case "sections" :
 				if (this.atSiteIndex()) {
 					sections.splice(0, 1);
-					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("Express Development Server @ " + document.location.host); setTimeout(()=>{ document.getElementById("administration").setAttribute("style", "display:block;")}, 2000 )})() : console.log("|===>");
+					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("Express Development Server @ " + document.location.host); setTimeout(()=>{ x = document.getElementById("administration"); x.style.display = "block"; x.setAttribute("class", "section-title")}, 2000 )})() : console.log("|===>");
 					CMBRutil.initSections(`sections-links`, sections);
 					break;
 				} 
@@ -402,7 +377,6 @@ const CMBRutil = {
 			};
 		});
 	},
-	
 	/** 
 	 * @description Reads cmbr.json
 	 * @borrows cmbr.json
@@ -410,29 +384,32 @@ const CMBRutil = {
 	 * @implements {Promise<Object>} 
 	 * 
 	 */
-	connectCMBRjson: function(query) {
+	connectCMBRjson: function(query, ...args) {
 		return fetch(`${document.location.origin}/cmbr.json`)
 		.then(data => data.json())
 		.then(data => {
 			return data;
 		})
 		.then((data) => {
-			switch(query) {
+			switch(query, args) {
 				case "travel-photos":
 					return data["travel-photos"].items;
 				break;
-				case "blog-meta":
-					return data.blog.meta;
+				case "sections":
+					return data["sections"];
 				break;
-				case "events-meta":
-					return data.events.meta;
+				case "blog":
+					return data["blog"];
+				break;
+				case "blog-post", args[0]:
+					return data["blog"].args[0];
 				break;
 				default:
 					return data;
 				break;
 			}
 		});
-		}
+	}
 
 }
 

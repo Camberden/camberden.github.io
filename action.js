@@ -1,4 +1,4 @@
-import { CMBRdb } from "./cmbr-db.js";
+// import { CMBRdb } from "./cmbr-db.js";
 /** ===> CAMBERDEN.GITHUB.IO UPDATE ===>
  * @description Personal Website:
  * - From 2020 to Present
@@ -7,7 +7,7 @@ import { CMBRdb } from "./cmbr-db.js";
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Wednesday, February 25th, 2026";
+const latestUpdate = "Thursday, February 26th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -139,7 +139,7 @@ const queryButtonDemonstrator = async () => {
 	}
 }
 
-(async () => {
+(async (/*=====*| RUN |*=====*/) => {
 
 	const photos = await CMBRutil.connectCMBRjson("travel-photos");
 	CMBRutil.actionsProvided("sections");
@@ -150,4 +150,6 @@ const queryButtonDemonstrator = async () => {
 		randomizePhotos(photos);
 	}, 10000);
 
-})();
+	sout(CMBRutil.bananba);
+
+})(/*=====*| END |*=====*/);

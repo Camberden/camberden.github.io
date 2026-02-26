@@ -4,11 +4,12 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="assets/cmbr-sig.svg">
-	<style> @import "styles.css" screen; </style>
+	<link rel="shortcut icon" href="images/cmbr-sig.svg">
+   	<link rel="stylesheet" type="text/css" href="./styles.css" media="screen" />
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="./cmbr.js"></script>
 	<script src="./htmx.js"></script>
 	<title>Chrispy's Site</title>
 </head>
@@ -18,7 +19,7 @@
 	<main class="index-grid">
 
 		<div class="signature-div">
-			<img id="signature" src="assets/cmbr-sig.svg" alt="emblem">
+			<img id="signature" src="./images/cmbr-sig.svg" alt="emblem">
 		</div>
 
 		<div class="nav-row-grid">
@@ -29,14 +30,10 @@
 			<div id="title-container">
 				<h1 id="camberden" lang="en-US">camberden</h1>
 			</div>
-
-			<div id="bookmarks-dropdown" style="display: none;">
-				<div id="bookmarks-access">Bookmarks</div>
-				<div id="bookmarks-links"></div>
-			</div>
 		</div>
 
 		<div id="info-div">
+
 			<div id="page-info">
 				<p>
 					Welcome to the <u class="admiration">camberden</u> corner.<br>
@@ -46,7 +43,7 @@
 					to me to justify its existence. I mustn't forget that one must endeavor to
 					create meaning and substance for others in the real world, away from a screen.
 					All the best,<br>
-					<span class="chrispy"> Chrispy ♪ </span>
+					<span class="chrispy">🌾🌾🌾 ♪ Chrispy ♪ 🌾🌾🌾 </span>
 				</p>
 			</div>
 
@@ -68,18 +65,17 @@
 			<p id="footer-text">Made with ♡ by Chrispy</p>
 			<p>Last updated on <span id="latest-update"></span></p>
 			<p><span id="japanese-date"></span></p>
-		<!-- <div class="ncts-footer-items"> 
+			<!-- <div class="ncts-footer-items"> 
 			<img class="ncts-img" src="/images/nc-flag.svg" alt="Made in North Carolina" width=75 height=50>
 			<img class="ncts-img" src="/images/cmbr-sig.svg" alt="Main Site: camberden.com" width=75 height=50>
 			<img class="ncts-img" src="/images/sig.svg" alt="Made by Chrispy Camberden" width=75 height=50>
-        </div> -->
+       		 </div> -->
 		</footer>
 
 	</main>
 
-	<script src="cmbr.js"></script>
 	<script type="module" src="action.js"></script>
-	<script type="module" src="cmbr-db.js"></script>
+	<!-- <script type="module" src="cmbr-db.js"></script> -->
 </body>
 
 </html>

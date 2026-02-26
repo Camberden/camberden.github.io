@@ -26,20 +26,20 @@ class Track {
 	}
 }
 
-const tracks = [ // ../assets/music-
-	trackMeaning = new Track("Meaning", 2021, "The Rush of Feeling", "../assets/music-meaning.mp3", true, true),
-	trackTheWarOfArt = new Track("The War of Art", 2020, "Draft Compendium", "../assets/music-the-war-of-art.mp3", true, false),
-	trackForTheVision = new Track("For the Vision", 2019, "Draft Compendium", "../assets/music-for-the-vision.mp3", true, true),
-	trackTheDeficitOfPatience = new Track("The Deficit of Patience", 2019, "Draft Compendium", "../assets/music-the-deficit-of-patience.mp3", false, true),
-	trackSuperScapegrace = new Track("SUPER Scapegrace", 2016, "Audioshi Isle", "../assets/music-super-scapegrace.mp3", true, false),
-	trackBlueberryBeach = new Track("Blueberry Beach", 2016, "Audioshi Isle", "../assets/music-blueberry-beach.mp3", true, false),
-	trackFruityFrolicField = new Track("Fruity Frolic Field", 2016, "Audioshi Isle", "../assets/music-fruity-frolic-field.mp3", true, false),
-	trackSixthMissionThrowback = new Track("Sixth Mission Throwback", 2020, "Draft Compendium", "../assets/music-sixth-mission-throwback.mp3", true, false),
-	trackAGamesPostlude = new Track("A Game's Postlude", 2012, "The Later Days of MusicalYoshi", "../assets/music-a-games-postlude.mp3", true, false),
-	trackFirstDungeon = new Track("First Dungeon", 2010, "The Later Days of MusicalYoshi", "../assets/music-first-dungeon.mp3", true, false),
-	trackSixthMission = new Track("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-sixth-mission.m4a", true, false),
-	trackSecondCommune = new Track("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-second-commune.m4a", true, false),
-	trackSuperScapegraceOriginal = new Track("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-super-scapegrace-original.m4a", true, false),
+const tracks = [ // ../assets/music-tracks/music-
+	trackMeaning = new Track("Meaning", 2021, "The Rush of Feeling", "../assets/music-tracks/music-meaning.mp3", true, true),
+	trackTheWarOfArt = new Track("The War of Art", 2020, "Draft Compendium", "../assets/music-tracks/music-the-war-of-art.mp3", true, false),
+	trackForTheVision = new Track("For the Vision", 2019, "Draft Compendium", "../assets/music-tracks/music-for-the-vision.mp3", true, true),
+	trackTheDeficitOfPatience = new Track("The Deficit of Patience", 2019, "Draft Compendium", "../assets/music-tracks/music-the-deficit-of-patience.mp3", false, true),
+	trackSuperScapegrace = new Track("SUPER Scapegrace", 2016, "Audioshi Isle", "../assets/music-tracks/music-super-scapegrace.mp3", true, false),
+	trackBlueberryBeach = new Track("Blueberry Beach", 2016, "Audioshi Isle", "../assets/music-tracks/music-blueberry-beach.mp3", true, false),
+	trackFruityFrolicField = new Track("Fruity Frolic Field", 2016, "Audioshi Isle", "../assets/music-tracks/music-fruity-frolic-field.mp3", true, false),
+	trackSixthMissionThrowback = new Track("Sixth Mission Throwback", 2020, "Draft Compendium", "../assets/music-tracks/music-sixth-mission-throwback.mp3", true, false),
+	trackAGamesPostlude = new Track("A Game's Postlude", 2012, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-a-games-postlude.mp3", true, false),
+	trackFirstDungeon = new Track("First Dungeon", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-first-dungeon.mp3", true, false),
+	trackSixthMission = new Track("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-sixth-mission.m4a", true, false),
+	trackSecondCommune = new Track("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", true, false),
+	trackSuperScapegraceOriginal = new Track("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-super-scapegrace-original.m4a", true, false),
 	
 ];
 

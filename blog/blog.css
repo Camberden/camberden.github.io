@@ -4,7 +4,7 @@
 	color: cadetblue;
 	font-family: "Lora", serif;
 	font-optical-sizing: auto;
-	font-weight: normal; /*400..700*/
+	font-weight: 600;
 	text-align: left;
 
 	padding-left: 1rem;
@@ -12,6 +12,9 @@
 }
 
 /* |==========| THREE-COLUMN GRID |====================> */
+main {
+	height: 300vh;
+}
 /* |==========| HEADER, GRID, AND EACH COLUMN |====================> */
 
 .blog-header {
@@ -40,9 +43,11 @@
 
 /* |==========| CENTER COLUMN |====================> */
 #blog-post-articles {
-	position: sticky;
-	background:#0f0b0789;
-	overflow-y: scroll;
+	box-sizing: content-box;
+	/* background:#0f0b0789; */
+	background:#0f0b07de;
+
+	height: max-content;
 }
 /* |==========| ACTUAL WRITTEN POSTS |====================> */
 
@@ -70,19 +75,21 @@
 	
 }
 .blog-item {
-	padding: 1rem;
-	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
-	border-width: 0.3rem;
-	max-height: 40rem;
-	background: rgba(144, 229, 238, 0.1);
+	padding: var(--cmbr-com-pnl-padding);
+	box-shadow: var(--cmbr-com-pnl-box-shadow);
+	border-width: var(--cmbr-com-border-width);
+	max-height: fit-content;
+	background: var(--cmbr-com-pnl-background);
 }
 
 
 /* |==========| LEFT COLUMN |====================> */
 #blog-post-listings {
-	box-sizing: border-box;
+	box-sizing: content-box;
+	top:10%;
 	flex: 1;
 	position: sticky;
+	height: 45rem;
 	overflow: auto;
 	scroll-behavior: smooth;
 }
@@ -115,8 +122,11 @@
 
 /* |==========| RIGHT COLUMN |====================> */
 #blog-post-media {
+	box-sizing: content-box;
+	top:10%;
 	flex: 1;
 	position: sticky;
+	height: 50rem;
 	align-items: center;
 	justify-content: center;
 }

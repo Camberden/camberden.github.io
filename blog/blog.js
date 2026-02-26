@@ -194,7 +194,7 @@ function changeCoordinates(latLng) {
 	blogMapMarker = L.marker(latLng).addTo(blogMap);
 }
 
-(()=> {
+( async () => {
 
 	CMBRutil.navigationCharter();
 	initBlogMap(activeBlogPostCoordinates);
@@ -202,5 +202,8 @@ function changeCoordinates(latLng) {
 	chooseActiveBlogPost();
 	enableBlogButtons();
 	enableBlogSelect();
-
+	const fifth = await CMBRutil.connectCMBRjson("blog-post", 5);
+	setTimeout(()=>{
+		console.log(fifth);
+	}, 2000);
 })();

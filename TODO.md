@@ -27,6 +27,10 @@
 > The issue is that your connectCMBRjson() function doesn't return the fetch promise chain. When you don't return a promise, await gets undefined.
 
 ---
+## blog.js
+*maps and grid*
+
+- top 0; is apparently required for `position: sticky;` to work! huh.
 
 # Ideas and To Do
 *04/21/2024*  
