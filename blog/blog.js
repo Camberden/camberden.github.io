@@ -7,22 +7,62 @@ const blogMap = L.map("blog-map");
 let blogMapMarker;
 let listedYears = [];
 let currentYear;
+var player;
 
 /**
  * 
  * @param {JSON} postjson 
  */
 function routeJson(postjson) {
-	
-	const bpJson = postjson["post-" + activeBlogPostNumber];
+	const postNum = "post-" + (activeBlogPostNumber - 1);
+	const bpJson = postjson[postNum];
+	console.log(bpJson);
 	const bpTags = document.getElementById("blog-tags");
 	const bpPhotos = document.getElementById("blog-photos");
 	const bpMusic = document.getElementById("blog-music");
 	(()=> {
 		bpTags.innerHTML = bpJson["tags"]; 
-		bpPhotos.innerHTML = bpJson["media"][0];
-		bpMusic.innerHTML = bpJson["media"][1];
+		bpPhotos.style.background = `url(${bpJson["media"][0]})`;
+		stopVideo();
+		// player.videoId = bpJson["media"][1];
+		player.loadVideoById(bpJson["media"][1]);
 	})();
+}
+
+var tag = document.createElement('script');
+tag.src = "https://www.youtube.com/iframe_api";
+var firstScriptTag = document.getElementsByTagName('script')[0];
+firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+function onYouTubeIframeAPIReady() {
+	player = new YT.Player('player', {
+	height: "100%",
+	width: '100%',
+	videoId: '0b-b9lO_7xk',
+	playerVars: {
+	'playsinline': 1,
+	'disablekb': 1,
+	'fs': 0,
+	'autoplay': 1,
+	'hl': 'ja'
+	},
+	events: {
+	'onReady': onPlayerReady,
+	'onStateChange': onPlayerStateChange
+	}
+	});
+}
+function onPlayerReady(event) {
+	event.target.playVideo();
+}
+var done = false;
+function onPlayerStateChange(event) {
+	if (event.data == YT.PlayerState.PLAYING && !done) {
+		setTimeout(stopVideo, 600000);
+		done = true;
+	}
+}
+function stopVideo() {
+	player.stopVideo();
 }
 
 function displayActiveBlogPostNumber() {
@@ -125,7 +165,7 @@ function chooseActiveBlogPost() {
 	})
 }
 
-function enableBlogButtons() {
+function enableBlogButtons(postjson) {
 	document.querySelectorAll(".blog-button").forEach(button => {
 		button.onmouseover = function(){
 			CMBRutil.buttonOnMouseEnter(button);
@@ -143,6 +183,7 @@ function enableBlogButtons() {
 						activeBlogPostNumber++;
 						activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
 							extractHeaderData(activeBlogPostNumber) + `</span>`;
+							routeJson(postjson);
 					}
 					break;
 				case "previous":
@@ -151,6 +192,7 @@ function enableBlogButtons() {
 						activeBlogPostNumber--;
 						activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
 							extractHeaderData(activeBlogPostNumber) + `</span>`;
+							routeJson(postjson);
 					}
 					break;
 				default:
@@ -219,8 +261,6 @@ function changeCoordinates(latLng) {
 	initBlogData(blogData.length);
 	chooseActiveBlogPost();
 	enableBlogButtons();
-	enableBlogSelect();
-
 	/**
 	 * @constant
 	 * @type {JSON}
@@ -228,7 +268,8 @@ function changeCoordinates(latLng) {
 	 */
 	const bpjson = await CMBRutil.connectCMBRjson(["blog"]);
 	setTimeout(()=>{
-		console.log(bpjson["post-1"]["date"]);
-
+		enableBlogButtons(bpjson);
 	}, 1000);
+	enableBlogSelect();
+
 })();

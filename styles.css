@@ -1,5 +1,4 @@
 @charset "UTF-8";
-
 /* |==========| STYLES.CSS @ CAMBERDEN.COM |====================> */
 /* |==========| ORGANIZED EARLY 2026 |====================> */
 * {
@@ -8,10 +7,7 @@
 	border: 0;
 	font-size: 100%;
 	vertical-align: baseline;
-}
-
-;
-
+};
 @starting-style {
 	* {
 		margin: 0;
@@ -20,6 +16,7 @@
 		font-size: 100%;
 		font: unset;
 		vertical-align: baseline;
+		animation-play-state: paused;
 	}
 
 	;
@@ -90,6 +87,7 @@
 	--mo2-9: rgb(255, 255, 255);
 	--mosky-1: linear-gradient(120deg, var(--mo2-1), var(--mo2-2), var(--mo2-3), var(--mo2-4));
 	--mosky-2: linear-gradient(var(--mo2-5), var(--mo2-6), var(--mo2-7), var(--mo2-8), var(--mo2-9));
+	--mosky-3: linear-gradient(var(--mo2-3), var(--mo2-4), var(--mo2-5), var(--mo2-6), var(--mo2-7));
 	--mosky: linear-gradient(var(--mo2-1), var(--mo2-2), var(--mo2-3), var(--mo2-4), var(--mo2-5), var(--mo2-6), var(--mo2-7), var(--mo2-8), var(--mo2-9), );
 }
 
@@ -105,7 +103,6 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
-
 [data-theme="dark"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
@@ -116,18 +113,16 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
-
 [data-theme="light"] {
 	--font-color: var(--mo-2-1);
 	--link-color: var(--mo-2-5);
-	--bg-image: var(--mosky-2);
+	--bg-image: var(--mosky-3);
 	--bg-color: none;
 	--bg-color-svg: none;
 
 	--cmbr-com-pnl-background: rgb(50, 65, 67);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
-
 [data-theme="paperesque"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
@@ -383,13 +378,8 @@ nav {
 	font-family: "Lora";
 	font-style: normal;
 	padding: 1rem;
-
-	/* background-image: var(--cmbr-gradient);
-	background-size: 0% 5%; */
 	background: none;
-	/* pointer-events: none; */
 	background-repeat: no-repeat;
-
 	border-bottom: 0.1rem solid var(--cmbr-green);
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
@@ -940,6 +930,7 @@ select:hover {
 .signature-div {
 	text-align: left;
 	z-index: 10;
+	
 }
 
 #signature {
@@ -949,29 +940,25 @@ select:hover {
 	width: 6rem;
 	min-height: 5rem;
 	user-select: none;
+	transform: rotate(29.75deg);
+	/* background-image: url("/images/cmbr-sig-transform.svg"); */
+	background-repeat: no-repeat;
+	/* animation: stagger-signature 10s ease-in-out infinite; */
 }
 
-#title-container {
+#camberden-div {
 	flex: 1;
 	align-self: center;
 	max-width: 100%;
 	height: fit-content;
 	position: relative;
 	box-sizing: border-box;
-
-	/* border-top: 0.1rem solid var(--clr-grid-box);
-	border-bottom: 0.5rem solid var(--clr-grid-box);
-	border-left: 0.1rem solid var(--clr-grid-box);
-	border-right: 0.5rem solid var(--clr-grid-box); */
-
 	width: 100%;
 	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 	margin-bottom: 3rem;
-
 	animation-name: change-box-shadow;
 	animation-duration: 8s;
 	animation-iteration-count: infinite;
-
 }
 
 #camberden {
@@ -1006,8 +993,15 @@ select:hover {
 	/* border-top: 0.1rem solid var(--clr-grid-box); */
 	/* border-bottom: 0.5rem solid var(--clr-grid-box); */
 	/* border-left: 0.1rem solid var(--clr-grid-box); */
-	border-right: 0.5rem solid var(--clr-grid-box);
+	border-right: 0.5rem solid transparent;
 	margin-inline-end: 0%;
+	animation-name: info-div-load;
+	animation-duration: 10s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-timing-function: ease-in-out;
+
 }
 
 #info-div {
@@ -1535,6 +1529,26 @@ select:hover {
 	90% {
 		opacity: 0%;
 		background-position: 100% 100%;
+	}
+}
+
+@keyframes info-div-load {
+	0% {
+		opacity: 70%;
+		border-right: 0.5rem solid var(--clr-grid-box);
+	}
+
+	10% {
+		opacity: 100%;
+		border-right: 0.5rem solid var(--cmbr-indigo);
+	}
+	20% {
+		opacity: 70%;
+		border-right: 0.5rem solid var(--clr-grid-box);
+	}
+	100% {
+		opacity: 70%;
+		border-right: 0.5rem solid var(--clr-grid-box);
 	}
 }
 

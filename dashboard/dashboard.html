@@ -9,6 +9,7 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="../htmx.js"></script>
 	<script src="../cmbr.js"></script>
 	<title>Chrispy's Dashboard</title>
 </head>
@@ -60,7 +61,7 @@
 
 			<!-----| NAV 3 |----->
 			<div id="nav-3">
-				<h1 class="h1-lamp">Workspace</h1>
+				<h1 class="h1-lamp">Dashboard</h1>
 			</div>
 
 			<!-----| NAV 4 |----->
@@ -95,7 +96,11 @@
 		</div>
 	</div>
 
-	<div class="dashboard-grid">
+	<button hx-get="../template/tempmain" hx-target="main" hx-trigger="click" hx-swap="outerHTML">Push Temp</button>
+	<button hx-get="../musings/musings" hx-target="main" hx-trigger="click" hx-swap="outerHTML">Push Musings</button>
+	<button hx-get="../music/music" hx-target="main" hx-trigger="click" hx-swap="outerHTML">Push Music</button>
+
+	<main class="dashboard-grid">
 
 		<!--EXPENSE MANAGEMENT -->
 		<div id="dashboard-expense-management" class="dashboard-item">
@@ -387,7 +392,7 @@
 			</div>
 		</div>
 
-	</div> <!-- END DASHBOARD GRID -->
+	</main> <!-- END DASHBOARD GRID -->
 
 	<script src="dashboard.js"></script>
 </body>

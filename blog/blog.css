@@ -145,13 +145,15 @@ main {
 }
 
 #blog-photos {
+	box-sizing: border-box;
+	background-size: cover;
 	height: 10rem;
 	width: 100%;
 	outline: 0.1rem dotted salmon;
 }
 
 #blog-music {
-	height: 10rem;
+	/* height: 10rem; */
 	width: 100%;
 	outline: 0.1rem dotted cyan;
 }

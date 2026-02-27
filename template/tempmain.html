@@ -1,0 +1,55 @@
+<main>
+	<hr class="hr-push-down">
+
+	<div class="flex-table">
+		<div class="triggers grid-col-1-1-1-2">
+			<div class="trigger-box">Hit me</div>
+			<div class="trigger-box">Again</div>
+			<div class="trigger-box">Please</div>
+			<div class="trigger-box">Make it happen</div>
+			<div class="trigger-box">Do it</div>
+			<div class="trigger-box">Kan</div>
+			<div class="trigger-box">Ji</div>
+			<div class="trigger-box">Sai</div>
+			<div class="trigger-box">Bo</div>
+			<div class="trigger-box">Satsu</div>
+			<div class="trigger-box">Bofrfrr</div>
+			<div class="trigger-box">Bowls</div>
+		</div>
+	</div>
+
+
+	<div id="focal" style="width:50rem;height:20rem;background:black;border:0.9rem groove cadetblue;">
+
+	</div>
+	<button @click="value++;" class="trigger-box" value="1"></button>
+
+	<div>
+
+		<input id="myInput" type="search" />
+
+
+		<h3>
+			Search Contacts
+			<span class="htmx-indicator">
+				<img src="../images/cmbr-sig-sm.ico" alt="" /> Searching...
+			</span>
+		</h3>
+
+		<input class="form-control" type="search" name="search" placeholder="Begin Typing To Search Users..."
+			hx-post="/search" hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
+			hx-target="#search-results" hx-indicator=".htmx-indicator">
+
+		<table class="table">
+			<thead>
+				<tr>
+					<th>First Name</th>
+					<th>Last Name</th>
+					<th>Email</th>
+				</tr>
+			</thead>
+			<tbody id="search-results">
+			</tbody>
+		</table>
+	</div>
+</main>

@@ -7,7 +7,7 @@ import { CMBRdb } from "./cmbr-db.js";
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Thursday, February 26th, 2026";
+const latestUpdate = "Friday, February 27th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン"];
@@ -100,13 +100,19 @@ const randomizePhotos = (album) => {
 
 	const infoDivBackground = document.getElementById("info-div-background");
 	infoDivBackground.style.animationPlayState = "paused";
+	infoDivBackground. parentElement.style.animationPlayState = "paused";
 	const m = Math.random();
 	infoDivBackground.style.animationPlayState = "running";
+	infoDivBackground.parentElement.style.animationPlayState = "running";
+
 	let photoIndex = Math.round(m.toFixed(2) * album.length);
 	if (photoIndex < 1) {
 		++photoIndex;
 	}
 	infoDivBackground.style.backgroundImage = `url("${album[photoIndex]}")`;
+	infoDivBackground.parentElement.style.borderRight = `var(--cmbr-grid-box)`;
+	
+	// infoDivBackground.parentElement.style.borderImage = `var(--cmbr-gradient)`;
 }
 const jsonAndDatabaseDemo = async () => {
 	CMBRutil.connectCMBRjson("cmbr");
@@ -143,7 +149,6 @@ const queryButtonDemonstrator = async () => {
 
 	const photos = await CMBRutil.connectCMBRjson(["travel-photos"]);
 	
-	// CMBRutil.actionsProvided("sections");
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos(photos);

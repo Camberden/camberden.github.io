@@ -442,7 +442,6 @@ function enableCpaProjection(){
 		}
 	});
 }
-
 // ---------- PENSION CALCULATOR ---------- //
 // TODO: lock in age and service, press up and down arrows to adjust.
 // TODO: add monthly increments, perhaps.
