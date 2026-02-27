@@ -962,6 +962,7 @@ select:hover {
 }
 
 #camberden {
+	opacity: 0%;;
 	flex: 1;
 	flex-flow: row nowrap;
 	font-family: "PermanentMarker", sans-serif;
@@ -979,7 +980,7 @@ select:hover {
 	background-repeat: no-repeat;
 	color: transparent;
 	user-select: none;
-	/* text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum); */
+	/* text-shadow: -1rem -1rem 3rem 0rem var(--cmbr-curtain-plum); */
 	/* text-shadow: 12rem red; */
 	animation-name: cmbr-sectionsizer;
 	animation-duration: 4s;

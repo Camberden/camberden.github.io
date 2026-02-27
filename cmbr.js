@@ -23,7 +23,7 @@ const sections = [
 	["travel", "Travel Page"],
 	["lifecraft", "Lifecraft Page"],
 	["musings", "Musings Page"],
-	["template", "Template"],
+	// ["template", "Template"],
 	// ["fantasy", "Fantasyland"],
 	// ["segregation", "Segregation"],
 	// ["mainframe", "Mainframe"],

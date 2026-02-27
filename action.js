@@ -91,8 +91,11 @@ const randomizeMonicker = () => {
 		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
 	} else {
 		camberden.innerHTML = monickers[0];
+		
 	}
+	camberden.style.opacity = "100%";
 }
+
 /**
  * @param {Object} album
  */
@@ -149,9 +152,10 @@ const queryButtonDemonstrator = async () => {
 
 	const photos = await CMBRutil.connectCMBRjson(["travel-photos"]);
 	
-	randomizeMonicker();
+	
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos(photos);
+	randomizeMonicker();
 	const slideshow = setInterval(()=> {
 		randomizePhotos(photos);
 	}, 10000);
