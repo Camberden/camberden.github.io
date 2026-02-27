@@ -55,7 +55,6 @@ const sortByAlbum = document.getElementById("sort-by-album");
 	 * @param {HTMLAudioElement} trackAudio
 **/
 function audioEffects() {
-	console.log("outside!");
 
 	if (!currentAudio.paused || currentAudio.currentTime) {
 		console.log("inside!");
@@ -140,7 +139,6 @@ function loadSelectedTrack(trackObject) {
 
 }
 
-
 function highlightSelectedTrack() {
 	nowPlaying.classList.add("now-playing-highlight");
 	for (let li of trackList.children) {
@@ -182,7 +180,6 @@ function enableSortByYearAndAlbum() {
 	}
 }
 
-
 (() => {
 
 	populateTrackList(loadSortedTracks("finished"));
@@ -191,6 +188,5 @@ function enableSortByYearAndAlbum() {
 	highlightSelectedTrack();
 	enableSortByYearAndAlbum();
 	CMBRutil.navigationCharter();
-	CMBRutil.handleFormDefault(true);
 
 })();

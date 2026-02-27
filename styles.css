@@ -1,9 +1,28 @@
 @charset "UTF-8";
+
 /* |==========| STYLES.CSS @ CAMBERDEN.COM |====================> */
 /* |==========| ORGANIZED EARLY 2026 |====================> */
-* { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; };
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+;
+
 @starting-style {
-	* { margin: 0;padding: 0; border: 0; font-size: 100%; font: unset; vertical-align: baseline;};
+	* {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: unset;
+		vertical-align: baseline;
+	}
+
+	;
 }
 
 @namespace url("http://www.w3.org/1999/xhtml");
@@ -23,12 +42,12 @@
 	--cmbr-degrees: 120deg;
 	--cmbr-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-indigo), var(--cmbr-blue), var(--cmbr-orange), var(--cmbr-violet));
 	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
-	
+
 	/* |=====| "CMBR GRID PANEL COMPONENTS" |=====| */
 	--cmbr-com-pnl-padding: 1rem;
 	--cmbr-com-pnl-border-width: 0.3rem;
 	--cmbr-com-pnl-max-height: 50rem;
-	
+
 	/* |=====| "CMBR DARK" |=====| */
 	--cmbr-dark-grey: #0a070f;
 	--cmbr-dark-ash: #182124;
@@ -86,6 +105,7 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+
 [data-theme="dark"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
@@ -96,6 +116,7 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+
 [data-theme="light"] {
 	--font-color: var(--mo-2-1);
 	--link-color: var(--mo-2-5);
@@ -106,6 +127,7 @@
 	--cmbr-com-pnl-background: rgb(50, 65, 67);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+
 [data-theme="paperesque"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
@@ -132,10 +154,12 @@
 	/* text-shadow: #ffcc00 2rem 1rem 5rem; */
 	/* animation: 30s linear shadow-fade infinite; */
 }
+
 .data-theme-button:hover {
 	cursor: pointer;
 	color: crimson;
 }
+
 .data-theme-button:active {
 	color: transparent;
 }
@@ -184,25 +208,6 @@ body {
 	background-color: var(--bg-color);
 }
 
-a {
-	text-decoration: solid;
-	outline: 0;
-	cursor: pointer;
-
-	color: unset;
-	background-image: linear-gradient(120deg, 0%, 100%);
-	background-repeat: no-repeat;
-	background-size: 25% 0.1em;
-	background-position: 0 88%;
-	transition: background-size 0.1s ease-in;
-}
-
-a:hover {
-	color: var(--clr-green);
-	background-size: 100% 5%;
-	background-image: var(--cmbr-legacy-gradient);
-}
-
 p {
 	color: unset;
 }
@@ -220,6 +225,7 @@ nav {
 	height: 3rem;
 	background-image: url("./images/cmbr-curtain.svg");
 }
+
 .nav-sail {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
@@ -235,26 +241,32 @@ nav {
 	background-image: url("./images/cmbr-curtain.svg");
 	/* background: var(--cmbr-grid-box); */
 }
+
 #nav-1 {
 	contain: style;
 }
+
 #nav-2 {
 	text-align: right;
 }
+
 #nav-3 {
 	text-align: center;
 	/* background: rgba(0, 0, 255, 0.131); */
 	/* border-left: 0.5rem ridge black; */
 	/* border-right: 0.5rem ridge black; */
 }
+
 #nav-4 {
 	text-align: left;
 }
+
 #nav-5 {
 	position: fixed;
 	right: 0;
 
 }
+
 .h1-lamp {
 	user-select: none;
 	font-size: 2rem;
@@ -266,15 +278,17 @@ nav {
 	color: transparent;
 	transition: text-shadow 10s ease-in-out;
 }
-.h1-lamp:hover {
-	cursor:grab
 
+.h1-lamp:hover {
+	cursor: grab
 }
+
 .h1-lamp:active {
 	cursor: grabbing;
 	text-shadow: #ffcc00 2rem 1rem 5rem;
 	animation: 30s linear shadow-fade infinite;
 }
+
 #nav-sig {
 	display: inline-flex;
 	flex: 1;
@@ -290,44 +304,52 @@ nav {
 	transform: rotate(30deg);
 	transition: background-image 1s ease-in-out;
 }
+
 #nav-sig:hover {
 	background-image: url("./images/cmbr-sig.svg");
 }
+
 .nav-hoist {
 	width: 100%;
 }
+
 #nav-anchor {
 	position: fixed;
 }
+
 .chart-opened::after {
 	content: attr(item) " ↓";
 }
+
 #chart-access {
 	z-index: 300;
 	position: relative;
-	font-family:  monospace;
+	font-family: monospace;
 	font-size: 1rem;
 	color: var(--cmbr-blue);
-    margin-inline-end: 100%;
-    max-height: 3rem;
-    width: max-content;
+	margin-inline-end: 100%;
+	max-height: 3rem;
+	width: max-content;
 	box-sizing: border-box;
 	border: 0.3rem solid black;
 	border-bottom: 0.3rem groove black;
 	background: rgb(37, 37, 37);
-	
+
 }
+
 #chart-access:hover {
 	cursor: pointer;
 	color: cadetblue;
 	border-bottom: 0.3rem groove black;
 	background-color: var(--cmbr-curtain-plum);
 }
+
 #chart-access:active {
 	color: burlywood;
 	background-color: rgb(16, 16, 16);
-	
+
 }
+
 #chart-dropdown {
 	position: fixed;
 	left: 0;
@@ -340,6 +362,7 @@ nav {
 	background-color: black;
 	/* overflow-y: scroll !important; */
 }
+
 #chart-dropdown > #chart-links > .section-title {
 	padding: 0.5rem !important;
 	font-size: 1rem !important;
@@ -347,15 +370,24 @@ nav {
 
 /* |==========| §SECTIONS NAVIGATION |====================> */
 /* |==========| LEFT-SIDE DROPDOWN FOR SITE MAP NAVIGATION |====================> */
+
+.index-grid > .sections-links > #sections-target > .section-title:first-of-type {
+	display: none;
+}
+
 .section-title {
+	display: flex;
+	align-items: stretch;
+	box-sizing: border-box;
+	color: var(--cmbr-blue);
 	font-family: "Lora";
-	font-style: italic;
-	box-sizing: content-box;
-	cursor: pointer;
+	font-style: normal;
 	padding: 1rem;
 
-	background-size: 100% 5%;
-	background-position: 0 88%;
+	/* background-image: var(--cmbr-gradient);
+	background-size: 0% 5%; */
+	background: none;
+	/* pointer-events: none; */
 	background-repeat: no-repeat;
 
 	border-bottom: 0.1rem solid var(--cmbr-green);
@@ -363,20 +395,40 @@ nav {
 	border-right: 0.5rem solid var(--clr-grid-box);
 }
 
+.section-title:hover {
+	cursor: pointer;
+	color: var(--cmbr-orange);
+	background-image: var(--cmbr-gradient);
+	background-position: 50% 88%;
+	background-size: 100% 5%;
+	transition: background-size 0.3s ease-out;
+}
+
+.section-title:hover :where(a) {
+	color: var(--cmbr-orange);
+	
+}
+.section-title:not(:hover) {
+	background-image: var(--cmbr-gradient);
+	background-size: 0% 5%;
+	animation-name: sectionsizer;
+	animation-play-state: running;
+	animation-duration: 1s;
+	animation-direction: normal;
+	animation-iteration-count: 1;
+}
+
 .section-title > a {
-	display: block;
+	color: var(--cmbr-blue);
+
+	box-sizing: border-box;
 	width: 100%;
 	height: 100%;
+	text-decoration: none;
 }
-
-.section-title > a:hover {
-	background-image: none;
-}
-
 .section-highlight {
 	color: var(--cmbr-orange);
 	background-image: var(--cmbr-gradient);
-	/* FORMERLY CLR-GRADIENT-COMMON */
 	background-size: 100% 5%;
 	transition: background-size 0.3s ease-in;
 }
@@ -389,6 +441,7 @@ nav {
 	animation-duration: 1s;
 	animation-direction: normal;
 	animation-iteration-count: 1;
+
 }
 
 .sections-opened {
@@ -415,7 +468,7 @@ nav {
 	background-color: black;
 }
 
-#sections-dropdown > .sections-links > .section-title {
+#sections-dropdown>.sections-links>.section-title {
 	padding: 0.5rem !important;
 	font-size: 1rem !important;
 }
@@ -540,8 +593,8 @@ nav {
 	width: 100%;
 	height: 1rem;
 	backdrop-filter: blur(0.2rem) saturate(90%);
-    -webkit-backdrop-filter: blur(0.2rem) saturate(90%);
-    background-color: rgba(4, 6, 17, 0.75);
+	-webkit-backdrop-filter: blur(0.2rem) saturate(90%);
+	background-color: rgba(4, 6, 17, 0.75);
 	background-image: transparent;
 	background-size: cover;
 	position: fixed;
@@ -841,6 +894,11 @@ select:hover {
 	grid-template-columns: 3fr 1fr 1fr;
 }
 
+.grid-col-5x-1 {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+}
+
 .grid-col-8x-1 {
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
@@ -870,6 +928,7 @@ select:hover {
 	max-width: 60%;
 	margin-inline: auto;
 }
+
 .index-sub-grid {
 	display: grid;
 	gap: 0.5rem;
@@ -950,6 +1009,7 @@ select:hover {
 	border-right: 0.5rem solid var(--clr-grid-box);
 	margin-inline-end: 0%;
 }
+
 #info-div {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
@@ -958,6 +1018,7 @@ select:hover {
 	flex: 1;
 	/* flex:content; */
 }
+
 #info-div-background {
 	background-image: none;
 	background-size: cover;
@@ -980,9 +1041,11 @@ select:hover {
 	border-left: 0.5rem solid var(--cmbr-grid-box);
 	padding-left: 0.2rem;
 }
+
 #page-info>p::before {
 	content: none;
 }
+
 #page-info::after {
 	content: none;
 }
@@ -995,6 +1058,7 @@ select:hover {
 	border-left-width: 2rem;
 	border-style: double;
 }
+
 #administration:hover {
 	color: darkred;
 	border-color: springgreen;
@@ -1135,45 +1199,55 @@ select:hover {
 	scrollbar-color: var(--cmbr-dark-iron) var(--cmbr-dark-grey);
 	scrollbar-width: auto;
 }
+
 .flex-table-header {
 	position: sticky;
 	top: 0;
 	border-bottom: 2px solid cadetblue;
 }
+
 .flex-table-side-header {
 	position: sticky;
 	left: 0;
 }
+
 .flex-table-body {
 	counter-reset: item;
 	display: flex;
 	flex-direction: column;
 	/* overflow-y: auto; */
 }
+
 .flex-table-col-body {
 	display: flex;
 	flex-flow: row nowrap;
 
 }
+
 .flex-table-row {
 	gap: 1rem;
 	border-bottom: 1px solid cadetblue;
 	align-items: center;
 	justify-items: flex-start;
 }
-.flex-table-row > input[type=checkbox] {
+
+.flex-table-row>input[type=checkbox] {
 	transform: scale(1.3);
 }
-.flex-table-row > div {
+
+.flex-table-row>div {
 	width: max-content;
 }
+
 .countered-items-reset {
 	counter-reset: item;
 }
+
 .countered-items {
 	list-style-type: none;
 	counter-increment: item;
 }
+
 .countered-items::before {
 	content: counter(item) " → ";
 }
@@ -1183,6 +1257,7 @@ select:hover {
 #header-and-return {
 	padding: 2rem;
 }
+
 #return {
 	display: flex;
 	font-size: 1em;
@@ -1191,9 +1266,11 @@ select:hover {
 	align-items: left;
 	justify-content: left;
 }
+
 #return a:hover {
 	color: var(--cmbr-green);
 }
+
 #page-header {
 	display: flex;
 	flex: 1;
@@ -1207,6 +1284,7 @@ select:hover {
 	border-bottom: none;
 	background: rgba(144, 229, 238, 0.1);
 }
+
 .page-grid {
 	padding: 2rem;
 	display: flex;
@@ -1218,6 +1296,7 @@ select:hover {
 	border-radius: 1rem;
 	gap: 1rem;
 }
+
 .page-item {
 	flex: 1;
 	display: flex;
@@ -1233,6 +1312,7 @@ select:hover {
 	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
+
 #quick-links {
 	display: flex;
 	flex: 1;
@@ -1248,6 +1328,7 @@ select:hover {
 	border-color: grey;
 	background: rgba(144, 229, 238, 0.1);
 }
+
 .quick-links-grid-item:first-child {
 	border-width: 0.3rem;
 	border-style: double;
@@ -1255,6 +1336,7 @@ select:hover {
 	border-top: none;
 	border-bottom: none;
 }
+
 .quick-links-grid-item {
 	padding: 1rem;
 	border-width: 0.3rem;
@@ -1264,6 +1346,7 @@ select:hover {
 	border-bottom: none;
 	border-left: none;
 }
+
 .quick-links-buttons:first-child {
 	padding: 1rem;
 	border-width: 0.3rem;
@@ -1272,6 +1355,7 @@ select:hover {
 	border-top: none;
 	border-bottom: none;
 }
+
 .quick-links-buttons {
 	padding: 1rem;
 	border-width: 0.3rem;
@@ -1281,15 +1365,18 @@ select:hover {
 	border-bottom: none;
 	border-left: none;
 }
+
 .page-dropdown {
 	background-color: var(--clr-quinary-body);
 	border: 1px solid #888;
 	width: fit-content;
 	/* Could be more or less, depending on screen size */
 }
+
 .common-background {
 	background-color: var(--cmbr-grid-box);
 }
+
 .load-padding-transition {
 	padding: 0.2rem;
 	transition: padding 0.3s ease-in;
@@ -1303,10 +1390,12 @@ select:hover {
 	border-left-width: 2rem;
 	border-style: double;
 }
+
 .glass-pane-backing {
 	background-image: url("./assets/fantasy-graphics/pankair-sorghum.jpeg");
 	background-size: cover;
 }
+
 .glass-pane {
 	backdrop-filter: blur(0.2rem) saturate(90%);
 	-webkit-backdrop-filter: blur(0.2rem) saturate(90%);
@@ -1316,10 +1405,12 @@ select:hover {
 	/* text-shadow: #f59b60; */
 	border: 1rem solid transparent;
 }
+
 .load-padding-transition {
 	padding: 0.2rem;
 	transition: padding 0.3s ease-in;
 }
+
 .main-col-grid {
 	display: flex;
 	flex-flow: column wrap;
@@ -1331,6 +1422,7 @@ select:hover {
 	outline: 0.5rem groove black;
 	width: 80%;
 }
+
 .main-row-grid {
 	display: flex;
 	flex: 1;
@@ -1497,9 +1589,11 @@ select:hover {
 	0% {
 		background-position: 0 50%;
 	}
+
 	50% {
 		background-position: 100% 50%;
 	}
+
 	100% {
 		background-position: 0 50%;
 	}
@@ -1509,9 +1603,11 @@ select:hover {
 	0% {
 		opacity: .5;
 	}
+
 	50% {
 		opacity: .75
 	}
+
 	100% {
 		opacity: 1;
 	}
@@ -1521,9 +1617,11 @@ select:hover {
 	0% {
 		opacity: .2;
 	}
+
 	50% {
 		opacity: .4;
 	}
+
 	100% {
 		opacity: .6;
 	}

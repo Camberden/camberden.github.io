@@ -55,12 +55,13 @@
 		</div>
 		<hr class="hr-cmbr-gradient">
 
-		<div class="sections-links"></div>
+		<div class="sections-links" hx-get="template/sections.html" hx-swap="innerHTML" hx-target="#sections-target" hx-trigger="load" class="sections-links">
 
-		<div id="test" style="display:none;">
-			<p>Nested Link: <a href="dashboard/dashboard.html" data-route="/dashboard/">Dashboard</a></p>
+			<div id="sections-target"></div>
 		</div>
 
+		
+		<div style="height:3rem;"></div>
 		<footer class="index-footer">
 			<p id="footer-text">Made with ♡ by Chrispy</p>
 			<p>Last updated on <span id="latest-update"></span></p>

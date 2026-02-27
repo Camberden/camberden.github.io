@@ -8,6 +8,23 @@ let blogMapMarker;
 let listedYears = [];
 let currentYear;
 
+/**
+ * 
+ * @param {JSON} postjson 
+ */
+function routeJson(postjson) {
+	
+	const bpJson = postjson["post-" + activeBlogPostNumber];
+	const bpTags = document.getElementById("blog-tags");
+	const bpPhotos = document.getElementById("blog-photos");
+	const bpMusic = document.getElementById("blog-music");
+	(()=> {
+		bpTags.innerHTML = bpJson["tags"]; 
+		bpPhotos.innerHTML = bpJson["media"][0];
+		bpMusic.innerHTML = bpJson["media"][1];
+	})();
+}
+
 function displayActiveBlogPostNumber() {
 	document.getElementById("displayed-post").innerHTML = activeBlogPostNumber + 1;
 	document.getElementById(`bp-${activeBlogPostNumber}`).classList.add("listing-highlight");
@@ -91,6 +108,7 @@ function initBlogData(dataLength) {
 		if (i === dataLength - 1) {
 			activeBlogPost.innerHTML = `<span id=entry-${activeBlogPostNumber}>` +
 				extractHeaderData(activeBlogPostNumber) + `</span>`;
+				
 		}
 		currentYear = listedYear;
 	}
@@ -202,8 +220,15 @@ function changeCoordinates(latLng) {
 	chooseActiveBlogPost();
 	enableBlogButtons();
 	enableBlogSelect();
-	const fifth = await CMBRutil.connectCMBRjson("blog-post", 5);
+
+	/**
+	 * @constant
+	 * @type {JSON}
+	 * @example bpjson["post-1"]["date"]
+	 */
+	const bpjson = await CMBRutil.connectCMBRjson(["blog"]);
 	setTimeout(()=>{
-		console.log(fifth);
-	}, 2000);
+		console.log(bpjson["post-1"]["date"]);
+
+	}, 1000);
 })();

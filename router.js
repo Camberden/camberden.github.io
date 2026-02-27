@@ -2,6 +2,7 @@ console.log("Router.js Active! WIP");
 
 const routes = {
   "/": { file: "/index.html", init: initHome },
+  // "/index/": { file: "/index.html", init: initHome },
   "/dashboard/": { file: "/dashboard.html", init: initDashboard },
   "/workspace/": { file: "/workspace/workspace.html", init: initWorkspace },
   // "/depository/": {file: "/depository/depository.html", init: initDepository },

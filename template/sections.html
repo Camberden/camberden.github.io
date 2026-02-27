@@ -1,0 +1,8 @@
+	<template x-for="(section, index) in sections" :key="index">
+		<div :class="'section-title'">
+			<a x-text="section[1]"
+				:href="section[0] + '/' + section[0] + '.html'"
+				:data-route="'/' + section[0] + '/'">
+			</a>
+		</div>
+	</template>

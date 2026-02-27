@@ -23,7 +23,7 @@ const sections = [
 	["travel", "Travel Page"],
 	["lifecraft", "Lifecraft Page"],
 	["musings", "Musings Page"],
-	// ["template", "Template"],
+	["template", "Template"],
 	// ["fantasy", "Fantasyland"],
 	// ["segregation", "Segregation"],
 	// ["mainframe", "Mainframe"],
@@ -62,7 +62,7 @@ const baseHyperlinks = [
 	"http://localhost:" + basePort,
 	"http://localhost:" + basePort + "/index.html",
 ];
-var CMBRdata;
+var CMBRdata = "banana";
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -70,8 +70,6 @@ var CMBRdata;
  * @author Camberden (Chrispy | Kippi)
  */
 const CMBRutil = {
-
-	bananba: [1,2,3,4],
 
 	buttonOnMouseEnter: function (button) {
 		if (!button.classList.contains("button-toggled")) {
@@ -336,7 +334,12 @@ const CMBRutil = {
 			return true;
 		}
 	},
-	/** @global @readonly @returns {Boolean} boolean @description Reads site index URL and provides gateway for development servers and all configured domains */
+	/** 
+	 * @global 
+	 * @readonly 
+	 * @returns {Boolean} boolean 
+	 * @description Reads site index URL and provides gateway for development servers and all configured domains
+	 *  */
 	atSiteIndex: function () {
 	if (this.acceptableProtocol() && document.location.href.endsWith("index.html")) {
 		return true;
@@ -352,6 +355,30 @@ const CMBRutil = {
 		return false;
 	}
 	},
+	// Function to update URL parameters
+	updateURLParameter: function(key, value) {
+		urlParams.set(key, value); // Set or update the parameter
+		history.replaceState(null, '', '?' + urlParams.toString()); // Update the URL
+	},
+
+	openEndPoint: function() {
+		let endpoint = new URL("/api/data", document.location.origin);
+		console.log(endpoint.toString()); // Outputs: https://example.com/api/data
+		// Get the current URL parameters
+		const urlParams = new URLSearchParams(window.location.search);
+
+		const endpointSearchInput = document.createElement("input");
+		endpointSearchInput.setAttribute("id","endpoint-search-input");
+		endpointSearchInput.setAttribute("style", "display: fixed; bottom:0; width:100%; height:25%;");
+		
+		document.appendChild(endpointSearchInput);
+
+		// Add event listener to an input field
+		document.getElementById("endpoint-search-input").addEventListener("input", function() {
+			updateURLParameter("search", this.value); // Update 'search' parameter
+		});
+	},
+
 	/**
 	 * 
 	 * @param {HTMLElement[]} buttons 
@@ -367,7 +394,9 @@ const CMBRutil = {
 			}
 			button.onclick = () => {
 				this.buttonOnClick(button);
-				sout(button.id);
+				sout("Button ID => " + button.id);
+				sout("Button Value => " + button.id);
+
 				if (button.id === "sparkle") {
 					button.textContent = "✨sparkle✨"
 					setTimeout(() => {
@@ -377,36 +406,57 @@ const CMBRutil = {
 			};
 		});
 	},
+
 	/** 
 	 * @description Reads cmbr.json
 	 * @borrows cmbr.json
-	 * @param {String} name selected query from cmbr.json acceptable queries
+	 * @param {Array} query
 	 * @implements {Promise<Object>} 
 	 * 
 	 */
-	connectCMBRjson: function(query, ...args) {
+	connectCMBRjson: async function(query) {
 		return fetch(`${document.location.origin}/cmbr.json`)
 		.then(data => data.json())
 		.then(data => {
+			// console.log(data);
+			console.log("QUERY BEFORE RESOLUTION: " + query[0]);
 			return data;
 		})
 		.then((data) => {
-			switch(query, args) {
+			query[0] == "travel-photos" ? console.log("QUERY 0 SAME: " + query[0]) : console.log("QUERY 0 NOT SAME: " + query[0]);
+			query[1] == 1 ? console.log("QUERY 1 SAME: " + query[1]) : console.log("QUERY 1 NOT SAME: " + query[1]);
+			console.log("QUERY LENGTH: " + query.length);
+			switch(query[0]) {
 				case "travel-photos":
-					return data["travel-photos"].items;
+					if (query.length == 1) {
+						// console.log(data[query[0]].items);
+						return (data[query[0]].items);
+						break;
+					}
+					// console.log(data[query[0]].items[query[1]]);
+					return (data[query[0]].items[query[1]]);
+					break;
 				break;
 				case "sections":
+					// console.log("sections");
 					return data["sections"];
 				break;
 				case "blog":
-					return data["blog"];
+					if (query.length == 1) {
+						// console.log(data[query[0]]);
+						return (data[query[0]]);
+						break;
+					}
+					let post = ("post-" + query[1]);
+					sout("blog as post = " + post);
+					// console.log(data[query[0]][post]);
+					return (data[query[0]][post]);
+					break;
 				break;
-				case "blog-post", args[0]:
-					return data["blog"].args[0];
-				break;
+			
 				default:
+					sout("Bad Query at connectCMBRjson.");
 					return data;
-				break;
 			}
 		});
 	}
@@ -421,3 +471,4 @@ const displaySite = () => { document.getElementById("current-site").innerHTML = 
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
+const indexSectionFilter = () => { if ( CMBRutil.atSiteIndex() ) { document.getElementById("homepage").style.display = "none"; }}

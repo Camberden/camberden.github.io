@@ -1,4 +1,4 @@
-// import { CMBRdb } from "./cmbr-db.js";
+import { CMBRdb } from "./cmbr-db.js";
 /** ===> CAMBERDEN.GITHUB.IO UPDATE ===>
  * @description Personal Website:
  * - From 2020 to Present
@@ -141,15 +141,14 @@ const queryButtonDemonstrator = async () => {
 
 (async (/*=====*| RUN |*=====*/) => {
 
-	const photos = await CMBRutil.connectCMBRjson("travel-photos");
-	CMBRutil.actionsProvided("sections");
+	const photos = await CMBRutil.connectCMBRjson(["travel-photos"]);
+	
+	// CMBRutil.actionsProvided("sections");
 	randomizeMonicker();
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos(photos);
 	const slideshow = setInterval(()=> {
 		randomizePhotos(photos);
 	}, 10000);
-
-	sout(CMBRutil.bananba);
 
 })(/*=====*| END |*=====*/);
