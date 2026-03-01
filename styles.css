@@ -962,7 +962,7 @@ select:hover {
 }
 
 #camberden {
-	opacity: 0%;;
+	opacity: 0%;
 	flex: 1;
 	flex-flow: row nowrap;
 	font-family: "PermanentMarker", sans-serif;
@@ -1544,11 +1544,11 @@ select:hover {
 		border-right: 0.5rem solid var(--cmbr-indigo);
 	}
 	20% {
-		opacity: 70%;
+		opacity: 80%;
 		border-right: 0.5rem solid var(--clr-grid-box);
 	}
 	100% {
-		opacity: 70%;
+		opacity: 100%;
 		border-right: 0.5rem solid var(--clr-grid-box);
 	}
 }

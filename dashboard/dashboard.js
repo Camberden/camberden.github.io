@@ -710,7 +710,7 @@ function displayAccountingModal() {
 			<li class="taken">ACC 221</li>
 		</ul>
 		<ul>SP2026<hr>
-			<li class="taking">BUS 115</li>
+			<li>Job Transition</li>
 		</ul>
 		<ul>SU2026<hr>
 			<li>ACC 129</li>
