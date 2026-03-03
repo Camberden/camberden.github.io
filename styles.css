@@ -1,26 +1,8 @@
 @charset "UTF-8";
 /* |==========| STYLES.CSS @ CAMBERDEN.COM |====================> */
 /* |==========| ORGANIZED EARLY 2026 |====================> */
-* {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	vertical-align: baseline;
-};
-@starting-style {
-	* {
-		margin: 0;
-		padding: 0;
-		border: 0;
-		font-size: 100%;
-		font: unset;
-		vertical-align: baseline;
-		animation-play-state: paused;
-	}
-
-	;
-}
+* { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; };
+@starting-style { * { margin: 0; padding: 0; border: 0; font-size: 100%; font: unset; vertical-align: baseline; animation-play-state: paused; }; }
 
 @namespace url("http://www.w3.org/1999/xhtml");
 @namespace svg url("http://www.w3.org/2000/svg");
@@ -930,7 +912,6 @@ select:hover {
 .signature-div {
 	text-align: left;
 	z-index: 10;
-	
 }
 
 #signature {
@@ -941,10 +922,10 @@ select:hover {
 	min-height: 5rem;
 	user-select: none;
 	transform: rotate(29.75deg);
-	/* background-image: url("/images/cmbr-sig-transform.svg"); */
 	background-repeat: no-repeat;
-	/* animation: stagger-signature 10s ease-in-out infinite; */
+	background-size: contain;
 }
+
 
 #camberden-div {
 	flex: 1;
@@ -1062,12 +1043,12 @@ select:hover {
 
 #japanese-date {
 	font-size: 1rem;
-	font-family: "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
+	font-family: "Yusei Magic", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", Osaka, "メイリオ", Meiryo, sans-serif;
 	font-weight: bolder;
 }
 
 .index-footer {
-	font-family: "PermanentMarker";
+	/* font-family: "PermanentMarker"; */
 	color: var(--cmbr-orange);
 	background-color: black;
 	border-bottom: 0.5rem solid var(--cmbr-grid-box);
@@ -1162,13 +1143,12 @@ select:hover {
 
 @font-face {
 	font-family: "Yusei Magic";
-	src:
-		local("YuseiMagic-Regular"),
+	src: local("YuseiMagic-Regular"),
 		url("assets/fonts/YuseiMagic-Regular.ttf") format("truetype");
 }
 
 .yusei-magic-regular {
-	font-family: "Yusei Magic", sans-serif;
+	font-family: "Yusei Magic";
 	font-weight: 400;
 	font-style: normal;
 }
