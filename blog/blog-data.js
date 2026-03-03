@@ -1412,8 +1412,7 @@ const blogData = [
 	| Pittsboro, NC
 	| 0952 HRS
 	| &emsp;
-	<br>
-	&emsp;I'm killing this hobby. Today. I've now surfaced a deep resentment for it.
+	I'd've said that I'm killing this hobby. Today. I've now surfaced a deep resentment for it.
 	I may stop by to blog here and there, but that's about all.
 	I'll use my learning platforms separately.
 	I don't need to care about this nonsense, anymore. 
@@ -1439,21 +1438,23 @@ const blogData = [
 	I kept telling myself "I'm not ready, I'm not ready." Come to find out, I was absolutely correct.
 	I wasn't in 2020 for one. I wasn't in 2025 for two. Though, I'm glad I could have at least made them
 	genuinely happy for a chapter in this life. You are missed. This hurts, very much.
-	<hr class="hr-cmbr-gradient">
-	&emsp; I hope either to never be in a relationship ever again, or to be in a position to be able to give one the attention and care it deserves. 
-	I can't say I wasn't cautious. I was: I've been guarded all year last year. I've long believed that love is a <u>strong</u> word not to toy around with.
-	I've also long believed that relationships are very serious business. Though cautious, I just wasn't cautious enough. 
-	Midyear 2025, I was too optimistic, and I was too hopeful. I thought I could do it all, and I thought I could do it all well.
-	I thought I could be a good student, a good hobbyist, a good friend, a good employee, and a good partner:
-	To balance all facets of life. I was wrong. I was not ready to a pitiful extent. I was so confused at how I warranted the love and care of such a wonderfully
-	admirable person whose qualities I aspire to emulate. I was so unsure and took the plunge, knowing it would not the best for this time in my life.
-	I recall saying on the grounds of the NC Museum of Art that, <span class="marker">"I wished you found me just a year or two later,
-	because then life would've just made more sense." </span> I am not decoupling my responsibility by saying this, 
-	I do believe I'd've been in a much better place to provide a better self for another.
-	As the months went on, the last however many months had been among the most imbalanced of my life; I had been so consumed with the idea of redeeming
-	my lost youth and college years. I committed to my hustle to reclaim my potential and my sunshine.
-	I committed for the sake of a better future at the detriment of your better present. During my husting and your push for a big move,
-	the outwardly mutual loving support was so reassuring that I didn't even realize how much I was fucking up until it was too late.
+	<hr class="hr-cmbr-gradient"> &emsp; 
+	<div class="rolyan-musings rolyan-vertical"><bdi>
+	*¬/•+~(/*¬ø'H'/[!/{;)'H'/('“/¬{/H/«“=¬)'H{)'¬(/;)'H'/H}';{_/+'«/[!/('“/¬{/H/(H]'¬)'H{/[!/('“/¬('H=/[!/}'¬)'/!'^{/ø'“/H[;{)'H{/*'{['/};«/¬[/['¬]';«)']'\
+	*¬/}*'{[/]¬/*¬/!'˙]'H{[/}+')'H]\/*¬/!'^]'/*¬)'/('¬{/}'˙«['¬['/+'=/°¬«/=*'][/°¬«\/*¬)'/=+'L/('¬=“)'['/ø'*'[/=^)'/¬]'/¬/<°!>][«+'L</°!>/!';«['/{˙[/[!/[+'¬/H«*~{['/!'¬ø'\
+	*¬)'/+'=]+~/=+'L/('¬=“)'['/ø'*'[/«“=¬)'H{)'¬(]/˙«/)';«“/]¬«“H]/('¬]'{H]\/ø'+~/}+')'H]_/*¬/%^][/!'˙]'H{[/}+')'H]/¬{^)\
+	{'¬['°¬«/2025_/*¬/!'^]'/[!/˙([H{'¬][¬}_/*'{['/*¬/!'^]'/[!/•+~()H=\/*¬/ø+'[/*¬/}~['/['!/¬[/+'=_/*'{['/*¬/ø+'[/*¬/}~['/['!/¬[/+'=/!';=\
+	*¬/ø+'[/*¬/}~['/('“/H/}'~['/][!['H{[_/H/}'~['/•˙('“¬][_/H/}'~['/)«;{['_/H/}'~['/;{'(=+'¬“_/*'{['/H/}'~['/(˙«[{H'
+	[!/('*'=H{]/+'=/)*']H[]/^)'/=*¬)\/*¬/!'^]'/«+'L\/*¬/!'^]'/{˙[/«;['“/[!/H/(¬[H)H=/¬}][;{[\/*¬/!'^]'/]+~/}H{)°!]'['/*'[/•*~/*¬/!'+'«H{[¬['/ø'H/=^)'/*'{['/};«/^)'/]^)''/H/!'^{['H')H=“
+	*'['{'H'H('H=/(;«]H{/•!]'/}!'˙=H[“]'/*¬/H](*¬«/[!/;{'°H=¬[\/*¬/!'^]'/]+~/H{)'~«/*'{['/[~}/ø'H/(=^{%_/{+~¬L/¬[/!'~['/{˙[/ø'H/(';][/)+'«/ø'¬]/[*¬{'/¬{/{'*¬/=*¬)\
+	*¬/«“}+'=/]¬¬L/˙{/ø'H/}'«*~{[']'/^)'/ø'“/;{-]“/{'°!]'“H{'/^)'/˙«[/ø'*'[_/*¬/!'¬)'[/°!/)*~{['/{'“/%^][/H/°¬«/+'«/[!/=¬[H'_
+	('¬}+']'/ø';{/=*¬)/!'~['H)'/%^][/{'¬['/{'+'«/];{]\…/*¬/*'{'/{˙[/['“}^(=¬L/{'*¬/«“](˙{]H('¬=H[“/('*¬/]¬¬L/ø'¬]_
+	*¬/['!/('¬=“)'/I'['')'/('¬{/¬{/H/{'^)''/(';[H'/(=¬]/[!/(«H)'*¬['/H/(';[H'/];=)/)+'«/H{^ø'H'\
+	*']'/ø'H/{'^{ø]/!';{[/˙{_/ø'H/=*'][/•*~;)'H'/{';{“/{'^{ø]/•*'['/('¬{/H{'^L/ø'H/{'+~][/¬{'('*'=H{][/^)'/{'*¬/=*¬);/*¬/•*'['/('¬{/]+~/}H{]!{'['/!'¬ø'/ø'“/*¬['“H/^)'/«¬['“{'¬L
+	{'*¬/=+'][/°!ø/*'{['/}˙=¬%/°¬«]'\/*¬/}H{'¬[H['/[!/{'*¬/•^]H=/[!/«“}=¬{'/{'*¬/(H[;{)'H=/*'{['/{'*¬/]^{)'*¬{\
+	*¬/}H{'¬[H['/)+'«/ø'H/]¬}/^)'/H/(';[H'/)°!)''H'/*'[/ø'H/[';[«H{'H{[/^)'/°~H'/(';[H'/(«;]'H{[\/['~«¬L/{'*¬/•^][¬L/*'{['/°~H'/(~)'/)+'«/H/('¬}'/{'!)'_
+	ø'“/*~[!'H'['=“/{'°!)''!H=/=^)'¬L/]H(+'«[/!'^]'/]+~/«“H)'~«¬L/ø'*'[/*¬/['¬['H{[/“)'¬{/«“H=*¬]'/•*~/{'^)''/*¬/!'^]'/)^}¬L/^(/H{[¬=/¬[/!'^]'/[!/=¬[\
+	</bdi></div>
 	<hr class="hr-cmbr-gradient">
 	I'll agree, that some things weren't the most compatible with me either.
 	The dynamic was unfamiliar to me.
@@ -1560,10 +1561,14 @@ creating a desktop app with typical utility links that are otherwise available a
 utilizing Obsidian markdown app when in truth I have no need to do my work through markdown formats, and I could create canvases in other ways, 
 perhaps through JSON canvas. I am no longer enthusiastic for much of the little things. I just want a clean, workable site for personal use at this point. 
 I want it to aid me, much as my dashboard does. 
-<hr class="hr-cmbr-gradient">&emsp;
-I will tie in the concept of <b-title>strict-liability</b-title>: the one who caused certain damages is to be held accountable regardless of his intent. 
-I consider myself strictly-liable for my mistakes in the past with Azerai, Luna, and Jake. I am taking action. This is gonna be good, I swear.
-I feel my resolve, a more wholly encompassing resolve, is taking flight again. 
+<hr class="hr-cmbr-gradient">
+<span class="rolyan-musings">
+*¬/!'¬=/[*¬/¬{/ø'H/}˙{];([/^)'/<b-title>strict-liability</b-title>…][«¬}[/=*¬H('¬=¬[“/…ø'H/!'^{/•!/}˙]'['/
+];«[H{/['*'{'H%H]'/¬]'/[!/('“/•;=['/H}*~{[H('H=/«H}'˙«['=H]/^)'/•¬]'/¬{[;{[\
+*¬/}H{]¬['H'/{'*¬];=)/][«¬}[=“-=*¬H('H=/)+'«/{'*¬/{'¬][¬}]/¬{/ø'H/(*'][/!'¬ø'/*']
+'H'*¬_/=!{^_/*'{['/%¬}\/*¬/*'{'/[¬}¬L/*'})'H{\/ø'¬]/¬]'/}'˙{H/('“/}'~['_/*¬/]!';«\
+*¬/)“=/{'*¬/«“]'˙=)'_/H/{'+'«/•+~=“/;{}^{'(H]¬L/«“]'˙=)'_/¬]'/[¬}¬L/)=*¬[/H}';{\
+</span>
 	`
 	,
 	`
@@ -1701,7 +1706,6 @@ I feel my resolve, a more wholly encompassing resolve, is taking flight again.
 	suffering persons ever present and surrounding us at any place and during any moment in time, heard and unheard, seen and unseen. 
 	I cannot become too comfortable with what may come. <i>Chaos echoes the subtlest discordance amid the serenade.</i>
 	<hr class="hr-cmbr-gradient">&emsp;
-	<hr class="trans">&emsp;
 	Throughout the grieving that punctuated this Middle-of-February, I had taken a liking to revisiting among my favorite pieces from Ralph Vaughan Williams, 
 	the Serenade to Music, a sweeping and powerfully beautiful piece as homage to the simple beauty of music itself. It was at one point the backtrack to my
 	research in grad school, and another time briefly the tune of my post-workout hydro-massage, hah.
@@ -1716,6 +1720,10 @@ I feel my resolve, a more wholly encompassing resolve, is taking flight again.
 
 	`
 	,
+	
+	
+];
+
 	/*
 	`
 	| Date…
@@ -1726,5 +1734,3 @@ I feel my resolve, a more wholly encompassing resolve, is taking flight again.
 	`
 	,
 	*/
-	
-];

@@ -459,6 +459,19 @@ const CMBRutil = {
 					return data;
 			}
 		});
+	},
+
+	connectRestIpa: async function(query) {
+		return fetch(`https://ipa-rest.herokuapp.com/${query}`)
+		.then(data => data.json())
+		.then(data => {
+			console.log(data);
+			console.log("QUERY BEFORE RESOLUTION: " + query);
+			return data;
+		})
+		.then((data) => {
+			return data;
+		});
 	}
 
 }

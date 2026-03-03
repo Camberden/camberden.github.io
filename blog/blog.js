@@ -37,16 +37,16 @@ function onYouTubeIframeAPIReady() {
 	player = new YT.Player('player', {
 	height: "100%",
 	width: '100%',
-	videoId: '0b-b9lO_7xk',
+	videoId: '0b-b9lO_7xk', //1.51
 	playerVars: {
 	'playsinline': 1,
 	'disablekb': 1,
 	'fs': 0,
-	'autoplay': 1,
+	'autoplay': 0,
 	'hl': 'ja'
 	},
 	events: {
-	'onReady': onPlayerReady,
+	// 'onReady': onPlayerReady,
 	'onStateChange': onPlayerStateChange
 	}
 	});
@@ -118,6 +118,7 @@ function initBlogData(dataLength) {
 		const instanceTime = splitInstance[3].trim();
 		const instanceBlogPost = splitInstance[4].trim();
 		const instanceTitle = gatherTextBetweenTags(instanceBlogPost, "b-title").trim();
+		const instanceRolyan = gatherTextBetweenTags(instanceBlogPost, "rolyan").trim();
 		const listedYear = instanceDate.substring(instanceDate.indexOf(",") + 2, instanceDate.indexOf("…"));
 
 		const bp = new BlogPost(instanceDate, instanceLocation, instanceTime, instanceTitle, i);

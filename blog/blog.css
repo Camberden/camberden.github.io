@@ -26,12 +26,7 @@ main {
 	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 	background: rgba(144, 229, 238, 0.1);
 }
-.blog-grid {
-	display: grid;
-	grid-template-columns: 1fr 3fr 1fr;
-	padding: 2rem;
-	gap: 1rem;
-}
+
 .blog-item {
 	padding: 1rem;
 	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
@@ -51,29 +46,13 @@ main {
 }
 /* |==========| ACTUAL WRITTEN POSTS |====================> */
 
-.blog-header {
-	display: flex;
-	flex: 1;
-	flex-direction: row;
-	align-items: center;
-	justify-content: center;
-	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
-	background: rgba(144, 229, 238, 0.1);
-}
 .blog-grid {
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
 	padding: 2rem;
 	gap: 1rem;
-	
-	
-	/* display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-items: start;
-	justify-content: center; */
-	
 }
+
 .blog-item {
 	padding: var(--cmbr-com-pnl-padding);
 	box-shadow: var(--cmbr-com-pnl-box-shadow);

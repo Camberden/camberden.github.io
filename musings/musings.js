@@ -623,6 +623,8 @@ function sutraType() {
 	enableSutraButtons();
 	CMBRutil.navigationCharter();
 	CMBRutil.handleFormDefault(true);
+	const rolyan = convertRolyaScript(ipapost);
+	// document.getElementById("rolyan").innerText = rolyan;
 
 
 })();

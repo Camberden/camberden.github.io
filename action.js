@@ -10,7 +10,7 @@
 const latestUpdate = "Tuesday, March 3rd, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
-const monickers = ["camberden", "観葉伝", "カンバデン"];
+const monickers = ["camberden", "観葉伝", "カンバデン", "}*'<'('H'[';<"];
 /**
  * 
  * @param {string} month
@@ -89,6 +89,8 @@ const randomizeMonicker = () => {
 		camberden.innerHTML = monickers[0].replace("c", "k");
 		camberden.classList.add("eremoran-kiptascript");
 		camberden.setAttribute("style", "font-family: eremoran-kiptascript;");
+	} else if (m <= 0.8) {
+		camberden.innerHTML = monickers[3];
 	} else {
 		camberden.innerHTML = monickers[0];
 		
@@ -151,7 +153,6 @@ const queryButtonDemonstrator = async () => {
 (async (/*=====*| RUN |*=====*/) => {
 
 	const photos = await CMBRutil.connectCMBRjson(["travel-photos"]);
-	
 	
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos(photos);
