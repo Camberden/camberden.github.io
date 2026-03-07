@@ -1,238 +1,99 @@
+/*
+<d‰ ‰d>
+<l‰ ‰l>
+<h‰ ‰h>
+<t‰ ‰t>
+<n‰ ‰n>
+<b‰ ‰b>
+$sql = "INSERT INTO `users`(`id`, `name`, `email`, `password`, `admin`) VALUES (\'id\',\'name\',\'email\',\'password\',\'1\');";
+INSERT INTO `blog`(`title`, `location`, `tags`, `content`, `user_id`) VALUES ('Deebee','Pittsboro, NC, USA','database','This is a post about a database','1')
+*/
+
 class BlogPost {
 	/**
 	 * @since November 12th, 2025
 	 * @description To streamline blogData access.
-	 * @param {Number} id
-	 * @param {String} author A Username
-	 * @param {Date} date The Date in ISO format, including hours from BlogPost.time
+	 * @param {String} date A date as String; @TODO Convert to Date Object
 	 * @param {String} location 
-	 * @param {String} time A time as String in cmbr-Preferred Format
-	 * @param {String} title
-	 * @param {String} body The post body 
+	 * @param {String} time A time as String; @TODO Convert to Number
+	 * @param {String} title 
+	 * @param {Number} number
 	 * @param {Array} tags
-	 * @param {Array} photos An array of photo links @TODO Write as Blob[] for DB Connection
-	 * @param {Array} audio An array of audio file links @TODO Write as File[] for mp3
+	 * @param {Array} photos
 	 */
-	constructor(id, author, date, location, time, title, body, tags, photos, audio) {
-		this.id = id;
-		this.author = author;
+	constructor(date, location, time, title, number, tags = null, photos = null) {
 		this.date = date;
 		this.location = location;
 		this.time = time;
 		this.title = title;
-		this.body = body;
+		this.number = number;
 		this.tags = tags;
 		this.photos = photos;
-		this.audio = audio;
 	}
 }
 
+const coordinates = {
+	"Chapel Hill, NC": [35.963193, -79.058806],
+	"Hillsborough, NC": [36.074342, -79.100648],
+	"Pittsboro, NC": [35.71951016932923, -79.18136391788723],
+	"Raleigh, NC": [35.81529, -78.614098],
+	"Marshall, NC": [35.913106, -82.738448],
+	"Myrtle Beach, SC": [33.704501, -78.865456],
+	"Nesquehoning, PA": [40.863396, -75.814703],
+	"Weatherly, PA": [40.942216, -75.830163],
+	"Lebanon, PA": [40.341082, -76.422731],
+	"Tokyo, Japan": [35.69286, -220.300989],
+	"Nagoya, Japan": [34.879172, -222.726984]
+}
+
 /**
- * @type {BlogPost[]}
+ * @type BlogPost[]
  */
 const blogPosts = [];
 
+// const routes = {
+//   "/": { file: "/index.html", init: initHome },
+//   "/dashboard/": { file: "/dashboard.html", init: initDashboard },
+//   "/workspace/": { file: "/workspace/workspace.html", init: initWorkspace }
+// }
+// const generateBlogApi = function () {
+// 	for(let i = 1; i < blogPosts.length; i++) {
 
-function blogFilter(selection) {
-	let loaded;
-	if (selection === "all-years") {
-		for (let li of blogPostList.children) {
-			if (li.classList.contains("listing-none")) {
-				li.classList.remove("listing-none");
-			}
+// 		if (URL.canParse("../posts", location.origin)) {
+// 			const url = new URL("../posts", location.origin);
+// 			url.hash = i;
+// 			console.log(url.href);
+// 		} else {
+// 			sout("Not Parseable");
+// 			return;
+// 		}
+// 	}
+// }
+// const selectBlogPost = async function(id) {
 
-		} 
-		return;
-	}
-	
-	blogPosts.forEach(article => {
-		const index = article.id;
-		if (article.date.getFullYear() != selection) {
-			// document.getElementById(`bp-${article.id}`).style.display = "none";
-			document.getElementById(`bp-${index}`).classList.add("listing-none");
-		} else {
-			document.getElementById(`bp-${index}`).classList.remove("listing-none");
-			loaded = index;
-		}
-	});
-	
-	currentlyReading = blogPosts[loaded - 1];
-	currentlyReadingNumber = currentlyReading.id;
-	displayCurrentlyReading();
-	return;
-}
+// 	const html = await fetch(new URL(route.file, location.origin))
+//                     .then(r => r.text());
+//     document.getElementById("active-blog-post").innerHTML = html;
+// }
 
-function enableBlogSelect() {
-	const blogPostYearSelect = document.getElementById("blog-post-year-select");
-	for (let i = 0; i < listedYears.length; i++) {
-		let option = document.createElement("option");
-		option.setAttribute("value", listedYears[i]);
-		let text = document.createTextNode(listedYears[i]);
-		option.appendChild(text);
-		blogPostYearSelect.appendChild(option);
-	}
-	blogPostYearSelect.onchange = function() {
-		blogFilter(blogPostYearSelect.value);
-	}
-}
 
-const blogPostList = document.getElementById("blog-post-list");
-let currentlyReading = new BlogPost();
-let currentlyReadingNumber;
-const listedYears = [];
-const titles = [];
-const tags = [];
-
-/**
- * 
- * @param {string} month
- * @param {string} calendarDay
- * @param {string} year 
- * @returns date Object
- * @description Converts my chosen date format for update display into a date Object
- */
-const convertDate = (month, calendarDay, year) => {
-	const convertedMonth = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-	const convertedCalendarDay = calendarDay.replace(/[^0-9]/g, ' ');
-	const convertedYear = parseInt(year);
-	const date = new Date(convertedYear, convertedMonth.indexOf(month), parseInt(convertedCalendarDay));
-	return date;
-}
-/**
- * @param content
- * Gathers text within a blog post's content between custom permille tags such as `<t‰></t‰>`.
- * @param tag
- * The tag name without decorators, such as `t` for `<t‰></t‰>`.
- * @satisfies {BlogPost} a blog post
- * @returns
- */
-function parsePermilleTags(content, tag) {
-	const perMilleTags = ["d","l","j","g","p","a","u"];
-	const l = tag.length + 3;
-	return content.substring(content.indexOf("<" + tag + "‰>") + l, content.indexOf("</" + tag + "‰>"));
-}
-/**
- * 
- * @param {String[]} data 
- */
-function initBlogData(articles) {
-	/**
-	 * @param {String} article
-	 * @param {String[]} articles
-	 */
-	for (let article of articles) {
-	const blogPost = new BlogPost();
-	// |=====| PARSE TEXT INPUT |=====| //
-	blogPost.id = (articles.indexOf(article) + 1);
-	blogPost.author = parsePermilleTags(article, "u");
-	blogPost.location = parsePermilleTags(article, "l");
-	blogPost.title = parsePermilleTags(article, "t");
-	blogPost.body = parsePermilleTags(article, "b");
-	blogPost.tags = parsePermilleTags(article, "g");
-	blogPost.photos = parsePermilleTags(article, "p");
-	blogPost.audio = parsePermilleTags(article, "a");
-	// |=====| DATE & TIME PARSING |=====| //
-	const dateString = parsePermilleTags(article, "d").split(" ");
-	const postDate = convertDate(dateString[0], dateString[1], dateString[2]);
-	if (!listedYears.includes(parseInt(dateString[2]))) {
-		listedYears.push(parseInt(dateString[2]));
-	}
-	blogPost.time = parsePermilleTags(article, "j");
-	postDate.setHours(parseInt(blogPost.time.substring(0,2)), parseInt(blogPost.time.substring(2,5)));
-	blogPost.date = postDate;
-	// |=====| LIST GENERATION |=====| //
-	const li = document.createElement("li");
-	const text = document.createTextNode(blogPost.id + ": " + blogPost.title);
-	li.setAttribute("id", `bp-${blogPost.id}`);
-	li.onclick = function() {
-		document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
-		currentlyReading = blogPost;
-		currentlyReadingNumber = currentlyReading.id;
-		displayCurrentlyReading();
-	}
-	li.appendChild(text);
-	blogPostList.prepend(li);
-	blogPosts.push(blogPost);
-};
-currentlyReading = blogPosts[blogPosts.length - 1];
-currentlyReadingNumber = currentlyReading.id;
-displayCurrentlyReading();
-}
-
-function displayCurrentlyReading() {
-	
-	document.getElementById("blog-post-date").innerText = CMBRutil.convertToPreferredDateFormat(currentlyReading.date, true);
-	document.getElementById("blog-post-location").innerText = currentlyReading.location;
-	document.getElementById("blog-post-time").innerText = currentlyReading.time;
-	document.getElementById("blog-post-body").innerHTML = currentlyReading.body;
-	document.getElementById("blog-post-title").innerText = currentlyReading.title;
-	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
-
-}
-
-function displayBlogPostList() {
-	const blogPostList = document.getElementById("blog-post-list");
-	blogPosts.forEach(article => {
-		const li = document.createElement("li");
-		const text = document.createTextNode(article.title);
-		li.appendChild(text);
-		blogPostList.appendChild(li);
-	});
-
-}
-
-function enableBlogButtons() {
-	document.querySelectorAll(".blog-button").forEach(button => {
-		button.onmouseover = function(){
-			CMBRutil.buttonOnMouseEnter(button);
-		}
-		button.onmouseleave = function(){
-			CMBRutil.buttonOnMouseLeave(button);
-		}
-		button.onclick = function () {
-			CMBRutil.buttonOnClick(button);
-
-			switch (button.value) {
-				case "next":
-					if (currentlyReadingNumber < blogPosts.length) {
-						document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
-						++currentlyReadingNumber;
-						document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
-					}
-					break;
-				case "previous":
-					if (currentlyReadingNumber > 0) {
-						document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
-						--currentlyReadingNumber;
-						document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
-					}
-					break;
-				default:
-					console.log("Defaulted Blog Button Trigger");
-				break;
-			}
-			currentlyReading = blogPosts[currentlyReadingNumber - 1];
-			displayCurrentlyReading();
-		};
-	});
-}
 
 const blogData = [
 	//===========//
 	`
-	<d‰>August 11th, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>2200 HRS</j‰>
-	<b‰>
-	At last, <t‰>the beginning</t‰> of my digital blogging page! I've been on a great trajectory since July.
+	| August 11th, 2024…
+	| Chapel Hill, NC
+	| 2200HRS
+	| &emsp;
+	At last, <b-title>the beginning</b-title> of my digital blogging page! I've been on a great trajectory since July.
 	I am grateful for having had the lucidity of mind to adhere to routines.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>August 15th, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>2250 HRS</j‰>
-	<b‰>
+	| August 15th, 2024…
+	| Chapel Hill, NC
+	| 2250HRS
+	| &emsp;
 	I'm making considerable progress on my site. I almost feel too occupied with it to begin my fall semester classes.
 	Regardless, I'll give it a break shortly once this blogging module is successfully given to its own separate page.
 	Things seem to be working well: MVP as they'd say. <hr>&emsp; &emsp;
@@ -249,7 +110,7 @@ const blogData = [
 	whether or not whatever I was doing was WORTH it. 
 	I am elated (though calmly) that this is OVER for me. I simply do, for the joy of doing. 
 	I do, even when there is nothing to gain. I don't care if there is something to gain.
-	True, there are multiple little and large goals <t‰>tied to my activities</t‰>, but I am no longer ATTACHED to ANY of them.
+	True, there are multiple little and large goals <b-title>tied to my activities</b-title>, but I am no longer ATTACHED to ANY of them.
 	If goals are attained, then cool. If not, okay. Just like you, reality, I'm simply expressing my nature.
 	Your nature is to attenuate the coming and going of all activity. 
 	My "interests" and whatnot are the means by which I may live skillfully and with finesse; there is a duty assumed
@@ -259,15 +120,15 @@ const blogData = [
 	I will aim myself in that direction, and go, with no destination in mind.
 	Freely flowing, I am detached. Detached from the target: suspended in the outset.
 	As Neil Hannon of the Divine Comedy said: "We need to live in a state of suspended animation, like a work of art, detached, detached."
-	</b‰>`
+	`
 	,
 	`
-	<d‰>August 25th, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>2303 HRS</j‰>
-	<b‰>
+	| August 25th, 2024…
+	| Chapel Hill, NC
+	| 2303HRS
+	| &emsp;
 	I've being doing okay this weekend, though a bit somber at having missed out on a lot of sunshine and opportunity for
-	hiking or long walks. I've gotten <t‰>over a week ahead</t‰> on my coursework, and have been continually doing other activities
+	hiking or long walks. I've gotten <b-title>over a week ahead</b-title> on my coursework, and have been continually doing other activities
 	relevant to me, such as coding and language practice. There's still so much that deserves time. Even though I've
 	done well to restrict my interests, they at times seem too numerous. <hr>&emsp; &emsp;
 	I decided to drop the Business Law course because I did not want to be overburdened by coursework for these next few
@@ -280,15 +141,15 @@ const blogData = [
 	I pushed my Laravel project again. I enabled CSS and images by moving such files to the 'Public' directory and interpolating
 	in the blades as {{'asset(/css/app.css')}} for instance. I had to update database credentials in the .env file. 
 	For sql, I needed to mysql -uroot following reset and follow mysql_secure_installation instructions.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>September 1st, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>1555 HRS</j‰>
-	<b‰>
+	| September 1st, 2024…
+	| Chapel Hill, NC
+	| 1555HRS
+	| &emsp;
 	Almost finished with another eighty-hour work-week. I'm grateful to have been enjoying work very much.
-	Even so, I maintain <t‰>managed enthusiasm</t‰> for my intended career change, and am learning to better interweave that
+	Even so, I maintain <b-title>managed enthusiasm</b-title> for my intended career change, and am learning to better interweave that
 	enthusiasm in my current position through stressing oft-overlooked procedures and offering solutions to streamline
 	operations across shifts and teams. I anticipate my learning journey with coding to manifest my idea for a simple
 	pay and pension prediction utility once I gain enough confidence in Laravel and attain the ability to deploy on an
@@ -306,13 +167,13 @@ const blogData = [
 	<hr>&emsp; &emsp;
 	I am secure; I am safe; I am content. 
 	Missu.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>September 10th, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>0731 HRS</j‰>
-	<b‰>
+	| September 10th, 2024…
+	| Chapel Hill, NC
+	| 0731HRS
+	| &emsp;
 	So, though I have been doing okay for myself, I am experiencing old pangs of inadequacy. I attribute this to the return flight.
 	Thoughts have arisen and continually arise of my 'not having amounted to enough' to merit the continuation of what we had.
 	After years of having been reassured that this wasn't an issue, it had seemingly become among the reasons for separation.
@@ -320,19 +181,19 @@ const blogData = [
 	true that I am blessed with a very decent situation now, at least intra-personally. I mustn't forget that this course of events
 	was possible because I had not acted on that gut feeling, and instead chose loyalty. This suffering I am enduring now exists 
 	undertoned by the relief of it, for myself and for others. I take solace in this realization. Nonetheless, the sensation is 
-	<t‰>emotionally burdensome</t‰>. I aim to act well as things become situated again, but I hold a sense that I would become excessively
+	<b-title>emotionally burdensome</b-title>. I aim to act well as things become situated again, but I hold a sense that I would become excessively
 	cautious with my speech to the extent it could be considered 'masking.' Such masking surely wouldn't be healthy for me.
 	<hr>&emsp;
 	I'm going to put on a smile as I approach my tomorrow, and power through. I am tired. That is fine. 
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>September 14th, 2024</d‰>
-	<l‰>Hillsborough, NC</‰l>
-	<j‰>2201 HRS</j‰>
-	<b‰>
-	It still holds true that <t‰>community integration</t‰> for me is difficult. 
+	| September 14th, 2024…
+	| Hillsborough, NC
+	| 2201 HRS
+	| &emsp;
+	It still holds true that <b-title>community integration</b-title> for me is difficult. 
 	On occasion I find myself disheartened by repeated acceptance that so little works with my schedule.
 	One activity after the next, one event after the next, one person after the next; 
 	I am unable to conform to externally sourced routines with any sort of socially expected consistency. 
@@ -348,13 +209,13 @@ const blogData = [
 	Though "I" share the same life-lens as that previous self,  I couldn't agree that that person is "me" or the present self.
 	My identities and values have shifted quite dramatically since; the actions taken previously I now consider unthinkable.
 	College debt, liberal arts, fast food, luxury goods etc. 
-	</b‰>`
+	`
 	,
 	`
-	<d‰>September 21st, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>1952 HRS</j‰>
-	<b‰>
+	| September 21st, 2024…
+	| Chapel Hill, NC
+	| 1952 HRS
+	| &emsp;
 	The weekend began with an overhaul of my digital security across all licenses and websites. I am surprised at just how much peace
 	of mind that afforded me; I suppose it's due to an increased feeling control over my life for years to come, especially as I 
 	increase my time sitting in front of a computer. I've uncovered most of my previously used email accounts and discovered many files
@@ -364,7 +225,7 @@ const blogData = [
 	Minecraft multiplayer clips, old desktop screencaps, and albums that got me through my early college years. 
 	I was really hoping to find my Finale music program files from 2007-2010 but sadly they're not present. Some compositions I forgot,
 	like Mission Themes I and II, Floccinaucinilipilificated Tune, and Organ Composition I (my first produced tune).
-	Needless to say, I'm <t‰>feeling the nostalgia</t‰> of that time, though I affirm that I am content in my current place in life.
+	Needless to say, I'm <b-title>feeling the nostalgia</b-title> of that time, though I affirm that I am content in my current place in life.
 	<hr>&emsp;
 	During this time, I have successfully reloaded all my music plugins into my DAW, Logic Pro. Having been programming consistently, my DAW
 	and its tools have become much easier to manage. I can now see the sense in how many parameters are interconnected and can muster
@@ -393,18 +254,18 @@ const blogData = [
 	be fewer jobs geared towards fabricating desire and towards peddling goods for which such desire is fabricated. I am hopeful this 
 	modern world, in all its good and bad, is at least able to avoid collapse. A glipse of collapse would surely increase my consideration
 	for taking a stint at Antaiji. 
-	</b‰>`
+	`
 	,
 	`
-	<d‰>October 9th, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>2236 HRS</j‰>
-	<b‰>
+	| October 9th, 2024…
+	| Chapel Hill, NC
+	| 2236 HRS
+	| &emsp;
 	October has been fine so far. I began a vacation which manifested as a staycation, more or less. Anxieties have arisen, possibly due to 
 	the continuation of the acceptable mundane for me. There was little to break the monotony throughout the time; only one day remains.
 	I began my Friday with a mind flooding with fanciful ideas of international travel, car rentals, and beach-bound trips. Perhaps I had
 	gotten a bit too attached to the broad idea of "going somewhere far away." To add, I had consistent self-imposed pressure to adjust my schedule
-	to the daytime which I had not been able to do successfully. These led to confusion resulting in <t‰>exacerbated executive dysfunction</t‰> and a 
+	to the daytime which I had not been able to do successfully. These led to confusion resulting in <b-title>exacerbated executive dysfunction</b-title> and a 
 	disruption to my sense of peace. I need to be careful; I need to reflect more, and I need to clear my head more. It is evident that ideas
 	and thoughts have become too numerous. It is for that very reason I previously determined that I must remain consistent with my emptiness practice.
 	<hr>&emsp;
@@ -424,13 +285,13 @@ const blogData = [
 	is that people will always find something to become dissatisfied with, and even someone such as myself armed with detachment practices can
 	fall victim from time to time. All is fine, all is empty. Even if I were shackled for life, what should preclude me from experiencing the 
 	present moment positively?
-	</b‰>`
+	`
 	,
 	`
-	<d‰>October 10th, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>2337 HRS</j‰>
-	<b‰>
+	| October 10th, 2024…
+	| Chapel Hill, NC
+	| 2337 HRS
+	| &emsp;
 	Earlier today I recited the "Merging of Difference and Unity" in group. There's a line towards the end that struck a chord with me when I
 	first read it, and now, it came to the forefront of my mind: "Progress is not a matter of far or near, but if you are confused mountains and
 	rivers block the way." I was certainly confused about many things ranging from small to large. Should I travel? Should I stay? Should I 
@@ -447,17 +308,17 @@ const blogData = [
 	conveniences life has afforded me at this location. I know I can do this. I need to go with the flow of life as it presents itself to me.
 	I know this. I should settle on a course of action for 2025. Firstly, I must be able to see all options available to me. 
 	The debt of my past as a naive student is almost wholly paid; alas, it follows me to 2025 and affects where I will end up for that year.
-	It's not much longer. I can do this. Right now, I must dispell this confusion a bit more such that the <t‰>mountains and rivers</t‰> aren't 
+	It's not much longer. I can do this. Right now, I must dispell this confusion a bit more such that the <b-title>mountains and rivers</b-title> aren't 
 	blocking the way. Indeed, I should knock out Test 2. I must dedicate one off day ahead to completing the financially rewarding 
 	progression program. I need to recover and unburden myself to see a path more clearly. I know what I must do.
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>October 15th, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>2228 HRS</j‰>
-	<b‰>
+	| October 15th, 2024…
+	| Chapel Hill, NC
+	| 2228 HRS
+	| &emsp;
 	I spend a work shift at my first assignment location for my current role. I was quite apprehensive at first, but upon getting settled in,
 	it was okay. Nonetheless, memories both good and bad had surfaced. I was given a moment to reflect and to but my life into perspective:
 	I surely had come a long way, and I'm grateful for how my life had turned out. The fires, floods, and blood are no longer a frequent
@@ -478,15 +339,15 @@ const blogData = [
 	Though I'm a little saddened to leave this place, I understand that there is no absolute. I honestly have become attached to this 
 	place, and still affirm that it is amazing for my needs, but it's a time to detach again and to put my mindset into action. 
 	It's all impermanent, just like my time at that rough location. I can relinquish negatives and I can 
-	<t‰>relinquish positives</t‰>.
-	</b‰>`
+	<b-title>relinquish positives</b-title>.
+	`
 	,
 
 	`
-	<d‰>December 1st, 2024</d‰>
-	<l‰>Chapel Hill, NC</l‰>
-	<j‰>1216 HRS</j‰>
-	<b‰>
+	| December 1st, 2024…
+	| Chapel Hill, NC
+	| 1216 HRS
+	| &emsp;
 	My headspace lately has been discordant. I am preparing for a move and nearly finished with this class. 
 	I have had more responsibilities at work which are tolerable but not particularly desired.
 	My health has been poor, not only because of family and friend visits but because of lackluster discipline on
@@ -496,7 +357,7 @@ const blogData = [
 	I am writing now such that I may take note of these problems, and because I have procrastiated on physically writing an entry for weeks: 
 	I am in trouble. I need to force a fast or some sort of detox to get back on track. 
 	I must avoid specific things I know to cause me harm: cereals are no good, sugary foods including ice cream are no good, eating 
-	near midnight in general is no good. I must encourage specific things that I know to benefit me: <t‰>high protein</t‰> upon waking, 
+	near midnight in general is no good. I must encourage specific things that I know to benefit me: <b-title>high protein</b-title> upon waking, 
 	diversified caffeine sources, and fitting some sort of exercise in no matter what.
 	<hr>&emsp;
 	With the above in mind, I am hopeful to recover my better mode of being that I experienced when making this blog.
@@ -504,14 +365,14 @@ const blogData = [
 	a similar situation with regard to self-care. Meh. In that case and in all other cases, I was able to recover and feel the 
 	zest for life. After all, simply being is to endure both the lows and the highs. Otherwise being is not being as it is known to be.
 	Heh heh.
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>December 26th, 2024</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>1642 HRS</j‰>
-	<b‰>
+	| December 26th, 2024…
+	| Pittsboro, NC
+	| 1642 HRS
+	| &emsp;
 	I am returning slowly to a state of normalcy. The relocation was successful but to become situated is warranting an overhaul of lifestyle and routines. 
 	I have done a few test runs over the last few days, waking up early, soaking up sunshine, heading to the old yellow and purple gym, and enjoying the library.
 	Some days have shown that it was working well, while others have shown that it comes with a potential onset of extreme tiredness. I am unsure of which
@@ -519,17 +380,17 @@ const blogData = [
 	are showing themselves as a collective throwback to my time in my previous life before coming to North Carolina. It was a time when my hyperactivity was dominant,
 	and my focus was absent; all that mattered was flowing onward, working, living, sufficing. Hardly was there any "living of life" in a generally accepted sense. 
 	No hobbies, no dedicated fun, no activities. Just resource management, self-maintenance, sustenance, and work. Though now somewhat feels like that, I'm confident
-	this will be different here at <t‰>this new place</t‰> - after all, my workload is lessened and I've crafted a truly lovely space. Looking forward to this weekend,
+	this will be different here at <b-title>this new place</b-title> - after all, my workload is lessened and I've crafted a truly lovely space. Looking forward to this weekend,
 	I have nothing but time to learn to enjoy it and to solidify a new routine. In any case, I need to head out to work. Easy does it, me. Make that money and 
 	get that credit.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>December 30th, 2024</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>1129 HRS</j‰>
-	<b‰>
-	I'm struggling to <t‰>sleep again</t‰>. I am displeased with how frequently this happens.
+	| December 30th, 2024…
+	| Pittsboro, NC
+	| 1129 HRS
+	| &emsp;
+	I'm struggling to <b-title>sleep again</b-title>. I am displeased with how frequently this happens.
 	I have lacked routine ever since I have come here, and I do blame myself, mostly.
 	I need to drastically cut down on my caffeine intake, for good. I am making this a 
 	serious point going into the new year; too many times do I feel peaceful and calm, 
@@ -543,13 +404,13 @@ const blogData = [
 	necessary part of the journey. I should treat this time now as an intermittent time:
 	the time between crawling out from debt and into wealth generation.
 	I would deserve to surface as a refined instance of self, yes? oof.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>January 3rd, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>0334 HRS</j‰>
-	<b‰>
+	| January 3rd, 2025…
+	| Pittsboro, NC
+	| 0334 HRS
+	| &emsp;
 	It's a new year, and though the common greeting is "Happy" New Year, its happy quality is to-be-determined.
 	That isn't to say that I'm not optimistic: I'm beyond grateful for my current situation and am still working to create a 
 	routine here at my new place conducive to fostering those good habits and dropping those bad habits. So far, though, I've been
@@ -578,18 +439,18 @@ const blogData = [
 	If I don't get a dopamine hit, it's fine: it's a peaceful instance. If I feel a tad of anxiety for something, it's fine: it's an ebb of the flow of life.
 	If I'm suffering, good. I should prove to myself I'm able to get through the situation. I may have proven myself in the past as a past self but I mustn't excuse my 
 	present self from doing the same. "The struggle is not mine anymore" does not quite apply here. By demonstrating a life well lived, in my flow state, I am
-	aimlessly aiming. Attached, yet detached. I experienced the sense of this last summer. Let's <t‰>do it again</t‰>.
-	</b‰>`
+	aimlessly aiming. Attached, yet detached. I experienced the sense of this last summer. Let's <b-title>do it again</b-title>.
+	`
 	,
 	`
-	<d‰>January 11th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2236 HRS</j‰>
-	<b‰>
+	| January 11th, 2025…
+	| Pittsboro, NC
+	| 2236 HRS
+	| &emsp;
 	Here's to the weekend! Three days off, mostly been productive on programming and language learning.
 	I just learned that for setting classes dynamically, I should <code>setAttribute</code> first for specific cases that require
 	a local scope variable in the class name, and then apply <code>classList.add()</code> afterwards for classes without
-	variables. I really just wanted to drop this note, but aside from that, <t‰>Clozemaster</t‰> is an awesome site and it's 
+	variables. I really just wanted to drop this note, but aside from that, <b-title>Clozemaster</b-title> is an awesome site and it's 
 	almost perfect for my pace of learning. Being barraged with real world sentences replete with various contexts seems
 	to expedite retention without being particularly demanding. The gaps in knowledge presented by real world sentences
 	are exciting, and that excitement coaxes learning and attention, and the frequency at which patterns tend to repeat
@@ -617,20 +478,20 @@ const blogData = [
 	No worries. So, in the grand scheme, I've recovered my preoccupation with personal endeavors, made my space even
 	cozier, and am on an upward trajectory. Health-wise, I still have work to do to recover the likeness of last summer, 
 	but that time will come; I'm not worried. It's only been a month since uprooting. Progress. Huzzah.
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>January 21st, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2324 HRS</j‰>
-	<b‰>
+	| January 21st, 2025…
+	| Pittsboro, NC
+	| 2324 HRS
+	| &emsp;
 	I've been distressed somewhat over the potential for an upcoming "promotion" which wouldn't serve to afford me more
 	income, but rather just a defined role and location assignment. I've weighed pros and cons: of course, I would have
 	more immediate access to my personal endeavors while completing tasks I know I could likely handle well. I do have
 	some doubts over my ability in the event of some high-stakes, novel situations, but perhaps that's normal. Of course,
 	I am who I am, and so my personality and values will come into play, and as I've said, they're perhaps not the best
-	fit in some situations. I would afford myself some relief from the chaos of <t‰>other roles</t‰> if I did not take the position,
+	fit in some situations. I would afford myself some relief from the chaos of <b-title>other roles</b-title> if I did not take the position,
 	but nonetheless, the responsibility is higher. Yet, I am generally a responsible person as it is, and my workplace and
 	indirectly my career at-large could benefit? Heh. Not sure. My class work and financial progress is paramount, and they are
 	going well enough. Do I not have enough credibility? I surely don't need the role. There's no utility pursuing it for
@@ -671,13 +532,13 @@ const blogData = [
 	bettering my personal practices. It's the role beyond I aspire to. It's not this opportunity now.
 	In any case, I mustn't attach to the idea of it. Nothing is guaranteed. I am, though, grateful for what I have now.
 	I have a sink basically a meter away from me. I think I want to "relax," whatever that would entail. Good night.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>March 1st, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>1604 HRS</j‰>
-	<b‰>
+	| March 1st, 2025…
+	| Pittsboro, NC
+	| 1604 HRS
+	| &emsp;
 	Alright, it's March and things are heating up (gladly). I hit a tree, but no worry; things are being handled.
 	I often advised to give myself grace amid my minor failings. The relevant worry is that I feel I may grant myself
 	such grace in excess. I am told that I am handling plenty tasks and am making decent measurable progress, especially relevant
@@ -688,7 +549,7 @@ const blogData = [
 	Winter seems to hold a focus on language studies, financial frugality, and work excellence. 
 	Can I accept this? Well, either way I am flowing onward. I must, however, continue to hit a baseline for my accounting studies,
 	and even though I'm only self-imposing attainment of a baseline, I am compelled to achieve the highest grade. This is one proving ground
-	on my <t‰>multi-layered redemption arc</t‰>. I suppose I'll detail some of that here:
+	on my <b-title>multi-layered redemption arc</b-title>. I suppose I'll detail some of that here:
 	<hr>&emsp;
 	My life was in complete disarray during and shortly following my college years. There were the following earlier aspects to fix:
 	work ethic, control of psychoactives, physicality, commitment to language learning, commitment to career ascension. The following are
@@ -705,14 +566,14 @@ const blogData = [
 	the language page, to note the music that sets the tone for each season of my life, to create a gitlab alternate page for my webtools,
 	and to eventually apply a PHP tunnel to host this site with my own domain and URI endpoints.
 	I'll go ahead and list some of those music things, somewhere on this site, then log off. Cheers.
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>March 9th, 2025</d‰>
-	<l‰>Myrtle Beach, SC</l‰>
-	<j‰>1213 HRS</j‰>
-	<b‰>
+	| March 9th, 2025…
+	| Myrtle Beach, SC
+	| 1213 HRS
+	| &emsp;
 	My dear car had passed away. On a foggy, rainy, and dark morning, I had stricken a pulpy tree that had covered
 	the entire road. I braked as much as I could, and collided head-on, incuring damage to the fascia, engine filter, 
 	fog lights, and a wheel. Gladly, she was resilent. She powered onward and took me home without any alarms or
@@ -728,7 +589,7 @@ const blogData = [
 	but given the aftermath, I am moving far ahead in life. Being freely mobile again for long distance trips without the need
 	for a rental is refreshing, but I still hold a fair bit of hesitance to do so. I want to be safe and secure. 
 	I'm not particularly volatile right now, but my security must be well managed, not sufficiently managed. It will be.
-	I've laboured plenty to arrive at this point. This point marks the <t‰>outset of new journeys</t‰>, and gladly it coincides
+	I've laboured plenty to arrive at this point. This point marks the <b-title>outset of new journeys</b-title>, and gladly it coincides
 	with successes met with family and friends.
 	<hr>&emsp;
 	I will admit, I had surely procrastinated on my accounting homework amid coordinating the car booking, the new purchase,
@@ -740,13 +601,13 @@ const blogData = [
 	Anyway, I think I'll head out in just a second. Focused learning and solving complex problems due in a few days just isn't
 	happening right now. This is a place for lighter learning and studying, like language and front-end dev.
 	More interactive stuffs, I suppose. I'm taking my leave now.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>March 18th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2347 HRS</j‰>
-	<b‰>
+	| March 18th, 2025…
+	| Pittsboro, NC
+	| 2347 HRS
+	| &emsp;
 	Heading onward through March. I'm a bit dishearted to learn the return flight hadn't happened, but I can accept
 	this reality and put it behind me. Tonight is my first day off in five days and I told myself to simply unwind.
 	I suppose I'm doing just that. I've been talking to some new folks and it's been pleasant, though I can't help
@@ -757,14 +618,14 @@ const blogData = [
 	second test this semester. I will. It doesn't need to be today. I am calm and competent.
 	<hr>&emsp;
 	I reiterated in a conversation my assertion that work and career should be in service to achieving and supporting
-	a daily lifestyle that affords peace of mind and measurable progress. I made the right choice in <t‰>buying my bicycle</t‰>.
-	</b‰>`
+	a daily lifestyle that affords peace of mind and measurable progress. I made the right choice in <b-title>buying my bicycle</b-title>.
+	`
 	,
 	`
-	<d‰>April 19th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2145 HRS</j‰>
-	<b‰>
+	| April 19th, 2025…
+	| Pittsboro, NC
+	| 2145 HRS
+	| &emsp;
 	I've on occassion been overwhelmed with work and school. Not only was work involving a lot more activity to include
 	training of multiple people simultaneously, but also my schoolwork was technically dense with many assignments. 
 	I prevailed, gladly. I'm glad again that I hadn't checked off earlier in the semester, and that I hadn't made 
@@ -780,7 +641,7 @@ const blogData = [
 	After filing them away, they would stay filed away. Indeed, this works well for journalling, but proves poor for
 	consistenly learning. I will return to my Rhodia notebooks, and I may need to abandon my use of the brush pen for 
 	writing in Japanese for notes inside them; the strokes are too thick and such. Alright, well, I just got my new
-	Rhodia book for Japanese ready to go. Gotta refine a <t‰>note-taking method</t‰> for it still. Fitting characters into the
+	Rhodia book for Japanese ready to go. Gotta refine a <b-title>note-taking method</b-title> for it still. Fitting characters into the
 	cells is unlikely. I may just need to write using my Pilot Frixions as I would with Accounting notes. Erasability 
 	is necessary. 
 	<hr>&emsp;
@@ -788,13 +649,13 @@ const blogData = [
 	That being said, it looks like I got myself into a decent off-day routine again. I anticipate keeping it up
 	despite this weekend being what it is. Also, before I head out for a friend visit, I'll incorporate the new
 	prospective pay scale for work. Woo.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>April 20th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2157 HRS</j‰>	
-	<b‰>
+	| April 20th, 2025…
+	| Pittsboro, NC
+	| 2157 HRS	
+	| &emsp;
 	Often times I wonder if it is sensible for someone like myself to be investing much time into technology endeavors.
 	Technology is advancing to the point that many are living in a hyper-reality where real-world experiences lose or have
 	lost their lustre. This is inline with sociological work pre-dating social media that predicted decline in appreciation
@@ -826,17 +687,17 @@ const blogData = [
 	I find parallels in zazen in many phenomena: the passage of time, sickness, happiness, work, money, pain, society, water, trees, wind
 	etc. There is a stillness amid activity: a baseline to all phenomena from which they diverge. The divergence internally would 
 	constitute my form, feelings, perceptions, predilections, and consciousness. In dropping them in practice, I can experience reality
-	as it is, <t‰>unfettered</t‰>, in equanimous being, in solely being, and nothing more. Having tied in my questioning to my practice, I could 
+	as it is, <b-title>unfettered</b-title>, in equanimous being, in solely being, and nothing more. Having tied in my questioning to my practice, I could 
 	foresee taking a leap, once obligations are clear, to a, shall I say, committed absenteeism from external affairs for life. 
 	I could consider it a goal, but it is no goal. At least, right now, I cannot foresee any long-term human endeavor for this skin-bag
 	being meaningful while tied to external affairs.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>May 4th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>0951 HRS</j‰>
-	<b‰>
+	| May 4th, 2025…
+	| Pittsboro, NC
+	| 0951 HRS
+	| &emsp;
 	So, I just wrapped up my first intermediate accounting course. I'm tired, but certainly feeling somewhat at ease knowing that it won't be
 	looming over me anymore. Though I have been enjoying a week off from work, the pressure to get through the content had been routinely bothersome.
 	In any case, here I am, and I'm grateful to have achieved more progress. I'll likely sleep in a moment. 
@@ -844,22 +705,22 @@ const blogData = [
 	Throughout the week I have been studying Japanese intensively in preparation for my travel. I have been using Olly Richard's reader, 
 	Tae Kim's guide, and of course, Clozemaster. I'm noticing that I can conjure up sentences more readily, and that my reading has quickened.
 	I do think I may be somewhat burning out, though. I'm not accustomed to taking in so much input like this. I've coupled study with watching
-	many videos about Japan travel, culture, language, future, and prospects. I must be wary of the <t‰>shiny veneer</t‰> the country tends to have through
+	many videos about Japan travel, culture, language, future, and prospects. I must be wary of the <b-title>shiny veneer</b-title> the country tends to have through
 	the eyes of foreigners like myself. First things first: I should just allow myself to experience it, simply. I mustn't conjure up (and definitely
 	not attach to) too many ideas of another personal reinvention on that side of the planet. It may not be for me, but the appeal is surely there.
 	<hr>&emsp;
 	I'm going to write a letter today, just sit, and relax. That is all.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>May 7th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>1800 HRS</j‰>	
-	<b‰>
+	| May 7th, 2025…
+	| Pittsboro, NC
+	| 1800 HRS	
+	| &emsp;
 	Look at me, starting my off day at the same time I'd start an on day. Honestly I'm glad.
 	I've been yearning for more time for personal attention badly over the last couple of days.
 	<hr>&emsp;
-	When I write, there are words whose <t‰>spelling</t‰> always manages to confuse me.
+	When I write, there are words whose <b-title>spelling</b-title> always manages to confuse me.
 	These words are fairly frequently used, too. Though I have them written in my planner, I want to address them here
 	as well with a little more detail. Also, I just happened to use among those words in the last sentence... and now this one.
 	<hr>&emsp;
@@ -872,32 +733,32 @@ const blogData = [
 	Concerning sense/presence, I notice that, typically, bi-syllabic words would contain a C post-nasal. This applies to my most commonly used words of the group:
 	presence, essence, and sentence. Of course, there's license and insence, aren't in line with this sense.
 	I'd like to consider finding out the reasonings further, later on.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>May 16th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2258 HRS</j‰>
-	<b‰>
+	| May 16th, 2025…
+	| Pittsboro, NC
+	| 2258 HRS
+	| &emsp;
 	I went to meet the group with which I would travel abroad. I had a decent time and definitely had a bit of a nostalgia trip
 	seeing N64 Mario Party on the screen at the game store. Sigh. I would say I'm excited for what's ahead, but I'm mellow.
 	Pretty mellow. I think I need more sleep; I really cut it short trying to make it at a decent time. 
 	<hr>&emsp;
 	Even now, I feel a bit burnt out despite not having had too many work related stressors. I suspect this may be the isolation
-	taking a toll on me. I'm not sure. I think I should force myself to <t‰>sleep and live</t‰> during the day for a while, while I can. 
+	taking a toll on me. I'm not sure. I think I should force myself to <b-title>sleep and live</b-title> during the day for a while, while I can. 
 	Heck. I'm grateful to have this unexpected extra time afforded to me. I should go now.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>May 21st, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2023 HRS</j‰>
-	<b‰>
+	| May 21st, 2025…
+	| Pittsboro, NC
+	| 2023 HRS
+	| &emsp;
 	My Japan trip class has begun and the online content to be finished before the trip is dense but relatively simple. 
 	I've been powering through it while balancing my time with language studies and programming. Gladly during these many off days,
 	my discipline had rearisen and I'm living as I should, making progress in ways meaningful to me. I really cannot understate just
 	how important my diet is to my day-by-day wellbeing. Since fasting - it's been a day and a half - I've felt so much more alive
-	and focused. It's been a long time since I had <t‰>a prolonged fast</t‰>, something I used to do regularly before my current role. I see
+	and focused. It's been a long time since I had <b-title>a prolonged fast</b-title>, something I used to do regularly before my current role. I see
 	why doing this was so important to me back then, and it stands to reason that I should do these on occassion as the need arises: 
 	the need to do a hard reset on my body. I will hit two days, and may consider a third. I want to feel my best. It's almost as if 
 	the more food that is consumed, the more food is desired. I am not hungry, and I am doing well. This couples well with my practice
@@ -923,17 +784,17 @@ const blogData = [
 	lived outside of my norms: language, culture, industry, pressures, stresses etc. It also comes from the socioeconomic factors abroad.
 	Are the socialized systems in other countries going to last given aging populations and system exploitation? I certainly see these
 	concerns growing in Japan and places in Europe. In any case, I can only speculate and see what reality unfolds for me to witness.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>June 1st, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>0214 HRS</j‰>
-	<b‰>
+	| June 1st, 2025…
+	| Pittsboro, NC
+	| 0214 HRS
+	| &emsp;
 	It's June, and much like around this time last year, I'll begin by attempting a radical push for some changes.
 	I consistently tell myself that I fall short on certain lifestyle goals. I've been giving myself too much "grace" it seems.
 	I will execute this push for this month until my trip to Japan. I can deliver, of course. 
-	<ol>This will constitute <t‰>Campaign 2025</t‰>:
+	<ol>This will constitute <b-title>Campaign 2025</b-title>:
 	<li>The first order of business is to remove Youtube from my phone, again.</li>
 	<li>The second order of business is to empty myself of the recurring urges to consume sweet things.</li>
 	<li>The third order of business is to read before sleeping, and to place the phone with an active alarm at my desk.</li>
@@ -984,13 +845,13 @@ const blogData = [
 	</ol>
 	全て大丈夫、全て順調である。
 	
-	</b‰>`
+	`
 	,
 	`
-	<d‰>June 5th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2219 HRS</j‰>	
-	<b‰>
+	| June 5th, 2025…
+	| Pittsboro, NC
+	| 2219 HRS	
+	| &emsp;
 	I can envision the better self. It comes down to intentionality.
 	Having re-read some part of Suzuki's main work, I am reminded of that subtle call to do what is right.
 	Following up on that subtle call is part of practice. 
@@ -1017,7 +878,7 @@ const blogData = [
 	I recall a day in my previous career where there was delicious catered food all around, and I resisted the temptation for the 
 	whole day, knowing that it would not have been worth my while. I'll be forthright: I'm growing extremely tired of extenuating
 	circumstances messing with my conviction. I'm tired of rationalization. It's tiresome. Screw it all. Just do what I must, silly.
-	What am I really missing? Nothing. I am <t‰>missing nothing</t‰>. All would be better were I to just do as I know I should, damn it.
+	What am I really missing? Nothing. I am <b-title>missing nothing</b-title>. All would be better were I to just do as I know I should, damn it.
 	In retrospect, my resistance reinforces my own character. Such is practice, no?
 	<hr>&emsp;
 	Lately I've felt on the down-low about my situation and the day-by-day being filled with just so much darkness and isolation and work.
@@ -1031,14 +892,14 @@ const blogData = [
 	my health requirements in consumption and exercise. My wellbeing is closely tied to those things. I must accept this, and I must 
 	follow the blueprint I adopted: to exhibit right action.
 	It comes down to following that subtle call to action or inaction.
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>June 22nd, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>0200 HRS</j‰>
-	<b‰>
+	| June 22nd, 2025…
+	| Pittsboro, NC
+	| 0200 HRS
+	| &emsp;
 	I sit here an hour before routing to the airport.
 	I have plenty upon which to reflect, and will garner so much more so very soon:
 	<ul>
@@ -1053,7 +914,7 @@ const blogData = [
 	It has not been prioritized as it had been when living life with fewer responsibilities.
 	I would say, it was a lovely experience to walk around my town, my campuses, and beyond. Even with my condition, I felt the impetus to explore.
 	It was my motivator, and the seed of my wanderlust as a teen who sought for an experience just as the one I will have shortly.
-	I liked the phrase "<t‰>Inner Cartography</t‰>." The world is just the world as it's always been, but to wander and witness with one's own senses the novel and 
+	I liked the phrase "<b-title>Inner Cartography</b-title>." The world is just the world as it's always been, but to wander and witness with one's own senses the novel and 
 	curious in places familiar and very unfamiliar - such is to chart life itself, as the only lens of experience for anyone is their own senses; one's own
 	configuration of form, perception, feeling, volition, and consciousness. Every being charts a different map, some similar to others, and some dramatically 
 	different. I would like to futher ponder my association with exploration and contentment, since, yes, I understand that contentment may
@@ -1065,13 +926,13 @@ const blogData = [
 	I feel privileged to do so in such proximity to sites that reinforce such right mindfulness and my practice at large.
 	I will make meaning of my past, experience that present, and to discover new avenues for the future.
 	この十日間には、過去の意味を見出し、現在を経験し、新たな将来の夢を発見するつもりだ。
-	</b‰>`
+	`
 	,
 	`
-	<d‰>July 1st, 2025</d‰>
-	<l‰>Nagoya, Japan</l‰>
-	<j‰>0833 HRSHRS</j‰>	
-	<b‰>
+	| July 1st, 2025…
+	| Nagoya, Japan
+	| 0833 HRS	
+	| &emsp;
 	This has surely been an adventure.
 	I am making this update on a Tokyo-bound Shinkansen. The countryside, with its towns, mountains,
 	and rice paddies, are passing by at incredible speeds. Right now, I had a view of the Ise Bay.
@@ -1090,14 +951,14 @@ const blogData = [
 	Water is Water." My buddy finds it silly af. I agree, on a superficial level it sure does seem that way.
 	It's got a silly ring to it, but yes, it comes down to that ruthless acceptance of circumstances.
 	The weather's been hot. I have been too. It's rough, but that's good.
-	<t‰>Mountain is Mountain</t‰>; Water is Water. Heheh. Bye.
-	</b‰>`
+	<b-title>Mountain is Mountain</b-title>; Water is Water. Heheh. Bye.
+	`
 	,
 	`
-	<d‰>July 3rd, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2343 HRS</j‰>	
-	<b‰>
+	| July 3rd, 2025…
+	| Pittsboro, NC
+	| 2343 HRS	
+	| &emsp;
 	I returned from Japan. There is very much for me to process yet. 
 	It's refreshing to know that during my nighttime life here, there is so much life being lived actively under the sun,
 	in another world on the same planet. Though it's an obvious thing, having lived in that other world is profound.
@@ -1109,7 +970,7 @@ const blogData = [
 	as I would in the course of my own working-life. We discussed life and societal differences. His perspective has been
 	tempered by hardship and past mistakes, and is very reality-grounded, detached from the rose-colored glow of "Japan as a playground."
 	There are real lives being lived. Real hardships. Real emotions. They underlie any society and its people.
-	I referenced our experience at the tea ceremony again, and the simple profundity of Mountain is Mountain, <t‰>Water is Water</t‰>.
+	I referenced our experience at the tea ceremony again, and the simple profundity of Mountain is Mountain, <b-title>Water is Water</b-title>.
 	We both understood that we should enjoy the stillness, more. I am happy to have made that superficially simple scroll's message the theme for my
 	trip, and perhaps, the theme for others in my group.
 	We proceeded to investigate the Kanji used in that wall scroll, and I provided him my recommended Japanese reference app, for 
@@ -1126,13 +987,13 @@ const blogData = [
 	gauged me throughout this trip. He suggested those places over my original plan to Hokkaido「北海道」, which he said is more like the US being 
 	the open frontier of Japan; "it's not very Japanese," he said.
 	He amicably called me an old man, and for once I took that solely as a compliment, and smiled.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>July 4th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>0322 HRS</j‰>
-	<b‰>
+	| July 4th, 2025…
+	| Pittsboro, NC
+	| 0322 HRS
+	| &emsp;
 	So I'm still really obsessed with digesting findings on the Mountain is Mountain, Water is Water thing, and delved further into historical orthography.
 	I'm surprised that the "wa" particle is omitted in 「山是山、水是水」, which would be "yama wa kore yama; mizu wa kore mizu." It seems that some particles 
 	were implicit in older Japanese, and I am continuing to investigate this. Along the way, I've learned more of Kana itself:
@@ -1171,16 +1032,16 @@ const blogData = [
 	I now call him Tashikaka 「確鹿」, or "trustworthy deer," because in retrospect I could have trusted his action given that he so politely greeted me. 
 	He bestowed upon me this great memory, and enchanted my highlighter into a truly special souvenir.
 	<hr>&emsp;
-	I will never forget <t‰>Shikaka & Tashikaka</t‰>, or any friends made along the way.
+	I will never forget <b-title>Shikaka & Tashikaka</b-title>, or any friends made along the way.
 	Surely there is more to digest, and that'll come in coming days and weeks. 
 	Shikaka, too, has a lot to digest, but she's probably done with all of that.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>July 27th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2045 HRS</j‰>
-	<b‰>
+	| July 27th, 2025…
+	| Pittsboro, NC
+	| 2045 HRS
+	| &emsp;
 	Certainly feeling a bit relieved to know that the bulk of writing and reflection is done for the study abroad class. I spent most of this 
 	off weekend exploring Raleigh, dabbling with new feelings, and getting a sense for a new life ahead. What's true is that I'm continuing 
 	my pursuit of career change despite many of the comforts afforded to me in the present. I must ask myself, would I feel content in jumping ship
@@ -1197,7 +1058,7 @@ const blogData = [
 	I am working an 80HR week starting tomorrow. I must forge rituals. I must get up, and simply do, much like I have in those hotel rooms in a
 	previous life. I must ritualize more. In doing so, I'll glean the freedom from chaos that it'll afford me. It'll be a satisfaction greater than
 	that of my present flow. I can do, and will do. Silly. How I do anything would be how I do everything.
-	I will restart my <t‰>previous tradition</t‰> of cold showers. I will establish a healthy flow this week and rekindle discipline. I have no class; no 
+	I will restart my <b-title>previous tradition</b-title> of cold showers. I will establish a healthy flow this week and rekindle discipline. I have no class; no 
 	external obligations. It's a great time to do so.
 	<hr> &emsp;
 	Grounding in the present moment, I am sitting here, typing. All is okay. I have little pressures; the only tasks I have are those that I create
@@ -1228,22 +1089,22 @@ const blogData = [
 	I am going to continue my work through 2026 until hitting my 6th year work anniversary and a little beyond. I should have most obligations purged by
 	that time, and 2027 would become the most explorative year of my life. I would be 33 years old.
 	On my lifecraft page, I will consider making time-frame bars for months to better display ongoing tasks that occur during them, such as semester
-	progress visualized throughout the years. On my travel page, I could write on 2027 plans. Trips in the Americas could be arraged with 24.5HRS</j‰> of leave
-	for one week off. Trips beyond to Europe and Asia could use 61.25HRS</j‰> of leave for 12 consecutive days off. 
+	progress visualized throughout the years. On my travel page, I could write on 2027 plans. Trips in the Americas could be arraged with 24.5HRS of leave
+	for one week off. Trips beyond to Europe and Asia could use 61.25HRS of leave for 12 consecutive days off. 
 	I could do something like, Americas, Americas, Europe/Asia, Americas, Americas, Europe/Asia, etc.
 	I will lastly just say that I'm glad that I restructured my aspirations following the ruin of my previous car.
 
-	</b‰>`
+	`
 	,
 	`
-	<d‰>August 5th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2303 HRS</j‰>
-	<b‰>
+	| August 5th, 2025…
+	| Pittsboro, NC
+	| 2303 HRS
+	| &emsp;
 	So I'm thinking of foreign residencies and todos on this site again. Been delving into the histories of the immigration issue in Japan
 	and the demarkation lines of southern South American nations.
 	<hr> &emsp;
-	I'm finding myself <t‰>a bit disenchanted</t‰> with Japan at the moment. 
+	I'm finding myself <b-title>a bit disenchanted</b-title> with Japan at the moment. 
 	I allow myself the liberty to accept this disenchantment as just another instance of learning myself.
 	Though yes, I enjoyed my experience very much, I'm seeing little return on investment in my case for continuing to learn the language as a hobby.
 	I may settle on N3 level and call it quits until I find future impetus to return for a more career-focused purpose in the country.
@@ -1257,13 +1118,13 @@ const blogData = [
 	on a hateful individual, given her quip. Funny how she claimed "not-asking for money" while desiring food items, which cost money. Money
 	is the representation of my labor in hours, and food would bear the value of my labor following purchase. 
 	She should go forth and labor.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>August 9th, 2025</d‰>
-	<l‰>Myrtle Beach, SC</l‰>
-	<j‰>0853 HRS</j‰>
-	<b‰>
+	| August 9th, 2025…
+	| Myrtle Beach, SC
+	| 0853 HRS
+	| &emsp;
 	Today marks five years of having been in the Carolinas as a resident.
 	I once again returned to the Grand Strand, a spot I'd visit randomly since 2020, and this time meeting with some family; it's also my first time here on-season.
 	It's definitely a bit busier, warmer, and active with businesses open later than I remember. At least I will have liberty
@@ -1285,16 +1146,16 @@ const blogData = [
 	the sky is stricken with hazy, grey bands of thin clouds through which a glimpse of blue is sparsely visible amid their concealment, casted
 	forth from the Atlantic shore to the horizon. A look to the sky in the other direction is a quintessential "mostly sunny" where blue dominates
 	overhead. The waves are a greenish blue-grey in tone; their tide is moderate. There is a pier a short walk from my tower undergoing
-	construction. A tank empties a continuous, arching stream of water; <t‰>a red crane</t‰> stands tall.
+	construction. A tank empties a continuous, arching stream of water; <b-title>a red crane</b-title> stands tall.
 	In the direction from this seat to that red crane, Nassau, Bahamas would lie far beyond the horizon.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>August 10th, 2025</d‰>
-	<l‰>Myrtle Beach, SC</l‰>
-	<j‰>0858 HRS</j‰>
-	<b‰>
-	So today I am <t‰>vested</t‰> and bear more leverage in my career. My feet are not only in the door but also settled inside the space.
+	| August 10th, 2025…
+	| Myrtle Beach, SC
+	| 0858 HRS
+	| &emsp;
+	So today I am <b-title>vested</b-title> and bear more leverage in my career. My feet are not only in the door but also settled inside the space.
 	I hit my five years. During my time here in 2020, when I was newly trained, I wouldn't've thought that I would endure this
 	role for as long as I had. Yet, I did. I am grateful. It's a strange feeling, knowing that I came here near the beginning of 
 	this journey, and made it to this point, and it has in fact been five entire years. All that had occurred within these five years
@@ -1302,28 +1163,28 @@ const blogData = [
 	<hr> &emsp;
 	The rain has just begun and the beachgoers are clearing out; the tide intensifies. 
 	I'll be checking out shortly. I anticipate getting wet just a little. 
-	</b‰>`
+	`
 	,
 	`
-	<d‰>August 24th, 2025</d‰>
-	<l‰>Raleigh, NC</l‰>
-	<j‰>1907 HRS</j‰>
-	<b‰>
+	| August 24th, 2025…
+	| Raleigh, NC
+	| 1907 HRS
+	| &emsp;
 	For whatever reason, possibly from my disillusionment with travel right now, I've been immersing in my Minecraft world again, and 
 	frankly its been to my detriment. My time in game is just floating around and assessing landscape damage and thinking of fixes 
 	rather than actually building anything or playing anything. Over this weekend, I taught myself the Amulet & Worldedit mods, and revisted 
 	world painter. Yes, it seems that I can do a lot now that I couldn't've done even in 2017ish, like even use all of these on Mac.
 	Regardless, I may have learned the tools and I've run into fewer errors in the past, the experience is still dead and I find myself
 	overwhelmed because there is simply too much for me to manage. I'm tired already of being overwhelmed. I want to quit again, just as 
-	I angrilly quit No Man's Sky. I'm tired of it all and want to get back to reality already. No more <t‰>chunk manipulation</t‰> for a while.
-	</b‰>`
+	I angrilly quit No Man's Sky. I'm tired of it all and want to get back to reality already. No more <b-title>chunk manipulation</b-title> for a while.
+	`
 	,
 
 	`
-	<d‰>September 21st, 2025</d‰>
-	<l‰>Raleigh, NC</l‰>
-	<j‰>0357 HRS</j‰>
-	<b‰>
+	| September 21st, 2025…
+	| Raleigh, NC
+	| 0357 HRS
+	| &emsp;
 	Time is going by very quickly. Work duties have seemed to increase in demand. School duties too have seemed to increase 
 	in demand. For the first time in a while I recall coming home and immediately crashing. Currently, Black Mirror is playing
 	on the television here, and I'm seeing this episode's protagonist flip through his calendar on which he marked increasingly
@@ -1336,20 +1197,20 @@ const blogData = [
 	I went to the local symphony hall and listened to Dvorak's New World Symphony in concert, and the second movement had 
 	me in tears, especially during the passages featuring the English Horn lead. Oof. 
 	<hr> &emsp;
-	My dilemma in the present moment is whether or not I will <t‰>pick up</t‰> a shift tomorrow. I don't know. I do need my time to get ahead on other things.
+	My dilemma in the present moment is whether or not I will <b-title>pick up</b-title> a shift tomorrow. I don't know. I do need my time to get ahead on other things.
 	Eh. I cannot get myself to commit, oddly. Perhaps I should head back to my normal space to focus or something.
 	I must know that nowadays isn't like years ago; I have much more on which to spend my time, obligations and not.
 	I need to push this already and get to the store. I grow tired of this couch sitting.
 	<hr>
-	</b‰>`
+	`
 	,
 	`
-	<d‰>October 1st, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>0325 HRS</j‰>
-	<b‰>
+	| October 1st, 2025…
+	| Pittsboro, NC
+	| 0325 HRS
+	| &emsp;
 	The working hours have been coming along easily. My free time has been passing by quickly as I've been highly
-	engaged with my coursework which has taken quite a difficult turn. Yesterday, I had put in 12 HRS</j‰> on a single
+	engaged with my coursework which has taken quite a difficult turn. Yesterday, I had put in 12 HRS on a single
 	assignment. There were just so many intermediate calculations.
 	<hr> &emsp;
 	I'm farther along than I give myself credit for. I've bridged my interest in accounting to investing, and rebooted
@@ -1357,14 +1218,14 @@ const blogData = [
 	catalyzed my return to the practice. It's essentially planting seeds and letting them grow, and it's a test of 
 	patience and discipline. For a moment, I was a bit overwhelmed with all the options, but then I remember: it's 
 	the excess options that oppress rather than free. I am going to stick with my choice and that's that. 
-	I will have an inkling of faith for the nation to prevail for its sake and for my <t‰>investments</t‰>.
-	</b‰>`
+	I will have an inkling of faith for the nation to prevail for its sake and for my <b-title>investments</b-title>.
+	`
 	,
 	`
-	<d‰>October 31st, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>1717 HRS</j‰>
-	<b‰>
+	| October 31st, 2025…
+	| Pittsboro, NC
+	| 1717 HRS
+	| &emsp;
 	This October had been the best month for advancing my accounting skillset. Not only had I spent the majority of my off time working relentlessly
 	on completing my coursework, I've been seeking practice beyond what my class provides and lately had my first interview for an accounting related
 	position. Though I'm hopeful for a positive outcome, I mustn't allow myself to grow dejected over a possible rejection, if that would end up being
@@ -1377,7 +1238,7 @@ const blogData = [
 	prescribed community college diploma/associate's has quite lessened. The fact remains that I will need an accounting related role to even be 
 	granted the licensure upon completing the CPA exam. Say, if I don't get the position I interviewed for, I will still try to remain as persistent
 	as I have been this month to find my opportunity. It stands that I do need more leverage in order to have a fair shot at plenty available lower-level
-	roles, either an associate's or "<t‰>equivalent education</t‰> and/or experience." To achieve that end without a poor investment in mandated & undesired courses 
+	roles, either an associate's or "<b-title>equivalent education</b-title> and/or experience." To achieve that end without a poor investment in mandated & undesired courses 
 	such as "Intro to Computers," I could obtain an FMAA certification through the Institute of Management Accountants. I'd say, all I'd want for my 
 	birthday is an FMAA study package, and I'm seriously eyeing one right now. Huff.
 	<hr> &emsp;
@@ -1385,13 +1246,13 @@ const blogData = [
 	evident to medical staff upon seeing me. This is an odd medication but it has relieved my aching, fever, and exhaustion. It also turns out 
 	that it acts as a contra-melatonin, like what the heck. Well, I'll accept for now, but I do sincerely want some more quality sleep again this 
 	weekend and take a break from obsessing about accounting.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>November 20th, 2025</d‰>
-	<l‰>Weatherly, PA</l‰>
-	<j‰>0428 HRS</j‰>
-	<b‰>
+	| November 20th, 2025…
+	| Weatherly, PA
+	| 0428 HRS
+	| &emsp;
 	The lamp beside me emits a light at such an angle that I feel distressed. I will turn it off, and power on the portable mushroom-lamp.
 	Portabella lamp. Heh. Well now, as I lie here, I'm pent up with unsorted thoughts and felt the call to write something here.
 	I'll expound on paper later. I'll start by listing some things of import lately:
@@ -1401,7 +1262,7 @@ const blogData = [
 	I chose them over much else and become anxious when occupied elsewhere.</li>
 	<li>I accept that this season of life is dedicated to progress in those domains.</li>
 	<li>I do not desire to continue this lifestyle indefinitely.</li>
-	<li>I am not in the best health lately, having been very sedentary, mostly <t‰>screen-facing</t‰>, and prone to illness.</li>
+	<li>I am not in the best health lately, having been very sedentary, mostly <b-title>screen-facing</b-title>, and prone to illness.</li>
 	<li>I have been lax in my practices such as journaling, reflection, and reading.</li>
 	<li>I have been struggling to achieve peace of mind and mental wellbeing, often compromising my quality and duration of sleep.</li>
 	<li>I have been unsettled by familial events that unfolded lately.</li>
@@ -1435,13 +1296,13 @@ const blogData = [
 	my energy elsewhere for over a week ahead; perhaps I could muster a renewed enthusiasm for my current role and discard
 	the frustrations for a time. Well, 2026 ideas for next time, and perhaps then I'll recap some experiences in Raleigh.
 	Cheers,
-	</b‰>`
+	`
 	,
 	`
-	<d‰>November 25th, 2025</d‰>
-	<l‰>Marshall, NC</l‰>
-	<j‰>0405 HRS</j‰>
-	<b‰>
+	| November 25th, 2025…
+	| Marshall, NC
+	| 0405 HRS
+	| &emsp;
 	It seems heading back to work had relieved some of the uneasiness of my situation, even though
 	workplace concerns remain. I am pressured to care less, it seems. I keep attempting to rationalize
 	my additional efforts but it seems for naught and as a result I am driving myself crazy.
@@ -1461,16 +1322,16 @@ const blogData = [
 	I laid out on a blanket and looked up to the clear night sky, much as I have on July 9th, 2022 at
 	UNC Asheville's campus. The stars were brilliant, and I could only make out the Orien's Belt constellation.
 	Alas, I could not spot Triangulum. I wandered around with my flashlight in the dead of night, exploring.
-	Despite the theme of this spot being the mountain laurel, I spotted <t‰>no mountain laurel</t‰>.
+	Despite the theme of this spot being the mountain laurel, I spotted <b-title>no mountain laurel</b-title>.
 	So, some things were not spotted, but that's all quite okay. I'm comfortable here now. All is well.
 	All is secure, and I endeavor to make sure of it.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>November 29th, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2107 HRS</j‰>
-	<b‰>
+	| November 29th, 2025…
+	| Pittsboro, NC
+	| 2107 HRS
+	| &emsp;
 	Well, I'm nearly finished with my course now. It seems I'm healthily on track for the A. Good. Even though that's the case,
 	I can't shake my addiction to programming right now. I've had an excellent pace in learning PHP full-stack and already have something
 	that functions decently from end-to-end for once. I had to do some very hard digging around to configure and maintain the homebrew-spawned
@@ -1489,7 +1350,7 @@ const blogData = [
 	fret. I'm just happy I can prove to myself the ability to do things I never thought I could do early in life. It's refreshing.
 	<hr>&emsp;
 	Though I say that, am I particularly refreshed right now? Well, the off time from work grants that sensation, but I have been on a prolonged 
-	fast again and I have indeed stayed awake for... let's see, about <t‰>44 hours</t‰> now. I'm really making the most of this time but damn 
+	fast again and I have indeed stayed awake for... let's see, about <b-title>44 hours</b-title> now. I'm really making the most of this time but damn 
 	do I feel roasty inside. Before taking a brief break out in the elements (it's freezing), I stalled on my attempt at fixing up my accounting page's 
 	t-account prompter. I'm not quite dynamically generating the pieces in the proper fashion so that I could make use of it as a study tool yet.
 	The page is over-bloating with functions and variables and is near spaghetti. I have too many appended table/tr/th/td generators with just so
@@ -1503,31 +1364,31 @@ const blogData = [
 	seem to show their age in their antagonistic styling and UX-damaging qualities. Well, right before then, I suppose I'll quickly shoot off
 	some messages; I've still been a bit isolated. Actually, I've been very isolated. In summary, I'm glad to have been working hard and have
 	likely burned off the copious Thanksgiving bean pie I had the pleasure of experiencing lately. Cheers,
-	</b‰>`
+	`
 	,
 	`
-	<d‰>December 31st, 2025</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2242 HRS</j‰>
-	<b‰>
+	| December 31st, 2025…
+	| Pittsboro, NC
+	| 2242 HRS
+	| &emsp;
 	The year is about to end, and I'll be heading to Raleigh again.
 	It's been replete with progress, through shaky concerning balance.
 	The seasons of life during the year were varied and wholly consuming of my focus.
-	<t‰>I'll aspire</t‰> to better balance in the year ahead.
+	<b-title>I'll aspire</b-title> to better balance in the year ahead.
 	Cheers,
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>January 20th, 2026</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2356 HRS</j‰>
-	<b‰>
+	| January 20th, 2026…
+	| Pittsboro, NC
+	| 2356 HRS
+	| &emsp;
 	Happy 2026. So, it took hitting a relative low point to conjure up the figurative fire beneath me and drive me
 	to action in ridding vices and establishing better balance and habits. The 18th of this month marks that important
 	day when I felt a certain anger I hadn't in years. Much as I've said times before, there's a very positive angle to
 	fucking up, and that is, if you perceive it as the push needed to correct course. 
-	My <t‰>resolve is taking flight again</t‰>.
+	My <b-title>resolve is taking flight again</b-title>.
 	I wonder if I will follow through this time. Heh. Conviction isn't eternal. It's wavering, multi-seasonal at best.
 	<hr>
 	That aside, I am pretty successful in many of my endeavors lately, from classwork to programming, from music composition
@@ -1543,14 +1404,14 @@ const blogData = [
 	have this one tune on the books for Jummbox.
 	<hr>
 	A new-year resolution, I suppose, would be to finally quit biting my damned nails.
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>February 12th, 2026</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>0952 HRS</j‰>
-	<b‰>
+	| February 12th, 2026…
+	| Pittsboro, NC
+	| 0952 HRS
+	| &emsp;
 	I'd've said that I'm killing this hobby. Today. I've now surfaced a deep resentment for it.
 	I may stop by to blog here and there, but that's about all.
 	I'll use my learning platforms separately.
@@ -1607,30 +1468,30 @@ const blogData = [
 	Though that's the case, I refuse to give myself grace: I <u>will</u> hold myself accountable.
 	For my temperament, emotional damage is such a delicious catalyst for action.
 	<hr class="hr-cmbr-dark-gradient">
-	Comfort is the thief of my joy. The long suppressed <t‰>tyrant of the self</t‰> had some damn good sense.
+	Comfort is the thief of my joy. The long suppressed <b-title>tyrant of the self</b-title> had some damn good sense.
 	To paraphrase a yesterdecade icon, "Emotional damage? Good."
 	That's right. It's fucking good. I've made it good before;<span class="cmbr-furious"> damn straight I'm gonna make it good again.</span>
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>February 13th, 2026</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>1634 HRS</j‰>
-	<b‰>
-	It's that superstitious <t‰>Friday the 13th</t‰>. Hasn't ever meant much to me, but it's neat how days with some meaning are coinciding: Half-year anniversary
+	| February 13th, 2026…
+	| Pittsboro, NC
+	| 1634 HRS
+	| &emsp;
+	It's that superstitious <b-title>Friday the 13th</b-title>. Hasn't ever meant much to me, but it's neat how days with some meaning are coinciding: Half-year anniversary
 	on the 10th, A personal holiday on the 10th, a loss of a relationship on the 11th, and dropping this hobby on the 12th. Then of course, Valentine's Day.
 	I've never been one to attribute much to that one, but heck, it did burn for a while knowing that I was ousted right before then. But it was deserved. 
 	I wasn't ready. My hope is that I would not allow dejection to take over me as I recover my better lifestyle. The possibility for saying "if only I were
 	living like this" more, seems likely. But no worries. All is well, all is secure. I do wish I could better pay back, though. There is so much that was
 	undeserved, regardless.
-	</b‰>`
+	`
 	,
 	`
-	<d‰>February 13th, 2026</d‰>
-	<l‰>Hillsborough, NC</l‰>
-	<j‰>2331 HRS</j‰>
-	<b‰>
+	| February 13th, 2026…
+	| Hillsborough, NC
+	| 2331 HRS
+	| &emsp;
 	So, here I am again with another control booth entry. The night before the breakup was the first one, so it comes with a little pain to pull this up again. Still, though, I need to continue working through these thoughts such that I may move forward more peacefully. It will always hold that I wasn't ready. I wasn't ready. I was far from it. I wasn't supposed to be the Momo to a Kippi, so to speak, but that's what I was, almost entirely. It was a very unfamiliar dynamic to me, and my current life situation poised me as too much a child rather than an independent man. Furthermore, I certainly can say that pursuing someone was not at all a priority; my attention and care and desire absolutely reflected that. I was consistently self-conscious and gave myself too much grace, becoming complacent as my coding hobby and schoolwork took over my life and overshadowed my desire to seek balance.
 	I was just not ready. I did not deserve what I had received. It was all too much. I can't believe I was seen so highly for a time, only for me to reciprocate so little. So damn little. I really could've made something beautiful of it, if only I were ready. Well, my readiness is on the horizon. I have the capability. I have the power, the resilience, and the courage. I will not let my next one down, if there would be a next one. There are a few notes of advice I can glean from reddit boards. I will list them here: 
 	<ul>
@@ -1642,7 +1503,7 @@ const blogData = [
 </ul>
 <hr class="hr-cmbr-gradient">&emsp;
 Such an irritating point about all of this is that aspects I've learned of my former person are rendered irrelevant since my remarks are likely unwelcome. What about asking about goals, the family, and how trips are going, now? It's all been soured. It's all behind me. I'm not included in anything, anymore, and yes, I deserve it. I wasn't ready. So what use is sharing anything about me, now, hmm? About my dumbass life, my struggle to ascend to a situation that others share that I do not, hm? 
-Let's be fair to myself, though: I struggled at times to feel <t‰>the spark</t‰>. I was hesitant, so very much. I knew of the potential damage to arise, that which I am experiencing now, and proceeded anyway. I struggled to emote and to feel that spark when I would have needed it. I just wasn't ready, okay? I didn't understand how I could've been picked up so fast, anyway. I was perhaps a choice of desperation. Perhaps I should have deleted that profile of mine and spared myself the potential contact. I would have been much safer. My peace of mind is paramount, and I was not protective of it. I traded future peace of mind for a false sense of commitment and being loved. I wasn't certain. I was just not ready. I don't need another chance, just as I don't need another prospect who bears the same name. Well, that last point was just venting. Huff. I was just not ready. Just as I haven't been hungry all day. This'll probably bite me in the ass soon, so I'm going to have a bite soon, yeah? Yeah. 
+Let's be fair to myself, though: I struggled at times to feel <b-title>the spark</b-title>. I was hesitant, so very much. I knew of the potential damage to arise, that which I am experiencing now, and proceeded anyway. I struggled to emote and to feel that spark when I would have needed it. I just wasn't ready, okay? I didn't understand how I could've been picked up so fast, anyway. I was perhaps a choice of desperation. Perhaps I should have deleted that profile of mine and spared myself the potential contact. I would have been much safer. My peace of mind is paramount, and I was not protective of it. I traded future peace of mind for a false sense of commitment and being loved. I wasn't certain. I was just not ready. I don't need another chance, just as I don't need another prospect who bears the same name. Well, that last point was just venting. Huff. I was just not ready. Just as I haven't been hungry all day. This'll probably bite me in the ass soon, so I'm going to have a bite soon, yeah? Yeah. 
 <hr class="hr-cmbr-gradient">
 So, describe the kind of person that you should be when it's time to date again:
 <hr class="hr-push-down">
@@ -1686,13 +1547,13 @@ So, describe the kind of person that you should be when it's time to date again:
 
 &emsp; I do believe that I could expound upon these points. There's still plenty to think about, but this should be a fairly decent framework for gauging whether I'm ready and whether I'm on point or entirely fucking up. Each one could be assessed on a regular basis throughout a relationship. It's extremely evident to me right here that I failed on very many points, few from each category.
 If there's anything I should internalize from my dormant practice, it's that "not feeling" like doing something positive is exactly why I should do such thing.
-	</b‰>`,
+	`,
 
 	`
-	<d‰>February 15th, 2026</d‰>
-	<l‰>Hillsborough, NC</l‰>
-	<j‰>2310 HRS</j‰>
-	<b‰>
+	| February 15th, 2026…
+	| Hillsborough, NC
+	| 2310 HRS
+	| &emsp;
 I decided that I will simply write my remote blog posts in an email such that they would better conform to my site's format. 
 There's no need for me to be using markdown format. Most of my pernicious coding habit during the last few months only served to overcomplicate otherwise simple processes.
 These include using different means to store my blog data, creating means to display and play Anki data when the resources exist for me to do it easily from any location through Anki web, 
@@ -1702,20 +1563,20 @@ perhaps through JSON canvas. I am no longer enthusiastic for much of the little 
 I want it to aid me, much as my dashboard does. 
 <hr class="hr-cmbr-gradient">
 <span class="rolyan-musings">
-*¬/!'¬=/[*¬/¬{/ø'H/}˙{];([/^)'/<t‰>strict-liability</t‰>…][«¬}[/=*¬H('¬=¬[“/…ø'H/!'^{/•!/}˙]'['/
+*¬/!'¬=/[*¬/¬{/ø'H/}˙{];([/^)'/<b-title>strict-liability</b-title>…][«¬}[/=*¬H('¬=¬[“/…ø'H/!'^{/•!/}˙]'['/
 ];«[H{/['*'{'H%H]'/¬]'/[!/('“/•;=['/H}*~{[H('H=/«H}'˙«['=H]/^)'/•¬]'/¬{[;{[\
 *¬/}H{]¬['H'/{'*¬];=)/][«¬}[=“-=*¬H('H=/)+'«/{'*¬/{'¬][¬}]/¬{/ø'H/(*'][/!'¬ø'/*']
 'H'*¬_/=!{^_/*'{['/%¬}\/*¬/*'{'/[¬}¬L/*'})'H{\/ø'¬]/¬]'/}'˙{H/('“/}'~['_/*¬/]!';«\
 *¬/)“=/{'*¬/«“]'˙=)'_/H/{'+'«/•+~=“/;{}^{'(H]¬L/«“]'˙=)'_/¬]'/[¬}¬L/)=*¬[/H}';{\
 </span>
-	</b‰>`
+	`
 	,
 	`
-	<d‰>February 18th, 2026</d‰>
-	<l‰>Raleigh, NC</l‰>
-	<j‰>0131 HRS</j‰>
-	<b‰>
-	So it was my first <t‰>Bar Hopping</t‰> night, but no drinking alcohol.
+	| February 18th, 2026…
+	| Raleigh, NC
+	| 0131 HRS
+	| &emsp;
+	So it was my first <b-title>Bar Hopping</b-title> night, but no drinking alcohol.
 	I was galavanting and catching up with my friend from our Japan adventure, and I got him a drink. 
 	We parked at a special area near the Lagana Burger Bar I once tried with the now-ex; it's standard 
 	burger was probably the highlight, and burger-wise, it's worth a revisit despite my apprehension about
@@ -1805,14 +1666,14 @@ I want it to aid me, much as my dashboard does.
 	I arrived and we chatted over discord a while. He shared with me his music production projects to my enjoyment, and also shared
 	a new single from Harry Styles that bore synthwork much to my liking. I think I'll have a listen again now, and close out this 
 	entry. Thank you, friend. You're more than I'd deserve.
-	</b‰>`
+	`
 	,
 
 	`
-	<d‰>February 25th, 2026</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2338 HRS</j‰>
-	<b‰>
+	| February 25th, 2026…
+	| Pittsboro, NC
+	| 2338 HRS
+	| &emsp;
 	<hr class="nav-pad">
 	Today was the day.<br>&emsp;
 	I've been waiting for a decision for over four (4) months.<br>
@@ -1854,28 +1715,22 @@ I want it to aid me, much as my dashboard does.
 	It's good. I lost much of my emotive qualities it seems after having endured numerous lows. I'd appreciate a further means to compel these stubborn tears of joy.
 	<hr class="hr-cmbr-gradient">&emsp;
 	To close out, yes, I'm grateful. Yes, all is okay. Yes, I can't wait to take the uniform off.<br>
-	It's been a long time promise of mine driven by a certain romanticism in its wording: "I'm off to <t‰>reclaim my sunshine</t‰>."<br>
+	It's been a long time promise of mine driven by a certain romanticism in its wording: "I'm off to <b-title>reclaim my sunshine</b-title>."<br>
 	Well, that time has come. Let's make the most of it, you.
 
-	</b‰>`
-	,
-
 	`
-	<d‰>March 6th, 2026</d‰>
-	<l‰>Pittsboro, NC</l‰>
-	<j‰>2344 HRS</j‰>	
-	<b‰>&emsp;
-	The day had come: my last day in uniform. I worked the shift as per usual and spent plentiful time with my fellow coworkers. 
-	At many times I had been emotionally moved; the significance of the figurative page turn is replete with meaning in this 
-	journey of life. I had received far more than I believe I would deserve, to include the opportunity to have been part of that
-	team and to live in this area again, the pleasure of having had numerous stellar coworkers and trainees from whom I've 
-	learned plenty about life and the profession, and the send-off occassion itself during which coworkers had provided copious food 
-	and my supervisor had presented me a signed framing of my professional photo. It definitely shook me a little, and felt as if 
-	it signified a passing of a former self. After all, I am turning a page in life, and the contents to follow will reflect
-	<t‰>decoupling uniform and identity</t‰>. I will afford myself the grace to adjust to this newness. In any case, thank you all: sergeant,
-	corporal, officers, my trainees, and administration. Thank you.
-	</b‰>`
 	,
 	
 	
 ];
+
+	/*
+	`
+	| Date…
+	| Location
+	| Time
+	| &emsp;
+	Journal Entry Input
+	`
+	,
+	*/

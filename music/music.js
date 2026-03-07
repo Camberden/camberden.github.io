@@ -29,7 +29,7 @@ class Track {
 const tracks = [ // ../assets/music-tracks/music-
 	trackMeaning = new Track("Meaning", 2021, "The Rush of Feeling", "../assets/music-tracks/music-meaning.mp3", true, true),
 	trackTheWarOfArt = new Track("The War of Art", 2020, "Draft Compendium", "../assets/music-tracks/music-the-war-of-art.mp3", true, false),
-	trackForTheVision = new Track("For the Vision", 2019, "Draft Compendium", "../assets/music-tracks/music-for-the-vision.mp3", true, true),
+	// trackForTheVision = new Track("For the Vision", 2019, "Draft Compendium", "../assets/music-tracks/music-for-the-vision.mp3", true, true),
 	trackTheDeficitOfPatience = new Track("The Deficit of Patience", 2019, "Draft Compendium", "../assets/music-tracks/music-the-deficit-of-patience.mp3", false, true),
 	trackSuperScapegrace = new Track("SUPER Scapegrace", 2016, "Audioshi Isle", "../assets/music-tracks/music-super-scapegrace.mp3", true, false),
 	trackBlueberryBeach = new Track("Blueberry Beach", 2016, "Audioshi Isle", "../assets/music-tracks/music-blueberry-beach.mp3", true, false),

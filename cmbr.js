@@ -51,6 +51,20 @@ const bookmarks = [
 	["https://alpinejs.dev/components", "Alpine Components"],
 ];
 
+const coordinates = {
+	"Chapel Hill, NC": [35.963193, -79.058806],
+	"Hillsborough, NC": [36.074342, -79.100648],
+	"Pittsboro, NC": [35.71951016932923, -79.18136391788723],
+	"Raleigh, NC": [35.81529, -78.614098],
+	"Marshall, NC": [35.913106, -82.738448],
+	"Myrtle Beach, SC": [33.704501, -78.865456],
+	"Nesquehoning, PA": [40.863396, -75.814703],
+	"Weatherly, PA": [40.942216, -75.830163],
+	"Lebanon, PA": [40.341082, -76.422731],
+	"Tokyo, Japan": [35.69286, -220.300989],
+	"Nagoya, Japan": [34.879172, -222.726984]
+}
+
 /** @global @readonly @description Determines the Site's Port Number */
 const basePort = document.location.port.length ? document.location.port : "";
 
@@ -62,7 +76,7 @@ const baseHyperlinks = [
 	"http://localhost:" + basePort,
 	"http://localhost:" + basePort + "/index.html",
 ];
-var CMBRdata = "banana";
+var CMBRdata = "bananBa";
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -71,6 +85,49 @@ var CMBRdata = "banana";
  */
 const CMBRutil = {
 
+	/**
+	 * 
+	 * @description Converts Date object to cmbr Preferred Format
+	 * @param {Date} date a Date object
+	 * @param {Boolean} journalesque Prepare format as either for 
+	 * a typical written journal entry or for a professional log.
+	 * - True: Month DDth, YYYY #Journalesque => without weekday
+	 * - False: MM/DD/YYYY #Postorders => weekday with numeric date
+	 * @returns {String}
+	 */
+	convertToPreferredDateFormat: function(date, journalesque) {
+		let cmbrDate;
+		let preferredDateOptions;
+		if (journalesque) {
+			preferredDateOptions = {
+				year: "numeric",
+				month: "long", 
+				day: "numeric",
+			};
+			const nth = (d) => {
+			if (d > 3 && d < 21) return 'th,';
+			switch (d % 10) {
+				case 1:  return "st,";
+				case 2:  return "nd,";
+				case 3:  return "rd,";
+				default: return "th,";
+				};
+			};
+			cmbrDate = date.toLocaleDateString("en-US", preferredDateOptions);
+			cmbrDate = cmbrDate.replace(",", nth(date.getDate()));
+			console.log(cmbrDate);
+			return cmbrDate;
+		} else {
+			preferredDateOptions = {
+				weekday: "long",
+				year: "numeric",
+				month: "2-digit",
+				day: "2-digit",
+			};
+			cmbrDate = date.toLocaleDateString("en-US", preferredDateOptions);
+			return cmbrDate;
+		};
+	},
 	buttonOnMouseEnter: function (button) {
 		if (!button.classList.contains("button-toggled")) {
 			button.classList.add("button-highlight");
@@ -97,6 +154,33 @@ const CMBRutil = {
 		}
 	},
 	/**
+	 * 
+	 * @param {HTMLElement[]} buttons 
+	 * @param {Boolean} includeClick
+	 */
+	wireDefaultButtons: function () {
+		document.querySelectorAll("button").forEach(button => {
+			button.onmouseenter = () => {
+				this.buttonOnMouseEnter(button);
+			}
+			button.onmouseleave = () => {
+				this.buttonOnMouseLeave(button);
+			}
+			button.onclick = () => {
+				this.buttonOnClick(button);
+				sout("Button ID => " + button.id);
+				sout("Button Value => " + button.id);
+
+				if (button.id === "sparkle") {
+					button.textContent = "✨sparkle✨"
+					setTimeout(() => {
+						button.textContent = "sparkle";
+					}, 3000);
+				}
+			};
+		});
+	},
+	/**
 	 * @description Handles all page forms, preventing reload upon form submission
 	 * @param {boolean} configured - Toggle boolean for default (reloading) prevention
 	 * - CONFIGURED: Applies current form submission handling and default prevention
@@ -116,7 +200,6 @@ const CMBRutil = {
 			}
 		}
 	},
-
 	dataTheme: function () {
 		document.querySelectorAll(".data-theme-button").forEach(button => {
 			button.onclick = function () {
@@ -161,7 +244,6 @@ const CMBRutil = {
 		});
 		document.getElementById(document.querySelector("body").getAttribute("data-theme")).style.color = "initial";
 	},
-
 	/**
 	 * 
 	 * @implements
@@ -205,7 +287,6 @@ const CMBRutil = {
 		}
 		this.dataTheme();
 	},
-
 	/**
 	 * 
 	 * @param {HTMLElement} target
@@ -360,7 +441,6 @@ const CMBRutil = {
 		urlParams.set(key, value); // Set or update the parameter
 		history.replaceState(null, '', '?' + urlParams.toString()); // Update the URL
 	},
-
 	openEndPoint: function() {
 		let endpoint = new URL("/api/data", document.location.origin);
 		console.log(endpoint.toString()); // Outputs: https://example.com/api/data
@@ -378,35 +458,6 @@ const CMBRutil = {
 			updateURLParameter("search", this.value); // Update 'search' parameter
 		});
 	},
-
-	/**
-	 * 
-	 * @param {HTMLElement[]} buttons 
-	 * @param {Boolean} includeClick
-	 */
-	wireDefaultButtons: function () {
-		document.querySelectorAll("button").forEach(button => {
-			button.onmouseenter = () => {
-				this.buttonOnMouseEnter(button);
-			}
-			button.onmouseleave = () => {
-				this.buttonOnMouseLeave(button);
-			}
-			button.onclick = () => {
-				this.buttonOnClick(button);
-				sout("Button ID => " + button.id);
-				sout("Button Value => " + button.id);
-
-				if (button.id === "sparkle") {
-					button.textContent = "✨sparkle✨"
-					setTimeout(() => {
-						button.textContent = "sparkle";
-					}, 3000);
-				}
-			};
-		});
-	},
-
 	/** 
 	 * @description Reads cmbr.json
 	 * @borrows cmbr.json
@@ -460,20 +511,6 @@ const CMBRutil = {
 			}
 		});
 	},
-
-	connectRestIpa: async function(query) {
-		return fetch(`https://ipa-rest.herokuapp.com/${query}`)
-		.then(data => data.json())
-		.then(data => {
-			console.log(data);
-			console.log("QUERY BEFORE RESOLUTION: " + query);
-			return data;
-		})
-		.then((data) => {
-			return data;
-		});
-	}
-
 }
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //

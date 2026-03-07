@@ -572,8 +572,9 @@ nav {
 	position: fixed;
 }
 
-/* |==========| §MARKS AND WRITING CLASSES <mark> |====================> */
+/* |==========| §MARKS AND BLOG WRITING CLASSES <mark> |====================> */
 /* |==========| DESCRIBED BY EMOTIONAL CHARACTER |====================> */
+
 .rolyan-musings {
 	display: block;
 	box-sizing: border-box;
@@ -1124,7 +1125,8 @@ select:hover {
 
 	font-family: "Lora";
 	src:
-		local("Lora-Regular") local("Lora-Italic"),
+		local("Lora-Regular")
+		local("Lora-Italic"),
 		local("Lora-Medium"),
 		local("Lora-MediumItalic"),
 		local("Lora-Bold"),
@@ -1216,11 +1218,17 @@ select:hover {
 }
 
 .cmbr-item {
-	padding: 1rem;
+	/* padding: 1rem;
 	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 	border-width: 0.3rem;
 	max-height: 40rem;
-	background: rgba(144, 229, 238, 0.1);
+	background: rgba(144, 229, 238, 0.1); */
+
+	padding: var(--cmbr-com-pnl-padding);
+	box-shadow: var(--cmbr-com-pnl-box-shadow);
+	border-width: var(--cmbr-com-border-width);
+	max-height: fit-content;
+	background: var(--cmbr-com-pnl-background);
 }
 
 .cmbr-item-left {

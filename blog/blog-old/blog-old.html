@@ -3,16 +3,21 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
+	<meta name="referrer" content="origin" />
+	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="./music.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="./blog.css" media="screen" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="../htmx.js"></script>
 	<script src="../cmbr.js"></script>
+	<title>Chrispy's Blog</title>
 </head>
 
-<body id="backdrop" data-theme="dark">
+<body data-theme="dark">
 
 	<nav>
 		<div class="nav-sail">
@@ -47,7 +52,7 @@
 						</div>
 					</div>
 				</div>
-				<span id="nav-sig"></span>
+				<!-- <span id="nav-sig"></span> -->
 
 			</div>
 
@@ -60,7 +65,7 @@
 
 			<!-----| NAV 3 |----->
 			<div id="nav-3">
-				<h1 class="h1-lamp">Music</h1>
+				<h1 class="h1-lamp">Blog</h1>
 			</div>
 
 			<!-----| NAV 4 |----->
@@ -75,6 +80,7 @@
 				<span class="data-theme-button" id="dark">🌙</span>
 				<span class="data-theme-button" id="light">☀️</span>
 				<span class="data-theme-button" id="legacy">🪻</span>
+				<!-- <span class="data-theme-button" id="paperesque">🌾</span> -->
 			</div>
 
 		</div>
@@ -88,64 +94,72 @@
 
 	</nav>
 
-	<div id="header-and-return">
-		<div id="return">
-			<a class="marker" href="../index.html" data-route="/index.html">Return</a>
-		</div>
-		<div id="quick-links">
-			<div class="quick-links-grid-item">
-				<span id="soundcloud-link"><a href="https://soundcloud.com/camberden">[more, older music]</a></span>
-			</div>
-			<div class="quick-links-grid-item">
-				Now Playing: <span id="now-playing">Now Playing</span>
-			</div>
-		</div>
-	</div>
+	<main class="flex-grid-cmbr grid-col-1-3-1">
 
-
-	<!----- BEGIN MODALS ----->
-	<!-- To display track information coupled with an image, perhaps! -->
-	<div id="info-modal">
-		<p id="close-modal">&times;</p>
-		<div id="specific-modal">
-		</div>
-	</div>
-	<!----- END MODALS ----->
-
-
-	<div class="music-grid">
-
-		<div class="music-item">
-			<ul id="track-list"></ul>
-		</div>
-
-		<div class="music-item-main">
-			<div class="sub-music-grid">
-				<div class="sub-music-item" id="photo-box" onclick="audioEffects()">
-					<img src="../assets/artifacts/foxfire.jpeg"></div>
-				<div class="sub-music-item grid-col-span-2">
-					<span id="track-player-controls">CONTROLS</span></div>
-			</div>
-		</div>
-
-		<div class="music-item">
-			<button class="music-sort-button" value="all-music">All</button>
-			<button class="music-sort-button" value="finished">Finished</button>
-			<button class="music-sort-button" value="scraps">Scraps & Excerpts</button>
-			<hr>
-			<select id="sort-by-year" class="music-sort-select">
-				<option>By Year</option>
+		<div class="blog-item" id="blog-post-listings">
+			
+			<select id="blog-post-year-select">
+				<option value="all-years">All Years</option>
 			</select>
-			<select id="sort-by-album" class="music-sort-select">
-				<option>By Album</option>
-			</select>
+			<hr class="hr-cmbr-dark-gradient">
+			<hr class="hr-groove-top">
+			
+			<ul id="blog-post-list">
+			</ul>
+
+			<hr class="hr-groove-bottom">
+			<hr class="hr-cmbr-dark-gradient">
+
 		</div>
 
-	</div>
+		<article class="blog-item" id="blog-post-articles">
+			<button id="previous-bp" class="blog-button" value="previous">Previous</button>
+			<button id="next-bp" class="blog-button" value="next">Next</button>
+			<!-- <input type="text"> -->
 
-	<hr>
-	<div id="backdrop-low"></div>
-<script src="music.js"></script>
+			<h3 class="blogging-font">
+				<ul class="blog-post-header">
+					<li id="blog-post-date">August 11th, 2024</li>
+					<li id="blog-post-location">Chapel Hill Suite</li>
+					<li id="blog-post-time">2200HRS</li>
+				</ul>
+				<p id="active-blog-post"></p>
+			</h3>
+		</article>
+
+		<div class="blog-item" id="blog-post-media">
+
+			<h3>Post <span id="displayed-post"></span></h3>
+			<h4><span id="blog-post-title"></span></h4>
+
+			<hr class="hr-cmbr-dark-gradient">
+			<hr class="hr-groove-top">
+
+			<div id="blog-tags">
+				
+			</div>
+
+			<div id="blog-map">
+
+			</div>
+
+			<div id="blog-photos">
+
+			</div>
+
+			<div id="blog-music">
+				<div id="player"></div>
+			</div>
+
+			<hr class="hr-groove-bottom">
+			<hr class="hr-cmbr-dark-gradient">
+
+		</div>
+
+	</main>
+
+<script src="blog-data.js"></script>
+<script src="blog.js"></script>
 </body>
 
 </html>
