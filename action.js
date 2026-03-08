@@ -153,7 +153,7 @@ const queryButtonDemonstrator = async () => {
 (async (/*=====*| RUN |*=====*/) => {
 
 	const photos = await CMBRutil.connectCMBRjson(["travel-photos"]);
-	
+
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos(photos);
 	randomizeMonicker();

@@ -41,8 +41,13 @@ function blogFilter(selection) {
 				li.classList.remove("listing-none");
 			}
 
-		} 
-		return;
+		}
+		
+	currentlyReading = blogPosts[blogPosts.length - 1];
+	currentlyReadingNumber = currentlyReading.id;
+	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
+	displayCurrentlyReading();		
+	return;
 	}
 	
 	blogPosts.forEach(article => {
@@ -58,6 +63,7 @@ function blogFilter(selection) {
 	
 	currentlyReading = blogPosts[loaded - 1];
 	currentlyReadingNumber = currentlyReading.id;
+	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
 	displayCurrentlyReading();
 	return;
 }
@@ -72,6 +78,7 @@ function enableBlogSelect() {
 		blogPostYearSelect.appendChild(option);
 	}
 	blogPostYearSelect.onchange = function() {
+		document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
 		blogFilter(blogPostYearSelect.value);
 	}
 }
