@@ -131,6 +131,7 @@ main {
 #blog-photos {
 	box-sizing: border-box;
 	background-size: cover;
+	background-image: none;
 	height: 10rem;
 	width: 100%;
 	outline: 0.1rem dotted salmon;

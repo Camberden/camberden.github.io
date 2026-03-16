@@ -1767,7 +1767,7 @@ const blogData = [
 	<l‰>Raleigh, NC</l‰>
 	<j‰>0131 HRS</j‰>
 	<g‰></g‰>
-	<p‰></p‰>
+	<p‰>assets/travel-photos/photo-nc-us-30.jpeg</p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>
@@ -1870,10 +1870,9 @@ const blogData = [
 	<j‰>2338 HRS</j‰>
 	<g‰></g‰>
 	<p‰></p‰>
-	<a‰></a‰>
+	<a‰>0b-b9lO_7xk</a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
-	<hr class="nav-pad">
+	<b‰>&emsp;
 	Today was the day.<br>&emsp;
 	I've been waiting for a decision for over four (4) months.<br>
 	But it came, and it came today:<br>
@@ -1925,8 +1924,8 @@ const blogData = [
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2344 HRS</j‰>
 	<g‰></g‰>
-	<p‰></p‰>
-	<a‰></a‰>
+	<p‰>assets/travel-photos/photo-nc-us-28.jpeg</p‰>
+	<a‰>1c49TSDH8GY</a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
 	The day had come: my last day in uniform. I worked the shift as per usual and spent plentiful time with my fellow coworkers. 
@@ -1947,8 +1946,8 @@ const blogData = [
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2037 HRS</j‰>
 	<g‰>dejection, community, book</g‰>
-	<p‰></p‰>
-	<a‰></a‰>
+	<p‰>assets/travel-photos/photo-nc-us-32.jpeg</p‰>
+	<a‰>3g7v8gQ9PfY</a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
 	So I had my first week at work in this new position. I am afforded a spacious, solitary, solo office wherein I am free to focus 
@@ -1998,8 +1997,7 @@ const blogData = [
 	<t‰>courage to be disliked</t‰>.
 
 
-	</b‰>
-	`
+	</b‰>`
 	,
 
 	

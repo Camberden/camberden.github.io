@@ -64,7 +64,6 @@ const coordinates = {
 	"Tokyo, Japan": [35.69286, -220.300989],
 	"Nagoya, Japan": [34.879172, -222.726984]
 }
-
 /** @global @readonly @description Determines the Site's Port Number */
 const basePort = document.location.port.length ? document.location.port : "";
 

@@ -18,34 +18,77 @@ const blogMap = L.map("blog-map");
 let blogMapMarker;
 
 // ===> BLOG YOUTUBE PLAYER ===>
+// https://www.youtube.com/embed?listType=playlist&list=PLC77007E23FF423C6 // FOR PLAYLIST //
 let player;
 const playerTag = document.createElement("script");
 playerTag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(playerTag, firstScriptTag);
-let done = false;
+
+
+
+/* |==========| BLOG MAP |====================> */
+/* |==========| LEAFLET API BLOG MAP FUNCTIONS AND VALUES |====================> */
+/**
+ * 
+ * @param {Array[number]} location in coordinates
+ */
+function initBlogMap(latLng) {
+	
+	blogMap.setView(latLng, 7);
+
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(blogMap); 
+	blogMapMarker = L.marker(latLng).addTo(blogMap);
+};
+/**
+ * 
+ * @param {Array[number]} latLng 
+ */
+function changeCoordinates(latLng) {
+	blogMap.flyTo(latLng);
+	blogMapMarker.remove();
+	blogMapMarker = L.marker(latLng).addTo(blogMap);
+};
+
+/* |==========| YOUTUBE PLAYER |====================> */
+/* |==========| YOUTUBE PLAYER API VARIABLES & FUNCTIONS |====================> */
+function onYouTubeIframeAPIReady() {
+	player = new YT.Player("player", {
+	height: "100%",
+	width: "100%",
+	videoId: currentlyReading.audio,
+	playerVars: {
+	"playsinline": 1,
+	"disablekb": 1,
+	"autoplay": 0,
+	"fs": 0,
+	"hl": "ja"
+	},
+	events: {
+	// 'onReady': onPlayerReady,
+	"onStateChange": onPlayerStateChange
+}
+	});
+};
+function onPlayerReady(event) {
+	event.target.playVideo();
+};
+var done = false;
+function onPlayerStateChange(event) {
+	if (event.data == YT.PlayerState.PLAYING && !done) {
+		setTimeout(stopVideo, 600000);
+		done = true;
+	}
+};
+function stopVideo() {
+	player.stopVideo();
+};
 
 /* |==========| BLOG FUNCTIONS |====================> */
 /* |==========| VALUES FOR WRITTEN BLOG CONTENT |====================> */
-/**
- * 
- * @param {JSON} postjson 
- */
-function routeJson(postjson) {
-	const postNum = "post-" + (activeBlogPostNumber - 1);
-	const bpJson = postjson[postNum];
-	console.log(bpJson);
-	const bpTags = document.getElementById("blog-tags");
-	const bpPhotos = document.getElementById("blog-photos");
-	const bpMusic = document.getElementById("blog-music");
-	(()=> {
-		bpTags.innerHTML = bpJson["tags"]; 
-		bpPhotos.style.background = `url(${bpJson["media"][0]})`;
-		stopVideo();
-		// player.videoId = bpJson["media"][1];
-		player.loadVideoById(bpJson["media"][1]);
-	})();
-};
+
 /**
  * 
  * @param {string} month
@@ -127,10 +170,6 @@ displayCurrentlyReading();
  * @yields The blog post data based on currentlyReadingNumber
  */
 function displayCurrentlyReading() {
-	
-	// while (blogTagList.lastElementChild) {
-	// 	document.removeChild(blogTagList.lastElementChild);
-	// }
 	blogTagList.innerHTML = "";
 	document.getElementById("blog-post-date").innerText = CMBRutil.convertToPreferredDateFormat(currentlyReading.date, true);
 	document.getElementById("blog-post-location").innerText = currentlyReading.location;
@@ -138,6 +177,17 @@ function displayCurrentlyReading() {
 	document.getElementById("blog-post-time").innerText = currentlyReading.time;
 	document.getElementById("blog-post-body").innerHTML = currentlyReading.body;
 	document.getElementById("blog-post-title").innerText = currentlyReading.title;
+	document.getElementById("blog-photos").style.backgroundImage = `url("../${currentlyReading.photos}")`;
+	// FIXING YOUTUBE PLAYER API //
+	try {
+		player.loadVideoById(currentlyReading.audio);
+		if (!currentlyReading.audio) {
+			player.loadVideoById("TrlKxV5KWJo");
+		}
+	} catch (TypeError) {
+		console.log("Catching YouTube API init type error.");
+	}
+	// FIXING YOUTUBE PLAYER API //
 	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
 	for (let tag of currentlyReading.tags) {
 		const span = document.createElement("span");
@@ -146,7 +196,6 @@ function displayCurrentlyReading() {
 		span.classList.add("blog-tag");
 		blogTagList.appendChild(span);
 	}
-
 };
 function displayBlogPostList() {
 	const blogPostList = document.getElementById("blog-post-list");
@@ -241,63 +290,24 @@ function enableBlogSelect() {
 		blogFilter(blogPostYearSelect.value);
 	}
 };
-
-/* |==========| BLOG MAP |====================> */
-/* |==========| LEAFLET API BLOG MAP FUNCTIONS AND VALUES |====================> */
 /**
  * 
- * @param {Array[number]} location in coordinates
+ * @param {JSON} postjson 
  */
-function initBlogMap(latLng) {
-	
-	blogMap.setView(latLng, 7);
-
-	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(blogMap); 
-	blogMapMarker = L.marker(latLng).addTo(blogMap);
-};
-/**
- * 
- * @param {Array[number]} latLng 
- */
-function changeCoordinates(latLng) {
-	blogMap.flyTo(latLng);
-	blogMapMarker.remove();
-	blogMapMarker = L.marker(latLng).addTo(blogMap);
-};
-
-/* |==========| YOUTUBE PLAYER |====================> */
-/* |==========| YOUTUBE PLAYER API VARIABLES & FUNCTIONS |====================> */
-function onYouTubeIframeAPIReady() {
-	player = new YT.Player('player', {
-	height: "100%",
-	width: "100%",
-	videoId: "0b-b9lO_7xk", //1.51
-	playerVars: {
-	"playsinline": 1,
-	"disablekb": 1,
-	"autoplay": 0,
-	"fs": 0,
-	"hl": "ja"
-	},
-	events: {
-	// 'onReady': onPlayerReady,
-	"onStateChange": onPlayerStateChange
-}
-	});
-};
-function onPlayerReady(event) {
-	event.target.playVideo();
-};
-function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.PLAYING && !done) {
-		setTimeout(stopVideo, 600000);
-		done = true;
-	}
-};
-function stopVideo() {
-	player.stopVideo();
+function routeJson(postjson) {
+	const postNum = "post-" + (activeBlogPostNumber - 1);
+	const bpJson = postjson[postNum];
+	console.log(bpJson);
+	const bpTags = document.getElementById("blog-tags");
+	const bpPhotos = document.getElementById("blog-photos");
+	const bpMusic = document.getElementById("blog-music");
+	(()=> {
+		bpTags.innerHTML = bpJson["tags"]; 
+		bpPhotos.style.background = `url(${bpJson["media"][0]})`;
+		stopVideo();
+		// player.videoId = bpJson["media"][1];
+		player.loadVideoById(bpJson["media"][1]);
+	})();
 };
 
 /* |==========| INDEXED DB |====================> */
@@ -421,4 +431,5 @@ function initIndexedDB(crud, queryData) {
 	enableBlogButtons();
 	enableBlogSelect();
 	
-})(setTimeout(() => { collectJSconfigs(canSupportIndexedDB()); console.log("|=====| END |=====|====|") }, 2000 ));
+})();
+// (setTimeout(() => { collectJSconfigs(canSupportIndexedDB()); console.log("|=====| END |=====|====|") }, 2000 ));

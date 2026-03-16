@@ -7,7 +7,7 @@
  * - Date is changed for any first update completed on a new day.
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Sunday, March 15th, 2026";
+const latestUpdate = "Monday, March 16th, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン", "}*'<'('H'[';<"];
