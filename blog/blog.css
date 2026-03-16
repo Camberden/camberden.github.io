@@ -45,9 +45,6 @@ main {
 	/* background: rgba(144, 229, 238, 0.1); */
 }
 
-
-
-
 /* |==========| CENTER COLUMN |====================> */
 #blog-post-articles {
 	box-sizing: content-box;
@@ -55,6 +52,12 @@ main {
 	background:#0f0b07de;
 
 	height: max-content;
+}
+#blog-post-body > ul {
+	list-style-type: disc;
+}
+#blog-post-body > ol > ul {
+	list-style-type: disc;
 }
 /* |==========| ACTUAL WRITTEN POSTS |====================> */
 
@@ -109,6 +112,14 @@ main {
 	height: 5rem;
 	width: 100%;
 	outline: 0.1rem dotted crimson;
+}
+
+.blog-tag {
+	font-family: monospace;
+	color: magenta;
+	border: 0.1rem solid salmon;
+	border-radius: 10%;
+	margin-inline-start: 0.5rem;
 }
 
 #blog-map {

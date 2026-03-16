@@ -1,5 +1,6 @@
 /** === CMBR.JS: GLOBAL PERSONAL UTILITIES ===>
- * @fileOverview Camberden's general site utility toolkit.
+ * @fileoverview Camberden's general site utility toolkit.
+ * @version 1.2 Formerly known as buttons.js
  * @interface CMBRutil
  * @author Camberden (Chrispy | Kippi)  
  */ 
@@ -50,7 +51,6 @@ const bookmarks = [
 	["https://portal.osc.nc.gov/app", "Fiori"],
 	["https://alpinejs.dev/components", "Alpine Components"],
 ];
-
 const coordinates = {
 	"Chapel Hill, NC": [35.963193, -79.058806],
 	"Hillsborough, NC": [36.074342, -79.100648],
@@ -76,7 +76,6 @@ const baseHyperlinks = [
 	"http://localhost:" + basePort,
 	"http://localhost:" + basePort + "/index.html",
 ];
-var CMBRdata = "bananBa";
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
