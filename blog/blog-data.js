@@ -1924,7 +1924,7 @@ const blogData = [
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2344 HRS</j‰>
 	<g‰></g‰>
-	<p‰>assets/travel-photos/photo-nc-us-28.jpeg</p‰>
+	<p‰>assets/travel-photos/photo-tokyo-jp-8.jpeg</p‰>
 	<a‰>1c49TSDH8GY</a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
@@ -1988,14 +1988,13 @@ const blogData = [
 	I, the flammable trash, burn as a dumpster fire in a Shanghai alley. So appropriate! I was taken out alright, lol.
 	Silliness aside, my spirit craves for a chance to repay and to make amends, somehow.
 	It was the wrong time, I knew it, and I'm sorry to have accepted the advances.
-	Time to be a remedy. At the least, I can finish that book and return it to its rightful place. How befitting, its title: <u>The Courage to be Disliked</u>.
+	Time will be a remedy. At the least, I can finish that book and return it to its rightful place. How befitting, its title: <u>The Courage to be Disliked</u>.
 	<hr class="hr-cmbr-gradient">&emsp;
 	Onward to this next episode of new-career me, to learn more and to continue my struggle in sorting these through these thoughts and relinquishing
 	this false characterization of self as trash and deserving of continued suffering. It'll be okay. I know it will, I just need to vent it out, and surely
 	I'm not done yet, hah. Probably a few more entries. The headquarters shop where I'll pick up some shirts tomorrow is awfully close to where I'd frequent
 	those many months. Some day soon I'll look at associated places and things fondly with a smile and sweet sentiment, but until then, I just need the
 	<t‰>courage to be disliked</t‰>.
-
 
 	</b‰>`
 	,

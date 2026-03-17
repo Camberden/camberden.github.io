@@ -178,6 +178,9 @@ function displayCurrentlyReading() {
 	document.getElementById("blog-post-body").innerHTML = currentlyReading.body;
 	document.getElementById("blog-post-title").innerText = currentlyReading.title;
 	document.getElementById("blog-photos").style.backgroundImage = `url("../${currentlyReading.photos}")`;
+	if  (!currentlyReading.photos) {
+		document.getElementById("blog-photos").style.backgroundImage = `url(${"../assets/artifacts/foxfire.jpeg"})`;
+	}
 	// FIXING YOUTUBE PLAYER API //
 	try {
 		player.loadVideoById(currentlyReading.audio);
@@ -283,7 +286,7 @@ function enableBlogSelect() {
 		option.setAttribute("value", listedYears[i]);
 		let text = document.createTextNode(listedYears[i]);
 		option.appendChild(text);
-		blogPostYearSelect.appendChild(option);
+		blogPostYearSelect.prepend(option);
 	}
 	blogPostYearSelect.onchange = function() {
 		document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
