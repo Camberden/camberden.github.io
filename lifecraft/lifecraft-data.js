@@ -28,9 +28,9 @@ const events = [
 	birthEvent = new LifeEvent("My Birth", "1993-11-14", "", 
 		"I arrived physically on this planet."),
 	rofDay = new LifeEvent("R.O.F. Day", "2017-7-9", "", 
-		"Personal Holiday Established: the emotional difficulties encountered marked the very beginning of my self-reinvention"),
+		"Personal Holiday Established: the emotional difficulties encountered marked the very beginning of my 1st self-reinvention."),
 	firingDay = new LifeEvent("Firing Day", "2017-11-14", "", 
-		"I was fired from my first position after college for tardiness. This event, coupled with July 9th, helped set my self-reinvention in motion"),
+		"I was fired from my first position after college for tardiness. This event, coupled with July 9th, helped set my 1st self-reinvention in motion"),
 	securityCareer = new LifeEvent("Began Security Career", "2017-1-19", "", 
 		"I began my new role in private security where I set out to redeem myself for past failures"),
 	firstSecurityPromotion = new LifeEvent("First Security Promotion", "2018-6-16", "",
@@ -50,13 +50,16 @@ const events = [
 	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", 
 		"My trusty car was deemed a total loss."),
 	whiteCar = new LifeEvent("White Car", "2025-3-4", "", 
-		"Got my new ride. Its white coat is familiar as it's the same as those at my workplace"),
+		"Got my new ride. Its white coat is familiar as it's the same as those at my workplace."),
 	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "", 
 		"To Tokyo, Nara, Kyoto, and Osaka"),
 	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", 
 		"Raise & Vesting"),
+	shanghaiAlleyDumpsterFire = new LifeEvent("Shanghai Alley Dumpster Fire", "2026-2-11", "", "Lost my new favorite person. Lots of reflection. Hopefully setting up for 2nd self-reinvention."),
+	endOfTour = new LifeEvent("End of Tour", "2026-3-6", "", "Last day in uniformed public service."),
+	newCareerBegins = new LifeEvent("A New Career Begins", "2026-3-9", "", "I began my new career in accounting with an 8-hour daytime schedule and am afforded a cool office space. I hope this is worth it."),
 	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", "", 
-		"Maxxed CO Salary"),
+		"Would have maxxed out CO salary, but no worries."),
 
 ];
 /**
@@ -161,7 +164,6 @@ const monthlyObligations = [
 	sp2026 = new MonthlyObligation("ACC220", "January-2025", "April-2025", "Intermediate Accounting I"),
 	su2025 = new MonthlyObligation("BUS110", "May-2025", "July-2025", "Study abroad Japan course."),
 	fa2025 = new MonthlyObligation("ACC221", "August-2025", "December-2025", "Intermediate Accounting II"),
-	sp2026 = new MonthlyObligation("ACC269", "January-2026", "April-2026", "Auditing & Assurance Services"),
 	su2026 = new MonthlyObligation("ACC149&BUS115", "May-2026", "July-2026", "Intro to ACC Spreadsheets & Business Law I"),
 	fa2026 = new MonthlyObligation("ACC129&ACC140", "August-2026", "December-2026", "Individual Income Taxes & Payroll Accounting"),
 ];

@@ -29,7 +29,7 @@ main {
 	padding: 1rem;
 	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 	border-width: 0.3rem;
-	max-height: 40rem;
+	max-height: 45rem;
 	background: rgba(144, 229, 238, 0.1);
 }
 
@@ -48,17 +48,25 @@ main {
 /* |==========| CENTER COLUMN |====================> */
 #blog-post-articles {
 	box-sizing: content-box;
-	/* background:#0f0b0789; */
+	/* padding: 1rem; */
+	/* box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71); */
+	/* border-width: 0.3rem; */
 	background:#0f0b07de;
-
 	height: max-content;
 }
 #blog-post-body > ul {
-	list-style-type: disc;
+	list-style: none;
+}
+#blog-post-body > ul > li::before {
+	content: attr(item) "⇒ ";
 }
 #blog-post-body > ol > ul {
-	list-style-type: disc;
+	list-style: none;
 }
+#blog-post-body > ol > ul > li::before {
+	content: attr(item) "⇒ ";
+}
+
 /* |==========| ACTUAL WRITTEN POSTS |====================> */
 
 /* |==========| LEFT COLUMN |====================> */
@@ -102,16 +110,18 @@ main {
 	top:10%;
 	flex: 1;
 	position: sticky;
-	height: 50rem;
+	height: 45rem;
 	align-items: center;
 	justify-content: center;
 }
 /* |==========| BLOG MEDIA STYLES FOR MAPS, PHOTOS, & MORE |====================> */
 
 #blog-tags {
-	height: 5rem;
+	height: fit-content;
 	width: 100%;
-	outline: 0.1rem dotted crimson;
+	/* outline: 0.1rem dotted crimson; */
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
 }
 
 .blog-tag {
@@ -125,12 +135,12 @@ main {
 #blog-map {
 	height: 10rem;
 	width: 100%;
-	outline: 0.1rem dotted magenta;
+	/* outline: 0.1rem dotted magenta; */
 }
 
 #blog-photos {
 	box-sizing: border-box;
-	outline: 0.1rem dotted salmon;
+	/* outline: 0.1rem dotted salmon; */
 	background-image: transparent;
 	background-size: cover;
 	background-position: 100%;
@@ -143,5 +153,5 @@ main {
 #blog-music {
 	height: 10rem;
 	width: 100%;
-	outline: 0.1rem dotted cyan;
+	/* outline: 0.1rem dotted cyan; */
 }

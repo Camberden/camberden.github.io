@@ -20,11 +20,11 @@ let blogMapMarker;
 // ===> BLOG YOUTUBE PLAYER ===>
 // https://www.youtube.com/embed?listType=playlist&list=PLC77007E23FF423C6 // FOR PLAYLIST //
 let player;
+let done = false;
 const playerTag = document.createElement("script");
 playerTag.src = "https://www.youtube.com/iframe_api";
 const firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(playerTag, firstScriptTag);
-
 
 
 /* |==========| BLOG MAP |====================> */
@@ -41,6 +41,17 @@ function initBlogMap(latLng) {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 	}).addTo(blogMap); 
 	blogMapMarker = L.marker(latLng).addTo(blogMap);
+
+	// const leafletBottom = document.querySelectorAll(".leaflet-bottom");
+	// leafletBottom.forEach(bottom => { bottom.setAttribute("z-index", "0"); bottom.removeAttribute("bottom");});
+	// const fixAttrControl = document.querySelector(".leaflet-control-attribution");
+	// fixAttrControl.setAttribute("height", "4");
+	// fixAttrControl.setAttribute("line-height", "0.5");
+	// const fixControl = document.querySelector(".leaflet-control");
+	// fixControl.setAttribute("height", "4");
+	// const fixAttrFlag = document.querySelector(".leaflet-attribution-flag");
+	// fixAttrFlag.setAttribute("height", "4");
+	// fixAttrFlag.setAttribute("viewBox", "0 0 12 2");
 };
 /**
  * 
@@ -75,7 +86,7 @@ function onYouTubeIframeAPIReady() {
 function onPlayerReady(event) {
 	event.target.playVideo();
 };
-var done = false;
+// var done = false;
 function onPlayerStateChange(event) {
 	if (event.data == YT.PlayerState.PLAYING && !done) {
 		setTimeout(stopVideo, 600000);
@@ -137,7 +148,9 @@ function initBlogData(articles) {
 	const preParsedBlogTags = parsePermilleTags(article, "g");
 	blogPost.tags = preParsedBlogTags.split(", ");
 	blogPost.photos = parsePermilleTags(article, "p");
-	blogPost.audio = parsePermilleTags(article, "a");
+	// blogPost.audio = parsePermilleTags(article, "a");
+	const videoIdFromUrl = parsePermilleTags(article, "a").split("v=")[1];
+	blogPost.audio = videoIdFromUrl;
 	// |=====| DATE & TIME PARSING |=====| //
 	const dateString = parsePermilleTags(article, "d").split(" ");
 	const postDate = convertDate(dateString[0], dateString[1], dateString[2]);
@@ -182,10 +195,13 @@ function displayCurrentlyReading() {
 		document.getElementById("blog-photos").style.backgroundImage = `url(${"../assets/artifacts/foxfire.jpeg"})`;
 	}
 	// FIXING YOUTUBE PLAYER API //
+
 	try {
-		player.loadVideoById(currentlyReading.audio);
 		if (!currentlyReading.audio) {
+			// John Cage's 4:33 (Silence)
 			player.loadVideoById("TrlKxV5KWJo");
+		} else {
+			player.loadVideoById(currentlyReading.audio);
 		}
 	} catch (TypeError) {
 		console.log("Catching YouTube API init type error.");
@@ -433,6 +449,7 @@ function initIndexedDB(crud, queryData) {
 	initBlogData(blogData);
 	enableBlogButtons();
 	enableBlogSelect();
+	console.log("https://www.youtube.com/watch?v=6uNkTqNSulY".split("v=")[1]);
 	
 })();
 // (setTimeout(() => { collectJSconfigs(canSupportIndexedDB()); console.log("|=====| END |=====|====|") }, 2000 ));

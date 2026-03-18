@@ -1770,8 +1770,8 @@ const blogData = [
 	<p‰>assets/travel-photos/photo-nc-us-30.jpeg</p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
-	So it was my first <t‰>Bar Hopping</t‰> night, but no drinking alcohol.
+	<b‰>&emsp;
+	So it was my first <t‰>bar hopping</t‰> night, but no drinking alcohol.
 	I was galavanting and catching up with my friend from our Japan adventure, and I got him a drink. 
 	We parked at a special area near the Lagana Burger Bar I once tried with the now-ex; it's standard 
 	burger was probably the highlight, and burger-wise, it's worth a revisit despite my apprehension about
@@ -1870,7 +1870,7 @@ const blogData = [
 	<j‰>2338 HRS</j‰>
 	<g‰></g‰>
 	<p‰></p‰>
-	<a‰>0b-b9lO_7xk</a‰>
+	<a‰>https://www.youtube.com/watch?v=0b-b9lO_7xk</a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
 	Today was the day.<br>&emsp;
@@ -1925,7 +1925,7 @@ const blogData = [
 	<j‰>2344 HRS</j‰>
 	<g‰></g‰>
 	<p‰>assets/travel-photos/photo-tokyo-jp-8.jpeg</p‰>
-	<a‰>1c49TSDH8GY</a‰>
+	<a‰>https://www.youtube.com/watch?v=1c49TSDH8GY</a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
 	The day had come: my last day in uniform. I worked the shift as per usual and spent plentiful time with my fellow coworkers. 
@@ -1937,8 +1937,7 @@ const blogData = [
 	it signified a passing of a former self. After all, I am turning a page in life, and the contents to follow will reflect
 	<t‰>decoupling uniform and identity</t‰>. I will afford myself the grace to adjust to this newness. In any case, thank you all: sergeant,
 	corporal, officers, my trainees, and administration. Thank you.
-	</b‰>
-	`
+	</b‰>`
 	,
 	
 	`
@@ -1947,7 +1946,7 @@ const blogData = [
 	<j‰>2037 HRS</j‰>
 	<g‰>dejection, community, book</g‰>
 	<p‰>assets/travel-photos/photo-nc-us-32.jpeg</p‰>
-	<a‰>3g7v8gQ9PfY</a‰>
+	<a‰>https://www.youtube.com/watch?v=3g7v8gQ9PfY</a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
 	So I had my first week at work in this new position. I am afforded a spacious, solitary, solo office wherein I am free to focus 

@@ -582,7 +582,7 @@ nav {
 	/* outline: 0.5rem solid salmon; */
 	
 	font-family: "Permanent Marker";
-	font-size: 1rem;
+	font-size: 0.8rem;
 	user-select: none;
 	max-width: fit-content;
 	max-height: fit-content;
@@ -593,7 +593,7 @@ nav {
 }
 
 .rolyan-vertical {
-	left: 80%;
+	left: 38%;
 	max-height:fit-content;
 	max-width: max-content;
 	writing-mode: vertical-rl;
