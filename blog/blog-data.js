@@ -27,8 +27,7 @@ class BlogPost {
 		__________
 		<t‰>TITLE</t‰>
 		__________
-		</b‰>
-		`
+		</b‰>`
 	 */
 	constructor(id, author, date, location, time, title, body, tags, photos, audio) {
 		this.id = id;
@@ -1870,7 +1869,7 @@ const blogData = [
 	<j‰>2338 HRS</j‰>
 	<g‰></g‰>
 	<p‰></p‰>
-	<a‰>https://www.youtube.com/watch?v=0b-b9lO_7xk</a‰>
+	<a‰>https://www.youtube.com/watch?v=ranOCJbP93I</a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
 	Today was the day.<br>&emsp;
@@ -1941,7 +1940,7 @@ const blogData = [
 	,
 	
 	`
-	<d‰>March 15, 2026</d‰>
+	<d‰>March 15th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2037 HRS</j‰>
 	<g‰>dejection, community, book</g‰>
@@ -1997,6 +1996,59 @@ const blogData = [
 
 	</b‰>`
 	,
+	`
+		<d‰>March 22nd, 2026 </d‰>
+		<l‰>Pittsboro, NC</l‰>
+		<j‰>1000 HRS</j‰>
+		<g‰>venting</g‰>
+		<p‰>assets/travel-photos/photo-nc-us-34.jpeg</p‰>
+		<a‰>https://www.youtube.com/watch?v=sjpmizWJ_Ko</a‰>
+		<u‰>Chrispy</u‰>
+		<b‰>&emsp;
+		In reflection on the experience over the last few days, it seems as if I've forgotten the point of this whole career change, since
+		I have not been experiencing much to my favor. Though I have removed myself from heightened risk in switching to office work, 
+		I am still in proximity to potentially problematic residents, but it not just that; I also happen to be physically unlike everyone
+		in the hall and I sense unease. Never before had I entered a workplace feeling unwelcome. Most often I would enter a workspace and begin
+		speaking through diligent and fairly decent work, and rapport arises through that. Now, not only do I not share the domain of my work with
+		coworkers, I am unable to speak through my work since I am wholly novice in this field professionally and still learning the basics of
+		everything. The isolation in my single-cell adjacent office too had been starting to weigh in on me. I have yet to find some outlet.
+		In addition, my commute is so damned long and my pay is so damned little, and I'm accepting it all purposefully. 
+		I have to remind myself this is "for a better future" but it seems so not worth it. It's as if losing the uniform meant losing 
+		respect and value. I know it's not principally true, but it is felt, on and off. Once that budget hits, I'll be considering 
+		more than I ever thought possible the return to uniform. So many factors at play. I achieved this sunshine and I have little else.
+		I'm grateful to have one relatively local friend, but that's about it.
+		I'm getting older, and while time is moving slower I am more cognizant of it and its passage. I feel like I've been working this job for 
+		months; I have still yet to obtain my first meager check from the time put in.
+		I am more worrisome of money now than I have been in a long time, and headway will come very slowly without any overtime. 
+		I should consider a weekend job just to get by, but that defeats part of the purpose of my accepting this role.
+		I am almost entirely grounded here, now. I cannot entertain my world travel ideas within two years at least. 
+		I cannot entertain eating out or expending freely on minor improvements. To use leave would be more consuming of my quotas and 
+		at a far lesser value. What the heck. 
+		My having lacked effort in my previous relationship surges all despondancy stemming from feeling unwelcome, unwanted, and devalued;
+		its negative impact on my <t‰>life after uniform</t‰> is proving monumental.
+		<hr class="hr-cmbr-gradient">&emsp;
+		I am granted a little comfort in perceiving this period as a challenge I know I can overcome. Yet I wonder, for just how long must 
+		I keep this up? This does not feel sustainable. I cannot and will not relocate for this position to relieve the commute.
+		Then, each semester I must expend on further coursework, and then CPA licensure coursework, and then consume all of that time doing 
+		that sort of stuff, too. I am okay with little; I don't need much, and yet, this path entails such a sacrifice in its own right and 
+		I am seriously calling its eventual payoff into question. I do wonder if I should just return to custody and daggone use all that
+		nighttime shit to study. There is a gym near me that would work so much better; I should have just gone with it. I could have definitely
+		managed that. I should have put in more effort to restructure things before my leave, but then again, I wouldn't've felt compelled as I
+		was fairly complacent. I was pretty happy with life in the months surrounding my travel to Japan. I nowadays often imagine the possibility for 
+		things to go awry, such that the negative effects are lessened, and while true, they are, they're taking a present toll. 
+		I have to move forward with the aforementioned courage to be disliked and a plan that is conducive to optimizing this arrangement for lifestyle
+		on various fronts including financial, physical, emotional, spiritual, and social. To perceive this period as a challenge is good: I need 
+		this desperation to drive me into another personal reinvention I believe possible. 
+		<hr class="hr-cmbr-gradient">&emsp;
+		I had revisited a lovely spot in Chatham. It sports a pretty little lake wrapped by a well maintained path furnished on its sides with benches 
+		and area-descriptive signage. There I had found that one-piece black metal bench and table where plentiful food thingies were exchanged with my 
+		then hopeful. We definitely overpacked. Sandwiches, teas, passionfruit, and more. Riding the highs of the post-Japan adventure, I was sharing enthusiasm
+		for such an amazing experience in life we had separately. They shared enthusiasm for their other travels too and retained hope for a better
+		future that would highlight the beauty of life through meaningful experiences. I am challeged now to improve my practice and let it all go. 
+		It's ephemeral like all things.
+		It doesn't matter now. Nothing lasts forever. 
+		Hope is sometimes terrible, as is misplaced focus.
+		</b‰>`
 
 	
 ];
