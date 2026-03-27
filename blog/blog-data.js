@@ -2048,7 +2048,33 @@ const blogData = [
 		It's ephemeral like all things.
 		It doesn't matter now. Nothing lasts forever. 
 		Hope is sometimes terrible, as is misplaced focus.
-		</b‰>`
+		</b‰>`,
 
+		`
+		<d‰>March 26th, 2026</d‰>
+		<l‰>Pittsboro, NC</l‰>
+		<j‰>1945 HRS</j‰>
+		<g‰>career</g‰>
+		<p‰></p‰>
+		<a‰>https://www.youtube.com/watch?v=fXkyJR0gZV8</a‰>
+		<u‰>Chrispy</u‰>
+		<b‰>&emsp;
+		I really don't have the energy for this right now. 
+		I drive 10hrs on average per week nowadays. I get home, eat dinner, and maybe text around a little
+		to brighten things figuratively. 
+		Life brings so many twists and turns, much like my <t‰>alternatively-routed</t‰> drive back home.
+		I don't know what Apple Maps was thinking, but it took me on the toll road back home. 
+		And yet, I honestly don't mind having incurred the expense. 
+		It brought me some of the most gorgeous views this year: narrow landbridges and tiny islands to my left and right, the expanse
+		of lake Jordan beyond. Boats were skimming by, trailblaizers hiking along an isthmus. The water was glistening and the air was fresh,
+		and in the foliage was a delightful mix of spring pastel and long-leaf evergreen. 
+		<hr class="hr-cmbr-gradient">&emsp;
+	 	I've taken some solace in texting a new friend who shares a semblance of my own history with close company.
+		Given my recent dislike for excess computer-time, giving that friendship proper attention is gladly coming easily.
+		Though, I can't help but shake the thoughts that my free time is moreso compromised with this career pivot than before. 
+		But no, I'm not going to give up just yet. I've taken the plunge, and I'm going to swim. Surely there will be some 
+		delightful island onto which I'd emerge by the end of this, before likely taking some other plunge again as a future self.
+		
+		</b‰>`,
 	
-];
+]	;
