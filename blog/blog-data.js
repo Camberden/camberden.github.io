@@ -430,7 +430,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	I'm struggling to <t‰>sleep again</t‰>. I am displeased with how frequently this happens.
 	I have lacked routine ever since I have come here, and I do blame myself, mostly.
 	I need to drastically cut down on my caffeine intake, for good. I am making this a 
@@ -455,7 +455,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>emsp;
 	It's a new year, and though the common greeting is "Happy" New Year, its happy quality is to-be-determined.
 	That isn't to say that I'm not optimistic: I'm beyond grateful for my current situation and am still working to create a 
 	routine here at my new place conducive to fostering those good habits and dropping those bad habits. So far, though, I've been
@@ -495,7 +495,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	emsp;
 	Here's to the weekend! Three days off, mostly been productive on programming and language learning.
 	I just learned that for setting classes dynamically, I should <code>setAttribute</code> first for specific cases that require
 	a local scope variable in the class name, and then apply <code>classList.add()</code> afterwards for classes without
@@ -538,7 +538,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	emsp;
 	I've been distressed somewhat over the potential for an upcoming "promotion" which wouldn't serve to afford me more
 	income, but rather just a defined role and location assignment. I've weighed pros and cons: of course, I would have
 	more immediate access to my personal endeavors while completing tasks I know I could likely handle well. I do have
@@ -595,7 +595,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	Alright, it's March and things are heating up (gladly). I hit a tree, but no worry; things are being handled.
 	I often advised to give myself grace amid my minor failings. The relevant worry is that I feel I may grant myself
 	such grace in excess. I am told that I am handling plenty tasks and am making decent measurable progress, especially relevant
@@ -634,7 +634,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	emsp;
 	My dear car had passed away. On a foggy, rainy, and dark morning, I had stricken a pulpy tree that had covered
 	the entire road. I braked as much as I could, and collided head-on, incuring damage to the fascia, engine filter, 
 	fog lights, and a wheel. Gladly, she was resilent. She powered onward and took me home without any alarms or
@@ -672,7 +672,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	emsp;
 	Heading onward through March. I'm a bit dishearted to learn the return flight hadn't happened, but I can accept
 	this reality and put it behind me. Tonight is my first day off in five days and I told myself to simply unwind.
 	I suppose I'm doing just that. I've been talking to some new folks and it's been pleasant, though I can't help
@@ -694,7 +694,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	emsp;
 	I've on occassion been overwhelmed with work and school. Not only was work involving a lot more activity to include
 	training of multiple people simultaneously, but also my schoolwork was technically dense with many assignments. 
 	I prevailed, gladly. I'm glad again that I hadn't checked off earlier in the semester, and that I hadn't made 
@@ -728,7 +728,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>	
-	<b‰>
+	&emsp;
 	Often times I wonder if it is sensible for someone like myself to be investing much time into technology endeavors.
 	Technology is advancing to the point that many are living in a hyper-reality where real-world experiences lose or have
 	lost their lustre. This is inline with sociological work pre-dating social media that predicted decline in appreciation
@@ -774,7 +774,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	So, I just wrapped up my first intermediate accounting course. I'm tired, but certainly feeling somewhat at ease knowing that it won't be
 	looming over me anymore. Though I have been enjoying a week off from work, the pressure to get through the content had been routinely bothersome.
 	In any case, here I am, and I'm grateful to have achieved more progress. I'll likely sleep in a moment. 
@@ -797,7 +797,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>	
-	<b‰>
+	<b‰>&emsp;
 	Look at me, starting my off day at the same time I'd start an on day. Honestly I'm glad.
 	I've been yearning for more time for personal attention badly over the last couple of days.
 	<hr>&emsp;
@@ -824,7 +824,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	I went to meet the group with which I would travel abroad. I had a decent time and definitely had a bit of a nostalgia trip
 	seeing N64 Mario Party on the screen at the game store. Sigh. I would say I'm excited for what's ahead, but I'm mellow.
 	Pretty mellow. I think I need more sleep; I really cut it short trying to make it at a decent time. 
@@ -842,7 +842,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	My Japan trip class has begun and the online content to be finished before the trip is dense but relatively simple. 
 	I've been powering through it while balancing my time with language studies and programming. Gladly during these many off days,
 	my discipline had rearisen and I'm living as I should, making progress in ways meaningful to me. I really cannot understate just
@@ -883,7 +883,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	It's June, and much like around this time last year, I'll begin by attempting a radical push for some changes.
 	I consistently tell myself that I fall short on certain lifestyle goals. I've been giving myself too much "grace" it seems.
 	I will execute this push for this month until my trip to Japan. I can deliver, of course. 
@@ -948,7 +948,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>	
-	<b‰>
+	<b‰>&emsp;
 	I can envision the better self. It comes down to intentionality.
 	Having re-read some part of Suzuki's main work, I am reminded of that subtle call to do what is right.
 	Following up on that subtle call is part of practice. 
@@ -1000,7 +1000,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	I sit here an hour before routing to the airport.
 	I have plenty upon which to reflect, and will garner so much more so very soon:
 	<ul>
@@ -1037,7 +1037,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>	
-	<b‰>
+	<b‰>&emsp;
 	This has surely been an adventure.
 	I am making this update on a Tokyo-bound Shinkansen. The countryside, with its towns, mountains,
 	and rice paddies, are passing by at incredible speeds. Right now, I had a view of the Ise Bay.
@@ -1067,7 +1067,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>	
-	<b‰>
+	<b‰>&emsp;
 	I returned from Japan. There is very much for me to process yet. 
 	It's refreshing to know that during my nighttime life here, there is so much life being lived actively under the sun,
 	in another world on the same planet. Though it's an obvious thing, having lived in that other world is profound.
@@ -1106,7 +1106,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	So I'm still really obsessed with digesting findings on the Mountain is Mountain, Water is Water thing, and delved further into historical orthography.
 	I'm surprised that the "wa" particle is omitted in 「山是山、水是水」, which would be "yama wa kore yama; mizu wa kore mizu." It seems that some particles 
 	were implicit in older Japanese, and I am continuing to investigate this. Along the way, I've learned more of Kana itself:
@@ -1158,7 +1158,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	Certainly feeling a bit relieved to know that the bulk of writing and reflection is done for the study abroad class. I spent most of this 
 	off weekend exploring Raleigh, dabbling with new feelings, and getting a sense for a new life ahead. What's true is that I'm continuing 
 	my pursuit of career change despite many of the comforts afforded to me in the present. I must ask myself, would I feel content in jumping ship
@@ -1229,7 +1229,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	So I'm thinking of foreign residencies and todos on this site again. Been delving into the histories of the immigration issue in Japan
 	and the demarkation lines of southern South American nations.
 	<hr> &emsp;
@@ -1257,7 +1257,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	Today marks five years of having been in the Carolinas as a resident.
 	I once again returned to the Grand Strand, a spot I'd visit randomly since 2020, and this time meeting with some family; it's also my first time here on-season.
 	It's definitely a bit busier, warmer, and active with businesses open later than I remember. At least I will have liberty
@@ -1291,7 +1291,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	So today I am <t‰>vested</t‰> and bear more leverage in my career. My feet are not only in the door but also settled inside the space.
 	I hit my five years. During my time here in 2020, when I was newly trained, I wouldn't've thought that I would endure this
 	role for as long as I had. Yet, I did. I am grateful. It's a strange feeling, knowing that I came here near the beginning of 
@@ -1310,7 +1310,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	For whatever reason, possibly from my disillusionment with travel right now, I've been immersing in my Minecraft world again, and 
 	frankly its been to my detriment. My time in game is just floating around and assessing landscape damage and thinking of fixes 
 	rather than actually building anything or playing anything. Over this weekend, I taught myself the Amulet & Worldedit mods, and revisted 
@@ -1329,7 +1329,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	Time is going by very quickly. Work duties have seemed to increase in demand. School duties too have seemed to increase 
 	in demand. For the first time in a while I recall coming home and immediately crashing. Currently, Black Mirror is playing
 	on the television here, and I'm seeing this episode's protagonist flip through his calendar on which he marked increasingly
@@ -1357,7 +1357,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	The working hours have been coming along easily. My free time has been passing by quickly as I've been highly
 	engaged with my coursework which has taken quite a difficult turn. Yesterday, I had put in 12 HRS</j‰>
 	<g‰></g‰>
@@ -1382,7 +1382,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	This October had been the best month for advancing my accounting skillset. Not only had I spent the majority of my off time working relentlessly
 	on completing my coursework, I've been seeking practice beyond what my class provides and lately had my first interview for an accounting related
 	position. Though I'm hopeful for a positive outcome, I mustn't allow myself to grow dejected over a possible rejection, if that would end up being
@@ -1413,7 +1413,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	The lamp beside me emits a light at such an angle that I feel distressed. I will turn it off, and power on the portable mushroom-lamp.
 	Portabella lamp. Heh. Well now, as I lie here, I'm pent up with unsorted thoughts and felt the call to write something here.
 	I'll expound on paper later. I'll start by listing some things of import lately:
@@ -1467,7 +1467,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	It seems heading back to work had relieved some of the uneasiness of my situation, even though
 	workplace concerns remain. I am pressured to care less, it seems. I keep attempting to rationalize
 	my additional efforts but it seems for naught and as a result I am driving myself crazy.
@@ -1500,7 +1500,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	Well, I'm nearly finished with my course now. It seems I'm healthily on track for the A. Good. Even though that's the case,
 	I can't shake my addiction to programming right now. I've had an excellent pace in learning PHP full-stack and already have something
 	that functions decently from end-to-end for once. I had to do some very hard digging around to configure and maintain the homebrew-spawned
@@ -1543,7 +1543,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	The year is about to end, and I'll be heading to Raleigh again.
 	It's been replete with progress, through shaky concerning balance.
 	The seasons of life during the year were varied and wholly consuming of my focus.
@@ -1560,7 +1560,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	Happy 2026. So, it took hitting a relative low point to conjure up the figurative fire beneath me and drive me
 	to action in ridding vices and establishing better balance and habits. The 18th of this month marks that important
 	day when I felt a certain anger I hadn't in years. Much as I've said times before, there's a very positive angle to
@@ -1592,7 +1592,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	I'd've said that I'm killing this hobby. Today. I've now surfaced a deep resentment for it.
 	I may stop by to blog here and there, but that's about all.
 	I'll use my learning platforms separately.
@@ -1663,7 +1663,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>
+	<b‰>&emsp;
 	It's that superstitious <t‰>Friday the 13th</t‰>. Hasn't ever meant much to me, but it's neat how days with some meaning are coinciding: Half-year anniversary
 	on the 10th, A personal holiday on the 10th, a loss of a relationship on the 11th, and dropping this hobby on the 12th. Then of course, Valentine's Day.
 	I've never been one to attribute much to that one, but heck, it did burn for a while knowing that I was ousted right before then. But it was deserved. 
@@ -2042,12 +2042,11 @@ const blogData = [
 		<hr class="hr-cmbr-gradient">&emsp;
 		I had revisited a lovely spot in Chatham. It sports a pretty little lake wrapped by a well maintained path furnished on its sides with benches 
 		and area-descriptive signage. There I had found that one-piece black metal bench and table where plentiful food thingies were exchanged with my 
-		then hopeful. We definitely overpacked. Sandwiches, teas, passionfruit, and more. Riding the highs of the post-Japan adventure, I was sharing enthusiasm
-		for such an amazing experience in life we had separately. They shared enthusiasm for their other travels too and retained hope for a better
-		future that would highlight the beauty of life through meaningful experiences. I am challeged now to improve my practice and let it all go. 
+		then hopeful. We definitely overpacked. The sandwiches and passionfruit were nice. I am challeged now to improve my practice and let it all go. 
 		It's ephemeral like all things.
 		It doesn't matter now. Nothing lasts forever. 
 		Hope is sometimes terrible, as is misplaced focus.
+
 		</b‰>`,
 
 		`
@@ -2055,7 +2054,7 @@ const blogData = [
 		<l‰>Pittsboro, NC</l‰>
 		<j‰>1945 HRS</j‰>
 		<g‰>career</g‰>
-		<p‰></p‰>
+		<p‰>assets/travel-photos/photo-nc-us-35.jpeg</p‰>
 		<a‰>https://www.youtube.com/watch?v=fXkyJR0gZV8</a‰>
 		<u‰>Chrispy</u‰>
 		<b‰>&emsp;
@@ -2066,15 +2065,63 @@ const blogData = [
 		I don't know what Apple Maps was thinking, but it took me on the toll road back home. 
 		And yet, I honestly don't mind having incurred the expense. 
 		It brought me some of the most gorgeous views this year: narrow landbridges and tiny islands to my left and right, the expanse
-		of lake Jordan beyond. Boats were skimming by, trailblaizers hiking along an isthmus. The water was glistening and the air was fresh,
+		of Lake Jordan beyond. Boats were skimming by, trailblaizers hiking along an isthmus. The water was glistening and the air was fresh,
 		and in the foliage was a delightful mix of spring pastel and long-leaf evergreen. 
 		<hr class="hr-cmbr-gradient">&emsp;
 	 	I've taken some solace in texting a new friend who shares a semblance of my own history with close company.
-		Given my recent dislike for excess computer-time, giving that friendship proper attention is gladly coming easily.
+		Given my recent dislike for excess computer-time, giving that new connection proper attention is gladly coming easily.
 		Though, I can't help but shake the thoughts that my free time is moreso compromised with this career pivot than before. 
 		But no, I'm not going to give up just yet. I've taken the plunge, and I'm going to swim. Surely there will be some 
 		delightful island onto which I'd emerge by the end of this, before likely taking some other plunge again as a future self.
 		
 		</b‰>`,
+
+		`
+		<d‰>March 29th, 2026</d‰>
+		<l‰>Pittsboro, NC</l‰>
+		<j‰>0236 HRS</j‰>
+		<g‰>adventure</g‰>
+		<p‰>assets/travel-photos/photo-nc-us-38.jpeg</p‰>
+		<a‰>https://www.youtube.com/watch?v=9rp2YuHWMho</a‰>
+		<u‰>Chrispy</u‰>
+		<b‰>&emsp;
+		I closed out another week.
+		It was rough on me at the start, but it improved some.
+		I completed plentiful tasks and already see my flowstate starting to activate.
+		<hr class="hr-cmbr-gradient">&emsp;
+		In my previous entry, I briefly wrote of a beautiful area along Lake Jordan, and this morning I took myself to that tiny access point
+		and proceeded to explore freely. The morning was fairly cold and the wind was consistently moderate. I decked myself out in my parka and
+		gloves, backpack equipped, and gazed outward to the water and landscapes cradling it. My parking spot was essentially on a cliff which made
+		for a dramatic outset. I'd soon discover that the pine-laden paths along the shoreline would vary considerably in elevation, adding a welcome
+		need for exertion I've been craving.
+		Former campsites were encountered occassionally, with stones configured as seats, ash and charcoal remains at the circles, some trash astrewn.
+		Proceeding through the aforementioned isthmus, I felt as if along the fine line between peace and choas: calm, gentle waters nestled by the ithsmus
+		and landbridge; steady, rowdy waves crashing ashore from the expansive lake proper. 
+		Ahead was a grove sporting taller pines wearing myriad purple wisterias and a miniscule lagoon from which short bald cypress emerge.
+		After exploring that spot, I headed back to the outset overlook and proceeded in the other direction to hike the trails along the slopped and 
+		craggy shoreline. The wind beat upon me heavily and I was glad to have had multiple layers; the pines did not suffice for coverage, and neither did
+		nestling along a rockface away from the wind direction. All morning it seemed <t‰>the winds and waters</t‰> were destined to ride together and barrage this
+		entire zone. No, it was not discomforting but rather enlivening! I discovered that each line of trail had been connecting a series of small, furnished
+		wooden seating areas. I encountered four before returning half-way back and deploying my folding chair, taking a seat along a thick pine, 
+		and reading a chapter in the book I have yet to finish. 
+		<hr class="hr-cmbr-gradient">&emsp;
+		During my return to the outset overlook, I encountered a yellow flower that reminded me distinctly of my childhood backyard. In fact, it was that flower:
+		the Forsythia. I collected a loose one along the path, and returned to my vehicle. I dropped of my bag and my chair, and, desiring not to end this moment,
+		headed back down to the wisterias and bald cyprus. I collected a wisteria petal, and felt compelled to collect trash with discarded bags I found lying around at the
+		waterside. Winding through, bending and collecting cans and assorted rubbish, passed through the isthmus where I seemed to have a crowed of tiny, 
+		black birds chattering profusely in the nearby trees, many of which laid their eyes on me with curious intention. I couldn't help but smile and wave.
+		Picking up the next piece of trash ahead, they suddenly departed en masse. Heh, it's either they really, really wanted that piece removed, or I 
+		completed some side quest with which they implicitly tasked me. Either way, there was a simple joy to the moment then and there. I meandered up the hill
+		to the overlook, three full bags in hand, and upon arrival, discarded them in the middle trash can at the entry signage. Behind my vehicle and beside the cliff
+		was a small thicket with leaves of a reddish hue at the forefront of the expanse. I collected one leaf, undressed my thicker layers, packed them in the trunk,
+		and concluded the moment. The sun at this point was raising ambient temperatures to a cozy cool for short sleeves. I knocked out some chores and arrived home,
+		documenting and learning of the encounters. The reddish leaf was merely an infantile red oak leaf whose tough texture and jagged edges hadn't lead me to conclude such.
+		It was only a bit over three hours of journeying, but it felt like a whole day. I'm excited to do something akin to this again.
+		<hr class="hr-cmbr-gradient">&emsp;
+		I spent few hours of the night continuing my chat with my new friend. It's such a relief to communicate with someone with whom inhibitions are at a minimum
+		and transparency is near fluent. Exploring deeper things beyond the superficial is proving enjoyable; I could comfortably claim that our contact and the 
+		circumstances around it are meaningful. I likely would not have taken this journey if not for the inspiration.
+
+		</b‰>`
 	
 ]	;

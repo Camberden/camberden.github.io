@@ -13,7 +13,7 @@ const mapSymbol = document.getElementById("map-symbol");
 const globeEmojis = ["🌎","🌍","🌏"];
 const worldMap = document.getElementById("world-map");
 const usMap = document.getElementById("us-map");
-const expansiveMap = document.getElementById("expansive-map");
+// const expansiveMap = document.getElementById("expansive-map");
 const notesPanel = document.getElementById("notes-panel");
 const varietyPanel = document.getElementById("variety-panel");
 let currentMap = "world-map";
@@ -64,10 +64,10 @@ function cyclePoliticalDivision(selection) {
 			visitedTotal.innerHTML = visitedStates.length;
 			mapSymbol.innerHTML = "🇺🇸";
 		break;
-		case "expansive-map":
-			mapHighlightButtons.forEach(b => b.style.display = "none");
-			mapSymbol.innerHTML = `<i>🧭🗺️ Browsing Expansive Map! <span id="spinning-globes"><span></i>`;
-			globeEmojiSpin();
+		// case "expansive-map":
+		// 	mapHighlightButtons.forEach(b => b.style.display = "none");
+		// 	mapSymbol.innerHTML = `<i>🧭🗺️ Browsing Expansive Map! <span id="spinning-globes"><span></i>`;
+		// 	globeEmojiSpin();
 
 		default:
 			politicalDivision.innerHTML = "Regions Visited Online:&emsp;";
@@ -266,12 +266,12 @@ function displayNotes(selection, map) {
 					modalText.innerHTML = state.notes;
 				}
 			}
-		case "expansive-map":
-			for (let country of countryInformation) {
-				if (country.id === selection) {
-					notesPanel.innerHTML = country.notes;
-				}
-			}
+		// case "expansive-map":
+		// 	for (let country of countryInformation) {
+		// 		if (country.id === selection) {
+		// 			notesPanel.innerHTML = country.notes;
+		// 		}
+		// 	}
 			break;
 		default:
 			console.log("Note Display Function Triggered");
@@ -330,7 +330,7 @@ function viewExpansiveMap() {
 	highlightVisitedCountries();
 	highlightVisitedStates();
 	enableMapHighlightButtons();
-	viewExpansiveMap();
+	// viewExpansiveMap();
 	CMBRutil.navigationCharter();
 
 })();

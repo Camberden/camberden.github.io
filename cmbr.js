@@ -16,7 +16,7 @@
  */
 const sections = [
 	["homepage", "Homepage ↺"],
-	["dashboard", "Personal Dashboard"],
+	// ["dashboard", "Personal Dashboard"],
 	// ["workspace", "Coding Workspace"],
 	// ["depository", "HTMX & Alpine Depot"],
 	["blog", "Blogging Page"],
