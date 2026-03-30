@@ -1,5 +1,7 @@
 const modalTitle = document.getElementById("modal-title");
 const modalText = document.getElementById("modal-text");
+const travelNotesTitle = document.getElementById("travel-notes-title");
+const travelNotesField = document.getElementById("travel-notes-field");
 const modal = document.querySelector(".modal");
 const closeModal = document.getElementsByClassName("close-modal")[0];
 
@@ -55,7 +57,8 @@ function cyclePoliticalDivision(selection) {
 			mapHighlightButtons.forEach(b => b.style.display = "inline");
 			politicalDivision.innerHTML = "Countries Visited:&emsp;";
 			visitedTotal.innerHTML = visitedCountries.length;
-			mapSymbol.innerHTML = "🌎";
+			mapSymbol.innerHTML = `<span id="spinning-globes"><span>`;
+			globeEmojiSpin();
 
 		break;
 		case "us-map":
@@ -86,45 +89,19 @@ function highlightVisitedCountries() {
 		let c = worldMap.querySelector("#" + country);
 		c.classList.add("visited");
 		c.onclick = function () {
-			console.log("modal activation test");
 			displayNotes(country, "world-map");
-			modal.style.display = "block";
 		};
-		closeModal.onclick = function () {
-			clearModal();
-			modal.style.display = "none";
-		};
-		window.onclick = function (event) {
-			if (event.target === modal) {
-				modal.style.display = "none";
-				clearModal();
-			}
-		}
 	});
 }
 
-// FOR INITIALIZATION
-// TODO: possibly remove for loadMapHighlight(var) Consolidation
 function highlightVisitedStates() {
 	visitedStates.forEach(state => {
 		let s = usMap.querySelector("#" + state);
 		s.classList.add("visited");
 		s.onclick = function () {
-			console.log("modal activation test");
 			displayNotes(state, "us-map");
-			modal.style.display = "block";
 	
 		};
-		closeModal.onclick = function () {
-			clearModal();
-			modal.style.display = "none";
-		};
-		window.onclick = function (event) {
-			if (event.target === modal) {
-				modal.style.display = "none";
-				clearModal();
-			}
-		}
 	});
 }
 
@@ -148,21 +125,9 @@ function loadMapHighlight(selection) {
 				let d = mapToHighlight.querySelector("#" + division);
 				d.classList.add("to-visit");
 				d.onclick = function () {
-					console.log("modal activation test");
 					displayNotes(division, currentMap);
-					modal.style.display = "block";
 			
 				};
-				closeModal.onclick = function () {
-					clearModal();
-					modal.style.display = "none";
-				};
-				window.onclick = function (event) {
-					if (event.target === modal) {
-						modal.style.display = "none";
-						clearModal();
-					}
-				}
 			});
 			break;
 		case "to-retire":
@@ -170,22 +135,12 @@ function loadMapHighlight(selection) {
 				let d = mapToHighlight.querySelector("#" + division);
 				d.classList.add("to-retire");
 				d.onclick = function () {
-					console.log("modal activation test");
 					displayNotes(division, currentMap);
-					modal.style.display = "block";
-			
 				};
-				closeModal.onclick = function () {
-					clearModal();
-					modal.style.display = "none";
-				};
-				window.onclick = function (event) {
-					if (event.target === modal) {
-						modal.style.display = "none";
-						clearModal();
-					}
-				}
 			});
+		break;
+		default:
+			console.info();
 		break;
 	}
 }
@@ -251,19 +206,16 @@ function displayNotes(selection, map) {
 		case "world-map":
 			for (let country of countryInformation) {
 				if (country.id === selection) {
-					modalTitle.textContent = country.name;
-					modalText.innerHTML = country.notes;
-					// document.getElementById("svg-input").innerHTML = displaySVGwithinNotes("state", "US-PA");
-					// let shape = document.querySelector("svg#us-map-inline");
-					// parseSVG(shape);
+					travelNotesTitle.textContent = country.name;
+					travelNotesField.innerHTML = country.notes;
 				}
 			}
 			break;
 		case "us-map":
 			for (let state of usStateInformation) {
 				if (state.id === selection) {
-					modalTitle.textContent = state.name;
-					modalText.innerHTML = state.notes;
+					travelNotesTitle.textContent = state.name;
+					travelNotesField.innerHTML = state.notes;
 				}
 			}
 		// case "expansive-map":
@@ -289,6 +241,9 @@ function globeEmojiSpin() {
 	}, 1000);
 }
 
+/**
+ * @deprecated
+ */
 function viewExpansiveMap() {
 	const map = L.map("expansive-map").setView([35.91029565048358, -79.0553474519402], 2);
 

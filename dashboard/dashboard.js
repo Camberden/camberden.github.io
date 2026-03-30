@@ -582,6 +582,81 @@ function enablePensionButtons() {
 	});
 }
 
+// ---------- DEPOSITORY ---------- //
+
+/**
+ * @param content
+ * Gathers text within a note's content between custom permille tags such as `<t‰></t‰>`.
+ * @param tag
+ * The tag name without decorators, such as `t` for `<t‰></t‰>`.
+ * @satisfies {NotesRegistry} a registered info note
+ * @returns
+ */
+function parsePermilleTags(content, tag) {
+	const perMilleTags = ["t","b","g","p","a","l"];
+	const l = tag.length + 3;
+	return content.substring(content.indexOf("<" + tag + "‰>") + l, content.indexOf("</" + tag + "‰>"));
+};
+/**
+ * 
+ * @param {String[]} data 
+ */
+function initDepoData(notes) {
+	/**
+	 * @param {String} note
+	 * @param {String[]} notes
+	 */
+	for (let note of notes) {
+	const infoNote = new NotesRegistry();
+	// |=====| PARSE TEXT INPUT |=====| //
+	infoNote.id = (notes.indexOf(note) + 1);
+	infoNote.author = parsePermilleTags(note, "u");
+	
+	infoNote.title = parsePermilleTags(note, "t");
+	infoNote.body = parsePermilleTags(note, "b");
+	const preParsedDepoTags = parsePermilleTags(note, "g");
+	infoNote.tags = preParsedDepoTags.split(", ");
+	infoNote.photos = parsePermilleTags(note, "p");
+	infoNote.audio = parsePermilleTags(note, "a");
+	// const videoIdFromUrl = parsePermilleTags(note, "a").split("v=")[1];
+	// infoNote.audio = videoIdFromUrl;
+	// |=====| LIST GENERATION |=====| //
+	infoNotes.push(infoNote);
+	};
+};
+
+/**
+ * @param {NotesRegistry[]} registry or another permille-based object.
+ * @param {String} query 
+ * @param {String} filterBy 
+ */
+function queryDepoData(registry, query, filterBy) {
+	const depository = document.getElementById("depository");
+	switch (filterBy) {
+		case "tags":
+			registry.forEach(note => {
+				console.log(note.tags);
+				if (note.tags.includes(query)) {
+					const noteTitle = document.createElement("div");
+					const noteBody = document.createElement("div");
+					const noteTags = document.createElement("div");
+					const txtTitle = document.createTextNode(note.title);
+					const txtBody = document.createTextNode(note.body);
+					const txtTags = document.createTextNode(note.tags);
+					depository.appendChild(noteTitle.appendChild(txtTitle));
+					depository.appendChild(noteBody.appendChild(txtBody));
+					depository.appendChild(noteTags.appendChild(txtTags));
+				}
+			});
+		break;
+		case "input":
+			console.log("wip");
+		break;
+		default:
+			console.log("pending");
+		break;
+		}
+}
 // ---------- MODAL ---------- //
 
 function cpaModalAccess() {
@@ -790,5 +865,8 @@ function dashboardModalAccess() {
 	generatePensionTable();
 	enablePensionButtons();
 	dashboardModalAccess();
+
+	initDepoData(noteData);
+	queryDepoData(infoNotes, "philosophy", "tags");
 
 })();

@@ -314,6 +314,22 @@ input[type=text]:focus {
 	width: 100%;
 }
 
+/* ----- DEPOSITORY ----- */
+
+#depository {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+}
+
+.note-data {
+	display: contents;
+	border-bottom: 1px solid cadetblue;
+	border-right: 1px solid cadetblue;
+}
+
+
+
+
 /* ----- MEDIA QUERIES ---- */
 
 @media screen and (max-width: 750px) {

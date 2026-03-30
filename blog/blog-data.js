@@ -2098,7 +2098,7 @@ const blogData = [
 		Proceeding through the aforementioned isthmus, I felt as if along the fine line between peace and choas: calm, gentle waters nestled by the ithsmus
 		and landbridge; steady, rowdy waves crashing ashore from the expansive lake proper. 
 		Ahead was a grove sporting taller pines wearing myriad purple wisterias and a miniscule lagoon from which short bald cypress emerge.
-		After exploring that spot, I headed back to the outset overlook and proceeded in the other direction to hike the trails along the slopped and 
+		After exploring that spot, I headed back to the outset overlook and proceeded in the other direction to hike the trails along the sloped and 
 		craggy shoreline. The wind beat upon me heavily and I was glad to have had multiple layers; the pines did not suffice for coverage, and neither did
 		nestling along a rockface away from the wind direction. All morning it seemed <t‰>the winds and waters</t‰> were destined to ride together and barrage this
 		entire zone. No, it was not discomforting but rather enlivening! I discovered that each line of trail had been connecting a series of small, furnished
@@ -2118,8 +2118,8 @@ const blogData = [
 		documenting and learning of the encounters. The reddish leaf was merely an infantile red oak leaf whose tough texture and jagged edges hadn't lead me to conclude such.
 		It was only a bit over three hours of journeying, but it felt like a whole day. I'm excited to do something akin to this again.
 		<hr class="hr-cmbr-gradient">&emsp;
-		I spent few hours of the night continuing my chat with my new friend. It's such a relief to communicate with someone with whom inhibitions are at a minimum
-		and transparency is near fluent. Exploring deeper things beyond the superficial is proving enjoyable; I could comfortably claim that our contact and the 
+		I spent few hours of the night continuing my chat with my new friend. It's such a relief to communicate with someone with whom inhibitions hastily decreasing
+		and trust is steadily forming. Exploring deeper things beyond the superficial is proving enjoyable; I could comfortably claim that our contact and the 
 		circumstances around it are meaningful. I likely would not have taken this journey if not for the inspiration.
 
 		</b‰>`

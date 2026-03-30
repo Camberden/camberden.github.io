@@ -21,7 +21,7 @@ class DivisionInformation {
 const countryInformation = [
 	// ----- NORTH AMERICA ----- //
 	unitedStates = new DivisionInformation("US", "United States of America",`
-		<h3>Birthplace and Home</h3>
+		<h3>Birthplace and Home</h3><hr class="hr-cmbr-gradient">
 		<p>I spent considerable time in Pennsylvania, the northern state where I was born.
 		Extended visits and my first career took me to New Jersey and New York.
 		During my anticipated career change into technology, I headed to West Virginia and Virginia.

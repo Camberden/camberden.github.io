@@ -11,6 +11,7 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 	<script src="../htmx.js"></script>
 	<script src="../cmbr.js"></script>
+	<script src="../depository/notes-data.js"></script>
 	<title>Chrispy's Dashboard</title>
 </head>
 
@@ -364,11 +365,54 @@
 					<span id="pension-notice"></span>
 					</p>
 				</div>
-				<div class="trigger-box pension-buttons">GeneratePension</div>
+				<div class="trigger-box pension-buttons">Generate Pension</div>
 
 			</div>
 			
 
+		</div>
+
+		<div id="dashboard-depository" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Info Depository</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div class="grid-col-1-1">
+				<div>
+					<h5 class="vt323">By Tag</h5>
+					<select id="depository-tag-select">
+						<option>None Selected</option>
+					</select>
+				</div>
+				<div>
+					<h5 class="vt323">By Note</h5>
+					<div id="depository-note-search">
+						<input class="form-control" type="search"
+							name="search" placeholder="Search Notes..."
+							hx-post="notes-data"
+							hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
+							hx-target="#depository" hx-swap="innerHTML">
+					</div>
+				</div>
+			</div>
+
+			<div id="dashboard-note-table" class="flex-table">
+				<div class="flex-table-header grid-col-1-3-1">
+					<div>Note</div>
+					<div>Info</div>
+					<div>Tags</div>
+				</div>
+				<div id="depository">
+					<!-- <div>|=====|</div>
+					<div>|=====| No Result |=====|</div>
+					<div>|=====|</div>
+					<div>Impermanence</div>
+					<div>The concept that nothing lasts forever. Do not attach to the expectation for anything to remain.
+						Positive expectation may arise negative experience; negative expectation may arise positive experience.
+					</div>
+					<div>philosophy</div> -->
+				</div>
+			</div>
 		</div>
 
 		<div id="dashboard-career-insight" class="dashboard-item">
