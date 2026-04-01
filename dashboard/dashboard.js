@@ -597,6 +597,7 @@ function parsePermilleTags(content, tag) {
 	const l = tag.length + 3;
 	return content.substring(content.indexOf("<" + tag + "‰>") + l, content.indexOf("</" + tag + "‰>"));
 };
+const depoTags = [];
 /**
  * 
  * @param {String[]} data 
@@ -611,43 +612,66 @@ function initDepoData(notes) {
 	// |=====| PARSE TEXT INPUT |=====| //
 	infoNote.id = (notes.indexOf(note) + 1);
 	infoNote.author = parsePermilleTags(note, "u");
-	
 	infoNote.title = parsePermilleTags(note, "t");
 	infoNote.body = parsePermilleTags(note, "b");
 	const preParsedDepoTags = parsePermilleTags(note, "g");
 	infoNote.tags = preParsedDepoTags.split(", ");
+	console.table(infoNote.tags);
+	infoNote.tags.forEach(tag => {if (!depoTags.includes(tag)) {depoTags.push(tag); }});
 	infoNote.photos = parsePermilleTags(note, "p");
 	infoNote.audio = parsePermilleTags(note, "a");
 	// const videoIdFromUrl = parsePermilleTags(note, "a").split("v=")[1];
 	// infoNote.audio = videoIdFromUrl;
-	// |=====| LIST GENERATION |=====| //
 	infoNotes.push(infoNote);
 	};
 };
 
+let results = 10;
+const depository = document.getElementById("depository");
+/**
+ * 
+ * @param {NotesRegistry} registeredNote
+ */
+function displayDepoData(registeredNote) {
+	const noteTitle = document.createElement("div");
+	const noteBody = document.createElement("div");
+	const noteTags = document.createElement("div");
+	const txtTitle = document.createTextNode(registeredNote.title);
+	const txtBody = document.createTextNode(registeredNote.body);
+	const txtTags = document.createTextNode(registeredNote.tags);
+	noteTitle.appendChild(txtTitle);
+	noteBody.appendChild(txtBody);
+	noteTags.appendChild(txtTags);
+	depository.appendChild(noteTitle);
+	depository.appendChild(noteBody);
+	depository.appendChild(noteTags);
+}
+
 /**
  * @param {NotesRegistry[]} registry or another permille-based object.
- * @param {String} query 
- * @param {String} filterBy 
+ * @param {String} query input
+ * @param {String} filterBy "title" | "body" | "tags"
  */
 function queryDepoData(registry, query, filterBy) {
-	const depository = document.getElementById("depository");
+	let c = 0;
 	switch (filterBy) {
 		case "tags":
-			registry.forEach(note => {
-				console.log(note.tags);
-				if (note.tags.includes(query)) {
-					const noteTitle = document.createElement("div");
-					const noteBody = document.createElement("div");
-					const noteTags = document.createElement("div");
-					const txtTitle = document.createTextNode(note.title);
-					const txtBody = document.createTextNode(note.body);
-					const txtTags = document.createTextNode(note.tags);
-					depository.appendChild(noteTitle.appendChild(txtTitle));
-					depository.appendChild(noteBody.appendChild(txtBody));
-					depository.appendChild(noteTags.appendChild(txtTags));
+			refreshNotes();
+			if (query === "all") {
+				while (c < results) {
+				for (let note of registry) {
+					displayDepoData(note);
+					c++;
 				}
-			});
+					break;
+				}
+			}
+			for (let note of registry) {
+				if (note.tags.includes(query) && c < results) {
+					displayDepoData(note);
+					c++;
+				} 
+			}
 		break;
 		case "input":
 			console.log("wip");
@@ -656,6 +680,35 @@ function queryDepoData(registry, query, filterBy) {
 			console.log("pending");
 		break;
 		}
+}
+
+function enableDepoTools() {
+
+	const tagSelect = document.getElementById("depository-tag-select");
+	depoTags.forEach(tag => {
+		const text = document.createTextNode(tag);
+		const option = document.createElement("option");
+		option.setAttribute("value", tag);
+		option.appendChild(text);
+		tagSelect.appendChild(option);
+	});
+	tagSelect.onchange = function() {
+		queryDepoData(infoNotes, tagSelect.value, "tags");
+	};
+
+	const resultsSelect = document.getElementById("depository-results-select");
+	resultsSelect.onchange = function() {
+		results = parseInt(resultsSelect.value);
+		queryDepoData(infoNotes, tagSelect.value, "tags");
+	}
+
+
+}
+
+function refreshNotes() {
+	while (depository.children.length > 0) { 
+		depository.removeChild(depository.lastChild);
+	}
 }
 // ---------- MODAL ---------- //
 
@@ -676,7 +729,6 @@ function clearModal() {
 	document.getElementById("modal-text").innerHTML = "";
 	document.getElementById("modal-text").removeAttribute("class", "paycard-grid");
 
-	console.log("Modal Cleared!");
 }
 function displayExpenseModal() {
 	const expenseModalData = document.createElement("div");
@@ -867,6 +919,7 @@ function dashboardModalAccess() {
 	dashboardModalAccess();
 
 	initDepoData(noteData);
-	queryDepoData(infoNotes, "philosophy", "tags");
+	enableDepoTools();
+	queryDepoData(infoNotes, "all", "tags");
 
 })();

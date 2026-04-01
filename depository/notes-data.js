@@ -44,7 +44,9 @@ class NotesRegistry {
 const infoNotes = [];
 
 /**
- * `<t‰>TITLE</t‰>
+ * |=====| EXAMPLE NOTE ENTRY |====================>
+ * @example
+ 	`<t‰>TITLE</t‰>
 	<g‰>TAGS</g‰>
 	<p‰></p‰>
 	<a‰></a‰>
@@ -55,39 +57,104 @@ const infoNotes = [];
 	</b‰>`,
  */
 const noteData = [
-	`<t‰>first thing</t‰>
+
+	`<t‰>Life</t‰>
 	<g‰>philosophy</g‰>
 	<p‰></p‰>
 	<a‰></a‰>
 	<l‰></l‰>
 	<u‰>Chrispy</u‰>
 	<b‰>
-	Here's the first thing.
-
-	</b‰>`,
-	
-	`<t‰>anything</t‰>
-	<g‰>place</g‰>
-	<p‰></p‰>
-	<a‰></a‰>
-	<l‰></l‰>
-	<u‰>Chrispy</u‰>
-	<b‰>
-	Here's anything.
+	It's just the experience of existing. Something profound awaits.
 
 	</b‰>`,
 
-	`<t‰>something</t‰>
+	`<t‰>Planner</t‰>
 	<g‰>equipment</g‰>
 	<p‰></p‰>
 	<a‰></a‰>
 	<l‰></l‰>
 	<u‰>Chrispy</u‰>
 	<b‰>
-	Here's something.
-
+	I got a planner method that involves highlighting all days passed.
 	</b‰>`,
 
+	`<t‰>Quercus Rubra</t‰>
+	<g‰>flora</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	Red Oak: found a leaf at the Jordan Lake Outset Overlook.
+	</b‰>`,
+
+	`<t‰>Closington Cove</t‰>
+	<g‰>place</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	What I think I might call the Outset Overlook & landbridge hiking area at Jordan Lake.
+	</b‰>`,
+
+	`<t‰>Forsythia Suspensa</t‰>
+	<g‰>flora</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	A flowing bush yielding yellow flowers. Characteristic of my childhood backyard and along the shore trails on Jordan Lake.
+	</b‰>`,
+
+	`<t‰>Wisteria Sinensis</t‰>
+	<g‰>flora</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	Purple flower bunches that are invasive to the Jordan Lake area.
+	</b‰>`,
+
+	`<t‰>Positive Emotion</t‰>
+	<g‰>philosophy</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	Aiming at something that's worthwhile that you can argue strongly, that's desired, and that's possible, arouses positive emotion.
+	A problem resolution does not remove all problems.
+	</b‰>`,
+
+	`<t‰>Impermanence</t‰>
+	<g‰>philosophy</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	The concept that nothing lasts forever. Do not attach to the expectation for anything to remain.
+	Positive expectation may arise negative experience; negative expectation may arise positive experience.
+	</b‰>`,
+
+	`<t‰>To Live with Money</t‰>
+	<g‰>philosophy</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	Accumulating money serves to establish security in navigating society and to amplify aspects of one's character and personality.
+	Such amplification is not inherently a positive. Consider an individual with a character trait of overall carelessness bearing a
+	personality that is hedonistic who exhibits plentiful risk-taking behavior. This individual may express interest in experimenting with 
+	all psychoactive drugs, be inclined to promiscuity, and invest in dangerous activities such as sky diving and gambling to excess.
+	Such amplified aspects offset positives that money could provide as they reduce his security that money might otherwise provide. 
+
+	</b‰>`,
 
 
 ];

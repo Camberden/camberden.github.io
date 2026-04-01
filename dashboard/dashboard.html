@@ -377,21 +377,31 @@
 				<h2 class="marker-green">Info Depository</h2>
 				<hr class="hr-cmbr-dark-gradient">
 			</div>
-			<div class="grid-col-1-1">
+			<div class="grid-col-1-1-1">
 				<div>
 					<h5 class="vt323">By Tag</h5>
 					<select id="depository-tag-select">
-						<option>None Selected</option>
+						<option value="all">All</option>
+					</select>
+				</div>
+				<div>
+					<h5 class="vt323">Display</h5>
+					<select id="depository-results-select">
+						<option value="10">10 results</option>
+						<option value="15">15 results</option>
+						<option value="20">20 results</option>
+						<option value="25">25 results</option>
+						<option value="30">30 results</option>
 					</select>
 				</div>
 				<div>
 					<h5 class="vt323">By Note</h5>
 					<div id="depository-note-search">
 						<input class="form-control" type="search"
-							name="search" placeholder="Search Notes..."
-							hx-post="notes-data"
+							name="search" placeholder="Search Notes...">
+							<!-- hx-post="notes-data"
 							hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
-							hx-target="#depository" hx-swap="innerHTML">
+							hx-target="#depository" hx-swap="innerHTML"> -->
 					</div>
 				</div>
 			</div>

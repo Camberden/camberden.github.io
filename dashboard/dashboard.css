@@ -320,15 +320,9 @@ input[type=text]:focus {
 	display: grid;
 	grid-template-columns: 1fr 3fr 1fr;
 }
-
-.note-data {
-	display: contents;
-	border-bottom: 1px solid cadetblue;
-	border-right: 1px solid cadetblue;
+#depository > div {
+	border: 1px solid var(--clr-grid-box);
 }
-
-
-
 
 /* ----- MEDIA QUERIES ---- */
 
