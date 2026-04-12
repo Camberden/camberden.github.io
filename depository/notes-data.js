@@ -66,7 +66,6 @@ const noteData = [
 	<u‰>Chrispy</u‰>
 	<b‰>
 	It's just the experience of existing. Something profound awaits.
-
 	</b‰>`,
 
 	`<t‰>Planner</t‰>
@@ -156,5 +155,16 @@ const noteData = [
 
 	</b‰>`,
 
-
 ];
+
+/*
+	`<t‰>TITLE</t‰>
+	<g‰>TAGS</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	INFORMATION
+	</b‰>`
+*/

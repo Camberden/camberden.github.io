@@ -1,0 +1,22 @@
+<div id="roles-handle" x-data=" accountingRoles ">
+			<div>
+				<h2 class="marker-green">Career Option Insight</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div id="career-table" class="flex-table">
+				<h2>Accounting Roles</h2>
+				<hr class="hr-groove-bottom">
+				<div class="flex-table-header grid-col-1-1">
+					<span>Role</span>
+					<span>Average Salary</span>
+				</div>
+				<div class="flex-table-row grid-col-1-1">
+					<template x-for="(position, index) in accountingRoles" :key="index">
+						<div :class="'flex-table-row grid-row-1'" :style="'display:contents;'">
+							<span x-text="position[0]"></span>
+							<span x-text="'$ ' + position[1]"></span>
+						</div>
+					</template>
+				</div>
+			</div>
+		</div>

@@ -181,7 +181,6 @@
 	flex-flow: row wrap;
 	padding: 5rem;
 	column-gap: 3rem;
-	background-image: url("../assets/sorghum-field.jpg");
 	background-size: cover;
 }
 .gla-item {
@@ -334,7 +333,7 @@ nav {
 	flex-flow: row wrap;
 	width: 100%;
 	height: 3rem;
-	background-image: url("../assets/image-curtain.svg");
+	background-image: url("../images/cmbr-curtain.svg");
 }
 .nav-sail {
 	display: grid;
@@ -348,7 +347,7 @@ nav {
 	max-height: 3rem;
 	z-index: 100;
 	border-bottom: 0.5rem groove black;
-	background-image: url("../assets/image-curtain.svg");
+	background-image: url("../images/cmbr-curtain.svg");
 	/* background: var(--cmbr-grid-box); */
 }
 #nav-1 {

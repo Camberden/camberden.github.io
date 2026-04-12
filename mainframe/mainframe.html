@@ -1,20 +1,44 @@
-	<main class="w-grid" id="mainframe-grid">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="mainframe.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+	<script defer src="https://unpkg.com/@popperjs/core@2"></script>
+	<script defer src="https://unpkg.com/tippy.js@6"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>	
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="../cmbr.js"></script>
+	<title>Chrispy's Lifecraft Page</title>
+</head>
+
+<body data-theme="dark">
+	<div id="calendar-container">
+		<div id='calendar'></div>
+	</div>
+	<main id="mainframe-grid">
 
 		<div class="w-item grid-col-span-2" id="mainframe">
 			<div id="mainframe-header">
-			<p>Mainframe</p>
-			<p>IS02 0 1234567 MMDDYY TIME 1 <span style="text-align:right;">CR12345 MM/DD/YY TI:ME:SS</span></p>
-			<p>ISS002 DISCIPLINARY INVESTIGATION NC/DOC PAGE 001</p>
-			<hr>
-			<p>DOC# 1234567 NAME: FELONIOUS, MISTER CURLOC: 1234 PROJ. REL: 01/01/2030</p>
-			<p>FELON W/M CASE MGR. SMITH, BLACK ACT: SPC MGMT ADMIN BED: SCW-311 SPL: L2</p>
-			<p>CUST: MIN CNTRL: SMAP SP.CHAR: REG ACUITY:1 ACT.GRD:1 NEXT REV: 01/01/2026</p>
-			<hr></div>
+				<p>Mainframe</p>
+				<p>IS02 0 1234567 MMDDYY TIME 1 <span style="text-align:right;">CR12345 MM/DD/YY TI:ME:SS</span></p>
+				<p>ISS002 DISCIPLINARY INVESTIGATION NC/DOC PAGE 001</p>
+				<hr>
+				<p>DOC# 1234567 NAME: FELONIOUS, MISTER CURLOC: 1234 PROJ. REL: 01/01/2030</p>
+				<p>FELON W/M CASE MGR. SMITH, BLACK ACT: SPC MGMT ADMIN BED: SCW-311 SPL: L2</p>
+				<p>CUST: MIN CNTRL: SMAP SP.CHAR: REG ACUITY:1 ACT.GRD:1 NEXT REV: 01/01/2026</p>
+				<hr>
+			</div>
 			<textarea id="mainframe-writing" type="text" rows="5" cols="50" placeholder="practice"></textarea>
 			<ul id="generated-residents">
-				
+
 			</ul>
-			
+
 		</div>
 
 		<div class="w-item" id="mainframe-helper">
@@ -25,7 +49,7 @@
 				<hr>
 				<li>Update: u => ENTER</li>
 				<li>Officiate: 0 (not input) or 1 (pending investigation) => 2 (under investigation)</li>
-				<ul>OR 
+				<ul>OR
 					<li>IS02 2 1234567 MMDDYY TIME</li>
 				</ul>
 				<li>Enter Date & Time</li>
@@ -39,7 +63,7 @@
 			</ul>
 		</div>
 
-		
+
 
 
 		<div class="w-item grid-col-span-3" id="mainframe-excess">
@@ -55,32 +79,42 @@
 					ON MM/DD/YYY AT APPROXIMATELY ####HRS, WORKER INTIAL SURNAME (GHI56) STATES THAT HE WAS ALERTED
 					BY OTHER RESIDENTS THAT RESIDENT FELONIOUS, MISTER (#1234567) WAS STEALING PRODUCT FROM A PLACE.
 					CONFIDENTIAL INFORMATION HAS BEEN RECEIVED FROM A CONFIDENTIAL, RELIABLE SOURCE.
-					CAMERA FOOTAGE FROM MM/DD/YYYY AT APPROXIMATELY ####HRS DISPLAYS RESIDENT FELONIOUS, MISTER (#1234567)
+					CAMERA FOOTAGE FROM MM/DD/YYYY AT APPROXIMATELY ####HRS DISPLAYS RESIDENT FELONIOUS, MISTER
+					(#1234567)
 					STEALING PRODUCT FROM THAT PLACE. WORKER-IN-CHARGE WAS NOTIFIED.
 				</p>
 				<p>A CHECK OF MAINFRAME HEALTH SCREEN HS50 SHOWS THAT RESIDENT FELONIOUS, MISTER (#1234567) IS NEITHER
 					A.D.A. NOR D.D.
 				</p>
-				<p>I READ RESIDENT FELONIOUS, MISTER (#1234567) HIS RIGHTS IN ACCORDANCE WITH THE RESIDENT DISCIPLINARY PROCESS.
-					RESIDENT FELONIOUS, MISTER (#1234567) SIGNED FORM DC-138A, ACKNOWLEDGING HIS HAVING UNDERSTOOD HIS RIGHTS
+				<p>I READ RESIDENT FELONIOUS, MISTER (#1234567) HIS RIGHTS IN ACCORDANCE WITH THE RESIDENT DISCIPLINARY
+					PROCESS.
+					RESIDENT FELONIOUS, MISTER (#1234567) SIGNED FORM DC-138A, ACKNOWLEDGING HIS HAVING UNDERSTOOD HIS
+					RIGHTS
 					AND
 					WAS GIVEN THE FORM'S YELLOW COPY AS A RECEIPT.
 				</p>
 				<p>RESIDENT FELONIOUS, MISTER (#1234567) WAS PROVIDED FORM DC-138B ON WHICH TO PROVIDE A STATEMENT.
-					RESIDENT FELONIOUS, MISTER (#1234567) DID NOT REQUEST WRITEN STATEMENTS, LIVE WITNESSES, PHYSICAL EVIDENCE,
+					RESIDENT FELONIOUS, MISTER (#1234567) DID NOT REQUEST WRITEN STATEMENTS, LIVE WITNESSES, PHYSICAL
+					EVIDENCE,
 					OR STAFF ASSISTANCE. RESIDENT FELONIOUS, MISTER (#1234567) STATES: "NO STATEMENT."
 				</p>
 				<p>I, WORKER INTIAL SURNAME (DEF24) RECOMMEND CHARGING FOR INFRACTION Z99: "willfully steal a thing"; I
 					RECOMMEND
-					FURTHER CHARGING FOR INFRACTION Y99: "damage to property." ALL FINDINGS SUBMITTED FOR FURTHER REVIEW;
+					FURTHER CHARGING FOR INFRACTION Y99: "damage to property." ALL FINDINGS SUBMITTED FOR FURTHER
+					REVIEW;
 					EVIDENCE
 					IS ATTACHED TO THE INVESTIGATION PACKET.
 				</p>
 			</div>
 		</div>
-		
-	</div>
 
-	<script src="mainframe.js" async></script>
+		</div>
 
-</main>
+
+
+	</main>
+
+	<script src="mainframe.js"></script>
+</body>
+
+</html>

@@ -2,6 +2,11 @@ body {
 	min-height: 100vh;
 }
 
+#calendar-container {
+	border: 0.5rem ridge burlywood;
+	padding: 0.5rem;
+}
+
 .w-grid {
 	display: grid;
 	

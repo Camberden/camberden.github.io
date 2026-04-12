@@ -17,7 +17,7 @@
 const sections = [
 	["homepage", "Homepage ↺"],
 	["dashboard", "Personal Dashboard"],
-	// ["workspace", "Coding Workspace"],
+	["workspace", "Coding Workspace"],
 	// ["depository", "HTMX & Alpine Depot"],
 	["blog", "Blogging Page"],
 	// ["accounting", "Accounting Resource"],
@@ -252,7 +252,7 @@ const CMBRutil = {
 	navigationCharter: function () {
 		const siteMap = document.getElementById("chart-links");
 		const mergeReference = sections.length;
-		bookmarks.forEach(bookmark => { sections.push(bookmark); })
+		bookmarks.forEach(bookmark => { sections.push(bookmark); });
 
 		for (let i = 0; i < sections.length - 1; i++) {
 			const a = document.createElement("a");

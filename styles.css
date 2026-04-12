@@ -71,10 +71,72 @@
 	--mosky-2: linear-gradient(var(--mo2-5), var(--mo2-6), var(--mo2-7), var(--mo2-8), var(--mo2-9));
 	--mosky-3: linear-gradient(var(--mo2-3), var(--mo2-4), var(--mo2-5), var(--mo2-6), var(--mo2-7));
 	--mosky: linear-gradient(var(--mo2-1), var(--mo2-2), var(--mo2-3), var(--mo2-4), var(--mo2-5), var(--mo2-6), var(--mo2-7), var(--mo2-8), var(--mo2-9), );
+
+	/* |==========| FULL CALENDAR STYLES |====================> */
+	/* |==========| from https://github.com/fullcalendar/fullcalendar/blob/main/packages/core/src/styles/vars.css |====================> */
+	--fc-small-font-size: 0.85rem;
+	--fc-page-bg-color: var(--bg-color);
+	--fc-neutral-bg-color: var(--clr-grid-box);
+	--fc-neutral-text-color: #808080;
+	--fc-border-color: cadetblue;
+
+	--fc-button-text-color: burlywood;
+	--fc-button-bg-color: #182124;
+	--fc-button-border-color: cadetblue;
+	--fc-button-hover-bg-color: #0b313d;
+	--fc-button-hover-border-color: sienna;
+	--fc-button-active-bg-color: #1a252f;
+	--fc-button-active-border-color: var(--cmbr-green);
+
+	--fc-event-bg-color: #3788d8;
+	--fc-event-border-color: #3788d8;
+	--fc-event-text-color: #fff;
+	--fc-event-selected-overlay-color: rgba(0, 0, 0, 0.25);
+
+	--fc-more-link-bg-color: #d0d0d0;
+	--fc-more-link-text-color: inherit;
+
+	--fc-event-resizer-thickness: 8px;
+	--fc-event-resizer-dot-total-width: 8px;
+	--fc-event-resizer-dot-border-width: 1px;
+
+	--fc-non-business-color: rgba(215, 215, 215, 0.3);
+	--fc-bg-event-color: rgb(143, 223, 130);
+	--fc-bg-event-opacity: 0.3;
+	--fc-highlight-color: rgba(188, 232, 241, 0.3);
+	--fc-today-bg-color: rgba(234, 41, 31, 0.446);
+	--fc-now-indicator-color: red;
+
 }
+.fc .fc-multimonth-title {
+	color: burlywood;
+	background-color: black;
+	font-size: 1.0rem;
+	font-weight: 700;
+	padding: 0.5rem 0px;
+	text-align: center;
+}
+.fc-multimonth-header-table {
+	color: indianred;
+	background-color: black;
+}
+
+.fc-button {
+	/* user-select: none !important; */
+	box-sizing: border-box !important;
+	border-style: groove !important;
+	border-width: 0.3rem !important;
+	
+	border-radius: 0.0rem !important;
+}
+
+/* .fc-button:active {
+	border-color: var(--cmbr-green) !important;
+} */
 
 /* |==========| §DATA-THEMES |====================> */
 /* |==========| LEGACY, DARK, AND LIGHT |====================> */
+/* |=====| LEGACY |=====| */
 [data-theme="legacy"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
@@ -85,6 +147,7 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+/* |=====| DARK |=====| */
 [data-theme="dark"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
@@ -95,6 +158,7 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+/* |=====| LIGHT |=====| */
 [data-theme="light"] {
 	--font-color: var(--mo-2-1);
 	--link-color: var(--mo-2-5);
@@ -105,6 +169,7 @@
 	--cmbr-com-pnl-background: rgb(50, 65, 67);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+/* |=====| PAPERESQUE |=====| */
 [data-theme="paperesque"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
@@ -345,9 +410,11 @@ nav {
 	font-size: 1rem !important;
 }
 
+
 /* |==========| §SECTIONS NAVIGATION |====================> */
 /* |==========| LEFT-SIDE DROPDOWN FOR SITE MAP NAVIGATION |====================> */
 
+/* Disables "Homepage" section title on the index page, as it is redundant and clutters the dropdown. */
 .index-grid > .sections-links > #sections-target > .section-title:first-of-type {
 	display: none;
 }
@@ -911,6 +978,16 @@ select:hover {
 	grid-template-columns: repeat(10, 1fr);
 }
 
+.grid-col-11x-1 {
+	display: grid;
+	grid-template-columns: repeat(11, 1fr);
+}
+
+.grid-col-12x-1 {
+	display: grid;
+	grid-template-columns: repeat(12, 1fr);
+}
+
 .grid-row-1-1 {
 	display: grid;
 	grid-template-rows: 1fr 1fr;
@@ -1213,6 +1290,13 @@ select:hover {
 /* |==========| STRUCTURING AND COUNTING FOR DYNAMICALLY-SIZED TABLES |====================> */
 
 .flex-grid-cmbr {
+	padding: 2rem;
+	gap: 1rem;
+}
+
+.cmbr-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
 	padding: 2rem;
 	gap: 1rem;
 }

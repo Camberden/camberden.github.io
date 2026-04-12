@@ -6,9 +6,14 @@
 	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="./dashboard.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+	<script defer src="https://unpkg.com/@popperjs/core@2"></script>
+	<script defer src="https://unpkg.com/tippy.js@6"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js'></script>
+
 	<script src="../htmx.js"></script>
 	<script src="../cmbr.js"></script>
 	<script src="../depository/notes-data.js"></script>
@@ -21,29 +26,25 @@
 
 			<!-----| NAV 1 |----->
 			<div id="nav-1" x-data="{ active: 0 }">
-				
+
 				<div x-data="{
 					id: 1,
 					get expanded() {
-						return this.active === this.id
+						return this.active === this.id;
 					},
 					set expanded(value) {
 						this.active = value ? this.id : null
 					},
 					}" role="region" class="">
-						<button
-							type="button"
-							x-on:click="expanded = !expanded"
-							:aria-expanded="expanded"
-							id="chart-access">
-							<div class="trigger-dropdown">
-								<span x-show="expanded" x-cloak>&UpArrow;</span>
-								<span x-show="!expanded" x-cloak>&DownArrow;</span>
-								<span>Options</span>
-								<span x-show="expanded">&UpArrow;</span>
-								<span x-show="!expanded">&DownArrow;</span>
-							</div>
-						</button>
+					<button type="button" x-on:click="expanded = !expanded" :aria-expanded="expanded" id="chart-access">
+						<div class="trigger-dropdown">
+							<span x-show="expanded" x-cloak>&UpArrow;</span>
+							<span x-show="!expanded" x-cloak>&DownArrow;</span>
+							<span>Options</span>
+							<span x-show="expanded">&UpArrow;</span>
+							<span x-show="!expanded">&DownArrow;</span>
+						</div>
+					</button>
 					<div id="chart-dropdown" x-show="expanded" x-collapse>
 						<div id="chart-links">
 						</div>
@@ -113,17 +114,18 @@
 			<div class="flex-table">
 				<div class="flex-table-header grid-col-1-1">
 					<span>Paycheck</span>
-					<input type="text" placeholder=" Input Balance" id="starting-balance" name="balance" label="balance">
+					<input type="text" placeholder=" Input Balance" id="starting-balance" name="balance"
+						label="balance">
 				</div>
 
 				<hr class="hr-groove-top">
 				<div class="flex-table-row grid-col-1-1">
 					<div class="triggers">
-						<div id= "select-applicable" class="trigger-box expense-button">
+						<div id="select-applicable" class="trigger-box expense-button">
 							<h2>Select Applicable</h2>
 							<hr class="hr-trans">
 						</div>
-						<div id= "deselect-applicable" class="trigger-box expense-button" style="display:none;">
+						<div id="deselect-applicable" class="trigger-box expense-button" style="display:none;">
 							<h2>Deselect Applicable</h2>
 							<hr class="hr-cmbr-gradient">
 						</div>
@@ -146,7 +148,7 @@
 					<span id="ending-balance">0</span>
 					<span class="marker modal-prompt" id="expense-modal"> ← Projection</span>
 				</div>
-				
+
 
 
 			</div>
@@ -206,17 +208,17 @@
 							</div>
 						</div>
 					</div>
-				
+
 				</div>
 				<ul id="salary-values" class="grid-col-1-1">
-					<li>Base-Rate Salary</li> <span id="current-salary"class="money"></span>
-					<li>Base-Rate Monthly:</li> <span id="monthly-salary"class="money"></span>
-					<li>Base-Rate Hourly:</li> <span id="hourly-salary"class="money"></span>
-					<li>Base-Rate 11HR Gap:</li> <span id="gap-pay"class="money"></span>
-					<li>Differential Overtime:</li> <span id="overtime-diff"class="money"></span>
-					<li>Differential Nightly:</li><span id="night-diff"class="money"></span>
-					<li>Differential Weekend:</li><span id="weekend-diff"class="money"></span>
-					<li>Differential Holiday:</li><span id="holiday-diff"class="money"></span>
+					<li>Base-Rate Salary</li> <span id="current-salary" class="money"></span>
+					<li>Base-Rate Monthly:</li> <span id="monthly-salary" class="money"></span>
+					<li>Base-Rate Hourly:</li> <span id="hourly-salary" class="money"></span>
+					<li>Base-Rate 11HR Gap:</li> <span id="gap-pay" class="money"></span>
+					<li>Differential Overtime:</li> <span id="overtime-diff" class="money"></span>
+					<li>Differential Nightly:</li><span id="night-diff" class="money"></span>
+					<li>Differential Weekend:</li><span id="weekend-diff" class="money"></span>
+					<li>Differential Holiday:</li><span id="holiday-diff" class="money"></span>
 
 				</ul>
 			</div>
@@ -260,7 +262,7 @@
 
 			<span class="marker modal-prompt" id="accounting-modal">Additional Information</span>
 
-			<div class="list-background">CPA Credits: <span id="cpa-credits"></span>/30</div>
+			<div>CPA Credits: <span id="cpa-credits"></span>/30</div>
 			<hr class="hr-groove-bottom">
 			<div id="cpa-progress-bar"></div>
 			<br>
@@ -276,9 +278,11 @@
 				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 121 - Prin of Managerial
 					Accounting (3)</li>
 				<li class="not-taken acc-core adv-acc-core" value="3">BUS 115 - Business Law I (3)</li>
-				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 220 - Intermediate Accounting I (4)</li>
+				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 220 - Intermediate Accounting I (4)
+				</li>
 				<li class="not-taken adv-acc-core" value="3">ACC 129 - Individual Income Taxes (3)</li>
-				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 221 - Intermediate Accounting II (4)</li>
+				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 221 - Intermediate Accounting II (4)
+				</li>
 				<li class="not-taken adv-acc-core" value="3">ACC 269 - Auditing & Assurance Services (3)</li>
 				<hr><span class="marker">To Fulfill CPA Requirements</span>
 				<li class="not-taken acc-dpl" value="3">ACC 240 - Gov & Non-Profit Accounting (3)</li>
@@ -314,7 +318,8 @@
 				<div id="pension-table" class="flex-table">
 
 					<div class="flex-table-row grid-col-11x-1">
-						<div id="pension-age-60-service-30" class="flex-table-anchor-col pension-reduction-highlight">&emsp;</div>
+						<div id="pension-age-60-service-30" class="flex-table-anchor-col pension-reduction-highlight">
+							&emsp;</div>
 						<div id="pension-service-29">29</div>
 						<div id="pension-service-28">28</div>
 						<div id="pension-service-27">27</div>
@@ -343,17 +348,21 @@
 			<div id="pension-data" class="grid-col-1-1">
 				<div id="pension-inputs" class="grid-col-1-1">
 					<p>Age at Retirement:</p>
-						<input type="text" placeholder="50" value="50" id="retirement-age">
+					<input type="text" placeholder="50" value="50" id="retirement-age">
 					<p>Service Years:</p>
-						<input type="text" placeholder="24" value="24" id="service-years">
-					<p>Year 1:</p> 
-						<input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension" id="yr1-for-pension" label="yr1-for-pension">
+					<input type="text" placeholder="24" value="24" id="service-years">
+					<p>Year 1:</p>
+					<input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension"
+						id="yr1-for-pension" label="yr1-for-pension">
 					<p>Year 2: </p>
-						<input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension" id="yr2-for-pension" label="yr2-for-pension">
+					<input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension"
+						id="yr2-for-pension" label="yr2-for-pension">
 					<p>Year 3: </p>
-						<input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension" id="yr3-for-pension" label="yr3-for-pension">
+					<input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension"
+						id="yr3-for-pension" label="yr3-for-pension">
 					<p>Year 4: </p>
-						<input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension" id="yr4-for-pension" label="yr4-for-pension">
+					<input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension"
+						id="yr4-for-pension" label="yr4-for-pension">
 				</div>
 				<div id="pension-sums">
 					<p>Gross Pension: $<span id="gross-pension"></span></p>
@@ -362,14 +371,12 @@
 					<p><span id="net-pension"></span></p>
 					<p><span id="monthly-pension"></span></p>
 					<p>
-					<span id="pension-notice"></span>
+						<span id="pension-notice"></span>
 					</p>
 				</div>
 				<div class="trigger-box pension-buttons">Generate Pension</div>
 
 			</div>
-			
-
 		</div>
 
 		<div id="dashboard-depository" class="dashboard-item">
@@ -397,9 +404,8 @@
 				<div>
 					<h5 class="vt323">By Note</h5>
 					<div id="depository-note-search">
-						<input class="form-control" type="search"
-							name="search" placeholder="Search Notes...">
-							<!-- hx-post="notes-data"
+						<input class="form-control" type="search" name="search" placeholder="Search Notes...">
+						<!-- hx-post="notes-data"
 							hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
 							hx-target="#depository" hx-swap="innerHTML"> -->
 					</div>
@@ -425,24 +431,230 @@
 			</div>
 		</div>
 
-		<div id="dashboard-career-insight" class="dashboard-item">
+		<div id="dashboard-pslf-calculator" class="dashboard-item"
+			x-data="{ credits: pslfCredited, served: pslfServed, remaining: pslfRemaining, notice: pslfNotice[2] }">
+			<div>
+				<h2 class="marker-green">PSLF Display</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<span class="marker modal-prompt" id="pslf-modal">Additional Information</span>
+			<div>PSLF Credits:
+				<span id="pslf-credits" x-text="credits"></span>/120
+			</div>
+			<div>Total Service:
+				<span id="pslf-served" x-text="served"></span>/120
+			</div>
+			<hr class="hr-groove-bottom">
+			<div id="pslf-boxes" class="flex-table-row grid-col-11x-1">
+				<span>∆</span>
+				<span>12</span>
+				<span>24</span>
+				<span>36</span>
+				<span>48</span>
+				<span>60</span>
+				<span>72</span>
+				<span>84</span>
+				<span>96</span>
+				<span>108</span>
+				<span>∆</span>
+			</div>
+			<div id="pslf-progress-bar"></div>
+			<hr class="hr-groove-top">
+			<div style="text-align: right">
+				<span id="pslf-remaining" x-text="notice"></span>
+			</div>
+
+		</div>
+
+		<!-- ∆ CALENDAR -->
+		<div id="dashboard-calendar" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Calendar</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<!-- ∆ START ALPINE -->
+			<div x-data=" {
+		        calendar: null,
+		        events: [
+		            {
+		                id: 1,
+		                title: 'Rush of Feeling Day',
+		                start: '2026-07-09',
+		                end: '2026-07-09',
+		            },
+		            {
+		                id: 2,
+		                title: 'Accounting Career Begins',
+		                start: '2026-03-09',
+						// end: '2026-03-09',
+						display: 'background',
+
+		            },
+		        ],
+		        newEventTitle: null,
+		        newEventStart: null,
+		        newEventEnd: null,
+		
+		        init() {
+		            this.calendar = new FullCalendar.Calendar(this.$refs.calendar, {
+		                events: (info, success) => success(this.events),
+		                initialDate: '2026-04-12',
+						/**
+						 * @field initialView
+						 * @options multiMonthYear dayGridMonth
+						 * @description The view that the calendar will display upon initialization.
+						 */
+		                // initialView: 'dayGridMonth',
+
+						initialView: 'multiMonthYear',
+						headerToolbar: {
+							start: 'dayGridMonth multiMonthYear', // will normally be on the left. if RTL, will be on the right
+							center: 'title',
+							end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+						},
+						// titleFormat: { year: 'numeric', month: 'short' },
+						// titleRangeSeparator: ' \u2013 ',
+						multiMonthMaxColumns: 2,
+						multiMonthMinWidth: 400,
+						height: 600,
+						expandRows: false,
+		                selectable: true,
+		                unselectAuto: false,
+		                editable: true,
+						navLinks: true,
+						// navLinkDayClick: true,
+						// navLinkWeekClick: true,
+		                select: (info) => {
+		                    this.newEventStart = info.startStr
+		                    this.newEventEnd = info.endStr
+		                },
+		                eventClick: (info) => {
+		                    if (confirm('Are you sure you want to remove this event?')) {
+		                        const index = this.getEventIndex(info);
+		                        this.events.splice(index, 1);
+		                        this.calendar.refetchEvents();
+		                    };
+		                },
+		                eventChange: (info) => {
+		                    const index = this.getEventIndex(info);
+		 
+		                    this.events[index].start = info.event.startStr
+		                    this.events[index].end = info.event.endStr
+		                },
+		            })
+		 
+		            this.calendar.render();
+		        },
+		        getEventIndex(info) {
+		            return this.events.findIndex((event) => event.id == info.event.id);
+		        },
+		        addEvent() {
+		            if (! this.newEventTitle || ! this.newEventStart) {
+		                return alert('Please choose a title and start date for the event!');
+		            }
+		 
+		            let event = {
+		                id: Date.now(),
+		                title: this.newEventTitle,
+		                start: this.newEventStart,
+		                end: this.newEventEnd,
+		            }
+		 
+		            this.events.push(event);
+		            this.calendar.refetchEvents();
+		 
+		            this.newEventTitle = null
+		            this.newEventStart = null
+		            this.newEventEnd = null
+		 
+		            this.calendar.unselect();
+		        },
+		    }">
+				<!-- % Calendar Itself % -->
+				<div x-ref="calendar"></div>
+
+				<div id="calendar-table" class="flex-table">
+					<h2 class="marker flex-table-header">List of Events</h2>
+					<hr class="hr-cmbr-gradient">
+					<ul id="calendar-event-list" class="flex-table-body">
+
+						<template x-for="event in events" :key="event.id">
+
+							<li :class="'listed-event flex-table-row'"
+								x-text="`${event.title}: ${event.start} ${(event.end ? ' through ' + event.end : '')}`">
+							</li>
+						</template>
+					</ul>
+
+					<form x-on:submit.prevent="addEvent">
+						<h2 class="marker flex-table-header">Adding a new event</h2>
+						<p class="flex-table-row">Select a date or date range on the calendar and enter a title to
+							create a new event.</p>
+						<div class="flex-table-row grid-col-1-3-1">
+							<label for="new-event-title">Event Title</label>
+							<input id="new-event-title" type="text" x-model="newEventTitle" placeholder="Event title">
+							<button class="button-grid-col" type="submit">Submit</button>
+						</div>
+					</form>
+
+					<h2 class="marker flex-table-header">Moving events and changing duration</h2>
+					<p class="flex-table-row">Drag an event to move it to a different day. Drag the right edge to change
+						the duration.</p>
+					<h2 class="marker flex-table-header">Deleting an event</h2>
+					<p class="flex-table-row">Click an event and confirm to remove it.</p>
+				</div>
+
+
+			</div><!-- ∆ END ALPINE -->
+		</div>
+
+		<!-- ∆ CAREERS AND SALARIES -->
+		<div id="dashboard-career-insight" class="dashboard-item" x-data=" accountingRoles ">
 			<div>
 				<h2 class="marker-green">Career Option Insight</h2>
 				<hr class="hr-cmbr-dark-gradient">
 			</div>
 			<div id="career-table" class="flex-table">
-				<p>Career Table</p>
+				<h2>Accounting Roles</h2>
+				<hr class="hr-groove-bottom">
+				<div class="flex-table-header grid-col-1-1">
+					<span>Role</span>
+					<span>Average Salary</span>
+				</div>
+				<div class="flex-table-row grid-col-1-1">
+					<template x-for="(position, index) in accountingRoles" :key="index">
+						<div :class="'flex-table-row grid-row-1'" :style="'display:contents;'">
+							<span x-text="position[0]"></span>
+							<span x-text="'$ ' + position[1]"></span>
+						</div>
+					</template>
+				</div>
 			</div>
 		</div>
 
+		<!-- TODO: Include Present & Future Value Charts-->
+		 <!-- TAXABILITY -->
 		<div id="dashboard-taxability-calculator" class="dashboard-item">
-
 			<div>
 				<h2 class="marker-green">Taxability Calculator</h2>
 				<hr class="hr-cmbr-dark-gradient">
 			</div>
 			<div id="taxes-table" class="flex-table">
-				<p>Taxes Table</p>
+
+				<div flex-table-row grid-col-1-1>
+					<div>
+						<p>Tax Balance:</p>
+						<input type="text" placeholder="50000" value="50000" id="tax-balance">
+					</div>
+					<div>
+						<p>Interest Rate:</p>
+						<input type="text" placeholder="5.0" value="5.0" id="tax-interest-rate">
+					</div>
+					<div>
+						<p>Monthly Payment:</p>
+						<input type="text" placeholder="500" value="500" id="tax-monthly-payment">
+					</div>
+				</div>
 			</div>
 		</div>
 

@@ -1,0 +1,139 @@
+<div id="calendar-handle">
+	<div>
+		<h2 class="marker-green">Calendar</h2>
+		<hr class="hr-cmbr-dark-gradient">
+	</div>
+	<div x-data=" {
+		calendar: null,
+		events: [
+			{
+				id: 1,
+				title: 'Rush of Feeling Day',
+				start: '2026-07-09',
+				end: '2026-07-09',
+			},
+			{
+				id: 2,
+				title: 'Accounting Career Begins',
+				start: '2026-03-09',
+				// end: '2026-03-09',
+				display: 'background',
+
+			},
+		],
+		newEventTitle: null,
+		newEventStart: null,
+		newEventEnd: null,
+
+		init() {
+			this.calendar = new FullCalendar.Calendar(this.$refs.calendar, {
+				events: (info, success) => success(this.events),
+				initialDate: '2026-04-12',
+				/**
+				 * @field initialView
+				 * @options multiMonthYear dayGridMonth
+				 * @description The view that the calendar will display upon initialization.
+				 */
+				// initialView: 'dayGridMonth',
+
+				initialView: 'multiMonthYear',
+				headerToolbar: {
+					start: 'dayGridMonth multiMonthYear', // will normally be on the left. if RTL, will be on the right
+					center: 'title',
+					end: 'today prev,next' // will normally be on the right. if RTL, will be on the left
+				},
+				// titleFormat: { year: 'numeric', month: 'short' },
+				// titleRangeSeparator: ' \u2013 ',
+				multiMonthMaxColumns: 2,
+				multiMonthMinWidth: 400,
+				height: 600,
+				expandRows: false,
+				selectable: true,
+				unselectAuto: false,
+				editable: true,
+				navLinks: true,
+				// navLinkDayClick: true,
+				// navLinkWeekClick: true,
+				select: (info) => {
+					this.newEventStart = info.startStr
+					this.newEventEnd = info.endStr
+				},
+				eventClick: (info) => {
+					if (confirm('Are you sure you want to remove this event?')) {
+						const index = this.getEventIndex(info);
+						this.events.splice(index, 1);
+						this.calendar.refetchEvents();
+					};
+				},
+				eventChange: (info) => {
+					const index = this.getEventIndex(info);
+	
+					this.events[index].start = info.event.startStr
+					this.events[index].end = info.event.endStr
+				},
+			})
+	
+			this.calendar.render();
+		},
+		getEventIndex(info) {
+			return this.events.findIndex((event) => event.id == info.event.id);
+		},
+		addEvent() {
+			if (! this.newEventTitle || ! this.newEventStart) {
+				return alert('Please choose a title and start date for the event!');
+			}
+	
+			let event = {
+				id: Date.now(),
+				title: this.newEventTitle,
+				start: this.newEventStart,
+				end: this.newEventEnd,
+			}
+	
+			this.events.push(event);
+			this.calendar.refetchEvents();
+	
+			this.newEventTitle = null
+			this.newEventStart = null
+			this.newEventEnd = null
+	
+			this.calendar.unselect();
+		},
+	}">
+		<!-- % Calendar Itself % -->
+		<div x-ref="calendar"></div>
+
+		<div id="calendar-table" class="flex-table">
+			<h2 class="marker flex-table-header">List of Events</h2>
+			<hr class="hr-cmbr-gradient">
+			<ul id="calendar-event-list" class="flex-table-body">
+
+				<template x-for="event in events" :key="event.id">
+
+					<li :class="'listed-event flex-table-row'"
+						x-text="`${event.title}: ${event.start} ${(event.end ? ' through ' + event.end : '')}`">
+					</li>
+				</template>
+			</ul>
+
+			<form x-on:submit.prevent="addEvent">
+				<h2 class="marker flex-table-header">Adding a new event</h2>
+				<p class="flex-table-row">Select a date or date range on the calendar and enter a title to
+					create a new event.</p>
+				<div class="flex-table-row grid-col-1-3-1">
+					<label for="new-event-title">Event Title</label>
+					<input id="new-event-title" type="text" x-model="newEventTitle" placeholder="Event title">
+					<button class="button-grid-col" type="submit">Submit</button>
+				</div>
+			</form>
+
+			<h2 class="marker flex-table-header">Moving events and changing duration</h2>
+			<p class="flex-table-row">Drag an event to move it to a different day. Drag the right edge to change
+				the duration.</p>
+			<h2 class="marker flex-table-header">Deleting an event</h2>
+			<p class="flex-table-row">Click an event and confirm to remove it.</p>
+		</div>
+
+
+	</div>
+</div>
