@@ -48,8 +48,7 @@ class BlogPost {
 const blogPosts = [];
 
 /*
-	`
-	<d‰>DATE</d‰>
+	`<d‰>DATE</d‰>
 	<l‰>LOCATION</l‰>
 	<j‰>HOURS</j‰>
 	<g‰></g‰>
@@ -61,16 +60,11 @@ const blogPosts = [];
 	__________
 	<t‰>TITLE</t‰>
 	__________
-	</b‰>
-	<p‰>PHOTOS</p‰>
-	<a‰>AUDIO</a‰>
-	<u‰>USER</u‰>
-	`
+	</b‰>`,
 */
 const blogData = [
 	//===========//
-	`
-	<d‰>August 11th, 2024</d‰>
+	`<d‰>August 11th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>2200 HRS</j‰>
 	<g‰></g‰>
@@ -80,10 +74,9 @@ const blogData = [
 	<b‰>
 	At last, <t‰>the beginning</t‰> of my digital blogging page! I've been on a great trajectory since July.
 	I am grateful for having had the lucidity of mind to adhere to routines.
-	</b‰>`
-	,
-	`
-	<d‰>August 15th, 2024</d‰>
+	</b‰>`,
+
+	`<d‰>August 15th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>2250 HRS</j‰>
 	<g‰></g‰>
@@ -117,8 +110,8 @@ const blogData = [
 	I will aim myself in that direction, and go, with no destination in mind.
 	Freely flowing, I am detached. Detached from the target: suspended in the outset.
 	As Neil Hannon of the Divine Comedy said: "We need to live in a state of suspended animation, like a work of art, detached, detached."
-	</b‰>`
-	,
+	</b‰>`,
+
 	`
 	<d‰>August 25th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
@@ -142,10 +135,9 @@ const blogData = [
 	I pushed my Laravel project again. I enabled CSS and images by moving such files to the 'Public' directory and interpolating
 	in the blades as {{'asset(/css/app.css')}} for instance. I had to update database credentials in the .env file. 
 	For sql, I needed to mysql -uroot following reset and follow mysql_secure_installation instructions.
-	</b‰>`
-	,
-	`
-	<d‰>September 1st, 2024</d‰>
+	</b‰>`,
+
+	`<d‰>September 1st, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>1555 HRS</j‰>
 	<g‰></g‰>
@@ -172,10 +164,9 @@ const blogData = [
 	<hr>&emsp; &emsp;
 	I am secure; I am safe; I am content. 
 	Missu.
-	</b‰>`
-	,
-	`
-	<d‰>September 10th, 2024</d‰>
+	</b‰>`,
+
+	`<d‰>September 10th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>0731 HRS</j‰>
 	<g‰></g‰>
@@ -194,11 +185,9 @@ const blogData = [
 	cautious with my speech to the extent it could be considered 'masking.' Such masking surely wouldn't be healthy for me.
 	<hr>&emsp;
 	I'm going to put on a smile as I approach my tomorrow, and power through. I am tired. That is fine. 
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>September 14th, 2024</d‰>
+	`<d‰>September 14th, 2024</d‰>
 	<l‰>Hillsborough, NC</l‰>
 	<j‰>2201 HRS</j‰>
 	<g‰>community</g‰>
@@ -222,10 +211,9 @@ const blogData = [
 	Though "I" share the same life-lens as that previous self,  I couldn't agree that that person is "me" or the present self.
 	My identities and values have shifted quite dramatically since; the actions taken previously I now consider unthinkable.
 	College debt, liberal arts, fast food, luxury goods etc. 
-	</b‰>`
-	,
-	`
-	<d‰>September 21st, 2024</d‰>
+	</b‰>`,
+
+	`<d‰>September 21st, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>1952 HRS</j‰>
 	<g‰></g‰>
@@ -271,10 +259,9 @@ const blogData = [
 	be fewer jobs geared towards fabricating desire and towards peddling goods for which such desire is fabricated. I am hopeful this 
 	modern world, in all its good and bad, is at least able to avoid collapse. A glipse of collapse would surely increase my consideration
 	for taking a stint at Antaiji. 
-	</b‰>`
-	,
-	`
-	<d‰>October 9th, 2024</d‰>
+	</b‰>`,
+
+	`<d‰>October 9th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>2236 HRS</j‰>
 	<g‰></g‰>
@@ -306,10 +293,9 @@ const blogData = [
 	is that people will always find something to become dissatisfied with, and even someone such as myself armed with detachment practices can
 	fall victim from time to time. All is fine, all is empty. Even if I were shackled for life, what should preclude me from experiencing the 
 	present moment positively?
-	</b‰>`
-	,
-	`
-	<d‰>October 10th, 2024</d‰>
+	</b‰>`,
+
+	`<d‰>October 10th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>2337 HRS</j‰>
 	<g‰></g‰>
@@ -336,11 +322,9 @@ const blogData = [
 	It's not much longer. I can do this. Right now, I must dispell this confusion a bit more such that the <t‰>mountains and rivers</t‰> aren't 
 	blocking the way. Indeed, I should knock out Test 2. I must dedicate one off day ahead to completing the financially rewarding 
 	progression program. I need to recover and unburden myself to see a path more clearly. I know what I must do.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>October 15th, 2024</d‰>
+	`<d‰>October 15th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>2228 HRS</j‰>
 	<g‰></g‰>
@@ -369,11 +353,9 @@ const blogData = [
 	place, and still affirm that it is amazing for my needs, but it's a time to detach again and to put my mindset into action. 
 	It's all impermanent, just like my time at that rough location. I can relinquish negatives and I can 
 	<t‰>relinquish positives</t‰>.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>December 1st, 2024</d‰>
+	`<d‰>December 1st, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>1216 HRS</j‰>
 	<g‰></g‰>
@@ -398,11 +380,9 @@ const blogData = [
 	a similar situation with regard to self-care. Meh. In that case and in all other cases, I was able to recover and feel the 
 	zest for life. After all, simply being is to endure both the lows and the highs. Otherwise being is not being as it is known to be.
 	Heh heh.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>December 26th, 2024</d‰>
+	`<d‰>December 26th, 2024</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>1642 HRS</j‰>
 	<g‰></g‰>
@@ -420,10 +400,9 @@ const blogData = [
 	this will be different here at <t‰>this new place</t‰> - after all, my workload is lessened and I've crafted a truly lovely space. Looking forward to this weekend,
 	I have nothing but time to learn to enjoy it and to solidify a new routine. In any case, I need to head out to work. Easy does it, me. Make that money and 
 	get that credit.
-	</b‰>`
-	,
-	`
-	<d‰>December 30th, 2024</d‰>
+	</b‰>`,
+
+	`<d‰>December 30th, 2024</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>1129 HRS</j‰>
 	<g‰></g‰>
@@ -445,10 +424,9 @@ const blogData = [
 	necessary part of the journey. I should treat this time now as an intermittent time:
 	the time between crawling out from debt and into wealth generation.
 	I would deserve to surface as a refined instance of self, yes? oof.
-	</b‰>`
-	,
-	`
-	<d‰>January 3rd, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>January 3rd, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0334 HRS</j‰>
 	<g‰></g‰>
@@ -485,10 +463,9 @@ const blogData = [
 	If I'm suffering, good. I should prove to myself I'm able to get through the situation. I may have proven myself in the past as a past self but I mustn't excuse my 
 	present self from doing the same. "The struggle is not mine anymore" does not quite apply here. By demonstrating a life well lived, in my flow state, I am
 	aimlessly aiming. Attached, yet detached. I experienced the sense of this last summer. Let's <t‰>do it again</t‰>.
-	</b‰>`
-	,
-	`
-	<d‰>January 11th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>January 11th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2236 HRS</j‰>
 	<g‰></g‰>
@@ -527,11 +504,9 @@ const blogData = [
 	No worries. So, in the grand scheme, I've recovered my preoccupation with personal endeavors, made my space even
 	cozier, and am on an upward trajectory. Health-wise, I still have work to do to recover the likeness of last summer, 
 	but that time will come; I'm not worried. It's only been a month since uprooting. Progress. Huzzah.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>January 21st, 2025</d‰>
+	`<d‰>January 21st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2324 HRS</j‰>
 	<g‰></g‰>
@@ -585,10 +560,9 @@ const blogData = [
 	bettering my personal practices. It's the role beyond I aspire to. It's not this opportunity now.
 	In any case, I mustn't attach to the idea of it. Nothing is guaranteed. I am, though, grateful for what I have now.
 	I have a sink basically a meter away from me. I think I want to "relax," whatever that would entail. Good night.
-	</b‰>`
-	,
-	`
-	<d‰>March 1st, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>March 1st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>1604 HRS</j‰>
 	<g‰></g‰>
@@ -623,11 +597,9 @@ const blogData = [
 	the language page, to note the music that sets the tone for each season of my life, to create a gitlab alternate page for my webtools,
 	and to eventually apply a PHP tunnel to host this site with my own domain and URI endpoints.
 	I'll go ahead and list some of those music things, somewhere on this site, then log off. Cheers.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>March 9th, 2025</d‰>
+	`<d‰>March 9th, 2025</d‰>
 	<l‰>Myrtle Beach, SC</l‰>
 	<j‰>1213 HRS</j‰>
 	<g‰></g‰>
@@ -662,10 +634,9 @@ const blogData = [
 	Anyway, I think I'll head out in just a second. Focused learning and solving complex problems due in a few days just isn't
 	happening right now. This is a place for lighter learning and studying, like language and front-end dev.
 	More interactive stuffs, I suppose. I'm taking my leave now.
-	</b‰>`
-	,
-	`
-	<d‰>March 18th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>March 18th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2347 HRS</j‰>
 	<g‰></g‰>
@@ -684,10 +655,9 @@ const blogData = [
 	<hr>&emsp;
 	I reiterated in a conversation my assertion that work and career should be in service to achieving and supporting
 	a daily lifestyle that affords peace of mind and measurable progress. I made the right choice in <t‰>buying my bicycle</t‰>.
-	</b‰>`
-	,
-	`
-	<d‰>April 19th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>April 19th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2145 HRS</j‰>
 	<g‰></g‰>
@@ -718,10 +688,9 @@ const blogData = [
 	That being said, it looks like I got myself into a decent off-day routine again. I anticipate keeping it up
 	despite this weekend being what it is. Also, before I head out for a friend visit, I'll incorporate the new
 	prospective pay scale for work. Woo.
-	</b‰>`
-	,
-	`
-	<d‰>April 20th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>April 20th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2157 HRS</j‰>
 	<g‰></g‰>
@@ -764,10 +733,9 @@ const blogData = [
 	foresee taking a leap, once obligations are clear, to a, shall I say, committed absenteeism from external affairs for life. 
 	I could consider it a goal, but it is no goal. At least, right now, I cannot foresee any long-term human endeavor for this skin-bag
 	being meaningful while tied to external affairs.
-	</b‰>`
-	,
-	`
-	<d‰>May 4th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>May 4th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0951 HRS</j‰>
 	<g‰></g‰>
@@ -787,10 +755,9 @@ const blogData = [
 	not attach to) too many ideas of another personal reinvention on that side of the planet. It may not be for me, but the appeal is surely there.
 	<hr>&emsp;
 	I'm going to write a letter today, just sit, and relax. That is all.
-	</b‰>`
-	,
-	`
-	<d‰>May 7th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>May 7th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>1800 HRS</j‰>
 	<g‰></g‰>
@@ -814,10 +781,9 @@ const blogData = [
 	Concerning sense/presence, I notice that, typically, bi-syllabic words would contain a C post-nasal. This applies to my most commonly used words of the group:
 	presence, essence, and sentence. Of course, there's license and insence, aren't in line with this sense.
 	I'd like to consider finding out the reasonings further, later on.
-	</b‰>`
-	,
-	`
-	<d‰>May 16th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>May 16th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2258 HRS</j‰>
 	<g‰></g‰>
@@ -832,10 +798,9 @@ const blogData = [
 	Even now, I feel a bit burnt out despite not having had too many work related stressors. I suspect this may be the isolation
 	taking a toll on me. I'm not sure. I think I should force myself to <t‰>sleep and live</t‰> during the day for a while, while I can. 
 	Heck. I'm grateful to have this unexpected extra time afforded to me. I should go now.
-	</b‰>`
-	,
-	`
-	<d‰>May 21st, 2025</d‰>
+	</b‰>`,
+	
+	`<d‰>May 21st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2023 HRS</j‰>
 	<g‰></g‰>
@@ -873,10 +838,9 @@ const blogData = [
 	lived outside of my norms: language, culture, industry, pressures, stresses etc. It also comes from the socioeconomic factors abroad.
 	Are the socialized systems in other countries going to last given aging populations and system exploitation? I certainly see these
 	concerns growing in Japan and places in Europe. In any case, I can only speculate and see what reality unfolds for me to witness.
-	</b‰>`
-	,
-	`
-	<d‰>June 1st, 2025</d‰>
+	</b‰>`,
+	
+	`<d‰>June 1st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0214 HRS</j‰>
 	<g‰></g‰>
@@ -938,10 +902,9 @@ const blogData = [
 	</ol>
 	全て大丈夫、全て順調である。
 	
-	</b‰>`
-	,
-	`
-	<d‰>June 5th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>June 5th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2219 HRS</j‰>
 	<g‰></g‰>
@@ -989,11 +952,9 @@ const blogData = [
 	my health requirements in consumption and exercise. My wellbeing is closely tied to those things. I must accept this, and I must 
 	follow the blueprint I adopted: to exhibit right action.
 	It comes down to following that subtle call to action or inaction.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>June 22nd, 2025</d‰>
+	`<d‰>June 22nd, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0200 HRS</j‰>
 	<g‰></g‰>
@@ -1027,10 +988,9 @@ const blogData = [
 	I feel privileged to do so in such proximity to sites that reinforce such right mindfulness and my practice at large.
 	I will make meaning of my past, experience that present, and to discover new avenues for the future.
 	この十日間には、過去の意味を見出し、現在を経験し、新たな将来の夢を発見するつもりだ。
-	</b‰>`
-	,
-	`
-	<d‰>July 1st, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>July 1st, 2025</d‰>
 	<l‰>Nagoya, Japan</l‰>
 	<j‰>0833 HRSHRS</j‰>
 	<g‰></g‰>
@@ -1057,10 +1017,9 @@ const blogData = [
 	It's got a silly ring to it, but yes, it comes down to that ruthless acceptance of circumstances.
 	The weather's been hot. I have been too. It's rough, but that's good.
 	<t‰>Mountain is Mountain</t‰>; Water is Water. Heheh. Bye.
-	</b‰>`
-	,
-	`
-	<d‰>July 3rd, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>July 3rd, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2343 HRS</j‰>
 	<g‰></g‰>
@@ -1096,10 +1055,9 @@ const blogData = [
 	gauged me throughout this trip. He suggested those places over my original plan to Hokkaido「北海道」, which he said is more like the US being 
 	the open frontier of Japan; "it's not very Japanese," he said.
 	He amicably called me an old man, and for once I took that solely as a compliment, and smiled.
-	</b‰>`
-	,
-	`
-	<d‰>July 4th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>July 4th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0322 HRS</j‰>
 	<g‰></g‰>
@@ -1148,10 +1106,9 @@ const blogData = [
 	I will never forget <t‰>Shikaka & Tashikaka</t‰>, or any friends made along the way.
 	Surely there is more to digest, and that'll come in coming days and weeks. 
 	Shikaka, too, has a lot to digest, but she's probably done with all of that.
-	</b‰>`
-	,
-	`
-	<d‰>July 27th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>July 27th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2045 HRS</j‰>
 	<g‰></g‰>
@@ -1219,10 +1176,9 @@ const blogData = [
 	I could do something like, Americas, Americas, Europe/Asia, Americas, Americas, Europe/Asia, etc.
 	I will lastly just say that I'm glad that I restructured my aspirations following the ruin of my previous car.
 
-	</b‰>`
-	,
-	`
-	<d‰>August 5th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>August 5th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2303 HRS</j‰>
 	<g‰></g‰>
@@ -1247,10 +1203,9 @@ const blogData = [
 	on a hateful individual, given her quip. Funny how she claimed "not-asking for money" while desiring food items, which cost money. Money
 	is the representation of my labor in hours, and food would bear the value of my labor following purchase. 
 	She should go forth and labor.
-	</b‰>`
-	,
-	`
-	<d‰>August 9th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>August 9th, 2025</d‰>
 	<l‰>Myrtle Beach, SC</l‰>
 	<j‰>0853 HRS</j‰>
 	<g‰></g‰>
@@ -1281,10 +1236,9 @@ const blogData = [
 	overhead. The waves are a greenish blue-grey in tone; their tide is moderate. There is a pier a short walk from my tower undergoing
 	construction. A tank empties a continuous, arching stream of water; <t‰>a red crane</t‰> stands tall.
 	In the direction from this seat to that red crane, Nassau, Bahamas would lie far beyond the horizon.
-	</b‰>`
-	,
-	`
-	<d‰>August 10th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>August 10th, 2025</d‰>
 	<l‰>Myrtle Beach, SC</l‰>
 	<j‰>0858 HRS</j‰>
 	<g‰></g‰>
@@ -1300,10 +1254,9 @@ const blogData = [
 	<hr> &emsp;
 	The rain has just begun and the beachgoers are clearing out; the tide intensifies. 
 	I'll be checking out shortly. I anticipate getting wet just a little. 
-	</b‰>`
-	,
-	`
-	<d‰>August 24th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>August 24th, 2025</d‰>
 	<l‰>Raleigh, NC</l‰>
 	<j‰>1907 HRS</j‰>
 	<g‰></g‰>
@@ -1318,11 +1271,9 @@ const blogData = [
 	Regardless, I may have learned the tools and I've run into fewer errors in the past, the experience is still dead and I find myself
 	overwhelmed because there is simply too much for me to manage. I'm tired already of being overwhelmed. I want to quit again, just as 
 	I angrilly quit No Man's Sky. I'm tired of it all and want to get back to reality already. No more <t‰>chunk manipulation</t‰> for a while.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>September 21st, 2025</d‰>
+	`<d‰>September 21st, 2025</d‰>
 	<l‰>Raleigh, NC</l‰>
 	<j‰>0357 HRS</j‰>
 	<g‰></g‰>
@@ -1347,10 +1298,9 @@ const blogData = [
 	I must know that nowadays isn't like years ago; I have much more on which to spend my time, obligations and not.
 	I need to push this already and get to the store. I grow tired of this couch sitting.
 	<hr>
-	</b‰>`
-	,
-	`
-	<d‰>October 1st, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>October 1st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0325 HRS</j‰>
 	<g‰></g‰>
@@ -1372,10 +1322,9 @@ const blogData = [
 	patience and discipline. For a moment, I was a bit overwhelmed with all the options, but then I remember: it's 
 	the excess options that oppress rather than free. I am going to stick with my choice and that's that. 
 	I will have an inkling of faith for the nation to prevail for its sake and for my <t‰>investments</t‰>.
-	</b‰>`
-	,
-	`
-	<d‰>October 31st, 2025</d‰>
+	</b‰>`,
+	
+	`<d‰>October 31st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>1717 HRS</j‰>
 	<g‰></g‰>
@@ -1403,10 +1352,9 @@ const blogData = [
 	evident to medical staff upon seeing me. This is an odd medication but it has relieved my aching, fever, and exhaustion. It also turns out 
 	that it acts as a contra-melatonin, like what the heck. Well, I'll accept for now, but I do sincerely want some more quality sleep again this 
 	weekend and take a break from obsessing about accounting.
-	</b‰>`
-	,
-	`
-	<d‰>November 20th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>November 20th, 2025</d‰>
 	<l‰>Weatherly, PA</l‰>
 	<j‰>0428 HRS</j‰>
 	<g‰></g‰>
@@ -1457,10 +1405,9 @@ const blogData = [
 	my energy elsewhere for over a week ahead; perhaps I could muster a renewed enthusiasm for my current role and discard
 	the frustrations for a time. Well, 2026 ideas for next time, and perhaps then I'll recap some experiences in Raleigh.
 	Cheers,
-	</b‰>`
-	,
-	`
-	<d‰>November 25th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>November 25th, 2025</d‰>
 	<l‰>Marshall, NC</l‰>
 	<j‰>0405 HRS</j‰>
 	<g‰></g‰>
@@ -1490,10 +1437,9 @@ const blogData = [
 	Despite the theme of this spot being the mountain laurel, I spotted <t‰>no mountain laurel</t‰>.
 	So, some things were not spotted, but that's all quite okay. I'm comfortable here now. All is well.
 	All is secure, and I endeavor to make sure of it.
-	</b‰>`
-	,
-	`
-	<d‰>November 29th, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>November 29th, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2107 HRS</j‰>
 	<g‰></g‰>
@@ -1533,10 +1479,9 @@ const blogData = [
 	seem to show their age in their antagonistic styling and UX-damaging qualities. Well, right before then, I suppose I'll quickly shoot off
 	some messages; I've still been a bit isolated. Actually, I've been very isolated. In summary, I'm glad to have been working hard and have
 	likely burned off the copious Thanksgiving bean pie I had the pleasure of experiencing lately. Cheers,
-	</b‰>`
-	,
-	`
-	<d‰>December 31st, 2025</d‰>
+	</b‰>`,
+
+	`<d‰>December 31st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2242 HRS</j‰>
 	<g‰></g‰>
@@ -1549,11 +1494,9 @@ const blogData = [
 	The seasons of life during the year were varied and wholly consuming of my focus.
 	<t‰>I'll aspire</t‰> to better balance in the year ahead.
 	Cheers,
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>January 20th, 2026</d‰>
+	`<d‰>January 20th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2356 HRS</j‰>
 	<g‰></g‰>
@@ -1581,11 +1524,9 @@ const blogData = [
 	have this one tune on the books for Jummbox.
 	<hr>
 	A new-year resolution, I suppose, would be to finally quit biting my damned nails.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>February 12th, 2026</d‰>
+	`<d‰>February 12th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0952 HRS</j‰>
 	<g‰></g‰>
@@ -1652,11 +1593,9 @@ const blogData = [
 	Comfort is the thief of my joy. The long suppressed <t‰>tyrant of the self</t‰> had some damn good sense.
 	To paraphrase a yesterdecade icon, "Emotional damage? Good."
 	That's right. It's fucking good. I've made it good before;<span class="cmbr-furious"> damn straight I'm gonna make it good again.</span>
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>February 13th, 2026</d‰>
+	`<d‰>February 13th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>1634 HRS</j‰>
 	<g‰></g‰>
@@ -1670,10 +1609,9 @@ const blogData = [
 	I wasn't ready. My hope is that I would not allow dejection to take over me as I recover my better lifestyle. The possibility for saying "if only I were
 	living like this" more, seems likely. But no worries. All is well, all is secure. I do wish I could better pay back, though. There is so much that was
 	undeserved, regardless.
-	</b‰>`
-	,
-	`
-	<d‰>February 13th, 2026</d‰>
+	</b‰>`,
+
+	`<d‰>February 13th, 2026</d‰>
 	<l‰>Hillsborough, NC</l‰>
 	<j‰>2331 HRS</j‰>
 	<g‰></g‰>
@@ -1735,8 +1673,7 @@ const blogData = [
 	If there's anything I should internalize from my dormant practice, it's that "not feeling" like doing something positive is exactly why I should do such thing.
 	</b‰>`,
 
-	`
-	<d‰>February 15th, 2026</d‰>
+	`<d‰>February 15th, 2026</d‰>
 	<l‰>Hillsborough, NC</l‰>
 	<j‰>2310 HRS</j‰>
 	<g‰></g‰>
@@ -1759,10 +1696,9 @@ const blogData = [
 	'H'*¬_/=!{^_/*'{['/%¬}\/*¬/*'{'/[¬}¬L/*'})'H{\/ø'¬]/¬]'/}'˙{H/('“/}'~['_/*¬/]!';«\
 	*¬/)“=/{'*¬/«“]'˙=)'_/H/{'+'«/•+~=“/;{}^{'(H]¬L/«“]'˙=)'_/¬]'/[¬}¬L/)=*¬[/H}';{\
 	</span>
-	</b‰>`
-	,
-	`
-	<d‰>February 18th, 2026</d‰>
+	</b‰>`,
+
+	`<d‰>February 18th, 2026</d‰>
 	<l‰>Raleigh, NC</l‰>
 	<j‰>0131 HRS</j‰>
 	<g‰></g‰>
@@ -1860,11 +1796,9 @@ const blogData = [
 	I arrived and we chatted over discord a while. He shared with me his music production projects to my enjoyment, and also shared
 	a new single from Harry Styles that bore synthwork much to my liking. I think I'll have a listen again now, and close out this 
 	entry. Thank you, friend. You're more than I'd deserve.
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>February 25th, 2026</d‰>
+	`<d‰>February 25th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2338 HRS</j‰>
 	<g‰></g‰>
@@ -1915,11 +1849,9 @@ const blogData = [
 	It's been a long time promise of mine driven by a certain romanticism in its wording: "I'm off to <t‰>reclaim my sunshine</t‰>."<br>
 	Well, that time has come. Let's make the most of it, you.
 
-	</b‰>`
-	,
+	</b‰>`,
 
-	`
-	<d‰>March 6th, 2026</d‰>
+	`<d‰>March 6th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2344 HRS</j‰>
 	<g‰></g‰>
@@ -1936,11 +1868,9 @@ const blogData = [
 	it signified a passing of a former self. After all, I am turning a page in life, and the contents to follow will reflect
 	<t‰>decoupling uniform and identity</t‰>. I will afford myself the grace to adjust to this newness. In any case, thank you all: sergeant,
 	corporal, officers, my trainees, and administration. Thank you.
-	</b‰>`
-	,
+	</b‰>`,
 	
-	`
-	<d‰>March 15th, 2026</d‰>
+	`<d‰>March 15th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2037 HRS</j‰>
 	<g‰>dejection, community, book</g‰>
@@ -1994,134 +1924,164 @@ const blogData = [
 	those many months. Some day soon I'll look at associated places and things fondly with a smile and sweet sentiment, but until then, I just need the
 	<t‰>courage to be disliked</t‰>.
 
-	</b‰>`
-	,
-	`
-		<d‰>March 22nd, 2026 </d‰>
-		<l‰>Pittsboro, NC</l‰>
-		<j‰>1000 HRS</j‰>
-		<g‰>venting</g‰>
-		<p‰>assets/travel-photos/photo-nc-us-34.jpeg</p‰>
-		<a‰>https://www.youtube.com/watch?v=sjpmizWJ_Ko</a‰>
-		<u‰>Chrispy</u‰>
-		<b‰>&emsp;
-		In reflection on the experience over the last few days, it seems as if I've forgotten the point of this whole career change, since
-		I have not been experiencing much to my favor. Though I have removed myself from heightened risk in switching to office work, 
-		I am still in proximity to potentially problematic residents, but it not just that; I also happen to be physically unlike everyone
-		in the hall and I sense unease. Never before had I entered a workplace feeling unwelcome. Most often I would enter a workspace and begin
-		speaking through diligent and fairly decent work, and rapport arises through that. Now, not only do I not share the domain of my work with
-		coworkers, I am unable to speak through my work since I am wholly novice in this field professionally and still learning the basics of
-		everything. The isolation in my single-cell adjacent office too had been starting to weigh in on me. I have yet to find some outlet.
-		In addition, my commute is so damned long and my pay is so damned little, and I'm accepting it all purposefully. 
-		I have to remind myself this is "for a better future" but it seems so not worth it. It's as if losing the uniform meant losing 
-		respect and value. I know it's not principally true, but it is felt, on and off. Once that budget hits, I'll be considering 
-		more than I ever thought possible the return to uniform. So many factors at play. I achieved this sunshine and I have little else.
-		I'm grateful to have one relatively local friend, but that's about it.
-		I'm getting older, and while time is moving slower I am more cognizant of it and its passage. I feel like I've been working this job for 
-		months; I have still yet to obtain my first meager check from the time put in.
-		I am more worrisome of money now than I have been in a long time, and headway will come very slowly without any overtime. 
-		I should consider a weekend job just to get by, but that defeats part of the purpose of my accepting this role.
-		I am almost entirely grounded here, now. I cannot entertain my world travel ideas within two years at least. 
-		I cannot entertain eating out or expending freely on minor improvements. To use leave would be more consuming of my quotas and 
-		at a far lesser value. What the heck. 
-		My having lacked effort in my previous relationship surges all despondancy stemming from feeling unwelcome, unwanted, and devalued;
-		its negative impact on my <t‰>life after uniform</t‰> is proving monumental.
-		<hr class="hr-cmbr-gradient">&emsp;
-		I am granted a little comfort in perceiving this period as a challenge I know I can overcome. Yet I wonder, for just how long must 
-		I keep this up? This does not feel sustainable. I cannot and will not relocate for this position to relieve the commute.
-		Then, each semester I must expend on further coursework, and then CPA licensure coursework, and then consume all of that time doing 
-		that sort of stuff, too. I am okay with little; I don't need much, and yet, this path entails such a sacrifice in its own right and 
-		I am seriously calling its eventual payoff into question. I do wonder if I should just return to custody and daggone use all that
-		nighttime shit to study. There is a gym near me that would work so much better; I should have just gone with it. I could have definitely
-		managed that. I should have put in more effort to restructure things before my leave, but then again, I wouldn't've felt compelled as I
-		was fairly complacent. I was pretty happy with life in the months surrounding my travel to Japan. I nowadays often imagine the possibility for 
-		things to go awry, such that the negative effects are lessened, and while true, they are, they're taking a present toll. 
-		I have to move forward with the aforementioned courage to be disliked and a plan that is conducive to optimizing this arrangement for lifestyle
-		on various fronts including financial, physical, emotional, spiritual, and social. To perceive this period as a challenge is good: I need 
-		this desperation to drive me into another personal reinvention I believe possible. 
-		<hr class="hr-cmbr-gradient">&emsp;
-		I had revisited a lovely spot in Chatham. It sports a pretty little lake wrapped by a well maintained path furnished on its sides with benches 
-		and area-descriptive signage. There I had found that one-piece black metal bench and table where plentiful food thingies were exchanged with my 
-		then hopeful. We definitely overpacked. The sandwiches and passionfruit were nice. I am challeged now to improve my practice and let it all go. 
-		It's ephemeral like all things.
-		It doesn't matter now. Nothing lasts forever. 
-		Hope is sometimes terrible, as is misplaced focus.
+	</b‰>`,
 
-		</b‰>`,
+	`<d‰>March 22nd, 2026 </d‰>
+	<l‰>Pittsboro, NC</l‰>
+	<j‰>1000 HRS</j‰>
+	<g‰>venting</g‰>
+	<p‰>assets/travel-photos/photo-nc-us-34.jpeg</p‰>
+	<a‰>https://www.youtube.com/watch?v=sjpmizWJ_Ko</a‰>
+	<u‰>Chrispy</u‰>
+	<b‰>&emsp;
+	In reflection on the experience over the last few days, it seems as if I've forgotten the point of this whole career change, since
+	I have not been experiencing much to my favor. Though I have removed myself from heightened risk in switching to office work, 
+	I am still in proximity to potentially problematic residents, but it not just that; I also happen to be physically unlike everyone
+	in the hall and I sense unease. Never before had I entered a workplace feeling unwelcome. Most often I would enter a workspace and begin
+	speaking through diligent and fairly decent work, and rapport arises through that. Now, not only do I not share the domain of my work with
+	coworkers, I am unable to speak through my work since I am wholly novice in this field professionally and still learning the basics of
+	everything. The isolation in my single-cell adjacent office too had been starting to weigh in on me. I have yet to find some outlet.
+	In addition, my commute is so damned long and my pay is so damned little, and I'm accepting it all purposefully. 
+	I have to remind myself this is "for a better future" but it seems so not worth it. It's as if losing the uniform meant losing 
+	respect and value. I know it's not principally true, but it is felt, on and off. Once that budget hits, I'll be considering 
+	more than I ever thought possible the return to uniform. So many factors at play. I achieved this sunshine and I have little else.
+	I'm grateful to have one relatively local friend, but that's about it.
+	I'm getting older, and while time is moving slower I am more cognizant of it and its passage. I feel like I've been working this job for 
+	months; I have still yet to obtain my first meager check from the time put in.
+	I am more worrisome of money now than I have been in a long time, and headway will come very slowly without any overtime. 
+	I should consider a weekend job just to get by, but that defeats part of the purpose of my accepting this role.
+	I am almost entirely grounded here, now. I cannot entertain my world travel ideas within two years at least. 
+	I cannot entertain eating out or expending freely on minor improvements. To use leave would be more consuming of my quotas and 
+	at a far lesser value. What the heck. 
+	My having lacked effort in my previous relationship surges all despondancy stemming from feeling unwelcome, unwanted, and devalued;
+	its negative impact on my <t‰>life after uniform</t‰> is proving monumental.
+	<hr class="hr-cmbr-gradient">&emsp;
+	I am granted a little comfort in perceiving this period as a challenge I know I can overcome. Yet I wonder, for just how long must 
+	I keep this up? This does not feel sustainable. I cannot and will not relocate for this position to relieve the commute.
+	Then, each semester I must expend on further coursework, and then CPA licensure coursework, and then consume all of that time doing 
+	that sort of stuff, too. I am okay with little; I don't need much, and yet, this path entails such a sacrifice in its own right and 
+	I am seriously calling its eventual payoff into question. I do wonder if I should just return to custody and daggone use all that
+	nighttime shit to study. There is a gym near me that would work so much better; I should have just gone with it. I could have definitely
+	managed that. I should have put in more effort to restructure things before my leave, but then again, I wouldn't've felt compelled as I
+	was fairly complacent. I was pretty happy with life in the months surrounding my travel to Japan. I nowadays often imagine the possibility for 
+	things to go awry, such that the negative effects are lessened, and while true, they are, they're taking a present toll. 
+	I have to move forward with the aforementioned courage to be disliked and a plan that is conducive to optimizing this arrangement for lifestyle
+	on various fronts including financial, physical, emotional, spiritual, and social. To perceive this period as a challenge is good: I need 
+	this desperation to drive me into another personal reinvention I believe possible. 
+	<hr class="hr-cmbr-gradient">&emsp;
+	I had revisited a lovely spot in Chatham. It sports a pretty little lake wrapped by a well maintained path furnished on its sides with benches 
+	and area-descriptive signage. There I had found that one-piece black metal bench and table where plentiful food thingies were exchanged with my 
+	then hopeful. We definitely overpacked. The sandwiches and passionfruit were nice. I am challeged now to improve my practice and let it all go. 
+	It's ephemeral like all things.
+	It doesn't matter now. Nothing lasts forever. 
+	Hope is sometimes terrible, as is misplaced focus.
 
-		`
-		<d‰>March 26th, 2026</d‰>
-		<l‰>Pittsboro, NC</l‰>
-		<j‰>1945 HRS</j‰>
-		<g‰>career</g‰>
-		<p‰>assets/travel-photos/photo-nc-us-35.jpeg</p‰>
-		<a‰>https://www.youtube.com/watch?v=fXkyJR0gZV8</a‰>
-		<u‰>Chrispy</u‰>
-		<b‰>&emsp;
-		I really don't have the energy for this right now. 
-		I drive 10hrs on average per week nowadays. I get home, eat dinner, and maybe text around a little
-		to brighten things figuratively. 
-		Life brings so many twists and turns, much like my <t‰>alternatively-routed</t‰> drive back home.
-		I don't know what Apple Maps was thinking, but it took me on the toll road back home. 
-		And yet, I honestly don't mind having incurred the expense. 
-		It brought me some of the most gorgeous views this year: narrow landbridges and tiny islands to my left and right, the expanse
-		of Lake Jordan beyond. Boats were skimming by, trailblaizers hiking along an isthmus. The water was glistening and the air was fresh,
-		and in the foliage was a delightful mix of spring pastel and long-leaf evergreen. 
-		<hr class="hr-cmbr-gradient">&emsp;
-	 	I've taken some solace in texting a new friend who shares a semblance of my own history with close company.
-		Given my recent dislike for excess computer-time, giving that new connection proper attention is gladly coming easily.
-		Though, I can't help but shake the thoughts that my free time is moreso compromised with this career pivot than before. 
-		But no, I'm not going to give up just yet. I've taken the plunge, and I'm going to swim. Surely there will be some 
-		delightful island onto which I'd emerge by the end of this, before likely taking some other plunge again as a future self.
-		
-		</b‰>`,
+	</b‰>`,
 
-		`
-		<d‰>March 29th, 2026</d‰>
-		<l‰>Pittsboro, NC</l‰>
-		<j‰>0236 HRS</j‰>
-		<g‰>adventure</g‰>
-		<p‰>assets/travel-photos/photo-nc-us-38.jpeg</p‰>
-		<a‰>https://www.youtube.com/watch?v=9rp2YuHWMho</a‰>
-		<u‰>Chrispy</u‰>
-		<b‰>&emsp;
-		I closed out another week.
-		It was rough on me at the start, but it improved some.
-		I completed plentiful tasks and already see my flowstate starting to activate.
-		<hr class="hr-cmbr-gradient">&emsp;
-		In my previous entry, I briefly wrote of a beautiful area along Lake Jordan, and this morning I took myself to that tiny access point
-		and proceeded to explore freely. The morning was fairly cold and the wind was consistently moderate. I decked myself out in my parka and
-		gloves, backpack equipped, and gazed outward to the water and landscapes cradling it. My parking spot was essentially on a cliff which made
-		for a dramatic outset. I'd soon discover that the pine-laden paths along the shoreline would vary considerably in elevation, adding a welcome
-		need for exertion I've been craving.
-		Former campsites were encountered occassionally, with stones configured as seats, ash and charcoal remains at the circles, some trash astrewn.
-		Proceeding through the aforementioned isthmus, I felt as if along the fine line between peace and choas: calm, gentle waters nestled by the ithsmus
-		and landbridge; steady, rowdy waves crashing ashore from the expansive lake proper. 
-		Ahead was a grove sporting taller pines wearing myriad purple wisterias and a miniscule lagoon from which short bald cypress emerge.
-		After exploring that spot, I headed back to the outset overlook and proceeded in the other direction to hike the trails along the sloped and 
-		craggy shoreline. The wind beat upon me heavily and I was glad to have had multiple layers; the pines did not suffice for coverage, and neither did
-		nestling along a rockface away from the wind direction. All morning it seemed <t‰>the winds and waters</t‰> were destined to ride together and barrage this
-		entire zone. No, it was not discomforting but rather enlivening! I discovered that each line of trail had been connecting a series of small, furnished
-		wooden seating areas. I encountered four before returning half-way back and deploying my folding chair, taking a seat along a thick pine, 
-		and reading a chapter in the book I have yet to finish. 
-		<hr class="hr-cmbr-gradient">&emsp;
-		During my return to the outset overlook, I encountered a yellow flower that reminded me distinctly of my childhood backyard. In fact, it was that flower:
-		the Forsythia. I collected a loose one along the path, and returned to my vehicle. I dropped of my bag and my chair, and, desiring not to end this moment,
-		headed back down to the wisterias and bald cyprus. I collected a wisteria petal, and felt compelled to collect trash with discarded bags I found lying around at the
-		waterside. Winding through, bending and collecting cans and assorted rubbish, passed through the isthmus where I seemed to have a crowed of tiny, 
-		black birds chattering profusely in the nearby trees, many of which laid their eyes on me with curious intention. I couldn't help but smile and wave.
-		Picking up the next piece of trash ahead, they suddenly departed en masse. Heh, it's either they really, really wanted that piece removed, or I 
-		completed some side quest with which they implicitly tasked me. Either way, there was a simple joy to the moment then and there. I meandered up the hill
-		to the overlook, three full bags in hand, and upon arrival, discarded them in the middle trash can at the entry signage. Behind my vehicle and beside the cliff
-		was a small thicket with leaves of a reddish hue at the forefront of the expanse. I collected one leaf, undressed my thicker layers, packed them in the trunk,
-		and concluded the moment. The sun at this point was raising ambient temperatures to a cozy cool for short sleeves. I knocked out some chores and arrived home,
-		documenting and learning of the encounters. The reddish leaf was merely an infantile red oak leaf whose tough texture and jagged edges hadn't lead me to conclude such.
-		It was only a bit over three hours of journeying, but it felt like a whole day. I'm excited to do something akin to this again.
-		<hr class="hr-cmbr-gradient">&emsp;
-		I spent few hours of the night continuing my chat with my new friend. It's such a relief to communicate with someone with whom inhibitions hastily decreasing
-		and trust is steadily forming. Exploring deeper things beyond the superficial is proving enjoyable; I could comfortably claim that our contact and the 
-		circumstances around it are meaningful. I likely would not have taken this journey if not for the inspiration.
+	`<d‰>March 26th, 2026</d‰>
+	<l‰>Pittsboro, NC</l‰>
+	<j‰>1945 HRS</j‰>
+	<g‰>career</g‰>
+	<p‰>assets/travel-photos/photo-nc-us-35.jpeg</p‰>
+	<a‰>https://www.youtube.com/watch?v=fXkyJR0gZV8</a‰>
+	<u‰>Chrispy</u‰>
+	<b‰>&emsp;
+	I really don't have the energy for this right now. 
+	I drive 10hrs on average per week nowadays. I get home, eat dinner, and maybe text around a little
+	to brighten things figuratively. 
+	Life brings so many twists and turns, much like my <t‰>alternatively-routed</t‰> drive back home.
+	I don't know what Apple Maps was thinking, but it took me on the toll road back home. 
+	And yet, I honestly don't mind having incurred the expense. 
+	It brought me some of the most gorgeous views this year: narrow landbridges and tiny islands to my left and right, the expanse
+	of Lake Jordan beyond. Boats were skimming by, trailblaizers hiking along an isthmus. The water was glistening and the air was fresh,
+	and in the foliage was a delightful mix of spring pastel and long-leaf evergreen. 
+	<hr class="hr-cmbr-gradient">&emsp;
+	I've taken some solace in texting a new friend who shares a semblance of my own history with close company.
+	Given my recent dislike for excess computer-time, giving that new connection proper attention is gladly coming easily.
+	Though, I can't help but shake the thoughts that my free time is moreso compromised with this career pivot than before. 
+	But no, I'm not going to give up just yet. I've taken the plunge, and I'm going to swim. Surely there will be some 
+	delightful island onto which I'd emerge by the end of this, before likely taking some other plunge again as a future self.
+	
+	</b‰>`,
 
-		</b‰>`
+	`<d‰>March 29th, 2026</d‰>
+	<l‰>Pittsboro, NC</l‰>
+	<j‰>0236 HRS</j‰>
+	<g‰>adventure</g‰>
+	<p‰>assets/travel-photos/photo-nc-us-38.jpeg</p‰>
+	<a‰>https://www.youtube.com/watch?v=9rp2YuHWMho</a‰>
+	<u‰>Chrispy</u‰>
+	<b‰>&emsp;
+	I closed out another week.
+	It was rough on me at the start, but it improved some.
+	I completed plentiful tasks and already see my flowstate starting to activate.
+	<hr class="hr-cmbr-gradient">&emsp;
+	In my previous entry, I briefly wrote of a beautiful area along Lake Jordan, and this morning I took myself to that tiny access point
+	and proceeded to explore freely. The morning was fairly cold and the wind was consistently moderate. I decked myself out in my parka and
+	gloves, backpack equipped, and gazed outward to the water and landscapes cradling it. My parking spot was essentially on a cliff which made
+	for a dramatic outset. I'd soon discover that the pine-laden paths along the shoreline would vary considerably in elevation, adding a welcome
+	need for exertion I've been craving.
+	Former campsites were encountered occassionally, with stones configured as seats, ash and charcoal remains at the circles, some trash astrewn.
+	Proceeding through the aforementioned isthmus, I felt as if along the fine line between peace and choas: calm, gentle waters nestled by the ithsmus
+	and landbridge; steady, rowdy waves crashing ashore from the expansive lake proper. 
+	Ahead was a grove sporting taller pines wearing myriad purple wisterias and a miniscule lagoon from which short bald cypress emerge.
+	After exploring that spot, I headed back to the outset overlook and proceeded in the other direction to hike the trails along the sloped and 
+	craggy shoreline. The wind beat upon me heavily and I was glad to have had multiple layers; the pines did not suffice for coverage, and neither did
+	nestling along a rockface away from the wind direction. All morning it seemed <t‰>the winds and waters</t‰> were destined to ride together and barrage this
+	entire zone. No, it was not discomforting but rather enlivening! I discovered that each line of trail had been connecting a series of small, furnished
+	wooden seating areas. I encountered four before returning half-way back and deploying my folding chair, taking a seat along a thick pine, 
+	and reading a chapter in the book I have yet to finish. 
+	<hr class="hr-cmbr-gradient">&emsp;
+	During my return to the outset overlook, I encountered a yellow flower that reminded me distinctly of my childhood backyard. In fact, it was that flower:
+	the Forsythia. I collected a loose one along the path, and returned to my vehicle. I dropped of my bag and my chair, and, desiring not to end this moment,
+	headed back down to the wisterias and bald cyprus. I collected a wisteria petal, and felt compelled to collect trash with discarded bags I found lying around at the
+	waterside. Winding through, bending and collecting cans and assorted rubbish, passed through the isthmus where I seemed to have a crowed of tiny, 
+	black birds chattering profusely in the nearby trees, many of which laid their eyes on me with curious intention. I couldn't help but smile and wave.
+	Picking up the next piece of trash ahead, they suddenly departed en masse. Heh, it's either they really, really wanted that piece removed, or I 
+	completed some side quest with which they implicitly tasked me. Either way, there was a simple joy to the moment then and there. I meandered up the hill
+	to the overlook, three full bags in hand, and upon arrival, discarded them in the middle trash can at the entry signage. Behind my vehicle and beside the cliff
+	was a small thicket with leaves of a reddish hue at the forefront of the expanse. I collected one leaf, undressed my thicker layers, packed them in the trunk,
+	and concluded the moment. The sun at this point was raising ambient temperatures to a cozy cool for short sleeves. I knocked out some chores and arrived home,
+	documenting and learning of the encounters. The reddish leaf was merely an infantile red oak leaf whose tough texture and jagged edges hadn't lead me to conclude such.
+	It was only a bit over three hours of journeying, but it felt like a whole day. I'm excited to do something akin to this again.
+	<hr class="hr-cmbr-gradient">&emsp;
+	I spent few hours of the night continuing my chat with my new friend. It's such a relief to communicate with someone with whom inhibitions hastily decreasing
+	and trust is steadily forming. Exploring deeper things beyond the superficial is proving enjoyable; I could comfortably claim that our contact and the 
+	circumstances around it are meaningful. I likely would not have taken this journey if not for the inspiration.
+
+	</b‰>`,
+
+	`<d‰>April 18th, 2026</d‰>
+	<l‰>Pittsboro, NC</l‰>
+	<j‰>1042 HRS</j‰>
+	<g‰>novelty</g‰>
+	<p‰>assets/travel-photos/photo-nc-us-44.jpeg</p‰>
+	<a‰>https://www.youtube.com/watch?v=rVXGB_QenyQ</a‰>
+	<u‰>Chrispy</u‰>
+	<b‰>&emsp;
+	The series of events this month have been a grand mixture of lows, highs, and middles I unlike most months prior.
+	From understimulation to overstimulation, from feelings of abandonment to love, from heightened activity to dormant passivity, from banality to 
+	novelty, from social connection to relclusivity, it was all there.
+	<t‰>It always comes as a surprise</t‰>, whatever aspect of a following chapter in life serves to lift the spirits and offer a means to inject purpose
+	to previous afflictions.
+	</b‰>`,
+
+	/* // |==========| START NEW ENTRY TEMPLATE |=====>
+
+	`<d‰>DATE</d‰>
+	<l‰>LOCATION</l‰>
+	<j‰>HOURS</j‰>
+	<g‰></g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<u‰>Chrispy</u‰>
+	<g‰>TAGS</g‰>
+	<b‰>&emsp;
+	__________
+	<t‰>TITLE</t‰>
+	__________
+	</b‰>`,
+
+	*/ // |==========| END NEW ENTRY TEMPLATE |=====|
 	
 ]	;

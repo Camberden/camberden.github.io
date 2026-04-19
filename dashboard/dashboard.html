@@ -17,6 +17,7 @@
 	<script src="../htmx.js"></script>
 	<script src="../cmbr.js"></script>
 	<script src="../depository/notes-data.js"></script>
+	<script src="../depository/lifecraft-data.js"></script>
 	<title>Chrispy's Dashboard</title>
 </head>
 
@@ -466,7 +467,6 @@
 
 		</div>
 
-		<!-- ∆ CALENDAR -->
 		<div id="dashboard-calendar" class="dashboard-item">
 			<div>
 				<h2 class="marker-green">Calendar</h2>
@@ -608,7 +608,6 @@
 			</div><!-- ∆ END ALPINE -->
 		</div>
 
-		<!-- ∆ CAREERS AND SALARIES -->
 		<div id="dashboard-career-insight" class="dashboard-item" x-data=" accountingRoles ">
 			<div>
 				<h2 class="marker-green">Career Option Insight</h2>
@@ -641,7 +640,7 @@
 			</div>
 			<div id="taxes-table" class="flex-table">
 
-				<div flex-table-row grid-col-1-1>
+				<div class="flex-table-row grid-col-1">
 					<div>
 						<p>Tax Balance:</p>
 						<input type="text" placeholder="50000" value="50000" id="tax-balance">
@@ -654,8 +653,27 @@
 						<p>Monthly Payment:</p>
 						<input type="text" placeholder="500" value="500" id="tax-monthly-payment">
 					</div>
+
+					<div>
+						<br>
+						<button id="tax-button" class="trigger-box">Submit</button>
+					</div>
 				</div>
 			</div>
+		</div>
+
+		<div id="dashboard-days-lived" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Time in this World</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div class="flex-table grid-col-1" x-data=" { daysSinceBirth } ">
+			<p>Days Lived: <u x-text=" daysSinceBirth "></u></p>
+			<p>Weeks Lived: <u x-text=" (daysSinceBirth / 7).toFixed(2) "></u></p>
+			<p>Years Lived: <u x-text=" (daysSinceBirth / 366).toFixed(2) "></u></p>
+
+		</div>
+
 		</div>
 
 	</main> <!-- END DASHBOARD GRID -->

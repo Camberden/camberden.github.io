@@ -281,7 +281,3 @@ const currentMonth = date.getMonth();
 const currentDay = date.getDate();
 const currentDate = date.toLocaleDateString("en-US", dateOptions);
 let changeYear = currentYear;
-
-const pslfRequirement = 120;
-const creditedPSLFMonths = 45;
-const uncreditedPSLFMonths = 18;

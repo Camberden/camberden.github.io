@@ -1,0 +1,64 @@
+<!-- TODO: Include Present & Future Value Charts-->
+<!-- TAXABILITY --><!--∆START∆ -->
+<div id="taxability-handle" x-data=" { 
+    url: 'localhost5500/dashboard/dashboard.html?',
+    searchParams: new URLSearchParams(),
+
+    aspects: [
+			{
+				id: 1,
+				title: 'Rush of Feeling Day',
+				start: '2026-07-09',
+				end: '2026-07-09',
+			},
+			{
+				id: 2,
+				title: 'Accounting Career Begins',
+				start: '2026-03-09',
+				// end: '2026-03-09',
+				display: 'background',
+
+			},
+    ],
+    
+
+    } ">
+    <!--∆END∆ -->
+
+    <div>
+        <h2 class="marker-green">Taxability Calculator</h2>
+        <div class="marker flex-table grid-col-1">Alpine Var Test Prompter: 
+        <u x-text=" url "></u>
+        <u x-text=" aspects[0].id "></u>
+        <u x-text=" aspects[0].title "></u>
+            
+        </div>
+        <hr class="hr-cmbr-dark-gradient">
+    </div>
+    <div id="taxes-table" class="flex-table">
+
+        <div class="flex-table-row grid-col-1">
+            <div>
+                <p>Tax Balance:</p>
+                <input type="text" placeholder="50000" value="50000" id="tax-balance">
+            </div>
+            <div>
+                <p>Interest Rate:</p>
+                <input type="text" placeholder="5.0" value="5.0" id="tax-interest-rate">
+            </div>
+            <div>
+                <p>Monthly Payment:</p>
+                <input type="text" placeholder="500" value="500" id="tax-monthly-payment">
+            </div>
+
+            <div>
+                <br>
+                <button id="tax-button" class="trigger-box"
+                    @click=" window.location.href = url + queryString ">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

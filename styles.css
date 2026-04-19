@@ -1338,7 +1338,8 @@ select:hover {
 	top:10%;
 	flex: 1;
 	position: sticky;
-	height: 50rem;
+	height: 45rem;
+	overflow: scroll;
 	align-items: center;
 	justify-content: center;
 }

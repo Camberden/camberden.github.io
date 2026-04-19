@@ -139,7 +139,6 @@ const accountingRoles = [
 
 (()=>{
 
-	enableNeuButtons();
 	enableDropdowns();
 	CMBRutil.navigationCharter();
 
