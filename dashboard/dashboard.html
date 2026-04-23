@@ -36,9 +36,9 @@
 					set expanded(value) {
 						this.active = value ? this.id : null
 					},
-					}" role="region" class="">
+					}" role="region">
 					<button type="button" x-on:click="expanded = !expanded" :aria-expanded="expanded" id="chart-access">
-						<div class="trigger-dropdown">
+						<div class="trigger-dropdown" >
 							<span x-show="expanded" x-cloak>&UpArrow;</span>
 							<span x-show="!expanded" x-cloak>&DownArrow;</span>
 							<span>Options</span>
@@ -46,7 +46,7 @@
 							<span x-show="!expanded">&DownArrow;</span>
 						</div>
 					</button>
-					<div id="chart-dropdown" x-show="expanded" x-collapse>
+					<div id="chart-dropdown" x-cloak x-show="expanded" x-collapse>
 						<div id="chart-links">
 						</div>
 					</div>
@@ -395,6 +395,7 @@
 				<div>
 					<h5 class="vt323">Display</h5>
 					<select id="depository-results-select">
+						<option value="choose amount" disabled>Choose Amount</option>
 						<option value="10">10 results</option>
 						<option value="15">15 results</option>
 						<option value="20">20 results</option>

@@ -141,6 +141,7 @@ const accountingRoles = [
 
 	enableDropdowns();
 	CMBRutil.navigationCharter();
+	CMBRutil.initAlpineData();
 
 })();
 

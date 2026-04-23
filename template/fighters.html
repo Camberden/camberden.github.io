@@ -1,0 +1,43 @@
+<div>
+
+    <template x-data=" { 
+    fighers: [ { id: 1, name: "Firstwolf" , rank: "CO" ,
+        photo: "assets/segregation-officers/staff-3.jpg" , attack: 3, defense: 3, dexterity: 3, health: 18, experience:
+        0, }, { id: 2, name: "Secondwolf" , rank: "CO" , photo: "assets/segregation-officers/staff-0.jpg" , attack: 4,
+        defense: 2, dexterity: 2, health: 22, experience: 0, }, { id: 3, name: "Firstfox" , rank: "CO" ,
+        photo: "assets/segregation-officers/staff-14.jpg" , attack: 2, defense: 3, dexterity: 4, health: 15, experience:
+        0, }, { id: 4, name: "Secondfox" , rank: "CO" , photo: "assets/segregation-officers/staff-10.jpg" , attack: 1,
+        defense: 3, dexterity: 6, health: 12, experience: 0, }, demonstrate() { this.game=this.$refs.sesh, }, ], 
+        } ">
+
+        <!-- <button @click=" $refs.text.remove()">Remove Text</button><span x-ref="text">Hello 👋</span> -->
+        <div class="flex-grid-cmbr grid-col-1-3-1">
+
+            <div id="fighter-1-field grid-col-1">
+                <h4>Name: <span x-ref=" name "></span></h4>
+
+            </div>
+
+            <div id="fighter-play-field">
+
+                <p class="marker">
+                    <u x-ref=" game "></u>
+                    <button @click="demonstrate()" x-text=" game "></button>
+                    <span id="fighter-damage-dealt"></span>
+                </p>
+
+            </div>
+
+            <div id="fighter-2-field">
+                <h4>Name: <span x-text=" name "></span></h4>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </template>
+</div>

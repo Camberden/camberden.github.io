@@ -1,0 +1,119 @@
+<div x-data="scuffler">
+
+        <!-- <button @click=" $refs.text.remove()">Remove Text</button><span x-ref="text">Hello 👋</span> -->
+        <div :class="'flex-grid-cmbr'">
+
+            <div :class="'grid-col-1'">
+                <h2 :class="'marker-green'" x-text=" scufflertitle "></h2>
+
+                <div :class="'grid-col-1-1'">
+                    <button :class="'trigger-box'" hx-get="../template/ranks.html" hx-target="#wksp-left" hx-swap="innerHTML" hx-trigger="click">Ranks</button>
+                    <button :class="'trigger-box'" hx-get="../template/progression.html" hx-target="#wksp-left" hx-swap="innerHTML" hx-trigger="click">Progression</button>
+                </div>
+
+                <div :class="'grid-col-1-1'">
+                    <h4 class="marker">Choose Player 1</h4>
+                    <h4 class="marker">Choose Player 2</h4>
+                    <select x-model="sel1">
+                        <option value="" disabled>Character 1</option>
+                        <option :value="0">Wolf 1</option>
+                        <option :value="1">Wolf 2</option>
+                        <option :value="2">Fox 1</option>
+                        <option :value="3">Fox 2</option>
+                    </select>
+                    <select x-model="sel2">
+                        <option value="" disabled>Character 2</option>
+                        <option :value="0">Wolf 1</option>
+                        <option :value="1">Wolf 2</option>
+                        <option :value="2">Fox 1</option>
+                        <option :value="3">Fox 2</option>
+                    </select>
+                </div>
+                <hr :class="'hr-cmbr-dark-gradient'">
+                <hr :class="'hr-push-down'">
+
+            <div :class="'grid-col-1-3-1'">
+
+                <div id="fighter-1-stats" class="grid-col-1">
+                    <div id="fighter-1-vitality" x-show="undergoing">
+                        <p>|=====| <span :class="'marker'" x-show=" undergoing " x-text=" vitalities[1] "></span> |=====|</p>
+                        <p>|=====| <span :class="'cmbr-furious'" x-text=" damageReceived " x-show=" attackPhase "></span> |=====|</p>
+                        <div :class="'scuffler-health'">
+                            <span id="fighter-1-health"><span id="fighter-1-health-loss"></span></span>
+                        </div>
+                    </div>
+                    <h4>Character #<span x-text=" (parseInt(sel1) + 1) "></span></h4>
+                    <h4><i x-text=" fighters[sel1].name "></i></h4>
+                    <h4>Rank: <span x-text=" fighters[sel1].rank "></span></h4>
+                    <img :class="'scuffler-headshot'" :src=" setFighterPhoto(sel1) "></img>
+                    <h4>Attack: <span x-text=" fighters[sel1].attack "></span></h4>
+                    <h4>Defense: <span x-text=" fighters[sel1].defense "></span></h4>
+                    <h4>Dexterity: <span x-text=" fighters[sel1].dexterity "></span></h4>
+                    <h4>Health: <span x-text=" fighters[sel1].vitality "></span></h4>
+                    <h4>Experience: <span x-text=" fighters[sel1].experience "></span></h4>
+                </div>
+
+                <!-- % PLAY FIELD % -->
+                <!-- |=====| BETWEEN TWO VITALITIES, [1] & [2] !-->
+                <div id="fighter-play-field" x-ref=" activePlayers ">
+
+                    <div class="marker">
+
+                        <button :class="'trigger-box'" x-text="'Begin Match'" x-show="! undergoing"
+                        @click=" 
+                            undergoing = ! undergoing;
+                            vitalities[1] = initScufflerHealthBars(sel1);
+                            vitalities[2] = initScufflerHealthBars(sel2);
+                            addPlayer(playerCounter++, fighters[sel1].id, sel1, vitalities[1]);
+                            addPlayer(playerCounter++, fighters[sel2].id, sel2, vitalities[2]);
+                            ">
+                        </button>
+                        <h2 :class="'marker-green'" x-show="undergoing">Match in Progress!</h2>
+                        <hr :class="'hr-cmbr-gradient'">
+                        <!-- |=====| STRIKE! |=====| -->
+                        <button :class="'trigger-box'" x-text="'Strike'" x-show="undergoing" x-ref=" players "
+                        @click="
+                            setTimeout(() => {
+                                attackPhase = true;
+                                damageDealt = inflictDamage(this.players[1].playerId, this.players[2].playerId);
+                            }, 1000);
+                            setTimeout(() => {
+                                damageReceived = inflictDamage(this.players[2].playerId, this.players[1].playerId);
+                                attackPhase = false;
+                            }, 2000);
+                        "></button>
+                        
+                    </div>
+
+                </div>
+
+                <div id="fighter-2-stats" class="grid-col-1">
+                    <div id="fighter-2-vitality" x-show="undergoing">
+                        <p>|=====| <span :class="'marker'" x-text=" vitalities[2] " x-show=" undergoing "></span> |=====|</p>
+                        <p>|=====| <span :class="'cmbr-furious'" x-text=" damageDealt " x-show=" attackPhase "></span> |=====|</p>
+                         <div :class="'scuffler-health'">
+                            <span id="fighter-2-health"><span id="fighter-2-health-loss"></span></span>
+                        </div>
+                    </div>
+                    <h4>Character #<span x-text=" (parseInt(sel2) + 1) "></span></h4>
+                    <h4><i x-text=" fighters[sel2].name "></i></h4>
+                    <h4>Rank: <span x-text=" fighters[sel2].rank "></span></h4>
+                    <img :class="'scuffler-headshot'" :src=" setFighterPhoto(sel2) "></img>
+                    <h4>Attack: <span x-text=" fighters[sel2].attack "></span></h4>
+                    <h4>Defense: <span x-text=" fighters[sel2].defense "></span></h4>
+                    <h4>Dexterity: <span x-text=" fighters[sel2].dexterity "></span></h4>
+                    <h4>Health: <span x-text=" fighters[sel2].vitality "></span></h4>
+                    <h4>Experience: <span x-text=" fighters[sel2].experience "></span></h4>
+                </div>
+
+                
+
+
+            </div>
+            <div class="vt323" x-data="{ gamenotes: 'Gamenotes'}">
+                        <h5 x-text="gamenotes"></h5>
+                        <input type="text" placeholder="Gamenotes" x-model="gamenotes"/>
+                    </div>
+        </div>
+
+</div>

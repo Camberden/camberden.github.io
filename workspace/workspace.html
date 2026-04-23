@@ -48,7 +48,7 @@
 								<span x-show="!expanded">&DownArrow;</span>
 							</div>
 						</button>
-					<div id="chart-dropdown" x-show="expanded" x-collapse>
+					<div id="chart-dropdown" x-cloak x-show="expanded" x-collapse>
 						<div id="chart-links">
 						</div>
 					</div>
@@ -96,7 +96,7 @@
 	<hr class="hr-push-down">
 	<div class="button-grid-row">
 		<button class="trigger-box" hx-get="../template/reeducation.html" hx-target="#wksp-left" hx-trigger="click" hx-swap="innerHTML">Reeducation</button>
-		<button class="trigger-box" hx-get="../template/calendar.html" hx-target="#wksp-left" hx-trigger="click" hx-swap="innerHTML" disabled>center-left</button>
+		<button class="trigger-box" hx-get="../template/scuffle.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Fighters</button>
 		<button class="trigger-box" hx-get="../template/calendar.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Calendar</button>
 		<button class="trigger-box" hx-get="../template/taxability.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Taxability</button>
 		<button class="trigger-box" hx-get="../template/roles.html" hx-target="#wksp-right" hx-trigger="click" hx-swap="innerHTML">Roles & Such</button>
@@ -123,11 +123,9 @@
 	<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  -->
 
 	
-	</body>
-
-
 	<footer id="workspace-footer">
 		<hr class="hr-groove-top">
+		<h6></h6>
 		<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
 	</footer>
 
