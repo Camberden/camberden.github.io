@@ -514,14 +514,13 @@ const CMBRutil = {
 			Alpine.data("scuffler", () => ({
 				undergoing: false,
 				attackPhase: false,
-				scufflertitle: "Scuffler",
-				playerCounter: 1,
-				activePlayers: [2],
 				sel1: 0, // Firstwolf, Attack 3, Vitality 18
 				sel2: 2, // Secondfox, Attack 1, Vitality 12
 				damageDealt: 0,
 				damageReceived: 0,
-				vitalities: [8],
+				vitalities: [],
+				playerOneHealth: 1,
+				playerTwoHealth: 1,
 				fighters: [
 					{
 						id: 1, name: "Firstwolf", rank: "CO",
@@ -539,33 +538,6 @@ const CMBRutil = {
 						defense: 3, dexterity: 6, vitality: 12, experience: 0,
 					}
 				],
-				players: [
-					
-					{
-						playerId: null,
-						characterId: null,
-						selectionId: null,
-						playerVitality: null,
-					},
-				],
-				newPlayer: null,
-
-				addPlayer(pId, cId, sId, pVit) {
-	
-					let player = {
-						playerId: pId,
-						characterId: sId,
-						selectionId: sId,
-						playerVitality: pVit,
-					};
-	
-					this.players.push(player);
-					this.activePlayers.push(player);
-					// this.$refs.activePlayers.push(this.player);
-					console.table(this.players);
-					console.table(this.activePlayers);
-				},
-
 
 				/**
 				 * 
@@ -591,41 +563,11 @@ const CMBRutil = {
 				setFighterPhoto(selection) {
 					return this.fighters[selection].photo;
 				},
-
-				initScufflerHealthBars(fighter) {
-					// const healthBar = document.getElementById(`fighter-${fighter}-health`);
-					return this.fighters[fighter].vitality;
+				initScufflerHealthBars(selection) {
+					return this.fighters[selection].vitality;
 				},
-				
-				/**
-				 * 
-				 * @param {Number} attacker Player Number NOT Character Number 
-				 * @param {Number} defender Player Number NOT Character Number 
-				 * @returns The damage dealt or received from the attack.
-				 */
-				inflictDamage(attacker, defender) {
-					const healthBar = document.getElementById(`fighter-${defender}-health`);
-					const healthBarLoss = document.getElementById(`fighter-${defender}-health-loss`);
-					let damageOutput = this.fighters[this.players[attacker].selectionId].attack;
-					// TODO: AALLPLioennenee~~~ pLaYeRs iS nOt DeFiNeD
-					const healthBarLossPercentage = parseFloat((this.players[defender].playerVitality - damageOutput) / this.players[defender].playerVitality * 100).toFixed(2);
-					players[defender].playerVitality -= damageOutput.attack;
-					console.log("Health Bar Loss Percentage " + healthBarLossPercentage);
-					const healthBarRemainder = (100 - healthBarLossPercentage).toFixed(2);
-					console.log("Health Bar Remainder " + healthBarRemainder);
-
-					healthBar.setAttribute("style", `width:${healthBarRemainder}%;`);
-					healthBarLoss.setAttribute("style", `width:${healthBarLossPercentage}%;`);
-
-					return damageOutput;
-					
-				},
-					
-				}),
-				
-			);
-			});
-			
+			}),
+			); });
 		}
 	}
 

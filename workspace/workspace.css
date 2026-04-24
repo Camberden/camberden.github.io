@@ -525,3 +525,16 @@ nav {
 	position: relative;
 	overflow: hidden;
 }
+
+input[type=text] {
+	background-color: var(--clr-grid-box);
+	color: var(--cmbr-blass);
+	font-family: monospace, serif;
+	font-size: 1rem;
+	border: none;
+	width: 100%;
+}
+
+input[type=text]:focus {
+	background-color: var(--clr-quinary-body);
+}

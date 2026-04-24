@@ -108,6 +108,9 @@
 	--fc-now-indicator-color: red;
 
 }
+
+/* |==========| §FULL-CALENDAR OVERWRITES |====================> */
+/* |==========| TARGETING MULTI-PAGE CALENDAR |====================> */
 .fc .fc-multimonth-title {
 	color: burlywood;
 	background-color: black;
@@ -120,7 +123,6 @@
 	color: indianred;
 	background-color: black;
 }
-
 .fc-button {
 	/* user-select: none !important; */
 	box-sizing: border-box !important;
@@ -447,6 +449,7 @@ nav {
 	color: var(--cmbr-orange);
 	
 }
+
 .section-title:not(:hover) {
 	background-image: var(--cmbr-gradient);
 	background-size: 0% 5%;
@@ -465,6 +468,7 @@ nav {
 	height: 100%;
 	text-decoration: none;
 }
+
 .section-highlight {
 	color: var(--cmbr-orange);
 	background-image: var(--cmbr-gradient);
@@ -910,6 +914,22 @@ select:hover {
 	border-color: black;
 }
 
+.cmbr-flash-read {
+	display: block;
+	height: 1.5rem;
+  	position: relative;
+  	background: var(--cmbr-curtain-plum);
+	border: 0.2rem solid transparent;
+	font-family: monospace;
+	font-weight: bold;
+	color: indianred;
+	opacity: .8;
+	text-overflow: clip;
+}
+
+.cmbr-flash-read > span::before {
+	content:attr(item) " - "
+}
 
 /* |==========| §GRID FRAME STRUCTURES grid-template-columns: 1fr; |====================> */
 /* |==========| PRE-WRITTEN FRAME-BASED GRID CLASSES AS CHILDREN TO FLEX TABLES AND GRIDS |====================> */
@@ -1047,7 +1067,6 @@ select:hover {
 	background-repeat: no-repeat;
 	background-size: contain;
 }
-
 
 #camberden-div {
 	flex: 1;
@@ -1343,8 +1362,6 @@ select:hover {
 	align-items: center;
 	justify-content: center;
 }
-
-
 
 .flex-table {
 	display: flex;

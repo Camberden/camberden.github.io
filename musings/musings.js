@@ -13,6 +13,8 @@ const poems = [
 	"A gentle breeze was the only thing I had heard. All I could see surrounding my small, green oasis were immaculate dunes, some of stature, some modest, subjacent to a brilliant, pristine, blue sky whose fields spread dotted by puffy, white clouds, inching away ever so slowly, their movement involving enough in this remarkably empty scene so as to merit my attention and enrapture me in contemplative wonder.",
 	// "I choose discomfort to my betterment over comfort to my detriment.",
 	// "I live for coincidences. They briefly give mto me the illusion or the hope that there\'s a pattern to my life, and if there\'s a pattern, then maybe I\'m moving toward some kind of destiny where it\'s all explained.",
+	"Eros Flame is characterized by striking contrasts, where the finest ingredients enrich and enhance each other: cold and hot, sweet and spicy, light and shadow. The opening notes are particularly vibrant. Fresh, juicy Italian citrus fruits like lemon, tangerine, and bitter orange are warmed by notes of black pepper from Madagascar and enveloped in aromatic wild rosemary. Through an olfactory wave of pepperwood, geranium, and rose facets, we reach the base notes where precious woods such as Texas cedar, patchouli cœur, Haitian vetiver, mountain oak moss accord, and sandalwood subtly blend to create a soft and sensuous roundness with tonka bean, perfectly intertwining with vanilla.",
+
 ];	
 
 let poemnumber = 0;

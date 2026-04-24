@@ -7,8 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="workspace.css" media="screen" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
-	<script defer src="https://unpkg.com/@popperjs/core@2"></script>
-	<script defer src="https://unpkg.com/tippy.js@6"></script>
+	<!-- <script defer src="https://unpkg.com/@popperjs/core@2"></script> -->
+	<!-- <script defer src="https://unpkg.com/tippy.js@6"></script> -->
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -19,10 +19,8 @@
 </head>
 
 <body data-theme="dark">
-
 	<nav>
 		<div class="nav-sail">
-
 			<!-----| NAV 1 |----->
 			<div id="nav-1" x-data="{ active: 0 }">
 				
@@ -34,12 +32,8 @@
 					set expanded(value) {
 						this.active = value ? this.id : null
 					},
-					}" role="region" class="">
-						<button
-							type="button"
-							x-on:click="expanded = !expanded"
-							:aria-expanded="expanded"
-							id="chart-access">
+					}" role="region">
+						<button id="chart-access" type="button" @click="expanded = !expanded">
 							<div class="trigger-dropdown">
 								<span x-show="expanded" x-cloak>&UpArrow;</span>
 								<span x-show="!expanded" x-cloak>&DownArrow;</span>
@@ -93,6 +87,7 @@
 		</div>
 
 	</nav>
+
 	<hr class="hr-push-down">
 	<div class="button-grid-row">
 		<button class="trigger-box" hx-get="../template/reeducation.html" hx-target="#wksp-left" hx-trigger="click" hx-swap="innerHTML">Reeducation</button>
