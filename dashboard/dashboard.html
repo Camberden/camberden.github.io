@@ -37,7 +37,7 @@
 						this.active = value ? this.id : null
 					},
 					}" role="region">
-					<button type="button" x-on:click="expanded = !expanded" :aria-expanded="expanded" id="chart-access">
+					<button type="button" @click="expanded = !expanded" :aria-expanded="expanded" id="chart-access">
 						<div class="trigger-dropdown" >
 							<span x-show="expanded" x-cloak>&UpArrow;</span>
 							<span x-show="!expanded" x-cloak>&DownArrow;</span>

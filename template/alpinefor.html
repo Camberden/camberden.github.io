@@ -1,0 +1,170 @@
+<!-- |==========| ALPINE FOR LOOPS |==========| -->
+<!-- |==========| UNCOMMENT = SHIFT-OPTION-A |==========| -->
+
+<!-- |=====| HTML/HTMX LOADER |=====| -->
+
+<!-- <div class="sections-links" hx-get="template/____.html" hx-swap="outerHTML" hx-target="#____-target" hx-trigger="load">
+			<div id="____-target"></div>
+		</div> -->
+
+<!-- |==========| -->
+<!-- |=====|  |=====| -->
+
+<!-- <ul x-data="{ colors: ['Red', 'Orange', 'Yellow'] }">
+    <template x-for="(color, index) in colors">
+        <li>
+            <span x-text="index + ': '"></span>
+            <span x-text="color"></span>
+        </li>
+    </template>
+</ul> -->
+
+<!-- |==========| -->
+<!-- |=====|  |=====| -->
+
+<!-- <ul x-data="{ car: { make: 'Jeep', model: 'Grand Cherokee', color: 'Black' } }">
+    <template x-for="(value, index) in car">
+        <li>
+            <span x-text="index"></span>: <span x-text="value"></span>
+        </li>
+    </template>
+</ul> -->
+
+<!-- |==========| -->
+<!-- |=====|  |=====| -->
+
+<!-- <ul x-data="{ colors: [
+    { id: 1, label: 'Red' },
+    { id: 2, label: 'Orange' },
+    { id: 3, label: 'Yellow' },
+]}">
+    <template x-for="color in colors" :key="color.id">
+        <li x-text="color.label"></li>
+    </template>
+</ul> -->
+
+<!-- |==========| -->
+<!-- |=====| If you need to access the index of each item in the iteration, you can do so using the ([item], [index]) in [items] syntax like so: -->
+
+<!-- <ul x-data="{ colors: ['Red', 'Orange', 'Yellow'] }">
+    <template x-for="(color, index) in colors">
+        <li>
+            <span x-text="index + ': '"></span>
+            <span x-text="color"></span>
+        </li>
+    </template>
+</ul> -->
+
+<!-- |==========| -->
+<!-- |=====|  |=====| -->
+
+<!-- <div>
+    <template x-for="i in 10">
+        <div :class="'marker'" x-text="i + ' 🍌'">
+            <br>
+        </div>
+    </template>
+</div> -->
+
+<!-- |==========| NESTED LOOP SCOPINGS -->
+<!-- |=====| https://github.com/alpinejs/alpine/pull/316 |=====| -->
+
+<!-- <div x-data="{ 
+    foos: [
+    // foos.foo
+        // foo
+        { bars: [
+        // foo.bars
+
+            // bar
+            { bobs:
+            // bar.bobs
+                // bob
+                ['one',
+                // bob
+                'two']
+            },
+            // bar
+            { bobs:
+                // bar.bobs
+                // bob
+                ['three',
+                // bob
+                'four']
+            }
+            ]
+        },
+
+    // foos.foo
+        // foo
+        { bars: [
+            // bar
+            { bobs:
+            // bar.bobs
+                // bob
+                ['five',
+                // bob
+                'six']
+            },
+            { bobs:
+                // bob
+                ['seven',
+                // bob
+                'eight']
+                }
+            ]
+        }
+    ],
+    }">
+    <template x-for="foo in foos">
+        <div>
+            <template x-for="bar in foo.bars">
+                <div>
+                    <template x-for="bob in bar.bobs">
+
+                        <span x-text="bob"></span>
+                    </template>
+                </div>
+            </template>
+        </div>
+    </template>
+</div> -->
+
+<!-- |==========| -->
+<!-- |=====|  |=====| -->
+
+<div x-data="{ 
+    sitemap: [
+        { links: [
+            { homepage: ['Homepage ↺', 'helo']},
+            { dashboard: ['Personal Dashboard', '']},
+            { workspace: ['Coding Workspace', '']},
+            { blog: ['Blogging Page', '']},
+            { accounting: ['Accounting Resource', '']},
+            { travel: ['Travel Page', '']},
+            { lifecraft: ['Lifecraft Page', '']},
+            { musings: ['Musings Page', '']},
+            { template: ['Template', '']},
+            { fantasy: ['Fantasyland', '']},
+            { segregation: ['Segregation', '']},
+            { mainframe: ['Mainframe', '']},
+            { music: ['Original Music', '']},
+            ]
+        },
+    ],
+    }">
+
+    <template x-for='site in sitemap'>
+        <div>
+            <template x-for='(link, index) in site.links' :key='index'>
+                <div :class="'section-title'">
+		            <a x-text="link[1]"
+			            :href="link[0] + '/' + link[0] + '.html'"
+			            :data-route="'/' + link[0] + '/'">
+		            </a>
+                </div>
+            </template>
+        </div>
+    </template>
+</div>
+

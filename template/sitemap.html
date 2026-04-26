@@ -1,0 +1,52 @@
+<div x-data=" {
+    internal: [
+        ["homepage", "Homepage ↺"],
+        ["dashboard", "Personal Dashboard"],
+        ["workspace", "Coding Workspace"],
+        ["blog", "Blogging Page"],
+        // ["accounting", "Accounting Resource"],
+        ["travel", "Travel Page"],
+        // ["lifecraft", "Lifecraft Page"],
+        ["musings", "Musings Page"],
+        // ["template", "Template"],
+        // ["fantasy", "Fantasyland"],
+        // ["segregation", "Segregation"],
+        // ["mainframe", "Mainframe"],
+        ["music", "Original Music"],
+    ],
+
+    divider: "sitemap-divider",
+   
+    external: [
+        ["https://www.youtube.com/watch?v=XgqTrvcAySA", "Checkpoint"],
+        ["https://ankiweb.net/", "Anki Web"],
+        ["https://www.clozemaster.com", "Clozemaster"],
+        ["https://jisho.org", "Jisho"],
+        ["https://www3.nhk.or.jp/news/easy/", "NHK Yasashii"],
+        ["https://account.cengage.com/login?", "Coursework"],
+        ["https://maps.google.com", "Maps"],
+        ["https://wd108.myworkday.com/wday/authgwy/nc/login.html", "Internal Jobs"],
+        ["https://int.dac.nc.gov", "Intranet"],
+        ["https://portal.osc.nc.gov/app", "Fiori"],
+        ["https://www.alpinetoolbox.com/dist/tools/", "Alpine Toolbox"],
+        ["https://alpinejs.dev/components", "Alpine Components"],
+    ],
+
+    catagories: [
+        { alpine: [
+            ["https://www.alpinetoolbox.com/dist/tools/", "Alpine Toolbox"],
+            ["https://alpinejs.dev/components", "Alpine Components"],
+        ]},
+    ],
+
+}">
+    <template x-for="(catagory, index) in catagories" :key="index">
+
+        <div :class="'marker'">
+            <a x-text="catagory[1]" :href="catagory[0] + '/' + catagory[0] + '.html'" :data-route="'/' + catagory[0] + '/'">
+            </a>
+        </div>
+
+    </template>
+
+</div>

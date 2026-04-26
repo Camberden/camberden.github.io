@@ -37,8 +37,8 @@
 					I'm the author, <i>Chrispy,</i> and this site serves as my personal
 					corner of the internet where I post my music and musings and an assortment
 					of modest software projects. Whatever I create here is meaningful enough 
-					to me to justify its existence. I mustn't forget that one must endeavor to
-					create meaning and substance for others in the real world, away from a screen.
+					to me to justify its existence. One must endeavor to create meaning and
+					substance in the real world in ways which reveal themselves to the beholder.<br>
 					All the best,<br>
 					<span class="chrispy">🌾🌾🌾 Chrispy 🌾🌾🌾 </span>
 				</p>
@@ -52,16 +52,16 @@
 		</div>
 		<hr class="hr-cmbr-gradient">
 
-		<div class="sections-links" hx-get="template/sections.html" hx-swap="innerHTML" hx-target="#sections-target" hx-trigger="load" class="sections-links">
-
+		<div class="sections-links" hx-get="template/sections.html" hx-swap="innerHTML" hx-target="#sections-target" hx-trigger="load">
 			<div id="sections-target"></div>
 		</div>
 
-		
-		<div style="height:3rem;"></div>
+		<hr class="hr-cmbr-gradient">
+
+		<hr class="hr-push-up">
 		<footer class="index-footer">
 			<p id="footer-text" class="marker">Made with ♡ by Chrispy</p>
-			<p class="marker">Last updated on <span id="latest-update"></span></p>
+			<p class="marker">Last updated on <span x-ref="update" id="latest-update"></span></p>
 			<p lang="jp"><span id="japanese-date"></span></p>
 		</footer>
 

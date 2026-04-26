@@ -154,10 +154,29 @@ const noteData = [
 	Such amplified aspects offset positives that money could provide as they reduce his security that money might otherwise provide. 
 
 	</b‰>`,
+		
+	`<t‰>Interest Discovery</t‰>
+	<g‰>philosophy</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	There are so many things that could captivate one's interest in life.
+	It's as if the act of becoming interested in something bears a deceptive nature.
+	One's motivation, interpersonal validation, and engagement in the activity would create a persona so closely
+	linked with that interest. Whether or not this interest is the real "passion" for the individual, 
+	it only serves in the outset of engagement as a dopeminergic kicker and fragile stairway en route towards solidifying one's sense of identity.
+	Come the criticisms, the banalaties, the circumstantial connections and mundanities that surround this interest, it may indeed prove 
+	fragility and crumble.
+	I've struggled very much in my earlier years to determine what my "passion" really was, or what activity or 
+	aspect would become incorporated into my identity to such an extent I would garner a sense of fulfillment.
+	I'll expound on this at another date.
+	</b‰>`,
 
 ];
-
-/*
+// TODO: finish the exposition on Interest Discovery
+/* 
 	`<t‰>TITLE</t‰>
 	<g‰>TAGS</g‰>
 	<p‰></p‰>

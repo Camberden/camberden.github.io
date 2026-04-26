@@ -419,19 +419,19 @@ const CMBRutil = {
 	 * @description Reads site index URL and provides gateway for development servers and all configured domains
 	 *  */
 	atSiteIndex: function () {
-	if (this.acceptableProtocol() && document.location.href.endsWith("index.html")) {
-		return true;
-	} else if (baseHyperlinks.includes(document.location.href)) {
-		return true;
-	} else if (document.location.href.endsWith("index.html")) {
-		return true;
-	} else if (document.location.href.endsWith(document.location.port + "/")) {
-		return true;
-	} else if (document.location.href.includes(baseHyperlinks[0])) {
-		return false;
-	} else {
-		return false;
-	}
+		if (this.acceptableProtocol() && document.location.href.endsWith("index.html")) {
+			return true;
+		} else if (baseHyperlinks.includes(document.location.href)) {
+			return true;
+		} else if (document.location.href.endsWith("index.html")) {
+			return true;
+		} else if (document.location.href.endsWith(document.location.port + "/")) {
+			return true;
+		} else if (document.location.href.includes(baseHyperlinks[0])) {
+			return false;
+		} else {
+			return false;
+		}
 	},
 	// Function to update URL parameters
 	updateURLParameter: function(key, value) {
@@ -566,16 +566,28 @@ const CMBRutil = {
 				initScufflerHealthBars(selection) {
 					return this.fighters[selection].vitality;
 				},
+				vitalityCheck() {
+					if (this.playerOneHealth <= 0 || this.playerTwoHealth <= 0) {
+						this.undergoing = false;
+						this.playerOneHealth > this.playerTwoHealth ? alert("Player One Wins and Proceeds!") : alert("Player Two Wins and Proceeds!")
+						this.playerOneHealth = 1; 
+						this.playerTwoHealth = 1;
+					}
+					console.info("p1: " + this.playerOneHealth + " p2: " + this.playerTwoHealth);
+				}
 			}),
-			); });
-		}
+			);
+			Alpine.data("changelog"), () => ({
+				latestPush: '',
+			});
+		});
 	}
+}
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
 const recognizeFileProtocol = (x) => { y = document.getElementById(x); CMBRutil.acceptableProtocol() ? y.innerHTML += " &check;" : y.innerHTML += `<span style="font-size: 0.8rem; color: red; position: absolute;">[lesser functionality in file protocol]</span>`; }
-const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); CMBRutil.dataTheme(); }
+// const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); CMBRutil.dataTheme(); }
 const displaySite = () => { document.getElementById("current-site").innerHTML = document.location.host };
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
-const indexSectionFilter = () => { if ( CMBRutil.atSiteIndex() ) { document.getElementById("homepage").style.display = "none"; }}
