@@ -417,11 +417,6 @@ nav {
 /* |==========| §SECTIONS NAVIGATION |====================> */
 /* |==========| LEFT-SIDE DROPDOWN FOR SITE MAP NAVIGATION |====================> */
 
-/* Disables "Homepage" section title on the index page, as it is redundant and clutters the dropdown. */
-.index-grid > .sections-links > #sections-target > .section-title:first-of-type {
-	display: none;
-}
-
 .section-title {
 	display: flex;
 	align-items: stretch;
@@ -1052,6 +1047,44 @@ select:hover {
 	margin-inline: auto;
 }
 
+.index-item {
+
+	padding: var(--cmbr-com-pnl-padding);
+	/* box-shadow: var(--cmbr-com-pnl-box-shadow); */
+	/* border-width: var(--cmbr-com-border-width); */
+	max-height: fit-content;
+	/* background: var(--cmbr-com-pnl-background); */
+}
+
+.index-item-left {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+.index-item-center {
+	box-sizing: content-box;
+	/* background:#0f0b0789; */
+	background:#0f0b07de;
+
+	height: max-content;
+}
+
+.index-item-right {
+	box-sizing: content-box;
+	top:10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	overflow: scroll;
+	align-items: center;
+	justify-content: center;
+}
+
 .signature-div {
 	text-align: left;
 	z-index: 10;
@@ -1337,7 +1370,7 @@ select:hover {
 
 .cmbr-item-left {
 	box-sizing: content-box;
-	top:10%;
+	top: 10%;
 	flex: 1;
 	position: sticky;
 	height: 45rem;

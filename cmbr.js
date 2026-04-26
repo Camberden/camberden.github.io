@@ -3,7 +3,7 @@
  * @version 1.2 Formerly known as buttons.js
  * @interface CMBRutil
  * @author Camberden (Chrispy | Kippi)  
- */ 
+ */
 // htmx.config.selfRequestsOnly = false;
 
 /** 
@@ -74,6 +74,28 @@ const baseHyperlinks = [
 	"http://localhost:" + basePort,
 	"http://localhost:" + basePort + "/index.html",
 ];
+
+const CMBRrouter = {
+	/**
+	 * @satisfies <div x-data="hello" x-effect="effect"><h1>Homepage</h1><p x-text="message"></p></div>
+	 */
+	routeHello: function () {
+		document.addEventListener("alpine:init", () => {
+		Alpine.data('hello', () => ({
+			message: 'Hello world',
+			init() {
+				console.log('hello from init()');
+			},
+			effect() {
+				// this will run whenever the param `name` changes
+				if (this.$params.name == 'world') {
+					console.log('hello world');
+				}
+			}
+	}))})},
+
+}
+
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -81,7 +103,6 @@ const baseHyperlinks = [
  * @author Camberden (Chrispy | Kippi)
  */
 const CMBRutil = {
-
 	/**
 	 * 
 	 * @description Converts Date object to cmbr Preferred Format
@@ -92,22 +113,22 @@ const CMBRutil = {
 	 * - False: MM/DD/YYYY #Postorders => weekday with numeric date
 	 * @returns {String}
 	 */
-	convertToPreferredDateFormat: function(date, journalesque) {
+	convertToPreferredDateFormat: function (date, journalesque) {
 		let cmbrDate;
 		let preferredDateOptions;
 		if (journalesque) {
 			preferredDateOptions = {
 				year: "numeric",
-				month: "long", 
+				month: "long",
 				day: "numeric",
 			};
 			const nth = (d) => {
-			if (d > 3 && d < 21) return 'th,';
-			switch (d % 10) {
-				case 1:  return "st,";
-				case 2:  return "nd,";
-				case 3:  return "rd,";
-				default: return "th,";
+				if (d > 3 && d < 21) return 'th,';
+				switch (d % 10) {
+					case 1: return "st,";
+					case 2: return "nd,";
+					case 3: return "rd,";
+					default: return "th,";
 				};
 			};
 			cmbrDate = date.toLocaleDateString("en-US", preferredDateOptions);
@@ -128,26 +149,26 @@ const CMBRutil = {
 	buttonOnMouseEnter: function (button) {
 		if (!button.classList.contains("button-toggled")) {
 			button.classList.add("button-highlight");
-		} 
+		}
 	},
 	buttonOnMouseLeave: function (button) {
 		button.classList.remove("button-highlight");
 	},
 	buttonOnClick: function (button) {
-		if (button.classList.contains("toggleable")){
+		if (button.classList.contains("toggleable")) {
 
-			 if (button.classList.contains("button-toggled")) {
+			if (button.classList.contains("button-toggled")) {
 				button.classList.remove("button-toggled");
 			} else {
 				button.classList.add("button-toggled");
 			}
 
 		} else {
-		button.classList.add("button-depressed");
+			button.classList.add("button-depressed");
 
-		setTimeout(() => {
-			button.classList.remove("button-depressed");
-		}, 200);
+			setTimeout(() => {
+				button.classList.remove("button-depressed");
+			}, 200);
 		}
 	},
 	/**
@@ -190,7 +211,7 @@ const CMBRutil = {
 			if (configured) {
 				console.log("Running and configured!");
 				document.querySelectorAll("form").forEach(form => {
-					form.addEventListener("submit", (e)=> {e.preventDefault(); });
+					form.addEventListener("submit", (e) => { e.preventDefault(); });
 				});
 			} else {
 				console.log("Running! (configuration disabled)");
@@ -204,38 +225,38 @@ const CMBRutil = {
 					case "dark":
 						document.querySelector("body").setAttribute("data-theme", "dark");
 						button.style.color = "initial";
-						document.getElementById("light").style.color = "transparent";				
+						document.getElementById("light").style.color = "transparent";
 						document.getElementById("legacy").style.color = "transparent";
 						// document.getElementById("paperesque").style.color = "transparent";
 
-					break;
+						break;
 					case "light":
 						document.querySelector("body").setAttribute("data-theme", "light");
 						button.style.color = "initial";
-						document.getElementById("dark").style.color = "transparent";				
+						document.getElementById("dark").style.color = "transparent";
 						document.getElementById("legacy").style.color = "transparent";
 						// document.getElementById("paperesque").style.color = "transparent";
 
-					break;
+						break;
 					case "legacy":
 						document.querySelector("body").setAttribute("data-theme", "legacy");
 						button.style.color = "initial";
-						document.getElementById("dark").style.color = "transparent";				
+						document.getElementById("dark").style.color = "transparent";
 						document.getElementById("light").style.color = "transparent";
 						// document.getElementById("paperesque").style.color = "transparent";
 
-					break;
+						break;
 					case "paperesque":
 						document.querySelector("body").setAttribute("data-theme", "paperesque");
 						button.style.color = "initial";
-						document.getElementById("dark").style.color = "transparent";				
+						document.getElementById("dark").style.color = "transparent";
 						document.getElementById("light").style.color = "transparent";
 						// document.getElementById("legacy").style.color = "transparent";
 
-					break;
+						break;
 					default:
 						console.log("Light, Dark, and Lavendarium.");
-					break;
+						break;
 				}
 			}
 		});
@@ -278,8 +299,8 @@ const CMBRutil = {
 			div.onmouseleave = function () {
 				if (div.classList.contains("section-highlight")) {
 					div.classList.replace("section-highlight", "section-lose-highlight");
-					}
 				}
+			}
 			siteMap.appendChild(div);
 		}
 		this.dataTheme();
@@ -306,13 +327,13 @@ const CMBRutil = {
 
 			const sectionDiv = document.createElement("div");
 			sectionDiv.setAttribute("id", section[0]);
-			sectionDiv.setAttribute("class", `${Object.keys({section}).toString()}-title`);
-			
+			sectionDiv.setAttribute("class", `${Object.keys({ section }).toString()}-title`);
+
 
 			sectionDiv.onmouseenter = function () {
 				sectionDiv.classList.contains("section-highlight") ?
-				sectionDiv.classList.add("section-highlight") :
-				sectionDiv.classList.remove("section-lose-highlight"); sectionDiv.classList.add("section-highlight");
+					sectionDiv.classList.add("section-highlight") :
+					sectionDiv.classList.remove("section-lose-highlight"); sectionDiv.classList.add("section-highlight");
 			}
 			sectionDiv.onmouseleave = function () {
 				if (sectionDiv.classList.contains("section-highlight")) {
@@ -330,80 +351,80 @@ const CMBRutil = {
 	 */
 	initBookmarks: function (target, linkArray) {
 
-				target = document.querySelector("." + target);
-				linkArray.forEach(bookmark => {
+		target = document.querySelector("." + target);
+		linkArray.forEach(bookmark => {
 
-					const a = document.createElement("a");
-					a.setAttribute("href", bookmark[0]);
-					a.setAttribute("target","_blank");
-					const text = document.createTextNode(bookmark[1]);
-					a.appendChild(text);
-					const bookmarkDiv = document.createElement("div");
-					bookmarkDiv.setAttribute("class", "section-title");
+			const a = document.createElement("a");
+			a.setAttribute("href", bookmark[0]);
+			a.setAttribute("target", "_blank");
+			const text = document.createTextNode(bookmark[1]);
+			a.appendChild(text);
+			const bookmarkDiv = document.createElement("div");
+			bookmarkDiv.setAttribute("class", "section-title");
 
-					bookmarkDiv.onmouseenter = function () {
-						bookmarkDiv.classList.contains("section-highlight") ?
-						bookmarkDiv.classList.add("section-highlight") :
-						bookmarkDiv.classList.remove("section-lose-highlight");
-						bookmarkDiv.classList.add("section-highlight");
-					}
-					bookmarkDiv.onmouseleave = function () {
-						if (bookmarkDiv.classList.contains("section-highlight")) {
-							bookmarkDiv.classList.replace("section-highlight", "section-lose-highlight");
-						}
-					}
-					bookmarkDiv.appendChild(a);
-					target.appendChild(bookmarkDiv);
-				});
+			bookmarkDiv.onmouseenter = function () {
+				bookmarkDiv.classList.contains("section-highlight") ?
+					bookmarkDiv.classList.add("section-highlight") :
+					bookmarkDiv.classList.remove("section-lose-highlight");
+				bookmarkDiv.classList.add("section-highlight");
+			}
+			bookmarkDiv.onmouseleave = function () {
+				if (bookmarkDiv.classList.contains("section-highlight")) {
+					bookmarkDiv.classList.replace("section-highlight", "section-lose-highlight");
+				}
+			}
+			bookmarkDiv.appendChild(a);
+			target.appendChild(bookmarkDiv);
+		});
 	},
 	/**
 	 * @param {String} linkArrayName 
 	 */
 	actionsProvided: function (linkArrayName) {
-		
+
 		let access = "";
 		switch (linkArrayName) {
-			case "sections" :
+			case "sections":
 				if (this.atSiteIndex()) {
 					sections.splice(0, 1);
-					basePort === "4240" ? (()=>{sections.push(["administration", "Administration"]); sout("Express Development Server @ " + document.location.host); setTimeout(()=>{ x = document.getElementById("administration"); x.style.display = "block"; x.setAttribute("class", "section-title")}, 2000 )})() : console.log("|===>");
+					basePort === "4240" ? (() => { sections.push(["administration", "Administration"]); sout("Express Development Server @ " + document.location.host); setTimeout(() => { x = document.getElementById("administration"); x.style.display = "block"; x.setAttribute("class", "section-title") }, 2000) })() : console.log("|===>");
 					CMBRutil.initSections(`sections-links`, sections);
 					break;
-				} 
+				}
 				access = document.querySelector("#sections-access");
-				access.onclick = function() {
-				if (! access.classList.contains("sections-opened")) {
-					CMBRutil.initSections(`sections-links`, sections);
-					access.classList.add("sections-opened");
-					access.innerText = "Minimize";
-				} else {
-					document.querySelector(`.sections-links`).innerHTML = "";
-					access.classList.remove("sections-opened");
-					access.innerText = "Navigation";
+				access.onclick = function () {
+					if (!access.classList.contains("sections-opened")) {
+						CMBRutil.initSections(`sections-links`, sections);
+						access.classList.add("sections-opened");
+						access.innerText = "Minimize";
+					} else {
+						document.querySelector(`.sections-links`).innerHTML = "";
+						access.classList.remove("sections-opened");
+						access.innerText = "Navigation";
+					}
 				}
-			}
 				break;
-			case "bookmarks" :
+			case "bookmarks":
 				access = document.getElementById("bookmarks-access");
-				access.onclick = function() {
-				if (! access.classList.contains("bookmarks-opened")) {
-					CMBRutil.initBookmarks(`bookmarks-links`, bookmarks);
-					access.classList.add("bookmarks-opened");
-					access.innerText = "Minimize";
-				} else {
-					document.querySelector(`.bookmarks-links`).innerHTML = "";
-					access.classList.remove("bookmarks-opened");
-					access.innerText = "Bookmarks";
+				access.onclick = function () {
+					if (!access.classList.contains("bookmarks-opened")) {
+						CMBRutil.initBookmarks(`bookmarks-links`, bookmarks);
+						access.classList.add("bookmarks-opened");
+						access.innerText = "Minimize";
+					} else {
+						document.querySelector(`.bookmarks-links`).innerHTML = "";
+						access.classList.remove("bookmarks-opened");
+						access.innerText = "Bookmarks";
+					}
 				}
-			}
 				break;
-			default :
+			default:
 				console.log("Default triggered; neither sections nor bookmarks!");
-			break;	
+				break;
 		}
 	},
 	/** @returns {Boolean} `true` if file:// protocol | `false` otherwise */
-	acceptableProtocol: function() {
+	acceptableProtocol: function () {
 		if (document.location.protocol === "file:") {
 			// console.log("<‰ File Protocol Detected ‰>");
 			return false;
@@ -412,7 +433,7 @@ const CMBRutil = {
 			return true;
 		}
 	},
-	atLegacyIndex: function() {
+	atLegacyIndex: function () {
 		if (this.acceptableProtocol() && document.location.href.endsWith("legacyindex.html")) {
 			return true;
 		} else {
@@ -443,11 +464,11 @@ const CMBRutil = {
 		}
 	},
 	// Function to update URL parameters
-	updateURLParameter: function(key, value) {
+	updateURLParameter: function (key, value) {
 		urlParams.set(key, value); // Set or update the parameter
 		history.replaceState(null, '', '?' + urlParams.toString()); // Update the URL
 	},
-	openEndPoint: function() {
+	openEndPoint: function () {
 		let endpoint = new URL("/api/data", document.location.origin);
 		console.log(endpoint.toString()); // Outputs: https://example.com/api/data
 		// Get the current URL parameters
@@ -456,11 +477,11 @@ const CMBRutil = {
 		const endpointSearchInput = document.createElement("input");
 		endpointSearchInput.setAttribute("id", "endpoint-search-input");
 		endpointSearchInput.setAttribute("style", "display: fixed; bottom:0; width:100%; height:25%;");
-		
+
 		document.appendChild(endpointSearchInput);
 
 		// Add event listener to an input field
-		document.getElementById("endpoint-search-input").addEventListener("input", function() {
+		document.getElementById("endpoint-search-input").addEventListener("input", function () {
 			updateURLParameter("search", this.value); // Update 'search' parameter
 		});
 	},
@@ -471,126 +492,52 @@ const CMBRutil = {
 	 * @implements {Promise<Object>} 
 	 * 
 	 */
-	connectCMBRjson: async function(query) {
+	connectCMBRjson: async function (query) {
 		return fetch(`${document.location.origin}/cmbr.json`)
-		.then(data => data.json())
-		.then(data => {
-			// console.log(data);
-			console.log("QUERY BEFORE RESOLUTION: " + query[0]);
-			return data;
-		})
-		.then((data) => {
-			query[0] == "travel-photos" ? console.log("QUERY 0 SAME: " + query[0]) : console.log("QUERY 0 NOT SAME: " + query[0]);
-			query[1] == 1 ? console.log("QUERY 1 SAME: " + query[1]) : console.log("QUERY 1 NOT SAME: " + query[1]);
-			console.log("QUERY LENGTH: " + query.length);
-			switch(query[0]) {
-				case "travel-photos":
-					if (query.length == 1) {
-						// console.log(data[query[0]].items);
-						return (data[query[0]].items);
+			.then(data => data.json())
+			.then(data => {
+				// console.log(data);
+				console.log("QUERY BEFORE RESOLUTION: " + query[0]);
+				return data;
+			})
+			.then((data) => {
+				query[0] == "travel-photos" ? console.log("QUERY 0 SAME: " + query[0]) : console.log("QUERY 0 NOT SAME: " + query[0]);
+				query[1] == 1 ? console.log("QUERY 1 SAME: " + query[1]) : console.log("QUERY 1 NOT SAME: " + query[1]);
+				console.log("QUERY LENGTH: " + query.length);
+				switch (query[0]) {
+					case "travel-photos":
+						if (query.length == 1) {
+							// console.log(data[query[0]].items);
+							return (data[query[0]].items);
+							break;
+						}
+						// console.log(data[query[0]].items[query[1]]);
+						return (data[query[0]].items[query[1]]);
 						break;
-					}
-					// console.log(data[query[0]].items[query[1]]);
-					return (data[query[0]].items[query[1]]);
-					break;
-				break;
-				case "sections":
-					// console.log("sections");
-					return data["sections"];
-				break;
-				case "blog":
-					if (query.length == 1) {
-						// console.log(data[query[0]]);
-						return (data[query[0]]);
 						break;
-					}
-					let post = ("post-" + query[1]);
-					sout("blog as post = " + post);
-					// console.log(data[query[0]][post]);
-					return (data[query[0]][post]);
-					break;
-				break;
-			
-				default:
-					sout("Bad Query at connectCMBRjson.");
-					return data;
-			}
-		});
-	},
+					case "sections":
+						// console.log("sections");
+						return data["sections"];
+						break;
+					case "blog":
+						if (query.length == 1) {
+							// console.log(data[query[0]]);
+							return (data[query[0]]);
+							break;
+						}
+						let post = ("post-" + query[1]);
+						sout("blog as post = " + post);
+						// console.log(data[query[0]][post]);
+						return (data[query[0]][post]);
+						break;
+						break;
 
-	initAlpineData: function() {
-		document.addEventListener("alpine:init", () => {
-			Alpine.data("scuffler", () => ({
-				undergoing: false,
-				attackPhase: false,
-				sel1: 0, // Firstwolf, Attack 3, Vitality 18
-				sel2: 2, // Secondfox, Attack 1, Vitality 12
-				damageDealt: 0,
-				damageReceived: 0,
-				vitalities: [],
-				playerOneHealth: 1,
-				playerTwoHealth: 1,
-				fighters: [
-					{
-						id: 1, name: "Firstwolf", rank: "CO",
-						photo: "/assets/segregation-officers/staff-3.jpg", attack: 3, defense: 3, dexterity: 3, vitality: 18, experience:
-							0,
-					}, {
-						id: 2, name: "Secondwolf", rank: "CO", photo: "/assets/segregation-officers/staff-0.jpg", attack: 4,
-						defense: 2, dexterity: 2, vitality: 22, experience: 0,
-					}, {
-						id: 3, name: "Firstfox", rank: "CO",
-						photo: "/assets/segregation-officers/staff-14.jpg", attack: 2, defense: 3, dexterity: 4, vitality: 15, experience:
-							0,
-					}, {
-						id: 4, name: "Secondfox", rank: "CO", photo: "/assets/segregation-officers/staff-10.jpg", attack: 1,
-						defense: 3, dexterity: 6, vitality: 12, experience: 0,
-					}
-				],
-
-				/**
-				 * 
-				 * @param {Number} selection 
-				 * @returns 
-				 */
-				getFighter(selection) {
-					console.log(this.fighters[selection].name);
-					return this.fighters[selection];
-				},
-				getFighterInfo(selection) {
-					return [ 
-						this.fighters[selection].name,
-						this.fighters[selection].rank,
-						this.fighters[selection].photo,
-						this.fighters[selection].attack,
-						this.fighters[selection].defense,
-						this.fighters[selection].dexterity,
-						this.fighters[selection].vitality,
-						this.fighters[selection].experience,	
-					];
-				},
-				setFighterPhoto(selection) {
-					return this.fighters[selection].photo;
-				},
-				initScufflerHealthBars(selection) {
-					return this.fighters[selection].vitality;
-				},
-				vitalityCheck() {
-					if (this.playerOneHealth <= 0 || this.playerTwoHealth <= 0) {
-						this.undergoing = false;
-						this.playerOneHealth > this.playerTwoHealth ? alert("Player One Wins and Proceeds!") : alert("Player Two Wins and Proceeds!")
-						this.playerOneHealth = 1; 
-						this.playerTwoHealth = 1;
-					}
-					console.info("p1: " + this.playerOneHealth + " p2: " + this.playerTwoHealth);
+					default:
+						sout("Bad Query at connectCMBRjson.");
+						return data;
 				}
-			}),
-			);
-			Alpine.data("changelog"), () => ({
-				latestPush: '',
 			});
-		});
-	}
+	},
 }
 
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //

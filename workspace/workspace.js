@@ -73,12 +73,9 @@ const activateChiron = (texts) => {
 	}, 10000);
 }
 
-
 (()=>{
 
 	enableDropdowns();
-	// CMBRutil.navigationCharter();
-	CMBRutil.initAlpineData();
 
 })();
 

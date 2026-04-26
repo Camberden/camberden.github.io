@@ -5,7 +5,8 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="images/cmbr-sig.svg">
-   	<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+	<!-- <script defer src="https://cdn.jsdelivr.net/npm/pinecone-router@7.5.0/dist/router.min.js"></script> -->
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -16,57 +17,86 @@
 
 <body data-theme="dark">
 
-	<main class="index-grid">
+	<div class="cmbr-grid">
 
-		<div class="signature-div">
-			<img id="signature" src="./images/cmbr-sig-transform.svg" alt="cmbr">
+		<div id="index-left" class="index-item">
+			
 		</div>
 
-		<div class="index-grid-reduced">
+		<main id="index-center" class="index-item index-item-center">
 
-			<div id="camberden-div">
-				<h1 id="camberden" lang="en-US">camberden</h1>
-			</div>
-		</div>
-
-		<div id="info-div">
-
-			<div id="page-info">
-				<p>
-					Welcome to the <i class="admiration">camberden</i> corner.<br>
-					I'm the author, <i>Chrispy,</i> and this site serves as my personal
-					corner of the internet where I post my music and musings and an assortment
-					of modest software projects. Whatever I create here is meaningful enough 
-					to me to justify its existence. One must endeavor to create meaning and
-					substance in the real world in ways which reveal themselves to the beholder.<br>
-					All the best,<br>
-					<span class="chrispy">🌾🌾🌾 Chrispy 🌾🌾🌾 </span>
-				</p>
+			<div class="signature-div">
+				<img id="signature" src="./images/cmbr-sig-transform.svg" alt="cmbr">
 			</div>
 
-			<div id="info-div-frame">
-				<div id="info-div-background">
+			<div class="index-grid-reduced">
+
+				<div id="camberden-div">
+					<h1 id="camberden" lang="en-US">camberden</h1>
+					<hr class="hr-groove-top">
+
 				</div>
 			</div>
 
+			<div id="info-div">
+
+				<div id="page-info">
+					<p>
+						Welcome to the <i class="admiration">camberden</i> corner.<br>
+						I'm the author, <i>Chrispy,</i> and this site serves as my personal
+						corner of the internet where I post my music and musings and an assortment
+						of modest software projects. Whatever I create here is meaningful enough
+						to me to justify its existence. One must endeavor to create meaning and
+						substance in the real world in ways which reveal themselves to the beholder.<br>
+						All the best,<br>
+						<span class="chrispy">🌾🌾🌾 Chrispy 🌾🌾🌾 </span>
+					</p>
+				</div>
+
+				<div id="info-div-frame">
+					<div id="info-div-background">
+					</div>
+				</div>
+
+			</div>
+			<!-- <hr class="hr-groove-bottom"> -->
+			<hr class="hr-cmbr-gradient">
+			<div class="sections-links" hx-get="template/sections.html" hx-swap="innerHTML" hx-target="#sections-target"
+				hx-trigger="load">
+				<div id="sections-target"></div>
+			</div>
+
+			<hr class="hr-cmbr-gradient">
+			<!-- <hr class="hr-groove-top"> -->
+
+		
+		</main>
+
+		<div id="index-right" class="index-item">
+
 		</div>
-		<hr class="hr-cmbr-gradient">
 
-		<div class="sections-links" hx-get="template/sections.html" hx-swap="innerHTML" hx-target="#sections-target" hx-trigger="load">
-			<div id="sections-target"></div>
+		<div class="index-item">
 		</div>
 
-		<hr class="hr-cmbr-gradient">
-
+		<div class="index-item index-item-center">
 		<hr class="hr-push-up">
+		<hr class="hr-groove-bottom">
 		<footer class="index-footer">
 			<p id="footer-text" class="marker">Made with ♡ by Chrispy</p>
 			<p class="marker">Last updated on <span x-ref="update" id="latest-update"></span></p>
 			<p lang="jp"><span id="japanese-date"></span></p>
 		</footer>
+		</div>
 
-	</main>
+		<div class="index-item">
 
+		</div>
+
+	</div>
+
+
+	
 	<script src="action.js"></script>
 </body>
 

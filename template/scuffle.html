@@ -1,4 +1,48 @@
-<div x-data="scuffler">
+<div x-data="{ 
+				undergoing: false,
+				attackPhase: false,
+				sel1: 0, // Firstwolf, Attack 3, Vitality 18
+				sel2: 2, // Secondfox, Attack 1, Vitality 12
+				damageDealt: 0,
+				damageReceived: 0,
+				vitalities: [],
+				playerOneHealth: 1,
+				playerTwoHealth: 1,
+				fighters: 
+                [
+					{
+						id: 1, name: 'Firstwolf', rank: 'CO',
+						photo: '/assets/segregation-officers/staff-3.jpg', attack: 3, defense: 3, dexterity: 3, vitality: 18, experience:
+							0,
+					}, {
+						id: 2, name: 'Secondwolf', rank: 'CO', photo: '/assets/segregation-officers/staff-0.jpg', attack: 4,
+						defense: 2, dexterity: 2, vitality: 22, experience: 0,
+					}, {
+						id: 3, name: 'Firstfox', rank: 'CO',
+						photo: '/assets/segregation-officers/staff-14.jpg', attack: 2, defense: 3, dexterity: 4, vitality: 15, experience:
+							0,
+					}, {
+						id: 4, name: 'Secondfox', rank: 'CO', photo: '/assets/segregation-officers/staff-10.jpg', attack: 1,
+						defense: 3, dexterity: 6, vitality: 12, experience: 0,
+					}
+				],
+
+				setFighterPhoto(selection) {
+					return this.fighters[selection].photo;
+				},
+				initScufflerHealthBars(selection) {
+					return this.fighters[selection].vitality;
+				},
+				vitalityCheck() {
+					if (this.playerOneHealth <= 0 || this.playerTwoHealth <= 0) {
+						this.undergoing = false;
+						this.playerOneHealth > this.playerTwoHealth ? alert('Player One Wins and Proceeds!') : alert('Player Two Wins and Proceeds!')
+						this.playerOneHealth = 1;
+						this.playerTwoHealth = 1;
+					}
+					console.info('p1: ' + this.playerOneHealth + ' p2: ' + this.playerTwoHealth);
+				}
+        }">
 
     <div :class="'flex-grid-cmbr'">
 

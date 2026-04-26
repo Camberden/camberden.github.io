@@ -6,6 +6,8 @@
 *.cnf
 .shelf
 .vscode
+.pineconeref.ts
+
 
 node_modules/
 package.json
