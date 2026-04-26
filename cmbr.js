@@ -412,6 +412,13 @@ const CMBRutil = {
 			return true;
 		}
 	},
+	atLegacyIndex: function() {
+		if (this.acceptableProtocol() && document.location.href.endsWith("legacyindex.html")) {
+			return true;
+		} else {
+			return false;
+		}
+	},
 	/** 
 	 * @global 
 	 * @readonly 
@@ -419,7 +426,9 @@ const CMBRutil = {
 	 * @description Reads site index URL and provides gateway for development servers and all configured domains
 	 *  */
 	atSiteIndex: function () {
-		if (this.acceptableProtocol() && document.location.href.endsWith("index.html")) {
+		if (document.location.href.endsWith("legacyindex.html")) {
+			return false;
+		} else if (this.acceptableProtocol() && document.location.href.endsWith("index.html")) {
 			return true;
 		} else if (baseHyperlinks.includes(document.location.href)) {
 			return true;

@@ -19,84 +19,22 @@
 </head>
 
 <body data-theme="dark">
-	<nav>
-		<div class="nav-sail">
-			<!-----| NAV 1 |----->
-			<div id="nav-1" x-data="{ active: 0 }">
-				
-				<div x-data="{
-					id: 1,
-					get expanded() {
-						return this.active === this.id
-					},
-					set expanded(value) {
-						this.active = value ? this.id : null
-					},
-					}" role="region">
-						<button id="chart-access" type="button" @click="expanded = !expanded">
-							<div class="trigger-dropdown">
-								<span x-show="expanded" x-cloak>&UpArrow;</span>
-								<span x-show="!expanded" x-cloak>&DownArrow;</span>
-								<span>Options</span>
-								<span x-show="expanded">&UpArrow;</span>
-								<span x-show="!expanded">&DownArrow;</span>
-							</div>
-						</button>
-					<div id="chart-dropdown" x-cloak x-show="expanded" x-collapse>
-						<div id="chart-links">
-						</div>
-					</div>
-				</div>
-				<!-- <span id="nav-sig"></span> -->
-
-			</div>
-
-			<!-----| NAV 2 |----->
-			<div id="nav-2">
-				<h1 class="h1-lamp">
-					<!-- ♪ -->
-				</h1>
-			</div>
-
-			<!-----| NAV 3 |----->
-			<div id="nav-3">
-				<h1 class="h1-lamp">Workspace</h1>
-			</div>
-
-			<!-----| NAV 4 |----->
-			<div id="nav-4">
-				<h1 class="h1-lamp">
-					<!-- ♫ -->
-				</h1>
-			</div>
-
-			<!-----| NAV 5 |----->
-			<div id="nav-5">
-				<span class="data-theme-button" id="dark">🌙</span>
-				<span class="data-theme-button" id="light">☀️</span>
-				<span class="data-theme-button" id="legacy">🪻</span>
-			</div>
+	<nav hx-get="../template/nav.html" hx-target="#wksp-nav" hx-trigger="load" hx-swap="innerHTML">
+		<div id="wksp-nav">
 
 		</div>
-
-		<div class="nav-hoist">
-			<hr class="hr-nav-pad">
-			<hr class="hr-blass">
-			<hr class="hr-cmbr-gradient">
-			<hr id="nav-anchor" class="hr-groove-top">
-		</div>
-
 	</nav>
+	
 
 	<hr class="hr-push-down">
 	<div class="button-grid-row">
 		<button class="trigger-box" hx-get="../template/reeducation.html" hx-target="#wksp-left" hx-trigger="click" hx-swap="innerHTML">Reeducation</button>
 		<button class="trigger-box" hx-get="../template/scuffle.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Fighters</button>
 		<button class="trigger-box" hx-get="../template/calendar.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Calendar</button>
-		<button class="trigger-box" hx-get="../template/alpinefortester.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Catagories/alpine</button>
+		<button class="trigger-box" hx-get="../template/sections.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Catagories/alpine</button>
+		<button class="trigger-box" hx-get="../template/reindex.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Reindex</button>
 		<button class="trigger-box" hx-get="../template/taxability.html" hx-target="#wksp-center" hx-trigger="click" hx-swap="innerHTML">Taxability</button>
 		<button class="trigger-box" hx-get="../template/roles.html" hx-target="#wksp-right" hx-trigger="click" hx-swap="innerHTML">Roles & Such</button>
-		
 	</div>
 	<div class="cmbr-grid">
 

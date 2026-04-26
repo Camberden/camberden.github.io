@@ -73,74 +73,11 @@ const activateChiron = (texts) => {
 	}, 10000);
 }
 
-// |=====| FOR THE HTMX INPUTS =====>
-const accountingRoles = [
-	[
-		"Accounting Clerk I", 
-		42647.06,
-	],
-	[
-		"Accounting Clerk II", 
-		46700.00,
-	],
-	[
-		"Accounting Technician I",
-		47184.73,
-	],
-	[
-		"Accounting Technician II",
-		52162.02,
-	],
-	[
-		"Accounting Technician III",
-		58987.20,
-	],
-	[
-		"Accounting Specialist",
-		67030.33,
-	],
-	[
-		"Correctional Training Specialist",
-		58909.93,
-	],
-	[
-		"Correctional Training Instructor",
-		67214.14,
-	],
-	[
-		"Accountant I",
-		67670.60,
-	],
-	[
-		"Accountant II",
-		77797.50,
-	],
-	[
-		"Accountant III",
-		92173.33,
-	],
-	[
-		"Accountant IV",
-		99000.00,
-	],
-	[
-		"Accounting Manager",
-		103998.00,
-	],
-	[
-		"Accounting Director I",
-		128319.00,
-	],
-	[
-		"Accounting Director II",
-		159122.00,
-	],
-];
 
 (()=>{
 
 	enableDropdowns();
-	CMBRutil.navigationCharter();
+	// CMBRutil.navigationCharter();
 	CMBRutil.initAlpineData();
 
 })();

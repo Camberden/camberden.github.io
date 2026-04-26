@@ -1,6 +1,8 @@
 <div x-data="{ 
     atHome: CMBRutil.atSiteIndex(),
-    homePage:  'Homepage ↺',
+    atLegacyHome: CMBRutil.atLegacyIndex(),
+    homePage:  'Homepage Redux ↺',
+    legacyHomepage:  'Legacy Homepage ↺',
     sitemap: {
         links: {
                 internal: [
@@ -34,20 +36,8 @@
         },
     }">
 
-    <template x-if="atHome">
-        <div>
-            <template x-for="link in sitemap.links.internal", :key="index">
-                <div :class="'section-title'">
-                    <a x-text="link[1]"
-                        :href="link[0] + '/' + link[0] + '.html'"
-                        :data-route="'/' + link[0] + '/'">
-                    </a>
-                </div>
-            </template>
-        </div>
-    </template>
 
-    <template x-if="!atHome">
+    <template x-if="atLegacyHome">
         <div :class="'section-title'">
             <a x-text="homePage"
                 :href="'/index.html'"
@@ -56,7 +46,7 @@
         </div>
     </template>
 
-    <template x-if="!atHome">
+    <template x-if="atHome || atLegacyHome">
         <div>
             <template x-for="link in sitemap.links.internal", :key="index">
                 <div :class="'section-title'">
@@ -69,7 +59,29 @@
         </div>
     </template>
 
-    <template x-if="!atHome">
+    <template x-if="atHome">
+        <div :class="'section-title'">
+            <a x-text="legacyHomepage"
+                :href="'/legacyindex.html'"
+                :data-route="'/legacyindex.html'">
+            </a>
+        </div>
+    </template>
+
+    <template x-if="!atHome && !atLegacyHome">
+        <div>
+            <template x-for="link in sitemap.links.internal", :key="index">
+                <div :class="'section-title'">
+                    <a x-text="link[1]"
+                        :href="link[0] + '/' + link[0] + '.html'"
+                        :data-route="'/' + link[0] + '/'">
+                    </a>
+                </div>
+            </template>
+        </div>
+    </template>
+
+    <template x-if="!atHome && !atLegacyHome">
         <div>
             <template x-for="link in sitemap.links.external">
                 <div :class="'section-title'">
