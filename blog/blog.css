@@ -119,15 +119,18 @@ main {
 #blog-tags {
 	height: fit-content;
 	width: 100%;
-	/* outline: 0.1rem dotted crimson; */
+	outline: 0.1rem dotted crimson;
+	align-content: center;
 	padding-top: 0.5rem;
 	padding-bottom: 0.5rem;
 }
 
 .blog-tag {
-	font-family: monospace;
+	font-family: "vt323";
 	color: magenta;
-	border: 0.1rem solid salmon;
+	background-color: #0f0b07de;
+	padding: 0.3rem;
+	border: 0.2rem solid salmon;
 	border-radius: 10%;
 	margin-inline-start: 0.5rem;
 }

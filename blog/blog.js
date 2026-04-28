@@ -19,11 +19,11 @@ let blogMapMarker;
 
 // ===> BLOG YOUTUBE PLAYER ===>
 // https://www.youtube.com/embed?listType=playlist&list=PLC77007E23FF423C6 // FOR PLAYLIST //
-let player;
-let done = false;
-const playerTag = document.createElement("script");
+var player;
+var done = false;
+var playerTag = document.createElement("script");
 playerTag.src = "https://www.youtube.com/iframe_api";
-const firstScriptTag = document.getElementsByTagName("script")[0];
+var firstScriptTag = document.getElementsByTagName("script")[0];
 firstScriptTag.parentNode.insertBefore(playerTag, firstScriptTag);
 
 
@@ -71,30 +71,32 @@ function onYouTubeIframeAPIReady() {
 	width: "100%",
 	videoId: currentlyReading.audio,
 	playerVars: {
-	"playsinline": 1,
-	"disablekb": 1,
-	"autoplay": 0,
-	"fs": 0,
-	"hl": "ja"
+		"playsinline": 1,
+		"disablekb": 1,
+		"autoplay": 0,
+		"fs": 0,
+		"hl": "ja"
 	},
 	events: {
-	// 'onReady': onPlayerReady,
-	"onStateChange": onPlayerStateChange
+	"onReady": onPlayerReady,
+	"onStateChange": onPlayerStateChange,
 }
 	});
 };
 function onPlayerReady(event) {
 	event.target.playVideo();
 };
-// var done = false;
 function onPlayerStateChange(event) {
 	if (event.data == YT.PlayerState.PLAYING && !done) {
-		setTimeout(stopVideo, 600000);
+		setTimeout(pauseVideo, 60000);
 		done = true;
 	}
 };
 function stopVideo() {
 	player.stopVideo();
+};
+function pauseVideo() {
+	player.pauseVideo();
 };
 
 /* |==========| BLOG FUNCTIONS |====================> */
@@ -205,7 +207,10 @@ function displayCurrentlyReading() {
 		}
 	} catch (TypeError) {
 		console.log("Catching YouTube API init type error.");
+	} finally {
+		// player.pauseVideo();
 	}
+
 	// FIXING YOUTUBE PLAYER API //
 	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
 	for (let tag of currentlyReading.tags) {

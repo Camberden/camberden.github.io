@@ -731,15 +731,11 @@ button {
 	font-weight: 900;
 	color: burlywood;
 	background: #182124;
-
 	padding: 0.5rem;
 	border: 0.5rem groove cadetblue;
 	box-sizing: border-box;
 	box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--cmbr-dark-grey);
-
 	transition: color 0.2s ease-in;
-	transition: color 0.2s ease-in;
-
 }
 
 .buttonesque {
@@ -781,13 +777,10 @@ button {
 	background: transparent;
 	border-color: sienna;
 	box-shadow: 0.0rem 0.0rem 0.0rem 0.0rem var(--cmbr-dark-grey);
-
 }
 
 button:disabled {
 	cursor: not-allowed;
-
-	/* font-family: monospace; */
 	color: grey;
 	border-color: grey;
 }
@@ -984,6 +977,11 @@ select:hover {
 	grid-template-columns: repeat(5, 1fr);
 }
 
+.grid-col-7x-1 {
+	display: grid;
+	grid-template-columns: repeat(8, 1fr);
+}
+
 .grid-col-8x-1 {
 	display: grid;
 	grid-template-columns: repeat(8, 1fr);
@@ -1004,6 +1002,11 @@ select:hover {
 	grid-template-columns: repeat(12, 1fr);
 }
 
+.grid-col-16x-1 {
+	display: grid;
+	grid-template-columns: repeat(16, 1fr);
+}
+
 .grid-row-1-1 {
 	display: grid;
 	grid-template-rows: 1fr 1fr;
@@ -1017,6 +1020,11 @@ select:hover {
 .grid-row-3-1 {
 	display: grid;
 	grid-template-rows: 3fr 1fr;
+}
+
+.grid-col-7x-1 {
+	display: grid;
+	grid-template-columns: repeat(7, 1fr);
 }
 
 .grid-col-11x-1 {
@@ -1438,6 +1446,8 @@ select:hover {
 	justify-items: flex-start;
 }
 
+
+
 .flex-table-row>input[type=checkbox] {
 	transform: scale(1.3);
 }
@@ -1613,6 +1623,35 @@ select:hover {
 	background-size: cover;
 	/* text-shadow: #f59b60; */
 	border: 1rem solid transparent;
+}
+
+.segsquare {
+	/* display: block; */
+	width: 3rem;
+	height: 3rem;
+	font-family: "vt323";
+	text-align: end;
+	border: 0.3rem solid green;
+	background: var(--cmbr-grid-box);
+	background-size: contain;
+	
+}
+
+.segsquare-empty {
+	width: 3rem;
+	height: 3rem;
+	background: transparent;
+	border: 0.3rem solid var(--cmbr-grid-box);
+}
+
+.segsquare-control {
+	width: 3rem;
+	height: 3rem;
+	font-family: "vt323";
+	text-align: end;
+	border: 0.3rem solid blue;
+	background: var(--cmbr-curtain-plum);
+	background-size: contain;
 }
 
 .load-padding-transition {

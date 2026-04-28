@@ -1,0 +1,244 @@
+<div x-data="{
+
+    segGrid: [
+        [0,0,1,1,1,1,1,0,0,1,1,1,1,1,0,0],
+        [0,0,1,1,1,1,1,0,0,1,1,1,1,1,0,0],
+        [1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+        [1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+        [1,1,0,0,0,0,0,2,2,0,0,0,0,0,1,1],
+        [1,1,0,0,0,0,2,2,2,2,0,0,0,0,1,1],
+        [1,1,0,0,0,0,2,2,2,2,0,0,0,0,1,1],
+    ],
+
+    residents: [
+        {
+            id: null,
+            name: null,
+            cell: null,
+            photo: null,
+        }
+    ],
+
+    generateNames() {
+        let firstName = '';
+        let lastName = '';
+        let fullName = '';
+        const syllables = [
+            'ka', 'ki', 'ku', 'ke', 'ko', 'keu',
+            'ra', 'ri', 'ru', 're', 'ro', 'reu',
+            'ta', 'ti', 'tu', 'te', 'to', 'teu',
+            'sa', 'si', 'su', 'se', 'so', 'seu',
+            'ma', 'mi', 'mu', 'me', 'mo', 'meu'
+        ];
+        const vowels = ['a', 'i', 'u', 'e', 'o', 'eu'];
+        const clusters = ['sh', 'zm', 'sr', 's', 'j', 'kr', 'ks', 'ksh'];
+        
+        for(let i = 0; i < 2; i++) {
+            let ran1 = ((syllables.length - 1) * Math.random()).toFixed(0);
+            let ran2 = ((vowels.length - 1) * Math.random()).toFixed(0);
+            let ran3 = ((clusters.length - 1) * Math.random()).toFixed(0);
+            // console.log(ran1);
+            // console.log(syllables[ran1]);
+            if (i === 0) {
+                firstName += syllables[ran1] + clusters[ran3];
+            }
+            if (i === 1) {
+                lastName += (vowels[ran2] + clusters[ran3] + syllables[ran1] + syllables[ran1]);
+            }
+        }
+        fullName = firstName + ' ' + lastName;
+        return fullName;
+    },
+
+
+    addResident(counter, assignment) {
+        let resident = {
+            id: Math.floor(((Math.random(0) * 123) + 1234567)),
+            // id: 1234567 + i,
+            name: this.generateNames(),
+            cell: assignment,
+            photo: '../assets/segregation-residents/resident-' + counter + '.jpg',
+        };
+            this.residents.push(resident);
+        return resident;
+    },
+
+    addCustody(counter) {
+                let custody = {
+                    // id: (4240 + counter),
+                    name: this.generateNames(),
+                    photo: '../assets/segregation-officers/staff-' + counter + '.jpg',
+                };
+            return custody;
+    },
+
+
+}">
+
+
+    <div>
+        <button class="trigger-box" @click="
+            document.querySelectorAll('.segsquare').forEach((item, index) => { 
+                let inmate = addResident(index, item.innerText);
+                item.innerHTML = inmate.id + '<br>' + inmate.name;
+                item.style.backgroundImage = 'url(' + inmate.photo + ')';
+            })
+            document.querySelectorAll('.segsquare-control').forEach((item, index) => {
+                let custody = addCustody(index);
+                item.innerHTML = custody.name;
+                item.style.backgroundImage = 'url(' + custody.photo + ')';
+            })">
+            Populate!</button>
+    </div>
+
+
+    <div class="flex-table grid-row-7x-1">
+
+        <!-- ROW 1 -->
+        <div class="flex-table-row grid-col-16x-1" style="border-bottom: none">
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCW-206</span>
+            <span class="segsquare">SCW-207</span>
+            <span class="segsquare">SCW-208</span>
+            <span class="segsquare">SCW-209</span>
+            <span class="segsquare">SCW-210</span>
+            <span class="segsquare-empty"></span>
+            <!-- middle -->
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCE-211</span>
+            <span class="segsquare">SCE-212</span>
+            <span class="segsquare">SCE-213</span>
+            <span class="segsquare">SCE-214</span>
+            <span class="segsquare">SCE-215</span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+        </div>
+
+        <!-- ROW 2 -->
+        <div class="flex-table-row grid-col-16x-1" style="border-bottom: none">
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCW-106</span>
+            <span class="segsquare">SCW-107</span>
+            <span class="segsquare">SCW-108</span>
+            <span class="segsquare">SCW-109</span>
+            <span class="segsquare">SCW-110</span>
+            <span class="segsquare-empty"></span>
+            <!-- middle -->
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCE-111</span>
+            <span class="segsquare">SCE-112</span>
+            <span class="segsquare">SCE-113</span>
+            <span class="segsquare">SCE-114</span>
+            <span class="segsquare">SCE-115</span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+        </div>
+        <!-- ROW 3 -->
+        <div class="flex-table-row grid-col-16x-1" style="border-bottom: none">
+            <span class="segsquare">SCW-205</span>
+            <span class="segsquare">SCW-105</span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <!-- middle -->
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCE-116</span>
+            <span class="segsquare">SCE-216</span>
+        </div>
+        <!-- ROW 4 -->
+        <div class="flex-table-row grid-col-16x-1" style="border-bottom: none">
+            <span class="segsquare">SCW-204</span>
+            <span class="segsquare">SCW-104</span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <!-- middle -->
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCE-117</span>
+            <span class="segsquare">SCE-217</span>
+        </div>
+        <!-- ROW 5 -->
+        <div class="flex-table-row grid-col-16x-1" style="border-bottom: none">
+            <span class="segsquare">SCW-203</span>
+            <span class="segsquare">SCW-103</span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-control"></span>
+            <!-- middle -->
+            <span class="segsquare-control"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCE-118</span>
+            <span class="segsquare">SCE-218</span>
+        </div>
+        <!-- ROW 6 -->
+        <div class="flex-table-row grid-col-16x-1" style="border-bottom: none">
+            <span class="segsquare">SCW-202</span>
+            <span class="segsquare">SCW-102</span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-control"></span>
+            <span class="segsquare-control"></span>
+            <!-- middle -->
+            <span class="segsquare-control"></span>
+            <span class="segsquare-control"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCE-119</span>
+            <span class="segsquare">SCE-219</span>
+        </div>
+        <!-- ROW 7 -->
+        <div class="flex-table-row grid-col-16x-1" style="border-bottom: none">
+            <span class="segsquare">SCW-201</span>
+            <span class="segsquare">SCW-101</span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-control"></span>
+            <span class="segsquare-control"></span>
+            <!-- middle -->
+            <span class="segsquare-control"></span>
+            <span class="segsquare-control"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare-empty"></span>
+            <span class="segsquare">SCE-120</span>
+            <span class="segsquare">SCE-220</span>
+        </div>
+    </div>
+    <div>
+        
+    </div>
+    
+
+</div>

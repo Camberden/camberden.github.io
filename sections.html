@@ -1,6 +1,7 @@
 <div x-data="{ 
     atHome: CMBRutil.atSiteIndex(),
     atLegacyHome: CMBRutil.atLegacyIndex(),
+    basePath: document.location.origin + '/',
     homePage:  'Homepage Redux ↺',
     legacyHomepage:  'Legacy Homepage ↺',
     sitemap: {
@@ -15,7 +16,6 @@
                     ['musings', 'Musings Page'],
                     // ['template', 'Template'],
                     // ['fantasy', 'Fantasyland'],
-                    // ['segregation', 'Segregation'],
                     // ['mainframe', 'Mainframe'],
                     ['music', 'Original Music'],
                 ],
@@ -31,27 +31,19 @@
                     ['Intranet', 'https://int.dac.nc.gov',],
                     ['Fiori', 'https://portal.osc.nc.gov/app',],
                     ['Alpine Components', 'https://alpinejs.dev/components'],
+                    ['Alpine Toolbox', 'https://www.alpinetoolbox.com/dist/tools/'],
+
                 ]
             },
         },
     }">
-
-
-    <!-- <template x-if="atLegacyHome">
-        <div :class="'section-title'">
-            <a x-text="homePage"
-                :href="'/index.html'"
-                :data-route="'/'">
-            </a>
-        </div>
-    </template> -->
 
     <template x-if="atHome || atLegacyHome">
         <div>
             <template x-for="link in sitemap.links.internal", :key="index">
                 <div :class="'section-title'">
                     <a x-text="link[1]"
-                        :href="link[0] + '/' + link[0] + '.html'"
+                        :href="basePath + link[0] + '/' + link[0] + '.html'"
                         :data-route="'/' + link[0] + '/'">
                     </a>
                 </div>
@@ -62,7 +54,7 @@
     <template x-if="!atHome">
         <div :class="'section-title'">
             <a x-text="homePage"
-                :href="'/index.html'"
+                :href="basePath + 'index.html'"
                 :data-route="'/'">
             </a>
         </div>
@@ -71,19 +63,18 @@
     <template x-if="atHome">
         <div :class="'section-title'">
             <a x-text="legacyHomepage"
-                :href="'/legacyindex.html'"
+                :href="basePath + 'legacyindex.html'"
                 :data-route="'/legacyindex.html'">
             </a>
         </div>
     </template>
-
 
     <template x-if="!atHome && !atLegacyHome">
         <div x-effect=" displaySection() ">
             <template x-for="link in sitemap.links.internal", :key="index">
                 <div :class="'section-title'" :style="'padding:0.1rem'">
                     <a x-text="link[1]"
-                        :href="link[0] + '/' + link[0] + '.html'"
+                        :href="basePath + link[0] + '/' + link[0] + '.html'"
                         :data-route="'/' + link[0] + '/'">
                     </a>
                 </div>
