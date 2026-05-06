@@ -10,19 +10,15 @@
 
 
 node_modules/
-package.json
-package-lock.json
 *.json
+!package.json
+!package-lock.json
 !cmbr.json
+
+runner.sh
+runner.yaml
 
 images/cmbr-sig-play.htm
 
-template.html
-template.js
-
 administration/
 .administration/
-generate-docs.js
-cmbr-shell.html
-cmbr-shell.js
-server.js

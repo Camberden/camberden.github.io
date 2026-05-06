@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="referrer" content="origin" />
+	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="../htmx.js"></script>
+	<script src="../cmbr.js"></script>
+	<title>Chrispy's TEMPLATE</title>
+</head>
+
+<body data-theme="legacy">
+
+	<nav><!--|=====| BEGIN NAVIGATION |=====|!----->
+
+		<div class="nav-sail">
+
+			<!-----| NAV 1 |----->
+			<div id="nav-1" x-data="{ active: 0 }">
+				
+				<div x-data="{
+					id: 1,
+					get expanded() {
+						return this.active === this.id
+					},
+					set expanded(value) {
+						this.active = value ? this.id : null
+					},
+					}" role="region" class="">
+						<button
+							type="button"
+							x-on:click="expanded = !expanded"
+							:aria-expanded="expanded"
+							id="chart-access">
+							<div class="trigger-dropdown">
+								<span x-show="expanded" x-cloak>&UpArrow;</span>
+								<span x-show="!expanded" x-cloak>&DownArrow;</span>
+								<span>Options</span>
+								<span x-show="expanded">&UpArrow;</span>
+								<span x-show="!expanded">&DownArrow;</span>
+							</div>
+						</button>
+					<div id="chart-dropdown" x-show="expanded" x-collapse>
+						<div id="chart-links">
+						</div>
+					</div>
+				</div>
+				<span id="nav-sig"></span>
+
+			</div>
+
+			<!-----| NAV 2 |----->
+			<div id="nav-2">
+				<h1 class="h1-lamp">
+					<!-- ♪ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 3 |----->
+			<div id="nav-3">
+				<h1 class="h1-lamp">Workspace</h1>
+			</div>
+
+			<!-----| NAV 4 |----->
+			<div id="nav-4">
+				<h1 class="h1-lamp">
+					<!-- ♫ -->
+				</h1>
+			</div>
+
+			<!-----| NAV 5 |----->
+			<div id="nav-5">
+				<span class="data-theme-button" id="dark">🌙</span>
+				<span class="data-theme-button" id="light">☀️</span>
+				<span class="data-theme-button" id="legacy">🪻</span>
+			</div>
+
+		</div>
+
+		<div class="nav-hoist">
+			<hr class="hr-nav-pad">
+			<hr class="hr-blass">
+			<hr class="hr-cmbr-gradient">
+			<hr id="nav-anchor" class="hr-groove-top">
+		</div>
+
+	</nav><!-----|=====| END NAVIGATION |=====|!-->
+
+
+	<main>
+
+		<hr class="hr-push-down">
+
+		<div class="flex-table">
+			<div class="triggers grid-col-1-1-1-2">
+				<div class="trigger-box">Hit me</div>
+				<div class="trigger-box">Again</div>
+				<div class="trigger-box">Please</div>
+				<div class="trigger-box">Make it happen</div>
+				<div class="trigger-box">Do it</div>
+				<div class="trigger-box">Kan</div>
+				<div class="trigger-box">Ji</div>
+				<div class="trigger-box">Sai</div>
+				<div class="trigger-box">Bo</div>
+				<div class="trigger-box">Satsu</div>
+				<div class="trigger-box">Bofrfrr</div>
+				<div class="trigger-box">Bowls</div>
+			</div>
+		</div>
+
+
+		<div id="focal" style="width:50rem;height:20rem;background:black;border:0.9rem groove cadetblue;">
+			<p class="marker-green" style="font-size: 26px"><br>&emsp; øH/«![/H)'/]^)H'¬L/<br>		
+				¬]'/H[*'v'{';{[\\
+			</p>
+		</div>
+		<button @click="value++;" class="trigger-box" value="1"></button>
+
+		<div>
+
+			<input id="myInput" type="search"/>
+
+
+				<h3>
+					Search Contacts
+					<span class="htmx-indicator">
+						<img src="../images/cmbr-sig-sm.ico" alt=""/> Searching...
+					</span>
+				</h3>
+
+			<input class="form-control" type="search"
+					name="search" placeholder="Begin Typing To Search Users..."
+					hx-post="/search"
+					hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
+					hx-target="#search-results"
+					hx-indicator=".htmx-indicator">
+
+			<table class="table">
+				<thead>
+				<tr>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>Email</th>
+				</tr>
+				</thead>
+				<tbody id="search-results">
+				</tbody>
+			</table>
+		</div>
+
+		
+
+	</main>
+
+<script src="template.js"></script>
+
+</body>
+
+
+</html>
