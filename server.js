@@ -1,8 +1,31 @@
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 
 const app = express();
 const PORT = process.env.PORT || 3020;
+
+// Middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Content Security Policy - Allow API calls to same origin
+app.use((req, res, next) => {
+  res.setHeader(
+    'Content-Security-Policy',
+    "default-src 'self'; connect-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self' data:"
+  );
+  next();
+});
+
+// API Routes
+const authRoutes = require('./routes/auth');
+const blogRoutes = require('./routes/blog');
+const notesRoutes = require('./routes/notes');
+
+app.use('/api/auth', authRoutes);
+app.use('/api/blog', blogRoutes);
+app.use('/api/notes', notesRoutes);
 
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));

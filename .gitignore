@@ -8,8 +8,8 @@
 .vscode
 .pineconeref.ts
 
-
 node_modules/
+.env
 *.json
 !package.json
 !package-lock.json
@@ -17,6 +17,7 @@ node_modules/
 
 runner.sh
 runner.yaml
+schema.sql
 
 images/cmbr-sig-play.htm
 
