@@ -93,7 +93,19 @@ class AuthManager {
         body: JSON.stringify(data)
       });
 
-      const result = await response.json();
+      // All API responses should be JSON
+      let result;
+      try {
+        result = await response.json();
+      } catch (error) {
+        console.error('Failed to parse response as JSON:', {
+          status: response.status,
+          statusText: response.statusText,
+          contentType: response.headers.get('content-type')
+        });
+        alert(`Server error (${response.status}): Server did not return valid JSON. Check server logs.`);
+        return;
+      }
 
       // Handle login success - save token
       if (action === '/api/auth/login' && response.ok && result.token) {
@@ -102,6 +114,12 @@ class AuthManager {
         form.reset();
         // Update UI to show user is logged in
         this.updateAuthUI();
+      } else if (action === '/api/auth/logout' && response.ok) {
+        // Handle logout - clear token and update UI
+        this.clearToken();
+        this.updateAuthUI();
+        alert(result.message || 'Logout successful');
+        form.reset();
       } else if (response.ok) {
         alert(result.message || 'Success!');
         form.reset();
@@ -177,6 +195,29 @@ class AuthManager {
     const div = document.createElement('div');
     div.textContent = text;
     return div.innerHTML;
+  }
+
+  // Logout user
+  async logout() {
+    try {
+      const response = await this.fetchWithAuth('/api/auth/logout', {
+        method: 'POST'
+      });
+
+      if (response.ok) {
+        this.clearToken();
+        localStorage.clear();
+        this.updateAuthUI();
+        alert('Logged out successfully');
+        // Optionally redirect to login page
+        // window.location.href = '/login';
+      } else {
+        alert('Logout failed');
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+      alert(`Error: ${error.message}`);
+    }
   }
 
   // Initialize on page load

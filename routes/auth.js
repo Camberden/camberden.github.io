@@ -98,4 +98,10 @@ router.post('/login', async (req, res) => {
   }
 });
 
+router.post('/logout', (req, res) => {
+  // JWT logout is handled client-side by clearing the token
+  // The server just confirms the logout request
+  res.json({ message: 'Logout successful' });
+});
+
 module.exports = router;

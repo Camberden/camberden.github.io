@@ -6,10 +6,10 @@
 	<!-- <meta name="referrer" content="origin" /> -->
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+	<!-- <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script> -->
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -108,6 +108,10 @@
 		<div class="cmbr-item-center flex-table">
 			<h1 class="marker-green">Database Tester</h1>
 			<p id="auth-status" style="font-weight: bold; margin: 0.5rem 0;">Not logged in</p>
+			<br>
+			<form id="logout-button" action="/api/auth/logout" method="POST">
+				<button class="trigger-box" id="logout">Logout</button>
+			</form>
 			<hr class="hr-cmbr-gradient">
 			<hr class="hr-groove-top">
 
@@ -116,14 +120,14 @@
 				<hr class="hr-trans">
 				<hr class="hr-push-down">
 				<form id="register-form" action="/api/auth/register" method="POST" class="grid-col-1-1">
-					<label for="username">Enter username &emsp;</label>
-					<input type="text" id="username" name="username" required>
+					<label for="register-username">Enter username &emsp;</label>
+					<input type="text" id="register-username" name="username" autocomplete="username" required>
 
-					<label for="password">Enter password &emsp;</label>
-					<input type="password" id="password" name="password" required>
+					<label for="new-password">Enter password &emsp;</label>
+					<input type="password" id="new-password" name="password" autocomplete="new-password" required>
 
 					<label for="email">Enter email &emsp;</label>
-					<input type="email" id="email" name="email" required>
+					<input type="email" id="email" name="email" autocomplete="email" required>
 
 					<div></div>
 					<button type="submit">Register</button>
@@ -136,12 +140,12 @@
 				<hr class="hr-trans">
 				<hr class="hr-push-down">
 				<form id="login-form" action="/api/auth/login" method="POST" class="grid-col-1-1">
-					<label for="username">Enter username &emsp;</label>
-					<input type="text" id="username" name="username" required>
+					<label for="login-username">Enter username &emsp;</label>
+					<input type="text" id="login-username" name="username" autocomplete="username" required>
 
-					<label for="password">Enter password &emsp;</label>
-					<input type="password" id="password" name="password" required>
-
+					<label for="current-password">Enter password &emsp;</label>
+					<input type="password" id="current-password" name="password" autocomplete="current-password" required>
+					
 					<div></div>
 					<button type="submit">Login</button>
 				</form>

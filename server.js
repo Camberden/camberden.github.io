@@ -27,6 +27,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/notes', notesRoutes);
 
+// 404 handler for API routes - return JSON instead of HTML
+app.use('/api/*', (req, res) => {
+  res.status(404).json({ error: 'API endpoint not found' });
+});
+
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
 

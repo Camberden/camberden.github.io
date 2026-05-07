@@ -6,6 +6,8 @@
 ## styles.css
 *Ensuring consistent global styles is paramount!*
 
+- Remove HTML parsed response.
+
 - Identify what causes the background color at index.html.
 > It's the body tag. I moved it to the top at global semantic tag styles
 
