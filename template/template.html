@@ -15,7 +15,7 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 	<script src="../htmx.js"></script>
 	<script src="../cmbr.js"></script>
-	<script src="./auth-manager.js"></script>
+	<script src="auth-manager.js"></script>
 	<title>Chrispy's TEMPLATE</title>
 </head>
 
@@ -185,13 +185,14 @@
 
 		</div> <!-- End Table -->
 
-		<div class="cmbr-item-right" hx-trigger="load" hx-get="/api/notes/" hx-target="#all-notes-display" hx-swap="innerHTML">
+		<!-- <div class="cmbr-item-right" hx-trigger="load" hx-get="/api/notes/" hx-target="#all-notes-display" hx-swap="innerHTML"> -->
+		<div class="cmbr-item-right">
 			<h2 class="marker-green">All Notes</h2>
 			<hr class="hr-cmbr-dark-gradient">
 			<hr class="hr-push-down">
-			<div id="all-notes-display">
+			<!-- <div id="all-notes-display"> -->
 				<!-- Notes will be loaded here -->
-				<pre id="all-notes-display">Loading notes...</pre>
+				<!-- <pre id="all-notes-display">Loading notes...</pre> -->
 
 
 			</div>

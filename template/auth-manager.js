@@ -28,6 +28,16 @@ class AuthManager {
   // Make authenticated API request
   async fetchWithAuth(url, options = {}) {
     const token = this.getToken();
+    
+    // Construct full API URL for production
+    let fullUrl = url;
+    if (!url.startsWith('http')) {
+      const apiBase = window.location.hostname === 'localhost' 
+        ? 'http://localhost:3020'
+        : `https://${window.location.hostname}:3020`;
+      fullUrl = apiBase + url;
+    }
+    
     const headers = {
       'Content-Type': 'application/json',
       ...options.headers
@@ -37,7 +47,7 @@ class AuthManager {
       headers['Authorization'] = `Bearer ${token}`;
     }
 
-    return fetch(url, {
+    return fetch(fullUrl, {
       ...options,
       headers
     });
