@@ -34,7 +34,7 @@ class AuthManager {
     if (!url.startsWith('http')) {
       const apiBase = window.location.hostname === 'localhost' 
         ? 'http://localhost:3020'
-        : `https://${window.location.hostname}:3020`;
+        : `https://${window.location.hostname}`;
       fullUrl = apiBase + url;
     }
     
