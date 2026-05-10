@@ -13,7 +13,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use((req, res, next) => {
   res.setHeader(
     'Content-Security-Policy',
-    "default-src 'self'; connect-src 'self'; frame-src https://www.youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://unpkg.com/leaflet@1.9.4/dist/leaflet.js.map https://www.youtube.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data: https:; font-src 'self' data:"
+    "default-src 'self'; connect-src 'self'; frame-src https://www.youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://unpkg.com/leaflet@1.9.4/dist/leaflet.js.map https://www.youtube.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css https://unpkg.com; img-src 'self' data: https:; font-src 'self' data:"
   );
   next();
 });

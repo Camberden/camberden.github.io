@@ -243,6 +243,9 @@ function enableBlogButtons() {
 			CMBRutil.buttonOnClick(button);
 
 			switch (button.value) {
+				case "migration":
+					blogPostDatabaseMigration(blogPosts);
+				break;
 				case "next":
 					if (currentlyReadingNumber < blogPosts.length) {
 						document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
@@ -333,6 +336,50 @@ function routeJson(postjson) {
 		player.loadVideoById(bpJson["media"][1]);
 	})();
 };
+/**
+ * 
+ * @param {BlogPost[]} blogPostArray 
+ */
+function blogPostDatabaseMigration(blogPostArray) {
+	const token = localStorage.getItem("authToken"); // or sessionStorage.getItem("authToken")
+	
+	blogPostArray.forEach(post => {
+		const postJson = {
+			id: post.id,
+			user_id: 1,
+			title: post.title,
+			content: post.body,
+			date_posted: post.date.toISOString(),
+			location: post.location,
+			hours: post.time,
+			tags: JSON.stringify(post.tags),
+			photos: JSON.stringify(post.photos),
+			audio: JSON.stringify(post.audio)
+		};
+		
+		fetch("/api/blog/", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+				"Authorization": `Bearer ${token}`
+			},
+			body: JSON.stringify(postJson)
+		})
+		.then(response => {
+			if (!response.ok) {
+				throw new Error(`HTTP error! status: ${response.status}`);
+			}
+			return response.json();
+		})
+		.then(data => {
+			console.log("Blog post migration response:");
+			console.log(data);
+		})
+		.catch(error => {
+			console.error("Error migrating blog post:", error);
+		});
+	});
+}
 
 /* |==========| INDEXED DB |====================> */
 /* |==========| SUPPORT FUNCTIONS TO GAUGE IDB |====================> */
@@ -456,5 +503,6 @@ function initIndexedDB(crud, queryData) {
 	enableBlogSelect();
 	console.log("https://www.youtube.com/watch?v=6uNkTqNSulY".split("v=")[1]);
 	
+
 })();
 // (setTimeout(() => { collectJSconfigs(canSupportIndexedDB()); console.log("|=====| END |=====|====|") }, 2000 ));

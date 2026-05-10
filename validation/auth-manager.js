@@ -185,13 +185,10 @@ class AuthManager {
 
       // Create HTML for notes
       notesContainer.innerHTML = notes.map(note => `
-        <div style="border: 1px solid #ccc; padding: 1rem; margin-bottom: 1rem; border-radius: 4px;">
-          <h3 style="margin-top: 0;">${this.escapeHtml(note.title)}</h3>
-          <p><strong>By:</strong> ${this.escapeHtml(note.username)}</p>
-          ${note.location ? `<p><strong>Location:</strong> ${this.escapeHtml(note.location)}</p>` : ''}
-          ${note.tags && note.tags.length > 0 ? `<p><strong>Tags:</strong> ${note.tags.map(t => this.escapeHtml(t)).join(', ')}</p>` : ''}
-          <p>${this.escapeHtml(note.body)}</p>
-          <small>Created: ${new Date(note.created_at).toLocaleDateString()}</small>
+        <div class="flex-table-row grid-col-1-3-1">
+          <div>${this.escapeHtml(note.title)}</div>
+          <div>${this.escapeHtml(note.body)}</div>
+          <div>${note.tags && note.tags.length > 0 ? `${note.tags.map(t => this.escapeHtml(t)).join(', ')}</div>` : ''}
         </div>
       `).join('');
     } catch (error) {
