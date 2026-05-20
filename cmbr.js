@@ -133,7 +133,7 @@ const CMBRutil = {
 			};
 			cmbrDate = date.toLocaleDateString("en-US", preferredDateOptions);
 			cmbrDate = cmbrDate.replace(",", nth(date.getDate()));
-			console.log(cmbrDate);
+			console.info(cmbrDate);
 			return cmbrDate;
 		} else {
 			preferredDateOptions = {

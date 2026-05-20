@@ -12,7 +12,7 @@
 > It's the body tag. I moved it to the top at global semantic tag styles
 
 - I need to update the button styles such that I'm using :hover and :active
-	- I only need one style for after clicked, to be removed after a second click.
+- I only need one style for after clicked, to be removed after a second click.
 > 
 ---
 ## action.js
@@ -72,7 +72,7 @@
 2. Ginkgo leaves. Ginkgo nuts. Ginkgo nut sorghum. Sanukite andesine. Catfish. Big river culture. Koi-koi like game. 
 3. Make Conlang based on Rollian Script; hangulize?
 4. * In pin o ppa 
-	* In kip   pi
+	* In kip pi
 	* En pen o ppa
 	* Kiptei
 
