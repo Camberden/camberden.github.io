@@ -233,6 +233,7 @@ function enableExpenseButtons() {
 		}
 	});
 }
+
 /**
  * 
  * @param {DashboardExpense[]} expenses 
@@ -1133,9 +1134,6 @@ function getDaysInMonthOfYear(year, month) {
 	return new Date(year, month, 0).getDate();
 }
 const daysSinceBirth = findDaysSinceBirthday(new Date(now.getFullYear(), now.getMonth(), now.getDay()), new Date(1993, 11, 14));
-
-
-
 
 
 (() => {

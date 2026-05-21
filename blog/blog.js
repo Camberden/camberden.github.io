@@ -422,7 +422,6 @@ function blogPostDatabaseMigration(blogPostArray) {
 			});
 	});
 }
-
 /* |==========| INDEXED DB |====================> */
 /* |==========| SUPPORT FUNCTIONS TO GAUGE IDB |====================> */
 const canSupportIndexedDB = () => {

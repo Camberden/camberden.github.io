@@ -24,7 +24,7 @@ input[type=text]:focus {
 	display: flex;
 	padding: 2rem;
 	flex-flow: row wrap;
-	align-items: auto;
+	align-items: center;
 	justify-items: center;
 	border-radius: 1rem;
 	gap: 1rem;
@@ -49,8 +49,9 @@ input[type=text]:focus {
 	background-image: transparent;
 	background-size: cover;
     border: 0.5rem ridge rgba(22, 17, 17, 0.855);
-
 }
+
+
 
 .step-pay-plan-button {
 	width: 100%;
@@ -407,9 +408,6 @@ input[type=text]:focus {
 }
 
 /* ----- CALENDAR MODULE ----- */
-#dashboard-calendar {
-	flex: 1;
-}
 
 .listed-event {
 	list-style-type: none;
