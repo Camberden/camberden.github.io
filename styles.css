@@ -722,6 +722,13 @@ mark {
 	color: transparent
 }
 
+.cash::before {
+	content:attr(item) " $ ";
+}
+.per::after {
+	content: attr(item) " % ";
+}
+
 /* |==========| §BUTTONS, TRIGGERS, AND THEIR AFFIXATION <button> |====================> */
 /* |==========| BUTTONS AND RELATED NON-VALUE, NON-FORM API TRIGGER BOXES |====================> */
 button {

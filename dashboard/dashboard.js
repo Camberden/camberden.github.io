@@ -238,107 +238,107 @@ function enableExpenseButtons() {
  * 
  * @param {DashboardExpense[]} expenses 
  */
-function generateDashboardExpenses(expenses) {
-	const expenseDisplay = document.getElementById("expense-display");
+// function generateDashboardExpenses(expenses) {
+// 	const expenseDisplay = document.getElementById("expense-display");
 
-	expenses.forEach(expense => {
-		const expenseEntry = document.createElement("div");
-		expenseEntry.setAttribute("class", "flex-table-row grid-col-1-1-1");
-		const inputCheckbox = document.createElement("input");
-		const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()}`);
-		inputCheckbox.setAttribute("type", "checkbox");
-		inputCheckbox.setAttribute("id", `${expense.name}-check`);
+// 	expenses.forEach(expense => {
+// 		const expenseEntry = document.createElement("div");
+// 		expenseEntry.setAttribute("class", "flex-table-row grid-col-1-1-1");
+// 		const inputCheckbox = document.createElement("input");
+// 		const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()}`);
+// 		inputCheckbox.setAttribute("type", "checkbox");
+// 		inputCheckbox.setAttribute("id", `${expense.name}-check`);
 
-		if (!expense.custom) {
-			const spanApplicable = document.createElement("span");
-			spanApplicable.setAttribute("id", `${expense.name}-cost`);
-			spanApplicable.textContent = expense.amount;
-			const spanAutomation = document.createElement("span");
+// 		if (!expense.custom) {
+// 			const spanApplicable = document.createElement("span");
+// 			spanApplicable.setAttribute("id", `${expense.name}-cost`);
+// 			spanApplicable.textContent = expense.amount;
+// 			const spanAutomation = document.createElement("span");
 
-			if (expense.applicable) {
-				spanApplicable.setAttribute("class", "applicable");
-			}
-			if (expense.automated > 0) {
-				spanAutomation.setAttribute("class", "automated-payment");
-				const textAutomation = document.createTextNode(` Automated: Day ${expense.automated}`);
-				spanAutomation.appendChild(textAutomation);
-			}
-			if (expense.automated === 0) {
-				spanAutomation.setAttribute("class", "non-automated-payment");
-				const textAutomation = document.createTextNode(` NOT Automated`);
-				spanAutomation.appendChild(textAutomation);
-			}
-			if (expense.automated < 0) {
-				// spanAutomation.setAttribute("class", "inactive-payment");
-				spanAutomation.setAttribute("class", "non-automated-payment inactive-payment");
-				// TODO: Make default condition the non-automated-payment.
-				const textInactive = document.createTextNode("Inactive");
-				spanAutomation.appendChild(textInactive);
-				expenseEntry.style.opacity = 0.3;
-			}
-			const checkboxWithName = document.createElement("div");
-			checkboxWithName.appendChild(inputCheckbox);
-			checkboxWithName.appendChild(textCheckbox);
-			expenseEntry.appendChild(checkboxWithName);
-			expenseEntry.appendChild(spanApplicable);
-			expenseEntry.appendChild(spanAutomation);
+// 			if (expense.applicable) {
+// 				spanApplicable.setAttribute("class", "applicable");
+// 			}
+// 			if (expense.automated > 0) {
+// 				spanAutomation.setAttribute("class", "automated-payment");
+// 				const textAutomation = document.createTextNode(` Automated: Day ${expense.automated}`);
+// 				spanAutomation.appendChild(textAutomation);
+// 			}
+// 			if (expense.automated === 0) {
+// 				spanAutomation.setAttribute("class", "non-automated-payment");
+// 				const textAutomation = document.createTextNode(` NOT Automated`);
+// 				spanAutomation.appendChild(textAutomation);
+// 			}
+// 			if (expense.automated < 0) {
+// 				// spanAutomation.setAttribute("class", "inactive-payment");
+// 				spanAutomation.setAttribute("class", "non-automated-payment inactive-payment");
+// 				// TODO: Make default condition the non-automated-payment.
+// 				const textInactive = document.createTextNode("Inactive");
+// 				spanAutomation.appendChild(textInactive);
+// 				expenseEntry.style.opacity = 0.3;
+// 			}
+// 			const checkboxWithName = document.createElement("div");
+// 			checkboxWithName.appendChild(inputCheckbox);
+// 			checkboxWithName.appendChild(textCheckbox);
+// 			expenseEntry.appendChild(checkboxWithName);
+// 			expenseEntry.appendChild(spanApplicable);
+// 			expenseEntry.appendChild(spanAutomation);
 
-		}
+// 		}
 
-		if (expense.custom) {
-			const inputCustom = document.createElement("input");
-			inputCustom.setAttribute("type", "text");
-			inputCustom.setAttribute("placeholder", ` Input Value`);
-			inputCustom.setAttribute("id", `${expense.name}-cost`);
+// 		if (expense.custom) {
+// 			const inputCustom = document.createElement("input");
+// 			inputCustom.setAttribute("type", "text");
+// 			inputCustom.setAttribute("placeholder", ` Input Value`);
+// 			inputCustom.setAttribute("id", `${expense.name}-cost`);
 
-			const checkboxWithName = document.createElement("div");
-			checkboxWithName.appendChild(inputCheckbox);
-			checkboxWithName.appendChild(textCheckbox);
-			expenseEntry.appendChild(checkboxWithName);
-			expenseEntry.appendChild(document.createTextNode("→"));
-			expenseEntry.appendChild(inputCustom);
-		}
-		expenseDisplay.appendChild(expenseEntry);
-	});
+// 			const checkboxWithName = document.createElement("div");
+// 			checkboxWithName.appendChild(inputCheckbox);
+// 			checkboxWithName.appendChild(textCheckbox);
+// 			expenseEntry.appendChild(checkboxWithName);
+// 			expenseEntry.appendChild(document.createTextNode("→"));
+// 			expenseEntry.appendChild(inputCustom);
+// 		}
+// 		expenseDisplay.appendChild(expenseEntry);
+// 	});
 
-	document.getElementById("starting-balance").onkeyup = function () {
-		calculateNewBalance();
-		document.getElementById("expense-modal").style.display = "block";
-	};
+// 	document.getElementById("starting-balance").onkeyup = function () {
+// 		calculateNewBalance();
+// 		document.getElementById("expense-modal").style.display = "block";
+// 	};
 
-	dashboardExpenses.forEach(expense => {
-		document.getElementById(expense.name + "-check").onclick = function () {
-			calculateNewBalance();
-		}
-	});
-}
-function calculateNewBalance() {
+// 	dashboardExpenses.forEach(expense => {
+// 		document.getElementById(expense.name + "-check").onclick = function () {
+// 			calculateNewBalance();
+// 		}
+// 	});
+// }
+// function calculateNewBalance() {
 
-	let startingBalance = document.getElementById("starting-balance").value;
-	/**
-	 * @type {Number}
-	 */
-	let sum = 0;
-	for (let expense of dashboardExpenses) {
-		let checkbox = document.getElementById(expense.name + "-check");
-		let costbox = document.getElementById(expense.name + "-cost");
+// 	let startingBalance = document.getElementById("starting-balance").value;
+// 	/**
+// 	 * @type {Number}
+// 	 */
+// 	let sum = 0;
+// 	for (let expense of dashboardExpenses) {
+// 		let checkbox = document.getElementById(expense.name + "-check");
+// 		let costbox = document.getElementById(expense.name + "-cost");
 
-		if (checkbox.checked && !expense.custom) {
-			sum += parseFloat(costbox.textContent);
-		}
-		if (checkbox.checked && expense.custom) {
-			sum += parseFloat(costbox.value);
-		}
-		const endingBalance = parseFloat(startingBalance - sum).toFixed(2);
+// 		if (checkbox.checked && !expense.custom) {
+// 			sum += parseFloat(costbox.textContent);
+// 		}
+// 		if (checkbox.checked && expense.custom) {
+// 			sum += parseFloat(costbox.value);
+// 		}
+// 		const endingBalance = parseFloat(startingBalance - sum).toFixed(2);
 
-		document.getElementById("ending-balance").textContent = endingBalance;
-		document.getElementById("starting-balance").value;
-	}
-	document.getElementById("paycheck-mirror").innerHTML = startingBalance;
-	document.getElementById("expenses-mirror").innerHTML = sum.toFixed(2);
-	document.getElementById("remainder-mirror").innerHTML = (startingBalance - sum).toFixed(2);
+// 		document.getElementById("ending-balance").textContent = endingBalance;
+// 		document.getElementById("starting-balance").value;
+// 	}
+// 	document.getElementById("paycheck-mirror").innerHTML = startingBalance;
+// 	document.getElementById("expenses-mirror").innerHTML = sum.toFixed(2);
+// 	document.getElementById("remainder-mirror").innerHTML = (startingBalance - sum).toFixed(2);
 
-}
+// }
 
 // |=====| STEP PAY PLAN MODULE |=====| //
 
@@ -1141,8 +1141,8 @@ const daysSinceBirth = findDaysSinceBirthday(new Date(now.getFullYear(), now.get
 	CMBRutil.navigationCharter();
 	CMBRutil.handleFormDefault(true);
 
-	generateDashboardExpenses(dashboardExpenses);
-	enableExpenseButtons();
+	// generateDashboardExpenses(dashboardExpenses);
+	// enableExpenseButtons();
 
 	calculateStep();
 	populateSalaryTable();

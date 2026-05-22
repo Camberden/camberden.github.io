@@ -99,409 +99,466 @@
 	</div>
 
 
-		<main class="dashboard-grid">
-			<!-- PSLF CALCULATOR -->
-			<div id="dashboard-pslf-calculator" class="dashboard-item" x-data="{ 
+	<main class="dashboard-grid">
+		<!-- PSLF CALCULATOR -->
+		<div id="dashboard-pslf-calculator" class="dashboard-item" x-data="{ 
 					credits: pslfCredited, served: pslfServed, remaining: pslfRemaining, notice: pslfNotice[2] }">
-				<div>
-					<h2 class="marker-green">PSLF Display</h2>
-					<hr class="hr-cmbr-dark-gradient">
+			<div>
+				<h2 class="marker-green">PSLF Display</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<span class="marker modal-prompt" id="pslf-modal">Additional Information</span>
+			<div>PSLF Credits:
+				<span id="pslf-credits" x-text="credits"></span>/120
+			</div>
+			<div>Total Service:
+				<span id="pslf-served" x-text="served"></span>/120
+			</div>
+			<hr class="hr-groove-bottom">
+			<div id="pslf-boxes" class="flex-table-row grid-col-11x-1">
+				<span>∆</span>
+				<span>12</span>
+				<span>24</span>
+				<span>36</span>
+				<span>48</span>
+				<span>60</span>
+				<span>72</span>
+				<span>84</span>
+				<span>96</span>
+				<span>108</span>
+				<span>∆</span>
+			</div>
+			<div id="pslf-progress-bar"></div>
+			<hr class="hr-groove-top">
+			<div style="text-align: right">
+				<span id="pslf-remaining" x-text="notice"></span>
+			</div>
+		</div>
+		<!-- DAYS LIVED -->
+		<div id="dashboard-days-lived" class="dashboard-item flex-table">
+			<div>
+				<h2 class="marker-green">Time in this World</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div class="grid-col-1-1" x-data=" { daysSinceBirth } ">
+				<div class="flex-table-row grid-row-1" style="display:contents">
+					<span>Days Lived: </span><u x-text=" daysSinceBirth "></u>
 				</div>
-				<span class="marker modal-prompt" id="pslf-modal">Additional Information</span>
-				<div>PSLF Credits:
-					<span id="pslf-credits" x-text="credits"></span>/120
+				<div class="flex-table-row grid-row-1" style="display:contents">
+					<span>Weeks Lived: </span><u x-text=" (daysSinceBirth / 7).toFixed(2) "></u>
 				</div>
-				<div>Total Service:
-					<span id="pslf-served" x-text="served"></span>/120
+				<div class="flex-table-row grid-row-1" style="display:contents">
+					<span>Years Lived: </span><u x-text=" (daysSinceBirth / 366).toFixed(2) "></u>
+				</div>
+			</div>
+		</div>
+		<!-- TODO: Include Present & Future Value Charts-->
+		<!-- MINICALC -->
+		<div id="dashboard-minicalc" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Mini Calc</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div class="flex-table">
+				<div class="flex-table-row grid-col-1-1">
+					<div class="grid-row-1-1-1" x-data="{ balance: 0, percentage: 0 }">
+						<div>
+							<h4 class="marker">Simple Percentage</h4>
+							<hr class="hr-trans">
+							<p>Balance</p>
+							<input type="text" placeholder="$" @input="balance = $event.target.value">
+						</div>
+						<div>
+							<p>Percentage</p>
+							<input type="text" placeholder="%" @input="percentage = $event.target.value">
+						</div>
+						<div>
+							<p>Result</p>
+							<span :class="'cash'" x-text="(balance * (percentage * 0.01)).toFixed(2)"></span>
+						</div>
+					</div>
+					<div class="grid-row-1-1-1" x-data="{ base: 0, points: 0 }">
+
+						<div>
+							<h4 class="marker">Reserve Pension Calc</h4>
+							<hr class="hr-trans">
+							<p>Base</p>
+							<input class="cash" type="text" placeholder="$" @input="base = $event.target.value">
+						</div>
+						<div>
+							<p>Points Earned</p>
+							<input type="text" placeholder="#" @input="points = $event.target.value">
+						</div>
+						<div>
+							<p>Result</p>
+							<span :class="'cash'" x-text="(((points / 360) * 0.025) * base).toFixed(2)"></span>
+						</div>
+					</div>
+				</div>
+				 <p>1 point for each day of active service (180 for Vet status, so 180)<br>
+					1 point for each attendance at a drill period (12 for the year?)<br>
+					1 point for each day of performing funeral honors duty<br>
+					15 points for each year of membership in a reserve component<br>
+					O-1 Ensign < 2years = $533.12 Base Weekend Drill Pay</p>
+			</div>
+		</div>
+		</div>
+		<!-- RE-EDUCATION INFORMATION -->
+		<div id="dashboard-reeducation-information" class="dashboard-item">
+
+			<div>
+				<h2 class="marker-green">Re-Education Information</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+
+			<span class="marker modal-prompt" id="accounting-modal">Additional Information</span>
+
+			<div>CPA Credits: <span id="cpa-credits"></span>/30</div>
+			<hr class="hr-groove-bottom">
+			<div id="cpa-progress-bar"></div>
+			<br>
+			<div id="dpl-progress-bar"></div>
+			<br>
+			<div id="aas-progress-bar"></div>
+			<hr class="hr-groove-top">
+
+			<ul id="acc-courses">
+				<span class="marker">Advanced Core Requirements</span>
+				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 120 - Prin of Financial
+					Accounting (3)</li>
+				<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 121 - Prin of Managerial
+					Accounting (3)</li>
+				<li class="not-taken acc-core adv-acc-core" value="3">BUS 115 - Business Law I (3)</li>
+				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 220 - Intermediate Accounting I
+					(4)
+				</li>
+				<li class="not-taken adv-acc-core" value="3">ACC 129 - Individual Income Taxes (3)</li>
+				<li class="taken adv-acc-core planned-or-completed" value="4">ACC 221 - Intermediate Accounting II
+					(4)
+				</li>
+				<li class="not-taken adv-acc-core" value="3">ACC 269 - Auditing & Assurance Services (3)</li>
+				<hr><span class="marker">To Fulfill CPA Requirements</span>
+				<li class="not-taken acc-dpl" value="3">ACC 240 - Gov & Non-Profit Accounting (3)</li>
+				<li class="taking acc-dpl acc-soft-app" value="2">ACC 149 - Intro to ACC Spreadsheets (2)</li>
+				<li class="not-taken acc-dpl acc-soft-app" value="2">ACC 150 - Accounting Software Applications (2)
+				</li>
+				<hr><span class="marker">Optional Diploma Requirements</span>
+				<li class="not-taken acc-dpl" value="2">ACC 140 - Payroll Accounting (2)</li>
+				<li class="not-taken acc-dpl" value="3">ACC 130 - Business Income Taxes (3)</li>
+				<li class="not-taken acc-dpl" value="3">ACC 215 - Ethics in Accounting (3)</li>
+				<li class="not-taken acc-dpl" value="0">ECO 251 - Prin of Microeconomics (3)</li>
+				<li class="not-taken acc-dpl" value="0">CIS 110 - Intro to Computers (3)</li>
+				<hr><span class="marker">Optional AAS Requirements</span>
+				<li class="not-taken acc-aas" value="3">ACC 227 - Practices in Accounting (3)</li>
+				<li class="not-taken acc-aas" value="0">ENG 112 - Writing/Research in the Disc (3)</li>
+				<li class="not-taken acc-aas" value="0">HUM 115 - Critical Thinking (3)</li>
+				<li class="not-taken acc-aas" value="0">BUS 225 - Business Finance (3)</li>
+
+				<hr><span class="marker">Miscellaneous</span>
+				<li class="taken planned-or-completed" value="0">BUS 110 - Intro to Business: Japan</li>
+			</ul>
+		</div>
+
+		<!-- EXPENSE MANAGEMENT -->
+		<!-- TODO: ALPINE broke it rn -->
+		<div id="dashboard-expense-management" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Expense Management</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div class="flex-table" x-data="{
+				
+				paycheck: 3000.00,
+				remainder: 0,
+
+				expenses: {
+					1: { name: 'CAR', amount: 0.00, applicable: false, automated: false, due: '',  altered: false, },
+					2: { name: 'NAV', amount: 222.07, applicable: false, automated: false, due: '', altered: false, },
+					3: { name: 'SAL', amount: 900.00, applicable: true, automated: true, due: '',  altered: false, },
+					4: { name: 'REN', amount: 200.00, applicable: true, automated: false, due: '01', altered: false, },
+					5: { name: 'RTI', amount: 0.00, applicable: false, automated: false, due: '', altered: false, },
+					6: { name: 'INS', amount: 97.68, applicable: true, automated: false, due: '', altered: false, },
+					7: { name: 'LOA', amount: 0.00, applicable: false, automated: false, due: '', altered: false, },
+					8: { name: 'WAT', amount: 15.00, applicable: false, automated: false, due: '', altered: false, },
+					9: { name: 'ELE', amount: 70.27, applicable: false, automated: false, due: '', altered: false, },
+					10: { name: 'INT', amount: 71.99, applicable: false, automated: false, due: '', altered: false, },
+					11: { name: 'MUS', amount: 6.39, applicable: true, automated: true, due: '06', altered: false, },
+					12: { name: 'DON', amount: 10.00, applicable: false, automated: false, due: '', altered: false, },
+					13: { name: 'GYM', amount: 25.05, applicable: true, automated: true, due: '27', altered: false, },
+					15: { name: 'INP', amount: 0.00, applicable: false, automated: false, due: '', altered: true, },
+					16: { name: 'SAV', amount: 0.00, applicable: false, automated: false, due: '', altered: true, },
+				},
+
+				calcSpent: function() {
+					return Object.values(this.expenses).reduce(
+						(spent, expense) =>
+						spent + (expense.applicable ? parseFloat(expense.amount) : 0), 0, );
+				},
+
+			}">
+				<div class="flex-table-header grid-col-1-1">
+					<span>Paycheck</span>
+					<input type="text" placeholder=" Input Balance" name="balance" label="balance" x-model="paycheck">
+				</div>
+
+			<div class="flex-table-row grid-col-1-1">
+					<div class="triggers">
+						<div id="select-applicable" class="trigger-box expense-button">
+							<!--// <div id="select-applicable" class="trigger-box expense-button" x-show="! applicable" @click="applicable = true"> -->
+							<!--// <h2 x-show="! applicable">Select Applicable</h2> -->
+							<!--// <hr class="hr-trans" x-show="! applicable"> -->
+							<h2>Select Applicable</h2>
+							<hr class="hr-trans">
+						</div>
+						<div id="deselect-applicable" class="trigger-box expense-button" style="display:none;">
+							<h2>Deselect Applicable</h2>
+							<hr class="hr-cmbr-gradient">
+							<!-- // <div id="deselect-applicable" class="trigger-box expense-button" x-show="applicable" @click="applicable = false"> -->
+							<!-- // <h2 x-show="applicable">Deselect Applicable</h2> -->
+							<!-- // <hr class="hr-cmbr-gradient" x-show="applicable"> -->
+						</div>
+					</div>
+					<div style="width: 100%; text-align: right; font-family: monospace">
+						<span :class="'cash'" x-text="paycheck"></span>
+						<span :class="'cash'" :style="'color:red;'" id="expenses-mirror"></span>
+						<hr class="hr-cmbr-dark-gradient">
+						<span :class="'cash'" id="remainder-mirror"></span>
+					</div>
+
+				</div>
+
+
+				<template x-for="(expense, index) in expenses" :key="index">
+					<div :class="'flex-table-row grid-col-5x-1'" x-effect="expense.amount = parseFloat(expense.amount).toFixed(2)">
+						<input type="checkbox" :checked="expense.applicable" @change="expense.applicable = !expense.applicable">
+						<span x-text="expense.name"></span>
+						<span :class="'cash'" x-init="$watch('expense.amount', value => console.log(value))" x-text="expense.amount"></span>
+						<div>
+							<span x-show=" expense.automated " x-text="'Automated: ' + expense.due "></span>
+							<span x-show=" !expense.automated " x-text="' NOT Automated '"></span>
+						</div>
+						
+						<div>
+							<span :class="'marker'" x-show=" !expense.altered " @click=" expense.altered = true "x-text="' Alter '"></span>
+							<form>
+								<input x-show=" expense.altered " type="text" placeholder="New Amount" x-model="expense.amount" @keyup.enter=" expense.altered = false;">
+							</form>
+						</div>
+					</div>
+				</template>
+			</div>
+
+			<hr class="hr-groove-top">
+			
+			<div class="flex-table-row grid-col-1-1-1">
+				<p>Remainder</p>
+				<span x-text="remainder"></span>
+				<span class="marker modal-prompt" id="expense-modal"> ← Projection</span>
+			</div>
+
+
+		</div>
+		<!-- CAREER INSIGHT -->
+		<div id="dashboard-career-insight" class="dashboard-item" x-data=" accountingRoles ">
+			<div>
+				<h2 class="marker-green">Career Option Insight</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div id="career-table" class="flex-table">
+				<h2>Accounting Roles</h2>
+				<hr class="hr-groove-bottom">
+				<div class="flex-table-header grid-col-1-1">
+					<span>Role</span>
+					<span>Average Salary</span>
+				</div>
+				<div class="flex-table-row grid-col-1-1">
+					<template x-for="(position, index) in accountingRoles" :key="index">
+						<div :class="'flex-table-row grid-row-1'" :style="'display:contents;'">
+							<span x-text="position[0]"></span>
+							<span :class="'cash'" x-text="position[1].toFixed(2)"></span>
+						</div>
+					</template>
+				</div>
+			</div>
+		</div>
+		<!-- PENSION CALCULATOR -->
+		<div id="dashboard-pension-calculator" class="dashboard-item">
+
+			<div>
+				<h2 class="marker-green">Pension Calculator</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+
+			<div id="pension-table-div">
+
+				<div id="pension-table" class="flex-table">
+
+					<div class="flex-table-row grid-col-11x-1">
+						<div id="pension-age-60-service-30" class="flex-table-anchor-col pension-reduction-highlight">
+							&emsp;</div>
+						<div id="pension-service-29">29</div>
+						<div id="pension-service-28">28</div>
+						<div id="pension-service-27">27</div>
+						<div id="pension-service-26">26</div>
+						<div id="pension-service-25">25</div>
+						<div id="pension-service-24">24</div>
+						<div id="pension-service-23">23</div>
+						<div id="pension-service-22">22</div>
+						<div id="pension-service-21">21</div>
+						<div id="pension-service-20">20</div>
+					</div>
+					<div id="pension-table-body" class="flex-table-body">
+
+
+
+
+
+					</div>
+
+
+
 				</div>
 				<hr class="hr-groove-bottom">
-				<div id="pslf-boxes" class="flex-table-row grid-col-11x-1">
-					<span>∆</span>
-					<span>12</span>
-					<span>24</span>
-					<span>36</span>
-					<span>48</span>
-					<span>60</span>
-					<span>72</span>
-					<span>84</span>
-					<span>96</span>
-					<span>108</span>
-					<span>∆</span>
-				</div>
-				<div id="pslf-progress-bar"></div>
-				<hr class="hr-groove-top">
-				<div style="text-align: right">
-					<span id="pslf-remaining" x-text="notice"></span>
-				</div>
 			</div>
-			<!-- DAYS LIVED -->
-			<div id="dashboard-days-lived" class="dashboard-item flex-table">
-				<div>
-					<h2 class="marker-green">Time in this World</h2>
-					<hr class="hr-cmbr-dark-gradient">
+
+			<div id="pension-data" class="grid-col-1-1">
+				<div id="pension-inputs" class="grid-col-1-1">
+					<p>Age at Retirement:</p>
+					<input type="text" placeholder="50" value="50" id="retirement-age">
+					<p>Service Years:</p>
+					<input type="text" placeholder="24" value="24" id="service-years">
+					<p>Year 1:</p>
+					<input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension"
+						id="yr1-for-pension" label="yr1-for-pension">
+					<p>Year 2: </p>
+					<input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension"
+						id="yr2-for-pension" label="yr2-for-pension">
+					<p>Year 3: </p>
+					<input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension"
+						id="yr3-for-pension" label="yr3-for-pension">
+					<p>Year 4: </p>
+					<input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension"
+						id="yr4-for-pension" label="yr4-for-pension">
 				</div>
-				<div class="grid-col-1-1" x-data=" { daysSinceBirth } ">
-					<div class="flex-table-row grid-row-1" style="display:contents">
-						<span>Days Lived: </span><u x-text=" daysSinceBirth "></u>
+				<div id="pension-sums">
+					<p>Gross Pension: $<span id="gross-pension"></span></p>
+					<p><span id="reduction-percentage"></span></p>
+					<p><span id="reduction-amount"></span></p>
+					<p><span id="net-pension"></span></p>
+					<p><span id="monthly-pension"></span></p>
+					<p>
+						<span id="pension-notice"></span>
+					</p>
+				</div>
+				<div class="trigger-box pension-buttons">Generate Pension</div>
+
+			</div>
+		</div>
+		<!-- STEP PAY PLAN -->
+		<div id="dashboard-step-pay-plan" class="dashboard-item">
+
+			<div>
+				<h2 class="marker-green">Step Pay Plan</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div>
+				<div id="salary-table-div">
+
+					<div id="salary-table" class="flex-table">
+						<div class="grid-col-8x-1">
+							<div id="salary-table-corner" class="flex-table-side-header"></div>
+							<div class="flex-table-header"><span>Step 0</span></div>
+							<div class="flex-table-header">Step 1</div>
+							<div class="flex-table-header">Step 2</div>
+							<div class="flex-table-header">Step 3</div>
+							<div class="flex-table-header">Step 4</div>
+							<div class="flex-table-header">Step 5</div>
+							<div class="flex-table-header">Step 6</div>
+						</div>
+						<div class="flex-table-body">
+							<div class="flex-table-row grid-col-8x-1">
+								<div class="flex-table-side-header">COI</div>
+								<div id="co1-0"></div>
+								<div id="co1-1"></div>
+								<div id="co1-2"></div>
+								<div id="co1-3"></div>
+								<div id="co1-4"></div>
+								<div id="co1-5"></div>
+								<div id="co1-6"></div>
+							</div>
+							<div class="flex-table-row grid-col-8x-1">
+								<div class="flex-table-side-header">COII</div>
+								<div id="co2-0"></div>
+								<div id="co2-1"></div>
+								<div id="co2-2"></div>
+								<div id="co2-3"></div>
+								<div id="co2-4"></div>
+								<div id="co2-5"></div>
+								<div id="co2-6"></div>
+							</div>
+							<div class="flex-table-row grid-col-8x-1">
+								<div class="flex-table-side-header">COIII</div>
+								<div id="co3-0"></div>
+								<div id="co3-1"></div>
+								<div id="co3-2"></div>
+								<div id="co3-3"></div>
+								<div id="co3-4"></div>
+								<div id="co3-5"></div>
+								<div id="co3-6"></div>
+							</div>
+						</div>
 					</div>
-					<div class="flex-table-row grid-row-1" style="display:contents">
-						<span>Weeks Lived: </span><u x-text=" (daysSinceBirth / 7).toFixed(2) "></u>
-					</div>
-					<div class="flex-table-row grid-row-1" style="display:contents">
-						<span>Years Lived: </span><u x-text=" (daysSinceBirth / 366).toFixed(2) "></u>
-					</div>
+
 				</div>
-			</div>
-			<!-- TODO: Include Present & Future Value Charts-->
-			<!-- TAXABILITY -->
-			<div id="dashboard-taxability-calculator" class="dashboard-item">
-			<div>
-			<h2 class="marker-green">Taxability Calculator</h2>
-			<hr class="hr-cmbr-dark-gradient">
-			</div>
-			<div id="taxes-table" class="flex-table">
+				<ul id="salary-values" class="grid-col-1-1">
+					<li>Base-Rate Salary</li> <span id="current-salary" class="money"></span>
+					<li>Base-Rate Monthly:</li> <span id="monthly-salary" class="money"></span>
+					<li>Base-Rate Hourly:</li> <span id="hourly-salary" class="money"></span>
+					<li>Base-Rate 11HR Gap:</li> <span id="gap-pay" class="money"></span>
+					<li>Differential Overtime:</li> <span id="overtime-diff" class="money"></span>
+					<li>Differential Nightly:</li><span id="night-diff" class="money"></span>
+					<li>Differential Weekend:</li><span id="weekend-diff" class="money"></span>
+					<li>Differential Holiday:</li><span id="holiday-diff" class="money"></span>
 
-			<div class="flex-table-row grid-col-1">
-			<div>
-				<p>Tax Balance:</p>
-				<input type="text" placeholder="50000" value="50000" id="tax-balance">
-			</div>
-			<div>
-				<p>Interest Rate:</p>
-				<input type="text" placeholder="5.0" value="5.0" id="tax-interest-rate">
-			</div>
-			<div>
-				<p>Monthly Payment:</p>
-				<input type="text" placeholder="500" value="500" id="tax-monthly-payment">
-			</div>
-
-			<div>
-				<br>
-				<button id="tax-button" class="trigger-box">Submit</button>
-			</div>
-			</div>
-			</div>
-			</div>
-			<!-- RE-EDUCATION INFORMATION -->
-			<div id="dashboard-reeducation-information" class="dashboard-item">
-
-				<div>
-					<h2 class="marker-green">Re-Education Information</h2>
-					<hr class="hr-cmbr-dark-gradient">
-				</div>
-
-				<span class="marker modal-prompt" id="accounting-modal">Additional Information</span>
-
-				<div>CPA Credits: <span id="cpa-credits"></span>/30</div>
-				<hr class="hr-groove-bottom">
-				<div id="cpa-progress-bar"></div>
-				<br>
-				<div id="dpl-progress-bar"></div>
-				<br>
-				<div id="aas-progress-bar"></div>
-				<hr class="hr-groove-top">
-
-				<ul id="acc-courses">
-					<span class="marker">Advanced Core Requirements</span>
-					<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 120 - Prin of Financial
-						Accounting (3)</li>
-					<li class="taken acc-core adv-acc-core planned-or-completed" value="3">ACC 121 - Prin of Managerial
-						Accounting (3)</li>
-					<li class="not-taken acc-core adv-acc-core" value="3">BUS 115 - Business Law I (3)</li>
-					<li class="taken adv-acc-core planned-or-completed" value="4">ACC 220 - Intermediate Accounting I
-						(4)
-					</li>
-					<li class="not-taken adv-acc-core" value="3">ACC 129 - Individual Income Taxes (3)</li>
-					<li class="taken adv-acc-core planned-or-completed" value="4">ACC 221 - Intermediate Accounting II
-						(4)
-					</li>
-					<li class="not-taken adv-acc-core" value="3">ACC 269 - Auditing & Assurance Services (3)</li>
-					<hr><span class="marker">To Fulfill CPA Requirements</span>
-					<li class="not-taken acc-dpl" value="3">ACC 240 - Gov & Non-Profit Accounting (3)</li>
-					<li class="taking acc-dpl acc-soft-app" value="2">ACC 149 - Intro to ACC Spreadsheets (2)</li>
-					<li class="not-taken acc-dpl acc-soft-app" value="2">ACC 150 - Accounting Software Applications (2)
-					</li>
-					<hr><span class="marker">Optional Diploma Requirements</span>
-					<li class="not-taken acc-dpl" value="2">ACC 140 - Payroll Accounting (2)</li>
-					<li class="not-taken acc-dpl" value="3">ACC 130 - Business Income Taxes (3)</li>
-					<li class="not-taken acc-dpl" value="3">ACC 215 - Ethics in Accounting (3)</li>
-					<li class="not-taken acc-dpl" value="0">ECO 251 - Prin of Microeconomics (3)</li>
-					<li class="not-taken acc-dpl" value="0">CIS 110 - Intro to Computers (3)</li>
-					<hr><span class="marker">Optional AAS Requirements</span>
-					<li class="not-taken acc-aas" value="3">ACC 227 - Practices in Accounting (3)</li>
-					<li class="not-taken acc-aas" value="0">ENG 112 - Writing/Research in the Disc (3)</li>
-					<li class="not-taken acc-aas" value="0">HUM 115 - Critical Thinking (3)</li>
-					<li class="not-taken acc-aas" value="0">BUS 225 - Business Finance (3)</li>
-
-					<hr><span class="marker">Miscellaneous</span>
-					<li class="taken planned-or-completed" value="0">BUS 110 - Intro to Business: Japan</li>
 				</ul>
 			</div>
-			<!-- EXPENSE MANAGEMENT -->
-			 <!-- TODO: ALPINE broke it rn -->
-			<div id="dashboard-expense-management" class="dashboard-item">
-				<div>
-					<h2 class="marker-green">Expense Management</h2>
-					<hr class="hr-cmbr-dark-gradient">
+			<div class="flex-table">
+				<hr class="hr-groove-bottom">
+				<hr class="hr-cmbr-dark-gradient">
+				<div class="grid-col-3-1-1">
+					<div>
+						<p>CO<span id="custody-level">_</span></p>
+					</div>
+					<button class="trigger-box step-pay-plan-button" value="decrease-custody-level">Decrease</button>
+					<button class="trigger-box step-pay-plan-button" value="increase-custody-level">Increase</button>
 				</div>
 
-				<div class="flex-table" x-data="{
-				applicable: false,
-				paycheck: 0,
-				}" >
-					<div class="flex-table-header grid-col-1-1">
-						<span>Paycheck</span>
-						<input type="text" placeholder=" Input Balance" id="starting-balance" name="balance"
-							label="balance">
+				<hr class="hr-cmbr-dark-gradient">
+				<div class="grid-col-3-1-1">
+					<div>
+						<p>Years Experience: <span id="years-experience" label="years-experience">_</span></p>
 					</div>
-
-					<hr class="hr-groove-top">
-					<div class="flex-table-row grid-col-1-1">
-						<div class="triggers">
-							<div id="select-applicable" class="trigger-box expense-button">
-							<!--// <div id="select-applicable" class="trigger-box expense-button" x-show="! applicable" @click="applicable = true"> -->
-								<!--// <h2 x-show="! applicable">Select Applicable</h2> -->
-								<!--// <hr class="hr-trans" x-show="! applicable"> -->
-								<h2>Select Applicable</h2>
-								<hr class="hr-trans">
-							</div>
-							<div id="deselect-applicable" class="trigger-box expense-button" style="display:none;">
-								<h2>Deselect Applicable</h2>
-								<hr class="hr-cmbr-gradient">
-								<!-- // <div id="deselect-applicable" class="trigger-box expense-button" x-show="applicable" @click="applicable = false"> -->
-								<!-- // <h2 x-show="applicable">Deselect Applicable</h2> -->
-								<!-- // <hr class="hr-cmbr-gradient" x-show="applicable"> -->
-							</div>
-						</div>
-						<div style="width: 100%; text-align: right; font-family: monospace">
-							<p>$<span id="paycheck-mirror">0.00</span></p>
-							<p>-$<span id="expenses-mirror">0.00</span></p>
-							<hr class="hr-cmbr-dark-gradient">
-							<p>$<span id="remainder-mirror">0.00</span></p>
-						</div>
-
+					<button class="trigger-box step-pay-plan-button" value="decrease-years-experience">Decrease</button>
+					<button class="trigger-box step-pay-plan-button" value="increase-years-experience">Increase</button>
+				</div>
+				<hr class="hr-cmbr-dark-gradient">
+				<div class="grid-col-3-1-1">
+					<div>
+						<p>Fiscal Year: <span id="fiscal-year">_</span></p>
 					</div>
-
-					<hr class="hr-push-down">
-					<div id="expense-display" class="flex-table-body">
-					</div>
-
-					<div class="flex-table-row grid-col-1-1-1">
-						<p>Remainder</p>
-						<span id="ending-balance">0</span>
-						<span class="marker modal-prompt" id="expense-modal"> ← Projection</span>
-					</div>
-
-
-
+					<button class="trigger-box step-pay-plan-button" value="previous-fiscal-year">Previous</button>
+					<button class="trigger-box step-pay-plan-button" value="next-fiscal-year">Next</button>
 				</div>
 			</div>
-			<!-- CAREER INSIGHT -->
-			<div id="dashboard-career-insight" class="dashboard-item" x-data=" accountingRoles ">
-				<div>
-					<h2 class="marker-green">Career Option Insight</h2>
-					<hr class="hr-cmbr-dark-gradient">
-				</div>
-				<div id="career-table" class="flex-table">
-					<h2>Accounting Roles</h2>
-					<hr class="hr-groove-bottom">
-					<div class="flex-table-header grid-col-1-1">
-						<span>Role</span>
-						<span>Average Salary</span>
-					</div>
-					<div class="flex-table-row grid-col-1-1">
-						<template x-for="(position, index) in accountingRoles" :key="index">
-							<div :class="'flex-table-row grid-row-1'" :style="'display:contents;'">
-								<span x-text="position[0]"></span>
-								<span x-text="'$ ' + position[1]"></span>
-							</div>
-						</template>
-					</div>
-				</div>
+		</div>
+		<!-- CALENDAR -->
+		<div id="dashboard-calendar" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Calendar</h2>
+				<hr class="hr-cmbr-dark-gradient">
 			</div>
-			<!-- PENSION CALCULATOR -->
-			<div id="dashboard-pension-calculator" class="dashboard-item">
-
-				<div>
-					<h2 class="marker-green">Pension Calculator</h2>
-					<hr class="hr-cmbr-dark-gradient">
-				</div>
-
-				<div id="pension-table-div">
-
-					<div id="pension-table" class="flex-table">
-
-						<div class="flex-table-row grid-col-11x-1">
-							<div id="pension-age-60-service-30"
-								class="flex-table-anchor-col pension-reduction-highlight">
-								&emsp;</div>
-							<div id="pension-service-29">29</div>
-							<div id="pension-service-28">28</div>
-							<div id="pension-service-27">27</div>
-							<div id="pension-service-26">26</div>
-							<div id="pension-service-25">25</div>
-							<div id="pension-service-24">24</div>
-							<div id="pension-service-23">23</div>
-							<div id="pension-service-22">22</div>
-							<div id="pension-service-21">21</div>
-							<div id="pension-service-20">20</div>
-						</div>
-						<div id="pension-table-body" class="flex-table-body">
-
-
-
-
-
-						</div>
-
-
-
-					</div>
-					<hr class="hr-groove-bottom">
-				</div>
-
-				<div id="pension-data" class="grid-col-1-1">
-					<div id="pension-inputs" class="grid-col-1-1">
-						<p>Age at Retirement:</p>
-						<input type="text" placeholder="50" value="50" id="retirement-age">
-						<p>Service Years:</p>
-						<input type="text" placeholder="24" value="24" id="service-years">
-						<p>Year 1:</p>
-						<input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension"
-							id="yr1-for-pension" label="yr1-for-pension">
-						<p>Year 2: </p>
-						<input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension"
-							id="yr2-for-pension" label="yr2-for-pension">
-						<p>Year 3: </p>
-						<input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension"
-							id="yr3-for-pension" label="yr3-for-pension">
-						<p>Year 4: </p>
-						<input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension"
-							id="yr4-for-pension" label="yr4-for-pension">
-					</div>
-					<div id="pension-sums">
-						<p>Gross Pension: $<span id="gross-pension"></span></p>
-						<p><span id="reduction-percentage"></span></p>
-						<p><span id="reduction-amount"></span></p>
-						<p><span id="net-pension"></span></p>
-						<p><span id="monthly-pension"></span></p>
-						<p>
-							<span id="pension-notice"></span>
-						</p>
-					</div>
-					<div class="trigger-box pension-buttons">Generate Pension</div>
-
-				</div>
-			</div>
-			<!-- STEP PAY PLAN -->
-			<div id="dashboard-step-pay-plan" class="dashboard-item">
-
-				<div>
-					<h2 class="marker-green">Step Pay Plan</h2>
-					<hr class="hr-cmbr-dark-gradient">
-				</div>
-				<div>
-					<div id="salary-table-div">
-
-						<div id="salary-table" class="flex-table">
-							<div class="grid-col-8x-1">
-								<div id="salary-table-corner" class="flex-table-side-header"></div>
-								<div class="flex-table-header"><span>Step 0</span></div>
-								<div class="flex-table-header">Step 1</div>
-								<div class="flex-table-header">Step 2</div>
-								<div class="flex-table-header">Step 3</div>
-								<div class="flex-table-header">Step 4</div>
-								<div class="flex-table-header">Step 5</div>
-								<div class="flex-table-header">Step 6</div>
-							</div>
-							<div class="flex-table-body">
-								<div class="flex-table-row grid-col-8x-1">
-									<div class="flex-table-side-header">COI</div>
-									<div id="co1-0"></div>
-									<div id="co1-1"></div>
-									<div id="co1-2"></div>
-									<div id="co1-3"></div>
-									<div id="co1-4"></div>
-									<div id="co1-5"></div>
-									<div id="co1-6"></div>
-								</div>
-								<div class="flex-table-row grid-col-8x-1">
-									<div class="flex-table-side-header">COII</div>
-									<div id="co2-0"></div>
-									<div id="co2-1"></div>
-									<div id="co2-2"></div>
-									<div id="co2-3"></div>
-									<div id="co2-4"></div>
-									<div id="co2-5"></div>
-									<div id="co2-6"></div>
-								</div>
-								<div class="flex-table-row grid-col-8x-1">
-									<div class="flex-table-side-header">COIII</div>
-									<div id="co3-0"></div>
-									<div id="co3-1"></div>
-									<div id="co3-2"></div>
-									<div id="co3-3"></div>
-									<div id="co3-4"></div>
-									<div id="co3-5"></div>
-									<div id="co3-6"></div>
-								</div>
-							</div>
-						</div>
-
-					</div>
-					<ul id="salary-values" class="grid-col-1-1">
-						<li>Base-Rate Salary</li> <span id="current-salary" class="money"></span>
-						<li>Base-Rate Monthly:</li> <span id="monthly-salary" class="money"></span>
-						<li>Base-Rate Hourly:</li> <span id="hourly-salary" class="money"></span>
-						<li>Base-Rate 11HR Gap:</li> <span id="gap-pay" class="money"></span>
-						<li>Differential Overtime:</li> <span id="overtime-diff" class="money"></span>
-						<li>Differential Nightly:</li><span id="night-diff" class="money"></span>
-						<li>Differential Weekend:</li><span id="weekend-diff" class="money"></span>
-						<li>Differential Holiday:</li><span id="holiday-diff" class="money"></span>
-
-					</ul>
-				</div>
-				<div class="flex-table">
-					<hr class="hr-groove-bottom">
-					<hr class="hr-cmbr-dark-gradient">
-					<div class="grid-col-3-1-1">
-						<div>
-							<p>CO<span id="custody-level">_</span></p>
-						</div>
-						<button class="trigger-box step-pay-plan-button"
-							value="decrease-custody-level">Decrease</button>
-						<button class="trigger-box step-pay-plan-button"
-							value="increase-custody-level">Increase</button>
-					</div>
-
-					<hr class="hr-cmbr-dark-gradient">
-					<div class="grid-col-3-1-1">
-						<div>
-							<p>Years Experience: <span id="years-experience" label="years-experience">_</span></p>
-						</div>
-						<button class="trigger-box step-pay-plan-button"
-							value="decrease-years-experience">Decrease</button>
-						<button class="trigger-box step-pay-plan-button"
-							value="increase-years-experience">Increase</button>
-					</div>
-					<hr class="hr-cmbr-dark-gradient">
-					<div class="grid-col-3-1-1">
-						<div>
-							<p>Fiscal Year: <span id="fiscal-year">_</span></p>
-						</div>
-						<button class="trigger-box step-pay-plan-button" value="previous-fiscal-year">Previous</button>
-						<button class="trigger-box step-pay-plan-button" value="next-fiscal-year">Next</button>
-					</div>
-				</div>
-			</div>
-			<!-- CALENDAR -->
-			<div id="dashboard-calendar" class="dashboard-item">
-				<div>
-					<h2 class="marker-green">Calendar</h2>
-					<hr class="hr-cmbr-dark-gradient">
-				</div>
-				<!-- ∆ START ALPINE -->
-				<div x-data=" {
+			<!-- ∆ START ALPINE -->
+			<div x-data=" {
 		        calendar: null,
 		        events: [
 		            {
@@ -598,88 +655,87 @@
 		            this.calendar.unselect();
 		        },
 		    }">
-					<!-- % Calendar Itself % -->
-					<div x-ref="calendar"></div>
+				<!-- % Calendar Itself % -->
+				<div x-ref="calendar"></div>
 
-					<div id="calendar-table" class="flex-table">
-						<h2 class="marker flex-table-header">List of Events</h2>
-						<hr class="hr-cmbr-gradient">
-						<ul id="calendar-event-list" class="flex-table-body">
+				<div id="calendar-table" class="flex-table">
+					<h2 class="marker flex-table-header">List of Events</h2>
+					<hr class="hr-cmbr-gradient">
+					<ul id="calendar-event-list" class="flex-table-body">
 
-							<template x-for="event in events" :key="event.id">
+						<template x-for="event in events" :key="event.id">
 
-								<li :class="'listed-event flex-table-row'"
-									x-text="`${event.title}: ${event.start} ${(event.end ? ' through ' + event.end : '')}`">
-								</li>
-							</template>
-						</ul>
+							<li :class="'listed-event flex-table-row'"
+								x-text="`${event.title}: ${event.start} ${(event.end ? ' through ' + event.end : '')}`">
+							</li>
+						</template>
+					</ul>
 
-						<form x-on:submit.prevent="addEvent">
-							<h2 class="marker flex-table-header">Adding a new event</h2>
-							<p class="flex-table-row">Select a date or date range on the calendar and enter a title to
-								create a new event.</p>
-							<div class="flex-table-row grid-col-1-3-1">
-								<label for="new-event-title">Event Title</label>
-								<input id="new-event-title" type="text" x-model="newEventTitle"
-									placeholder="Event title">
-								<button class="button-grid-col" type="submit">Submit</button>
-							</div>
-						</form>
+					<form x-on:submit.prevent="addEvent">
+						<h2 class="marker flex-table-header">Adding a new event</h2>
+						<p class="flex-table-row">Select a date or date range on the calendar and enter a title to
+							create a new event.</p>
+						<div class="flex-table-row grid-col-1-3-1">
+							<label for="new-event-title">Event Title</label>
+							<input id="new-event-title" type="text" x-model="newEventTitle" placeholder="Event title">
+							<button class="button-grid-col" type="submit">Submit</button>
+						</div>
+					</form>
 
-						<h2 class="marker flex-table-header">Moving events and changing duration</h2>
-						<p class="flex-table-row">Drag an event to move it to a different day. Drag the right edge to
-							change
-							the duration.</p>
-						<h2 class="marker flex-table-header">Deleting an event</h2>
-						<p class="flex-table-row">Click an event and confirm to remove it.</p>
-					</div>
-
-
-				</div><!-- ∆ END ALPINE -->
-			</div>
-			<!-- NOTES DEPOSITORY -->
-			<div id="dashboard-depository" class="dashboard-item">
-				<div>
-					<h2 class="marker-green">Info Depository</h2>
-					<hr class="hr-cmbr-dark-gradient">
+					<h2 class="marker flex-table-header">Moving events and changing duration</h2>
+					<p class="flex-table-row">Drag an event to move it to a different day. Drag the right edge to
+						change
+						the duration.</p>
+					<h2 class="marker flex-table-header">Deleting an event</h2>
+					<p class="flex-table-row">Click an event and confirm to remove it.</p>
 				</div>
-				<div class="grid-col-1-1-1">
-					<div>
-						<h5 class="vt323">By Tag</h5>
-						<select id="depository-tag-select">
-							<option value="all">All</option>
-						</select>
-					</div>
-					<div>
-						<h5 class="vt323">Display</h5>
-						<select id="depository-results-select">
-							<option value="choose amount" disabled>Choose Amount</option>
-							<option value="10">10 results</option>
-							<option value="15">15 results</option>
-							<option value="20">20 results</option>
-							<option value="25">25 results</option>
-							<option value="30">30 results</option>
-						</select>
-					</div>
-					<div>
-						<h5 class="vt323">By Note</h5>
-						<div id="depository-note-search">
-							<input class="form-control" type="search" name="search" placeholder="Search Notes...">
-							<!-- hx-post="notes-data"
+
+
+			</div><!-- ∆ END ALPINE -->
+		</div>
+		<!-- NOTES DEPOSITORY -->
+		<div id="dashboard-depository" class="dashboard-item">
+			<div>
+				<h2 class="marker-green">Info Depository</h2>
+				<hr class="hr-cmbr-dark-gradient">
+			</div>
+			<div class="grid-col-1-1-1">
+				<div>
+					<h5 class="vt323">By Tag</h5>
+					<select id="depository-tag-select">
+						<option value="all">All</option>
+					</select>
+				</div>
+				<div>
+					<h5 class="vt323">Display</h5>
+					<select id="depository-results-select">
+						<option value="choose amount" disabled>Choose Amount</option>
+						<option value="10">10 results</option>
+						<option value="15">15 results</option>
+						<option value="20">20 results</option>
+						<option value="25">25 results</option>
+						<option value="30">30 results</option>
+					</select>
+				</div>
+				<div>
+					<h5 class="vt323">By Note</h5>
+					<div id="depository-note-search">
+						<input class="form-control" type="search" name="search" placeholder="Search Notes...">
+						<!-- hx-post="notes-data"
 							hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
 							hx-target="#depository" hx-swap="innerHTML"> -->
-						</div>
 					</div>
 				</div>
+			</div>
 
-				<div id="dashboard-note-table" class="flex-table">
-					<div class="flex-table-header grid-col-1-3-1">
-						<div>Note</div>
-						<div>Info</div>
-						<div>Tags</div>
-					</div>
-					<div id="depository">
-						<!-- <div>|=====|</div>
+			<div id="dashboard-note-table" class="flex-table">
+				<div class="flex-table-header grid-col-1-3-1">
+					<div>Note</div>
+					<div>Info</div>
+					<div>Tags</div>
+				</div>
+				<div id="depository">
+					<!-- <div>|=====|</div>
 					<div>|=====| No Result |=====|</div>
 					<div>|=====|</div>
 					<div>Impermanence</div>
@@ -687,16 +743,16 @@
 						Positive expectation may arise negative experience; negative expectation may arise positive experience.
 					</div>
 					<div>philosophy</div> -->
-					</div>
 				</div>
 			</div>
-	
+		</div>
 
 
 
-		</main> <!-- END DASHBOARD GRID -->
 
-<script src="dashboard.js"></script>
+	</main> <!-- END DASHBOARD GRID -->
+
+	<script src="dashboard.js"></script>
 </body>
 
 </html>

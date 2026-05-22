@@ -11,7 +11,7 @@ module.exports = {
 	// file: '404.html',
 	// open: false,
 	https: true,
-	browser: ['vivaldi', 'chrome', 'firefox', 'chrome --incognito', 'firefox --incognito'],
+	browser: ['vivaldi', 'waterfox', 'chrome', 'firefox', 'chrome --incognito', 'firefox --incognito'],
 	// browser: ['C:\\Program Files\\Firefox Developer Edition\\firefox.exe --private-window'],
 	watch: 'dev',
 	// ignore: [/\.s[ac]ss$/i, /\.tsx?$/i],

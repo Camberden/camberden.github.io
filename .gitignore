@@ -1,3 +1,4 @@
+.env
 *.yaml
 *.key
 *.pem
@@ -6,17 +7,14 @@
 *.cnf
 .shelf
 .vscode
-.pineconeref.ts
 
 node_modules/
-.env
-*.json
 !package.json
 !package-lock.json
 !cmbr.json
 CNAME
 
-runner.sh
+runner.yml
 runner.yaml
 schema.sql
 

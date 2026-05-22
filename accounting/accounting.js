@@ -146,7 +146,6 @@ function postToLedger(entries) {
 	initAccountingButtons();
 }
 
-
 // ---------- STOCK WORKSHEET  ---------- //
 
 const stockDashboard = document.getElementById("stock-dashboard");
