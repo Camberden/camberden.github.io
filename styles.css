@@ -1516,6 +1516,29 @@ form>label {
 	text-align: right;
 }
 
+.md-read {
+	display: block;
+	text-align: left;
+}
+.md-read > ol {
+	padding-left: 1.5rem;
+}
+.md-read > ol > li {
+	padding: 0.5rem;
+}
+.md-read > ul {
+	padding-left: 1.5rem;
+}
+.md-read > ul > li {
+	padding: 0.5rem;
+}
+
+#gr-world-map {
+	fill: grey;
+	fill-opacity: 50%;
+	background-image: url("../assets/fantasy-graphics/gr-overview.png");
+	isolation: auto;
+}
 
 
 /* |==========| §LEGACY STRUCTURES |====================> */

@@ -13,13 +13,33 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4/dist/purify.min.js"></script>
+	
 	<script src="../htmx.js"></script>
 	<script src="../cmbr.js"></script>
 
 	<title>Chrispy's Workspace</title>
 </head>
 
-<body data-theme="dark">
+<body data-theme="dark" x-data="{ 	
+
+	mdCleaned: false,
+	
+	loadMarkdown(url) {
+			fetch(url)
+				.then(r => r.text())
+				.then(text => {
+					const parsed = marked.parse(text);
+					// Sanitize with whitelist of safe tags
+					const sanitized = DOMPurify.sanitize(parsed, { 
+						ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'u', 'ol', 'ul', 'li', 'blockquote', 'code', 'pre', 'a', 'hr', 'table', 'thead', 'tbody', 'tr', 'th', 'td']
+					});
+					this.$el.innerHTML = sanitized;
+				});
+		}, 
+	}">
+
 	<nav hx-get="../template/nav.html" hx-target="#wksp-nav" hx-trigger="load" hx-swap="innerHTML">
 		<div id="wksp-nav">
 
@@ -27,12 +47,12 @@
 	</nav>
 
 
-	<hr class="hr-push-down">
+	<hr class="hr-push-up">
 	<div class="button-grid-row">
-		<!-- LEFT -->
+		<!-- % LEFT -->
 		<button class="trigger-box" hx-get="../template/reeducation.html" hx-target="#wksp-left" hx-trigger="click"
 			hx-swap="innerHTML">Reeducation</button>
-		<!-- CENTER -->
+		<!-- % CENTER -->
 		<button class="trigger-box" hx-get="../template/scuffle.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Fighters</button>
 		<button class="trigger-box" hx-get="../template/seg.html" hx-target="#wksp-center" hx-trigger="click"
@@ -43,39 +63,65 @@
 			hx-swap="innerHTML">Sitemap</button>
 		<button class="trigger-box" hx-get="../template/taxability.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Taxability</button>
-		<p id="auth-status" style="font-weight: bold; margin: 0.5rem 0;">Not logged in</p>
+		<button class="trigger-box" @click="mdCleaned = ! mdCleaned">Todo</button>
+		<template x-teleport="#wksp-center">
+			<div x-show="mdCleaned" @click.outside="mdCleaned = false" :class="'md-read'"
+			 x-init="$watch('mdCleaned', value => { if (value) loadMarkdown('../todo.md'); else $el.innerHTML = '' })">
+			</div>
+		</template>
+		
 
+		<button class="trigger-box" id="auth-status" disabled>Not logged in</button>
+		
 
 		<!-- % RIGHT -->
 		<button class="trigger-box" hx-get="../template/roles.html" hx-target="#wksp-right" hx-trigger="click"
 			hx-swap="innerHTML">Roles & Such</button>
+		<button class="trigger-box">Songs</button>
+		<!-- % GRID -->
+		<button class="trigger-box" hx-get="../template/greatregions.html" hx-target="#wksp-grid" hx-trigger="click"
+			hx-swap="innerHTML">Great Regions</button>
 			
 	</div>
 	<div class="cmbr-grid">
 
 		<div id="wksp-left" class="cmbr-item cmbr-item-left">
+			<ul id="songs">
 
+			</ul>
 		</div>
 
 		<div id="wksp-center" class="cmbr-item cmbr-item-center">
+
+				
+			
+
 
 
 		</div>
 
 		<div id="wksp-right" class="cmbr-item cmbr-item-right">
+			<form x-target="songs" action="../template/songs.html">
+				<input name="search" @input.debounce="$el.form.requestSubmit()" type="text" placeholder="Search songs...">
+			</form>
 		</div>
 
 	</div>
 
 		
-
+	<div id="wksp-grid">
+	</div>
 
 	<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  -->
 
 
 	<footer id="workspace-footer">
 		<hr class="hr-groove-top">
-		<h6></h6>
+		<h6 x-text="marked.parse('# Marked in the browser\n\nRendered by **marked**.')"></h6>
+		<span x-html="marked.parse(`### Fix Salary Schedule to Month Based ✔️
+		1. Base the calculations on Months not Years 
+		* @2025: Built paycard generator`)"></span>
+
 		<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
 	</footer>
 

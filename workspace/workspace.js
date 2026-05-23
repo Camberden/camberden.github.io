@@ -73,6 +73,7 @@ const activateChiron = (texts) => {
 	}, 10000);
 }
 
+
 (()=>{
 
 	enableDropdowns();

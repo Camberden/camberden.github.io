@@ -540,6 +540,7 @@ const CMBRutil = {
 	},
 }
 
+
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
 const recognizeFileProtocol = (x) => { y = document.getElementById(x); CMBRutil.acceptableProtocol() ? y.innerHTML += " &check;" : y.innerHTML += `<span style="font-size: 0.8rem; color: red; position: absolute;">[lesser functionality in file protocol]</span>`; }
 // const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); CMBRutil.dataTheme(); }
