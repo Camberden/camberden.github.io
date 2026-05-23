@@ -7,8 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="workspace.css" media="screen" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
-	<!-- <script defer src="https://unpkg.com/@popperjs/core@2"></script> -->
-	<!-- <script defer src="https://unpkg.com/tippy.js@6"></script> -->
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -16,35 +16,15 @@
 	<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4/dist/purify.min.js"></script>
 	
-	<script src="../htmx.js"></script>
+	
 	<script src="../cmbr.js"></script>
-
+	<script src="../htmx.js"></script>
 	<title>Chrispy's Workspace</title>
 </head>
 
-<body data-theme="dark" x-data="{ 	
+<body data-theme="dark">
 
-	mdCleaned: false,
-	
-	loadMarkdown(url) {
-			fetch(url)
-				.then(r => r.text())
-				.then(text => {
-					const parsed = marked.parse(text);
-					// Sanitize with whitelist of safe tags
-					const sanitized = DOMPurify.sanitize(parsed, { 
-						ALLOWED_TAGS: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'br', 'strong', 'em', 'u', 'ol', 'ul', 'li', 'blockquote', 'code', 'pre', 'a', 'hr', 'table', 'thead', 'tbody', 'tr', 'th', 'td']
-					});
-					this.$el.innerHTML = sanitized;
-				});
-		}, 
-	}">
-
-	<nav hx-get="../template/nav.html" hx-target="#wksp-nav" hx-trigger="load" hx-swap="innerHTML">
-		<div id="wksp-nav">
-
-		</div>
-	</nav>
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
 
 	<hr class="hr-push-up">
@@ -63,16 +43,9 @@
 			hx-swap="innerHTML">Sitemap</button>
 		<button class="trigger-box" hx-get="../template/taxability.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Taxability</button>
-		<button class="trigger-box" @click="mdCleaned = ! mdCleaned">Todo</button>
-		<template x-teleport="#wksp-center">
-			<div x-show="mdCleaned" @click.outside="mdCleaned = false" :class="'md-read'"
-			 x-init="$watch('mdCleaned', value => { if (value) loadMarkdown('../todo.md'); else $el.innerHTML = '' })">
-			</div>
-		</template>
-		
 
-		<button class="trigger-box" id="auth-status" disabled>Not logged in</button>
 		
+		<button class="trigger-box" id="auth-status" disabled>Not logged in</button>
 
 		<!-- % RIGHT -->
 		<button class="trigger-box" hx-get="../template/roles.html" hx-target="#wksp-right" hx-trigger="click"
@@ -93,17 +66,13 @@
 
 		<div id="wksp-center" class="cmbr-item cmbr-item-center">
 
-				
-			
-
-
 
 		</div>
 
 		<div id="wksp-right" class="cmbr-item cmbr-item-right">
 			<form x-target="songs" action="../template/songs.html">
 				<input name="search" @input.debounce="$el.form.requestSubmit()" type="text" placeholder="Search songs...">
-			</form>
+			</form> 
 		</div>
 
 	</div>

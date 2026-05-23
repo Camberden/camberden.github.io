@@ -174,6 +174,36 @@ const noteData = [
 	I'll expound on this at another date.
 	</b‰>`,
 
+	`<t‰>Rosey Vision</t‰>
+	<g‰>impermanence, philosophy</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	So many people have a rosey vision I'd describe as seeing the world as through "rose colored glasses."
+	People have a tendency to hold aspects of their worldview that always there is a solution to everything and everything will.
+	There is no solution to everything. All is interdependent and thus complete control is not achievable.
+	There are advices that resonate with people who conform to an identity group by holding such and giving such.
+	Offering gritty advice such as "you need to work harder" may not result in happy endings. 
+	There is never any guarantee of a happy ending.
+	</b‰>`,
+
+	`<t‰>Utility of Emptiness</t‰>
+	<g‰>emptiness, philosophy</g‰>
+	<p‰></p‰>
+	<a‰></a‰>
+	<l‰></l‰>
+	<u‰>Chrispy</u‰>
+	<b‰>
+	The use of a bowl is the emptiness of it.
+	The use of a house is the doors and windows and the emptiness within it.
+	Empty time and empty space in one's life is useful for navigating reality.
+	Foolishly we subscribe to insuffiency by filling our lives with material goods and compelled goals.
+	Fuller schedule equates to less life it seems.
+	</b‰>`
+
+
 ];
 // TODO: finish the exposition on Interest Discovery
 /* 

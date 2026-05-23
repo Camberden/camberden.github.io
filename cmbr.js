@@ -70,10 +70,64 @@ const basePort = document.location.port.length ? document.location.port : "";
 const baseHyperlinks = [
 	"https://camberden.com/",
 	"https://camberden.github.io/",
+	"https://camberden.net/",
 	"http://127.0.0.1:" + basePort,
 	"http://localhost:" + basePort,
 	"http://localhost:" + basePort + "/index.html",
 ];
+const nonStaticSite = "https://camberden.net";
+
+const CMBRx = {
+
+	/**
+	 * @function
+	 * @global
+	 * @memberOf CMBRx
+	 * @event alpine:init
+	 * @description Intializes ALPine DAta, MAgics, and DIrectives
+	 */
+	alpdamadi: function() { 
+		document.addEventListener("alpine:init", () => {
+			// |==========| Alpine Data |==========|
+			Alpine.data('cmbr', () => ({
+				isAcceptableProtocol: function() {
+					if (document.location.protocol === "file:") {
+							// console.log("<‰ File Protocol Detected ‰>");
+						return false;
+					} else {
+							// console.log("<‰ CORS Acceptable Protocol Detected ‰>");
+						return true;
+					}
+				},
+
+			})); // %=> end of Alpine Data
+			// |==========| Alpine Magics |==========|
+			Alpine.magic("tooltip", el => message => {
+				let instance = tippy(el, { content: message, trigger: 'manual' });
+
+				instance.show();
+
+				setTimeout(() => {
+					instance.hide();
+
+					setTimeout(() => instance.destroy(), 150);
+				}, 2000);
+			});
+		
+			// |==========| Alpine Directives |==========|
+			Alpine.directive("tooltip", (el, { expression }) => {
+				tippy(el, { content: expression });
+			});
+		});
+
+		document.addEventListener('alpine:initialized', () => {
+			this.atHome ? sout("At Home: true") : sout("At Home: false");
+			sout("Alpine Data, Magics, and Directives initialized.");
+			sout("Alpine Version: " + Alpine.version);
+		});
+	},
+
+}	
 
 const CMBRrouter = {
 	/**
@@ -440,6 +494,13 @@ const CMBRutil = {
 			return false;
 		}
 	},
+	staticLinkTransform: function(page) {
+        if (document.location.origin !== nonStaticSite || document.location.protocol !== 'http') {
+            return '../' + page;
+        } else {
+            return '/' + page;
+        }
+    },
 	/** 
 	 * @global 
 	 * @readonly 

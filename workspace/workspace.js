@@ -76,7 +76,9 @@ const activateChiron = (texts) => {
 
 (()=>{
 
-	enableDropdowns();
+	// CMBRx.alpdamadi();
+	// CMBRutil.atSiteIndex();
+	// enableDropdowns();
 
 })();
 

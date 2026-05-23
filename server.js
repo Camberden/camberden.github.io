@@ -35,6 +35,7 @@ app.use('/api/*', (req, res) => {
 // Serve static files from the root directory
 app.use(express.static(path.join(__dirname)));
 
+
 // Fallback to index.html for any unmatched routes (client-side routing support)
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));

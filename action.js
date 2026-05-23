@@ -7,7 +7,7 @@
  * - øH/«![/H)'/]^)H'¬L/¬]'/H[*'v'{';{[\\
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Friday, May 22nd, 2026";
+const latestUpdate = "Saturday, May 23rd, 2026";
 document.querySelector("#latest-update").innerHTML = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン", "}*'<'('H'[';<"];
@@ -120,7 +120,8 @@ const randomizePhotos = (album) => {
 }
 
 (async (/*=====*| RUN |*=====*/) => {
-
+	
+	CMBRx.alpdamadi();
 	const photos = await CMBRutil.connectCMBRjson(["travel-photos"]);
 
 	convertToJapaneseDate(formatter(latestUpdate));

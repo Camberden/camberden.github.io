@@ -1,0 +1,76 @@
+<div id="nav-handle" x-data="{ 
+    atIndex: CMBRutil.atSiteIndex(),
+    sectionsHandle: CMBRutil.staticLinkTransform('sections.html') }">
+
+    <template x-if="!atIndex">
+        <div class="nav-sail">
+            <!-----| NAV 1 |----->
+            <div id="nav-1" x-data="{ active: 0 }">
+
+                <div x-data="{
+                            id: 1,
+                            get expanded() {
+                                return this.active === this.id
+                            },
+                            set expanded(value) {
+                                this.active = value ? this.id : null
+                            },
+                            }" role="region"> 
+                    <button id="chart-access" type="button" @click="expanded = !expanded" x-bind:hx-get="sectionsHandle" hx-target="#chart-links" hx-trigger="load" hx-swap="innerHTML">
+                        <div class="trigger-dropdown">
+                            <span x-show="expanded" x-cloak>&UpArrow;</span>
+                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                            <span>Options</span>
+                            <span x-show="expanded" x-cloak>&UpArrow;</span>
+                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                        </div>
+                    </button>
+                    <div id="chart-dropdown" x-show="expanded" x-collapse>
+                        <div id="chart-links">
+                            <template x-show="expanded">
+                                
+                            </template>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-----| NAV 2 |----->
+            <div id="nav-2">
+                <h1 class="h1-lamp">
+                    <!-- ♪ -->
+                </h1>
+            </div>
+
+            <!-----| NAV 3 |----->
+            <div id="nav-3">
+                <h1 class="h1-lamp">
+                    <span id="current-section"></span>
+                </h1>
+            </div>
+
+            <!-----| NAV 4 |----->
+            <div id="nav-4">
+                <h1 class="h1-lamp">
+                    <!-- ♫ -->
+                </h1>
+            </div>
+
+            <!-----| NAV 5 |----->
+            <div id="nav-5">
+                <span class="data-theme-button" id="dark">🌙</span>
+                <span class="data-theme-button" id="light">☀️</span>
+                <span class="data-theme-button" id="legacy">🪻</span>
+            </div>
+
+        </div>
+
+        <div class="nav-hoist">
+            <hr class="hr-nav-pad">
+            <hr class="hr-blass">
+            <hr class="hr-cmbr-gradient">
+            <hr id="nav-anchor" class="hr-groove-top">
+        </div>
+    </template>
+</div>

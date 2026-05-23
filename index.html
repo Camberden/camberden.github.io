@@ -6,6 +6,8 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="shortcut icon" href="images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="styles.css" media="screen">
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -15,6 +17,8 @@
 </head>
 
 <body data-theme="dark">
+	<nav id="nav" hx-get="nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg>
+	</nav>
 
 	<div class="cmbr-grid">
 
