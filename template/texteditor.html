@@ -1,0 +1,13 @@
+<div id="texteditor-handle" x-data="{
+        value: '<p>Been waiting for this, and plenty else.</p>',
+        init() {
+            let quill = new Quill(this.$refs.quill, { theme: 'snow' })
+            quill.root.innerHTML = this.value;
+            quill.on('text-change', () => {
+                this.value = quill.root.innerHTML;
+            });
+        },
+    }">
+    <div x-ref="quill"></div>
+
+</div>

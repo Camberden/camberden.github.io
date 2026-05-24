@@ -1,0 +1,20 @@
+<div x-data>
+	<h2 class="marker">Registration</h2>
+	<hr class="hr-trans">
+	<hr class="hr-push-down">
+	<!-- % regregreg -->
+	<form id="register-form" class="grid-col-1-1" action="/api/auth/register" method="POST">
+		<label for="register-username">Enter username &emsp;</label>
+		<input type="text" id="register-username" name="username" autocomplete="username" required>
+
+		<label for="new-password">Enter password &emsp;</label>
+		<input type="password" id="new-password" name="password" autocomplete="new-password" required>
+
+		<label for="email">Enter email &emsp;</label>
+		<input type="email" id="email" name="email" autocomplete="email" required>
+
+		<div></div>
+		<button type="submit">Register</button>
+	</form>
+	<hr class="hr-push-up">
+</div>

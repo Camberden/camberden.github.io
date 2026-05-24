@@ -38,9 +38,9 @@ router.post('/register', async (req, res) => {
 
     connection.release();
 
-    res.status(201).json({ 
+    res.status(201).json({
       message: 'User registered successfully',
-      userId: result.insertId 
+      userId: result.insertId
     });
   } catch (error) {
     console.error('Registration error:', error);
@@ -87,7 +87,7 @@ router.post('/login', async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRATION || '7d' }
     );
 
-    res.json({ 
+    res.json({
       message: 'Login successful',
       token,
       user: { id: user.id, username: user.username }
@@ -100,7 +100,7 @@ router.post('/login', async (req, res) => {
 
 router.post('/logout', (req, res) => {
   // JWT logout is handled client-side by clearing the token
-  // The server just confirms the logout request
+  // The server confirms the logout request
   res.json({ message: 'Logout successful' });
 });
 

@@ -6,6 +6,7 @@ const router = express.Router();
 
 // Create a new note
 router.post('/', authenticateToken, async (req, res) => {
+
   try {
     const { title, body, tags, location, photos, audio } = req.body;
     const user_id = req.user.id;
@@ -23,9 +24,9 @@ router.post('/', authenticateToken, async (req, res) => {
 
     connection.release();
 
-    res.status(201).json({ 
+    res.status(201).json({
       message: 'Note created successfully',
-      noteId: result.insertId 
+      noteId: result.insertId
     });
   } catch (error) {
     console.error('Note creation error:', error);

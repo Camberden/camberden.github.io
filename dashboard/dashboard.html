@@ -22,76 +22,8 @@
 </head>
 
 <body data-theme="dark">
-	<nav>
-		<div class="nav-sail">
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-			<!-----| NAV 1 |----->
-			<div id="nav-1" x-data="{ active: 0 }">
-
-				<div x-data="{
-					id: 1,
-					get expanded() {
-						return this.active === this.id;
-					},
-					set expanded(value) {
-						this.active = value ? this.id : null
-					},
-					}" role="region">
-					<button type="button" @click="expanded = !expanded" :aria-expanded="expanded" id="chart-access">
-						<div class="trigger-dropdown">
-							<span x-show="expanded" x-cloak>&UpArrow;</span>
-							<span x-show="!expanded" x-cloak>&DownArrow;</span>
-							<span>Options</span>
-							<span x-show="expanded">&UpArrow;</span>
-							<span x-show="!expanded">&DownArrow;</span>
-						</div>
-					</button>
-					<div id="chart-dropdown" x-cloak x-show="expanded" x-collapse>
-						<div id="chart-links">
-						</div>
-					</div>
-				</div>
-				<span id="nav-sig"></span>
-
-			</div>
-
-			<!-----| NAV 2 |----->
-			<div id="nav-2">
-				<h1 class="h1-lamp">
-					<!-- ♪ -->
-				</h1>
-			</div>
-
-			<!-----| NAV 3 |----->
-			<div id="nav-3">
-				<h1 class="h1-lamp">Dashboard</h1>
-			</div>
-
-			<!-----| NAV 4 |----->
-			<div id="nav-4">
-				<h1 class="h1-lamp">
-					<!-- ♫ -->
-				</h1>
-			</div>
-
-			<!-----| NAV 5 |----->
-			<div id="nav-5">
-				<span class="data-theme-button" id="dark">🌙</span>
-				<span class="data-theme-button" id="light">☀️</span>
-				<span class="data-theme-button" id="legacy">🪻</span>
-			</div>
-
-		</div>
-
-		<div class="nav-hoist">
-			<hr class="hr-nav-pad">
-			<hr class="hr-blass">
-			<hr class="hr-cmbr-gradient">
-			<hr id="nav-anchor" class="hr-groove-top">
-		</div>
-
-	</nav>
-	
 	<div class="modal">
 		<div class="modal-field">
 			<span class="close-modal">&times;</span><br>
@@ -196,11 +128,11 @@
 						</div>
 					</div>
 				</div>
-				 <p>1 point for each day of active service (180 for Vet status, so 180)<br>
+				<p>1 point for each day of active service (180 for Vet status, so 180)<br>
 					1 point for each attendance at a drill period (12 for the year?)<br>
 					1 point for each day of performing funeral honors duty<br>
 					15 points for each year of membership in a reserve component<br>
-					O-1 Ensign < 2years = $533.12 Base Weekend Drill Pay</p>
+					O-1 Ensign < 2years=$533.12 Base Weekend Drill Pay</p>
 			</div>
 		</div>
 		</div>
@@ -301,7 +233,7 @@
 					<input type="text" placeholder=" Input Balance" name="balance" label="balance" x-model="paycheck">
 				</div>
 
-			<div class="flex-table-row grid-col-1-1">
+				<div class="flex-table-row grid-col-1-1">
 					<div class="triggers">
 						<div id="select-applicable" class="trigger-box expense-button">
 							<!--// <div id="select-applicable" class="trigger-box expense-button" x-show="! applicable" @click="applicable = true"> -->
@@ -329,19 +261,24 @@
 
 
 				<template x-for="(expense, index) in expenses" :key="index">
-					<div :class="'flex-table-row grid-col-5x-1'" x-effect="expense.amount = parseFloat(expense.amount).toFixed(2)">
-						<input type="checkbox" :checked="expense.applicable" @change="expense.applicable = !expense.applicable">
+					<div :class="'flex-table-row grid-col-5x-1'"
+						x-effect="expense.amount = parseFloat(expense.amount).toFixed(2)">
+						<input type="checkbox" :checked="expense.applicable"
+							@change="expense.applicable = !expense.applicable">
 						<span x-text="expense.name"></span>
-						<span :class="'cash'" x-init="$watch('expense.amount', value => console.log(value))" x-text="expense.amount"></span>
+						<span :class="'cash'" x-init="$watch('expense.amount', value => console.log(value))"
+							x-text="expense.amount"></span>
 						<div>
 							<span x-show=" expense.automated " x-text="'Automated: ' + expense.due "></span>
 							<span x-show=" !expense.automated " x-text="' NOT Automated '"></span>
 						</div>
-						
+
 						<div>
-							<span :class="'marker'" x-show=" !expense.altered " @click=" expense.altered = true "x-text="' Alter '"></span>
+							<span :class="'marker'" x-show=" !expense.altered " @click=" expense.altered = true "
+								x-text="' Alter '"></span>
 							<form>
-								<input x-show=" expense.altered " type="text" placeholder="New Amount" x-model="expense.amount" @keyup.enter=" expense.altered = false;">
+								<input x-show=" expense.altered " type="text" placeholder="New Amount"
+									x-model="expense.amount" @keyup.enter=" expense.altered = false;">
 							</form>
 						</div>
 					</div>
@@ -349,7 +286,7 @@
 			</div>
 
 			<hr class="hr-groove-top">
-			
+
 			<div class="flex-table-row grid-col-1-1-1">
 				<p>Remainder</p>
 				<span x-text="remainder"></span>

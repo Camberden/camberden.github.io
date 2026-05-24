@@ -12,7 +12,7 @@ const interactiveMaps = document.querySelectorAll(".interactive-map");
 const mapDisplayButtons = document.querySelectorAll(".map-display-buttons");
 const mapHighlightButtons = document.querySelectorAll(".map-highlight-buttons");
 const mapSymbol = document.getElementById("map-symbol");
-const globeEmojis = ["🌎","🌍","🌏"];
+const globeEmojis = ["🌎", "🌍", "🌏"];
 const worldMap = document.getElementById("world-map");
 const usMap = document.getElementById("us-map");
 // const expansiveMap = document.getElementById("expansive-map");
@@ -60,13 +60,13 @@ function cyclePoliticalDivision(selection) {
 			mapSymbol.innerHTML = `<span id="spinning-globes"><span>`;
 			globeEmojiSpin();
 
-		break;
+			break;
 		case "us-map":
 			mapHighlightButtons.forEach(b => b.style.display = "inline");
 			politicalDivision.innerHTML = "States Visited:&emsp;";
 			visitedTotal.innerHTML = visitedStates.length;
 			mapSymbol.innerHTML = "🇺🇸";
-		break;
+			break;
 		// case "expansive-map":
 		// 	mapHighlightButtons.forEach(b => b.style.display = "none");
 		// 	mapSymbol.innerHTML = `<i>🧭🗺️ Browsing Expansive Map! <span id="spinning-globes"><span></i>`;
@@ -75,7 +75,7 @@ function cyclePoliticalDivision(selection) {
 		default:
 			politicalDivision.innerHTML = "Regions Visited Online:&emsp;";
 			visitedTotal.innerHTML = "<i> a whole lot.</i>";
-		break;
+			break;
 	}
 }
 function clearModal() {
@@ -100,7 +100,7 @@ function highlightVisitedStates() {
 		s.classList.add("visited");
 		s.onclick = function () {
 			displayNotes(state, "us-map");
-	
+
 		};
 	});
 }
@@ -113,20 +113,20 @@ function loadMapHighlight(selection) {
 	if (currentMap === "world-map") {
 		mapToHighlight = worldMap;
 		divisionToVisit = countriesToVisit;
-		divisionToRetire = countriesToConsiderRetirement; 
+		divisionToRetire = countriesToConsiderRetirement;
 	} else if (currentMap === "us-map") {
 		mapToHighlight = usMap;
 		divisionToVisit = statesToVisit;
 		divisionToRetire = statesToConsiderRetirement;
 	}
-	switch(selection) {
+	switch (selection) {
 		case "to-visit":
 			divisionToVisit.forEach(division => {
 				let d = mapToHighlight.querySelector("#" + division);
 				d.classList.add("to-visit");
 				d.onclick = function () {
 					displayNotes(division, currentMap);
-			
+
 				};
 			});
 			break;
@@ -138,14 +138,14 @@ function loadMapHighlight(selection) {
 					displayNotes(division, currentMap);
 				};
 			});
-		break;
+			break;
 		default:
 			console.info();
-		break;
+			break;
 	}
 }
 
-function enableMapHighlightButtons () {
+function enableMapHighlightButtons() {
 	mapHighlightButtons.forEach(button => {
 
 		button.onclick = function () {
@@ -190,13 +190,13 @@ function displaySVGwithinNotes(division, id) {
 	switch (division) {
 		case "country":
 			inlineNotesSVG = worldMapWrapper + pathTag + svgCloser;
-		break;
+			break;
 		case "state":
 			inlineNotesSVG = usMapWrapper + pathTag + svgCloser;
-		break;
+			break;
 		default:
 			console.log("Notes SVG");
-		break;
+			break;
 	}
 	return inlineNotesSVG;
 }
@@ -218,12 +218,12 @@ function displayNotes(selection, map) {
 					travelNotesField.innerHTML = state.notes;
 				}
 			}
-		// case "expansive-map":
-		// 	for (let country of countryInformation) {
-		// 		if (country.id === selection) {
-		// 			notesPanel.innerHTML = country.notes;
-		// 		}
-		// 	}
+			// case "expansive-map":
+			// 	for (let country of countryInformation) {
+			// 		if (country.id === selection) {
+			// 			notesPanel.innerHTML = country.notes;
+			// 		}
+			// 	}
 			break;
 		default:
 			console.log("Note Display Function Triggered");
@@ -235,7 +235,7 @@ function globeEmojiSpin() {
 	const spinningGlobes = document.getElementById("spinning-globes");
 	let c = 0;
 	spinningGlobes.innerHTML = globeEmojis[c];
-	setInterval(()=> {
+	setInterval(() => {
 		(c + 1) === globeEmojis.length ? c = 0 : ++c;
 		spinningGlobes.innerHTML = globeEmojis[c];
 	}, 1000);
@@ -247,23 +247,24 @@ function globeEmojiSpin() {
 function viewExpansiveMap() {
 	const map = L.map("expansive-map").setView([35.91029565048358, -79.0553474519402], 2);
 
-	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map); 
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19,
+		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+	}).addTo(map);
 
 	const marker = L.marker([35.77868919025996, -78.63746540620924]).addTo(map);
 
 	countryInformation.forEach(country => {
 
 		if (visitedCountries.includes(country.id)) {
-			styleVal = {color: 'cornflowerblue',fillColor: 'rgb(32, 159, 222)',fillOpacity: 0.5,radius: 5000};
+			styleVal = { color: 'cornflowerblue', fillColor: 'rgb(32, 159, 222)', fillOpacity: 0.5, radius: 5000 };
 		} else {
-			styleVal = {color: 'teal',fillColor: 'rgb(0, 255, 195)',fillOpacity: 0.5,radius: 5000};
+			styleVal = { color: 'teal', fillColor: 'rgb(0, 255, 195)', fillOpacity: 0.5, radius: 5000 };
 		}
-		 
+
 		const circle = L.circle(country.position, styleVal).addTo(map);
-		circle.bindPopup(country.name); 
-		
+		circle.bindPopup(country.name);
+
 		// circle.on('click', displayNotes(country.id, "expansive-map"))
 	});
 
@@ -285,7 +286,5 @@ function viewExpansiveMap() {
 	highlightVisitedCountries();
 	highlightVisitedStates();
 	enableMapHighlightButtons();
-	// viewExpansiveMap();
-	CMBRutil.navigationCharter();
 
 })();

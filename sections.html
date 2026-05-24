@@ -13,10 +13,7 @@
                     // ['accounting', 'Accounting Resource'],
                     ['travel', 'Travel Page'],
                     // ['musings', 'Musings Page'],
-                    // ['template', 'Template'],
-                    ['validation', 'Validation Page'],
                     // ['fantasy', 'Fantasyland'],
-                    // ['mainframe', 'Mainframe'],
                     ['music', 'Original Music'],
                 ],
                 external: [
@@ -32,6 +29,7 @@
                     ['Fiori', 'https://portal.osc.nc.gov/app',],
                     ['Alpine Components', 'https://alpinejs.dev/components'],
                     ['Alpine Toolbox', 'https://www.alpinetoolbox.com/dist/tools/'],
+                    ['Alpine Ajax', 'https://alpine-ajax.js.org'],
 
                 ]
             },
@@ -40,10 +38,9 @@
 
     <template x-if="atHome || atLegacyHome">
         <div>
-            <template x-for="link in sitemap.links.internal", :key="index">
+            <template x-for="link in sitemap.links.internal" , :key="index">
                 <div :class="'section-title'">
-                    <a x-text="link[1]"
-                        :href="basePath + link[0] + '/' + link[0] + '.html'"
+                    <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"
                         :data-route="'/' + link[0] + '/'">
                     </a>
                 </div>
@@ -53,28 +50,23 @@
 
     <template x-if="!atHome">
         <div :class="'section-title'">
-            <a x-text="homePage"
-                :href="basePath + 'index.html'"
-                :data-route="'/'">
+            <a x-text="homePage" :href="basePath + 'index.html'" :data-route="'/'">
             </a>
         </div>
     </template>
 
     <template x-if="atHome">
         <div :class="'section-title'">
-            <a x-text="legacyHomepage"
-                :href="basePath + 'legacyindex.html'"
-                :data-route="'/legacyindex.html'">
+            <a x-text="legacyHomepage" :href="basePath + 'legacyindex.html'" :data-route="'/legacyindex.html'">
             </a>
         </div>
     </template>
 
     <template x-if="!atHome && !atLegacyHome">
         <div x-effect=" displaySection() ">
-            <template x-for="link in sitemap.links.internal", :key="index">
+            <template x-for="link in sitemap.links.internal" , :key="index">
                 <div :class="'section-title'" :style="'padding:0.1rem'">
-                    <a x-text="link[1]"
-                        :href="basePath + link[0] + '/' + link[0] + '.html'"
+                    <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"
                         :data-route="'/' + link[0] + '/'">
                     </a>
                 </div>
@@ -86,8 +78,7 @@
         <div>
             <template x-for="link in sitemap.links.external">
                 <div :class="'section-title'" :style="'padding:0.1rem'">
-                    <a x-text="link[0]"
-                        :href="link[1]">
+                    <a x-text="link[0]" :href="link[1]">
                     </a>
                 </div>
             </template>

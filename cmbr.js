@@ -76,6 +76,7 @@ const baseHyperlinks = [
 	"http://localhost:" + basePort + "/index.html",
 ];
 const nonStaticSite = "https://camberden.net";
+const nonStaticDev = "http://localhost:3020";
 
 const CMBRx = {
 
@@ -84,21 +85,13 @@ const CMBRx = {
 	 * @global
 	 * @memberOf CMBRx
 	 * @event alpine:init
-	 * @description Intializes ALPine DAta, MAgics, and DIrectives
+	 * @description Intializes ALPine DAta, MAgics, DIrectives, and STores
 	 */
-	alpdamadi: function() { 
+	alpdamadist: function () {
 		document.addEventListener("alpine:init", () => {
 			// |==========| Alpine Data |==========|
 			Alpine.data('cmbr', () => ({
-				isAcceptableProtocol: function() {
-					if (document.location.protocol === "file:") {
-							// console.log("<‰ File Protocol Detected ‰>");
-						return false;
-					} else {
-							// console.log("<‰ CORS Acceptable Protocol Detected ‰>");
-						return true;
-					}
-				},
+
 
 			})); // %=> end of Alpine Data
 			// |==========| Alpine Magics |==========|
@@ -113,10 +106,19 @@ const CMBRx = {
 					setTimeout(() => instance.destroy(), 150);
 				}, 2000);
 			});
-		
+
 			// |==========| Alpine Directives |==========|
 			Alpine.directive("tooltip", (el, { expression }) => {
 				tippy(el, { content: expression });
+			});
+
+			// |==========| Alpine Store |==========|
+			Alpine.store('darkMode', {
+				on: false,
+
+				toggle() {
+					this.on = !this.on
+				}
 			});
 		});
 
@@ -127,7 +129,7 @@ const CMBRx = {
 		});
 	},
 
-}	
+}
 
 const CMBRrouter = {
 	/**
@@ -135,18 +137,20 @@ const CMBRrouter = {
 	 */
 	routeHello: function () {
 		document.addEventListener("alpine:init", () => {
-		Alpine.data('hello', () => ({
-			message: 'Hello world',
-			init() {
-				console.log('hello from init()');
-			},
-			effect() {
-				// this will run whenever the param `name` changes
-				if (this.$params.name == 'world') {
-					console.log('hello world');
+			Alpine.data('hello', () => ({
+				message: 'Hello world',
+				init() {
+					console.log('hello from init()');
+				},
+				effect() {
+					// this will run whenever the param `name` changes
+					if (this.$params.name == 'world') {
+						console.log('hello world');
+					}
 				}
-			}
-	}))})},
+			}))
+		})
+	},
 
 }
 
@@ -494,13 +498,13 @@ const CMBRutil = {
 			return false;
 		}
 	},
-	staticLinkTransform: function(page) {
-        if (document.location.origin !== nonStaticSite || document.location.protocol !== 'http') {
-            return '../' + page;
-        } else {
-            return '/' + page;
-        }
-    },
+	staticLinkTransform: function (page) {
+		if (document.location.origin !== nonStaticSite || document.location.protocol !== 'http') {
+			return '../' + page;
+		} else {
+			return '/' + page;
+		}
+	},
 	/** 
 	 * @global 
 	 * @readonly 
@@ -597,6 +601,20 @@ const CMBRutil = {
 						sout("Bad Query at connectCMBRjson.");
 						return data;
 				}
+			});
+
+	},
+
+	retrieveParcel: async function (site, query) {
+		return fetch(site)
+			.then(data => data.json())
+			.then(data => {
+				// console.log(data);
+				console.log("QUERY BEFORE RESOLUTION: " + query[0]);
+				return data;
+			})
+			.then((data) => {
+				return data[query];
 			});
 	},
 }

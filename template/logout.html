@@ -1,0 +1,5 @@
+<div x-data>
+	<template x-if=" authManager.isAuthenticated() ">
+		<button :class='"trigger-box"' id="logout" @click="authManager.logout()">Logout</button>
+	</template>
+</div>

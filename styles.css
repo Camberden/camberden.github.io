@@ -1,8 +1,30 @@
 @charset "UTF-8";
+
 /* |==========| STYLES.CSS @ CAMBERDEN.COM |====================> */
 /* |==========| ORGANIZED EARLY 2026 |====================> */
-* { margin: 0; padding: 0; border: 0; font-size: 100%; vertical-align: baseline; };
-@starting-style { * { margin: 0; padding: 0; border: 0; font-size: 100%; font: unset; vertical-align: baseline; animation-play-state: paused; }; }
+* {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+
+;
+
+@starting-style {
+	* {
+		margin: 0;
+		padding: 0;
+		border: 0;
+		font-size: 100%;
+		font: unset;
+		vertical-align: baseline;
+		animation-play-state: paused;
+	}
+
+	;
+}
 
 @namespace url("http://www.w3.org/1999/xhtml");
 @namespace svg url("http://www.w3.org/2000/svg");
@@ -119,16 +141,18 @@
 	padding: 0.5rem 0px;
 	text-align: center;
 }
+
 .fc-multimonth-header-table {
 	color: indianred;
 	background-color: black;
 }
+
 .fc-button {
 	/* user-select: none !important; */
 	box-sizing: border-box !important;
 	border-style: groove !important;
 	border-width: 0.3rem !important;
-	
+
 	border-radius: 0.0rem !important;
 }
 
@@ -149,6 +173,7 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+
 /* |=====| DARK |=====| */
 [data-theme="dark"] {
 	--font-color: var(--cmbr-blue);
@@ -160,9 +185,10 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+
 /* |=====| LIGHT |=====| */
 [data-theme="light"] {
-	--font-color: var(--mo-2-1);
+	--font-color: var(--mo-1-4);
 	--link-color: var(--mo-2-5);
 	--bg-image: var(--mosky-3);
 	--bg-color: none;
@@ -171,6 +197,7 @@
 	--cmbr-com-pnl-background: rgb(50, 65, 67);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
+
 /* |=====| PAPERESQUE |=====| */
 [data-theme="paperesque"] {
 	--font-color: var(--cmbr-blue);
@@ -182,8 +209,26 @@
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
-[x-cloak] { display: none; }
-[x-bg] {background-image: none;}
+
+/* |=====| DUSTY |=====| */
+[data-theme="dusty"] {
+	--font-color: var(--cmbr-blue);
+	--link-color: var(--cmbr-orange);
+	--bg-image: url("images/cmbr-curtain-original.svg");
+	--bg-color: #d6dce1;
+	--bg-color-svg: #F4F5F6;
+
+	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
+	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+}
+
+[x-cloak] {
+	display: none;
+}
+
+[x-bg] {
+	background-image: none;
+}
 
 .data-theme-button {
 	font-size: 2rem;
@@ -409,7 +454,7 @@ nav {
 	/* overflow-y: scroll !important; */
 }
 
-#chart-dropdown > #chart-links > .section-title {
+#chart-dropdown>#chart-links>.section-title {
 	padding: 0.5rem !important;
 	font-size: 1rem !important;
 }
@@ -444,7 +489,7 @@ nav {
 
 .section-title:hover :where(a) {
 	color: var(--cmbr-orange);
-	
+
 }
 
 .section-title:not(:hover) {
@@ -457,7 +502,7 @@ nav {
 	animation-iteration-count: 1;
 }
 
-.section-title > a {
+.section-title>a {
 	color: var(--cmbr-blue);
 
 	box-sizing: border-box;
@@ -643,18 +688,41 @@ nav {
 /* |==========| §MARKS AND BLOG WRITING CLASSES <mark> |====================> */
 /* |==========| DESCRIBED BY EMOTIONAL CHARACTER |====================> */
 
+.blogging-font {
+	color: cadetblue;
+	font-family: "Lora", monospace;
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-size: 1.3rem;
+	text-align: left;
+	padding-left: 1rem;
+	line-height: 2rem;
+}
+
+.cmbr-pen {
+	color: cadetblue;
+	font-family: "Lora", monospace;
+	font-optical-sizing: auto;
+	font-weight: 500;
+	font-size: 1.0rem;
+	text-align: left;
+
+	padding: 1rem;
+	line-height: 1rem;
+}
+
 .rolyan-musings {
 	display: block;
 	box-sizing: border-box;
 	position: sticky;
 	/* outline: 0.5rem solid salmon; */
-	
+
 	font-family: "Permanent Marker";
 	font-size: 0.8rem;
 	user-select: none;
 	max-width: fit-content;
 	max-height: fit-content;
-	
+
 	color: cadetblue;
 	text-align: left;
 	line-height: 200%;
@@ -662,7 +730,7 @@ nav {
 
 .rolyan-vertical {
 	left: 38%;
-	max-height:fit-content;
+	max-height: fit-content;
 	max-width: max-content;
 	writing-mode: vertical-rl;
 }
@@ -724,8 +792,9 @@ mark {
 }
 
 .cash::before {
-	content:attr(item) " $ ";
+	content: attr(item) " $ ";
 }
+
 .per::after {
 	content: attr(item) " % ";
 }
@@ -914,8 +983,8 @@ select:hover {
 .cmbr-flash-read {
 	display: block;
 	height: 1.5rem;
-  	position: relative;
-  	background: var(--cmbr-curtain-plum);
+	position: relative;
+	background: var(--cmbr-curtain-plum);
 	border: 0.2rem solid transparent;
 	font-family: monospace;
 	font-weight: bold;
@@ -924,8 +993,8 @@ select:hover {
 	text-overflow: clip;
 }
 
-.cmbr-flash-read > span::before {
-	content:attr(item) " - "
+.cmbr-flash-read>span::before {
+	content: attr(item) " - "
 }
 
 /* |==========| §GRID FRAME STRUCTURES grid-template-columns: 1fr; |====================> */
@@ -1085,14 +1154,14 @@ select:hover {
 .index-item-center {
 	box-sizing: content-box;
 	/* background:#0f0b0789; */
-	background:#0f0b07de;
+	background: #0f0b07de;
 
 	height: max-content;
 }
 
 .index-item-right {
 	box-sizing: content-box;
-	top:10%;
+	top: 10%;
 	flex: 1;
 	position: sticky;
 	height: 45rem;
@@ -1271,8 +1340,7 @@ select:hover {
 
 	font-family: "Lora";
 	src:
-		local("Lora-Regular")
-		local("Lora-Italic"),
+		local("Lora-Regular") local("Lora-Italic"),
 		local("Lora-Medium"),
 		local("Lora-MediumItalic"),
 		local("Lora-Bold"),
@@ -1400,15 +1468,18 @@ select:hover {
 
 .cmbr-item-center {
 	box-sizing: content-box;
-	/* background:#0f0b0789; */
-	background:#0f0b07de;
-
+	/* box-sizing: border-box; */
+	width: 50rem;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+	scroll-behavior: smooth;
+	background: #0f0b07de;
 	height: max-content;
 }
 
 .cmbr-item-right {
 	box-sizing: content-box;
-	top:10%;
+	top: 10%;
 	flex: 1;
 	position: sticky;
 	height: 45rem;
@@ -1429,11 +1500,11 @@ select:hover {
 	padding: 0.5rem;
 	box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey);
 	backdrop-filter: blur(0.2rem) saturate(90%);
-    -webkit-backdrop-filter: blur(0.2rem) saturate(90%);
-    background-color: rgba(4, 6, 17, 0.75);
+	-webkit-backdrop-filter: blur(0.2rem) saturate(90%);
+	background-color: rgba(4, 6, 17, 0.75);
 	background-image: transparent;
 	/* background-size: cover; */
-    border: 0.5rem ridge rgba(22, 17, 17, 0.855);
+	border: 0.5rem ridge rgba(22, 17, 17, 0.855);
 }
 
 .flex-table {
@@ -1521,16 +1592,20 @@ form>label {
 	display: block;
 	text-align: left;
 }
-.md-read > ol {
+
+.md-read>ol {
 	padding-left: 1.5rem;
 }
-.md-read > ol > li {
+
+.md-read>ol>li {
 	padding: 0.5rem;
 }
-.md-read > ul {
+
+.md-read>ul {
 	padding-left: 1.5rem;
 }
-.md-read > ul > li {
+
+.md-read>ul>li {
 	padding: 0.5rem;
 }
 
@@ -1705,7 +1780,7 @@ form>label {
 	border: 0.3rem solid green;
 	background: var(--cmbr-grid-box);
 	background-size: contain;
-	
+
 }
 
 .segsquare-empty {
@@ -1760,6 +1835,7 @@ form>label {
 	position: relative;
 	opacity: .75
 }
+
 [aria-busy]:before {
 	content: '';
 	position: absolute;
@@ -1774,8 +1850,11 @@ form>label {
 	border-top-color: rgba(0, 0, 0, 0.5);
 	animation: rotate calc(var(--loading-duration)) linear infinite;
 }
+
 @keyframes rotate {
-  100% { transform: rotate(360deg); }
+	100% {
+		transform: rotate(360deg);
+	}
 }
 
 /* |==========| KEYFRAME ANIMATIONS @keyframes |====================> */
@@ -1861,9 +1940,13 @@ form>label {
 	--cmbr-violet: #700caa; */
 	0% {
 		background: linear-gradient(120deg, rgb(0, 12, 170), rgb(161, 219, 248), rgb(245, 155, 96), rgb(112, 12, 170));
-	} 50% {
+	}
+
+	50% {
 		background: linear-gradient(120deg, rgb(0, 12, 238), rgb(31, 83, 109), rgb(180, 125, 89), rgb(149, 65, 198));
-	} 100% {
+	}
+
+	100% {
 		background: linear-gradient(120deg, rgb(0, 12, 170), rgb(131, 184, 210), rgb(245, 155, 96), rgb(112, 12, 170));
 	}
 }
@@ -1898,10 +1981,12 @@ form>label {
 		opacity: 100%;
 		border-right: 0.5rem solid var(--cmbr-indigo);
 	}
+
 	20% {
 		opacity: 80%;
 		border-right: 0.5rem solid var(--clr-grid-box);
 	}
+
 	100% {
 		opacity: 100%;
 		border-right: 0.5rem solid var(--clr-grid-box);

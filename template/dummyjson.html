@@ -1,0 +1,22 @@
+<div id="dummyjson-handle" x-data="{ 
+	productData: {}, 	
+	 }">
+
+
+	<button class="trigger-box" @click="productData = await $get('https://dummyjson.com/products/1')">
+		Dummyjson Product!
+	</button>
+
+	<div class="cmbr-pen flex-table" x-effect="JSON.stringify(productData, null, 2)">
+		<template x-for="(spec, index) in productData" :key="index">
+			<div :class="'flex-table-row grid-col-1-1'">
+				<span x-html="index"></span>
+				<span x-html="spec"></span>
+			</div>
+		</template>
+	</div>
+
+
+
+
+</div>

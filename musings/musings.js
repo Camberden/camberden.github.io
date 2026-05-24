@@ -15,7 +15,7 @@ const poems = [
 	// "I live for coincidences. They briefly give mto me the illusion or the hope that there\'s a pattern to my life, and if there\'s a pattern, then maybe I\'m moving toward some kind of destiny where it\'s all explained.",
 	"Eros Flame is characterized by striking contrasts, where the finest ingredients enrich and enhance each other: cold and hot, sweet and spicy, light and shadow. The opening notes are particularly vibrant. Fresh, juicy Italian citrus fruits like lemon, tangerine, and bitter orange are warmed by notes of black pepper from Madagascar and enveloped in aromatic wild rosemary. Through an olfactory wave of pepperwood, geranium, and rose facets, we reach the base notes where precious woods such as Texas cedar, patchouli cœur, Haitian vetiver, mountain oak moss accord, and sandalwood subtly blend to create a soft and sensuous roundness with tonka bean, perfectly intertwining with vanilla.",
 
-];	
+];
 
 let poemnumber = 0;
 let selectedpoem = poems[poemnumber];
@@ -131,14 +131,14 @@ function goToPoem() {
 }
 
 function enablePoemButtons() {
-		document.querySelectorAll(".poem-buttons").forEach(button => {
-		button.onmouseleave = function() {
+	document.querySelectorAll(".poem-buttons").forEach(button => {
+		button.onmouseleave = function () {
 			CMBRutil.buttonOnMouseLeave(button);
 		}
-		button.onmouseenter = function() {
+		button.onmouseenter = function () {
 			CMBRutil.buttonOnMouseEnter(button);
 		}
-		button.onclick = function() {
+		button.onclick = function () {
 			if (button.value === "next") {
 				nextPoem();
 			} else {
@@ -158,18 +158,18 @@ const eightfoldPath = [
 	"Right View", "Right Thinking", "Right Speech", "Right Action", "Right Livelihood", "Right Effort", "Right Mindfulness", "Right Concentration",
 ];
 const boddhisattvaPrecepts = [
-	"Refuge in Buddha", 
-	"Refuge in Dharma", 
-	"Refuge in Sangha", 
-	"Embrace all Moral Codes", 
-	"Embrace all Good Acts", 
-	"Benefit all Living Beings", 
-	"Not Killing", 
-	"Not Stealing", 
-	"No Indulgence in Sexual Greed", 
-	"Not Speaking Falsehood", 
-	"Not Selling Intoxicants", 
-	"Not Talking of Others' Faults", 
+	"Refuge in Buddha",
+	"Refuge in Dharma",
+	"Refuge in Sangha",
+	"Embrace all Moral Codes",
+	"Embrace all Good Acts",
+	"Benefit all Living Beings",
+	"Not Killing",
+	"Not Stealing",
+	"No Indulgence in Sexual Greed",
+	"Not Speaking Falsehood",
+	"Not Selling Intoxicants",
+	"Not Talking of Others' Faults",
 	"No Praising Self or Slandering Others",
 	"No Begrudging the Dharma",
 	"Not Being Angry",
@@ -222,31 +222,31 @@ const robeChantEnglish = [
 	"Saving All Beings",
 ];
 const robeChantRomaji = [
-		"dai zai ge da ppuku",
-		"mu so fuku den e",
-		"hi bu nyo rai kyo",
-		"ko do sho shu jo",
+	"dai zai ge da ppuku",
+	"mu so fuku den e",
+	"hi bu nyo rai kyo",
+	"ko do sho shu jo",
 ];
 const robeChantFurigana = [
-		"だい ざい だ っぷ く",
-		"む そ ふく でん え",
-		"ひ ぶ にょ らい きょ",
-		"こ ど しょ しゅ じょ",
+	"だい ざい だ っぷ く",
+	"む そ ふく でん え",
+	"ひ ぶ にょ らい きょ",
+	"こ ど しょ しゅ じょ",
 ];
 const robeChantKanji = [
-		"大哉解脱服",
-		"無相福田衣",
-		"披奉如來教",
-		"廣度諸衆生",
+	"大哉解脱服",
+	"無相福田衣",
+	"披奉如來教",
+	"廣度諸衆生",
 ];
 const heartSutraEnglish = [
 	"Avalokiteshvara Bodhisattva,",
 	"when practicing deeply the prajna paramita",
 	"perceived that all five skandhas in their own being are empty",
 	"and was saved from all suff'ring.",
-	"O Shariputra,", 
+	"O Shariputra,",
 	"form does not differ from emptiness",
-	"emptiness does not differ from form", 
+	"emptiness does not differ from form",
 	"that which is form is emptiness",
 	"that which is emptiness form",
 	"The same is true of feelings, perceptions, formations, consciousness.",
@@ -458,11 +458,11 @@ const heartSutraFurigana = [
 
 const sutras = [
 	robeChant = new Sutra("Robe Chant", "たっけさのげ", "搭袈裟の偈", "Takkesa no Ge", robeChantEnglish, robeChantFurigana, robeChantKanji, robeChantRomaji),
-	heartSutra = new Sutra("Heart Sutra", "まかはんやはらみったしんぎょう", "摩訶般若波羅蜜多心經"," Maka Hanya Haramitta Shingyou", heartSutraEnglish, heartSutraFurigana, heartSutraKanji, heartSutraRomaji),
+	heartSutra = new Sutra("Heart Sutra", "まかはんやはらみったしんぎょう", "摩訶般若波羅蜜多心經", " Maka Hanya Haramitta Shingyou", heartSutraEnglish, heartSutraFurigana, heartSutraKanji, heartSutraRomaji),
 ];
 
 // ----- TODO UPDATE STARTING OPTION
-function initSutraList(){
+function initSutraList() {
 	let option = document.createElement("option");
 	let optionText = document.createTextNode("--- Select ---");
 	option.appendChild(optionText);
@@ -472,7 +472,7 @@ function initSutraList(){
 	option2.appendChild(optionText2);
 	sutraLineOptions.appendChild(option2);
 
-	for(let i = 0; i < sutras.length; i++) {
+	for (let i = 0; i < sutras.length; i++) {
 		let option = document.createElement("option");
 		option.value = i;
 		let title = document.createTextNode(sutras[i].englishTitle);
@@ -498,14 +498,14 @@ function initSutraLines(sutra) {
 /**
  * @param {Sutra} sutra
  */
-function loadSelectedSutraLines(sutra){
+function loadSelectedSutraLines(sutra) {
 	furiganaDisplay.innerHTML = sutra.furiganaLines[sutraLineLoaded];
 	romajiDisplay.innerHTML = sutra.romajiLines[sutraLineLoaded];
 	kanjiDisplay.innerHTML = sutra.kanjiLines[sutraLineLoaded];
 	englishDisplay.innerHTML = sutra.englishLines[sutraLineLoaded];
 }
 
-function loadDifferentSutra(){
+function loadDifferentSutra() {
 	currentSutra = sutras[sutraOptions.value];
 	sutraLineLoaded = 0;
 	initSutraLines(currentSutra);
@@ -513,12 +513,12 @@ function loadDifferentSutra(){
 }
 
 // ----- LINE LOADING: may need to remove/ replace options
-function loadLineNumbers(){
+function loadLineNumbers() {
 	let options = document.getElementById("sutra-line-options");
 	while (options.childElementCount > 1) {
 		options.removeChild(options.lastChild);
 	}
-	for(let i = 0; i < currentSutra.englishLines.length; i++) {
+	for (let i = 0; i < currentSutra.englishLines.length; i++) {
 		let option = document.createElement("option");
 		option.value = i;
 		let lineNumber = document.createTextNode("Line: " + (i + 1));
@@ -527,19 +527,19 @@ function loadLineNumbers(){
 	}
 }
 
-function loadDifferentLine(){
-		sutraLineLoaded = sutraLineOptions.value;
-		initSutraLines(currentSutra);
+function loadDifferentLine() {
+	sutraLineLoaded = sutraLineOptions.value;
+	initSutraLines(currentSutra);
 }
 
 /**
  * @param {boolean} boolean
  */
-function cycleSutraLines(boolean){
+function cycleSutraLines(boolean) {
 	boolean ? sutraLineLoaded++ : sutraLineLoaded--;
 	if (sutraLineLoaded < 0) {
 		sutraLineLoaded = 0;
-	} 
+	}
 	if (sutraLineLoaded > sutraLinesLength - 1) {
 		sutraLineLoaded = sutraLinesLength - 1;
 	}
@@ -572,20 +572,20 @@ function cyclePanelCollections(array, milliseconds) {
 	intervalPanel.textContent = robeChantKanji[0];
 	const millisecondString = milliseconds.toString();
 	intervalPanel.style.animationDuration = millisecondString.substring(0, (millisecondString.length - 3)) + "s";
-	setInterval(function() {cyclePanelItems(array)}, milliseconds);
+	setInterval(function () { cyclePanelItems(array) }, milliseconds);
 }
 
 // ----- SUTRA TYPING ----- //
 
-function enableSutraButtons(){
+function enableSutraButtons() {
 	document.querySelectorAll(".button-sutras").forEach(button => {
-		button.onmouseleave = function() {
+		button.onmouseleave = function () {
 			CMBRutil.buttonOnMouseLeave(button);
 		}
-		button.onmouseenter = function() {
+		button.onmouseenter = function () {
 			CMBRutil.buttonOnMouseEnter(button);
 		}
-		button.onclick = function() {
+		button.onclick = function () {
 			if (button.value === "next") {
 				cycleSutraLines(true);
 			} else {
@@ -605,7 +605,7 @@ function sutraType() {
 	kanjiDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
 	romajiDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
 	englishDisplay.style.backgroundSize = `${typedCompletion}% 0.1rem`;
-	
+
 	if (typed.value === englishDisplay.innerHTML) {
 		typed.value = "";
 		cycleSutraLines(true);
@@ -623,7 +623,6 @@ function sutraType() {
 	loadLineNumbers();
 	cyclePanelCollections(robeChantKanji, 3000);
 	enableSutraButtons();
-	CMBRutil.navigationCharter();
 	CMBRutil.handleFormDefault(true);
 	const rolyan = convertRolyaScript(ipapost);
 	// document.getElementById("rolyan").innerText = rolyan;

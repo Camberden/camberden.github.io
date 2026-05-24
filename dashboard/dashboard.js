@@ -136,11 +136,11 @@ const pslfUncreditedPercentage = (pslfServed - pslfCredited) / pslfRequirement *
 
 const accountingRoles = [
 	[
-		"Accounting Clerk I", 
+		"Accounting Clerk I",
 		42647.06,
 	],
 	[
-		"Accounting Clerk II", 
+		"Accounting Clerk II",
 		46700.00,
 	],
 	[
@@ -1015,79 +1015,43 @@ function initTooltips() {
 // |=====| CALENDAR UTILITY |=====| //
 
 const lifeEvents = [
-	birthEvent = new LifeEvent("My Birth", "1993-11-14", "", 
+	birthEvent = new LifeEvent("My Birth", "1993-11-14", "",
 		"I arrived physically on this planet."),
-	rofDay = new LifeEvent("R.O.F. Day", "2017-7-9", "", 
+	rofDay = new LifeEvent("R.O.F. Day", "2017-7-9", "",
 		"Personal Holiday Established: the emotional difficulties encountered marked the very beginning of my 1st self-reinvention."),
-	firingDay = new LifeEvent("Firing Day", "2017-11-14", "", 
+	firingDay = new LifeEvent("Firing Day", "2017-11-14", "",
 		"I was fired from my first position after college for tardiness. This event, coupled with July 9th, helped set my 1st self-reinvention in motion"),
-	securityCareer = new LifeEvent("Began Security Career", "2017-1-19", "", 
+	securityCareer = new LifeEvent("Began Security Career", "2017-1-19", "",
 		"I began my new role in private security where I set out to redeem myself for past failures"),
 	firstSecurityPromotion = new LifeEvent("First Security Promotion", "2018-6-16", "",
 		"I promoted for the first time and donned the white shirt as a shift supervisor."),
 	secondSecurityPromotion = new LifeEvent("Second Security Promotion", "2018-9-8", "",
 		"I promoted a second time to a floating shift supervisor with more intra-region responsibilities"),
-	thirdSecurityPromotion = new LifeEvent("Third Security Promotion", "2018-11-2", "", 
+	thirdSecurityPromotion = new LifeEvent("Third Security Promotion", "2018-11-2", "",
 		"I promoted a third time to assistant operations manager, with intra-regional duties including payroll"),
 	wvRelocation = new LifeEvent("Relocation to West Virginia", "2019-10-24", "",
 		"I relocated to West Virginia to pursue a software development career at a talent-incubator company"),
-	vanceRelocation = new LifeEvent("Relocation to North Carolina", "2020-8-9", "", 
+	vanceRelocation = new LifeEvent("Relocation to North Carolina", "2020-8-9", "",
 		"I uprooted and took my life to Vance County, NC"),
-	publicCareer = new LifeEvent("Began Public Service", "2020-8-10", "", 
+	publicCareer = new LifeEvent("Began Public Service", "2020-8-10", "",
 		"I began my career of service."),
-	chathamRelocation = new LifeEvent("Relocation to Chatham County, NC", "2024-12-16", "", 
+	chathamRelocation = new LifeEvent("Relocation to Chatham County, NC", "2024-12-16", "",
 		"I relocated to Chatham County, NC due to interpersonal events."),
-	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "", 
+	chryslerTotalled = new LifeEvent("Car Totalled", "2025-3-3", "",
 		"My trusty car was deemed a total loss."),
-	whiteCar = new LifeEvent("White Car", "2025-3-4", "", 
+	whiteCar = new LifeEvent("White Car", "2025-3-4", "",
 		"Got my new ride. Its white coat is familiar as it's the same as those at my workplace."),
-	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "", 
+	japanTravel1 = new LifeEvent("First Experience in Japan", "2025-6-22", "",
 		"To Tokyo, Nara, Kyoto, and Osaka"),
-	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "", 
+	workanniversary5 = new LifeEvent("Pension Vested", "2025-8-10", "",
 		"Raise & Vesting"),
 	shanghaiAlleyDumpsterFire = new LifeEvent("Shanghai Alley Dumpster Fire", "2026-2-11", "", "Lost my new favorite person. Lots of reflection. Hopefully setting up for 2nd self-reinvention."),
 	endOfTour = new LifeEvent("End of Tour", "2026-3-6", "", "Last day in uniformed public service."),
 	newCareerBegins = new LifeEvent("A New Career Begins", "2026-3-9", "", "I began my new career in accounting with an 8-hour daytime schedule and am afforded a cool office space. I hope this is worth it."),
-	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", "", 
+	workanniversary6 = new LifeEvent("6th Year Work Anniversary", "2026-8-10", "",
 		"Would have maxxed out CO salary, but no worries."),
 
 ];
-
-// |=====| TAXABILITY MODULE |=====| //
-
-function routeTaxabilityModule() {
-
-	const taxButton = document.getElementById("tax-button");
-	const url = window.location.href;
-
-	const obj = {
-		v1: "javascript",
-		v2: "java",
-		v3: ["apple", "pear", "banana", "strawberry", "plum", ],
-	};
-
-	const keywords = ["apple", "pear", "banana", "strawberry", "plum", ];
-
-	const searchParams = new URLSearchParams();
-
-	// for (let i = 0; i < keywords.length; i++) {
-	// 	searchParams.append("v" + (i + 1), keywords[i]);
-	// }
-	searchParams.append("v1", JSON.stringify(obj));
-	console.log("Taxability Query String: " + searchParams);
-	const entries = searchParams.values();
-	const array = Array.from(entries);
-
-	const result = JSON.parse(array[0]);
-	console.table(result);
-	console.log(result);
-	
-	const queryString = searchParams.toString();
-
-	taxButton.addEventListener("click", () => {
-		window.location.href = url + queryString;
-	});
-}
 
 // |=====| DAYS & WEEKS LIVED MODULE |=====| //
 
@@ -1098,7 +1062,7 @@ function routeTaxabilityModule() {
  */
 function findDaysSinceBirthday(present, birth) {
 	const yearsSinceBirth = present.getFullYear() - birth.getFullYear() - 1; // -1 accounts for present year lived months
-	
+
 	const monthOfBirthDaysTotal = new Date(birth.getFullYear(), birth.getMonth(), 0).getDate();
 	const monthOfBirthDaysLived = monthOfBirthDaysTotal - birth.getDate();
 	const presentMonthDaysLived = present.getDate();
@@ -1125,7 +1089,7 @@ function findDaysSinceBirthday(present, birth) {
 	let by = birth.getFullYear() + 1;
 	for (let i = 0; i < yearsSinceBirth; i++) {
 		for (let j = 1; j <= 12; j++)
-		totalDaysLived += getDaysInMonthOfYear(by, j);
+			totalDaysLived += getDaysInMonthOfYear(by, j);
 	}
 	return totalDaysLived;
 }
@@ -1138,7 +1102,7 @@ const daysSinceBirth = findDaysSinceBirthday(new Date(now.getFullYear(), now.get
 
 (() => {
 
-	CMBRutil.navigationCharter();
+	// CMBRutil.navigationCharter();
 	CMBRutil.handleFormDefault(true);
 
 	// generateDashboardExpenses(dashboardExpenses);

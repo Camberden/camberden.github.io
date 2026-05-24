@@ -1,21 +1,8 @@
-/* |==========| THE PEN |====================> */
-
-.blogging-font {
-	color: cadetblue;
-	font-family: "Lora", monospace;
-	font-optical-sizing: auto;
-	font-weight: 500;
-	font-size: 1.3rem;
-	text-align: left;
-
-	padding-left: 1rem;
-	line-height: 2rem;
-}
-
 /* |==========| THREE-COLUMN GRID |====================> */
 main {
 	height: 1000vh;
 }
+
 /* |==========| HEADER, GRID, AND EACH COLUMN |====================> */
 
 .blog-grid {
@@ -51,19 +38,23 @@ main {
 	/* padding: 1rem; */
 	/* box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71); */
 	/* border-width: 0.3rem; */
-	background:#0f0b07de;
+	background: #0f0b07de;
 	height: max-content;
 }
-#blog-post-body > ul {
+
+#blog-post-body>ul {
 	list-style: none;
 }
-#blog-post-body > ul > li::before {
+
+#blog-post-body>ul>li::before {
 	content: attr(item) "⇒ ";
 }
-#blog-post-body > ol > ul {
+
+#blog-post-body>ol>ul {
 	list-style: none;
 }
-#blog-post-body > ol > ul > li::before {
+
+#blog-post-body>ol>ul>li::before {
 	content: attr(item) "⇒ ";
 }
 
@@ -72,13 +63,14 @@ main {
 /* |==========| LEFT COLUMN |====================> */
 #blog-post-listings {
 	box-sizing: content-box;
-	top:10%;
+	top: 10%;
 	flex: 1;
 	position: sticky;
 	height: 45rem;
 	overflow: auto;
 	scroll-behavior: smooth;
 }
+
 /* |==========| LIST OF BLOG POSTS AND SELECTIONS |====================> */
 
 
@@ -86,20 +78,24 @@ main {
 	color: var(--cmbr-orange);
 	background: var(--cmbr-curtain-plum);
 }
-#blog-post-list > li {
+
+#blog-post-list>li {
 	list-style-type: none;
 	text-align: left;
 }
-#blog-post-list > li:hover {
+
+#blog-post-list>li:hover {
 	cursor: pointer;
 	color: var(--cmbr-green);
 	background: var(--clr-quaternary);
 }
+
 .listed-title {
 	font-family: monospace;
 	font-size: smaller;
 	color: var(--clr-secondary);
 }
+
 .listing-none {
 	display: none;
 }
@@ -107,13 +103,14 @@ main {
 /* |==========| RIGHT COLUMN |====================> */
 #blog-post-media {
 	box-sizing: content-box;
-	top:10%;
+	top: 10%;
 	flex: 1;
 	position: sticky;
 	height: 45rem;
 	align-items: center;
 	justify-content: center;
 }
+
 /* |==========| BLOG MEDIA STYLES FOR MAPS, PHOTOS, & MORE |====================> */
 
 #blog-tags {

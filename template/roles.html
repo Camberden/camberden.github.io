@@ -75,15 +75,14 @@
 		</div>
 		<div class="flex-table-body">
 			<template x-for="position in accountingRoles">
-				
+
 				<div :class="'flex-table-row grid-col-1-1'">
 					<span :class="'flex-table-col-body'" x-text="position[0]"></span>
 					<span :class="'flex-table-col-body'" x-text="'$ ' + position[1]"></span>
 				</div>
 			</template>
 		</div>
-		
+
 	</div>
 	<hr class="hr-groove-bottom">
 </div>
-<!-- :class="'flex-table-row'" :style="'display:contents'" -->

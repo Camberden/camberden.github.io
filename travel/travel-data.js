@@ -5,7 +5,7 @@
  *  @param {string} name - name of political division in prose
  *  @param {string[]} notes - complete description, including HTML tags
  *  @param {Array[number]} position - latitude & longitude
- */ 
+ */
 class DivisionInformation {
 	constructor(id, name, notes, position) {
 		this.id = id;
@@ -20,7 +20,7 @@ class DivisionInformation {
 
 const countryInformation = [
 	// ----- NORTH AMERICA ----- //
-	unitedStates = new DivisionInformation("US", "United States of America",`
+	unitedStates = new DivisionInformation("US", "United States of America", `
 		<h3>Birthplace and Home</h3><hr class="hr-cmbr-gradient">
 		<p>I spent considerable time in Pennsylvania, the northern state where I was born.
 		Extended visits and my first career took me to New Jersey and New York.
@@ -28,14 +28,14 @@ const countryInformation = [
 		Following that, I moved to NC where I am working a career in public service.</p>
 		`, [39.095963, -99.671267]
 	),
-	guatemala = new DivisionInformation("GT", "Guatemala",`
+	guatemala = new DivisionInformation("GT", "Guatemala", `
 		<h3>Visited: 2012</h3>
 		<p>I came here as part of a study trip during my first year in college.
 		I didn't stay in the country. Rather, I came across the border from Belize's Cayo District into 
 		the Patén area of Guatemala where I experienced the grounds of Tikal, a site of ancient ruins of the Mayan civilization.</p>
 		`, [14.902322, -90.551096]
 	),
-	belize = new DivisionInformation("BZ", "Belize",`
+	belize = new DivisionInformation("BZ", "Belize", `
 		<h3>Visited: 2012</h3>
 		<p>I came here as part of a study trip during my first year in college.
 		I stayed in San Ignacio in the jungled Cayo District, and later in Hopkins Village on the coast in Stann Creek District.
@@ -52,7 +52,7 @@ const countryInformation = [
 		``, [32.294098, -64.769212]
 	),
 	// ----- SOUTH AMERICA ----- //
-	colombia = new DivisionInformation("CO", "Colombia",`
+	colombia = new DivisionInformation("CO", "Colombia", `
 		<h3>Not Visited; Planning for 2026</h3>
 		<p>I would like to begin my journey in Colombia in the capital Bogotá where I have family roots.
 		Among the locations to visit are the Candelaria and Monserrate.</p>

@@ -1,238 +1,237 @@
 // Authentication utility for managing JWT tokens
-
 class AuthManager {
-  constructor() {
-    this.tokenKey = 'jwt_token';
-  }
+	constructor() {
+		this.tokenKey = 'jwt_token';
+	}
 
-  // Store token in localStorage
-  saveToken(token) {
-    localStorage.setItem(this.tokenKey, token);
-  }
+	// Store token in localStorage
+	saveToken(token) {
+		localStorage.setItem(this.tokenKey, token);
+	}
 
-  // Retrieve token from localStorage
-  getToken() {
-    return localStorage.getItem(this.tokenKey);
-  }
+	// Retrieve token from localStorage
+	getToken() {
+		return localStorage.getItem(this.tokenKey);
+	}
 
-  // Clear token (logout)
-  clearToken() {
-    localStorage.removeItem(this.tokenKey);
-  }
+	// Clear token (logout)
+	clearToken() {
+		localStorage.removeItem(this.tokenKey);
+	}
 
-  // Check if user is authenticated
-  isAuthenticated() {
-    return !!this.getToken();
-  }
+	// Check if user is authenticated
+	isAuthenticated() {
+		return !!this.getToken();
+	}
 
-  // Make authenticated API request
-  async fetchWithAuth(url, options = {}) {
-    const token = this.getToken();
-    
-    // Construct full API URL for production
-    let fullUrl = url;
-    if (!url.startsWith('http')) {
-      const apiBase = window.location.hostname === 'localhost' 
-        ? 'http://localhost:3020'
-        : `https://${window.location.hostname}`;
-      fullUrl = apiBase + url;
-    }
-    
-    const headers = {
-      'Content-Type': 'application/json',
-      ...options.headers
-    };
+	// Make authenticated API request
+	async fetchWithAuth(url, options = {}) {
+		const token = this.getToken();
 
-    if (token) {
-      headers['Authorization'] = `Bearer ${token}`;
-    }
+		// Construct full API URL for production
+		let fullUrl = url;
+		if (!url.startsWith('http')) {
+			const apiBase = window.location.hostname === 'localhost'
+				? 'http://localhost:3020'
+				: `https://${window.location.hostname}`;
+			fullUrl = apiBase + url;
+		}
 
-    return fetch(fullUrl, {
-      ...options,
-      headers
-    });
-  }
+		const headers = {
+			'Content-Type': 'application/json',
+			...options.headers
+		};
 
-  // Handle form submission for API endpoints
-  setupFormHandlers() {
-    document.querySelectorAll('form').forEach(form => {
-      // Skip non-API forms
-      const action = form.getAttribute('action');
-      if (!action || !action.startsWith('/api/')) return;
+		if (token) {
+			headers['Authorization'] = `Bearer ${token}`;
+		}
 
-      form.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        await this.submitForm(form);
-      });
-    });
-  }
+		return fetch(fullUrl, {
+			...options,
+			headers
+		});
+	}
 
-  // Submit form and handle response
-  async submitForm(form) {
-    const action = form.getAttribute('action');
-    const method = form.getAttribute('method') || 'POST';
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData);
+	// Handle form submission for API endpoints
+	setupFormHandlers() {
+		document.querySelectorAll('form').forEach(form => {
+			// Skip non-API forms
+			const action = form.getAttribute('action');
+			if (!action || !action.startsWith('/api/')) return;
 
-    try {
-      // Parse JSON fields if needed
-      if (data.tags && typeof data.tags === 'string') {
-        try {
-          data.tags = data.tags.split(',').map(t => t.trim());
-        } catch (e) {
-          data.tags = [];
-        }
-      }
-      if (data.photos && typeof data.photos === 'string') {
-        try {
-          data.photos = data.photos.split(',').map(p => p.trim());
-        } catch (e) {
-          data.photos = [];
-        }
-      }
-      if (data.audio && typeof data.audio === 'string') {
-        try {
-          data.audio = data.audio.split(',').map(a => a.trim());
-        } catch (e) {
-          data.audio = [];
-        }
-      }
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				await this.submitForm(form);
+			});
+		});
+	}
 
-      const response = await this.fetchWithAuth(action, {
-        method,
-        body: JSON.stringify(data)
-      });
+	// Submit form and handle response
+	async submitForm(form) {
+		const action = form.getAttribute('action');
+		const method = form.getAttribute('method') || 'POST';
+		const formData = new FormData(form);
+		const data = Object.fromEntries(formData);
 
-      // All API responses should be JSON
-      let result;
-      try {
-        result = await response.json();
-      } catch (error) {
-        console.error('Failed to parse response as JSON:', {
-          status: response.status,
-          statusText: response.statusText,
-          contentType: response.headers.get('content-type')
-        });
-        alert(`Server error (${response.status}): Server did not return valid JSON. Check server logs.`);
-        return;
-      }
+		try {
+			// Parse JSON fields if needed
+			if (data.tags && typeof data.tags === 'string') {
+				try {
+					data.tags = data.tags.split(',').map(t => t.trim());
+				} catch (e) {
+					data.tags = [];
+				}
+			}
+			if (data.photos && typeof data.photos === 'string') {
+				try {
+					data.photos = data.photos.split(',').map(p => p.trim());
+				} catch (e) {
+					data.photos = [];
+				}
+			}
+			if (data.audio && typeof data.audio === 'string') {
+				try {
+					data.audio = data.audio.split(',').map(a => a.trim());
+				} catch (e) {
+					data.audio = [];
+				}
+			}
 
-      // Handle login success - save token
-      if (action === '/api/auth/login' && response.ok && result.token) {
-        this.saveToken(result.token);
-        alert(`Login successful! Token saved.\nWelcome, ${result.user.username}`);
-        form.reset();
-        // Update UI to show user is logged in
-        this.updateAuthUI();
-      } else if (action === '/api/auth/logout' && response.ok) {
-        // Handle logout - clear token and update UI
-        this.clearToken();
-        this.updateAuthUI();
-        alert(result.message || 'Logout successful');
-        form.reset();
-      } else if (response.ok) {
-        alert(result.message || 'Success!');
-        form.reset();
-        // Refresh notes if a note was just created
-        if (action === '/api/notes/') {
-          this.displayNotes();
-        }
-      } else {
-        alert(`Error: ${result.error || 'Unknown error'}`);
-      }
+			const response = await this.fetchWithAuth(action, {
+				method,
+				body: JSON.stringify(data)
+			});
 
-      return result;
-    } catch (error) {
-      console.error('Form submission error:', error);
-      alert(`Error: ${error.message}`);
-    }
-  }
+			// All API responses should be JSON
+			let result;
+			try {
+				result = await response.json();
+			} catch (error) {
+				console.error('Failed to parse response as JSON:', {
+					status: response.status,
+					statusText: response.statusText,
+					contentType: response.headers.get('content-type')
+				});
+				alert(`Server error (${response.status}): Server did not return valid JSON. Check server logs.`);
+				return;
+			}
 
-  // Update UI to reflect authentication status
-  updateAuthUI() {
-    const isAuth = this.isAuthenticated();
-    const authStatus = document.getElementById('auth-status');
-    
-    if (authStatus) {
-      if (isAuth) {
-        authStatus.textContent = '✓ Logged in';
-        authStatus.style.color = 'green';
-      } else {
-        authStatus.textContent = 'Not logged in';
-        authStatus.style.color = 'red';
-      }
-    }
-  }
+			// Handle login success - save token
+			if (action === '/api/auth/login' && response.ok && result.token) {
+				this.saveToken(result.token);
+				alert(`Login successful! Token saved.\nWelcome, ${result.user.username}`);
+				form.reset();
+				// Update UI to show user is logged in
+				this.updateAuthUI();
+			} else if (action === '/api/auth/logout' && response.ok) {
+				// Handle logout - clear token and update UI
+				this.clearToken();
+				this.updateAuthUI();
+				alert(result.message || 'Logout successful');
+				form.reset();
+			} else if (response.ok) {
+				alert(result.message || 'Success!');
+				form.reset();
+				// Refresh notes if a note was just created 
+				if (action === '/api/notes/') {
+					this.displayNotes();
+				}
+			} else {
+				alert(`Error: ${result.error || 'Unknown error'}`);
+			}
 
-  // Fetch and display all notes
-  async displayNotes() {
-    const notesContainer = document.getElementById('all-notes-display');
-    if (!notesContainer) return;
+			return result;
+		} catch (error) {
+			console.error('Form submission error:', error);
+			alert(`Error: ${error.message}`);
+		}
+	}
 
-    try {
-      const response = await fetch('/api/notes/');
-      if (!response.ok) {
-        notesContainer.innerHTML = '<p>Error loading notes</p>';
-        return;
-      }
+	// Update UI to reflect authentication status
+	updateAuthUI() {
+		const isAuth = this.isAuthenticated();
+		const authStatus = document.getElementById('auth-status');
+		let authNum = (isAuth ? 1 : 0);
+		if (authStatus) {
+			if (isAuth) {
+				authStatus.textContent = '✓ Logged in';
+				authStatus.style.color = 'green';
+			} else {
+				authStatus.textContent = 'Not logged in';
+				authStatus.style.color = 'red';
+			}
+		}
+	}
 
-      const notes = await response.json();
+	// Fetch and display all notes
+	async displayNotes() {
+		const notesContainer = document.getElementById('all-notes-display');
+		if (!notesContainer) return;
 
-      if (!notes || notes.length === 0) {
-        notesContainer.innerHTML = '<p>No notes yet</p>';
-        return;
-      }
+		try {
+			const response = await fetch('/api/notes/');
+			if (!response.ok) {
+				notesContainer.innerHTML = '<p>Error loading notes</p>';
+				return;
+			}
 
-      // Create HTML for notes
-      notesContainer.innerHTML = notes.map(note => `
+			const notes = await response.json();
+
+			if (!notes || notes.length === 0) {
+				notesContainer.innerHTML = '<p>No notes yet</p>';
+				return;
+			}
+
+			// Create HTML for notes
+			notesContainer.innerHTML = notes.map(note => `
         <div class="flex-table-row grid-col-1-3-1">
           <div>${this.escapeHtml(note.title)}</div>
           <div>${this.escapeHtml(note.body)}</div>
           <div>${note.tags && note.tags.length > 0 ? `${note.tags.map(t => this.escapeHtml(t)).join(', ')}</div>` : ''}
         </div>
       `).join('');
-    } catch (error) {
-      console.error('Error fetching notes:', error);
-      notesContainer.innerHTML = '<p>Error loading notes</p>';
-    }
-  }
+		} catch (error) {
+			console.error('Error fetching notes:', error);
+			notesContainer.innerHTML = '<p>Error loading notes</p>';
+		}
+	}
 
-  // Escape HTML to prevent XSS
-  escapeHtml(text) {
-    const div = document.createElement('div');
-    div.textContent = text;
-    return div.innerHTML;
-  }
+	// Escape HTML to prevent XSS
+	escapeHtml(text) {
+		const div = document.createElement('div');
+		div.textContent = text;
+		return div.innerHTML;
+	}
 
-  // Logout user
-  async logout() {
-    try {
-      const response = await this.fetchWithAuth('/api/auth/logout', {
-        method: 'POST'
-      });
+	// Logout user
+	async logout() {
+		try {
+			const response = await this.fetchWithAuth('/api/auth/logout', {
+				method: 'POST'
+			});
 
-      if (response.ok) {
-        this.clearToken();
-        localStorage.clear();
-        this.updateAuthUI();
-        alert('Logged out successfully');
-        // Optionally redirect to login page
-        // window.location.href = '/login';
-      } else {
-        alert('Logout failed');
-      }
-    } catch (error) {
-      console.error('Logout error:', error);
-      alert(`Error: ${error.message}`);
-    }
-  }
+			if (response.ok) {
+				this.clearToken();
+				localStorage.clear();
+				this.updateAuthUI();
+				alert('Logged out successfully');
+				// Optionally redirect to login page
+				// window.location.href = '/';
+			} else {
+				alert('Logout failed');
+			}
+		} catch (error) {
+			console.error('Logout error:', error);
+			alert(`Error: ${error.message}`);
+		}
+	}
 
-  // Initialize on page load
-  init() {
-    this.setupFormHandlers();
-    this.updateAuthUI();
-    this.displayNotes();
-  }
+	// Initialize on page load
+	init() {
+
+		this.setupFormHandlers();
+		this.updateAuthUI();
+	}
 }
 
 // Create global instance
@@ -240,7 +239,7 @@ const authManager = new AuthManager();
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', () => authManager.init());
+	document.addEventListener('DOMContentLoaded', () => authManager.init());
 } else {
-  authManager.init();
+	authManager.init();
 }
