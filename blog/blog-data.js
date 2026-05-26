@@ -799,7 +799,7 @@ const blogData = [
 	taking a toll on me. I'm not sure. I think I should force myself to <t‰>sleep and live</t‰> during the day for a while, while I can. 
 	Heck. I'm grateful to have this unexpected extra time afforded to me. I should go now.
 	</b‰>`,
-	
+
 	`<d‰>May 21st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2023 HRS</j‰>
@@ -839,7 +839,7 @@ const blogData = [
 	Are the socialized systems in other countries going to last given aging populations and system exploitation? I certainly see these
 	concerns growing in Japan and places in Europe. In any case, I can only speculate and see what reality unfolds for me to witness.
 	</b‰>`,
-	
+
 	`<d‰>June 1st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0214 HRS</j‰>
@@ -1323,7 +1323,7 @@ const blogData = [
 	the excess options that oppress rather than free. I am going to stick with my choice and that's that. 
 	I will have an inkling of faith for the nation to prevail for its sake and for my <t‰>investments</t‰>.
 	</b‰>`,
-	
+
 	`<d‰>October 31st, 2025</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>1717 HRS</j‰>
@@ -1869,7 +1869,7 @@ const blogData = [
 	<t‰>decoupling uniform and identity</t‰>. I will afford myself the grace to adjust to this newness. In any case, thank you all: sergeant,
 	corporal, officers, my trainees, and administration. Thank you.
 	</b‰>`,
-	
+
 	`<d‰>March 15th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>2037 HRS</j‰>
@@ -2071,7 +2071,6 @@ const blogData = [
 	`<d‰>DATE</d‰>
 	<l‰>LOCATION</l‰>
 	<j‰>HOURS</j‰>
-	<g‰></g‰>
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
@@ -2083,5 +2082,5 @@ const blogData = [
 	</b‰>`,
 
 	*/ // |==========| END NEW ENTRY TEMPLATE |=====|
-	
-]	;
+
+];

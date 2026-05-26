@@ -7,7 +7,7 @@ const router = express.Router();
 // Create a new blog post
 router.post('/', authenticateToken, async (req, res) => {
   try {
-    const { title, content, date_posted, location, hours, tags } = req.body;
+    const { title, date_posted, location, hours, audio, photos, tags, content } = req.body;
     const user_id = req.user.id;
 
     if (!title || !content) {
@@ -17,15 +17,15 @@ router.post('/', authenticateToken, async (req, res) => {
     const connection = await pool.getConnection();
 
     const [result] = await connection.execute(
-      'INSERT INTO blog_posts (user_id, title, content, date_posted, location, hours, tags) VALUES (?, ?, ?, ?, ?, ?, ?)',
-      [user_id, title, content, date_posted, location, hours, JSON.stringify(tags || [])]
+      'INSERT INTO blog_posts (title, date_posted, location, hours, audio, photos, user_id, tags, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      [title, date_posted, location, hours, audio, photos, user_id, tags, content]
     );
 
     connection.release();
 
-    res.status(201).json({ 
-      message: 'Blog post created successfully',
-      postId: result.insertId 
+    res.status(201).json({
+      message: '(1) Blog post created successfully!',
+      postId: result.insertId
     });
   } catch (error) {
     console.error('Blog post creation error:', error);
@@ -111,7 +111,8 @@ router.put('/:id', authenticateToken, async (req, res) => {
 
     await connection.execute(
       'UPDATE blog_posts SET title = ?, content = ?, date_posted = ?, location = ?, hours = ?, tags = ? WHERE id = ?',
-      [title, content, date_posted, location, hours, JSON.stringify(tags || []), id]
+
+      [title, content, date_posted, location, hours, tags, id]
     );
 
     connection.release();

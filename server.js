@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const url = require('url');
 
 const app = express();
 const PORT = process.env.PORT || 3020;
@@ -29,8 +30,6 @@ app.use('/api/auth', authRoutes);
 app.use('/api/blog', blogRoutes);
 app.use('/api/notes', notesRoutes);
 
-
-
 // 404 handler for API routes - return JSON instead of HTML
 app.use('/api/*', (req, res) => {
   res.status(404).json({ error: 'API endpoint not found' });
@@ -42,8 +41,10 @@ app.use(express.static(path.join(__dirname)));
 
 // Fallback to index.html for any unmatched routes (client-side routing support)
 app.get('*', (req, res) => {
-  res.json(path.join(__dirname, 'index.html'));
+  res.sendFile(path.join(__dirname, 'index.html'));
 });
+
+
 
 // Start the server
 app.listen(PORT, () => {

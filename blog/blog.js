@@ -113,7 +113,7 @@ function pauseVideo() {
  */
 function pauseVideoOnConsole() {
 	(setTimeout(() => {
-		console.clear();
+		// console.clear();
 		console.groupCollapsed("Pausing Blog Post " + currentlyReadingNumber + " YouTube Player");
 		console.info("Audio: " + player.videoTitle);
 		pauseVideo();
@@ -250,7 +250,7 @@ function displayCurrentlyReading() {
 			}).catch((fetchError) => {
 				console.error("Error fetching YouTube Player API Script: ", fetchError);
 			});
-		} 
+		}
 	} finally {
 		pauseVideoOnConsole();
 	}
@@ -537,7 +537,6 @@ function initIndexedDB(crud, queryData) {
 /* |==========| RUNNER |====================> */
 (console.log("|=====| START |=====|=====>"), async () => {
 
-	CMBRutil.navigationCharter();
 	initBlogMap(activeBlogPostCoordinates);
 	initBlogData(blogData);
 	enableBlogButtons();

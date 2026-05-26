@@ -47,7 +47,6 @@ router.post('/register', async (req, res) => {
     res.status(500).json({ error: 'Registration failed' });
   }
 });
-
 // Login user
 router.post('/login', async (req, res) => {
   try {
@@ -80,7 +79,6 @@ router.post('/login', async (req, res) => {
       return res.status(401).json({ error: 'Invalid username or password' });
     }
 
-    // Generate JWT token
     const token = jwt.sign(
       { id: user.id, username: user.username },
       process.env.JWT_SECRET,
@@ -88,20 +86,25 @@ router.post('/login', async (req, res) => {
     );
 
     res.json({
-      message: 'Login successful',
+      message: `(1) Login successful. Welcome, ${user.username}!`,
       token,
-      user: { id: user.id, username: user.username }
+      user: { id: user.id, username: user.username },
+      redirectUrl: '/'  // Client reads this
     });
+
   } catch (error) {
     console.error('Login error:', error);
     res.status(500).json({ error: 'Login failed' });
   }
 });
 
-router.post('/logout', (req, res) => {
-  // JWT logout is handled client-side by clearing the token
-  // The server confirms the logout request
-  res.json({ message: 'Logout successful' });
+router.post('/logout', (req, res,) => {
+
+  res.json({
+    message: '(1) Logout successful. Bye!',
+    redirectUrl: '/'  // Client reads this
+  });
+
 });
 
 module.exports = router;

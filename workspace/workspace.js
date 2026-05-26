@@ -13,7 +13,7 @@ const ipsumData = {
 
 (() => {
 
-	// CMBRx.alpdamadi();
+	// CMBRx.alpdamadist();
 	// CMBRutil.atSiteIndex();
 	// enableDropdowns();
 

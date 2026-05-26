@@ -40,7 +40,7 @@ const tracks = [ // ../assets/music-tracks/music-
 	trackSixthMission = new Track("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-sixth-mission.m4a", true, false),
 	trackSecondCommune = new Track("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", true, false),
 	trackSuperScapegraceOriginal = new Track("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-super-scapegrace-original.m4a", true, false),
-	
+
 ];
 
 const trackList = document.getElementById("track-list");
@@ -58,7 +58,7 @@ function audioEffects() {
 
 	if (!currentAudio.paused || currentAudio.currentTime) {
 		console.log("inside!");
-		document.getElementById("backdrop-low").classList.add("animated-gradient"); 
+		document.getElementById("backdrop-low").classList.add("animated-gradient");
 	}
 }
 /**
@@ -72,30 +72,30 @@ function loadSortedTracks(value) {
 	let selectedTracks = [];
 	let selectedCount = 0;
 
-			for (i = 0; i < tracks.length; i++) {
-				if (value === "finished") {
-					if (tracks[i].completeOrIncomplete) {
-						selectedTracks[selectedCount] = tracks[i];
-						selectedCount++;
-					}
-				} else if (value === "scraps") {
-					if (!tracks[i].completeOrIncomplete) {
-						selectedTracks[selectedCount] = tracks[i];
-						selectedCount++;
-					}
-				} else if (value == tracks[i].year) {
-					console.log(value == tracks[i].year);
-					console.log(tracks[i].year);
-					selectedTracks[selectedCount] = tracks[i];
-					selectedCount++;
-				} else if (value === tracks[i].compilation) {
-					console.log(value === tracks[i].compilation);
-					selectedTracks[selectedCount] = tracks[i];
-					selectedCount++;
-				} else if (value === "all-music") {
-					selectedTracks = tracks;
-				}
-			}	
+	for (i = 0; i < tracks.length; i++) {
+		if (value === "finished") {
+			if (tracks[i].completeOrIncomplete) {
+				selectedTracks[selectedCount] = tracks[i];
+				selectedCount++;
+			}
+		} else if (value === "scraps") {
+			if (!tracks[i].completeOrIncomplete) {
+				selectedTracks[selectedCount] = tracks[i];
+				selectedCount++;
+			}
+		} else if (value == tracks[i].year) {
+			console.log(value == tracks[i].year);
+			console.log(tracks[i].year);
+			selectedTracks[selectedCount] = tracks[i];
+			selectedCount++;
+		} else if (value === tracks[i].compilation) {
+			console.log(value === tracks[i].compilation);
+			selectedTracks[selectedCount] = tracks[i];
+			selectedCount++;
+		} else if (value === "all-music") {
+			selectedTracks = tracks;
+		}
+	}
 
 	return selectedTracks;
 }
@@ -109,8 +109,8 @@ function populateTrackList(tracksArray) {
 		trackList.appendChild(trackListItem);
 		trackListItem.addEventListener("click", function (e) {
 			if (e.target && e.target.matches("li")) {
-					loadSelectedTrack(tracksArray[trackListItem.getAttribute("id").substring(2)]);
-					trackListItem.classList.add("track-list-selected-highlight");
+				loadSelectedTrack(tracksArray[trackListItem.getAttribute("id").substring(2)]);
+				trackListItem.classList.add("track-list-selected-highlight");
 			}
 		});
 	}
@@ -119,7 +119,7 @@ function populateTrackList(tracksArray) {
 
 function enableMusicSortButtons() {
 	document.querySelectorAll(".music-sort-button").forEach(button => {
-		button.onclick = function() {
+		button.onclick = function () {
 			console.log(button.value);
 			populateTrackList(loadSortedTracks(button.value));
 		}
@@ -157,7 +157,7 @@ function enableSortByYearAndAlbum() {
 	let yearArray = [];
 	let albumArray = [];
 	for (let i = 0; i < tracks.length; i++) {
-		if (!yearArray.includes(tracks[i].year)){
+		if (!yearArray.includes(tracks[i].year)) {
 			yearArray += tracks[i].year;
 			const option = document.createElement("option");
 			const text = document.createTextNode(tracks[i].year);
@@ -172,10 +172,10 @@ function enableSortByYearAndAlbum() {
 			sortByAlbum.appendChild(option);
 		}
 	};
-	sortByYear.onchange = function (){
+	sortByYear.onchange = function () {
 		populateTrackList(loadSortedTracks(sortByYear.value));
 	};
-	sortByAlbum.onchange = function (){
+	sortByAlbum.onchange = function () {
 		populateTrackList(loadSortedTracks(sortByAlbum.value));
 	}
 }
@@ -187,6 +187,5 @@ function enableSortByYearAndAlbum() {
 	loadSelectedTrack(selectedTrack);
 	highlightSelectedTrack();
 	enableSortByYearAndAlbum();
-	CMBRutil.navigationCharter();
 
 })();

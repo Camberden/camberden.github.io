@@ -18,24 +18,23 @@
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4/dist/purify.min.js"></script>
-	<script src="/validation/auth-manager.js"></script>
 	<script src="/cmbr.js"></script>
+	<script src="/validation/auth-manager.js"></script>
 	<script src="/htmx.js"></script>
+
 	<title>Chrispy's Workspace</title>
 </head>
 
 <body data-theme="dark">
 
-	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg>
+	</nav>
 
 	<hr class="hr-push-up">
 	<div class="button-grid-row"
 		style="border:0.2rem ridge burlywood; background-image: var(--mosky-3); padding: 0.8rem;">
 
 		<!-- % LEFT -->
-		<button id="auth-status" class="trigger-box"></button>
-		</button>
-
 		<button class="trigger-box" hx-get="../template/reeducation.html" hx-target="#wksp-left" hx-trigger="click"
 			hx-swap="innerHTML">Reeducation</button>
 
@@ -63,6 +62,8 @@
 			hx-swap="innerHTML">Dummyjson</button>
 		<button class="trigger-box" hx-get="../template/depository.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Note Depository</button>
+		<button class="trigger-box" hx-get="../blog/new-post.html" hx-target="#wksp-center" hx-trigger="click"
+			hx-swap="innerHTML">New blog post</button>
 
 		<!-- % RIGHT -->
 
@@ -83,6 +84,7 @@
 
 		<div id="wksp-center" class="cmbr-item cmbr-item-center"
 			style="border:0.2rem ridge burlywood; background-color: var(--cmbr-blass); padding: 0.8rem;">
+
 
 
 		</div>

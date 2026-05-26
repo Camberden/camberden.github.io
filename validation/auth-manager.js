@@ -4,19 +4,30 @@ class AuthManager {
 		this.tokenKey = 'jwt_token';
 	}
 
-	// Store token in localStorage
+	// Store token in cookie (works better across partitioned contexts)
 	saveToken(token) {
-		localStorage.setItem(this.tokenKey, token);
+		// Set cookie to expire in 7 days, accessible from all paths
+		const expiryDate = new Date();
+		expiryDate.setTime(expiryDate.getTime() + 7 * 24 * 60 * 60 * 1000);
+		document.cookie = `${this.tokenKey}=${token};path=/;expires=${expiryDate.toUTCString()};SameSite=Lax`;
 	}
 
-	// Retrieve token from localStorage
+	// Retrieve token from cookie
 	getToken() {
-		return localStorage.getItem(this.tokenKey);
+		const nameEQ = this.tokenKey + "=";
+		const cookies = document.cookie.split(';');
+		for (let i = 0; i < cookies.length; i++) {
+			let cookie = cookies[i].trim();
+			if (cookie.indexOf(nameEQ) === 0) {
+				return cookie.substring(nameEQ.length);
+			}
+		}
+		return null;
 	}
 
 	// Clear token (logout)
 	clearToken() {
-		localStorage.removeItem(this.tokenKey);
+		document.cookie = `${this.tokenKey}=;path=/;expires=Thu, 01 Jan 1970 00:00:00 UTC;SameSite=Lax`;
 	}
 
 	// Check if user is authenticated
@@ -52,18 +63,18 @@ class AuthManager {
 		});
 	}
 
-	// Handle form submission for API endpoints
+	// Handle form submission for API endpoints (with event delegation for dynamic forms)
 	setupFormHandlers() {
-		document.querySelectorAll('form').forEach(form => {
-			// Skip non-API forms
+		// Use event delegation on document to catch dynamically added forms
+		document.addEventListener('submit', async (e) => {
+			const form = e.target;
 			const action = form.getAttribute('action');
+			// Skip non-API forms
 			if (!action || !action.startsWith('/api/')) return;
 
-			form.addEventListener('submit', async (e) => {
-				e.preventDefault();
-				await this.submitForm(form);
-			});
-		});
+			e.preventDefault();
+			await this.submitForm(form);
+		}, true); // Use capture phase to catch before other handlers
 	}
 
 	// Submit form and handle response
@@ -116,19 +127,33 @@ class AuthManager {
 				return;
 			}
 
-			// Handle login success - save token
+			// % Handle login success - save token
 			if (action === '/api/auth/login' && response.ok && result.token) {
 				this.saveToken(result.token);
-				alert(`Login successful! Token saved.\nWelcome, ${result.user.username}`);
+				alert(result.message || `(2) Login successful! \nWelcome, ${result.user.username}`);
 				form.reset();
 				// Update UI to show user is logged in
 				this.updateAuthUI();
+				if (result.redirectUrl) {
+					window.location.href = result.redirectUrl;
+				}
+				// % Handle logout success - clear token
 			} else if (action === '/api/auth/logout' && response.ok) {
 				// Handle logout - clear token and update UI
 				this.clearToken();
+				alert(result.message || '(2) Logout successful.');
 				this.updateAuthUI();
-				alert(result.message || 'Logout successful');
 				form.reset();
+				if (result.redirectUrl) {
+					window.location.href = result.redirectUrl;
+				}
+			} else if (action === '/api/blog/' && response.ok) {
+				alert(result.message || '(2) Post created!');
+				form.reset();
+
+			} else if (action === '/api/notes/' && response.ok) {
+				console.log("Notes");
+				this.displayNotes();
 			} else if (response.ok) {
 				alert(result.message || 'Success!');
 				form.reset();
@@ -150,16 +175,14 @@ class AuthManager {
 	// Update UI to reflect authentication status
 	updateAuthUI() {
 		const isAuth = this.isAuthenticated();
-		const authStatus = document.getElementById('auth-status');
-		let authNum = (isAuth ? 1 : 0);
-		if (authStatus) {
-			if (isAuth) {
-				authStatus.textContent = '✓ Logged in';
-				authStatus.style.color = 'green';
-			} else {
-				authStatus.textContent = 'Not logged in';
-				authStatus.style.color = 'red';
+		try {
+			if (Alpine && Alpine.store && Alpine.store('nauth')) {
+				if (isAuth !== Alpine.store('nauth').valid) {
+					Alpine.store('nauth').toggle();
+				}
 			}
+		} catch (error) {
+			console.warn('Could not update Alpine store:', error);
 		}
 	}
 
@@ -210,15 +233,17 @@ class AuthManager {
 				method: 'POST'
 			});
 
+			const result = await response.json();
+
 			if (response.ok) {
 				this.clearToken();
-				localStorage.clear();
 				this.updateAuthUI();
-				alert('Logged out successfully');
-				// Optionally redirect to login page
-				// window.location.href = '/';
+				alert(result.message || '(2) Logout successful.');
+				if (result.redirectUrl) {
+					window.location.href = result.redirectUrl;
+				}
 			} else {
-				alert('Logout failed');
+				alert(result.error || 'Logout failed');
 			}
 		} catch (error) {
 			console.error('Logout error:', error);
@@ -228,7 +253,6 @@ class AuthManager {
 
 	// Initialize on page load
 	init() {
-
 		this.setupFormHandlers();
 		this.updateAuthUI();
 	}
@@ -236,6 +260,7 @@ class AuthManager {
 
 // Create global instance
 const authManager = new AuthManager();
+
 
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {

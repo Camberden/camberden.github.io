@@ -1,11 +1,13 @@
-<div x-data>
-	<template x-if="! authManager.isAuthenticated() " x-effect="authManager.setupFormHandlers()">
+<div x-data="{
+
+	}" x-effect=" authManager.setupFormHandlers() ">
+	<template x-if=" !authManager.isAuthenticated() ">
 		<form id="login-form" class="grid-col-1-1" method="POST" action="/api/auth/login">
-			<label for="login-username">Enter username &emsp;</label>
+			<label for="username">Enter username &emsp;</label>
 			<input type="text" name="username" autocomplete="username" required>
 
-			<label for="current-password">Enter password &emsp;</label>
-			<input type="password" name="password" autocomplete="current-password" required>
+			<label for="password">Enter password &emsp;</label>
+			<input type="password" name="password" autocomplete="password" required>
 
 			<div></div>
 			<button :class="'trigger-box'" type="submit">Login</button>

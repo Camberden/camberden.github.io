@@ -1,36 +1,37 @@
 <div id="depository-handle" x-data="{
-			allNotes: $get('/api/notes/'),
 		}">
 	<div>
-		<form action="/api/notes/" method="POST" class="grid-col-1-1">
-			<label for="title">Title &emsp;</label>
-			<input type="text" name="title" :id=$id('title') required>
+		<template x-if=" $store.nauth.valid ">
+			<form action="/api/notes/" method="POST" class="grid-col-1-1">
+				<label for="title">Title &emsp;</label>
+				<input type="text" name="title" :id=$id('title') required>
 
-			<label for="tags">Tags &emsp;</label>
-			<input type="text" name="tags" :id=$id('tags') required>
+				<label for="tags">Tags &emsp;</label>
+				<input type="text" name="tags" :id=$id('tags') required>
 
-			<label for="location">Location &emsp;</label>
-			<input type="text" name="location" :id=$id('location')>
+				<label for="location">Location &emsp;</label>
+				<input type="text" name="location" :id=$id('location')>
 
-			<label for="photos">Photos &emsp;</label>
-			<input type="text" name="photos" :id=$id('photos')>
+				<label for="photos">Photos &emsp;</label>
+				<input type="text" name="photos" :id=$id('photos')>
 
-			<label for="audio">Audio &emsp;</label>
-			<input type="text" name="audio" :id=$id('audio')>
+				<label for="audio">Audio &emsp;</label>
+				<input type="text" name="audio" :id=$id('audio')>
 
-			<label for="body">Body &emsp;</label>
-			<textarea name="body" :id=$id('body') rows="4"></textarea>
+				<label for="body">Body &emsp;</label>
+				<textarea name="body" :id=$id('body') rows="4"></textarea>
 
-			<div></div>
-			<button type="submit">Make Note!</button>
-		</form>
-		<hr class="hr-push-up">
+				<div></div>
+				<button type="submit">Make Note!</button>
+			</form>
+			<hr class="hr-push-up">
+		</template>
 	</div>
 
 	<div>
 		<div id="all-notes-display">
 			<div class="flex-table">
-				<template x-for="(note, index) in allNotes" :key="index">
+				<template x-for="(note, index) in $get('/api/notes/')" :key="index">
 					<div :class="'flex-table-row grid-col-1-1-1'">
 						<span x-html="note.title"></span>
 						<span x-html="note.body"></span>

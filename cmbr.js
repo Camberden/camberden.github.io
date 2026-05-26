@@ -5,51 +5,6 @@
  * @author Camberden (Chrispy | Kippi)  
  */
 // htmx.config.selfRequestsOnly = false;
-
-/** 
- * @description Site Map Links
- * @readonly
- * @kind linkArray
- * @var {String} section: this is the directory name of the page linked.
- * @var {String} sectionPageName: the name to appear on the page.
- * @example [["section/section.html","SectionPageName"],],
- */
-const sections = [
-	["homepage", "Homepage ↺"],
-	["dashboard", "Personal Dashboard"],
-	["workspace", "Coding Workspace"],
-	["blog", "Blogging Page"],
-	// ["accounting", "Accounting Resource"],
-	["travel", "Travel Page"],
-	// ["lifecraft", "Lifecraft Page"],
-	["musings", "Musings Page"],
-	// ["template", "Template"],
-	// ["fantasy", "Fantasyland"],
-	// ["segregation", "Segregation"],
-	// ["mainframe", "Mainframe"],
-	["music", "Original Music"],
-];
-/** 
- * @description Links to Frequented External Sites
- * @readonly
- * @kind linkArray
- * @var {String} section: this is the directory name of the page linked.
- * @var {String} sectionPageName: the name to appear on the page.
- * @example [["section/section.html","SectionPageName"],],
- */
-const bookmarks = [
-	["https://www.youtube.com/watch?v=XgqTrvcAySA", "Checkpoint"],
-	["https://ankiweb.net/", "Anki Web"],
-	["https://www.clozemaster.com", "Clozemaster"],
-	["https://jisho.org", "Jisho"],
-	["https://www3.nhk.or.jp/news/easy/", "NHK Yasashii"],
-	["https://account.cengage.com/login?", "Coursework"],
-	["https://maps.google.com", "Maps"],
-	["https://wd108.myworkday.com/wday/authgwy/nc/login.html", "Internal Jobs"],
-	["https://int.dac.nc.gov", "Intranet"],
-	["https://portal.osc.nc.gov/app", "Fiori"],
-	["https://alpinejs.dev/components", "Alpine Components"],
-];
 const coordinates = {
 	"Chapel Hill, NC": [35.963193, -79.058806],
 	"Hillsborough, NC": [36.074342, -79.100648],
@@ -78,58 +33,45 @@ const baseHyperlinks = [
 const nonStaticSite = "https://camberden.net";
 const nonStaticDev = "http://localhost:3020";
 
-const CMBRx = {
+/**
+ * @function
+ * @global
+ * @event alpine:init
+ * @description Intializes ALPine DAta, MAgics, DIrectives, and STores
+ */
+document.addEventListener("alpine:init", () => {
+	// |==========| Alpine Data |==========|
+	Alpine.data('cmbr', () => ({
 
-	/**
-	 * @function
-	 * @global
-	 * @memberOf CMBRx
-	 * @event alpine:init
-	 * @description Intializes ALPine DAta, MAgics, DIrectives, and STores
-	 */
-	alpdamadist: function () {
-		document.addEventListener("alpine:init", () => {
-			// |==========| Alpine Data |==========|
-			Alpine.data('cmbr', () => ({
+	})); // %=> end of Alpine Data
+	// |==========| Alpine Magics |==========|
+	Alpine.magic("tooltip", el => message => {
+		let instance = tippy(el, { content: message, trigger: 'manual' });
 
+		instance.show();
 
-			})); // %=> end of Alpine Data
-			// |==========| Alpine Magics |==========|
-			Alpine.magic("tooltip", el => message => {
-				let instance = tippy(el, { content: message, trigger: 'manual' });
+		setTimeout(() => {
+			instance.hide();
 
-				instance.show();
+			setTimeout(() => instance.destroy(), 150);
+		}, 2000);
+	});
 
-				setTimeout(() => {
-					instance.hide();
+	// |==========| Alpine Directives |==========|
+	Alpine.directive("tooltip", (el, { expression }) => {
+		tippy(el, { content: expression });
+	});
 
-					setTimeout(() => instance.destroy(), 150);
-				}, 2000);
-			});
+	// |==========| Alpine Store |==========|
+	Alpine.store('nauth', {
+		valid: false,
+		toggle() {
+			this.valid = !this.valid;
+		}
+	}
+	);
+});
 
-			// |==========| Alpine Directives |==========|
-			Alpine.directive("tooltip", (el, { expression }) => {
-				tippy(el, { content: expression });
-			});
-
-			// |==========| Alpine Store |==========|
-			Alpine.store('darkMode', {
-				on: false,
-
-				toggle() {
-					this.on = !this.on
-				}
-			});
-		});
-
-		document.addEventListener('alpine:initialized', () => {
-			this.atHome ? sout("At Home: true") : sout("At Home: false");
-			sout("Alpine Data, Magics, and Directives initialized.");
-			sout("Alpine Version: " + Alpine.version);
-		});
-	},
-
-}
 
 const CMBRrouter = {
 	/**

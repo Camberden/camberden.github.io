@@ -1,8 +1,13 @@
 <div id="nav-handle" x-data="{ 
     atIndex: CMBRutil.atSiteIndex(),
-    sectionsHandle: CMBRutil.staticLinkTransform('sections.html') }">
+    sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
+    navInfo: 'Checking auth... ',
+    authMan: authManager.init(),
+    navLoaded: Alpine.store('nauth').valid,
 
-    <template x-if="!atIndex">
+    }" x-bg>
+
+    <template x-if=" !atIndex">
         <div class="nav-sail">
             <!-----| NAV 1 |----->
             <div id="nav-1" x-data="{ active: 0 }">
@@ -40,6 +45,10 @@
             <!-----| NAV 2 |----->
             <div id="nav-2">
                 <h1 class="h1-lamp">
+                    <div id="nav-auth-status">
+                        <span x-text=" navLoaded ? 'Logged in ' : 'Not logged in'" :class="'vt323'"
+                            :style=" navLoaded ? 'color:green;' : 'color:red' "></span>
+                    </div>
                     <!-- ♪ -->
                 </h1>
             </div>

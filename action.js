@@ -97,6 +97,7 @@ const randomizeMonicker = () => {
 	}
 	camberden.style.opacity = "100%";
 }
+
 /**
  * @param {Object} album
  */
@@ -121,7 +122,6 @@ const randomizePhotos = (album) => {
 
 (async (/*=====*| RUN |*=====*/) => {
 
-	CMBRx.alpdamadist();
 	const photos = await CMBRutil.connectCMBRjson(["travel-photos"]);
 	convertToJapaneseDate(formatter(latestUpdate));
 	randomizePhotos(photos);
