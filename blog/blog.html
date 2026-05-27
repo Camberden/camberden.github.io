@@ -7,10 +7,12 @@
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="blog.css" media="screen" />
+	<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script async src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -25,7 +27,12 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main class="flex-grid-cmbr grid-col-1-3-1">
+	<main class="flex-grid-cmbr grid-col-1-3-1" x-data="{
+			modifyingBp: false,
+			toggleModifyingBp() { 
+				this.modifyingBp = !this.modifyingBp;
+			}
+		}">
 
 		<!-- % LEFT -->
 		<div class="blog-item" id="blog-post-listings">
@@ -34,8 +41,6 @@
 				<option value="all-years">All Years</option>
 			</select>
 			<br>
-			<!-- <button id="previous-bp" class="blog-button" value="previous">Previous</button> -->
-			<!-- <button id="next-bp" class="blog-button" value="next">Next</button> -->
 			<hr class="hr-cmbr-dark-gradient">
 			<hr class="hr-groove-top">
 
@@ -48,23 +53,30 @@
 
 		</div>
 		<!-- % CENTER -->
-		<article id="blog-post-articles" class="blogging-font" x-data>
+		<article id="blog-post-articles" class="blogging-font">
 			<div class="blog-post-header">
 				<!-- <template> -->
-				<button x-show="$store.nauth.valid" id="new-bp">Write New Post</button>
-				<button x-show="$store.nauth.valid" id="update-bp">Update</button>
+				<button x-show="$store.nauth.valid && !modifyingBp" id="new-bp" hx-get="new-post.html"
+					hx-trigger="click" hx-target="#modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Write New
+					Post</button>
+				<button x-show="$store.nauth.valid && !modifyingBp" id="update-bp" hx-get="update-post.html"
+					hx-trigger="click" hx-swap="modify-bp" @click="toggleModifyingBp()">Update</button>
 				<!-- </template> -->
-				<button id="previous-bp" class="blog-button">Previous</button>
-				<button id="next-bp" class="blog-button">Next</button>
+				<button id="previous-bp" class="blog-button" x-show="!modifyingBp">Previous</button>
+				<button id="next-bp" class="blog-button" x-show="!modifyingBp">Next</button>
 			</div>
-			<div>
-				<p id="blog-post-date">August 11th, 2024</p>
-				<p id="blog-post-location">Chapel Hill Suite</p>
-				<p id="blog-post-time">2200HRS</p>
+			<div x-show="!modifyingBp">
+				<div>
+					<p id="blog-post-date">August 11th, 2024</p>
+					<p id="blog-post-location">Chapel Hill Suite</p>
+					<p id="blog-post-time">2200HRS</p>
+				</div>
+				<div>
+					<p id="blog-post-body"></p>
+				</div>
 			</div>
-			<div>
-				<p id="blog-post-body"></p>
-			</div>
+			<div id="modify-bp" x-show="modifyingBp"></div>
+
 
 		</article>
 

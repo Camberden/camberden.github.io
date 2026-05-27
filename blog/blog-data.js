@@ -2061,7 +2061,7 @@ const blogData = [
 	<b‰>&emsp;
 	The series of events this month have been a grand mixture of lows, highs, and middles I unlike most months prior.
 	From understimulation to overstimulation, from feelings of abandonment to love, from heightened activity to dormant passivity, from banality to 
-	novelty, from social connection to relclusivity, it was all there.
+	novelty, from social connection to reclusivity, it was all there.
 	<t‰>It always comes as a surprise</t‰>, whatever aspect of a following chapter in life serves to lift the spirits and offer a means to inject purpose
 	to previous afflictions.
 	</b‰>`,

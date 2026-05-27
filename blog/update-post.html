@@ -1,7 +1,6 @@
-<div id="new-post-handle" class="blog-post-header" x-data="{
+<div id="new-post-handle" class="cmbr-pen" x-data="{
 		}">
 	<div>
-		<button x-show="$store.nauth.valid" id="exit-new-bp">Return</button>
 
 		<form action="/api/blog/" method="POST" class="grid-col-1-1" x-effect=" authManager.setupFormHandlers() ">
 			<label for="title">Title &emsp;</label>
@@ -29,17 +28,4 @@
 		<hr class="hr-push-up">
 	</div>
 
-	<div>
-		<div id="all-bp-display">
-			<div class="flex-table">
-				<template x-for="(bp, index) in allBp" :key="index">
-					<div :class="'flex-table-row grid-col-1-1-1'">
-						<span x-html="bp.title"></span>
-						<span x-html="bp.body"></span>
-						<span x-html="bp.tags"></span>
-					</div>
-				</template>
-			</div>
-		</div>
-	</div>
 </div>

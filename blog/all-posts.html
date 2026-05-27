@@ -1,0 +1,13 @@
+<div id="all-posts-handler">
+	<div id="all-bp-display">
+		<div class="flex-table">
+			<template x-for="(bp, index) in allBp" :key="index">
+				<div :class="'flex-table-row grid-col-1-1-1'">
+					<span x-html="bp.title"></span>
+					<span x-html="bp.content"></span>
+					<span x-html="bp.tags"></span>
+				</div>
+			</template>
+		</div>
+	</div>
+</div>

@@ -91,7 +91,7 @@ function onPlayerReady(event) {
 };
 function onPlayerStateChange(event) {
 	if (event.data == YT.PlayerState.PLAYING && !done) {
-		setTimeout(pauseVideo, 60000);
+		setTimeout(console.info("Sixty-five-thousand."), 65000);
 		done = true;
 	}
 };
@@ -286,9 +286,7 @@ function enableBlogButtons() {
 			CMBRutil.buttonOnClick(button);
 
 			switch (button.id) {
-				case "migration-bp":
-					blogPostDatabaseMigration(blogPosts);
-					break;
+
 				case "next-bp":
 					if (currentlyReadingNumber < blogPosts.length) {
 						document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
@@ -303,6 +301,17 @@ function enableBlogButtons() {
 						document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
 					}
 					break;
+				case "migration-bp":
+					blogPostDatabaseMigration(blogPosts);
+					break;
+				case "migration-bp":
+					blogPostDatabaseMigration(blogPosts);
+					break;
+				case "migration-bp":
+					blogPostDatabaseMigration(blogPosts);
+					break;
+
+
 				default:
 					console.log("Defaulted Blog Button Trigger");
 					break;

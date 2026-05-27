@@ -97,7 +97,6 @@ const randomizeMonicker = () => {
 	}
 	camberden.style.opacity = "100%";
 }
-
 /**
  * @param {Object} album
  */

@@ -1,10 +1,8 @@
-<div id="new-post-handle" class="blog-post-header" x-data="{
-			allBp: $get('/api/blog/'),
-		}" x-effect=" authManager.setupFormHandlers() ">
+<div id="new-post-handle" class="cmbr-pen" x-data x-cloak>
 	<div>
-		<button x-show="$store.nauth.valid" id="exit-new-bp">Return</button>
+		<a href="blog.html" class="trigger-box marker">Return</a>
 
-		<form action="/api/blog/" method="POST" class="grid-col-1-1">
+		<form action="/api/blog/" method="POST">
 			<label for="title">Title &emsp;</label>
 			<input type="text" name="title" :id=$id('title') required>
 
@@ -26,27 +24,35 @@
 			<label for="tags">Tags &emsp;</label>
 			<input type="text" name="tags" :id=$id('tags')>
 
-			<label for="content">Content &emsp;</label>
-			<textarea name="content" :id=$id('content') rows="4" required></textarea>
+			<div x-data="{
+        		value: '<p>Been waiting for this, and plenty else.</p>',
+				toolbarOptions: [['bold', 'italic', 'underline',], ['image', 'video', 'link'],  
+				['blockquote', 'code-block'],
+				[{'list': 'ordered'}, {'list': 'bullet'}, {'list': 'checked',}],
+				[{ 'color': [] }, { 'background': [] }], [{ 'font': [] }]],
+        		init() {
+            		let quill = new Quill(this.$refs.quill, { 
+						theme: 'snow',
+						debug: 'info',
+						modules: {
+							toolbar: this.toolbarOptions,
+						}
+					 });
+            		quill.root.innerHTML = this.value;
+           			quill.on('text-change', () => {
+                	this.value = quill.root.innerHTML;
+           		});
+       		 },
+    		}">
+				<div x-ref="quill"></div>
+				<label for="content">Content &emsp;</label>
+				<input type="hidden" name="content" x-bind:value="value" />
+			</div>
 
-			<div></div>
-			<button x-show="$store.nauth.valid" type="submit">Submit</button>
+			<button x-show="$store.nauth.valid" type="submit" class="blog-button">Submit</button>
 
 		</form>
 		<hr class="hr-push-up">
 	</div>
 
-	<div>
-		<div id="all-bp-display">
-			<div class="flex-table">
-				<template x-for="(bp, index) in allBp" :key="index">
-					<div :class="'flex-table-row grid-col-1-1-1'">
-						<span x-html="bp.title"></span>
-						<span x-html="bp.content"></span>
-						<span x-html="bp.tags"></span>
-					</div>
-				</template>
-			</div>
-		</div>
-	</div>
 </div>

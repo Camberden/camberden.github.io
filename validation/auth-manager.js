@@ -263,8 +263,8 @@ const authManager = new AuthManager();
 
 
 // Initialize when DOM is ready
-if (document.readyState === 'loading') {
-	document.addEventListener('DOMContentLoaded', () => authManager.init());
-} else {
-	authManager.init();
-}
+// if (document.readyState === 'loading') {
+// 	document.addEventListener('DOMContentLoaded', () => authManager.init());
+// } else {
+// 	authManager.init();
+// }

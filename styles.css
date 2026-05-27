@@ -10,8 +10,6 @@
 	vertical-align: baseline;
 }
 
-;
-
 @starting-style {
 	* {
 		margin: 0;
@@ -305,6 +303,10 @@ p {
 
 h3 {
 	font-size: 1.2rem;
+}
+
+a {
+	text-decoration: none;
 }
 
 /* |==========| §NAVIGATION CHARTER |====================> */
