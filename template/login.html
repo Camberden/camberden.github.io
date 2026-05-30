@@ -1,62 +1,17 @@
-<div x-data="{
+<!-- <div x-data="{
 
-	}" x-effect=" authManager.setupFormHandlers() ">
-	<template x-if=" !authManager.isAuthenticated() ">
-		<form id="login-form" class="grid-col-1-1" method="POST" action="/api/auth/login">
-			<label for="username">Enter username &emsp;</label>
-			<input type="text" name="username" autocomplete="username" required>
+	}">
+	<template x-if=" !$store.nauth.valid ">
+		<form id="login-form" class="grid-col-1-1" method="POST" action="/login">
+			<label for="currentUsername">Enter username &emsp;</label>
+			<input type="text" name="currentUsername" autocomplete="currentUsername" required>
 
-			<label for="password">Enter password &emsp;</label>
-			<input type="password" name="password" autocomplete="password" required>
+			<label for="currentPassword">Enter password &emsp;</label>
+			<input type="password" name="currentPassword" autocomplete="currentPassword" required>
 
 			<div></div>
 			<button :class="'trigger-box'" type="submit">Login</button>
 		</form>
 	</template>
 
-
-</div>
-
-<!-- <script>
-	const authManager = new AuthManager();
-	const loginForm = document.getElementById('login-form');
-
-	if (loginForm) {
-		loginForm.addEventListener('submit', async (e) => {
-			e.preventDefault();
-
-			const formData = new FormData(loginForm);
-			const data = {
-				username: formData.get('username'),
-				password: formData.get('password')
-			};
-
-			try {
-				const response = await fetch('/api/auth/login', {
-					method: 'POST',
-					headers: {
-						'Content-Type': 'application/json'
-					},
-					body: JSON.stringify(data)
-				});
-
-				if (!response.ok) {
-					const error = await response.json();
-					alert('Login failed: ' + (error.error || 'Unknown error'));
-					return;
-				}
-
-				const result = await response.json();
-
-				// Store the token
-				authManager.saveToken(result.token);
-
-				// Redirect to dashboard or home
-				window.location.href = '/dashboard/dashboard.html';
-			} catch (error) {
-				console.error('Login error:', error);
-				alert('Login failed: ' + error.message);
-			}
-		});
-	}
-</script> -->
+</div> -->

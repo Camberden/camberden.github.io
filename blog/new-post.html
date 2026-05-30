@@ -19,7 +19,14 @@
 			<input type="text" name="audio" :id=$id('audio')>
 
 			<label for="photos">Photos &emsp;</label>
-			<input type="text" name="photos" :id=$id('photos')>
+			<form action="/photos/upload" method="post" enctype="multipart/form-data">
+				<input type="file" name="heic-photo" />
+				<input type="text" name="photo-text" />
+				<input type="submit" value="Get me heic to jpg!" class="trigger-box" />
+			</form>
+
+			<!-- <label for="photos">Photos &emsp;</label> -->
+			<!-- <input type="file" name="photos" :id=$id('photos')> -->
 
 			<label for="tags">Tags &emsp;</label>
 			<input type="text" name="tags" :id=$id('tags')>

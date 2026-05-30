@@ -50,7 +50,6 @@ document.addEventListener("alpine:init", () => {
 		instance.show();
 		setTimeout(() => {
 			instance.hide();
-
 			setTimeout(() => instance.destroy(), 150);
 		}, 2000);
 	}); // %=> end of Alpine Magics
@@ -72,30 +71,6 @@ document.addEventListener("alpine:init", () => {
 
 	// %=> end of Alpine Store
 });
-
-
-const CMBRrouter = {
-	/**
-	 * @satisfies <div x-data="hello" x-effect="effect"><h1>Homepage</h1><p x-text="message"></p></div>
-	 */
-	routeHello: function () {
-		document.addEventListener("alpine:init", () => {
-			Alpine.data('hello', () => ({
-				message: 'Hello world',
-				init() {
-					console.log('hello from init()');
-				},
-				effect() {
-					// this will run whenever the param `name` changes
-					if (this.$params.name == 'world') {
-						console.log('hello world');
-					}
-				}
-			}))
-		})
-	},
-
-}
 
 /**
  * @global @public @interface
@@ -339,7 +314,7 @@ const CMBRutil = {
 	 * 
 	 */
 	connectCMBRjson: async function (query) {
-		return fetch(`${document.location.origin}/cmbr.json`)
+		return fetch(`${document.location.origin}/config/cmbr.json`)
 			.then(data => data.json())
 			.then(data => {
 				// console.log(data);
@@ -399,10 +374,7 @@ const CMBRutil = {
 	},
 }
 
-
 // ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
-const recognizeFileProtocol = (x) => { y = document.getElementById(x); CMBRutil.acceptableProtocol() ? y.innerHTML += " &check;" : y.innerHTML += `<span style="font-size: 0.8rem; color: red; position: absolute;">[lesser functionality in file protocol]</span>`; }
-// const initNav = () => { CMBRutil.actionsProvided("sections"); CMBRutil.actionsProvided("bookmarks"); CMBRutil.dataTheme(); }
 const displaySite = () => { document.getElementById("current-site").innerHTML = document.location.host };
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");

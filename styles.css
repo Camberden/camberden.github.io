@@ -237,7 +237,7 @@
 	-webkit-background-clip: text;
 	background-repeat: no-repeat;
 	color: transparent;
-	user-select: none;
+	/* user-select: none; */
 	width: fit-content;
 	padding: 0;
 	/* text-shadow: #ffcc00 2rem 1rem 5rem; */
@@ -246,12 +246,8 @@
 
 .data-theme-button:hover {
 	cursor: pointer;
-	color: crimson;
 }
 
-.data-theme-button:active {
-	color: transparent;
-}
 
 /* |==========| §NEOCITIES ASSETS |====================> */
 /* |==========| MIGRATED FROM NEOCITIES SPLASH PAGE |====================> */

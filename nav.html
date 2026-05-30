@@ -1,7 +1,6 @@
 <div id="nav-handle" x-data="{ 
     atIndex: CMBRutil.atSiteIndex(),
     sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
-    authMan: authManager.init(),
     navLoaded: Alpine.store('nauth').valid,
     }" x-bg>
 
@@ -66,13 +65,25 @@
             </div>
 
             <!-----| NAV 5 |----->
-            <div id="nav-5" x-data="{current: 1}">
-                <span class="data-theme-button" id="dark" :style="'color:transparent;'"
-                    @click=" document.body.dataset.theme = $el.id ">🌙</span>
-                <span class="data-theme-button" id="light" :style="'color:transparent;';"
-                    @click=" document.body.dataset.theme = $el.id ">☀️</span>
-                <span class="data-theme-button" id="legacy" :style="'color:transparent;'"
-                    @click=" document.body.dataset.theme = $el.id ">🪻</span>
+            <div id="nav-5" x-data="{
+                setting: 'dark',
+                getSetting: function(value) {
+                    return this.setting === value;
+                },
+                toggleMode: function (value){
+                    this.setting = value;
+                    document.body.dataset.theme = this.setting;
+                },
+                }" x-init="$watch('setting', value => console.info(setting + ' mode active.'))">
+                <span id="dark" class="data-theme-button"
+                    :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
+                    @click="toggleMode($el.id)">🌙</span>
+                <span id="light" class="data-theme-button"
+                    :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
+                    @click="toggleMode($el.id)">☀️</span>
+                <span id="legacy" class="data-theme-button"
+                    :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
+                    @click="toggleMode($el.id)">🪻</span>
             </div>
 
         </div>

@@ -19,7 +19,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4/dist/purify.min.js"></script>
 	<script src="/cmbr.js"></script>
-	<script src="/validation/auth-manager.js"></script>
 	<script src="/htmx.js"></script>
 	<title>Chrispy's Workspace</title>
 </head>
@@ -40,21 +39,19 @@
 		<!-- % CENTER -->
 		<!-- TODO: Trigger classes based on utility size. -->
 		<button class="trigger-box" hx-get="../template/scuffle.html" hx-target="#wksp-center" hx-trigger="click"
-			hx-swap="innerHTML">Fighters</button>
+			hx-swap="innerHTML">Scuffle</button>
 		<button class="trigger-box" hx-get="../template/seg.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Seg</button>
 		<button class="trigger-box" hx-get="../template/logout.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Logout</button>
-		<button class="trigger-box" hx-get="../template/login.html" hx-target="#wksp-center" hx-trigger="click"
-			hx-swap="innerHTML">Login</button>
+		<!-- <button class="trigger-box" hx-get="../template/login.html" hx-target="#wksp-center" hx-trigger="click"
+			hx-swap="innerHTML">Login</button> -->
 		<button class="trigger-box" hx-get="../template/calendar.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Calendar</button>
 		<button class="trigger-box" hx-get="../template/roles.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Acc. Jobs</button>
 		<button class="trigger-box" hx-get="../sections.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Sitemap</button>
-		<button class="trigger-box" hx-get="../template/songs.html" hx-target="#wksp-center" hx-trigger="click"
-			hx-swap="innerHTML">Songs</button>
 		<button class="trigger-box" hx-get="../template/texteditor.html" hx-target="#wksp-grid" hx-trigger="click"
 			hx-swap="innerHTML">Text Editor</button>
 		<button class="trigger-box" hx-get="../template/dummyjson.html" hx-target="#wksp-center" hx-trigger="click"
@@ -62,7 +59,7 @@
 		<button class="trigger-box" hx-get="../template/depository.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Note Depository</button>
 		<button class="trigger-box" hx-get="../blog/new-post.html" hx-target="#wksp-center" hx-trigger="click"
-			hx-swap="innerHTML">New blog post</button>
+			hx-swap="innerHTML">New Blog Post</button>
 
 		<!-- % RIGHT -->
 
@@ -77,13 +74,22 @@
 		<div id="wksp-left" class="cmbr-item cmbr-item-left">
 			<ul id="songs">
 
-
 			</ul>
 		</div>
 
 		<div id="wksp-center" class="cmbr-item cmbr-item-center"
 			style="border:0.2rem ridge burlywood; background-color: var(--cmbr-blass); padding: 0.8rem;">
 
+			<form id="login-form" class="grid-col-1-1" action="/api/auth/login" method="POST">
+				<label for="currentUsername">Enter username &emsp;</label>
+				<input type="text" name="currentUsername" autocomplete="currentUsername" required>
+
+				<label for="currentPassword">Enter password &emsp;</label>
+				<input type="password" name="currentPassword" autocomplete="currentPassword" required>
+
+				<div></div>
+				<button :class="'trigger-box'" type="submit">Login</button>
+			</form>
 
 
 		</div>

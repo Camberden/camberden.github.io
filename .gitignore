@@ -6,7 +6,7 @@
 *.crt
 *.cnf
 .shelf
-.vscode
+.vscode/
 
 node_modules/
 !package.json
@@ -17,8 +17,6 @@ CNAME
 runner.yml
 runner.yaml
 schema.sql
+fiverserver.config.js
 
 images/cmbr-sig-play.htm
-
-administration/
-.administration/

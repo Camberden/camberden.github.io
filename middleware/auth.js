@@ -1,19 +1,25 @@
-const jwt = require('jsonwebtoken');
+const { verifyToken } = require('../services/tokenService')
 
-const authenticateToken = (req, res, next) => {
+module.exports = (req, res, next) => {
+  // Check for token in Authorization header or cookies
+  let token = null;
+
   const authHeader = req.headers['authorization'];
-  const token = authHeader && authHeader.split(' ')[1]; // Bearer TOKEN
-  if (!token) {
-    return res.status(401).json({ error: 'Access token required' });
+  if (authHeader) {
+    token = authHeader.split(' ')[1]; // Bearer TOKEN
+  } else if (req.cookies && req.cookies.jwt_token) {
+    token = req.cookies.jwt_token;
   }
 
-  jwt.verify(token, process.env.JWT_SECRET, (err, user) => {
-    if (err) {
-      return res.status(403).json({ error: 'Invalid or expired token' });
-    }
-    req.user = user;
-    next();
-  });
-};
+  if (!token) {
+    return res.status(401).json({ error: 'Access Token required' });
+  }
 
-module.exports = { authenticateToken };
+  try {
+    const decodedToken = verifyToken(token);
+    req.user = decodedToken;
+    next();
+  } catch (err) {
+    return res.status(403).json({ error: 'Expired or Invalid Access Token' });
+  }
+};
