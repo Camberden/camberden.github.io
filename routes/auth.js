@@ -102,11 +102,10 @@ router.post('/login', async (req, res, next) => {
 				signed: true,
 				httpOnly: true,
 				secure: true, // Set to true only in production (HTTPS)
-				sameSite: 'strict',
-				user: operator, // 'strict' can block cookies on same-site requests
+				sameSite: 'strict', // 'strict' can block cookies on same-site requests
 				maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
 			});
-			return res.status(200).json({ message: 'Login successful', username: operator });
+			res.redirect('/workspace/workspace.html');
 		}
 	} catch (err) {
 		console.error('Login error:', err);
