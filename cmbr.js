@@ -379,3 +379,6 @@ const displaySite = () => { document.getElementById("current-site").innerHTML = 
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
 const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
+(async () => {
+	CMBRutil.handleFormDefault(true);
+})

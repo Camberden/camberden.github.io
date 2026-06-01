@@ -74,13 +74,18 @@
 		<div id="wksp-left" class="cmbr-item cmbr-item-left">
 			<ul id="songs">
 
+
+				<span class="chrispy-likeness-box" id="box-below" style="width:5rem; height: 5rem;"></span>
+
 			</ul>
 		</div>
 
 		<div id="wksp-center" class="cmbr-item cmbr-item-center"
 			style="border:0.2rem ridge burlywood; background-color: var(--cmbr-blass); padding: 0.8rem;">
 
-			<form id="login-form" class="grid-col-1-1" action="/api/auth/login" method="POST">
+			<form id="login-form" class="grid-col-1-1" action='/api/auth/login' method='POST'>
+				<!-- <form id="login-form" class="grid-col-1-1" hx-post='/api/auth/login' hx-trigger="submit" hx-boost="false" -->
+				<!-- hx-replace-url="false"> -->
 				<label for="currentUsername">Enter username &emsp;</label>
 				<input type="text" name="currentUsername" autocomplete="currentUsername" required>
 
@@ -91,14 +96,24 @@
 				<button :class="'trigger-box'" type="submit">Login</button>
 			</form>
 
-
+			<!-- action='/api/auth/version' method='POST' -->
+			<form id="mysql-test-form" class="grid-col-1-1" hx-post='/api/auth/version' hx-trigger="submit"
+				hx-target="#box-below" hx-swap="innerHTML">
+				<label for="mysqlVcheck">Mysql Version Check</label>
+				<input type="text" name="mysqlVcheck" autocomplete="mysqlVcheck" />
+				<div></div>
+				<button class="trigger-box" type="submit">Check</button>
+			</form>
+			<form id="mysql-test-form" class="grid-col-1-1" hx-get='/api/auth/reactivate' hx-trigger="submit"
+				hx-target="#nav-auth-status" hx-swap="innerHTML">
+				<div></div>
+				<button class="trigger-box" type="submit">Hit it</button>
+			</form>
 		</div>
 
-		<div id="wksp-right" class="cmbr-item cmbr-item-right">
+		<div id="wksp-right" class="cmbr-item cmbr-item-right"></div>
 
-		</div>
-
-	</div>
+	</div> <!-- ^ end cmbr grid -->
 
 
 	<div id="wksp-grid">

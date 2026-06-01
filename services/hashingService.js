@@ -5,15 +5,18 @@ const bcrypt = require('bcryptjs');
  * @param {String} prePassword name='currentPassword'
  * @returns 
  */
-exports.hashPassword = async (prePassword) => {
-	const salt = await bcrypt.genSalt(10);
-	return await bcrypt.hash(prePassword, salt);
+const hashPassword = (prePassword) => {
+	console.log("[=== MODULE ===> HASHINGSERVICE.JS ==] ");
+	const salt = bcrypt.genSalt(10);
+	return bcrypt.hash(prePassword, salt);
 }
 /**
  * @param {String} prePassword 
  * @param {String} postPassword 
  * @returns 
  */
-exports.comparePassword = async (prePassword, postPassword) => {
-	return await bcrypt.compare(prePassword, postPassword);
+const comparePassword = (prePassword, postPassword) => {
+	return bcrypt.compare(prePassword, postPassword);
 }
+
+module.exports = { hashPassword, comparePassword };
