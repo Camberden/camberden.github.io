@@ -112,8 +112,7 @@ const blogData = [
 	As Neil Hannon of the Divine Comedy said: "We need to live in a state of suspended animation, like a work of art, detached, detached."
 	</b‰>`,
 
-	`
-	<d‰>August 25th, 2024</d‰>
+	`<d‰>August 25th, 2024</d‰>
 	<l‰>Chapel Hill, NC</l‰>
 	<j‰>2303 HRS</j‰>
 	<g‰></g‰>
