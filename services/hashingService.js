@@ -1,14 +1,14 @@
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 
 /**
  * @function
- * @param {String} prePassword name='currentPassword'
+ * @param {String} prePassword
  * @returns 
  */
 const hashPassword = (prePassword) => {
 	console.log("[=== MODULE ===> HASHINGSERVICE.JS ==] ");
-	const salt = bcrypt.genSalt(10);
-	return bcrypt.hash(prePassword, salt);
+	// const salt = bcrypt.genSalt(10);
+	return bcrypt.hash(prePassword, 10);
 }
 /**
  * @param {String} prePassword 

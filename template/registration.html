@@ -1,22 +1,22 @@
 <div x-data>
-	<template x-if=" !$store.nauth.valid ">
-		<h2 class="marker">Registration</h2>
-		<hr class="hr-trans">
-		<hr class="hr-push-down">
-		<!-- % regregreg -->
-		<form id="register-form" class="grid-col-1-1" action="/api/auth/register" method="POST">
-			<label for="usernameRegister">Enter username &emsp;</label>
-			<input type="text" id="usernameRegister" name="usernameRegister" required>
+	<!-- <template> -->
+	<h2 class="marker">Registration</h2>
+	<hr class="hr-trans">
+	<hr class="hr-push-down">
+	<!-- % regregreg -->
+	<form id="register-form" class="grid-col-1-1" action='/api/auth/register' method='POST'>
+		<label for="usernameRegister">Enter username &emsp;</label>
+		<input type="text" id="usernameRegister" name="usernameRegister" required>
 
-			<label for="passwordRegister">Enter password &emsp;</label>
-			<input type="password" id="passwordRegister" name="passwordRegister" required>
+		<label for="passwordRegister">Enter password &emsp;</label>
+		<input type="password" id="passwordRegister" name="passwordRegister" required>
 
-			<label for="emailRegister">Enter email &emsp;</label>
-			<input type="email" id="emailRegister" name="emailRegister" required>
+		<label for="emailRegister">Enter email &emsp;</label>
+		<input type="text" id="emailRegister" name="emailRegister" required>
 
-			<div></div>
-			<button type="submit">Register</button>
-		</form>
-		<hr class="hr-push-up">
-	</template>
+		<div></div>
+		<button type="submit">Register</button>
+	</form>
+	<hr class="hr-push-up">
+	<!-- </template> -->
 </div>

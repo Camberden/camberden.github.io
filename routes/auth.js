@@ -7,15 +7,51 @@ const cookieParser = require("cookie-parser");
 
 const router = express.Router();
 
+router.post('/register', async (req, res, next) => {
+	try {
+		const { usernameRegister, emailRegister, passwordRegister } = req.body;
+		if (!usernameRegister || !passwordRegister) {
+			return res.status(400).json({ error: 'Username and password are required' });
+		}
+		await pool.getConnection();
+		console.log("POOL GOT CONNECTION");
+		console.log("Querying...");
+		const [existingUsers] = await pool.execute(
+			'SELECT id FROM users WHERE username = ?',
+			[usernameRegister]
+		);
+		if (existingUsers.length > 0) {
+			await pool.releaseConnection();
+			return res.status(409).json({ error: 'Username already exists' });
+		}
+		console.log("Query completed. Hashing password...");
+		const passwordString = passwordRegister.toString();
+		const passwordHash = await hashPassword(passwordString);
+		console.log("Password hashed. Inserting user...");
+		await pool.execute(
+			'INSERT INTO users (username, email, password_hash) VALUES (?, ?, ?)',
+			[usernameRegister, emailRegister, passwordHash]
+		);
+		await pool.releaseConnection();
+		console.log("User registered successfully");
+		res.status(201).json({ message: 'User registered successfully' });
+		next();
+	} catch (err) {
+		console.error('Registration error:', err);
+		return res.status(500).json({ error: 'Registration failed', details: err.message });
+	}
+});
+
 router.post('/login', async (req, res, next) => {
 	try {
 		console.log("AT LOGIN TRY CATCH");
 		const { currentUsername, currentPassword } = req.body;
 		console.log("Awaiting connection")
-		await pool.getConnection();
+
 		if (!currentUsername || !currentPassword) {
 			return res.status(400).json({ error: 'Username and password are required' });
 		}
+		await pool.getConnection();
 		console.log("POOL GOT CONNECTION");
 		console.log("Users being queried...");
 		// Find user as users array
