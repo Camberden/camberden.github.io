@@ -288,3 +288,12 @@
 	- Segregation
 4. Music ->
 	- Music
+
+# Finally
+` router.get('/reactivate', async (req, res) => {
+	const cook = cookieParser.signedCookie(req.cookies.jwt_token);
+	const user = verifyToken(cook);
+	const iden = user.payload.username;
+	res.send("Welcome back, " + iden + "!");
+});
+`

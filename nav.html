@@ -41,12 +41,13 @@
 
             <!-----| NAV 2 |----->
             <div id="nav-2">
-                <h1 class="h1-lamp">
-                    <div id="nav-auth-status">
-                        <span x-text=" navLoaded ? 'Logged in ' : 'Not logged in'" :class="'vt323'"
-                            :style=" navLoaded ? 'color:green;' : 'color:red' "></span>
-                    </div>
-                    <!-- ♪ -->
+                <h1 id="reactivate" class="h1-lamp" hx-get='/api/auth/reactivate' hx-trigger="load delay:2s"
+                    hx-target="#nav-auth-status" hx-swap="textContent"></h1>
+                <div id="nav-auth-status" style="color:green; font-size:0.8rem; font-family:var(--vt323);">
+                    <!-- <span x-text=" navLoaded ? 'Logged in ' : 'Not logged in'" :class="'vt323'"
+                        :style=" navLoaded ? 'color:green;' : 'color:red' "></span> -->
+                </div>
+                <!-- ♪ -->
                 </h1>
             </div>
 

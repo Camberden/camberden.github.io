@@ -7,17 +7,22 @@ const url = require('url');
 const cookieParser = require('cookie-parser');
 app.use(cookieParser(process.env.JWT_SECRET));
 
-const { signedIn } = require('./middleware/auth.js');
+// const { signedIn } = require('./middleware/auth.js');
+app.get('/', (req, res, next) => {
+	console.log(req.user);
+	next();
+});
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // ^ 2 ^ Built-in Middleware for parsing JSON bodies 
 
-app.use('/', signedIn, (req, res, next) => {
+app.use('/', (req, res, next) => {
 	console.log(`${new Date().toLocaleString()} - ${req.method} ${req.path}`);
 	res.setHeader(
 		'Content-Security-Policy',
 		"default-src 'self'; connect-src 'self' https://cdn.jsdelivr.net https://unpkg.com https://dummyjson.com; frame-src https://www.youtube.com; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://unpkg.com https://unpkg.com/leaflet@1.9.4/dist/leaflet.js.map https://www.youtube.com; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://unpkg.com; img-src 'self' data: https:; font-src 'self' data:"
 	);
+	// cookieParser.signedCookie(req.signedCookies.jwt_token);
 	next();
 });
 // ^ 3 ^ Logging Middleware and Content Security Policy (CSP) Headers

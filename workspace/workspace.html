@@ -32,6 +32,9 @@
 	<div class="button-grid-row"
 		style="border:0.2rem ridge burlywood; background-image: var(--mosky-3); padding: 0.8rem;">
 
+		<div class="marker">
+			<h1 id="getcook">HELLO</h1>
+		</div>
 		<!-- % LEFT -->
 		<button class="trigger-box" hx-get="../template/reeducation.html" hx-target="#wksp-left" hx-trigger="click"
 			hx-swap="innerHTML">Reeducation</button>
@@ -104,30 +107,27 @@
 				<div></div>
 				<button class="trigger-box" type="submit">Check</button>
 			</form>
-			<form id="mysql-test-form" class="grid-col-1-1" hx-get='/api/auth/reactivate' hx-trigger="submit"
-				hx-target="#nav-auth-status" hx-swap="innerHTML">
-				<div></div>
-				<button class="trigger-box" type="submit">Hit it</button>
-			</form>
+			<!-- <button id="reactivate" class="grid-col-1-1" hx-get='/api/auth/reactivate' hx-trigger="click, load delay:2s"
+				hx-target="#nav-auth-status" hx-swap="innerHTML">Get user</button> -->
+
+
+			<div id="wksp-right" class="cmbr-item cmbr-item-right"></div>
+
+		</div> <!-- ^ end cmbr grid -->
+
+
+		<div id="wksp-grid">
 		</div>
 
-		<div id="wksp-right" class="cmbr-item cmbr-item-right"></div>
-
-	</div> <!-- ^ end cmbr grid -->
-
-
-	<div id="wksp-grid">
-	</div>
-
-	<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  -->
+		<!-- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- -- --  -->
 
 
 
-	<footer id="workspace-footer">
-		<hr class="hr-groove-top">
-		<h6 x-text="marked.parse('# Marked in the browser\n\nRendered by **marked**.')"></h6>
-		<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
-	</footer>
+		<footer id="workspace-footer">
+			<hr class="hr-groove-top">
+			<h6 x-text="marked.parse('# Marked in the browser\n\nRendered by **marked**.')"></h6>
+			<p class="eremoran-kiptascript">dir nao sudoz kaldoz ne</p>
+		</footer>
 
 
 </body>
