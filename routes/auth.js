@@ -133,11 +133,20 @@ router.post('/version', async (req, res) => {
 	res.end();
 
 });
-router.get('/reactivate', async (req, res) => {
-	const cook = cookieParser.signedCookie(req.cookies.jwt_token);
-	const user = verifyToken(cook);
-	const iden = user.payload.username;
-	res.send("Welcome back, " + iden + "!");
+router.get('/reactivate', async (req, res, next) => {
+	try {
+		if (req.cookies.jwt_token) {
+			const cook = cookieParser.signedCookie(req.cookies.jwt_token);
+			const user = verifyToken(cook);
+			const iden = user.payload.username;
+			res.send("Welcome back, " + iden + "!");
+		} else {
+			console.log("No token found in cookies.");
+		}
+	} catch (err) {
+		console.lot("No token or token invalid: " + err.message);
+		next();
+	};
 });
 router.post('/logout', async (req, res) => {
 	res.get('jwt_token');

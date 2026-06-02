@@ -5,6 +5,7 @@ require('dotenv').config();
 const path = require('path');
 const url = require('url');
 const cookieParser = require('cookie-parser');
+app.use(express.static(path.join(__dirname)));
 app.use(cookieParser(process.env.JWT_SECRET));
 
 // const { signedIn } = require('./middleware/auth.js');
@@ -33,7 +34,7 @@ app.use('/', (req, res, next) => {
 
 app.use('/api/auth', require('./routes/auth'));
 
-app.use(express.static(path.join(__dirname)));
+// app.use(express.static(path.join(__dirname)));
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));
 });
