@@ -41,7 +41,6 @@ router.post('/register', async (req, res, next) => {
 		return res.status(500).json({ error: 'Registration failed', details: err.message });
 	}
 });
-
 router.post('/login', async (req, res, next) => {
 	try {
 		console.log("AT LOGIN TRY CATCH");

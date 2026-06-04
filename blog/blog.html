@@ -54,12 +54,18 @@
 		<!-- % CENTER -->
 		<article id="blog-post-articles" class="blogging-font">
 			<div class="blog-post-header">
+				<div>
+					<form id='heic-convert' action='/api/media/heic' method='POST' enctype='multipart/form-data'>
+						<input type='file' name='file' />
+						<input type='submit' value='Get me heic to jpg!' class='trigger-box' />
+					</form>
+				</div>
 				<!-- <template> -->
-				<button x-show="$store.nauth.valid && !modifyingBp" id="new-bp" hx-get="new-post.html"
-					hx-trigger="click" hx-target="#modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Write New
+				<button x-show="!modifyingBp" id="new-bp" hx-get="new-post.html" hx-trigger="click"
+					hx-target="#modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Write New
 					Post</button>
-				<button x-show="$store.nauth.valid && !modifyingBp" id="update-bp" hx-get="update-post.html"
-					hx-trigger="click" hx-swap="modify-bp" @click="toggleModifyingBp()">Update</button>
+				<button x-show="!modifyingBp" id="update-bp" hx-get="update-post.html" hx-trigger="click"
+					hx-target="modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Update</button>
 				<!-- </template> -->
 				<button id="previous-bp" class="blog-button" x-show="!modifyingBp">Previous</button>
 				<button id="next-bp" class="blog-button" x-show="!modifyingBp">Next</button>

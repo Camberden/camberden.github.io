@@ -3,33 +3,29 @@
 		<a href="blog.html" class="trigger-box marker">Return</a>
 
 		<form action="/api/blog/" method="POST">
-			<label for="title">Title &emsp;</label>
-			<input type="text" name="title" :id=$id('title') required>
+			<label for="new-bp-title">Title &emsp;</label>
+			<input id="new-bp-title" type="text" name="title" :id=$id('title') required>
 
-			<label for="date_posted">Date &emsp;</label>
-			<input type="text" name="date_posted" :id=$id('date_posted')>
+			<label for="new-bp-date_posted">Date &emsp;</label>
+			<input id="new-bp-date_posted" type="text" name="date_posted" :id=$id('date_posted')>
 
-			<label for="location">Location &emsp;</label>
-			<input type="text" name="location" :id=$id('location')>
+			<label for="new-bp-location">Location &emsp;</label>
+			<input id="new-bp-location" type="text" name="location" :id=$id('location')>
 
-			<label for="hours">Hours &emsp;</label>
-			<input type="text" name="hours" :id=$id('hours')>
+			<label for="new-bp-hours">Hours &emsp;</label>
+			<input id="new-bp-hours" type="text" name="hours" :id=$id('hours')>
 
-			<label for="audio">Audio &emsp;</label>
-			<input type="text" name="audio" :id=$id('audio')>
+			<label for="new-bp-audio">Audio &emsp;</label>
+			<input id="new-bp-audio" type="text" name="audio" :id=$id('audio')>
 
-			<label for="photos">Photos &emsp;</label>
-			<form action="/photos/upload" method="post" enctype="multipart/form-data">
-				<input type="file" name="heic-photo" />
-				<input type="text" name="photo-text" />
-				<input type="submit" value="Get me heic to jpg!" class="trigger-box" />
-			</form>
+			<label for="new-bp-photos">Photos &emsp;</label>
+			<input id="new-bp-photos" type="text" name="photos" />
 
 			<!-- <label for="photos">Photos &emsp;</label> -->
 			<!-- <input type="file" name="photos" :id=$id('photos')> -->
 
-			<label for="tags">Tags &emsp;</label>
-			<input type="text" name="tags" :id=$id('tags')>
+			<label for="new-bp-tags">Tags &emsp;</label>
+			<input id="new-bp-tags" type="text" name="tags" :id=$id('tags')>
 
 			<div x-data="{
         		value: '<p>Been waiting for this, and plenty else.</p>',
@@ -56,7 +52,7 @@
 				<input type="hidden" name="content" x-bind:value="value" />
 			</div>
 
-			<button x-show="$store.nauth.valid" type="submit" class="blog-button">Submit</button>
+			<button type="submit" class="blog-button">Submit</button>
 
 		</form>
 		<hr class="hr-push-up">

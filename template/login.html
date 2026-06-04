@@ -1,17 +1,16 @@
-<!-- <div x-data="{
+<div x-data="{
 
 	}">
-	<template x-if=" !$store.nauth.valid ">
-		<form id="login-form" class="grid-col-1-1" method="POST" action="/login">
-			<label for="currentUsername">Enter username &emsp;</label>
-			<input type="text" name="currentUsername" autocomplete="currentUsername" required>
 
-			<label for="currentPassword">Enter password &emsp;</label>
-			<input type="password" name="currentPassword" autocomplete="currentPassword" required>
+	<form id="login-form" class="grid-col-1-1" action='/api/auth/login' method='POST'>
+		<label for="currentUsername">Enter username &emsp;</label>
+		<input id="currentUsername" type="text" name="currentUsername" autocomplete="currentUsername" required>
 
-			<div></div>
-			<button :class="'trigger-box'" type="submit">Login</button>
-		</form>
+		<label for="currentPassword">Enter password &emsp;</label>
+		<input id="currentPassword" type="password" name="currentPassword" autocomplete="currentPassword" required>
+
+		<div></div>
+		<button :class="'trigger-box'" type="submit">Login</button>
+	</form>
 	</template>
-
-</div> -->
+</div>

@@ -4,13 +4,23 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="images/cmbr-sig.svg">
-	<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
+	<link rel="shortcut icon" href="/images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="/styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="/workspace/workspace.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+	<script async src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-	<script src="cmbr.js"></script>
-	<script src="htmx.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4/dist/purify.min.js"></script>
+	<script src="/cmbr.js"></script>
+	<script src="/htmx.js"></script>
 	<title>Chrispy's Site</title>
 </head>
 
@@ -19,7 +29,7 @@
 	<main class="index-grid">
 
 		<div class="signature-div">
-			<img id="signature" src="./images/cmbr-sig-transform.svg" alt="cmbr">
+			<img id="signature" src="/images/cmbr-sig-transform.svg" alt="cmbr">
 		</div>
 
 		<div class="index-grid-reduced">
@@ -52,7 +62,7 @@
 		</div>
 		<hr class="hr-cmbr-gradient">
 
-		<div class="sections-links" hx-get="sections.html" hx-swap="innerHTML" hx-target="#sections-target"
+		<div class="sections-links" hx-get="/sections.html" hx-swap="innerHTML" hx-target="#sections-target"
 			hx-trigger="load">
 			<div id="sections-target"></div>
 		</div>
@@ -60,6 +70,7 @@
 		<hr class="hr-cmbr-gradient">
 
 		<hr class="hr-push-up">
+		<!-- <hr class="hr-groove-bottom"> -->
 		<footer class="index-footer">
 			<p id="footer-text" class="marker">Made with ♡ by Chrispy</p>
 			<p class="marker">Last updated on <span x-ref="update" id="latest-update"></span></p>

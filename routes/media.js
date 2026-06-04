@@ -1,11 +1,11 @@
 const express = require('express');
 const multer = require('multer');
-const { uploadMiddleware } = require('../middleware/imagery');
+const { uploadMiddleware } = require('../middleware/media');
 
 const router = express.Router();
 
-router.post('/', uploadMiddleware, function (req, res) {
-	if (!req.file) {
+router.post('/heic', uploadMiddleware, async (req, res) => {
+	if (!req.files) {
 		return res.status(400).send('No file uploaded');
 	}
 	(async () => {
@@ -29,6 +29,7 @@ router.post('/', uploadMiddleware, function (req, res) {
 		}
 	});
 	res.redirect('/');
+	// next();
 });
 
 module.exports = router;

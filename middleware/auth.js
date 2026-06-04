@@ -2,14 +2,19 @@ const { verifyToken } = require('../services/tokenService');
 const cookieParser = require('cookie-parser');
 
 exports.cookieJwtAuth = (req, res, next) => {
-	console.log("[=== MODULE ===> AUTH.JS ==] ");
-	const token = req.cookies.jwt_token;
 	try {
-		const user = jwt.verify(token, process.env.JWT_SECRET);
-		req.user = user;
-		next();
+		if (req.cookies.jwt_token) {
+			const cook = cookieParser.signedCookie(req.cookies.jwt_token);
+			const user = verifyToken(cook);
+			if (user) {
+				console.log("Accessed.");
+			}
+		} else {
+			console.log("Not Accessed.");
+			console.log("No token found in cookies.");
+		}
 	} catch (err) {
-		res.clearCookie('jwt_token');
-		return res.redirect('/index.html');
-	}
-}
+		console.lot("No token or token invalid: " + err.message);
+		next();
+	};
+};

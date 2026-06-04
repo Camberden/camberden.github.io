@@ -28,12 +28,10 @@ app.use('/', (req, res, next) => {
 });
 // ^ 3 ^ Logging Middleware and Content Security Policy (CSP) Headers
 // ^ 4 ^ Authentication Middleware
-// const { hashPassword, comparePassword } = require("./services/hashingService");
-// const { generateToken, verifyToken } = require("./services/tokenService");
-// const { authenticateToken } = require('./middleware/auth');
 
 app.use('/api/auth', require('./routes/auth'));
-
+app.use('/api/media', require('./routes/media'));
+app.use('/api/blog', require('./routes/blog'));
 // app.use(express.static(path.join(__dirname)));
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'index.html'));

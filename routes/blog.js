@@ -1,11 +1,12 @@
 const express = require('express');
-const connection = require('../config/database');
-const { authenticateToken } = require('../middleware/auth');
+const pool = require('../config/database');
+const { cookieJwtAuth } = require('../middleware/auth');
+
 
 const router = express.Router();
 
 // Create a new blog post
-router.post('/', authenticateToken, async (req, res) => {
+router.post('/', cookieJwtAuth, async (req, res) => {
   try {
     const { title, date_posted, location, hours, audio, photos, tags, content } = req.body;
     const user_id = req.user.id;
@@ -14,19 +15,20 @@ router.post('/', authenticateToken, async (req, res) => {
       return res.status(400).json({ error: 'Title and content are required' });
     }
 
-    const connection = await pool.getConnection();
+    await pool.getConnection();
 
-    const [result] = await connection.execute(
+    const [result] = await pool.execute(
       'INSERT INTO blog_posts (title, date_posted, location, hours, audio, photos, user_id, tags, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [title, date_posted, location, hours, audio, photos, user_id, tags, content]
     );
 
-    connection.release();
+    await pool.releaseConnection();
 
     res.status(201).json({
       message: '(1) Blog post created successfully!',
       postId: result.insertId
     });
+    next();
   } catch (error) {
     console.error('Blog post creation error:', error);
     res.status(500).json({ error: 'Failed to create blog post' });
@@ -85,7 +87,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Update a blog post (owner only)
-router.put('/:id', authenticateToken, async (req, res) => {
+router.put('/:id', cookieJwtAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { title, content, date_posted, location, hours, tags } = req.body;
@@ -125,7 +127,7 @@ router.put('/:id', authenticateToken, async (req, res) => {
 });
 
 // Delete a blog post (owner only)
-router.delete('/:id', authenticateToken, async (req, res) => {
+router.delete('/:id', cookieJwtAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const user_id = req.user.id;

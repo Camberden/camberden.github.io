@@ -9,6 +9,6 @@ const storage = multer.diskStorage({
 	}
 });
 const upload = multer({ storage: storage });
-const uploadMiddleware = upload.fields({ name: 'heic-photo', maxCount: 1 });
+const uploadMiddleware = upload.fields([{ name: 'heic-file', maxCount: 1 }]);
 
 module.exports = { uploadMiddleware };
