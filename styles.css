@@ -154,6 +154,10 @@
 	border-radius: 0.0rem !important;
 }
 
+.cm-editor .cm-content {
+	color: orangered;
+}
+
 /* .fc-button:active {
 	border-color: var(--cmbr-green) !important;
 } */
@@ -328,7 +332,6 @@ nav {
 	z-index: 100;
 	border-bottom: 0.5rem groove black;
 	background-image: url("./images/cmbr-curtain.svg");
-	/* background: var(--cmbr-grid-box); */
 }
 
 #nav-1 {
@@ -336,14 +339,15 @@ nav {
 }
 
 #nav-2 {
-	text-align: right;
+	display: flex;
+	text-align: center;
+	background: rgba(0, 0, 255, 0.131);
+	border-left: 0.5rem ridge black;
+	border-right: 0.5rem ridge black;
 }
 
 #nav-3 {
 	text-align: center;
-	/* background: rgba(0, 0, 255, 0.131); */
-	/* border-left: 0.5rem ridge black; */
-	/* border-right: 0.5rem ridge black; */
 }
 
 #nav-4 {
@@ -1319,6 +1323,74 @@ select:hover {
 	animation: icon-passage 30s linear infinite;
 }
 
+
+/* |==========| §MODAL STYLES .modal |====================> */
+/* |==========| COMMON MODALS |====================> */
+
+.modal-prompt:hover {
+	cursor: pointer;
+	color: var(--clr-primary);
+	position: inherit;
+	text-shadow: -2.5px -1px 0px #ff00ff;
+}
+
+.modal {
+	display: none;
+	/* To hide by default */
+	position: fixed;
+	/* to stay in place */
+	z-index: 1;
+	/* To stay on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-grid {
+	display: grid;
+	gap: 1.5rem;
+	grid-template-columns: repeat(2, 50%);
+}
+
+.modal-field {
+	background-color: var(--clr-quinary-body);
+	margin: 15% auto;
+	/* 15% from the top and centered */
+	border: 1px solid #888;
+	width: 80%;
+	/* Could be more or less, depending on screen size */
+}
+
+#modal-text>ul>li {
+	list-style-type: none;
+}
+
+.modal-line {
+	width: 25%;
+}
+
+.modal-close {
+	border-top: none;
+	border-bottom: 1px solid #888;
+	border-left: none;
+	border-right: 1px solid #888;
+	color: #888;
+	float: inline-start;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.modal-close:hover,
+.modal-close:focus {
+	cursor: pointer;
+	color: black;
+	text-decoration: none;
+}
+
 /* |==========| §FONT-FACES STORED LOCALLY @font-face |====================> */
 /* |==========| COMMON SITE FONTS AND ORIGINAL FONTS |====================> */
 @font-face {
@@ -1754,6 +1826,18 @@ form>label {
 	border-style: double;
 }
 
+.kipta-box-1 {
+	box-sizing: border-box;
+	border: 0.2rem double transparent;
+	border-radius: 0.2rem;
+	/* outline: 1rem solid rosybrown; */
+	max-height: 5rem;
+	max-width: 15rem;
+	height: 100%;
+	width: 100%;
+	background-color: var(--cmbr-grid-box);
+}
+
 .glass-pane-backing {
 	background-image: url("./assets/fantasy-graphics/pankair-sorghum.jpeg");
 	background-size: cover;
@@ -1823,8 +1907,8 @@ form>label {
 	align-items: baseline;
 }
 
-/* |==========| KEYFRAME ANIMATIONS @keyframes |====================> */
-/* |==========| ALL SITE ANIMATIONS AND TRANSITION RUNNERS |====================> */
+/* |==========| ARIA ANIMATIONS @keyframes |====================> */
+/* |==========| ACCESSIBILITY RUNNERS |====================> */
 
 [aria-busy] {
 	--loading-size: 64px;
@@ -1847,6 +1931,80 @@ form>label {
 	border-radius: 50%;
 	border-top-color: rgba(0, 0, 0, 0.5);
 	animation: rotate calc(var(--loading-duration)) linear infinite;
+}
+
+.cmbr-input-1 {
+	color: cadetblue;
+	font-family: Lora;
+	background: rgba(144, 229, 238, 0.1);
+
+}
+
+#rainframe {
+	height: 100%;
+	/* background: linear-gradient(#0F2129, #33404a); */
+	overflow: hidden;
+
+	--s: 0.5px 8px;
+	/* size of drop of water*/
+	--c: #cccccc64;
+	/* color of the water*/
+	--a: -11deg;
+	/* control the skewing*/
+	--w: 52px;
+	/* width of the pattern*/
+	--h: 46px;
+	/* height of the pattern*/
+
+	--rad: radial-gradient(var(--s), var(--c) 100%, transparent 100%)
+}
+
+#rainframe:before,
+#rainframe:after {
+	content: "";
+	position: absolute;
+	bottom: 0;
+	right: -11%;
+	left: -26%;
+	height: calc(100% + var(--h) + 23px);
+	/* should be bigger than (100% + var(--h))*/
+	background:
+		var(--rad) -12px 3px,
+		var(--rad) 17px 0,
+		var(--rad) 6px 12px,
+		var(--rad) 24px 23px,
+		var(--rad) 39px 30px,
+		var(--rad) 5px 43px;
+	background-size: var(--w) var(--h);
+	/* animation: rain 0.4s linear infinite; */
+	animation-name: rain;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+	animation-delay: infinite;
+	transform: skew(var(--a));
+}
+
+#rainframe:after {
+	--h: 70px;
+	--w: 61px;
+}
+
+#rainbox {
+	box-sizing: border-box;
+	width: 100%;
+	height: 100%;
+	background: #0D343A;
+	background: linear-gradient(#0F2129, #33404a);
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(#000000));
+	background: -moz-linear-gradient(top, rgba(13, 52, 58, 1) 0%, rgba(0, 0, 0, 1) 100%);
+	overflow: hidden;
+}
+
+@keyframes rain {
+	to {
+		transform: skew(var(--a)) translateY(var(--h));
+	}
 }
 
 @keyframes rotate {

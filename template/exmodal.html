@@ -1,0 +1,46 @@
+<div id="exmodal-handle" x-data="{ open: false }" class="flex justify-center">
+	<!-- Trigger -->
+	<span x-on:click="open = true">
+		<button type="button"
+			style="position:relative; display:flex; align-items:center; justify-content:center; gap:0.5rem; white-space:nowrap; border-radius:0.5rem; border-color:#e5e7eb;
+		padding-left:1rem; padding-right: 1rem; padding-top:0.5rem; padding-bottom:0.5rem;
+		background-color:#1f2937; box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05); background-color:#e5e7eb; background-color:#f9fafb;">
+			Open modal
+		</button>
+	</span>
+
+	<!-- Modal -->
+	<div x-show="open" style="display: none" x-on:keydown.escape.prevent.stop="open = false" role="dialog"
+		aria-modal="true" x-id="['modal-title']" :aria-labelledby="$id('modal-title')"
+		class="fixed inset-0 z-10 overflow-y-auto">
+		<!-- Overlay -->
+		<div x-show="open" x-transition.opacity class="fixed inset-0 bg-black/25"></div>
+
+		<!-- Panel -->
+		<div x-show="open" x-transition x-on:click="open = false"
+			class="relative flex min-h-screen items-center justify-center p-4">
+			<div x-on:click.stop x-trap.noscroll.inert="open"
+				class="relative min-w-96 max-w-xl rounded-xl bg-white p-6 shadow-lg">
+				<!-- Title -->
+				<h2 class="font-medium text-gray-800" :id="$id('modal-title')">Confirm</h2>
+
+				<!-- Content -->
+				<p class="mt-2 text-gray-500 max-w-xs">Are you sure you want to learn how to create an awesome modal?
+				</p>
+
+				<!-- Buttons -->
+				<div class="mt-6 flex justify-end space-x-2">
+					<button type="button" x-on:click="open = false"
+						class="relative flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-transparent bg-transparent px-4 py-2 text-gray-800 hover:bg-gray-800/10">
+						Cancel
+					</button>
+
+					<button type="button" x-on:click="open = false"
+						class="relative flex items-center justify-center gap-2 whitespace-nowrap rounded-lg border border-transparent bg-gray-800 px-4 py-2 text-white hover:bg-gray-900">
+						Confirm
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

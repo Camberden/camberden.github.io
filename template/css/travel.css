@@ -1,0 +1,174 @@
+.travel-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	gap: 1rem;
+	padding: 2rem;
+	height: 100vh;
+}
+
+.travel-item {
+	display: block;
+	/* flex-flow: row wrap; */
+	width: 100%;
+	height: 40rem;
+	gap: 1rem;
+	background: #0f0b0789;
+	box-sizing: border-box;
+	border: 0.2rem ridge burlywood;
+	border: 0.5rem solid transparent;
+}
+
+.map-display {
+	box-sizing: border-box;
+	outline: 0.2rem dotted blue;
+	border: 0.5rem solid transparent;
+	vertical-align: middle;
+	left: 30%;
+	right: 30%;
+}
+
+.map-display-button {
+	width: 3rem;
+	height: 2rem;
+}
+
+.visited {
+	fill: blue;
+}
+
+.to-visit {
+	fill: var(--clr-tertiary);
+	stroke: var(--clr-tertiary);
+}
+
+.to-retire {
+	fill: orchid;
+}
+
+#political-division {
+	text-align: right;
+	float: inline-start;
+}
+
+#visited-total {
+	text-align: right;
+	float: inline-end;
+}
+
+/* ----- WORLD MAP ----- */
+
+@namespace svg url(http://www.w3.org/2000/svg);
+
+#world-map {
+	fill: grey;
+}
+
+#world-map> :hover {
+	fill: var(--clr-primary);
+	stroke: var(--clr-primary);
+
+}
+
+#SG,
+#MV,
+#MU,
+#AW,
+#BM {
+	width: 1rem;
+	height: 1rem;
+	/* stroke: grey; */
+	stroke-width: 0.5rem;
+}
+
+/* ----- US MAP ----- */
+
+#us-map {
+	fill: grey;
+	left: 0.4;
+}
+
+#us-map> :hover {
+	fill: #a1dbf8;
+}
+
+/* ----- Expansive Map ----- */
+
+#expansive-map {
+	box-sizing: border-box;
+	display: block;
+	outline: 0.2rem dotted palevioletred;
+	width: 100%;
+	height: 40rem;
+}
+
+#globe-emojis {
+	background: var(--cmbr-blue);
+}
+
+/* ----- MODAL VALUES ----- */
+
+.modal {
+	display: none;
+	/* To hide by default */
+	position: fixed;
+	/* to stay in place */
+	z-index: 1;
+	/* To stay on top */
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	overflow: auto;
+	background-color: rgb(0, 0, 0);
+	background-color: rgba(0, 0, 0, 0.4);
+}
+
+#modal-field {
+	background-color: var(--clr-quinary-body);
+	margin: 15% auto;
+	/* 15% from the top and centered */
+	border: 1px solid #888;
+	width: 50%;
+	/* Could be more or less, depending on screen size */
+}
+
+#modal-title {
+	text-align: center;
+}
+
+#modal-text {
+	text-align: left;
+}
+
+.modal-field>ul>li {
+	list-style-type: none;
+}
+
+.modal-line {
+	width: 25%;
+}
+
+.secondary-highlight {
+	color: var(--clr-secondary);
+	cursor: pointer;
+}
+
+.close-modal {
+	border-top: none;
+	border-bottom: 1px solid #888;
+	border-left: none;
+	border-right: 1px solid #888;
+	color: #888;
+	float: inline-start;
+	font-size: 2rem;
+	font-weight: bold;
+}
+
+.close-modal:hover,
+.close-modal:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+/* ----- NAMESPACES FOR SVG ----- */

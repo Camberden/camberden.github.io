@@ -4,7 +4,7 @@
   "description": "Chrispy's personal site",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "dev": "node server.js"
   },
   "keywords": [],
@@ -18,9 +18,12 @@
     "dompurify": "^3.4.5",
     "dotenv": "^16.3.1",
     "express": "^4.22.1",
+    "heic-convert": "^2.1.0",
+    "heic2any": "^0.0.4",
     "jsonwebtoken": "^9.0.3",
     "marked": "^18.0.4",
     "multer": "^2.1.1",
-    "mysql2": "^3.22.4"
+    "mysql2": "^3.22.4",
+    "nodemon": "^3.1.14"
   }
 }

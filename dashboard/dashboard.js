@@ -119,7 +119,7 @@ const dplProgressBar = document.getElementById("dpl-progress-bar");
 const aasProgressBar = document.getElementById("aas-progress-bar");
 
 const modal = document.querySelector(".modal");
-const closeModal = document.getElementsByClassName("close-modal")[0];
+const closeModal = document.getElementsByClassName("modal-close")[0];
 
 const pslfRequirement = 120;
 const pslfCredited = 50;

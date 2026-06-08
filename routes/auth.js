@@ -89,12 +89,6 @@ router.post('/login', async (req, res, next) => {
 			// % Access Token Set! % //
 			const user = verifyToken(token);
 			req.user = user;
-			// const decodedToken = verifyToken(token);
-			// const operator = decodedToken.payload.username;
-			// req.headers.user = decodedToken;
-			// console.log("operator" + operator);
-			// Set secure HTTP-only cookie
-			// cookieParser.signedCookie('jwt_token', token, {
 			res.cookie('jwt_token', token, {
 				// signed: true,
 				httpOnly: true,
@@ -151,14 +145,6 @@ router.post('/logout', async (req, res) => {
 	res.get('jwt_token');
 	res.clearCookie('jwt_token');
 	res.redirect('index.html');
-});
-router.get('/profile', cookieJwtAuth, async (req, res) => {
-	const cmbrUser = cookieParser.signedCookie('cmbrUser');
-	if (!cmbrUser) {
-		return res.status(401).json({ error: 'Unauthorized' });
-	}
-	res.write("Welcome, " + cmbrUser + "!");
-	res.end();
 });
 
 // module.exports = router;

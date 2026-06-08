@@ -7,7 +7,6 @@ const bcrypt = require('bcrypt');
  */
 const hashPassword = (prePassword) => {
 	console.log("[=== MODULE ===> HASHINGSERVICE.JS ==] ");
-	// const salt = bcrypt.genSalt(10);
 	return bcrypt.hash(prePassword, 10);
 }
 /**

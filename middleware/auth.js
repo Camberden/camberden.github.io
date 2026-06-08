@@ -8,6 +8,8 @@ exports.cookieJwtAuth = (req, res, next) => {
 			const user = verifyToken(cook);
 			if (user) {
 				console.log("Accessed.");
+				req.user = user;
+				console.log(user.payload)
 			}
 		} else {
 			console.log("Not Accessed.");
@@ -17,4 +19,5 @@ exports.cookieJwtAuth = (req, res, next) => {
 		console.lot("No token or token invalid: " + err.message);
 		next();
 	};
+	next();
 };

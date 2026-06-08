@@ -68,6 +68,12 @@ document.addEventListener("alpine:init", () => {
 			this.valid = !this.valid;
 		}
 	});
+	Alpine.store('rainfall', {
+		happening: false,
+		rainfallControl() {
+			this.happening = !this.happening;
+		}
+	})
 
 	// %=> end of Alpine Store
 });

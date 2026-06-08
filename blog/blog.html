@@ -54,12 +54,6 @@
 		<!-- % CENTER -->
 		<article id="blog-post-articles" class="blogging-font">
 			<div class="blog-post-header">
-				<div>
-					<form id='heic-convert' action='/api/media/heic' method='POST' enctype='multipart/form-data'>
-						<input type='file' name='file' />
-						<input type='submit' value='Get me heic to jpg!' class='trigger-box' />
-					</form>
-				</div>
 				<!-- <template> -->
 				<button x-show="!modifyingBp" id="new-bp" hx-get="new-post.html" hx-trigger="click"
 					hx-target="#modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Write New

@@ -3,7 +3,7 @@
     atLegacyHome: CMBRutil.atLegacyIndex(),
     basePath: document.location.origin + '/',
     homePage:  'Homepage ↺',
-    legacyHomepage:  'Legacy Homepage ↺',
+    // legacyHomepage:  'Legacy Homepage ↺',
     sitemap: {
         links: {
                 internal: [
@@ -27,13 +27,12 @@
                     ['Alpine Components', 'https://alpinejs.dev/components'],
                     ['Alpine Toolbox', 'https://www.alpinetoolbox.com/dist/tools/'],
                     ['Alpine Ajax', 'https://alpine-ajax.js.org'],
-
                 ]
             },
         },
     }">
 
-    <template x-if="atHome || atLegacyHome">
+    <template x-if="atHome">
         <div>
             <template x-for="link in sitemap.links.internal" , :key="index">
                 <div :class="'section-title'">
@@ -52,16 +51,9 @@
         </div>
     </template>
 
-    <template x-if="atHome">
-        <div :class="'section-title'">
-            <a x-text="legacyHomepage" :href="basePath + 'legacyindex.html'" :data-route="'/legacyindex.html'">
-            </a>
-        </div>
-    </template>
-
-    <template x-if="!atHome && !atLegacyHome">
+    <template x-if="!atHome">
         <div x-effect=" displaySection() ">
-            <template x-for="link in sitemap.links.internal" , :key="index">
+            <template x-for=" link in sitemap.links.internal" , :key="index">
                 <div :class="'section-title'" :style="'padding:0.1rem'">
                     <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"
                         :data-route="'/' + link[0] + '/'">
@@ -71,7 +63,7 @@
         </div>
     </template>
 
-    <template x-if="!atHome && !atLegacyHome">
+    <template x-if="!atHome">
         <div>
             <template x-for="link in sitemap.links.external">
                 <div :class="'section-title'" :style="'padding:0.1rem'">

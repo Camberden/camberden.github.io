@@ -1548,8 +1548,7 @@ const blogData = [
 	But I failed. Instead, I'd succumb to an addiction that'd parallel the one for video games in my teen years.
 	I had completely gone full circle. I stopped journalling, working out, meditating, reading, and enjoying the
 	present moment. I stopped it all, and left nothing but a shitty impression for someone who has given me more than
-	I'd deserve. Were I not over involved with this bullshit coding and server nonsense, I could have done so much
-	more... so much more. I'm sorry, and I failed. I failed myself, and Luna, and Jake. 
+	I'd deserve. 
 	<hr class="hr-cmbr-gradient">
 	&emsp; I hadn't felt I was so easy to abandon, but a trend emerges that such is the case.
 	Though I wholly take responsibility for failing you both, I do recognize the negative 
@@ -1558,7 +1557,7 @@ const blogData = [
 	to my unfortunate history of heading to college without money: I need public service loan forgiveness.
 	I kept telling myself "I'm not ready, I'm not ready." Come to find out, I was absolutely correct.
 	I wasn't in 2020 for one. I wasn't in 2025 for two. Though, I'm glad I could have at least made them
-	genuinely happy for a chapter in this life. You are missed. This hurts, very much.
+	genuinely happy for a chapter in this life. You are missed. This hurts..
 	<hr class="hr-cmbr-gradient"> &emsp; 
 	<div class="rolyan-musings rolyan-vertical"><bdi>
 	*¬/•+~(/*¬ø'H'/[!/{;)'H'/('“/¬{/H/«“=¬)'H{)'¬(/;)'H'/H}';{_/+'«/[!/('“/¬{/H/(H]'¬)'H{/[!/('“/¬('H=/[!/}'¬)'/!'^{/ø'“/H[;{)'H{/*'{['/};«/¬[/['¬]';«)']'\

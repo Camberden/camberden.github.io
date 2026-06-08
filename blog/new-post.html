@@ -1,61 +1,35 @@
 <div id="new-post-handle" class="cmbr-pen" x-data x-cloak>
 	<div>
 		<a href="blog.html" class="trigger-box marker">Return</a>
+		<hr class="hr-push-down">
 
-		<form action="/api/blog/" method="POST">
+		<!-- <form action="/api/blog/" method="POST"> -->
+		<form hx-post="/api/blog/" hx-trigger="submit" hx-target="#modal-text" hx-swap="innerHTML">
 			<label for="new-bp-title">Title &emsp;</label>
-			<input id="new-bp-title" type="text" name="title" :id=$id('title') required>
+			<input id="new-bp-title" type="text" name="title" required />
 
 			<label for="new-bp-date_posted">Date &emsp;</label>
-			<input id="new-bp-date_posted" type="text" name="date_posted" :id=$id('date_posted')>
+			<input id="new-bp-date_posted" type="text" name="date_posted" />
 
 			<label for="new-bp-location">Location &emsp;</label>
-			<input id="new-bp-location" type="text" name="location" :id=$id('location')>
+			<input id="new-bp-location" type="text" name="location" />
 
 			<label for="new-bp-hours">Hours &emsp;</label>
-			<input id="new-bp-hours" type="text" name="hours" :id=$id('hours')>
+			<input id="new-bp-hours" type="text" name="hours" />
 
 			<label for="new-bp-audio">Audio &emsp;</label>
-			<input id="new-bp-audio" type="text" name="audio" :id=$id('audio')>
+			<input id="new-bp-audio" type="text" name="audio" />
 
 			<label for="new-bp-photos">Photos &emsp;</label>
 			<input id="new-bp-photos" type="text" name="photos" />
 
-			<!-- <label for="photos">Photos &emsp;</label> -->
-			<!-- <input type="file" name="photos" :id=$id('photos')> -->
-
 			<label for="new-bp-tags">Tags &emsp;</label>
-			<input id="new-bp-tags" type="text" name="tags" :id=$id('tags')>
+			<input id="new-bp-tags" type="text" name="tags" />
 
-			<div x-data="{
-        		value: '<p>Been waiting for this, and plenty else.</p>',
-				toolbarOptions: [['bold', 'italic', 'underline',], ['image', 'video', 'link'],  
-				['blockquote', 'code-block'],
-				[{'list': 'ordered'}, {'list': 'bullet'}, {'list': 'checked',}],
-				[{ 'color': [] }, { 'background': [] }], [{ 'font': [] }]],
-        		init() {
-            		let quill = new Quill(this.$refs.quill, { 
-						theme: 'snow',
-						debug: 'info',
-						modules: {
-							toolbar: this.toolbarOptions,
-						}
-					 });
-            		quill.root.innerHTML = this.value;
-           			quill.on('text-change', () => {
-                	this.value = quill.root.innerHTML;
-           		});
-       		 },
-    		}">
-				<div x-ref="quill"></div>
-				<label for="content">Content &emsp;</label>
-				<input type="hidden" name="content" x-bind:value="value" />
-			</div>
+			<label for="new-bp-content">Content &emsp;</label>
+			<input id="new-bp-content" type="text" name="content" />
 
 			<button type="submit" class="blog-button">Submit</button>
-
 		</form>
 		<hr class="hr-push-up">
 	</div>
-
-</div>

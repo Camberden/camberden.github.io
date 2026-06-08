@@ -1,15 +1,54 @@
 const express = require('express');
 const pool = require('../config/database');
 const { cookieJwtAuth } = require('../middleware/auth');
-
+const { memStorage } = require("../middleware/media");
 
 const router = express.Router();
 
+
+// router.post('/upload', memStorage.single('heicBP'), function (req, res, next) {
+//   if (!req.file) {
+//     return res.status(400).send('No file uploaded');
+//   }
+//   console.log("blog photo uploading...");
+//   (async () => {
+//     const inputBuffer = await promisify(fs.readFile)(req.file.path);
+//     const outputBuffer = await convert({
+//       buffer: inputBuffer,
+//       format: 'JPEG',
+//       quality: 0.5,
+//       name: 'temp-photo',
+//       // % Possibly add 'name' here?
+//     });
+
+//     await promisify(fs.writeFile)(`assets/blog-photos/bp-photo-${Date.now()}.jpeg`, outputBuffer);
+
+//   })();
+//   fs.unlink(req.file.path, (err) => {
+//     if (err) {
+//       console.error('File cleanup failed:', err);
+//     } else {
+//       console.log('Uploaded file cleaned up successfully');
+//     }
+//   });
+//   // res.redirect('/');
+//   next();
+// });
+
 // Create a new blog post
-router.post('/', cookieJwtAuth, async (req, res) => {
+
+router.post('/', cookieJwtAuth, async (req, res, next) => {
+
   try {
+
+    if (!req.user) {
+      res.sendStatus(404);
+      return;
+    }
+
     const { title, date_posted, location, hours, audio, photos, tags, content } = req.body;
-    const user_id = req.user.id;
+    const user_id = req.user.payload.id;
+    console.log(user_id);
 
     if (!title || !content) {
       return res.status(400).json({ error: 'Title and content are required' });
@@ -17,26 +56,35 @@ router.post('/', cookieJwtAuth, async (req, res) => {
 
     await pool.getConnection();
 
-    const [result] = await pool.execute(
+    const [result] = await pool.query(
       'INSERT INTO blog_posts (title, date_posted, location, hours, audio, photos, user_id, tags, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
       [title, date_posted, location, hours, audio, photos, user_id, tags, content]
     );
 
     await pool.releaseConnection();
-
-    res.status(201).json({
+    res.send({
       message: '(1) Blog post created successfully!',
-      postId: result.insertId
+      postId: result.insertId,
+      location: '/blog/blog.html',
+      redirectUrl: 'blog/blog.html'
     });
-    next();
   } catch (error) {
     console.error('Blog post creation error:', error);
     res.status(500).json({ error: 'Failed to create blog post' });
   }
-});
 
-// Get all blog posts (public)
+  next();
+});
 router.get('/', async (req, res) => {
+  const closeout = req.body.message;
+  console.log("hi")
+  res.send(closeout);
+});
+// Get all blog posts (public)
+router.get('/all', async (req, res) => {
+  if (req.message) {
+    alert(message);
+  }
   try {
     const connection = await pool.getConnection();
 
@@ -58,7 +106,6 @@ router.get('/', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch blog posts' });
   }
 });
-
 // Get a single blog post
 router.get('/:id', async (req, res) => {
   try {
@@ -85,7 +132,6 @@ router.get('/:id', async (req, res) => {
     res.status(500).json({ error: 'Failed to fetch blog post' });
   }
 });
-
 // Update a blog post (owner only)
 router.put('/:id', cookieJwtAuth, async (req, res) => {
   try {
@@ -125,7 +171,6 @@ router.put('/:id', cookieJwtAuth, async (req, res) => {
     res.status(500).json({ error: 'Failed to update blog post' });
   }
 });
-
 // Delete a blog post (owner only)
 router.delete('/:id', cookieJwtAuth, async (req, res) => {
   try {
