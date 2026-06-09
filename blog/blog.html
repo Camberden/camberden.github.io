@@ -26,7 +26,7 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main class="flex-grid-cmbr grid-col-1-3-1" x-data="{
+	<main id="blog-main" class="flex-grid-cmbr grid-col-1-3-1" x-data="{
 			modifyingBp: false,
 			toggleModifyingBp() { 
 				this.modifyingBp = !this.modifyingBp;
@@ -56,8 +56,7 @@
 			<div class="blog-post-header">
 				<!-- <template> -->
 				<button x-show="!modifyingBp" id="new-bp" hx-get="new-post.html" hx-trigger="click"
-					hx-target="#modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Write New
-					Post</button>
+					hx-target="#modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">New</button>
 				<button x-show="!modifyingBp" id="update-bp" hx-get="update-post.html" hx-trigger="click"
 					hx-target="modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Update</button>
 				<!-- </template> -->

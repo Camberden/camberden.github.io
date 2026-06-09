@@ -2272,6 +2272,32 @@ form>label {
 		content: normal;
 	}
 
+	#blog-main {
+		display: flex;
+		flex-direction: row nowrap;
+	}
+
+	#blog-post-body {
+		font-size: 1rem;
+	}
+
+	#blog-post-listings {
+		display: none;
+	}
+
+	#blog-post-articles {
+		flex: 1;
+		/* display: flex; */
+		order: 3;
+	}
+
+	#blog-post-media {
+		flex: 0.5;
+		/* display: flex; */
+		order: 2;
+	}
+
+
 }
 
 @media screen and (max-width: 900px) {

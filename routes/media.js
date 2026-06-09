@@ -93,14 +93,14 @@ router.get('/travel-photos', async (req, res, next) => {
 	}
 });
 
-router.get('/', (req, res) => {
+// router.get('/', (req, res) => {
 
-	req.body = charterDir('images/tmp/');
+// 	req.body = charterDir('images/tmp/');
 
-	console.log(res.body);
-	res.json("Files: " + res.body);
-	res.end();
-});
+// 	console.log(res.body);
+// 	res.json("Files: " + res.body);
+// 	res.end();
+// });
 
 
 module.exports = router;
