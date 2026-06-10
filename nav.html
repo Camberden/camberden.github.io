@@ -42,12 +42,12 @@
             <!-----| NAV 2 |----->
             <div id="nav-2" x-data="{
                 navLoaded: null,
-                 }" x-init=" $watch(() => this.$refs, value =>  navLoaded = value) ">
+                 }" x-init=" $watch(() => this.$refs.nav-auth, value =>  navLoaded = value) ">
                 <h1 id=" reactivate" class="h1-lamp" hx-get='/api/auth/reactivate' hx-trigger="load delay:1s"
                     hx-indicator="" hx-target="#nav-auth-status" hx-swap="textContent">
                 </h1>
                 <div>
-                    <p x-ref="nav-auth" id="nav-auth-status" :class="'vt323'" :style="'color:green;'"></p>
+                    <p x-ref="nav-auth" id="nav-auth-status" :class="'vt323'" :style="'color:green;'" x-transition></p>
                 </div>
                 <!-- ♪ -->
                 </h1>

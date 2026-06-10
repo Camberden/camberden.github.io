@@ -432,7 +432,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	<b‰>emsp;
+	<b‰>&emsp;
 	It's a new year, and though the common greeting is "Happy" New Year, its happy quality is to-be-determined.
 	That isn't to say that I'm not optimistic: I'm beyond grateful for my current situation and am still working to create a 
 	routine here at my new place conducive to fostering those good habits and dropping those bad habits. So far, though, I've been
@@ -471,7 +471,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	emsp;
+	<b‰>&emsp;
 	Here's to the weekend! Three days off, mostly been productive on programming and language learning.
 	I just learned that for setting classes dynamically, I should <code>setAttribute</code> first for specific cases that require
 	a local scope variable in the class name, and then apply <code>classList.add()</code> afterwards for classes without
@@ -512,7 +512,7 @@ const blogData = [
 	<p‰></p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
-	emsp;
+	<b‰>&emsp;
 	I've been distressed somewhat over the potential for an upcoming "promotion" which wouldn't serve to afford me more
 	income, but rather just a defined role and location assignment. I've weighed pros and cons: of course, I would have
 	more immediate access to my personal endeavors while completing tasks I know I could likely handle well. I do have
@@ -533,7 +533,7 @@ const blogData = [
 	That, coupled with the need to remain harmonious as a "leader" in a higher-stakes profession.
 	Yet, I'm definitely becoming more mindful and incrementally more capable; I have garnered the trust of others both
 	junior and senior. My flow is falling off, I think. I'm not sure what I'll do after writing this. 
-	<hr>&emsp;
+	<hr class="hr-cmbr-gradient>&emsp;
 	My accounting page needs a revamp; the notes are of little use to me. I would rather have something practical and 
 	interactive, as if I were actually performing a technical role, much as I enjoy coding and learning language in 
 	context. Reading over things does not work with my learning style. 
@@ -543,7 +543,7 @@ const blogData = [
 	in having a client-side generator for common accounting patterns to solve questions as they appear and uncommitting
 	the clutter to any memory. Now that I have some templates, I'm sure I could implement them. I believe T-Accounts would
 	be practical to implement on the outset here.
-	<hr>&emsp;
+	<hr class="hr-cmbr-gradient>&emsp;
 	I have not adopted a particular routine yet, but I am productive. I recently identified in a written entry that, yes,
 	my after-work time does not incorporate use of the computer, so no coding or homework, really. That leaves me few other
 	things to do, and I could acknowledge that the period is otherwise bust and should commit to heading to the gym. I must
@@ -551,7 +551,7 @@ const blogData = [
 	I can start on Friday morning. Then, come Monday, the Tuesday morning would be great. 
 	I acknowledge that restarting a habit is rough to approach, but it's doable. I just need to sacrifice.
 	Then again, I must mention this point:
-	<hr>&emsp;
+	<hr class="hr-cmbr-gradient>&emsp;
 	Once I am finished with this role and attain a better schedule, I will much more easily be able to incorporate health-focus
 	into my lifestyle. Though I may have a relatively difficult time incorporating it now, the time is certain to come. 
 	It will come back, anyway. It will come back, anyway, you know. So as long as I continue living responsibly, the 
@@ -2064,13 +2064,61 @@ const blogData = [
 	to previous afflictions.
 	</b‰>`,
 
+	`<d‰>June 9th, 2026</d‰>
+	<l‰>Pittsboro, NC</l‰>
+	<j‰>2104 HRS</j‰>
+	<p‰>assets/travel-photos/photo-nc-us-51.jpeg</p‰>
+	<a‰>https://www.youtube.com/watch?v=K8ZLe_uVuuI</a‰>
+	<u‰>Chrispy</u‰>
+	<g‰>career, venting</g‰>
+	<b‰>&emsp;
+	Well, it's been quite a stretch since posting here. Even though I would claim that I wanted to reflect and distill my thoughts on life lately, I was consumed by developing and configuring 
+	aspects of this site, to include building up the server routing, connecting the database, implementing cookies with authentication, enabling file conversion & upload,
+	and HTTP header handling. Though this did little to foster my own reflection and develop my understanding of life with novel experience, I affirmed to myself repeatedly that this is a project I owe myself,
+	and that once it's performant for my reflection, documentation, and learning needs, then it would only be a matter of maintenance. It's certain to come along. Yes, it's been pretty difficult here and there,
+	especially with coordinating middleware to achieve data manipulations in a safe manner. Though I've strung up plenty, there still seems to remain plenty to configure, including compression of uploaded, 
+	converted heic files coupled with multipart form data for a database submission that returns the expected HTTP responses and routing.
+	Still working on it, but once it's done, I'll know how henceforth. There's so much learning that's been happening, not only for this hobby, but for my work.
+	In fact, my work has been immersing me in an environment where attention to data detail is paramount and documentation equally so. The focus I've employed here is certainly helping me internalize 
+	this new content, especially for policy citation (akin to 'reading the documentation').
+	<hr class="hr-cmbr-gradient">&emsp;
+	I have numerous creative software ideas that I want to deliver before I find myself exiting this role. 
+	One is of course the financial resource for frontline staff that I drafted already. Another is a macro-library, requirements-notifier, template-generator, and guidebook for the mainframe tailored to 
+	the duties of my position. These I can surely handle within a couple years time, not even. I just wonder to myself, heck... I don't want to over-occupy myself with learning:
+	<br><t‰>Value systems update</t‰> and <mark class="caution">my value system had been updating.</mark> 
+	<hr class="hr-cmbr-gradient">&emsp;
+	Working in an administrative role, much like many college grads would aspire to, is one that really enables me to understand the lifestyle that I've heard described by many people: to live for the weekend, 
+	and to feel a continual pressure to deliver, to learn, and to advance. Following some recent successes, I felt a certain zeal, as if I almost felt an inclination to desire workplace ascension.
+	I recognize that such is all empty: I recall the sergeant who vanished after soon meeting him, the officer who passed away driving home, the architect whose knowledge retired with him, the
+	engineer who regrets shrugging off living his youth. Time and time again I hear that people would never wish they gave more career. This links back to an earlier entry on reaching higher plateaus when
+	climbing a mountain. Everything amounts to a plateau. My goal is enough. Ascension to enough to maintain a lifestyle I would find conducive to self actualization and life understanding.
+	I say that, though I must qualify that in depth and with deliberation, because that's what such would deserve. Returning to the remarks on such a lifestyle of continual learning, I've come to realize
+	that continual learning is not solely a positive, as if it were a truism to declare that learning is objectively good. I would say that it displays its negative angle when its an critical imposition
+	on worldly matters for which continual enthusiasm fails to relent, compelling discursive thought that discriminates and judges. Less verbosely, consider an addiction to learning. Such could be qualified
+	by what we see from career-driven professionals and from those enrapured by worldly goals framed by hobby. I will concede that since my return from Japan, I had mostly maintained an addiction to learning, 
+	whether technology or accounting, and had seen a considerable degradation in my mindfulness, my balance, and, in part, my contentedness. In my previous occupation, it was fairly simple to detach from 
+	workplace obligations when off-duty. Now, however, in this current role, claiming ownership on and off the clock seems to be normalized. It's following me. The workload piles whether or not I'm present.
+	A workload for me and only me. Baseline tasks can be handled in my absense, but not everything. Definitely not. Such is the norm for such college-grad aspirant roles.<br>
+	<br><mark class="cmbr-furious">I am paying a price in peace of mind.</mark><br>
+	<ul><li>This is bothersome to realize.</li>
+	<li>Perhaps I had become comfortable with the perk of off-duty detachment afforded to me previously.</li></ul>
+	<br><mark class="cmbr-furious">I am paying a price in health</mark><br>
+	<ul><li>This is bothersome to realize.</li>
+	<li>Though I incurred risk of danger previously, I was actively moving most of the time.</li> 
+	<li>I now drive 10 hours per week and sit on the job.</li>
+	<li>Hindsight is twenty-twenty, they say.</li></ul><br>
+	<hr class="hr-cmbr-gradient">&emsp;
+	So, I am left with regular considerations of whether I would seek a return to that role, choose an adjacent option with the Reserves, or continue on this path that requires continual obligatory learning
+	content later in life to 
+	</b‰>`,
+
 	/* // |==========| START NEW ENTRY TEMPLATE |=====>
 
 	`<d‰>DATE</d‰>
 	<l‰>LOCATION</l‰>
 	<j‰>HOURS</j‰>
 	<p‰></p‰>
-	<a‰></a‰>
+	<a‰>https://www.youtube.com/watch?v=K8ZLe_uVuuI</a‰>
 	<u‰>Chrispy</u‰>
 	<g‰>TAGS</g‰>
 	<b‰>&emsp;
