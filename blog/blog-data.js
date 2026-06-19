@@ -2112,6 +2112,66 @@ const blogData = [
 	content later in life to 
 	</b‰>`,
 
+	`<d‰>June 19th, 2026</d‰>
+	<l‰>Pittsboro, NC</l‰>
+	<j‰>0613 HRS</j‰>
+	<p‰></p‰>
+	<a‰>https://www.youtube.com/watch?v=daVhxk1Yx20</a‰>
+	<u‰>Chrispy</u‰>
+	<g‰>language</g‰>
+	<b‰>&emsp;
+	You know how communication is done whether through piecing together speech or writing, through presenting signs and signals, and through gestures both intentional and unintentional.
+Some people, especially those people regarded as "of few words," may often say using fewer words best filters for substance. Some people, especially those people regarded as "long-winded," may say using more words would best ensure substance isn't missed.
+You and I both have internal dialogues with the self.
+Sometimes, there are many words that come to mind during an experience, propelled by streaming thoughts. If there's someone nearby with whom the experience is shared, then only some would pass through socially, culturally, and tempramentally reinforced filters, and manifest in speech directed to that person.
+Sometimes, there are few words that come to mind during an experience, generated upon sensation. If there's someone nearby with whom the experience is shared, then it may pass through inhibited filters easily, manifesting as speech that reflects the natural reaction to the sensation.
+Easy examples of the latter would be saying... "wow, that's crazy!" with genuine surprise, or "fuck this hurts!" when something just hurts, yknow?
+Those are just few exclamatory sentences, but whole sentences: whole, structured language coupled with the context of the moment that forms the substance as a whole.
+<hr class="hr-cmbr-gradient">&emsp;
+Language is just a transmission and a translation of experience, and since we have internal dialogues with ourselves, that means those unshared words are just transmissions and translations of experience. Those unshared words constitute the natural processing of reality and the refinement of our understanding of reality. We, as human beings, are graced with an affinity for this. After all, we refined it all so much that we emerged as the dominant earthly species. To illustrate, language brought a way to link otherwise different concepts together: "that's crazy" emerged in the context of mental instability, but expanded to that which is abnormal, weird, drastic, even simply emotionally rousing, positive or negative. There had to have been people who made such connections between the language (words) demonstrated and the sensations of experience, otherwise the expanded meanings wouldn't've become known to you or me. Simply hearing words used to color and describe experiences and reactions in other contexts, I've learned, is a hallmark of "opening your mind," or "widening your horizons" or "broadening your perspective" or "expanding your worldview." It's an exercise of drawing connections and recognizing patterns, and ties intimately into my aforementioned "refinement of our understanding of reality." Yet, even after many years of living a life that involved making many, many associations with language and experience, one would never "have it all figured out." The fluid and ultimately personal qualities of language make it such that new and different connections could be made by anyone at anytime, and many connections may have been made by those before us and are lost. Linguists call this the "descriptive" quality of language; it describes. Describes what?
+Experience.
+Linguists do not call language "prescriptive" with fixed connection and meaning, like how a doctor prescribes a specific treatment for a specific problem for a specific case. 
+<hr class="hr-cmbr-gradient">&emsp;
+I remember my dad used to say that Latin as a language is used "because the meanings of the words do not change." I've grown to disagree; it just tends to introduce less variance, since after all, it doesn't have many active users. When users drop, so does the "productivity" of the language: its ability to be used as a tool to describe experience. If a language's users are mostly found within history, then it can be said that the language taps into the rich realms of how people described experience in such historical times. If a language's users are mostly found abroad, then in a similar fashion that language would tap into the understandings of reality through the contexts found within another society. This is why people say "learning a foreign language expands your perspectives." 
+Only within the last couple of years did I have a profound reckoning with that claim when advancing in studying Japanese. There are so, so many unique, contextual associations with sound and written form that varying meanings could be constructed with the same few sounds or a rearragement of written components. Imagine using the English language, but we would be consistently mindful of many, many Greek, Germanic, and Latin stems when describing experiences in many contexts, like the sunrise (a compound, Germanic only: Sun Rise). You could say Anahelios. Heliorise. Ascendentum Solaris. Solar Ascention. Funny thing about Japanese is that so many varieties are more easily accessibile because the language demands component knowledge and because the resultant words are often few in syllables. Our commonplace word "sunrise" wins on syllables: it's only 2; it's accesible and conveys it's original meaning well. The others, well, they're multi-syllabic mouthfuls and those components are not readily known by many English users. But in Japanese? The concept is embedded in many words:
+
+    日の出Hi no De. "The exit of the sun."
+    日出 Nisshutsu. "Sun exit."
+    朝日or旭日 Asahi (like the beer lol). "Morning sun."
+    朝暘 Chouyou. "Morning sun."
+    旭日 Kyokujitsu. "Rising sun."
+    来光Raikou. "The coming light." 
+
+
+Only the last isn't found commonplace.
+Raikou is specific to the sunrise as viewed from a mountaintop. So, you could even see here that the concept of sunrise as we know it is built-in to another word altogether. 
+Also, for fun though you probably know this:
+
+    日(の)本 Hi no Moto. "Where the sun rises/Origin of the sun."
+    日本 Nihon/Nippon. "Japan"
+
+So much of the Japanese language maintains the productive components of its history actively in the daily use of the language, allowing for all of these to work and be understood. Yet, each has slightly different contexts by symbol and speech.
+You might have also noted what I believe is one of the roughest aspects of learning the language: the native readings and the non-native readings (...and the special readings called Jikujikun). 
+
+    日 Native = Hi, Bi, Pi, Ka
+    日 Non-Native = Nichi, Ni, Jitsu, Jutsu
+    日 Jikujikun = Te, i
+
+<hr class="hr-cmbr-gradient">&emsp;
+So, circling back to meaning in few or many words.
+Single words can be entire sentences, complete with contextual meaning.
+"Crazy." Can be a sentence. It can be taken as a remark, or a commentary with deeply felt sensation by the speaker. Context makes it all. Heck, context is so beautiful even though it can be so confusing because there's much power it holds within experience.
+
+There's a certain word that comes to my mind that's weird like this.
+I said it to myself when I was sitting upon a floor mat in a cabin the one evening, looking out into the forest through the large window facing dirt driveway. A gentle rustling was heard and seen. The muttering breeze compelled the fluttering of the myriad leaves both above and below. Footwork, rustling, and arranging within this home resounded throughout its space, instilling the warm and comforting awareness of company. For a brief moment, the sun further penetrated the canopies and washed my view with considerable brilliance and clarity, and then, still stilly admiring the sights and sounds – the experience itself – internally I said to myself in a monotonous voice: <mark class="chrispy"><t‰>Elysium</t‰></mark>
+
+It's an Ancient Greek word, referring to the idea of a place where deserving people (i.e. those who succeed in a "hero's journey" *nod) may discover: where needs are met, where conflict vanishes and peace is achieved, where labor for survival becomes the past, where the breeze is as lovely as the taste of the food, where life is to be lived without tears caused through suffering and toil. Essentially, it's a classical idea of a paradise that parallels ideas of afterlife.
+I utter the word to myself during certain moments in life when I sense profound harmony or tranquility through simplicity. Basically, "when things just feel right," yknow? 
+
+I heard of the word back in high school when we had to read some of the Odyssey. It was a cool looking word and I delved into it some, and it turned out to be an idea that many, many writers and readers alike had remembered and developed. 
+I said it to myself on a few other occassions... when I was at the gazebo park in Butner, in Japan at the Imperial Palace gardens, behind the Biltmore in Asheville, heck, even being here at this house before I moved here. One pattern for it is.. There  always seems to be a nice breeze and a relative peace when things aren't too busy but aren't entirely still. Another is that the moment provides a stark contrast to the ordinary challenges in life. My closing note on this word would be: whenever I would pass away, I would hope that I may do so in a similar state of mind.
+	</b‰>`,
+
 	/* // |==========| START NEW ENTRY TEMPLATE |=====>
 
 	`<d‰>DATE</d‰>

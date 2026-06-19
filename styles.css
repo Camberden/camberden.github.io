@@ -453,7 +453,8 @@ nav {
 	height: auto;
 	text-align: start;
 	background-color: black;
-	/* overflow-y: scroll !important; */
+	overflow-y: scroll !important;
+	scrollbar-width: none;
 }
 
 #chart-dropdown>#chart-links>.section-title {
@@ -539,81 +540,6 @@ nav {
 
 .sections-opened::after {
 	content: attr(item) " ↓";
-}
-
-#sections-dropdown {
-	z-index: 300;
-	font-family: inherit;
-	height: 2rem;
-	border: 0.5rem groove black;
-	padding: 0.2rem;
-	left: 0;
-	width: fit-content;
-	height: fit-content;
-	text-align: start;
-	position: fixed;
-	background-color: black;
-}
-
-#sections-dropdown>.sections-links>.section-title {
-	padding: 0.5rem !important;
-	font-size: 1rem !important;
-}
-
-#sections-access {
-	font-family: "VT323", monospace;
-	width: 100%;
-	right: 0;
-	color: var(--cmbr-blue);
-}
-
-#sections-access:hover {
-	cursor: pointer;
-	background-color: var(--cmbr-curtain-plum);
-	color: var(--cmbr-green);
-}
-
-/* |==========| §BOOKMARKS NAVIGATION |====================> */
-/* |==========| RIGHT-SIDE DROPDOWN FOR FREQUENTED SITES NAVIGATION |====================> */
-#bookmarks-dropdown {
-	z-index: 300;
-	border: 0.5rem groove black;
-	padding: 0.2rem;
-	right: 0;
-	width: fit-content;
-	height: fit-content;
-	text-align: start;
-	position: fixed;
-	background-color: black;
-}
-
-#bookmarks-dropdown>.bookmarks-links>.section-title {
-	padding: 0.5rem !important;
-	font-size: 1rem !important;
-}
-
-#bookmarks-access {
-	font-family: "VT323", monospace;
-	text-align: center;
-	width: 100%;
-	right: 0;
-	color: var(--cmbr-blue);
-}
-
-#bookmarks-access:hover {
-	cursor: pointer;
-	background-color: var(--cmbr-curtain-plum);
-	color: var(--cmbr-green);
-}
-
-.bookmarks-opened::before {
-	content: attr(item) "↓ ";
-}
-
-.bookmarks-opened:first-child {
-	text-align: right;
-	right: 0;
-	padding-bottom: 0.5rem;
 }
 
 /* |==========| §HORIZONTAL RULES <hr> |====================> */
@@ -1118,6 +1044,136 @@ select:hover {
 
 /* |==========| §INDEX.HTML SPECIFIC |====================> */
 /* |==========| STYLES THAT MOSTLY BEFIT THE SPLASH PAGE |====================> */
+
+.cmbr-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	padding: 2rem;
+	gap: 1rem;
+}
+
+.cmbr-item {
+	/* padding: 1rem;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	border-width: 0.3rem;
+	max-height: 40rem;
+	background: rgba(144, 229, 238, 0.1); */
+
+	padding: var(--cmbr-com-pnl-padding);
+	box-shadow: var(--cmbr-com-pnl-box-shadow);
+	border-width: var(--cmbr-com-border-width);
+	max-height: fit-content;
+	background: var(--cmbr-com-pnl-background);
+}
+
+.cmbr-item-left {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	overflow: scroll;
+	scroll-behavior: smooth;
+}
+
+.cmbr-item-stretch-1 {
+	width: max-content;
+}
+
+.cmbr-item-center {
+	box-sizing: content-box;
+	/* box-sizing: border-box; */
+	width: 50rem;
+	max-width: 100%;
+	overflow-wrap: anywhere;
+	scroll-behavior: smooth;
+	background: #0f0b07de;
+	height: max-content;
+}
+
+.cmbr-item-right {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	overflow: scroll;
+	align-items: center;
+	justify-content: center;
+}
+
+.cmbr-item-dash {
+
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: baseline;
+	text-align: left;
+	min-width: 20rem;
+	/* min-height: 20rem; */
+	padding: 0.5rem;
+	box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey);
+	backdrop-filter: blur(0.2rem) saturate(90%);
+	-webkit-backdrop-filter: blur(0.2rem) saturate(90%);
+	background-color: rgba(4, 6, 17, 0.75);
+	background-image: transparent;
+	/* background-size: cover; */
+	border: 0.5rem ridge rgba(22, 17, 17, 0.855);
+}
+
+/* |==========| §PARTITIONS |====================> */
+/* |==========| JUNE 2026 LAYOUT ITERATION  |====================> */
+
+.cmbr-partition {
+	--cmbr-partition-display: flex;
+	--cmbr-partition-gap: 0.5rem;
+	--cmbr-partition-max-width: 60%;
+	--cmbr-partition-margin-inline: auto;
+	--cmbr-partition-top: 10%;
+	--cmbr-partition-overflow: auto;
+	--cmbr-partition-scroll-behavior: smooth;
+
+}
+
+.cmbr-partition>.cmbr-prtn-l {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+.cmbr-partition>.cmbr-prtn-c {
+	box-sizing: content-box;
+	/* padding: 1rem; */
+	/* box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71); */
+	/* border-width: 0.3rem; */
+	background: #0f0b07de;
+	height: max-content;
+
+}
+
+.cmbr-partition>.cmbr-prtn-r {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.cmbr-prtn-item {
+	padding: 1rem;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	border-width: 0.3rem;
+	max-height: 45rem;
+	background: rgba(144, 229, 238, 0.1);
+}
+
 .index-grid {
 	display: grid;
 	gap: 0.5rem;
@@ -1135,7 +1191,6 @@ select:hover {
 }
 
 .index-item {
-
 	padding: var(--cmbr-com-pnl-padding);
 	/* box-shadow: var(--cmbr-com-pnl-box-shadow); */
 	/* border-width: var(--cmbr-com-border-width); */
@@ -1499,82 +1554,6 @@ select:hover {
 .flex-grid-cmbr {
 	padding: 2rem;
 	gap: 1rem;
-}
-
-.cmbr-grid {
-	display: grid;
-	grid-template-columns: 1fr 3fr 1fr;
-	padding: 2rem;
-	gap: 1rem;
-}
-
-.cmbr-item {
-	/* padding: 1rem;
-	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
-	border-width: 0.3rem;
-	max-height: 40rem;
-	background: rgba(144, 229, 238, 0.1); */
-
-	padding: var(--cmbr-com-pnl-padding);
-	box-shadow: var(--cmbr-com-pnl-box-shadow);
-	border-width: var(--cmbr-com-border-width);
-	max-height: fit-content;
-	background: var(--cmbr-com-pnl-background);
-}
-
-.cmbr-item-left {
-	box-sizing: content-box;
-	top: 10%;
-	flex: 1;
-	position: sticky;
-	height: 45rem;
-	overflow: scroll;
-	scroll-behavior: smooth;
-}
-
-.cmbr-item-stretch-1 {
-	width: max-content;
-}
-
-.cmbr-item-center {
-	box-sizing: content-box;
-	/* box-sizing: border-box; */
-	width: 50rem;
-	max-width: 100%;
-	overflow-wrap: anywhere;
-	scroll-behavior: smooth;
-	background: #0f0b07de;
-	height: max-content;
-}
-
-.cmbr-item-right {
-	box-sizing: content-box;
-	top: 10%;
-	flex: 1;
-	position: sticky;
-	height: 45rem;
-	overflow: scroll;
-	align-items: center;
-	justify-content: center;
-}
-
-.cmbr-item-dash {
-
-	display: flex;
-	flex-direction: column;
-	align-items: left;
-	justify-content: baseline;
-	text-align: left;
-	min-width: 20rem;
-	/* min-height: 20rem; */
-	padding: 0.5rem;
-	box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey);
-	backdrop-filter: blur(0.2rem) saturate(90%);
-	-webkit-backdrop-filter: blur(0.2rem) saturate(90%);
-	background-color: rgba(4, 6, 17, 0.75);
-	background-image: transparent;
-	/* background-size: cover; */
-	border: 0.5rem ridge rgba(22, 17, 17, 0.855);
 }
 
 .flex-table {
