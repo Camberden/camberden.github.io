@@ -1,7 +1,7 @@
 <div id="nav-handle" x-data="{ 
     atIndex: CMBRutil.atSiteIndex(),
     sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
-    navLoaded: Alpine.store('nauth').valid,
+    // navLoaded: Alpine.store('nauth').valid,
     }" x-bg>
 
     <template x-if=" !atIndex">
@@ -40,9 +40,10 @@
             </div>
 
             <!-----| NAV 2 |----->
+            <!-- // x-init=" $watch(() => this.$refs.nav-auth, value =>  navLoaded = value)  -->
             <div id="nav-2" x-data="{
                 navLoaded: null,
-                 }" x-init=" $watch(() => this.$refs.nav-auth, value =>  navLoaded = value) ">
+            }">
                 <h1 id=" reactivate" class="h1-lamp" hx-get='/api/auth/reactivate' hx-trigger="load delay:1s"
                     hx-indicator="" hx-target="#nav-auth-status" hx-swap="textContent">
                 </h1>

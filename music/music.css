@@ -138,7 +138,6 @@
 	animation: iconmove 25s linear infinite;
 }
 
-
 #soundcloud-link {
 	font-family: 'Courier New', Courier, monospace;
 	color: purple;
@@ -149,4 +148,13 @@
 
 #backdrop-low {
 	padding: 10rem;
+}
+
+/* |=====| CUES |=====| */
+/* |=====| vtt Files |=====| */
+
+audio::cue {
+	font-size: 1.5rem;
+	background-image: linear-gradient(to bottom, yellow, lightyellow);
+	color: red;
 }
