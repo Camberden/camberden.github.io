@@ -2,9 +2,11 @@ WEBVTT
 
 STYLE
 ::cue {
-  background-image: linear-gradient(to bottom, dimgray, lightgray);
-  color: papayawhip;
-  line:0 position:20% size:60% align:left
+  background-image: black;
+  font-family: 'Permanent Marker', Lora, monospace;
+  color: cadetblue;
+  line: 1;
+  align: left;
 }
 
 NOTE comment blocks can be used between style blocks.

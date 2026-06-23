@@ -7,7 +7,7 @@
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	vertical-align: baseline;
+	/* vertical-align: baseline; */
 }
 
 @starting-style {
@@ -17,7 +17,7 @@
 		border: 0;
 		font-size: 100%;
 		font: unset;
-		vertical-align: baseline;
+		/* vertical-align: baseline; */
 		animation-play-state: paused;
 	}
 
@@ -729,6 +729,14 @@ mark {
 	content: attr(item) " % ";
 }
 
+.numr::after {
+	content: attr(item) " / ";
+}
+
+.deno::before {
+	content: attr(item) " / ";
+}
+
 /* |==========| §BUTTONS, TRIGGERS, AND THEIR AFFIXATION <button> |====================> */
 /* |==========| BUTTONS AND RELATED NON-VALUE, NON-FORM API TRIGGER BOXES |====================> */
 button {
@@ -873,8 +881,10 @@ button:disabled:hover {
 }
 
 #cmbr-player {
-	/* outline: 0.1rem dotted aqua; */
+	border-left: 0.3rem groove black;
+	border-right: 0.3rem groove black;
 }
+
 
 #cmbr-player>video {
 	width: 15rem;
@@ -911,6 +921,7 @@ figcaption>menu {
 	border-color: var(--cmbr-green);
 }
 
+
 .cmbr-player-visual {
 	box-sizing: border-box;
 	color: var(--cmbr-primary);
@@ -922,25 +933,21 @@ figcaption>menu {
 
 /* Fallback stuff */
 progress[value] {
-	appearance: none;
+	/* appearance: none; */
 	border: none;
+	vertical-align: middle;
 	border-radius: 3px;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, .25) inset;
 	color: dodgerblue;
-	display: inline;
 	height: 15px;
 	order: 1;
 	position: relative;
 	width: 100%;
 }
 
-progress[value]:seeking {
-	border-color: aqua;
-}
-
 /* WebKit styles */
 progress[value]::-webkit-progress-bar {
-	background-color: whiteSmoke;
+	background-color: grey;
 	border-radius: 3px;
 	box-shadow: 0 2px 3px rgba(0, 0, 0, .25) inset;
 }
@@ -961,6 +968,7 @@ progress[value]::-moz-progress-bar {
 	position: relative;
 	transition: width 1s linear;
 }
+
 
 .button-grid-row {
 	display: flex;
@@ -995,6 +1003,8 @@ progress[value]::-moz-progress-bar {
 }
 
 select {
+	/* appearance: none; */
+	vertical-align: middle;
 	font-family: "Lora", "monospace";
 	color: burlywood;
 	border: 0.5rem groove cadetblue;
@@ -1044,6 +1054,11 @@ select:hover {
 .grid-col-1-1-1-2 {
 	display: grid;
 	grid-template-columns: 1fr 1fr 1fr 2fr;
+}
+
+.grid-col-1-2-1-1 {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr 1fr;
 }
 
 .grid-col-1-2-2-1 {

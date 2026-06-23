@@ -1208,7 +1208,7 @@ const blogData = [
 	<l‰>Myrtle Beach, SC</l‰>
 	<j‰>0853 HRS</j‰>
 	<g‰></g‰>
-	<p‰></p‰>
+	<p‰>../assets/travel-photos/photo-sc-us-4.jpeg</p‰>
 	<a‰></a‰>
 	<u‰>Chrispy</u‰>
 	<b‰>&emsp;
@@ -2115,8 +2115,8 @@ const blogData = [
 	`<d‰>June 19th, 2026</d‰>
 	<l‰>Pittsboro, NC</l‰>
 	<j‰>0613 HRS</j‰>
-	<p‰></p‰>
-	<a‰>https://www.youtube.com/watch?v=daVhxk1Yx20</a‰>
+	<p‰>../assets/travel-photos/photo-nc-us-52.jpeg</p‰>
+	<a‰>https://www.youtube.com/watch?v=wYsfNBEfehw</a‰>
 	<u‰>Chrispy</u‰>
 	<g‰>language</g‰>
 	<b‰>&emsp;

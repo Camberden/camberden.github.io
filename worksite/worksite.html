@@ -27,6 +27,19 @@
 		<hr class="hr-push-down">
 
 		<div id="cmbr-player-handle" x-data="{
+			
+			allTunes: cmbrTunes,
+			selectedTune: cmbrTunes[0],
+			speechlessTune: '../assets/music-tracks/music-speechless.vtt',
+			getTuneTrack: function() {
+				return this.selectedTune.lyricalOrInstrumental ? this.selectedTune.audioFileLink.replace('.mp4', '.vtt') : this.speechlessTune;
+			},
+			getTuneSource: function() {
+				return this.selectedTune.audioFileLink;
+			},
+			vidSourceLink: $refs.cmbrVideoSource,
+			vidTrackLink: $refs.cmbrVideoTrack,
+
 			playSymbol: '&#9658;',
 			pauseSymbol: '&#10073;&#10073;', // ⏸
 			stopSymbol: '&#9632;',
@@ -34,29 +47,45 @@
 			volumePercentage: '100%',
 			trackDecimalPrecision: 2,
 
+
+			vidTime: 1.00,
+			vidDuration: 1.00,
 			vid: $refs.cmbrVideo,
+			vidFigure: $refs.cmbrFigure,
 			vidPlay: $refs.cmbrPlay,
 			vidMute: $refs.cmbrMute,
 			vidVolume: $refs.cmbrVolumeDisplay,
 			vidProgress: $refs.cmbrVideoProgress,
-
+		
 			vidTimer: $refs.cmbrTimer,
 			vidLength: $refs.cmbrVideoLength,
 
-			vidProgressTimer: 1.00,
-			vidProgressLength: 5.00,
+			timeUpdateHandler: function() {
+				// this.vidProgress.value = parseFloat(this.vidTime).toFixed(this.trackDecimalPrecision);
+				// this.vidProgress.max = parseFloat(this.vidDuration).toFixed(this.trackDecimalPrecision);
+				// this.vidProgressTimer = this.vidProgress.value;
+				// this.vidProgressLength = this.vidProgress.max;
+			},
+
+			setVidListener: function() {
+				// this.vid.addEventListener('timeupdate', this.timeUpdateHandler);
+			},
+			removeVidListener: function() {
+				// this.vid.removeEventListener('timeupdate', this.timeUpdateHandler);
+			},
+
 
 			vidStats: function() {
-				console.table({ 'Progress dot Value: ': this.vidProgress.value, 'Progress dot Max: ': this.vidProgress.max,
-				'Vid Time Elapsed Confirmed: ': this.vid.currentTime, 'Vid Duration Confirmed: ': this.vid.duration,
-			'Vid Progress Timer Variable: ': this.vidProgressTimer, 'Vid Progress Length Variable: ': this.vidProgressLength, });
+				console.table({ 'Progress Value: ': document.querySelector('progress').value, 'Progress Max: ':	document.querySelector('progress').max,'Video Current Time: ': document.querySelector('video').currentTime, 'Video Duration: ': document.querySelector('video').duration, });
 			},
 
 			alterPlay: function() {
 				if (this.vid.paused || this.vid.ended) {
+					console.log('HELLO??? ' + this.vidTime);
 					this.vid.play();
 					this.vidPlay.innerText = this.pauseSymbol;
 				} else {
+					console.log('HELLO??? ' + this.vidTime);
 					this.vid.pause();
 					this.vidPlay.innerText = this.playSymbol;
 					this.vidStats();
@@ -66,19 +95,19 @@
 			alterStop: function() {
 				this.vidStats();
 				this.vid.pause();
-				this.vid.currentTime = 0; 
+				this.vid.currentTime = 0.00;
 				this.vidPlay.innerText = this.playSymbol;
-				this.vidProgress.value = 0;
+				this.vidProgress.value = 0.00;
 			},
 
 			alterMute: function() {
 				const currentVolume = (Math.floor(this.vid.volume * 10) / 10).toFixed(1);
 				this.vid.muted = ! this.vid.muted;
 				if (this.vid.muted) {
-					this.muteSymbol = '&circledcirc;';
+					this.muteSymbol = '🔉';
 					this.volumePercentage = '0%';
 				} else {
-					this.muteSymbol = '&CircleTimes;';
+					this.muteSymbol = '🔇';
 					this.vid.volume = parseFloat(this.vid.volume).toFixed(1);
 					this.volumePercentage = (parseFloat(this.vid.volume * 100).toFixed(0) + '%');
 				}
@@ -94,28 +123,91 @@
 					}
 					this.volumePercentage = (parseFloat(this.vid.volume * 100).toFixed(0) + '%');
 					console.table({'Current Vid Volume: ': parseFloat(this.vid.volume).toFixed(1), 'Volume Percentage: ': this.volumePercentage, });
-			},}" x-initialized=" vidStats(); 
+			},
+			
+			alterScrub: function(val) {
+				const scrubValue = parseFloat(val);
+				this.vid.currentTime += scrubValue;
+			},
+
+			// TODO: parse for long tracks
+			gatherVttValue: async function(val) {
+				let vttStamp = val.toString();
+				const vttColon = vttStamp.lastIndexOf(':');
+				const vttDot = vttStamp.indexOf('.');
+				console.log(parseInt(vttStamp.substring(vttColon, vttDot).length));
+				if (vttStamp.substring(vttColon, vttDot).length === 1) {
+					vttStamp = '0' + vttStamp;
+				}
+				while (vttStamp.length < 5) {
+					vttStamp += '0';
+				};
+				const vttTrack = '00:00:' + vttStamp + ' --> 00:00:' + vttStamp;
+				navigator.clipboard.writeText(vttTrack);
+				alert('Copied: ' + vttTrack);
+			},
+
+			changeTune: async function(tune) {
+				console.log(this.vid.duration);
+				this.alterStop();
+				console.log(this.vid.duration);
+				this.removeVidListener();
+				this.selectedTune = tune;
+				console.log(this.vid.duration);
+				const newSource = this.vidSourceLink;
+				const newTrack = this.vidTrackLink;
+				newSource.src = this.getTuneSource();
+				newTrack.src = this.getTuneTrack();
+				setTimeout(() => {
+					console.log(this.vid.duration);
+					this.vid.load();
+					try {
+						this.vid.duration !== NaN;
+					} catch (err) {
+						this.vid.duration = 1.00;
+						console.log(err);
+					} finally {
+						this.setVidListener();
+					}
+					console.log('Loaded.');
+					this.vidStats();
+				}, 1000);
+				
+			},
+		
+		}" x-init=" vidStats(); " x-initialized=" setVidListener();
 			">
 
 			<!-- % HERE'S THE player -->
-			<figure id="cmbr-player" !vid-paused>
+			<figure x-ref="cmbr-figure" id="cmbr-player">
+
 				<figcaption>
-					<menu id="video-controls-support" x-show="true">
+					<menu id="video-controls-support">
 
 						<div class="grid-col-1-1">
 							<li class="cmbr-player-visual" x-text="'CMBR Mediatool'"></li>
-							<select x-ref="mediatoolLoadedTrack" class="cmbr-player-control">
-								<option>tunes</option>
-								<option value="../assets/music-tracks/music-the-deficit-of-patience.mp4" selected>
-									Deficit
-								</option>
-								<option value="../assets/music-tracks/music-meaning.mp4">Meaning
-								</option>
+							<select x-ref="mediatoolLoadedTrack" name="cmbr-player-loaded-track"
+								class="cmbr-player-control"
+								@change="selectedTune = allTunes[$el.value]; console.log($el.value); $nextTick(() => { changeTune(selectedTune); });">
+								<template x-for="(tune, index) in allTunes" :key="index">
+									<option :id="tune.title.replaceAll(' ', '-')" :name="tune.title" :value="index"
+										x-text="tune.title">
+									</option>
+								</template>
 							</select>
 						</div>
-						<div>
+						<div class="grid-col-1-2-1-1">
 							<li class="cmbr-player-visual">
-								<h5 x-text="$refs.mediatoolLoadedTrack.value">The Deficit of Patience [scraped]</h5>
+								<h5 x-text="selectedTune.year"></h5>
+							</li>
+							<li class="cmbr-player-visual">
+								<h5 x-text="selectedTune.compilation"></h5>
+							</li>
+							<li class="cmbr-player-visual">
+								<h5 x-text="selectedTune.lyricalOrInstrumental ? 'lyrics' : 'no lyrics'"></h5>
+							</li>
+							<li class="cmbr-player-visual">
+								<h5 x-text="selectedTune.completeOrIncomplete ? 'complete' : 'incomplete'"></h5>
 							</li>
 						</div>
 
@@ -124,13 +216,14 @@
 
 				<video x-ref="cmbrVideo" id="cmbr-video" controls="true" videoHeight="75" videoWidth="150"
 					poster='../assets/artifacts/foxfire.jpeg' loop preload="metadata" x-effect="$el.controls = false"
-					@onloadedmetadata=" vidProgressTimer=parseFloat($el.currentTime).toFixed(trackDecimalPrecision); vidProgressLength=parseFloat($el.duration).toFixed(trackDecimalPrecision);"
-					@ondurationchange="vidProgressLength = parseFloat($el.duration).toFixed(trackDecimalPrecision); vidProgress.max = parseFloat($el.duration).toFixed(trackDecimalPrecision);"
-					@timeupdate="vidProgress.value = parseFloat($el.currentTime).toFixed(trackDecimalPrecision); vidProgress.max = parseFloat($el.duration).toFixed(trackDecimalPrecision); 
-					vidProgressTimer = vidProgress.value; vidProgressLength = vidProgress.max;" @click="alterPlay()">
-					<source src=" ../assets/music-tracks/music-the-deficit-of-patience.mp4" type="video/mp4" />
-					<track default kind="captions" srclang="en" label="English"
-						src="../assets/music-tracks/music-the-deficit-of-patience.vtt" type="text/vtt" />
+					@onloadedmetadata=" vidTime=parseFloat($el.currentTime).toFixed(trackDecimalPrecision); vidDuration=parseFloat($el.duration).toFixed(trackDecimalPrecision); "
+					@onloadeddata=" vidDuration = $el.duration; vidTime = $el.currentTime" ; @ondurationchange=" vidProgressLength=parseFloat($el.duration).toFixed(trackDecimalPrecision);
+					vidProgress.max=parseFloat($el.duration).toFixed(trackDecimalPrecision); "
+					@timeupdate="vidDuration = $el.duration; vidTime = $el.currentTime;"
+					@canplay=" vidDuration = $el.duration; vidTime = $el.currentTime" @click="alterPlay()">
+					<source x-ref="cmbrVideoSource" src="../assets/music-tracks/music-meaning.mp4" type="video/mp4" />
+					<track x-ref="cmbrVideoTrack" default kind="captions" srclang="en" label="English"
+						src="../assets/music-tracks/music-meaning.vtt" type="text/vtt" />
 
 				</video>
 
@@ -141,24 +234,33 @@
 							<li x-ref="cmbrPlay" class="cmbr-player-control" @click="alterPlay()" x-text="playSymbol">
 							</li>
 							<li class="cmbr-player-visual">
-								<progress x-ref="cmbrVideoProgress" id="progress" max="vidProgressLength"
-									value="1.00"></progress>
+								<progress x-ref="cmbrVideoProgress" :max="vidDuration" :value="vidTime"></progress>
 							</li>
 						</div>
 
-						<div class="grid-col-4-1">
-							<li class="cmbr-player-visual">
-								<span x-ref="cmbrTimer" x-html="vidProgressTimer"></span>/
-								<span x-ref="cmbrVideoLength" x-html="vidProgressLength"></span>
-							</li>
-							<select class="cmbr-player-control" @change="trackDecimalPrecision = $el.value">
-								<option>Prc.</option>
+						<div class="grid-col-5x-1">
+							<select name="cmbr-player-track-decimal-precision" class="cmbr-player-control"
+								@change="trackDecimalPrecision = $el.value">
 								<option value="0">0</option>
 								<option value="1">1.0</option>
-								<option value="2">2.00</option>
+								<option value="2" selected>2.00</option>
 								<option value="3">3.000</option>
 							</select>
+
+							<li
+								:class="selectedTune.lyricalOrInstrumental ? 'cmbr-player-control' : 'cmbr-player-visual'">
+								<span x-ref="cmbrTimer" x-text="parseFloat(vidTime).toFixed(trackDecimalPrecision);"
+									@click="gatherVttValue($el.innerText)"></span>
+							</li>
+
+							<li class="cmbr-player-visual">
+								<span x-ref="cmbrVideoLength"
+									x-html="parseFloat(vidDuration).toFixed(trackDecimalPrecision);"></span>
+							</li>
+							<li class="cmbr-player-control" @click="alterScrub(-5)" x-text="'Scrub-'"></li>
+							<li class="cmbr-player-control" @click="alterScrub(5)" x-text="'Scrub+'"></li>
 						</div>
+
 
 						<div class="grid-col-1-3-1">
 							<li class="cmbr-player-control" @click="alterVolume(false)" x-text="'Vol-'"></li>

@@ -79,6 +79,41 @@ document.addEventListener("alpine:init", () => {
 });
 
 /**
+	 * @param {string} title
+	 * @param {number} year
+	 * @param {string} compilation
+	 * @param {string} audioFileLink
+	 * @param {boolean} completeOrIncomplete
+	 * @param {boolean} lyricalOrInstrumental
+	 */
+class Tune {
+	constructor(title, year, compilation, audioFileLink, completeOrIncomplete, lyricalOrInstrumental) {
+		this.title = title;
+		this.year = year;
+		this.compilation = compilation;
+		this.audioFileLink = audioFileLink;
+		this.completeOrIncomplete = completeOrIncomplete;
+		this.lyricalOrInstrumental = lyricalOrInstrumental;
+	}
+}
+
+const cmbrTunes = [ // ../assets/music-tracks/music-
+	trackMeaning = new Tune("Meaning", 2021, "The Rush of Feeling", "../assets/music-tracks/music-meaning.mp4", true, true),
+	trackTheWarOfArt = new Tune("The War of Art", 2020, "Draft Compendium", "../assets/music-tracks/music-the-war-of-art.mp3", true, false),
+	// trackForTheVision = new Tune("For the Vision", 2019, "Draft Compendium", "../assets/music-tracks/music-for-the-vision.mp3", true, true),
+	trackTheDeficitOfPatience = new Tune("The Deficit of Patience", 2019, "Draft Compendium", "../assets/music-tracks/music-the-deficit-of-patience.mp4", false, true),
+	trackSuperScapegrace = new Tune("SUPER Scapegrace", 2016, "Audioshi Isle", "../assets/music-tracks/music-super-scapegrace.mp3", true, false),
+	trackBlueberryBeach = new Tune("Blueberry Beach", 2016, "Audioshi Isle", "../assets/music-tracks/music-blueberry-beach.mp3", true, false),
+	trackFruityFrolicField = new Tune("Fruity Frolic Field", 2016, "Audioshi Isle", "../assets/music-tracks/music-fruity-frolic-field.mp3", true, false),
+	trackSixthMissionThrowback = new Tune("Sixth Mission Throwback", 2020, "Draft Compendium", "../assets/music-tracks/music-sixth-mission-throwback.mp3", true, false),
+	trackAGamesPostlude = new Tune("A Game's Postlude", 2012, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-a-games-postlude.mp3", true, false),
+	trackFirstDungeon = new Tune("First Dungeon", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-first-dungeon.mp3", true, false),
+	trackSixthMission = new Tune("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-sixth-mission.m4a", true, false),
+	trackSecondCommune = new Tune("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", true, false),
+	trackSuperScapegraceOriginal = new Tune("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-super-scapegrace-original.m4a", true, false),
+];
+
+/**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
  * Formally buttons.js, a Global JavaScript Handler

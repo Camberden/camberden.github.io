@@ -1,0 +1,16 @@
+WEBVTT
+
+STYLE
+::cue {
+  background-image: black;
+  font-family: 'Permanent Marker', Lora, monospace;
+  color: cadetblue;
+  line: 1;
+  align: left;
+}
+
+NOTE comment blocks can be used between style blocks.
+
+1
+00:00:00.001 --> 00:00:05.000
+Instrumental Track without Lyrics

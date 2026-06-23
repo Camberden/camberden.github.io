@@ -40,7 +40,6 @@ const tracks = [ // ../assets/music-tracks/music-
 	trackSixthMission = new Track("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-sixth-mission.m4a", true, false),
 	trackSecondCommune = new Track("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", true, false),
 	trackSuperScapegraceOriginal = new Track("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-super-scapegrace-original.m4a", true, false),
-
 ];
 
 const trackList = document.getElementById("track-list");
