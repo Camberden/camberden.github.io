@@ -22,7 +22,7 @@
     "heic2any": "^0.0.4",
     "jsonwebtoken": "^9.0.3",
     "marked": "^18.0.4",
-    "multer": "^2.1.1",
+    "multer": "^2.2.0",
     "mysql2": "^3.22.4",
     "nodemon": "^3.1.14"
   }
