@@ -2,9 +2,10 @@
     atIndex: CMBRutil.atSiteIndex(),
     sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
     // navLoaded: Alpine.store('nauth').valid,
+    duckNav: false,
     }" x-bg>
 
-    <template x-if=" !atIndex">
+    <template x-if=" !atIndex" x-show="!duckNav">
         <div class="nav-sail">
             <!-----| NAV 1 |----->
             <div id="nav-1" x-data="{ active: 0 }">

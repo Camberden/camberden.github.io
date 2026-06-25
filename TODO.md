@@ -297,3 +297,10 @@
 	res.send("Welcome back, " + iden + "!");
 });
 `
+
+# removed
+@canplay=" vidDuration = $el.duration; vidTime = $el.currentTime"
+
+# Codemirror
+specialChars: RegExp
+    A regular expression used to determine which characters should be replaced by a special placeholder. Mostly useful for non-printing special characters. The default is /[\u0000-\u001f\u007f-\u009f\u00ad\u061c\u200b\u200e\u200f\u2028\u2029\u202d\u202e\u2066\u2067\u2069\ufeff\ufff9-\ufffc]/.

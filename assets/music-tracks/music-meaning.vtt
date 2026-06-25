@@ -1,5 +1,14 @@
 WEBVTT
 
+STYLE
+::cue {
+  background-image: black;
+  font-family: 'Permanent Marker', Lora, monospace;
+  color: cadetblue;
+  line: 1;
+  align: left;
+}
+
 1
 00:00:00.001 --> 00:00:01.471
 I've been waiting

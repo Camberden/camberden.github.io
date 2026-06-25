@@ -7,7 +7,7 @@
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	/* vertical-align: baseline; */
+	vertical-align: baseline;
 }
 
 @starting-style {
@@ -158,9 +158,128 @@
 	color: orangered;
 }
 
-/* .fc-button:active {
-	border-color: var(--cmbr-green) !important;
+/* |==========| §SIMPLEMDE EDITOR |====================> */
+/* |==========| §SIMPLEMDE Custom CSS Render |====================> */
+
+div.editor-toolbar {
+	background-image: var(--cmbr-dark-gradient);
+	border: 0.3rem groove black;
+}
+
+div.editor-toolbar>a {
+	color: burlywood !important;
+	border: 0.3rem groove cadetblue;
+	background-color: black;
+}
+
+div.editor-toolbar>a:hover {
+	color: sienna !important;
+	background-color: black;
+}
+
+div.editor-toolbar.disabled-for-preview {
+	color: transparent !important;
+	border: 0.3rem groove transparent;
+	background-color: transparent;
+}
+
+div.CodeMirror {
+	color: cadetblue;
+	background: black;
+	border: 0.3rem groove black;
+}
+
+/* div.CodeMirror-focused-div.CodeMirror-cursors {
+	border-left: 1px solid #797977 !important;
+	z-index: 100;
+	color: orangered;
+}
+
+div.CodeMirror-dragcursors {
+	border-left: 1px solid #797977 !important;
+	z-index: 100;
+	color: orangered;
 } */
+
+span.CodeMirror-selectedtext {
+	background-color: red;
+}
+
+div.CodeMirror-cursor {
+	border-left: 1px solid orangered !important;
+	z-index: 100;
+}
+
+div.editor-preview-active {
+
+	background-color: black !important;
+}
+
+div.editor-preview-active-side {
+	color: cadetblue;
+	background-color: black !important;
+	border: 0.3rem groove black;
+}
+
+div.editor-toolbar.fullscreen {
+	top: 90% !important;
+	z-index: 100;
+	overflow-y: visible;
+	width: fit-content;
+	height: 5rem;
+	background-image: var(--cmbr-dark-gradient);
+	border: 0.3rem groove black;
+}
+
+div.editor-preview-active>h1,
+.editor-preview-active-side>h1 {
+	font-size: 2em;
+	margin-top: 0.67em;
+	margin-bottom: 0.67em;
+	font-weight: bold;
+}
+
+div.editor-preview-active>h2,
+.editor-preview-active-side>h2 {
+	font-size: 1.5em;
+	margin-top: 0.83em;
+	margin-bottom: 0.83em;
+	font-weight: bold;
+}
+
+div.editor-preview-active>h3,
+.editor-preview-active-side>h3 {
+	font-size: 1.17em;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	font-weight: bold;
+
+}
+
+div.editor-preview-active>h4,
+.editor-preview-active-side>h4 {
+	font-size: 1em;
+	margin-top: 1.33em;
+	margin-bottom: 1.33em;
+	font-weight: bold;
+}
+
+div.editor-preview-active>h5,
+.editor-preview-active-side>h5 {
+	font-size: .83em;
+	margin-top: 1.67em;
+	margin-bottom: 1.67em;
+	font-weight: bold;
+}
+
+div.editor-preview-active>h6,
+.editor-preview-active-side>h6 {
+	font-size: .67em;
+	margin-top: 2.33em;
+	margin-bottom: 2.33em;
+}
+
+
 
 /* |==========| §DATA-THEMES |====================> */
 /* |==========| LEGACY, DARK, AND LIGHT |====================> */
@@ -301,9 +420,9 @@ p {
 	color: unset;
 }
 
-h3 {
+/* h3 {
 	font-size: 1.2rem;
-}
+} */
 
 a {
 	text-decoration: none;
@@ -873,6 +992,26 @@ button:disabled:hover {
 	overflow: wrap;
 }
 
+video::cue {
+	/* width: 100%; */
+	/* height: 100%; */
+	display: flex;
+	justify-content: center;
+	flex-flow: row wrap;
+	font-family: 'Permanent Marker';
+	font-size: 1rem;
+	/* padding: 5rem; */
+	text-align: left;
+}
+
+video[poster] {
+	width: 15rem;
+	height: fit-content;
+}
+
+
+
+
 #cmbr-player-handle {
 	display: flex;
 	align-items: center;
@@ -881,17 +1020,19 @@ button:disabled:hover {
 }
 
 #cmbr-player {
+	width: 30rem;
+	height: 100%;
 	border-left: 0.3rem groove black;
 	border-right: 0.3rem groove black;
+	background-color: black;
 }
 
-
-#cmbr-player>video {
-	width: 15rem;
-	height: 100%;
-	/* outline: 0.1rem dotted indianred; */
+#cmbr-player :where(video) {
+	background-color: var(--cmbr-curtain-plum);
+	/* border-left: 0.3rem groove black; */
+	/* border-right: 0.3rem groove var(--cmbr-indigo); */
+	/* background-size: cover; */
 }
-
 
 figcaption>menu {
 	list-style-type: none;
@@ -921,17 +1062,21 @@ figcaption>menu {
 	border-color: var(--cmbr-green);
 }
 
-
 .cmbr-player-visual {
 	box-sizing: border-box;
 	color: var(--cmbr-primary);
 	font-family: vt323, monospace;
 	height: fit-content;
-	/* width: 9rem; */
 	border: 0.3rem groove black;
 }
 
-/* Fallback stuff */
+progress {
+	background-color: var(--cmbr-grid-box);
+	border-radius: 3px;
+	position: relative;
+	transition: width 1s linear;
+}
+
 progress[value] {
 	/* appearance: none; */
 	border: none;
@@ -940,35 +1085,26 @@ progress[value] {
 	box-shadow: 0 2px 3px rgba(0, 0, 0, .25) inset;
 	color: dodgerblue;
 	height: 15px;
-	order: 1;
+	/* order: 1; */
 	position: relative;
 	width: 100%;
 }
 
-/* WebKit styles */
 progress[value]::-webkit-progress-bar {
-	background-color: grey;
-	border-radius: 3px;
-	box-shadow: 0 2px 3px rgba(0, 0, 0, .25) inset;
-}
-
-progress[value]::-webkit-progress-value {
-	background-image: linear-gradient(to right,
+	background-image: -webkit-linear-gradient(to right,
 			#ff8a00, #e52e71);
 	border-radius: 3px;
-	position: relative;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .25) inset;
 	transition: width 1s linear;
 }
 
-/* Firefox styles */
 progress[value]::-moz-progress-bar {
 	background-image: -moz-linear-gradient(to right,
 			#ff8a00, #e52e71);
 	border-radius: 3px;
-	position: relative;
+	box-shadow: 0 2px 3px rgba(0, 0, 0, .25) inset;
 	transition: width 1s linear;
 }
-
 
 .button-grid-row {
 	display: flex;

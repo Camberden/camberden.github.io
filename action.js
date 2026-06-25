@@ -7,8 +7,8 @@
  * - øH/«![/H)'/]^)H'¬L/¬]'/H[*'v'{';{[\\
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Tuesday, June 23rd, 2026";
-document.querySelector("#latest-update").innerHTML = latestUpdate;
+const latestUpdate = "Wednesday, June 24th, 2026";
+document.querySelector("#latest-update").innerText = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン", "}*'<'('H'[';<"];
 /**

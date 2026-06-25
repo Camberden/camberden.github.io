@@ -68,12 +68,18 @@ document.addEventListener("alpine:init", () => {
 			this.valid = !this.valid;
 		}
 	});
+	Alpine.store('navStore', {
+		duckNav: false,
+	})
+	Alpine.store('CMBRmd', {
+		banana: 'banana'
+	});
 	Alpine.store('rainfall', {
 		happening: false,
 		rainfallControl() {
 			this.happening = !this.happening;
 		}
-	})
+	});
 
 	// %=> end of Alpine Store
 });
@@ -83,36 +89,74 @@ document.addEventListener("alpine:init", () => {
 	 * @param {number} year
 	 * @param {string} compilation
 	 * @param {string} audioFileLink
+	 * @param {string} posterFileLink
 	 * @param {boolean} completeOrIncomplete
 	 * @param {boolean} lyricalOrInstrumental
 	 */
 class Tune {
-	constructor(title, year, compilation, audioFileLink, completeOrIncomplete, lyricalOrInstrumental) {
+	constructor(title, year, compilation, audioFileLink, posterFileLink, completeOrIncomplete, lyricalOrInstrumental) {
 		this.title = title;
 		this.year = year;
 		this.compilation = compilation;
 		this.audioFileLink = audioFileLink;
+		this.posterFileLink = posterFileLink;
 		this.completeOrIncomplete = completeOrIncomplete;
 		this.lyricalOrInstrumental = lyricalOrInstrumental;
 	}
 }
 
 const cmbrTunes = [ // ../assets/music-tracks/music-
-	trackMeaning = new Tune("Meaning", 2021, "The Rush of Feeling", "../assets/music-tracks/music-meaning.mp4", true, true),
-	trackTheWarOfArt = new Tune("The War of Art", 2020, "Draft Compendium", "../assets/music-tracks/music-the-war-of-art.mp3", true, false),
-	// trackForTheVision = new Tune("For the Vision", 2019, "Draft Compendium", "../assets/music-tracks/music-for-the-vision.mp3", true, true),
-	trackTheDeficitOfPatience = new Tune("The Deficit of Patience", 2019, "Draft Compendium", "../assets/music-tracks/music-the-deficit-of-patience.mp4", false, true),
-	trackSuperScapegrace = new Tune("SUPER Scapegrace", 2016, "Audioshi Isle", "../assets/music-tracks/music-super-scapegrace.mp3", true, false),
-	trackBlueberryBeach = new Tune("Blueberry Beach", 2016, "Audioshi Isle", "../assets/music-tracks/music-blueberry-beach.mp3", true, false),
-	trackFruityFrolicField = new Tune("Fruity Frolic Field", 2016, "Audioshi Isle", "../assets/music-tracks/music-fruity-frolic-field.mp3", true, false),
-	trackSixthMissionThrowback = new Tune("Sixth Mission Throwback", 2020, "Draft Compendium", "../assets/music-tracks/music-sixth-mission-throwback.mp3", true, false),
-	trackAGamesPostlude = new Tune("A Game's Postlude", 2012, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-a-games-postlude.mp3", true, false),
-	trackFirstDungeon = new Tune("First Dungeon", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-first-dungeon.mp3", true, false),
-	trackSixthMission = new Tune("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-sixth-mission.m4a", true, false),
-	trackSecondCommune = new Tune("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", true, false),
-	trackSuperScapegraceOriginal = new Tune("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-super-scapegrace-original.m4a", true, false),
+	trackMeaning = new Tune("Meaning", 2021, "The Rush of Feeling", "../assets/music-tracks/music-meaning.mp4", "../assets/artifacts/art-meaning-paper.jpeg", true, true),
+	trackTheWarOfArt = new Tune("The War of Art", 2020, "Draft Compendium", "../assets/music-tracks/music-the-war-of-art.mp3", "../assets/artifacts/chrispy-collage.jpeg", true, false),
+	// trackForTheVision = new Tune("For the Vision", 2019, "Draft Compendium", "../assets/music-tracks/music-for-the-vision.mp3", "../assets/artifacts/foxfire.jpeg", true, true),
+	trackTheDeficitOfPatience = new Tune("The Deficit of Patience", 2019, "Draft Compendium", "../assets/music-tracks/music-the-deficit-of-patience.mp4", "../assets/artifacts/foxfire.jpeg", false, true),
+	trackSuperScapegrace = new Tune("SUPER Scapegrace", 2016, "Audioshi Isle", "../assets/music-tracks/music-super-scapegrace.mp3", "../assets/artifacts/audioshi-isle.jpeg", true, false),
+	trackBlueberryBeach = new Tune("Blueberry Beach", 2016, "Audioshi Isle", "../assets/music-tracks/music-blueberry-beach.mp3", "../assets/artifacts/audioshi-isle.jpeg", true, false),
+	trackFruityFrolicField = new Tune("Fruity Frolic Field", 2016, "Audioshi Isle", "../assets/music-tracks/music-fruity-frolic-field.mp3", "../assets/artifacts/audioshi-isle.jpeg", true, false),
+	trackSixthMissionThrowback = new Tune("Sixth Mission Throwback", 2020, "Draft Compendium", "../assets/music-tracks/music-sixth-mission-throwback.mp3", "../assets/artifacts/foxfire.jpeg", true, false),
+	trackAGamesPostlude = new Tune("A Game's Postlude", 2012, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-a-games-postlude.mp3", "../assets/artifacts/foxfire.jpeg", true, false),
+	trackFirstDungeon = new Tune("First Dungeon", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-first-dungeon.mp3", "../assets/artifacts/foxfire.jpeg", true, false),
+	trackSixthMission = new Tune("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-sixth-mission.m4a", "../assets/artifacts/foxfire.jpeg", true, false),
+	trackSecondCommune = new Tune("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", "../assets/artifacts/foxfire.jpeg", true, false),
+	trackSuperScapegraceOriginal = new Tune("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-super-scapegrace-original.m4a", "../assets/artifacts/foxfire.jpeg", true, false),
 ];
 
+const cmbrMdConfig = {
+	"autofocus": true,
+	"forceSync": true,
+	"toolbar": ["bold", "italic", "horizontal-rule", "|", "quote", "code", "|", "unordered-list", "ordered-list", "|", "link", "image", "table", "|", "preview", "side-by-side", "fullscreen"],
+	"hideIcons": [
+		"guide",
+		"heading"
+	],
+	"opacity": 1,
+	"indentWithTabs": true,
+	"initialValue": "Module 1",
+	"insertTexts": {
+		"horizontalRule": [
+			"---",
+			""
+		],
+		"image": [
+			"![](http: //",
+			")"],
+		"link": [
+			"['",
+			"'](http://)",
+		]
+	},
+	"lineWrapping": false,
+	"autosave": {
+		"enabled": true,
+		"uniqueId": "chrispy",
+		"delay": 1000
+	},
+	"parsingConfig": {
+		"allowAtxHeaderWithoutSpace": true,
+		"strikethrough": false,
+		"underscoresBreakWords": true
+	}
+}
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -120,6 +164,10 @@ const cmbrTunes = [ // ../assets/music-tracks/music-
  * @author Camberden (Chrispy | Kippi)
  */
 const CMBRutil = {
+	md: function () {
+		var testMd = new SimpleMDE(cmbrMdConfig);
+		return testMd;
+	},
 	/**
 	 * 
 	 * @description Converts Date object to cmbr Preferred Format

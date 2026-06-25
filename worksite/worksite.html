@@ -7,6 +7,11 @@
 	<link rel="shortcut icon" href="images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="/styles.css" media="screen" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/trix@2.0.0-alpha.1/dist/trix.css">
+	<script src="https://unpkg.com/trix@2.0.0-alpha.1/dist/trix.umd.js"></script>
+	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
@@ -23,10 +28,10 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main>
+	<main class="index-grid" style="align-items: center; justify-items: center;">
 		<hr class="hr-push-down">
 
-		<div id="cmbr-player-handle" x-data="{
+		<div id="cmbr-player-handle" class="index-item" x-data="{
 			
 			allTunes: cmbrTunes,
 			selectedTune: cmbrTunes[0],
@@ -47,11 +52,9 @@
 			volumePercentage: '100%',
 			trackDecimalPrecision: 2,
 
-
 			vidTime: 1.00,
 			vidDuration: 1.00,
 			vid: $refs.cmbrVideo,
-			vidFigure: $refs.cmbrFigure,
 			vidPlay: $refs.cmbrPlay,
 			vidMute: $refs.cmbrMute,
 			vidVolume: $refs.cmbrVolumeDisplay,
@@ -60,32 +63,15 @@
 			vidTimer: $refs.cmbrTimer,
 			vidLength: $refs.cmbrVideoLength,
 
-			timeUpdateHandler: function() {
-				// this.vidProgress.value = parseFloat(this.vidTime).toFixed(this.trackDecimalPrecision);
-				// this.vidProgress.max = parseFloat(this.vidDuration).toFixed(this.trackDecimalPrecision);
-				// this.vidProgressTimer = this.vidProgress.value;
-				// this.vidProgressLength = this.vidProgress.max;
-			},
-
-			setVidListener: function() {
-				// this.vid.addEventListener('timeupdate', this.timeUpdateHandler);
-			},
-			removeVidListener: function() {
-				// this.vid.removeEventListener('timeupdate', this.timeUpdateHandler);
-			},
-
-
 			vidStats: function() {
 				console.table({ 'Progress Value: ': document.querySelector('progress').value, 'Progress Max: ':	document.querySelector('progress').max,'Video Current Time: ': document.querySelector('video').currentTime, 'Video Duration: ': document.querySelector('video').duration, });
 			},
 
 			alterPlay: function() {
 				if (this.vid.paused || this.vid.ended) {
-					console.log('HELLO??? ' + this.vidTime);
 					this.vid.play();
 					this.vidPlay.innerText = this.pauseSymbol;
 				} else {
-					console.log('HELLO??? ' + this.vidTime);
 					this.vid.pause();
 					this.vidPlay.innerText = this.playSymbol;
 					this.vidStats();
@@ -148,26 +134,19 @@
 			},
 
 			changeTune: async function(tune) {
-				console.log(this.vid.duration);
 				this.alterStop();
-				console.log(this.vid.duration);
-				this.removeVidListener();
 				this.selectedTune = tune;
-				console.log(this.vid.duration);
 				const newSource = this.vidSourceLink;
 				const newTrack = this.vidTrackLink;
 				newSource.src = this.getTuneSource();
 				newTrack.src = this.getTuneTrack();
 				setTimeout(() => {
-					console.log(this.vid.duration);
 					this.vid.load();
 					try {
 						this.vid.duration !== NaN;
 					} catch (err) {
 						this.vid.duration = 1.00;
 						console.log(err);
-					} finally {
-						this.setVidListener();
 					}
 					console.log('Loaded.');
 					this.vidStats();
@@ -188,7 +167,7 @@
 							<li class="cmbr-player-visual" x-text="'CMBR Mediatool'"></li>
 							<select x-ref="mediatoolLoadedTrack" name="cmbr-player-loaded-track"
 								class="cmbr-player-control"
-								@change="selectedTune = allTunes[$el.value]; console.log($el.value); $nextTick(() => { changeTune(selectedTune); });">
+								@change="selectedTune = allTunes[$el.value]; console.log($el.value); $nextTick(() => { $refs.cmbrVideo.poster = selectedTune.posterFileLink; changeTune(selectedTune); });">
 								<template x-for="(tune, index) in allTunes" :key="index">
 									<option :id="tune.title.replaceAll(' ', '-')" :name="tune.title" :value="index"
 										x-text="tune.title">
@@ -196,12 +175,9 @@
 								</template>
 							</select>
 						</div>
-						<div class="grid-col-1-2-1-1">
+						<div class="grid-col-3-1-1">
 							<li class="cmbr-player-visual">
-								<h5 x-text="selectedTune.year"></h5>
-							</li>
-							<li class="cmbr-player-visual">
-								<h5 x-text="selectedTune.compilation"></h5>
+								<h5 x-text="selectedTune.compilation + ' (' + selectedTune.year + ')'"></h5>
 							</li>
 							<li class="cmbr-player-visual">
 								<h5 x-text="selectedTune.lyricalOrInstrumental ? 'lyrics' : 'no lyrics'"></h5>
@@ -214,17 +190,16 @@
 					</menu>
 				</figcaption>
 
-				<video x-ref="cmbrVideo" id="cmbr-video" controls="true" videoHeight="75" videoWidth="150"
-					poster='../assets/artifacts/foxfire.jpeg' loop preload="metadata" x-effect="$el.controls = false"
+				<video x-ref="cmbrVideo" id="cmbr-video" controls="true" videoHeight="50" videoWidth="100"
+					disablePictureInPicture="true" loop preload="metadata" x-effect="$el.controls = false"
+					poster="../assets/artifacts/foxfire.jpeg"
 					@onloadedmetadata=" vidTime=parseFloat($el.currentTime).toFixed(trackDecimalPrecision); vidDuration=parseFloat($el.duration).toFixed(trackDecimalPrecision); "
 					@onloadeddata=" vidDuration = $el.duration; vidTime = $el.currentTime" ; @ondurationchange=" vidProgressLength=parseFloat($el.duration).toFixed(trackDecimalPrecision);
 					vidProgress.max=parseFloat($el.duration).toFixed(trackDecimalPrecision); "
-					@timeupdate="vidDuration = $el.duration; vidTime = $el.currentTime;"
-					@canplay=" vidDuration = $el.duration; vidTime = $el.currentTime" @click="alterPlay()">
+					@timeupdate="vidDuration = $el.duration; vidTime = $el.currentTime;" @click="alterPlay()">
 					<source x-ref="cmbrVideoSource" src="../assets/music-tracks/music-meaning.mp4" type="video/mp4" />
 					<track x-ref="cmbrVideoTrack" default kind="captions" srclang="en" label="English"
 						src="../assets/music-tracks/music-meaning.vtt" type="text/vtt" />
-
 				</video>
 
 				<figcaption>
@@ -281,6 +256,23 @@
 				</figcaption>
 
 			</figure>
+		</div>
+		<hr class="hr-push-down">
+
+		<div id="mdeditor-handle" class="index-item" style="text-align: left;" x-data="{
+			value: '# Markdown Testing \n ## Markdown Testing \n ### Markdown Testing \n #### Markdown Testing \n ##### Markdown Testing \n ###### Markdown Testing',
+			init() {
+				let editor = CMBRutil.md();
+				editor.value(this.value);
+				// editor.isSideBySideActive() ? console.log() : $store.CMBRmd.duckNav = ! $store.CMBRmd.duckNav;
+				editor.codemirror.on('change', ()=> {
+					this.value = editor.value();
+				});
+			},
+		}">
+
+			<input x-ref="mdinput" type='hidden' name='mdinput' :value="value" />
+			<textarea x-ref="editor"></textarea>
 		</div>
 
 	</main>

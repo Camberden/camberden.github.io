@@ -65,7 +65,7 @@
 			hx-swap="innerHTML">HEIC2JPEG Converter</button>
 		<button class="trigger-box" hx-get="../blog/new-post.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">New Blog Post</button>
-		<button class="trigger-box" hx-get="../template/mdeditor.html" hx-target="#wksp-center" hx-trigger="click"
+		<button class="trigger-box" hx-get="../template/mdeditor.html" hx-target="#wksp-center" hx-trigger="load"
 			hx-swap="innerHTML">Markdown Editor</button>
 		<button class="trigger-box" hx-get="../template/greatregions.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Great Regions</button>
@@ -77,6 +77,8 @@
 			hx-swap="innerHTML">Uploads</button>
 		<button class="trigger-box" hx-get="../template/travel-photos.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Travel Photos</button>
+		<button class="trigger-box" hx-get="../template/mediatool.html" hx-target="#wksp-center" hx-trigger="click"
+			hx-swap="innerHTML">Mediatool</button>
 
 	</div>
 
@@ -246,15 +248,7 @@
 		<!--^^-->
 		<hr class="hr-push-down">
 		<!--^^-->
-		<div class="index-item"
-			style="border:0.2rem ridge burlywood; background-color: var(--cmbr-blass); padding: 0.8rem;">
 
-			<form id="mysql-test-form" hx-post='/api/auth/version' hx-trigger="submit" hx-target="#box-below"
-				hx-swap="innerHTML">
-				<button id="mysqlVcheck" class="trigger-box" type="submit">Mysql Version</button>
-			</form>
-
-		</div>
 
 
 		<hr class="hr-push-down">
