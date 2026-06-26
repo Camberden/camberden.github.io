@@ -157,6 +157,25 @@ const cmbrMdConfig = {
 		"underscoresBreakWords": true
 	}
 }
+
+const cmbrAwaitThoughtwind = async function () {
+
+}
+
+/**
+ * 
+ * @param {Number} clouds amount of thought text containers
+ * @param {String} thoughts text of thought or idea or concept
+ * @param {Number} fleetingness speed of each cloud in milliseconds
+ */
+const cmbrThoughtwind = async function (clouds, thoughts, fleetingness) {
+	const div = document.createElement("div");
+	div.setAttribute("style", "display:flex; flex-flow: row, nowrap;");
+	let cloud = Math.random();
+
+}
+// cmbrThoughtwind(5, )
+
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -471,5 +490,6 @@ const braft = (l) => document.querySelector(`${l}`).appendChild(document.createE
 
 (async () => {
 	CMBRutil.handleFormDefault(true);
+
 
 });

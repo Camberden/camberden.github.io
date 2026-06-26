@@ -37,6 +37,7 @@ router.post('/', authenticateToken, async (req, res) => {
 // Get all notes (public)
 router.get('/', async (req, res) => {
   try {
+    console.log("accessing router.get('/')");
     const connection = await pool.getConnection();
 
     const [notes] = await connection.execute(

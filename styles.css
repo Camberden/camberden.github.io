@@ -461,10 +461,59 @@ nav {
 
 #nav-2 {
 	display: flex;
+	align-items: center;
+	justify-content: center;
 	text-align: center;
-	background: rgba(0, 0, 255, 0.131);
-	border-left: 0.5rem ridge black;
-	border-right: 0.5rem ridge black;
+
+	border-left: 0.5rem outset rgba(0, 0, 0, 0%);
+	border-right: 0.5rem inset rgba(0, 0, 0, 0%);
+	border-bottom: 0.5rem outset rgba(0, 0, 0, 50%);
+	animation: navdiv 3s linear;
+}
+
+/* [nav-div] {
+	animation: navdiv 1s linear;
+} */
+
+@keyframes navdiv {
+	0% {
+		background: rgba(0, 0, 255, 0%);
+		border-left: 0.5rem outset rgba(0, 0, 0, 0%);
+		border-right: 0.5rem groove rgba(0, 0, 0, 0%);
+		border-bottom: 0.5rem outset rgba(0, 0, 0, 0%);
+	}
+
+	25% {
+		background: rgba(0, 0, 255, 0%);
+		border-left: 0.5rem outset rgba(0, 0, 0, 0%);
+		border-right: 0.5rem ridge rgba(0, 0, 0, 33%);
+		border-bottom: 0.5rem outset rgba(0, 0, 0, 25%);
+
+	}
+
+	50% {
+		background: rgba(0, 0, 255, 5%);
+		border-left: 0.5rem outset rgba(0, 0, 0, 0%);
+		border-right: 0.5rem groove rgba(0, 0, 0, 66%);
+		border-bottom: 0.5rem outset rgba(0, 0, 0, 50%);
+
+	}
+
+	75% {
+		background: rgba(0, 0, 255, 10%);
+		border-left: 0.5rem outset rgba(0, 0, 0, 0%);
+		border-right: 0.5rem inset rgba(0, 0, 0, 33%);
+		border-bottom: 0.5rem outset rgba(0, 0, 0, 75%);
+
+	}
+
+	100% {
+		background: rgba(0, 0, 255, 5%);
+		border-left: 0.5rem outset rgba(0, 0, 0, 0%);
+		border-right: 0.5rem inset rgba(0, 0, 0, 0%);
+		border-bottom: 0.5rem outset rgba(0, 0, 0, 50%);
+
+	}
 }
 
 #nav-3 {
