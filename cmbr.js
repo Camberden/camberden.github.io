@@ -69,9 +69,9 @@ document.addEventListener("alpine:init", () => {
 		}
 	});
 	Alpine.store('navStore', {
-		duckNav: false,
+		on: false,
 		toggle() {
-			this.duckNav = !this.duckNav;
+			this.on = !this.on;
 		}
 	})
 	Alpine.store('CMBRmd', {
@@ -166,6 +166,14 @@ const cmbrMdConfig = {
 	}
 }
 
+const cmbrFacets = [
+	{
+		"facetUser": 1,
+		"facetTask": 2,
+		"facetStatus": 3,
+	}
+]
+
 const cmbrAwaitThoughtwind = async function () {
 
 }
@@ -199,6 +207,10 @@ const CMBRutil = {
 	md: function () {
 		var testMd = new SimpleMDE(cmbrMdConfig);
 		return testMd;
+	},
+	facet: function () {
+		var testFacet = cmbrFacets;
+		return testFacet;
 	},
 	/**
 	 * 

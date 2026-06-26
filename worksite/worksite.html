@@ -257,12 +257,42 @@
 		</div>
 		<hr class="hr-push-down">
 
+		<div id="todo-board-handle" class="index-item" style="text-align:left;" x-data="{
+			facets: [],
+			facetsUser: null,
+			facetsTask: null,
+			facetsStatus: null,
+			
+			init(){
+				let facet = {
+					facetUser: this.facetsUser,
+					facetTask: this.facetsTask,
+					facetStatus: this.facetsStatus,
+				};
+				let facetsPack = CMBRutil.facet();
+				this.facets.push(facet);
+
+				this.facetsUser = null
+				this.facetsTask = null
+				this.facetsStatus = null
+			}
+
+		}">
+			<template x-for="(task, index) in facets" :key="index">
+				<span x-text="task.facetUser" :style="'color:red;'"></span>
+				<span x-text="task.facetTask" :style="'color:red;'"></span>
+				<span x-text="task.facetStatus" :style="'color:red;'"></span>
+
+			</template>
+		</div>
+		<hr class="hr-push-down">
+
 		<div id="mdeditor-handle" class="index-item" style="text-align: left;" x-data="{
 			value: '# Markdown Testing 1 \n ## Markdown Testing 2 \n ### Markdown Testing 3 \n #### Markdown Testing 4 \n ##### Markdown Testing 5 \n ###### Markdown Testing 6',
 			init() {
 				let editor = CMBRutil.md();
 				editor.value(this.value);
-				editor.isSideBySideActive() ? console.log() : $store.CMBRmd.duckNav.toggle();
+				editor.isSideBySideActive() ? console.log() : $store.navStore.toggle();
 				editor.codemirror.on('change', ()=> {
 					this.value = editor.value();
 				});
@@ -272,6 +302,9 @@
 			<input x-ref="mdinput" type='hidden' name='mdinput' :value="value" />
 			<textarea x-ref="editor"></textarea>
 		</div>
+		<hr class="hr-push-down">
+
+
 
 	</main>
 </body>

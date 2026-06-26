@@ -1,10 +1,9 @@
 <div id="nav-handle" x-data="{ 
     atIndex: CMBRutil.atSiteIndex(),
     sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
-    duckNav: false,
     }" x-bg>
 
-    <template x-if=" !atIndex" x-show="!duckNav">
+    <template x-if=" !atIndex" x-show="$store.navStore.on">
         <div class="nav-sail">
             <!-----| NAV 1 |----->
             <div id="nav-1" x-data="{ active: 0 }">
