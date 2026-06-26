@@ -420,10 +420,6 @@ p {
 	color: unset;
 }
 
-/* h3 {
-	font-size: 1.2rem;
-} */
-
 a {
 	text-decoration: none;
 }
@@ -550,6 +546,11 @@ nav {
 	cursor: grabbing;
 	text-shadow: #ffcc00 2rem 1rem 5rem;
 	animation: 30s linear shadow-fade infinite;
+}
+
+[camberlamp] {
+	text-shadow: #ffcc00 2rem 1rem 5rem;
+	animation: 10s linear shadow-fade;
 }
 
 #nav-sig {
@@ -2481,35 +2482,35 @@ form>label {
 
 @keyframes shadow-fade {
 	0% {
-		text-shadow: #ffcc00 2rem 1rem 5rem;
+		text-shadow: #ffcc00 2rem 0rem 0rem;
 		background: var(--cmbr-legacy-gradient);
 		background-clip: border-box;
 		-webkit-background-clip: text;
 	}
 
 	25% {
-		text-shadow: #756629 2rem 1rem 3rem;
+		text-shadow: #756629 2rem 2rem 2rem;
 		background: linear-gradient(120deg, #f59b60 0%, #a1dbf8ec 100%);
 		background-clip: border-box;
 		-webkit-background-clip: text;
 	}
 
 	50% {
-		text-shadow: #ffcc00 2rem 1rem 5rem;
+		text-shadow: #ffcc00 2rem 2rem -2rem;
 		background: linear-gradient(120deg, #f59c60f1 0%, #a1dbf8d8 100%);
 		background-clip: border-box;
 		-webkit-background-clip: text;
 	}
 
 	75% {
-		text-shadow: #a8561b 2rem 1rem 5rem;
+		text-shadow: #a8561b 2rem -2rem -2rem;
 		background: linear-gradient(120deg, #f59b60 0%, #a1dbf8e5 100%);
 		background-clip: border-box;
 		-webkit-background-clip: text;
 	}
 
 	100% {
-		text-shadow: #ffcc00 2rem 1rem 5rem;
+		text-shadow: transparent 2rem -2rem 2rem;
 		background: var(--cmbr-legacy-gradient);
 		background-clip: border-box;
 		-webkit-background-clip: text;

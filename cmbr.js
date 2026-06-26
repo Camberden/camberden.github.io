@@ -70,6 +70,9 @@ document.addEventListener("alpine:init", () => {
 	});
 	Alpine.store('navStore', {
 		duckNav: false,
+		toggle() {
+			this.duckNav = !this.duckNav;
+		}
 	})
 	Alpine.store('CMBRmd', {
 		banana: 'banana'
@@ -134,8 +137,8 @@ const cmbrMdConfig = {
 	"initialValue": "Module 1",
 	"insertTexts": {
 		"horizontalRule": [
-			"---",
-			""
+			"\n\n<hr class='hr-cmbr-gradient'>\n\n",
+			"",
 		],
 		"image": [
 			"![](http: //",
@@ -144,6 +147,11 @@ const cmbrMdConfig = {
 			"['",
 			"'](http://)",
 		]
+	},
+	"promptURLs": true,
+	"renderingConfig": {
+		"singleLineBreaks": false,
+		"codeSyntaxHighlighting": true,
 	},
 	"lineWrapping": false,
 	"autosave": {
@@ -165,16 +173,21 @@ const cmbrAwaitThoughtwind = async function () {
 /**
  * 
  * @param {Number} clouds amount of thought text containers
- * @param {String} thoughts text of thought or idea or concept
+ * @param {String[]} thoughts text of thought or idea or concept
  * @param {Number} fleetingness speed of each cloud in milliseconds
  */
 const cmbrThoughtwind = async function (clouds, thoughts, fleetingness) {
 	const div = document.createElement("div");
 	div.setAttribute("style", "display:flex; flex-flow: row, nowrap;");
-	let cloud = Math.random();
+	let m = Math.random();
+	const cloudCover = new Array[clouds];
+	for (let i = 0; i < clouds; i++) {
+		const cloudPart = document.createElement("div");
+		cloudPart.setAttribute("style", "width: 100%; height: 3rem; ",);
+		div.appendChild(cloudPart);
+	}
 
 }
-// cmbrThoughtwind(5, )
 
 /**
  * @global @public @interface

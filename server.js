@@ -28,12 +28,11 @@ app.use('/', (req, res, next) => {
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/media', require('./routes/media'));
-
 app.use('/api/blog', require('./routes/blog'));
 
 app.use(express.static(path.join(__dirname)));
 app.get('*', (req, res) => {
-	res.sendFile(path.join(__dirname, 'index.html'));
+	res.sendFile(path.join(__dirname, '404.html'));
 });
 const PORT = process.env.PORT || 3020;
 app.listen(PORT, () => {

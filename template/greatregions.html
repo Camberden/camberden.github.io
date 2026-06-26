@@ -30,7 +30,7 @@
 			
 			regionTitle.textContent = (regionName.at(0).toUpperCase() + regionName.substring(1,));
 			divisionTitle.textContent = region.getAttribute('title');
-			regionFlag.innerHTML = `<img src='../assets/banner-${regionName}.svg'>`
+			regionFlag.innerHTML = `<img src='../assets/fantasy-graphics/banner-${regionName}.svg'>`
 			
 		}
 		region.onmouseleave = function () {
@@ -50,43 +50,56 @@
 	}
 }
 }">
-	<div class="cmbr-item-left cmbr-item" x-effect=" targetPaths() ">
-		<p>Selected Region: <span id="region-title">_____</span></p>
-		<p>Selected Division: <span id="division-title">_____</span></p>
-		<h4>Regions</h4>
+	<div class="cmbr-item-left cmbr-item flex-table" x-effect=" targetPaths() ">
 
-		<ul class="gr-list">
+		<span class="flex-table-header">Selected Region</span>
+		<div class="flex-table-row">
+			<span id="region-title" x-text="'place'"></span>
+		</div>
+		<span class="flex-table-header">Selected Division</span>
+		<div class="flex-table-row">
+			<span id="division-title" x-text="'place'"></span>
+		</div>
+		<h4 class="marker-green">Regions</h4>
+		<hr class="hr-cmbr-gradient">
 
-			<li>Farentia</li>
-			<li>Zethro-Scheipen</li>
-			<li>Tendou</li>
-			<li>Selunia</li>
-			<li>Aakse</li>
-			<li>Cherica</li>
-			<li>East Farentia</li>
-			<li>Mochadia</li>
+		<ul class="gr-list" style="list-style-type: none;">
+
+			<li class="flex-table-row">Farentia</li>
+			<li class="flex-table-row">Zethro-Scheipen</li>
+			<li class="flex-table-row">Tendou</li>
+			<li class="flex-table-row">Selunia</li>
+			<li class="flex-table-row">Aakse</li>
+			<li class="flex-table-row">Cherica</li>
+			<li class="flex-table-row">East Farentia</li>
+			<li class="flex-table-row">Mochadia</li>
 		</ul>
-		<h4>Modicum of Time</h4>
-		<ul class="gr-list">
-			<li>1m = May 2012</li>
-			<li>12m = June 2013</li>
-			<li>36m = June 2015</li>
-			<li>72m = June 2018</li>
-			<li>108m = June 2021</li>
-			<li>144m = June 2024</li>
-			<li>155m = May 2025 (13 Years)</li>
-			<li>156m = June 2025</li>
-			<li>157m = July 2025 </li>
-			<li>158m = August 2025 (Encroachments Removed)</li>
-			<li>159m = September 2025</li>
-			<li>160m = October 2025</li>
+		<h4 class="marker-green">Modicum of Time</h4>
+		<hr class="hr-cmbr-gradient">
+
+		<ul class="gr-list" style="list-style-type: none;">
+			<li class="flex-table-row">1m = May 2012</li>
+			<li class="flex-table-row">12m = June 2013</li>
+			<li class="flex-table-row">36m = June 2015</li>
+			<li class="flex-table-row">72m = June 2018</li>
+			<li class="flex-table-row">108m = June 2021</li>
+			<li class="flex-table-row">144m = June 2024</li>
+			<li class="flex-table-row">155m = May 2025 (13 Years)</li>
+			<li class="flex-table-row">156m = June 2025</li>
+			<li class="flex-table-row">157m = July 2025 </li>
+			<li class="flex-table-row">158m = August 2025 (Encroachments Removed)</li>
+			<li class="flex-table-row">159m = September 2025</li>
+			<li class="flex-table-row">160m = October 2025</li>
 		</ul>
-		<div id="region-flag"></div>
 	</div>
 
 
 	<div class="cmbr-item grid-col-span-2">
 		<div id="mc-map-display">
+
+			<div id="region-flag"
+				style="border: 0.5rem solid transparent; background-size: cover; box-sizing: border-box; width:3rem; height:20px; z-index:50;">
+			</div>
 
 			<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 			<!-- Generator: SketchAPI 2022.10.24.12 https://api.sketch.io -->

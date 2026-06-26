@@ -105,15 +105,13 @@
 			<!-- Notification -->
 			<template x-for="notification in notifications" :key="notification.id">
 				<div x-data="{
-			show: false,
-			init() {
+				show: false,
+				init() {
 				this.$nextTick(() => this.show = true)
-
 				setTimeout(() => this.transitionOut(), 5000)
-			},
-			transitionOut() {
+				},
+				transitionOut() {
 				this.show = false
-
 				setTimeout(() => this.remove(this.notification), 5000)
 			},
 		}" x-show="show" x-transition.duration.500ms style="position:fixed; bottom:0; right:0;">
@@ -176,9 +174,9 @@
 			</template>
 
 			<form x-data="{
-	content: 'Something happened!',
-	type: 'info',
-}" class="common-background" x-on:submit.prevent="$dispatch('notify', { content, type })">
+				content: 'Something happened!',
+				type: 'info',
+				}" class="common-background" x-on:submit.prevent="$dispatch('notify', { content, type })">
 				<div>
 					<label for="notifier-message" class="marker-green">Message</label>
 
@@ -212,14 +210,7 @@
 		<div id="workspace-console" class="flex-table vt323 grid-col-5x-1" style="border-left: 0.3rem ridge grey; border-right: 0.3rem ridge grey; background-color: black;
 			 font-size: 1rem; color: lime; max-height: 20rem; overflow-y: scroll;">
 
-			<span id="folder-listings" class="chrispy-likeness-box"></span>
-			<span id="sox-below" class="chrispy-likeness-box"></span>
-			<span id="media-listings" class="chrispy-likeness-box"></span>
-			<span id="fox-below" class="chrispy-likeness-box"></span>
-			<span id="harder-listings" class="chrispy-likeness-box"></span>
-			<span id="hox-below" class="chrispy-likeness-box"></span>
-			<span id="charter-listings" class="chrispy-likeness-box"></span>
-			<span id="box-below" class="chrispy-likeness-box"></span>
+
 			<!--|=====|-->
 		</div>
 
@@ -237,16 +228,17 @@
 
 
 
-	<div class="index-grid" x-data="{
+	<div class="flex-grid-cmbr" x-data="{
 		}">
 		<!--^^-->
 		<hr class="hr-push-down">
+		<hr class="hr-groove-top">
 		<!--^^-->
-		<div id="wksp-center" class="index-item"
-			style="border:0.2rem ridge burlywood; background-color: var(--cmbr-blass); padding: 0.8rem;"
+		<div id="wksp-center" style="background: var(--cmbr-blass); padding: 0.8rem;"
 			x-text="'*Function Execution Button Appears Here'">
 		</div>
 		<!--^^-->
+		<hr class="hr-groove-bottom">
 		<hr class="hr-push-down">
 		<!--^^-->
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en-US">
-<!-- Hi there! :V -->
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +31,6 @@
 		<hr class="hr-push-down">
 
 		<div id="cmbr-player-handle" class="index-item" x-data="{
-			
 			allTunes: cmbrTunes,
 			selectedTune: cmbrTunes[0],
 			speechlessTune: '../assets/music-tracks/music-speechless.vtt',
@@ -260,11 +258,11 @@
 		<hr class="hr-push-down">
 
 		<div id="mdeditor-handle" class="index-item" style="text-align: left;" x-data="{
-			value: '# Markdown Testing \n ## Markdown Testing \n ### Markdown Testing \n #### Markdown Testing \n ##### Markdown Testing \n ###### Markdown Testing',
+			value: '# Markdown Testing 1 \n ## Markdown Testing 2 \n ### Markdown Testing 3 \n #### Markdown Testing 4 \n ##### Markdown Testing 5 \n ###### Markdown Testing 6',
 			init() {
 				let editor = CMBRutil.md();
 				editor.value(this.value);
-				// editor.isSideBySideActive() ? console.log() : $store.CMBRmd.duckNav = ! $store.CMBRmd.duckNav;
+				editor.isSideBySideActive() ? console.log() : $store.CMBRmd.duckNav.toggle();
 				editor.codemirror.on('change', ()=> {
 					this.value = editor.value();
 				});
