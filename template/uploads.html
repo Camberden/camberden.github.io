@@ -19,13 +19,14 @@
 	</button>
 
 
-	<div class="cmbr-pen flex-table" hx-get="/api/media/uploads" hx-target="#workspace-console" hx-trigger="load"
-		hx-swap="innerHTML" x-effect="JSON.stringify(folderData, null, 2)">
+	<div class="cmbr-pen flex-grid-cmbr flex-table-r" hx-get="/api/media/uploads" hx-target="#workspace-console"
+		hx-trigger="load" hx-swap="innerHTML" x-effect="JSON.stringify(folderData, null, 2)">
 		<template x-for="(item, index) in folderData" :key="index">
-			<div :class="'flex-table-row grid-col-1-1'">
-				<span x-html="index + 1"></span>
+			<div>
 				<figure>
-					<img :src="'/images/uploads/' + item" width="50" height="50" />
+					<img :src="'/images/uploads/' + item" width="200" height="200"
+						@mouseover="$tooltip(item); $el.style='outline: 0.1rem solid magenta; cursor: pointer;'"
+						@mouseout="$el.style='outline:none;'" />
 					<figcaption>
 						<a :href="'/images/uploads/' + item" x-text="'/images/uploads/' + item"></a>
 					</figcaption>

@@ -5,6 +5,17 @@ const { memStorage } = require("../middleware/media");
 
 const router = express.Router();
 
+/* 1	id	int	NULL	NULL	NO	NULL	auto_increment		
+2	user_id	int	NULL	NULL	NO	NULL		users(id)	
+3	title	varchar(255)	utf8mb4	utf8mb4_0900_ai_ci	NO	NULL			
+4	location	varchar(255)	utf8mb4	utf8mb4_0900_ai_ci	YES	NULL			
+5	audio	varchar(255)	utf8mb4	utf8mb4_0900_ai_ci	YES	NULL			
+6	photos	varchar(255)	utf8mb4	utf8mb4_0900_ai_ci	YES	NULL			
+7	tags	varchar(255)	utf8mb4	utf8mb4_0900_ai_ci	YES	NULL			
+8	content	mediumtext	utf8mb4	utf8mb4_0900_ai_ci	NO	NULL			16,777,215 for medium text
+9	created_at	timestamp	NULL	NULL	YES	CURRENT_TIMESTAMP	DEFAULT_GENERATED		
+10	updated_at	timestamp	NULL	NULL	YES	CURRENT_TIMESTAMP	on update CURRENT_TIMESTAMP		 
+  */
 
 // router.post('/upload', memStorage.single('heicBP'), function (req, res, next) {
 //   if (!req.file) {
@@ -89,7 +100,7 @@ router.get('/all', async (req, res) => {
     const connection = await pool.getConnection();
 
     const [posts] = await connection.execute(
-      'SELECT bp.id, bp.title, bp.content, bp.date_posted, bp.location, bp.hours, bp.tags, bp.created_at, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id ORDER BY bp.date_posted DESC'
+      'SELECT bp.id, bp.title, bp.location, bp.audio, bp.photos, bp.tags, bp.content, bp.created_at, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id ORDER BY bp.date_posted DESC'
     );
 
     connection.release();
@@ -97,7 +108,7 @@ router.get('/all', async (req, res) => {
     // Parse JSON fields
     const parsedPosts = posts.map(post => ({
       ...post,
-      tags: post.tags ? JSON.parse(post.tags) : []
+      // tags: post.tags ? JSON.parse(post.tags) : []
     }));
 
     res.json(parsedPosts);
@@ -136,7 +147,7 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', cookieJwtAuth, async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content, date_posted, location, hours, tags } = req.body;
+    const { title, location, audio, photos, tags, content } = req.body;
     const user_id = req.user.id;
 
     const connection = await pool.getConnection();
@@ -158,9 +169,9 @@ router.put('/:id', cookieJwtAuth, async (req, res) => {
     }
 
     await connection.execute(
-      'UPDATE blog_posts SET title = ?, content = ?, date_posted = ?, location = ?, hours = ?, tags = ? WHERE id = ?',
+      'UPDATE blog_posts SET title = ?, location = ?, audio = ?, photos = ?, tags = ?, content = ? WHERE id = ?',
 
-      [title, content, date_posted, location, hours, tags, id]
+      [title, location, audio, photos, tags, content, id]
     );
 
     connection.release();

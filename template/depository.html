@@ -2,29 +2,73 @@
 		}">
 	<div>
 		<template x-if=" $store.nauth.valid ">
-			<form action="/api/notes/" method="POST" class="grid-col-1-1">
-				<label for="title">Title &emsp;</label>
-				<input type="text" name="title" :id=$id('title') required>
 
-				<label for="tags">Tags &emsp;</label>
-				<input type="text" name="tags" :id=$id('tags') required>
+			<form id="notes-form" class="cmbr-flexfixed" action='/api/notes' method='POST'>
+				<h2 :id="$id('modal-title')" class="marker-green">New Note</h2>
+				<hr class=" hr-cmbr-dark-gradient">
+				<hr class="hr-groove-top">
 
-				<label for="location">Location &emsp;</label>
-				<input type="text" name="location" :id=$id('location')>
+				<div class="grid-col-1-3-1">
+					<label for="newNoteTitle" x-text="'Title'"></label>
+					<input type="text" id="newNoteTitle" name="newNoteTitle" required>
+					<wbr>
+				</div>
 
-				<label for="photos">Photos &emsp;</label>
-				<input type="text" name="photos" :id=$id('photos')>
+				<hr class="hr-push-up">
+				<hr class="hr-cmbr-gradient">
+				<hr class="hr-push-down">
 
-				<label for="audio">Audio &emsp;</label>
-				<input type="text" name="audio" :id=$id('audio')>
+				<div class="grid-col-1-3-1">
+					<label for="newNoteLocation" x-text="'Location'"></label>
+					<input type="text" id="newNoteLocation" name="newNoteLocation">
+					<wbr>
+				</div>
+				<hr class="hr-push-up">
+				<hr class="hr-cmbr-gradient">
+				<hr class="hr-push-down">
 
-				<label for="body">Body &emsp;</label>
-				<textarea name="body" :id=$id('body') rows="4"></textarea>
+				<div class="grid-col-1-3-1">
+					<label for="newNoteAudio" x-text="'Audio'"></label>
+					<input type="text" id="newNoteAudio" name="newNoteAudio">
+					<wbr>
 
-				<div></div>
-				<button type="submit">Make Note!</button>
+				</div>
+				<hr class="hr-push-up">
+				<hr class="hr-cmbr-gradient">
+				<hr class="hr-push-down">
+
+				<div class="grid-col-1-3-1">
+					<label for="newNotePhotos" x-text="'Photos'"></label>
+					<input type="text" id="newNotePhotos" name="newNotePhotos">
+					<wbr>
+
+				</div>
+				<hr class="hr-push-up">
+				<hr class="hr-cmbr-gradient">
+				<hr class="hr-push-down">
+
+				<div class="grid-col-1-3-1">
+					<label for="newNoteTags" x-text="'Tags'"></label>
+					<input type="text" id="newNoteTags" name="newNoteTags">
+					<wbr>
+				</div>
+				<hr class="hr-push-up">
+				<hr class="hr-cmbr-gradient">
+				<hr class="hr-push-down">
+
+				<div class="grid-col-1-3-1">
+					<label for="newNoteContent" x-text="'Content'"></label>
+					<textarea id="newNoteContent" name="newNoteContent" required></textarea>
+					<wbr>
+				</div>
+				<hr class="hr-groove-bottom">
+				<hr class="hr-cmbr-dark-gradient">
+				<div class="grid-col-1-1">
+					<button type="button" x-text="'Cancel'" cmbr-i></button>
+					<button type="submit" x-text="'Create Note'" cmbr-i></button>
+				</div>
 			</form>
-			<hr class="hr-push-up">
+
 		</template>
 	</div>
 
@@ -32,10 +76,14 @@
 		<div id="all-notes-display">
 			<div class="flex-table">
 				<template x-for="(note, index) in $get('/api/notes/')" :key="index">
-					<div :class="'flex-table-row grid-col-1-1-1'">
+					<div :class="'flex-table-row grid-col-7x-1'">
+						<span x-html="note.id"></span>
 						<span x-html="note.title"></span>
-						<span x-html="note.body"></span>
+						<span x-html="note.location"></span>
+						<span x-html="note.audio"></span>
+						<span x-html="note.photos"></span>
 						<span x-html="note.tags"></span>
+						<span x-html="note.content"></span>
 					</div>
 				</template>
 			</div>

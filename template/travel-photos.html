@@ -24,7 +24,7 @@
 		<template x-for="(item, index) in folderData" :key="index">
 			<div>
 				<figure>
-					<img :src="'/assets/travel-photos/' + item" width="600" height="400"
+					<img :src="'/assets/travel-photos/' + item" width="300" height="200"
 						@mouseover="$tooltip(item); $el.style='outline: 0.1rem solid magenta; cursor: pointer;'"
 						@mouseout="$el.style='outline:none;'" />
 					<figcaption>

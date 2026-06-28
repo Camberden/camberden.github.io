@@ -29,6 +29,7 @@ app.use('/', (req, res, next) => {
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/media', require('./routes/media'));
 app.use('/api/blog', require('./routes/blog'));
+app.use('/api/notes', require('./routes/notes'));
 
 app.use(express.static(path.join(__dirname)));
 app.get('*', (req, res) => {
