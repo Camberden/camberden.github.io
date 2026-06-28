@@ -135,7 +135,8 @@ router.get('/reactivate', async (req, res, next) => {
 			res.send(iden);
 		} else {
 			console.log("No token found in cookies.");
-
+			const noIden = '';
+			res.send(noIden);
 		}
 	} catch (err) {
 		console.lot("No token or token invalid: " + err.message);
@@ -145,7 +146,7 @@ router.get('/reactivate', async (req, res, next) => {
 router.post('/logout', async (req, res) => {
 	res.get('jwt_token');
 	res.clearCookie('jwt_token');
-	res.redirect('index.html');
+	res.redirect('/');
 });
 
 // module.exports = router;

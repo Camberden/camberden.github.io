@@ -43,37 +43,40 @@
                 navLoaded: false,
                 getNavLoaded: function() {
                     const navver = document.getElementById('nav-auth-status'); 
-                    console.log('This navLoaded: ' + this.navLoaded); 
-                    console.log('Store before: ' + Alpine.store('nauth').valid);
-                    console.log('Length trigger: ' + navver.innerText.length);
+                    console.table({
+                        'This navLoaded': this.navLoaded, 
+                        'Store before': Alpine.store('nauth').valid,
+                        'Length trigger': navver.innerText.length,
+                    });
                     const lenval = navver.innerText.length;
                     this.navLoaded = (lenval > 0 ? true : false);
-                    console.log('This navLoaded after: ' + this.navLoaded);
+                    console.table({'This navLoaded after': this.navLoaded});
                     if (this.navLoaded && !Alpine.store('nauth').valid) { 
                         Alpine.store('nauth').toggle();
                     }
                     if (!this.navLoaded && Alpine.store('nauth').valid) { 
                         Alpine.store('nauth').toggle();
-                    }
-                    console.log('Store after: ' + Alpine.store('nauth').valid);
-                    }
-                    }" x-transition
-                :style="Alpine.store('nauth').valid ? 'background: rgba(0, 0, 255, 10%)' : 'background: transparent; border-bottom: 0.5rem outset rgba(0, 0, 0, 20%);'">
+                        }
+                        console.table({'Store after': Alpine.store('nauth').valid});
+                        } 
+                        }" x-transition
+                :style="Alpine.store('nauth').valid ? 'background: rgba(0, 0, 255, 10%)' : 'background: transparent;'">
                 <s id="reactivate" class="h1-lamp" hx-get='/api/auth/reactivate' hx-trigger="load delay:1s"
-                    hx-indicator="" hx-target="#nav-auth-status" hx-swap="textContent">
+                    hx-target="#nav-auth-status" hx-swap="textContent">
                 </s>
-                <ins id="nav-auth-status" :class="'vt323'"
-                    :style="'align-content: center; justify-self: center; color:burlywood'" x-effect="setTimeout(() => {
+                <ins id="nav-auth-status" :class="'vt323 nusr'"
+                    :style="'align-content: center; justify-self: center; color:green'" x-effect="setTimeout(() => {
                     getNavLoaded();
-                }, 1100); " x-show="navLoaded" x-transition></ins>
+                }, 1100); " x-show="navLoaded" x-transition.delay.500ms x-transition.duration.500ms></ins>
                 <!-- ♪ -->
             </div>
 
             <!-----| NAV 3 |----->
-            <div id=" nav-3">
+            <div id="nav-3">
                 <h1 class="h1-lamp">
                     <span id="current-section"></span>
                 </h1>
+
             </div>
 
             <!-----| NAV 4 |----->
@@ -81,18 +84,7 @@
                 <s class="h1-lamp">
                     <!-- ♫ -->
                 </s>
-                <div class="modal" x-data="{
-                    modalLoaded: null,
-                    }" x-init=" $watch(() => this.$refs, value => modalLoaded = value) ">
-                    <span class="modal-close"></span>
-                    <div class="modal-grid">
-                        <div class="modal-field">
-                            <p x-ref="nav-modal" id="modal-text"></p>
-
-                        </div>
-                        <hr class="modal-line">
-                    </div>
-                </div>
+                <div x-data></div>
             </div>
 
             <!-----| NAV 5 |----->

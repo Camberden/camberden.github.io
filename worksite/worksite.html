@@ -7,9 +7,8 @@
 	<link rel="stylesheet" type="text/css" href="/styles.css" media="screen" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
-	<link rel="stylesheet" href="https://unpkg.com/trix@2.0.0-alpha.1/dist/trix.css">
-	<script src="https://unpkg.com/trix@2.0.0-alpha.1/dist/trix.umd.js"></script>
-	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
@@ -152,8 +151,7 @@
 				
 			},
 		
-		}" x-init=" vidStats(); " x-initialized=" setVidListener();
-			">
+		}" x-init=" vidStats(); ">
 
 			<!-- % HERE'S THE player -->
 			<figure x-ref="cmbr-figure" id="cmbr-player">
@@ -263,7 +261,7 @@
 			facetsTask: null,
 			facetsStatus: null,
 			
-			init(){
+			loadFacets: function (){
 				let facet = {
 					facetUser: this.facetsUser,
 					facetTask: this.facetsTask,

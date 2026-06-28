@@ -9,7 +9,7 @@ exports.cookieJwtAuth = (req, res, next) => {
 			if (user) {
 				console.log("Accessed.");
 				req.user = user;
-				console.log(user.payload)
+				console.log(user.payload);
 			}
 		} else {
 			console.log("Not Accessed.");

@@ -1,0 +1,60 @@
+<div id="cmbrstyle-handler" class="cmbr-grid-flexfixed" x-data="{
+			init(){
+			const dldt = document.querySelectorAll('dt');
+			const dldd = document.querySelectorAll('dd');
+			for (let i = 0; i < dldt.length; i++) {
+				let colorText = `var(${dldt[i].innerText});`;
+				console.log(colorText);
+				dldt[i].setAttribute('style', `color: var(${dldt[i].innerText});`);
+				dldd[i].setAttribute('style', `background: var(${dldt[i].innerText});`);
+			};
+			},
+		}"></div>
+<div class="flex-table">
+	<div class="flex-table-header grid-col-1-1">
+		<span>Cmbr Items</span>
+		<span>Display</span>
+	</div>
+	<dl id="cmbrstyle-dl" class="flex-table-row grid-col-1-1">
+
+		<dt>--cmbr-orange</dt>
+		<dd></dd>
+		<dt>--cmbr-blue</dt>
+		<dd></dd>
+		<dt>--cmbr-indigo</dt>
+		<dd></dd>
+		<dt>--cmbr-violet</dt>
+		<dd></dd>
+		<dt>--cmbr-gradient</dt>
+		<dd></dd>
+		<dt>--cmbr-legacy-gradient</dt>
+		<dd></dd>
+		<dt>--cmbr-btn-c</dt>
+		<dd></dd>
+		<dt>--cmbr-btn-b</dt>
+		<dd></dd>
+		<dt>--cmbr-btn-c-h</dt>
+		<dd></dd>
+		<dt>--cmbr-btn-b-h</dt>
+		<dd></dd>
+		<dt>--cmbr-curtain-plum</dt>
+		<dd></dd>
+		<dt>--cmbr-dark-gradient</dt>
+		<dd></dd>
+		<dt>--cmbr-grid-box</dt>
+		<dd></dd>
+		<dt>--cmbr-dark-grey</dt>
+		<dd></dd>
+		<dt>--cmbr-dark-ash</dt>
+		<dd></dd>
+		<dt>--cmbr-dark-iron</dt>
+		<dd></dd>
+		<dt>--cmbr-dark-steel</dt>
+		<dd></dd>
+		<dt>--cmbr-blass</dt>
+		<dd></dd>
+		<dt>--cmbr-blass-frame</dt>
+		<dd></dd>
+	</dl>
+
+</div>

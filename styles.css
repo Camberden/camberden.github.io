@@ -18,7 +18,7 @@
 		font-size: 100%;
 		font: unset;
 		/* vertical-align: baseline; */
-		animation-play-state: paused;
+		/* animation-play-state: paused; */
 	}
 
 	;
@@ -41,11 +41,21 @@
 	--cmbr-degrees: 120deg;
 	--cmbr-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-indigo), var(--cmbr-blue), var(--cmbr-orange), var(--cmbr-violet));
 	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
+	--cmbr-cloud-top: 70%;
 
 	/* |=====| "CMBR GRID PANEL COMPONENTS" |=====| */
 	--cmbr-com-pnl-padding: 1rem;
 	--cmbr-com-pnl-border-width: 0.3rem;
 	--cmbr-com-pnl-max-height: 50rem;
+
+	/* |=====| "CMBR BUTTON COMPONENTS" |=====| */
+	--cmbr-btn-w: 12rem;
+	--cmbr-btn-h: fit-content;
+	--cmbr-btn-c: burlywood;
+	--cmbr-btn-b: cadetblue;
+	--cmbr-btn-bo: 0.3rem ridge var(--cmbr-btn-b);
+	--cmbr-btn-c-h: sienna;
+	--cmbr-btn-b-h: black;
 
 	/* |=====| "CMBR DARK" |=====| */
 	--cmbr-dark-grey: #0a070f;
@@ -309,7 +319,7 @@ div.editor-preview-active>h6,
 
 /* |=====| LIGHT |=====| */
 [data-theme="light"] {
-	--font-color: var(--mo-1-4);
+	--font-color: orchid;
 	--link-color: var(--mo-2-5);
 	--bg-image: var(--mosky-3);
 	--bg-color: none;
@@ -351,6 +361,24 @@ div.editor-preview-active>h6,
 	background-image: none;
 }
 
+[cmbr-cloud] {
+	width: fit-content;
+	padding: 3rem;
+	background-color: rgba(128, 128, 128, 0.2);
+	border-radius: 70%;
+	position: absolute;
+	left: 0%;
+	top: var(--cmbr-cloud-top);
+	animation-name: cloud-float;
+	animation-play-state: running !important;
+	animation-duration: 10s;
+	animation-delay: none;
+	animation-direction: normal;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+	overflow: hidden;
+}
+
 .data-theme-button {
 	font-size: 2rem;
 	height: 3rem;
@@ -369,7 +397,9 @@ div.editor-preview-active>h6,
 
 .data-theme-button:hover {
 	cursor: pointer;
+	text-shadow: #ffcc00 0.1rem 0.1rem 0.1rem;
 }
+
 
 
 /* |==========| §NEOCITIES ASSETS |====================> */
@@ -426,6 +456,7 @@ a {
 
 
 
+
 /* |==========| §NAVIGATION CHARTER |====================> */
 /* |==========| LEFT-SIDE DROPDOWN FOR SITE MAP NAVIGATION |====================> */
 nav {
@@ -456,6 +487,7 @@ nav {
 }
 
 #nav-2 {
+	user-select: none;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -538,20 +570,23 @@ nav {
 	transition: text-shadow 10s ease-in-out;
 }
 
+[camberlamp] {
+	text-shadow: #ffcc00 2rem 1rem 5rem;
+	animation: 10s linear shadow-fade;
+}
+
+[camberlamp]:hover,
 .h1-lamp:hover {
-	cursor: grab
+	cursor: grab;
 }
 
 .h1-lamp:active {
 	cursor: grabbing;
 	text-shadow: #ffcc00 2rem 1rem 5rem;
-	animation: 30s linear shadow-fade infinite;
+	animation: 5s linear shadow-fade infinite;
 }
 
-[camberlamp] {
-	text-shadow: #ffcc00 2rem 1rem 5rem;
-	animation: 10s linear shadow-fade;
-}
+
 
 #nav-sig {
 	display: inline-flex;
@@ -603,7 +638,7 @@ nav {
 
 #chart-access:hover {
 	cursor: pointer;
-	color: cadetblue;
+	color: cadetblue !important;
 	border-bottom: 0.3rem groove black;
 	background-color: var(--cmbr-curtain-plum);
 }
@@ -906,6 +941,16 @@ mark {
 	content: attr(item) " / ";
 }
 
+.nusr::before {
+	content: attr(item) " → ";
+}
+
+[cmbr-i]:hover {
+	cursor: pointer;
+	color: var(--cmbr-btn-c-h);
+	border-color: var(--cmbr-green);
+}
+
 /* |==========| §BUTTONS, TRIGGERS, AND THEIR AFFIXATION <button> |====================> */
 /* |==========| BUTTONS AND RELATED NON-VALUE, NON-FORM API TRIGGER BOXES |====================> */
 button {
@@ -914,7 +959,7 @@ button {
 	font-family: "Lora", "sans-serif";
 	font-weight: 900;
 	color: burlywood;
-	background: #182124;
+	background: var(--cmbr-dark-ash);
 	padding: 0.5rem;
 	border: 0.5rem groove cadetblue;
 	box-sizing: border-box;
@@ -922,34 +967,19 @@ button {
 	transition: color 0.2s ease-in;
 }
 
-.buttonesque {
+/* .trigger-box {
 	cursor: pointer;
 	user-select: none;
-	font-family: "PermanentMarker", "monospace";
 	box-sizing: border-box;
-	background-clip: border-box;
-	-webkit-background-clip: text;
-	background-repeat: no-repeat;
-	background-size: 0% 100%;
-	background-position: 0% 88%;
-	color: transparent;
+	width: 12rem;
+	height: fit-content;
+	color: burlywood;
+	background: #182124;
+	border: 0.3rem groove cadetblue;
+	margin-inline: auto;
+} */
 
-	padding: 0.5rem;
-	border: 0.5rem solid var(--cmbr-curtain-plum);
-	box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--cmbr-dark-grey);
-
-	transition: all 0.3s ease-in;
-
-	text-shadow: 0rem 0rem var(--cmbr-orange);
-	background-image: linear-gradient(to top left,
-			rgb(from var(--cmbr-violet) calc(r) calc(g) calc(b + 150)),
-			rgb(from var(--cmbr-blue) calc(r) calc(g) calc(b + 100)),
-			var(--cmbr-orange),
-			rgb(from var(--cmbr-blue) calc(r + 30) calc(g) calc(b)),
-			rgb(from var(--cmbr-violet) calc(r + 100) calc(g) calc(b)));
-}
-
-.button-highlight {
+button:hover :not(.trigger-box) {
 	position: sticky;
 	border-color: black;
 	color: var(--cmbr-orange);
@@ -1012,9 +1042,7 @@ button:disabled:hover {
 	box-sizing: border-box;
 	width: 12rem;
 	height: fit-content;
-	color: burlywood;
-	background: #182124;
-	border: 0.3rem groove cadetblue;
+	border-width: 0.3rem;
 	margin-inline: auto;
 }
 
@@ -1059,7 +1087,14 @@ video[poster] {
 	height: fit-content;
 }
 
-
+img[cmbr-loading] {
+	box-sizing: border-box;
+	position: static;
+	/* border: 0.1rem solid transparent; */
+	width: 5rem;
+	height: 1rem;
+	overflow: hidden;
+}
 
 
 #cmbr-player-handle {
@@ -1700,19 +1735,22 @@ select:hover {
 }
 
 .modal {
-	display: none;
+	/* display: none; */
 	/* To hide by default */
 	position: fixed;
 	/* to stay in place */
-	z-index: 1;
+	z-index: 50;
 	/* To stay on top */
 	left: 0;
+	/* right: 0; */
 	top: 0;
 	width: 100%;
 	height: 100%;
-	overflow: auto;
-	background-color: rgb(0, 0, 0);
-	background-color: rgba(0, 0, 0, 0.4);
+	overflow: scroll;
+	scrollbar-color: transparent;
+	/* scrollbar-width: none; */
+	/* background-color: rgb(37, 37, 37); */
+	/* border: 0.5rem ridge black; */
 }
 
 .modal-grid {
@@ -1722,11 +1760,14 @@ select:hover {
 }
 
 .modal-field {
-	background-color: var(--clr-quinary-body);
-	margin: 15% auto;
+	/* background-color: var(--clr-quinary-body); */
+	/* margin: 15% auto; */
 	/* 15% from the top and centered */
-	border: 1px solid #888;
-	width: 80%;
+	/* border: 1px solid #888; */
+	background-color: black;
+	border: 0.5rem ridge black;
+	padding: 2rem;
+	/* width: 80%; */
 	/* Could be more or less, depending on screen size */
 }
 
@@ -1861,14 +1902,28 @@ select:hover {
 /* |==========| §FLEX-TABLE PROTOTYPES |====================> */
 /* |==========| STRUCTURING AND COUNTING FOR DYNAMICALLY-SIZED TABLES |====================> */
 
-.flex-grid-cmbr {
+.cmbr-grid-flexfixed {
 	padding: 2rem;
 	gap: 1rem;
+}
+
+[cmbr-flexfixed-r] {
+	flex-direction: row !important;
 }
 
 .flex-table {
 	display: flex;
 	flex-flow: column wrap;
+	font-size: 1rem;
+	table-layout: fixed;
+	overflow-x: hidden;
+	scrollbar-color: var(--cmbr-dark-iron) var(--cmbr-dark-grey);
+	scrollbar-width: auto;
+}
+
+.flex-table-r {
+	display: flex;
+	flex-flow: row wrap;
 	font-size: 1rem;
 	table-layout: fixed;
 	overflow-x: hidden;
@@ -1934,13 +1989,14 @@ input {
 	background-color: var(--clr-grid-box);
 	color: #f59b60;
 	font-family: monospace, serif;
-	font-size: 1rem;
-	border: none;
+	font-size: 1.5rem;
+	border: 0.3rem ridge cornflowerblue;
 	width: 100%;
 }
 
 input:focus {
-	background-color: var(--clr-quinary-body);
+	background-color: var(--clr-grid-box);
+	border-color: orchid;
 }
 
 form>label {
@@ -2154,6 +2210,22 @@ form>label {
 
 }
 
+#cmbrstyle-dl>dt {
+	font-size: small;
+	width: 100%;
+	height: 1rem;
+	align-self: center;
+	justify-items: center;
+	border: 0.3rem solid transparent;
+}
+
+#cmbrstyle-dl>dd {
+	width: 100%;
+	height: 1rem;
+	background: transparent;
+	border: 0.3rem solid var(--cmbr-grid-box);
+}
+
 .segsquare-empty {
 	width: 3rem;
 	height: 3rem;
@@ -2318,6 +2390,7 @@ form>label {
 }
 
 
+
 @keyframes rain {
 	to {
 		transform: skew(var(--a)) translateY(var(--h));
@@ -2344,6 +2417,33 @@ form>label {
 
 	100% {
 		width: 6rem;
+	}
+}
+
+@keyframes cloud-float {
+	0% {
+		opacity: 0%;
+		left: 0%;
+	}
+
+	20% {
+		opacity: 100%;
+		left: 20%
+	}
+
+	80% {
+		opacity: 80%;
+		left: 80%;
+	}
+
+	95% {
+		opacity: 0%;
+		left: 95%;
+	}
+
+	100% {
+		opacity: 0%;
+		left: 100%;
 	}
 }
 
@@ -2645,6 +2745,7 @@ form>label {
 	.flex-table {
 		font-size: 0.8rem;
 		overflow-x: auto;
+
 	}
 }
 

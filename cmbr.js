@@ -32,7 +32,6 @@ const baseHyperlinks = [
 ];
 const nonStaticSite = "https://camberden.net";
 const nonStaticDev = "http://localhost:3020";
-
 /**
  * @function
  * @global
@@ -41,22 +40,35 @@ const nonStaticDev = "http://localhost:3020";
  */
 document.addEventListener("alpine:init", () => {
 	// |==========| Alpine Data |==========|
-	Alpine.data('cmbr', () => ({
+	Alpine.data('site', () => ({
 
 	})); // %=> end of Alpine Data
 	// |==========| Alpine Magics |==========|
-	Alpine.magic("tooltip", el => message => {
+	Alpine.magic('tooltip', el => message => {
 		let instance = tippy(el, { content: message, trigger: 'manual' });
 		instance.show();
 		setTimeout(() => {
 			instance.hide();
 			setTimeout(() => instance.destroy(), 150);
-		}, 2000);
+		}, 1000);
 	}); // %=> end of Alpine Magics
 
 	// |==========| Alpine Directives |==========|
-	Alpine.directive("tooltip", (el, { expression }) => {
+	Alpine.directive('tooltip', (el, { expression }) => {
 		tippy(el, { content: expression });
+	});
+	Alpine.directive('autograph', function (el, { expression }) {
+		setTimeout(function () {
+			// el.setAttribute('x-show', false);
+			el.setAttribute('x-transition.duration.500ms', '');
+			validity = Alpine.store('nauth').getValidity();
+			console.table({ 'validity first?': validity });
+			if (validity) {
+				el.setAttribute('x-show', validity);
+				el.setAttribute('x-cloak', validity);
+			}
+			console.table({ 'validity last?': validity });
+		}, 2000);
 	});
 
 	// %=> end of Alpine Directives
@@ -66,24 +78,17 @@ document.addEventListener("alpine:init", () => {
 		valid: false,
 		toggle() {
 			this.valid = !this.valid;
-		}
+		},
+		getValidity() {
+			return this.valid;
+		},
 	});
 	Alpine.store('navStore', {
 		on: false,
 		toggle() {
 			this.on = !this.on;
-		}
-	})
-	Alpine.store('CMBRmd', {
-		banana: 'banana'
+		},
 	});
-	Alpine.store('rainfall', {
-		happening: false,
-		rainfallControl() {
-			this.happening = !this.happening;
-		}
-	});
-
 	// %=> end of Alpine Store
 });
 
@@ -166,37 +171,6 @@ const cmbrMdConfig = {
 	}
 }
 
-const cmbrFacets = [
-	{
-		"facetUser": 1,
-		"facetTask": 2,
-		"facetStatus": 3,
-	}
-]
-
-const cmbrAwaitThoughtwind = async function () {
-
-}
-
-/**
- * 
- * @param {Number} clouds amount of thought text containers
- * @param {String[]} thoughts text of thought or idea or concept
- * @param {Number} fleetingness speed of each cloud in milliseconds
- */
-const cmbrThoughtwind = async function (clouds, thoughts, fleetingness) {
-	const div = document.createElement("div");
-	div.setAttribute("style", "display:flex; flex-flow: row, nowrap;");
-	let m = Math.random();
-	const cloudCover = new Array[clouds];
-	for (let i = 0; i < clouds; i++) {
-		const cloudPart = document.createElement("div");
-		cloudPart.setAttribute("style", "width: 100%; height: 3rem; ",);
-		div.appendChild(cloudPart);
-	}
-
-}
-
 /**
  * @global @public @interface
  * @description - Camberden Personal Utilities:
@@ -208,9 +182,62 @@ const CMBRutil = {
 		var testMd = new SimpleMDE(cmbrMdConfig);
 		return testMd;
 	},
-	facet: function () {
-		var testFacet = cmbrFacets;
-		return testFacet;
+	/**
+	 * 
+	 * @param {HTMLElement} targetEl 
+	 * @param {String[]} loadVals
+	 */
+	cloudGen: function (targetEl, loadVals) {
+
+		const cloudSpeed = (Math.random() * 10 + 5).toFixed(0);
+		// const cloudDelay = (Math.random() * 5).toFixed(0);
+		const cloudDelay = 0;
+		const cloudTop = ((Math.random() * 10) * 2).toFixed(0);
+		const cloudPad = (Math.random() * 10 / 2).toFixed(0);
+		/**
+		 * @type {HTMLElement} div
+		 */
+		const div = document.createElement("div");
+		const dt = document.createElement("dt");
+		const dtTxt = document.createTextNode(loadVals[0]);
+		dt.appendChild(dtTxt);
+		const dd = document.createElement("dd");
+		const ddTxt = document.createTextNode(loadVals[1]);
+		dd.appendChild(ddTxt);
+		div.appendChild(dt);
+		div.appendChild(dd);
+		console.log("hello cloudgen");
+		div.setAttribute('style', `
+			color: var(--cmbr-primary);
+			text-shadow: black 0.2rem 0.2rem 0.2rem;
+			width: fit-content;
+			opacity: 0%;
+			padding:${cloudPad}rem;
+			background-color: rgba(128, 128, 128, 0.3);
+			border-radius: 70%;
+			border-left-width: 5rem;
+			position: absolute;
+			left: 0%;
+			top:${cloudTop}%;
+			animation-name: cloud-float;
+			animation-play-state: running !important;
+			animation-duration: ${cloudSpeed}s;
+			animation-delay: ${cloudDelay}s;
+			animation-direction: normal;
+			animation-timing-function: linear;
+			animation-iteration-count: 1;
+			text-overflow: none;
+			overflow: hidden;
+			
+		`);
+		targetEl.appendChild(div);
+		setTimeout(() => {
+			while (targetEl.lastChild) {
+				targetEl.removeChild(targetEl.lastChild);
+			}
+			this.cloudGen(targetEl, loadVals);
+		}, cloudSpeed * 1000);
+
 	},
 	/**
 	 * 

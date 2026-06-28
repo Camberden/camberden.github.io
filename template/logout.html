@@ -1,5 +1,15 @@
 <div x-data>
-	<template x-if=" $store.nauth.valid ">
-		<button :class='"trigger-box"' id="logout" hx-post="/api/auth/logout">Logout</button>
-	</template>
+	<form id="logout-form" class="cmbr-flexfixed" action='/api/auth/logout' method='POST'>
+
+		<h2 :id="$id('modal-title')" class="marker-green">Confirm?</h2>
+		<hr class=" hr-cmbr-dark-gradient">
+		<hr class="hr-groove-top">
+
+		<div class="grid-col-1-1">
+			<button type="button" x-on:click="openModal = false" cmbr-i>
+				Cancel
+			</button>
+			<button x-on:submit="openModal = false" type="submit" id="logout" cmbr-i>Logout</button>
+		</div>
+	</form>
 </div>

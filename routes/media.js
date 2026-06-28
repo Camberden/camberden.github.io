@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const pool = require('../config/database');
+
 const { promisify } = require('util');
 const fs = require('fs');
 const multer = require('multer');
@@ -8,6 +10,7 @@ const convert = require('heic-convert');
 const { charterDir } = require('../services/charterService');
 const { heiconversion } = require('../services/imageService');
 
+const { cookieJwtAuth } = require('../middleware/auth.js');
 const { upload, uploadMiddleware } = require('../middleware/media');
 
 
@@ -90,6 +93,67 @@ router.get('/travel-photos', async (req, res, next) => {
 	} catch (err) {
 		console.error("Issue");
 		res.next();
+	}
+});
+
+router.get('/clouds', async (req, res) => {
+	if (req.message) {
+		console.log(message);
+
+	}
+	try {
+		const connection = await pool.getConnection();
+		console.log("cloud before query");
+		const [clouds] = await connection.execute(
+			'SELECT cl.id, cl.title, cl.thought, cl.weight, cl.compelled, u.username FROM clouds cl JOIN users u ON cl.user_id = u.id ORDER BY cl.compelled DESC'
+		);
+		console.log("cloud after query before release");
+		connection.release();
+		console.log("cloud after release");
+
+		// Parse JSON fields
+		const parsedClouds = clouds.map(cloud => ({
+			title: cloud.title,
+			thought: cloud.thought,
+			weight: cloud.weight,
+		}));
+		console.log("clouds parsed");
+
+		res.json(parsedClouds);
+	} catch (error) {
+		console.error('Blog fetch error:', error);
+		res.status(500).json({ error: 'Failed to fetch clouds' });
+	}
+});
+
+router.post('/clouds', cookieJwtAuth, async (req, res) => {
+
+	try {
+		const { title, thought, weight } = req.body;
+		const user_id = req.user.payload.id;
+
+		if (!title || !thought) {
+			return res.status(400).json({ error: 'Title and Thought are required' });
+		}
+
+		await pool.getConnection();
+
+		const [result] = await pool.execute(
+			'INSERT INTO clouds (user_id, title, thought, weight) VALUES (?, ?, ?, ?)',
+			[user_id, title, thought, weight]
+		);
+
+		await pool.releaseConnection();
+
+
+		// res.status(201).json({
+		// 	message: 'Cloud created successfully',
+		// 	cloudId: result.insertId
+		// });
+		res.redirect('/cloudspace/cloudspace.html');
+	} catch (error) {
+		console.error('Cloud creation error:', error);
+		res.status(500).json({ error: 'Failed to create cloud' });
 	}
 });
 

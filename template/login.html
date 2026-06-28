@@ -1,16 +1,36 @@
-<div x-data="{
-}">
+<div id="login-handler" x-data>
 
-	<form id="login-form" class="grid-col-1-1" action='/api/auth/login' method='POST'>
-		<!-- <form id="login-form" class="grid-col-1-1" hx-post='/api/auth/login' hx-trigger="submit" hx-boost="false" -->
-		<!-- hx-replace-url="false"> -->
-		<label for="currentUsername">Enter username &emsp;</label>
-		<input id="currentUsername" type="text" name="currentUsername" autocomplete="currentUsername" required>
+	<form id="login-form" class="cmbr-flexfixed" action='/api/auth/login' method='POST'>
+		<h2 :id="$id('modal-title')" class="marker-green">Login</h2>
+		<hr class=" hr-cmbr-dark-gradient">
+		<hr class="hr-groove-top">
 
-		<label for="currentPassword">Enter password &emsp;</label>
-		<input id="currentPassword" type="password" name="currentPassword" autocomplete="currentPassword" required>
+		<div class="grid-col-1-3-1">
+			<label for="currentUsername" x-text="'User'"></label>
+			<input id="currentUsername" type="text" name="currentUsername" autocomplete="currentUsername" required>
+			<wbr>
+		</div>
 
-		<div class="glass-pane"></div>
-		<button :class="'trigger-box'" type="submit">Login</button>
+		<hr class="hr-push-up">
+		<hr class="hr-cmbr-gradient">
+		<hr class="hr-push-down">
+
+		<div class="grid-col-1-3-1">
+			<label for="currentPassword" x-text="'Pass'">Enter password &emsp;</label>
+			<input id="currentPassword" type="password" name="currentPassword" autocomplete="currentPassword" required>
+			<wbr>
+		</div>
+		<hr class="hr-groove-bottom">
+		<hr class="hr-cmbr-dark-gradient">
+		<div class="grid-col-1-1">
+			<button type="button" x-on:click="openModal = false" cmbr-i>
+				Cancel
+			</button>
+			<button x-on:submit="openModal = false" type="submit" cmbr-i>Login</button>
+		</div>
+		<div class="grid-col-1">
+			<i hx-get="../template/registration.html" hx-target="#login-handler" hx-trigger="click" hx-swap="outerHTML"
+				x-text="'Register?'" cmbr-i></i>
+		</div>
 	</form>
 </div>

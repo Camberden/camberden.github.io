@@ -1,22 +1,48 @@
-<div x-data>
-	<!-- <template> -->
-	<h2 class="marker">Registration</h2>
-	<hr class="hr-trans">
-	<hr class="hr-push-down">
+<div id="registration-handler" x-data>
 	<!-- % regregreg -->
-	<form id="register-form" class="grid-col-1-1" action='/api/auth/register' method='POST'>
-		<label for="usernameRegister">Enter username &emsp;</label>
-		<input type="text" id="usernameRegister" name="usernameRegister" required>
 
-		<label for="passwordRegister">Enter password &emsp;</label>
-		<input type="password" id="passwordRegister" name="passwordRegister" required>
+	<form id="register-form" action='/api/auth/register' method='POST'>
+		<h2 :id="$id('modal-title')" class="marker-green">Register</h2>
+		<hr class=" hr-cmbr-dark-gradient">
+		<hr class="hr-groove-top">
 
-		<label for="emailRegister">Enter email &emsp;</label>
-		<input type="text" id="emailRegister" name="emailRegister" required>
+		<div class="grid-col-1-3-1">
+			<label for="usernameRegister" x-text="'User'"></label>
+			<input type="text" id="usernameRegister" name="usernameRegister" required>
+			<wbr>
+		</div>
 
-		<div></div>
-		<button type="submit">Register</button>
+		<hr class="hr-push-up">
+		<hr class="hr-cmbr-gradient">
+		<hr class="hr-push-down">
+
+		<div class="grid-col-1-3-1">
+			<label for="passwordRegister" x-text="'Pass'"></label>
+			<input type="password" id="passwordRegister" name="passwordRegister" required>
+			<wbr>
+		</div>
+
+		<hr class="hr-push-up">
+		<hr class="hr-cmbr-gradient">
+		<hr class="hr-push-down">
+
+		<div class="grid-col-1-3-1">
+			<label for="emailRegister" x-text="'Mail'"></label>
+			<input type="text" id="emailRegister" name="emailRegister" required>
+			<wbr>
+		</div>
+		<hr class="hr-groove-bottom">
+		<hr class="hr-cmbr-dark-gradient">
+		<div class="grid-col-1-1">
+			<button type="button" x-on:click="openModal = false" cmbr-i>
+				Cancel
+			</button>
+			<button x-on:submit="openModal = false" type="submit" cmbr-i>Register</button>
+		</div>
+		<div class="grid-col-1">
+			<i hx-get="../template/login.html" hx-target="#registration-handler" hx-trigger="click" hx-swap="outerHTML"
+				x-text="'Sign in?'" cmbr-i></i>
+		</div>
 	</form>
 	<hr class="hr-push-up">
-	<!-- </template> -->
 </div>

@@ -1,4 +1,5 @@
 <div id="folders-handle" x-data="{
+	modalVar: 'photos',
 	folderData: {},
 	imageRequest: {
 		uploads: '/images/uploads/',
@@ -18,20 +19,22 @@
 		Show Travel Photos
 	</button> -->
 
-	<div class="cmbr-pen flex-table" hx-get="/api/media/travel-photos" hx-target="#workspace-console" hx-trigger="load"
-		hx-swap="innerHTML" x-effect="JSON.stringify(folderData, null, 2)">
+	<div class="cmbr-pen flex-grid-cmbr flex-table-r" hx-get="/api/media/travel-photos" hx-target="#workspace-console"
+		hx-trigger="load" hx-swap="innerHTML" x-effect="JSON.stringify(folderData, null, 2)" x-data>
 		<template x-for="(item, index) in folderData" :key="index">
-			<div :class="'flex-table-row grid-col-1-1'">
-				<span x-html="index + 1"></span>
+			<div>
 				<figure>
-					<img :src="'/assets/travel-photos/' + item" width="50" height="50" />
+					<img :src="'/assets/travel-photos/' + item" width="600" height="400"
+						@mouseover="$tooltip(item); $el.style='outline: 0.1rem solid magenta; cursor: pointer;'"
+						@mouseout="$el.style='outline:none;'" />
 					<figcaption>
-						<a :href="'/assets/travel-photos/' + item" x-text="'/assets/travel-photos/' + item"></a>
+						<a :href="'/assets/travel-photos/' + item"></a>
 					</figcaption>
 				</figure>
 			</div>
 		</template>
 	</div>
+
 
 
 

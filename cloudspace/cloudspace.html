@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="shortcut icon" href="/images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="/styles.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
+	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4/dist/purify.min.js"></script>
+	<script src="/cmbr.js"></script>
+	<script src="/htmx.js"></script>
+	<title>Chrispy's Cloudspace</title>
+</head>
+
+<body data-theme="dark"
+	style="scrollbar-width: none; overflow: hidden !important; overflow-y: hidden !important; overflow-x: hidden !important; overflow-wrap: hidden; overscroll-behavior-x: none;">
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg>
+	</nav>
+
+	<main x-data="{
+		sky:{},
+	}">
+		<div id="all-clouds-display" x-effect="sky = await $get('/api/media/clouds')">
+			<!-- <img width="100%" height="100%" src="../images/squares-fade.svg" alt="loading..." cmbr-loading /> -->
+			<div id="cloud-table" class="cmbr-pen" x-effect="await JSON.stringify(sky, null, 2)">
+				<dl>
+					<template x-for="(cloud, index) in sky" :key="index" x-data>
+						<div x-effect="CMBRutil.cloudGen($el, [cloud.title, cloud.thought])">
+						</div>
+					</template>
+				</dl>
+			</div>
+		</div>
+		</div>
+
+
+		<footer>
+			<template x-if=" $store.nauth.valid ">
+				<form class="cmbr-flexfixed"
+					style="position:fixed; opacity: 50%; bottom:2%; left:0%; width:20rem; height:20rem; border: 0.5rem groove black;"
+					action="/api/media/clouds" method="POST">
+
+					<h2 :id="$id('modal-title')" class="marker-green">Cloudmake</h2>
+					<hr class=" hr-cmbr-dark-gradient">
+					<hr class="hr-cmbr-gradient">
+
+					<div class="grid-col-1-3">
+						<label for="title" x-text="'Cloud Title'"></label>
+						<input type="text" name="title" :id=$id('title') required>
+					</div>
+
+					<hr class="hr-cmbr-gradient">
+
+					<div class="grid-col-1-3">
+						<label for="thought" x-text="'Cloud Thought'"></label>
+						<input type="text" name="thought" :id=$id('thought') required>
+					</div>
+
+					<hr class="hr-cmbr-gradient">
+
+					<div class="grid-col-1-3">
+						<label for="weight" x-text="'Cloud Weight'"></label>
+						<input type="number" name="weight" :id=$id('weight')>
+					</div>
+
+					<div class="grid-col-1-1">
+						<button type="button" x-on:click="document.querySelectorAll('input').forEach(inpt => {
+							inpt.value = '';
+						})" cmbr-i>
+							Cancel
+						</button>
+						<button x-on:submit="openModal = false" type="submit" cmbr-i>Cloudmake!</button>
+					</div>
+				</form>
+			</template>
+		</footer>
+	</main>
+</body>
+
+</html>
