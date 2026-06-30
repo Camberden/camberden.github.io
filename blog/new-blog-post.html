@@ -1,0 +1,85 @@
+<div id="new-blog-post-handle" class="cmbr-pen" x-data x-cloak>
+
+	<template x-if=" $store.nauth.valid ">
+
+		<form id="new-bp-form" class="cmbr-flexfixed" action='/api/blog/' method='POST'>
+			<h2 :id="$id('modal-title')" class="marker-green">New Bp</h2>
+			<hr class=" hr-cmbr-dark-gradient">
+			<hr class="hr-groove-top">
+
+			<div class="grid-col-1-3-1">
+				<label for="newBpTitle" x-text="'Title'"></label>
+				<input type="text" id="newBpTitle" name="newBpTitle" required>
+				<wbr>
+			</div>
+
+			<hr class="hr-push-up">
+			<hr class="hr-cmbr-gradient">
+			<hr class="hr-push-down">
+
+			<div class="grid-col-1-3-1">
+				<label for="newBpLocation" x-text="'Location'"></label>
+				<input type="text" id="newBpLocation" name="newBpLocation">
+				<wbr>
+			</div>
+			<hr class="hr-push-up">
+			<hr class="hr-cmbr-gradient">
+			<hr class="hr-push-down">
+
+			<div class="grid-col-1-3-1">
+				<label for="newBpAudio" x-text="'Audio'"></label>
+				<input type="text" id="newBpAudio" name="newBpAudio">
+				<wbr>
+
+			</div>
+			<hr class="hr-push-up">
+			<hr class="hr-cmbr-gradient">
+			<hr class="hr-push-down">
+
+			<div class="grid-col-1-3-1">
+				<label for="newBpPhotos" x-text="'Photos'"></label>
+				<input type="text" id="newBpPhotos" name="newBpPhotos">
+				<wbr>
+
+			</div>
+			<hr class="hr-push-up">
+			<hr class="hr-cmbr-gradient">
+			<hr class="hr-push-down">
+
+			<div class="grid-col-1-3-1">
+				<label for="newBpTags" x-text="'Tags'"></label>
+				<input type="text" id="newBpTags" name="newBpTags">
+				<wbr>
+			</div>
+			<hr class="hr-push-up">
+			<hr class="hr-cmbr-gradient">
+			<hr class="hr-push-down">
+
+			<div class="grid-col-1-3-1">
+				<label for="newBpContent" x-text="'Content'"></label>
+				<textarea id="newBpContent" name="newBpContent" required></textarea>
+				<wbr>
+			</div>
+			<hr class="hr-groove-bottom">
+			<hr class="hr-cmbr-dark-gradient">
+			<div class="grid-col-1-3-1">
+				<wbr>
+				<button type="submit" x-text="'Create Bp'" cmbr-i></button>
+				<wbr>
+			</div>
+		</form>
+
+	</template>
+
+	<div id="all-notes-display">
+		<div class="flex-table">
+			<template x-for="(blogpost, index) in $get('/api/blog/all')" :key="index">
+				<div :class="'flex-table-row grid-col-1-1-1'">
+					<span x-html="blogpost.id"></span>
+					<span x-html="blogpost.title"></span>
+					<span x-html="blogpost.location"></span>
+				</div>
+			</template>
+		</div>
+	</div>
+</div>

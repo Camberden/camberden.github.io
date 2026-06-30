@@ -57,28 +57,30 @@ router.post('/', cookieJwtAuth, async (req, res, next) => {
       return;
     }
 
-    const { title, date_posted, location, hours, audio, photos, tags, content } = req.body;
+    const { newBpTitle, newBpLocation, newBpAudio, newBpPhotos, newBpTags, newBpContent } = req.body;
     const user_id = req.user.payload.id;
     console.log(user_id);
 
-    if (!title || !content) {
+    if (!newBpTitle || !newBpContent) {
       return res.status(400).json({ error: 'Title and content are required' });
     }
 
     await pool.getConnection();
 
     const [result] = await pool.query(
-      'INSERT INTO blog_posts (title, date_posted, location, hours, audio, photos, user_id, tags, content) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-      [title, date_posted, location, hours, audio, photos, user_id, tags, content]
+      'INSERT INTO blog_posts (user_id, title, location, audio, photos, tags, content) VALUES (?, ?, ?, ?, ?, ?, ?)',
+      [user_id, newBpTitle, newBpLocation, newBpAudio, newBpPhotos, newBpTags, newBpContent]
     );
 
     await pool.releaseConnection();
-    res.send({
-      message: '(1) Blog post created successfully!',
-      postId: result.insertId,
-      location: '/blog/blog.html',
-      redirectUrl: 'blog/blog.html'
-    });
+
+    res.redirect('../blog/blog.html');
+    // res.send({
+    //   message: '(1) Blog post created successfully!',
+    //   postId: result.insertId,
+    //   location: '/blog/blog.html',
+    //   redirectUrl: 'blog/blog.html'
+    // });
   } catch (error) {
     console.error('Blog post creation error:', error);
     res.status(500).json({ error: 'Failed to create blog post' });
@@ -100,7 +102,7 @@ router.get('/all', async (req, res) => {
     const connection = await pool.getConnection();
 
     const [posts] = await connection.execute(
-      'SELECT bp.id, bp.title, bp.location, bp.audio, bp.photos, bp.tags, bp.content, bp.created_at, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id ORDER BY bp.date_posted DESC'
+      'SELECT bp.id, bp.title, bp.location, bp.audio, bp.created_at, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id ORDER BY bp.created_at DESC'
     );
 
     connection.release();

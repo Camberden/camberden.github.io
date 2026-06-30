@@ -74,19 +74,18 @@
 
 	<div>
 		<div id="all-notes-display">
-			<div class="flex-table">
-				<template x-for="(note, index) in $get('/api/notes/')" :key="index">
-					<div :class="'flex-table-row grid-col-7x-1'">
-						<span x-html="note.id"></span>
-						<span x-html="note.title"></span>
-						<span x-html="note.location"></span>
-						<span x-html="note.audio"></span>
-						<span x-html="note.photos"></span>
-						<span x-html="note.tags"></span>
-						<span x-html="note.content"></span>
-					</div>
-				</template>
-			</div>
+			<template x-for="(note, index) in $get('/api/notes/')" :key="index">
+				<div :class="'flex-table-row grid-col-7x-1'">
+					<span x-html="note.id"></span>
+					<span x-html="note.title"></span>
+					<span x-html="note.location"></span>
+					<span x-html="note.audio"></span>
+					<span x-html="note.photos"></span>
+					<span x-html="note.tags"></span>
+					<span x-html="note.content"></span>
+				</div>
+			</template>
 		</div>
 	</div>
+</div>
 </div>
