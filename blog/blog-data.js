@@ -2172,18 +2172,6 @@ I heard of the word back in high school when we had to read some of the Odyssey.
 I said it to myself on a few other occassions... when I was at the gazebo park in Butner, in Japan at the Imperial Palace gardens, behind the Biltmore in Asheville, heck, even being here at this house before I moved here. One pattern for it is.. There  always seems to be a nice breeze and a relative peace when things aren't too busy but aren't entirely still. Another is that the moment provides a stark contrast to the ordinary challenges in life. My closing note on this word would be: whenever I would pass away, I would hope that I may do so in a similar state of mind.
 	</b‰>`,
 
-	`<d‰>June </d‰>
-	<l‰>LOCATION</l‰>
-	<j‰>HOURS</j‰>
-	<p‰></p‰>
-	<a‰>https://www.youtube.com/watch?v=K8ZLe_uVuuI</a‰>
-	<u‰>Chrispy</u‰>
-	<g‰>TAGS</g‰>
-	<b‰>&emsp;
-	__________
-	<t‰>TITLE</t‰>
-	__________
-	</b‰>`,
 
 	/* // |==========| START NEW ENTRY TEMPLATE |=====>
 
