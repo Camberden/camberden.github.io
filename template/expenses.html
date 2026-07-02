@@ -1,0 +1,574 @@
+<style>
+	/* ----- EXPENSE MANAGEMENT SPECIFIC ----- */
+
+	#p2p {
+		background: var(--clr-quaternary);
+	}
+
+	.no-bullet {
+		list-style-type: none;
+	}
+
+	.automated-payment {
+		text-align: right;
+		font-family: 'Courier New', Courier, monospace;
+		font-size: smaller;
+		opacity: .7;
+		color: var(--clr-tertiary);
+	}
+
+	.non-automated-payment {
+		text-align: right;
+		font-family: 'Courier New', Courier, monospace;
+		font-size: smaller;
+		opacity: 0.5;
+		color: red;
+	}
+
+	.inactive-payment {
+		text-align: right;
+		color: grey;
+		opacity: 0.3;
+		user-select: none;
+	}
+
+	.paycard-grid {
+
+		display: grid;
+		gap: 1.5rem;
+		/* for vertical and horizontal spacing */
+		grid-template-columns: repeat(5, 20%);
+		/* repeat(4, 25%) */
+
+
+		padding-block: 1rem;
+		width: min(90%, 70rem);
+		margin-inline: auto;
+
+	}
+
+	.paycard-item {
+		padding: 1rem;
+		box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
+		border-color: grey;
+		border-style: double;
+
+	}
+
+	#expense-modal {
+		display: none;
+	}
+</style>
+
+<div class="modal">
+	<div class="modal-field">
+		<span class="modal-close">&times;</span><br>
+		<div id="modal-text"></div>
+	</div>
+</div>
+
+<div>
+	<div class="marker">
+		<h2>Expense Management</h2>
+	</div>
+
+	<div>
+		<ul id="expense-list">
+			<li>PAYCHECK = $<input type="text" placeholder=" Input Value" id="balance" name="balance" label="balance">
+			</li>
+			<br>
+			<li><span class="marker" id="select-applicable">Select Applicable</span></li>
+			<!-- CAR PAYMENT -->
+			<li><input type="checkbox" id="car-check">CAR = $<span class="expense applicable" id="car-cost">0</span>
+				<span class="automated-payment">Automated: 4th</span>
+			</li>
+			<!-- FEDERAL STUDENT LOAN -->
+			<li class="not-applicable"><input type="checkbox" id="nav-check">NAV = $<span class="expense"
+					id="nav-cost">0</span>
+				<span class="non-automated-payment">Inactive</span>
+			</li>
+			<!-- PRIVATE STUDENT LOAN -->
+			<li><input type="checkbox" id="sal-check">SAL = $<span class="expense applicable" id="sal-cost">0</span>
+				<span class="automated-payment">Automated: 1st</span>
+			</li>
+			<!-- MY RENT -->
+			<li><input type="checkbox" id="ren-check">REN = $<span class="expense applicable" id="ren-cost">0</span>
+				<span class="non-automated-payment">NOT Automated</span>
+			</li>
+			<!-- RENTER'S INSURANCE -->
+			<li class="not-applicable"><input type="checkbox" id="rti-check">RTI = $<span class="expense"
+					id="rti-cost">0</span>
+				<span class="non-automated-payment">Inactive</span>
+			</li>
+			<!-- CAR INSURANCE -->
+			<li><input type="checkbox" id="ins-check">INS = $<span class="expense applicable" id="ins-cost">0</span>
+				<span class="automated-payment">Automated: 30th</span>
+			</li>
+			<!-- PERSONAL LOAN -->
+			<li class="not-applicable"><input type="checkbox" id="loa-check">LOA = $<span class="expense"
+					id="loa-cost">0</span>
+				<span class="non-automated-payment">Inactive</span>
+			</li>
+			<!-- WATER BILL -->
+			<li class="not-applicable"><input type="checkbox" id="wat-check">WAT = $<span class="expense"
+					id="wat-cost">0</span>
+				<span class="non-automated-payment">Inactive</span>
+			</li>
+			<!-- ELECTRICITY/POWER BILL -->
+			<li class="not-applicable"><input type="checkbox" id="ele-check">ELE = $<span class="expense"
+					id="ele-cost">0</span>
+				<span class="non-automated-payment">Inactive</span>
+			</li>
+			<!-- INTERNET BILL -->
+			<li class="not-applicable"><input type="checkbox" id="int-check">INT = $<span class="expense"
+					id="int-cost">0</span>
+				<span class="non-automated-payment">Inactive</span>
+			</li>
+			<!-- MUSIC SUBSCRIPTION -->
+			<li><input type="checkbox" id="mus-check">MUS = $<span class="expense applicable" id="mus-cost">0</span>
+				<span class="automated-payment">Automated: 1st</span>
+			</li>
+			<!-- DONATION -->
+			<li><input type="checkbox" id="don-check">DON = $<span class="expense applicable" id="don-cost">0</span>
+				<span class="automated-payment">Automated: 1st</span>
+			</li>
+			<!-- GYM MEMBERSHIP -->
+			<li><input type="checkbox" id="gym-check">GYM = $<span class="expense applicable" id="gym-cost">0</span>
+				<span class="automated-payment">Automated: 17th</span>
+			</li>
+			<!-- MISCELLANEOUS OBLIGATIONS -->
+			<li><input type="checkbox" id="inp-check">INP = $<input type="text" placeholder=" Input Value"
+					id="inp-cost">
+			</li>
+			<!-- <li style="list-style-type: circle; margin-left: 1.3rem;">SAV = $<input type="text" placeholder=" Input Value"
+							id="sav-cost">
+					</li> -->
+			<br>
+			<!-- TOTAL AFTER DEDUCTIONS -->
+			<li>ENDING BALANCE = $<span id="endbalance">0</span>
+			</li>
+			<span class="marker modal-prompt" id="expense-modal">Project Expenses</span>
+
+		</ul>
+	</div>
+</div>
+
+<script>
+
+	// |==========| NEWER, OBJECTIFIED DASHBOARD EXPENSES |==========| //
+	class DashboardExpense {
+		/**
+		 * 
+		 * @param {String} name - Three-letter name of string
+		 * @param {Number} amount - Expense balance
+		 * @param {Boolean} applicable - Expense incurred in current lifestyle?
+		 * @param {Number} automated - Automated payment scheduled for Nth day of month.
+		 * @param {Boolean} custom - Is this a custom input field?
+		 */
+		constructor(name, amount, applicable, automated, custom) {
+			this.name = name;
+			this.amount = amount;
+			this.automated = automated;
+			this.applicable = applicable;
+			this.custom = custom;
+		}
+	}
+	/**
+	 * @type {Array} dashboardExpenses
+	 * 
+	 */
+	const dashboardExpenses = [
+		new DashboardExpense("car", 0.00, false, -1, false),
+		new DashboardExpense("nav", 222.07, false, -1, false),
+		new DashboardExpense("sal", 900.00, true, 1, false),
+		new DashboardExpense("ren", 200.00, true, 0, false),
+		new DashboardExpense("rti", 0.00, false, -1, false),
+		new DashboardExpense("ins", 97.68, true, 30, false),
+		new DashboardExpense("loa", 0.00, false, -1, false),
+		new DashboardExpense("wat", 15.00, false, -1, false),
+		new DashboardExpense("ele", 70.27, false, -1, false),
+		new DashboardExpense("int", 71.99, false, -1, false),
+		new DashboardExpense("mus", 6.39, true, 1, false),
+		new DashboardExpense("don", 10.00, true, 1, false),
+		new DashboardExpense("gym", 25.05, true, 17, false),
+		new DashboardExpense("cre", 0.00, false, 0, true),
+		new DashboardExpense("sav", 0.00, false, 0, true),
+		new DashboardExpense("inp", 0.00, false, 0, true),
+	];
+
+
+	function dashboardModalAccess() {
+		document.querySelectorAll(".modal-prompt").forEach(prompt => {
+			prompt.onclick = function () {
+				switch (prompt.id) {
+					case "accounting-modal":
+						displayAccountingModal();
+						modal.style.display = "block";
+						break;
+					case "expense-modal":
+						displayExpenseModal();
+						modal.style.display = "block";
+						break;
+					default:
+						console.log("default");
+						break;
+				}
+
+			}
+
+		});
+		closeModal.onclick = function () {
+			clearModal();
+			modal.style.display = "none";
+		};
+		window.onclick = function (event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+				clearModal();
+			}
+		}
+	}
+	function displayExpenseModal() {
+		const expenseModalData = document.createElement("div");
+		const currentDate = new Date();
+		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		document.getElementById("modal-text").setAttribute("class", "paycard-grid");
+		let expenseModalPaycheck = parseFloat(document.getElementById("starting-balance").value);
+		let expenseModalEndBalance = parseFloat(document.getElementById("ending-balance").textContent);
+		let expenseModalExpenses = parseFloat(expenseModalPaycheck - expenseModalEndBalance).toFixed(2);
+
+		for (let i = 0; i < 4; i++) {
+			const ul = document.createElement("ul");
+			ul.setAttribute("class", `${currentDate.getFullYear() + i}-projections`);
+			const text = document.createTextNode(currentDate.getFullYear() + i);
+			ul.appendChild(text);
+			const hr = document.createElement("hr");
+			ul.appendChild(hr);
+
+			if (currentDate.getFullYear() === currentDate.getFullYear() + i) {
+				for (let j = currentDate.getMonth(); j < months.length; j++) {
+					const li = document.createElement("li");
+					const text = document.createTextNode(months[j] + ": $");
+					const span = document.createElement("span");
+					span.setAttribute("class", "projected-monthly-expense");
+					// const expenseText = document.createTextNode(expenseModalExpenses);
+					// span.appendChild(expenseText);
+					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses}<br>=${expenseModalEndBalance}`;
+					li.appendChild(text);
+					li.appendChild(span);
+					ul.appendChild(li);
+
+				}
+			} else if (currentDate.getFullYear() < currentDate.getFullYear() + i) {
+				for (let j = 0; j < months.length; j++) {
+					const li = document.createElement("li");
+					const text = document.createTextNode(months[j] + ": $");
+					const span = document.createElement("span");
+					span.setAttribute("class", "projected-monthly-expense");
+					if (currentDate.getFullYear() + i === 2026 && j === 0) {
+						expenseModalExpenses -= 1291.61;
+						expenseModalEndBalance += 1291.61;
+						ul.innerHTML += " (Car Paid)<hr>";
+					}
+					if (currentDate.getFullYear() + i === 2027 && j === 0) {
+						expenseModalExpenses -= 900.00;
+						expenseModalEndBalance += 900.00;
+						ul.innerHTML += " (Sal Paid)<hr>";
+
+					}
+
+					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses.toFixed(2)}<br>=${expenseModalEndBalance.toFixed(2)}`;
+					li.appendChild(text);
+					li.appendChild(span);
+					ul.appendChild(li);
+				}
+			}
+			expenseModalData.appendChild(ul);
+		}
+
+
+		document.getElementById("modal-text").innerHTML = expenseModalData.innerHTML;
+	}
+	function enableExpenseButtons() {
+		document.querySelectorAll(".expense-button").forEach(button => {
+
+			button.onclick = function () {
+
+				switch (button.id) {
+					case "select-applicable":
+						dashboardExpenses.forEach(expense => {
+							if (expense.applicable) {
+								document.getElementById(expense.name + "-check").checked = true;
+							}
+							document.getElementById("select-applicable").style.display = "none";
+							document.getElementById("deselect-applicable").style.display = "inline-block";
+							calculateNewBalance();
+						});
+						break;
+					case "deselect-applicable":
+						dashboardExpenses.forEach(expense => {
+							if (expense.applicable) {
+								document.getElementById(expense.name + "-check").checked = false;
+							}
+							document.getElementById("deselect-applicable").style.display = "none";
+							document.getElementById("select-applicable").style.display = "inline-block";
+							calculateNewBalance();
+						});
+						break;
+					default:
+						console.log("Defaulted enableExpenseButtons()");
+						break;
+				}
+			}
+		});
+	};
+
+	/**
+	 * 
+	 * @param {DashboardExpense[]} expenses 
+	 */
+	function generateDashboardExpenses(expenses) {
+		const expenseDisplay = document.getElementById("expense-display");
+
+		expenses.forEach(expense => {
+			const expenseEntry = document.createElement("div");
+			expenseEntry.setAttribute("class", "flex-table-row grid-col-1-1-1");
+			const inputCheckbox = document.createElement("input");
+			const textCheckbox = document.createTextNode(`${expense.name.toUpperCase()}`);
+			inputCheckbox.setAttribute("type", "checkbox");
+			inputCheckbox.setAttribute("id", `${expense.name}-check`);
+
+			if (!expense.custom) {
+				const spanApplicable = document.createElement("span");
+				spanApplicable.setAttribute("id", `${expense.name}-cost`);
+				spanApplicable.textContent = expense.amount;
+				const spanAutomation = document.createElement("span");
+
+				if (expense.applicable) {
+					spanApplicable.setAttribute("class", "applicable");
+				}
+				if (expense.automated > 0) {
+					spanAutomation.setAttribute("class", "automated-payment");
+					const textAutomation = document.createTextNode(` Automated: Day ${expense.automated}`);
+					spanAutomation.appendChild(textAutomation);
+				}
+				if (expense.automated === 0) {
+					spanAutomation.setAttribute("class", "non-automated-payment");
+					const textAutomation = document.createTextNode(` NOT Automated`);
+					spanAutomation.appendChild(textAutomation);
+				}
+				if (expense.automated < 0) {
+					// spanAutomation.setAttribute("class", "inactive-payment");
+					spanAutomation.setAttribute("class", "non-automated-payment inactive-payment");
+					// TODO: Make default condition the non-automated-payment.
+					const textInactive = document.createTextNode("Inactive");
+					spanAutomation.appendChild(textInactive);
+					expenseEntry.style.opacity = 0.3;
+				}
+				const checkboxWithName = document.createElement("div");
+				checkboxWithName.appendChild(inputCheckbox);
+				checkboxWithName.appendChild(textCheckbox);
+				expenseEntry.appendChild(checkboxWithName);
+				expenseEntry.appendChild(spanApplicable);
+				expenseEntry.appendChild(spanAutomation);
+
+			}
+
+			if (expense.custom) {
+				const inputCustom = document.createElement("input");
+				inputCustom.setAttribute("type", "text");
+				inputCustom.setAttribute("placeholder", ` Input Value`);
+				inputCustom.setAttribute("id", `${expense.name}-cost`);
+
+				const checkboxWithName = document.createElement("div");
+				checkboxWithName.appendChild(inputCheckbox);
+				checkboxWithName.appendChild(textCheckbox);
+				expenseEntry.appendChild(checkboxWithName);
+				expenseEntry.appendChild(document.createTextNode("→"));
+				expenseEntry.appendChild(inputCustom);
+			}
+			expenseDisplay.appendChild(expenseEntry);
+		});
+
+		document.getElementById("starting-balance").onkeyup = function () {
+			calculateNewBalance();
+			document.getElementById("expense-modal").style.display = "block";
+		};
+
+		dashboardExpenses.forEach(expense => {
+			document.getElementById(expense.name + "-check").onclick = function () {
+				calculateNewBalance();
+			}
+		});
+	};
+
+
+	// |==========| LEGACY DASHBOARD EXPENSES |==========| //
+	const modal = document.querySelector(".modal");
+	const closeModal = document.getElementsByClassName("modal-close")[0];
+	let startbalance = document.getElementById("balance").value;
+	const startbalanceupdate = document.getElementById("balance");
+	const car = 1291.61;
+	const nav = 222.07;
+	const sal = 884.15;
+	const ren = 200.00;
+	const rti = 0.00;
+	const ins = 97.68;
+	const loa = 0.00;
+	const wat = 15.00;
+	const ele = 70.27;
+	const int = 71.99;
+	const mus = 6.39;
+	const don = 10.00;
+	const gym = 25.05;
+	let inp = 0.00; // CUSTOM INPUT: INP
+	const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
+	const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym inp".split(" "));
+	const allCosts = expenseNames.map(str => document.getElementById(str + "-cost"));
+	const allCheckboxes = expenseNames.map(str => document.getElementById(str + "-check"));
+	allCosts.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
+
+	function updateInp() {
+		allExpenses[allExpenses.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
+	}
+
+	const calculateNewBalance = function () {
+		updateInp();
+		let sum = 0;
+		allExpenses.forEach((e, i) => {
+			const checkbox = allCheckboxes[i];
+			if (checkbox.checked) {
+				// console.log(`73; e = ${e}; e.checked = ${e.checked}`);
+				sum += e;
+			}
+			else {
+				// console.log(`77; i = ${i}; e = ${e}`);
+			}
+		});
+		const endbalance = startbalance - sum;
+		document.getElementById("endbalance").innerHTML = endbalance.toFixed(2);
+	};
+
+	function selectApplicable() {
+		document.getElementById("select-applicable").onclick = function () {
+			expenseNames.forEach(expense => {
+				if (document.getElementById(expense + "-cost").classList.contains("applicable")) {
+					document.getElementById(expense + "-check").checked = true;
+				}
+			});
+			calculateNewBalance();
+		}
+	};
+
+	function clearModal() {
+		document.getElementById("modal-text").innerHTML = "";
+		document.getElementById("modal-text").removeAttribute("class", "paycard-grid");
+
+	}
+
+	function dashboardModalAccess() {
+		document.querySelectorAll(".modal-prompt").forEach(prompt => {
+			prompt.onclick = function () {
+				switch (prompt.id) {
+					case "accounting-modal":
+						displayAccountingModal();
+						modal.style.display = "block";
+						break;
+					case "expense-modal":
+						displayExpenseModal();
+						modal.style.display = "block";
+						break;
+					default:
+						console.log("default");
+						break;
+				}
+
+			}
+
+		});
+		closeModal.onclick = function () {
+			clearModal();
+			modal.style.display = "none";
+		};
+		window.onclick = function (event) {
+			if (event.target === modal) {
+				modal.style.display = "none";
+				clearModal();
+			}
+		}
+	}
+	function displayExpenseModal() {
+		const expenseModalData = document.createElement("div");
+		const currentDate = new Date();
+		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+		document.getElementById("modal-text").setAttribute("class", "paycard-grid");
+		let expenseModalPaycheck = parseFloat(document.getElementById("starting-balance").value);
+		let expenseModalEndBalance = parseFloat(document.getElementById("ending-balance").textContent);
+		let expenseModalExpenses = parseFloat(expenseModalPaycheck - expenseModalEndBalance).toFixed(2);
+
+		for (let i = 0; i < 4; i++) {
+			const ul = document.createElement("ul");
+			ul.setAttribute("class", `${currentDate.getFullYear() + i}-projections`);
+			const text = document.createTextNode(currentDate.getFullYear() + i);
+			ul.appendChild(text);
+			const hr = document.createElement("hr");
+			ul.appendChild(hr);
+
+			if (currentDate.getFullYear() === currentDate.getFullYear() + i) {
+				for (let j = currentDate.getMonth(); j < months.length; j++) {
+					const li = document.createElement("li");
+					const text = document.createTextNode(months[j] + ": $");
+					const span = document.createElement("span");
+					span.setAttribute("class", "projected-monthly-expense");
+					// const expenseText = document.createTextNode(expenseModalExpenses);
+					// span.appendChild(expenseText);
+					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses}<br>=${expenseModalEndBalance}`;
+					li.appendChild(text);
+					li.appendChild(span);
+					ul.appendChild(li);
+
+				}
+			} else if (currentDate.getFullYear() < currentDate.getFullYear() + i) {
+				for (let j = 0; j < months.length; j++) {
+					const li = document.createElement("li");
+					const text = document.createTextNode(months[j] + ": $");
+					const span = document.createElement("span");
+					span.setAttribute("class", "projected-monthly-expense");
+					if (currentDate.getFullYear() + i === 2026 && j === 0) {
+						expenseModalExpenses -= 1291.61;
+						expenseModalEndBalance += 1291.61;
+						ul.innerHTML += " (Car Paid)<hr>";
+					}
+					if (currentDate.getFullYear() + i === 2027 && j === 0) {
+						expenseModalExpenses -= 900.00;
+						expenseModalEndBalance += 900.00;
+						ul.innerHTML += " (Sal Paid)<hr>";
+
+					}
+
+					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses.toFixed(2)}<br>=${expenseModalEndBalance.toFixed(2)}`;
+					li.appendChild(text);
+					li.appendChild(span);
+					ul.appendChild(li);
+				}
+			}
+			expenseModalData.appendChild(ul);
+		}
+
+
+		document.getElementById("modal-text").innerHTML = expenseModalData.innerHTML;
+	}
+
+	(() => {
+		allCheckboxes.forEach(checkbox => checkbox.onclick = calculateNewBalance);
+		startbalanceupdate.onkeyup = function () {
+			startbalance = document.getElementById("balance").value;
+			calculateNewBalance();
+			document.getElementById("expense-modal").style.display = "block";
+		};
+		calculateNewBalance();
+		enableExpenseButtons();
+		dashboardModalAccess();
+
+	})();
+</script>

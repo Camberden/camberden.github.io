@@ -19,7 +19,6 @@ const usMap = document.getElementById("us-map");
 const notesPanel = document.getElementById("notes-panel");
 const varietyPanel = document.getElementById("variety-panel");
 let currentMap = "world-map";
-
 const visitedCountries = ["US", "BZ", "GT", "JP"];
 const countriesToVisit = ["NZ", "IS", "CA", "GB", "DE", "MU", "PL", "TH", "IN", "CO", "PY", "AR", "UY", "AU", "NA", "ID", "SG", "MU", "LK", "MV", "AW", "BM"];
 const countriesToConsiderRetirement = ["US", "CO", "PY", "UY", "JP"];

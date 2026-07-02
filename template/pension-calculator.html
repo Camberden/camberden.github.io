@@ -1,0 +1,240 @@
+<!-- PENSION CALCULATOR -->
+<style>
+	.pension-reduction-highlight {
+		color: crimson;
+		background-color: cadetblue;
+		font-family: monospace;
+		font-weight: 800;
+	}
+
+	.pension-buttons {
+		width: 100%;
+	}
+
+	@keyframes text-fade-in {
+		0% {
+			opacity: 0;
+		}
+
+		100% {
+			opacity: 1;
+		}
+	}
+
+	.fade-in-data {
+		animation-name: text-fade-in;
+		animation-duration: 1s;
+		animation-iteration-count: 1;
+	}
+</style>
+<div id="dashboard-pension-calculator" class="dashboard-item">
+
+	<div>
+		<h2 class="marker-green">Pension Calculator</h2>
+		<hr class="hr-cmbr-dark-gradient">
+	</div>
+
+	<div id="pension-table-div">
+
+		<div id="pension-table" class="flex-table">
+
+			<div class="flex-table-row grid-col-11x-1">
+				<div id="pension-age-60-service-30" class="flex-table-anchor-col pension-reduction-highlight">
+					&emsp;</div>
+				<div id="pension-service-29">29</div>
+				<div id="pension-service-28">28</div>
+				<div id="pension-service-27">27</div>
+				<div id="pension-service-26">26</div>
+				<div id="pension-service-25">25</div>
+				<div id="pension-service-24">24</div>
+				<div id="pension-service-23">23</div>
+				<div id="pension-service-22">22</div>
+				<div id="pension-service-21">21</div>
+				<div id="pension-service-20">20</div>
+			</div>
+			<div id="pension-table-body" class="flex-table-body">
+			</div>
+		</div>
+		<hr class="hr-groove-bottom">
+	</div>
+
+	<div id="pension-data" class="grid-col-1-1">
+		<div id="pension-inputs" class="grid-col-1-1">
+			<p>Age at Retirement:</p>
+			<input type="text" placeholder="50" value="50" id="retirement-age">
+			<p>Service Years:</p>
+			<input type="text" placeholder="24" value="24" id="service-years">
+			<p>Year 1:</p>
+			<input type="text" placeholder="74692.84" value="74692.84" class="salary-for-pension" id="yr1-for-pension"
+				label="yr1-for-pension">
+			<p>Year 2: </p>
+			<input type="text" placeholder="71415.51" value="71415.51" class="salary-for-pension" id="yr2-for-pension"
+				label="yr2-for-pension">
+			<p>Year 3: </p>
+			<input type="text" placeholder="74732.21" value="74732.21" class="salary-for-pension" id="yr3-for-pension"
+				label="yr3-for-pension">
+			<p>Year 4: </p>
+			<input type="text" placeholder="75482.28" value="75482.28" class="salary-for-pension" id="yr4-for-pension"
+				label="yr4-for-pension">
+		</div>
+		<div id="pension-sums">
+			<p>Gross Pension: $<span id="gross-pension"></span></p>
+			<p><span id="reduction-percentage"></span></p>
+			<p><span id="reduction-amount"></span></p>
+			<p><span id="net-pension"></span></p>
+			<p><span id="monthly-pension"></span></p>
+			<p>
+				<span id="pension-notice"></span>
+			</p>
+		</div>
+		<div class="trigger-box pension-buttons">Generate Pension</div>
+
+	</div>
+</div>
+<script>
+	// ---------- PENSION CALCULATOR ---------- //
+	// TODO: lock in age and service, press up and down arrows to adjust.
+	// TODO: add monthly increments, perhaps.
+
+	function generatePensionTable() {
+		const tbody = document.getElementById("pension-table-body");
+		let retirementAge = 60;
+		let retirementService = 30;
+		const reductionIncrements = [95, 90, 85, 80, 75, 70, 65, 60, 55, 52, 50];
+		let reductionLow = 3; // 59 years
+
+		for (let i = 0, j = 0; i < 10; i++) {
+
+			let tr = document.createElement("div");
+			tr.setAttribute("class", "flex-table-row grid-col-11x-1");
+			tr.setAttribute("id", `pension-row-${--retirementAge}`);
+			let th = document.createElement("div");
+
+			th.setAttribute("id", `pension-age-${retirementAge}`);
+			const text = document.createTextNode(retirementAge);
+
+			th.appendChild(text);
+			tr.appendChild(th);
+
+			while (j < 10) {
+				let td = document.createElement("div");
+				td.setAttribute("id", `pension-age-${retirementAge}-service-${--retirementService}`);
+				let reduction = reductionLow >= j ? reductionIncrements[j] : reductionIncrements[reductionLow];
+				let text = document.createTextNode(reduction + "%");
+				td.appendChild(text);
+				tr.appendChild(td);
+				j++;
+			}
+			j = 0;
+			reductionLow++;
+			// Accounts for 52% for Age 53 @ 20 years of service.
+			if (retirementAge === 53) {
+				reductionIncrements[reductionLow - 1] = reductionIncrements[reductionLow];
+			}
+
+			retirementService = 30;
+			tbody.appendChild(tr);
+			// retirementAge--;
+		}
+		retirementAge = 60;
+		retirementService = 30;
+	}
+	function displayNotice(age, service) {
+		const notice = document.getElementById("pension-notice");
+		notice.textContent = service + " years of service and retiring at " + age;
+
+
+		if (age < 50) {
+			notice.textContent = "Retirement must occur at or beyond age 50.";
+		} else if (service < 20) {
+			notice.textContent = "Retirement must occur at or beyond 20 years of service.";
+		} else if (age >= 60 || service >= 30) {
+			notice.textContent = "Retirement at 60 years of age or 30 years of service is full in most cases (TBD).";
+		}
+	}
+	function fadeInData() {
+		document.getElementById("pension-sums").classList.add("fade-in-data");
+		setInterval(function () { document.getElementById("pension-sums").classList.remove("fade-in-data") }, 1000);
+	}
+	function generatePension() {
+
+		const pensionModifier = 0.0182;
+		let retirementAge = document.getElementById("retirement-age").value;
+		let serviceYears = document.getElementById("service-years").value;
+
+		displayNotice(retirementAge, serviceYears);
+
+		let fourSalariesAverage = 0.00;
+		const fourSalaries = document.querySelectorAll(".salary-for-pension");
+		for (let salary of fourSalaries) {
+			fourSalariesAverage += parseFloat(salary.value);
+		}
+		fourSalariesAverage /= 4;
+
+		const grossPension = (fourSalariesAverage * pensionModifier * serviceYears).toFixed(2);
+		document.getElementById("gross-pension").innerHTML = grossPension;
+
+		let reductionString;
+		if (retirementAge >= 60 || serviceYears >= 30) {
+			reductionString = "0%";
+			document.getElementById("reduction-percentage").textContent = `Full, Unreduced Pension`;
+			document.getElementById("reduction-amount").textContent = `increases with service years`;
+			document.getElementById("net-pension").textContent = `Net Pension: $${grossPension}`;
+			document.getElementById("monthly-pension").textContent = `Net Pension Monthly: $${(grossPension / 12).toFixed(2)}`;
+
+		} else if (retirementAge < 50 || serviceYears < 20) {
+			reductionString = "100%"
+			document.getElementById("reduction-percentage").textContent = `Ineligible`;
+			document.getElementById("reduction-amount").textContent = ``;
+			document.getElementById("net-pension").textContent = `Prospective Full Pension: $${grossPension}`;
+			document.getElementById("monthly-pension").textContent = `Prospective Pension Monthly: $${(grossPension / 12).toFixed(2)}`;
+		} else {
+			reductionString = document.getElementById(`pension-age-${retirementAge}-service-${serviceYears}`).textContent;
+			const percentageReduction = reductionString.substring(0, reductionString.length - 1);
+			document.getElementById("reduction-percentage").textContent = `Reduced to ${parseInt(percentageReduction)}% of Gross Pension`;
+			document.getElementById("reduction-amount").textContent = `Amount Lost: - $${(grossPension - (grossPension * (percentageReduction / 100))).toFixed(2)}`;
+			const annualPension = (grossPension * (percentageReduction / 100)).toFixed(2);
+			document.getElementById("net-pension").textContent = `Net Pension: $${annualPension}`;
+			document.getElementById("monthly-pension").textContent = `Net Pension Monthly: $${(annualPension / 12).toFixed(2)}`;
+		}
+
+		highlightPensionReduction(retirementAge, serviceYears);
+		fadeInData();
+
+	}
+	// TODO: INCLUDE POST-60YR OLD TABLE
+	function highlightPensionReduction(age, service) {
+		document.querySelector(".pension-reduction-highlight").classList.remove("pension-reduction-highlight");
+		let cell;
+
+		if (age >= 60 || service >= 30) {
+			cell = document.getElementById(`pension-age-60-service-30`);
+		} else if (age < 50 || service < 20) {
+			// TODO: NOTIFICATION BAR AT TOP 
+			cell = document.getElementById(`pension-notice`);
+		} else {
+			cell = document.getElementById(`pension-age-${age}-service-${service}`);
+		}
+		cell.classList.add("pension-reduction-highlight");
+	}
+
+	function enablePensionButtons() {
+		document.querySelectorAll(".pension-buttons").forEach(button => {
+			button.onclick = () => {
+				generatePension();
+				CMBRutil.buttonOnClick(button);
+			}
+			button.onmouseenter = () => {
+				CMBRutil.buttonOnMouseEnter(button);
+			}
+			button.onmouseleave = () => {
+				CMBRutil.buttonOnMouseLeave(button);
+			}
+		});
+	};
+
+	(() => {
+		generatePensionTable();
+		enablePensionButtons();
+	})();
+</script>

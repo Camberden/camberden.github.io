@@ -307,16 +307,15 @@ specialChars: RegExp
 
 
 # A proper Redirect?
+
+Add a status code modifier to x-target to define different targets based on the status code received in an AJAX response:
+--- 
 `
-try {
-	res.send({
-		message: '(1) Blog post created successfully!',
-		postId: result.insertId,
-		location: '/blog/blog.html',
-		redirectUrl: 'blog/blog.html'
-		});
-	} catch (error) {
-		console.error('Blog post creation error:', error);
-		res.status(500).json({ error: 'Failed to create blog post' });
-	};
+x-target.422="my_form" merge content when the response has a 422 status code.
+x-target.4xx="my_form" merge content when the response has a 400 class status code (400, 403, 404, etc.).
+x-target.back="my_form" merge content when the response is redirected back to the same page.
+x-target.away="my_form" merge content when the response is redirected away to a different page.
+x-target.error="my_form" merge content when the response has a 400 or 500 class status codes.
 `
+~~~ 
+What's this?

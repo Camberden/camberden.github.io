@@ -1,0 +1,11 @@
+<div id="all-notes-display">
+	<div class="flex-table">
+		<template x-for="(blogpost, index) in $get('/api/blog/all')" :key="index">
+			<div :class="'flex-table-row grid-col-1-1-1'">
+				<span x-html="blogpost.id"></span>
+				<span x-html="blogpost.title"></span>
+				<span x-html="blogpost.location"></span>
+			</div>
+		</template>
+	</div>
+</div>

@@ -1,0 +1,137 @@
+<style>
+	#pslf-boxes {
+		/* display: flex; */
+		/* justify-content: left; */
+		/* align-items: left; */
+		gap: 0.5rem;
+		margin-bottom: 1rem;
+		fill: indianred;
+	}
+
+	#pslf-boxes>span {
+		/* width: max-content; */
+		/* border-right: 0.1rem solid cadetblue; */
+		/* border-left: 0.1rem solid cadetblue; */
+		/* text-align: center; */
+	}
+
+	#pslf-progress-bar {
+		display: block;
+		box-sizing: border-box;
+		width: 100%;
+		height: 1.5rem;
+		position: relative;
+		background: var(--cmbr-curtain-plum);
+		/* border-radius: 1rem; */
+		/* margin-right: 5%; */
+		/* margin-left: 5%; */
+		box-shadow: 1.5rem 1rem 1rem -1rem var(--cmbr-dark-grey) inset;
+	}
+
+	#pslf-progress-bar>span {
+		display: flex;
+		justify-content: left;
+		align-items: left;
+		/* width: max-content; */
+		height: 100%;
+		/* border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px; */
+		background-color: rgb(134, 227, 159);
+		background-image: linear-gradient(center bottom,
+				rgb(108, 222, 138) 37%,
+				rgb(84, 240, 84) 69%);
+		box-shadow:
+			inset 0 2px 9px rgba(255, 255, 255, 0.1),
+			inset 0 -2px 6px rgba(0, 0, 0, 0.4);
+		position: relative;
+		overflow: hidden;
+	}
+
+	#pslf-progress-bar>span:nth-child(2) {
+		display: inline-flex;
+		/* height: 100%; */
+		/* border-top-right-radius: 8px;
+		border-bottom-right-radius: 8px;
+		border-top-left-radius: 20px;
+		border-bottom-left-radius: 20px; */
+		background-color: rgb(206, 129, 66);
+		background-image: linear-gradient(center bottom,
+				rgb(182, 222, 108) 37%,
+				rgb(172, 240, 84) 69%);
+		box-shadow:
+			inset 0 2px 9px rgba(70, 66, 66, 0.9),
+			inset 0 -2px 6px rgba(0, 0, 0, 0.1);
+		position: relative;
+		overflow: hidden;
+	}
+</style>
+
+<!-- PSLF CALCULATOR -->
+<div x-data="{ 
+	credits: pslfCredited,
+	served: pslfServed, 
+	remaining: pslfRemaining,
+	notice: pslfNotice[2]
+	}">
+	<div>
+		<h2 class="marker-green">PSLF Display</h2>
+		<hr class="hr-cmbr-dark-gradient">
+	</div>
+	<span class="marker modal-prompt" id="pslf-modal">Additional Information</span>
+	<div>PSLF Credits:
+		<span id="pslf-credits" x-text="credits"></span>/120
+	</div>
+	<div>Total Service:
+		<span id="pslf-served" x-text="served"></span>/120
+	</div>
+	<hr class="hr-groove-bottom">
+	<div id="pslf-boxes" class="grid-col-11x-1">
+		<div>∆</div>
+		<div>12</div>
+		<div>24</div>
+		<div>36</div>
+		<div>48</div>
+		<div>60</div>
+		<div>72</div>
+		<div>84</div>
+		<div>96</div>
+		<div>108</div>
+		<div>120</div>
+	</div>
+	<div id="pslf-progress-bar"></div>
+	<hr class="hr-groove-top">
+	<div style="text-align: right">
+		<span id="pslf-remaining" x-text="notice"></span>
+	</div>
+</div>
+
+<script>
+	const pslfRequirement = 120;
+	const pslfCredited = 50;
+	const pslfServed = 71;
+	const pslfRemaining = pslfRequirement - pslfServed;
+	const pslfNotice = [
+		`${pslfCredited} months credited.`,
+		`${pslfServed - pslfCredited} months uncredited.`,
+		`${pslfRequirement - pslfCredited} months of service ahead.`
+	];
+	const pslfProgressBar = document.getElementById("pslf-progress-bar");
+	const pslfCompletionPercentage = (pslfCredited / pslfRequirement * 100).toFixed(2);
+	const pslfUncreditedPercentage = ((pslfServed - pslfCredited) / pslfRequirement * 100).toFixed(2);
+	// |=====| PSLF MODULE |=====| //
+
+	function initPslfProgress() {
+		pslfProgressBar.innerHTML = `<span style="width:${pslfCompletionPercentage}%;" x-on:mouseenter="$tooltip(pslfNotice[0])"></span>`;
+		const span = document.createElement("span");
+		span.setAttribute("style", `width:${pslfUncreditedPercentage}%`);
+		span.setAttribute("x-on:mouseenter", "$tooltip(pslfNotice[1])");
+		pslfProgressBar.appendChild(span);
+	};
+
+	(() => {
+		initPslfProgress();
+	})();
+
+</script>

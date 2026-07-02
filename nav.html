@@ -95,6 +95,7 @@
                 },
                 toggleMode: function (value){
                     this.setting = value;
+                    Alpine.store('thematic').setMode(value);
                     document.body.dataset.theme = this.setting;
                 },
                 }" x-init="$watch('setting', value => console.info(setting + ' mode active.'))">

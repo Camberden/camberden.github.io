@@ -39,11 +39,11 @@ const nonStaticDev = "http://localhost:3020";
  * @description Intializes ALPine DAta, MAgics, DIrectives, and STores
  */
 document.addEventListener("alpine:init", () => {
-	// |==========| Alpine Data |==========|
-	Alpine.data('site', () => ({
-
-	})); // %=> end of Alpine Data
-	// |==========| Alpine Magics |==========|
+	// !==========| Alpine Data |==========!
+	Alpine.data('camberden', () => ({
+		site: document.location.origin,
+	})); // *=> end of Alpine Data
+	// !==========| Alpine Magics |==========!
 	Alpine.magic('tooltip', el => message => {
 		let instance = tippy(el, { content: message, trigger: 'manual' });
 		instance.show();
@@ -51,9 +51,13 @@ document.addEventListener("alpine:init", () => {
 			instance.hide();
 			setTimeout(() => instance.destroy(), 150);
 		}, 1000);
-	}); // %=> end of Alpine Magics
-
-	// |==========| Alpine Directives |==========|
+	});
+	Alpine.magic('meander', el => message => {
+		setTimeout(() => {
+			alert("Meandered: " + el.innerText);
+		}, 2000);
+	}); // *=> end of Alpine Magics
+	// !==========| Alpine Directives |==========!
 	Alpine.directive('tooltip', (el, { expression }) => {
 		tippy(el, { content: expression });
 	});
@@ -62,18 +66,43 @@ document.addEventListener("alpine:init", () => {
 			// el.setAttribute('x-show', false);
 			el.setAttribute('x-transition.duration.500ms', '');
 			validity = Alpine.store('nauth').getValidity();
-			console.table({ 'validity first?': validity });
+			console.table({ 'X-Autograph: validity first?': validity });
 			if (validity) {
 				el.setAttribute('x-show', validity);
 				el.setAttribute('x-cloak', validity);
 			}
-			console.table({ 'validity last?': validity });
+			console.table({ 'X-Autograph: validity last?': validity });
 		}, 2000);
 	});
+	Alpine.directive('clock', function (el, { expression }) {
+		el.setAttribute('x-transition', '');
+		el.innerHTML = 'clock';
+		setInterval(() => {
+			const now = new Date();
+			const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+			const formattedDateAndTime = now.toLocaleDateString('en-US', options);
+			el.textContent = formattedDateAndTime;
+		}, 1000);
+	});
 
-	// %=> end of Alpine Directives
-
-	// |==========| Alpine Store |==========|
+	// *=> end of Alpine Directives
+	// !==========| Alpine Store |==========!
+	// TODO Get the Persist Plugin //
+	Alpine.store('thematic', {
+		mode: null,
+		getMode() {
+			console.log('what the heck: ' + this.mode);
+			return this.mode;
+		},
+		setMode(val) {
+			val = val ?? 'dark';
+			this.mode = val;
+		},
+		modeToggle(val) {
+			this.mode = val;
+			this.setMode(val);
+		}
+	})
 	Alpine.store('nauth', {
 		valid: false,
 		toggle() {
@@ -89,7 +118,7 @@ document.addEventListener("alpine:init", () => {
 			this.on = !this.on;
 		},
 	});
-	// %=> end of Alpine Store
+	// *=> end of Alpine Store
 });
 
 /**
@@ -281,6 +310,18 @@ const CMBRutil = {
 			cmbrDate = date.toLocaleDateString("en-US", preferredDateOptions);
 			return cmbrDate;
 		};
+	},
+	displayCurrentDateAndTime: () => {
+		const currentDateAndTimeElement = document.getElementById("current-date-and-time");
+		const now = new Date();
+		const options = { year: 'numeric', month: 'long', day: 'numeric', weekday: 'long', hour: '2-digit', minute: '2-digit', second: '2-digit' };
+		const formattedDateAndTime = now.toLocaleDateString('en-US', options);
+		currentDateAndTimeElement.textContent = formattedDateAndTime;
+	},
+	parsePermilleTags: function (content, tag) {
+		const perMilleTags = ["t", "b", "g", "p", "a", "l"];
+		const l = tag.length + 3;
+		return content.substring(content.indexOf("<" + tag + "‰>") + l, content.indexOf("</" + tag + "‰>"));
 	},
 	buttonOnMouseEnter: function (button) {
 		if (!button.classList.contains("button-toggled")) {

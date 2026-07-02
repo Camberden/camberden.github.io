@@ -1,0 +1,157 @@
+/* |==========| THREE-COLUMN GRID |====================> */
+main {
+	height: 1000vh;
+}
+
+/* |==========| HEADER, GRID, AND EACH COLUMN |====================> */
+
+.blog-grid {
+	display: grid;
+	grid-template-columns: 1fr 3fr 1fr;
+	padding: 2rem;
+	gap: 1rem;
+}
+
+.blog-item {
+	padding: 1rem;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	border-width: 0.3rem;
+	max-height: 45rem;
+	background: rgba(144, 229, 238, 0.1);
+}
+
+.blog-post-header {
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	align-items: center;
+	right: 0;
+	justify-content: right;
+	font-size: 0.8rem;
+	box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+	/* background: rgba(144, 229, 238, 0.1); */
+}
+
+/* |==========| CENTER COLUMN |====================> */
+#blog-post-articles {
+	box-sizing: content-box;
+	/* padding: 1rem; */
+	/* box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71); */
+	/* border-width: 0.3rem; */
+	background: #0f0b07de;
+	height: max-content;
+}
+
+#blog-post-body>ul {
+	list-style: none;
+}
+
+#blog-post-body>ul>li::before {
+	content: attr(item) "⇒ ";
+}
+
+#blog-post-body>ol>ul {
+	list-style: none;
+}
+
+#blog-post-body>ol>ul>li::before {
+	content: attr(item) "⇒ ";
+}
+
+/* |==========| ACTUAL WRITTEN POSTS |====================> */
+
+/* |==========| LEFT COLUMN |====================> */
+#blog-post-listings {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+/* |==========| LIST OF BLOG POSTS AND SELECTIONS |====================> */
+
+
+.listing-highlight {
+	color: var(--cmbr-orange);
+	background: var(--cmbr-curtain-plum);
+}
+
+#blog-post-list>li {
+	list-style-type: none;
+	text-align: left;
+}
+
+#blog-post-list>li:hover {
+	cursor: pointer;
+	color: var(--cmbr-green);
+	background: var(--clr-quaternary);
+}
+
+.listed-title {
+	font-family: monospace;
+	font-size: smaller;
+	color: var(--clr-secondary);
+}
+
+.listing-none {
+	display: none;
+}
+
+/* |==========| RIGHT COLUMN |====================> */
+#blog-post-media {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	align-items: center;
+	justify-content: center;
+}
+
+/* |==========| BLOG MEDIA STYLES FOR MAPS, PHOTOS, & MORE |====================> */
+
+#blog-tags {
+	height: fit-content;
+	width: 100%;
+	outline: 0.1rem dotted crimson;
+	align-content: center;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+}
+
+.blog-tag {
+	font-family: "vt323";
+	color: magenta;
+	background-color: #0f0b07de;
+	padding: 0.3rem;
+	border: 0.2rem solid salmon;
+	border-radius: 10%;
+	margin-inline-start: 0.5rem;
+}
+
+#blog-map {
+	height: 10rem;
+	width: 100%;
+	/* outline: 0.1rem dotted magenta; */
+}
+
+#blog-photos {
+	box-sizing: border-box;
+	/* outline: 0.1rem dotted salmon; */
+	background-image: transparent;
+	background-size: cover;
+	background-position: 100%;
+	height: 10rem;
+	width: 100%;
+}
+
+
+
+#blog-music {
+	height: 10rem;
+	width: 100%;
+	/* outline: 0.1rem dotted cyan; */
+}

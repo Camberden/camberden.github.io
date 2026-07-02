@@ -87,5 +87,179 @@
 			</template>
 		</div>
 	</div>
+
+	<!-- NOTES DEPOSITORY -->
+	<div id="dashboard-depository" class="dashboard-item">
+		<div>
+			<h2 class="marker-green">Info Depository</h2>
+			<hr class="hr-cmbr-dark-gradient">
+		</div>
+		<div class="grid-col-1-1-1">
+			<div>
+				<h5 class="vt323">By Tag</h5>
+				<select id="depository-tag-select">
+					<option value="all">All</option>
+				</select>
+			</div>
+			<div>
+				<h5 class="vt323">Display</h5>
+				<select id="depository-results-select">
+					<option value="choose amount" disabled>Choose Amount</option>
+					<option value="10">10 results</option>
+					<option value="15">15 results</option>
+					<option value="20">20 results</option>
+					<option value="25">25 results</option>
+					<option value="30">30 results</option>
+				</select>
+			</div>
+			<div>
+				<h5 class="vt323">By Note</h5>
+				<div id="depository-note-search">
+					<input class="form-control" type="search" name="search" placeholder="Search Notes...">
+					<!-- hx-post="notes-data"
+							hx-trigger="input changed delay:500ms, keyup[key=='Enter'], load"
+							hx-target="#depository" hx-swap="innerHTML"> -->
+				</div>
+			</div>
+		</div>
+
+		<div id="dashboard-note-table" class="flex-table">
+			<div class="flex-table-header grid-col-1-3-1">
+				<div>Note</div>
+				<div>Info</div>
+				<div>Tags</div>
+			</div>
+			<div id="depository">
+				<!-- <div>|=====|</div>
+					<div>|=====| No Result |=====|</div>
+					<div>|=====|</div>
+					<div>Impermanence</div>
+					<div>The concept that nothing lasts forever. Do not attach to the expectation for anything to remain.
+						Positive expectation may arise negative experience; negative expectation may arise positive experience.
+					</div>
+					<div>philosophy</div> -->
+			</div>
+		</div>
+	</div>
 </div>
-</div>
+
+<script>
+	const depoTags = [];
+	/**
+	 * 
+	 * @param {String[]} data 
+	 */
+	function initDepoData(notes) {
+		/**
+		 * @param {String} note
+		 * @param {String[]} notes
+		 */
+		for (let note of notes) {
+			const infoNote = new NotesRegistry();
+			// |=====| PARSE TEXT INPUT |=====| //
+			infoNote.id = (notes.indexOf(note) + 1);
+			infoNote.author = CMBRutil.parsePermilleTags(note, "u");
+			infoNote.title = CMBRutil.parsePermilleTags(note, "t");
+			infoNote.body = CMBRutil.parsePermilleTags(note, "b");
+			const preParsedDepoTags = CMBRutil.parsePermilleTags(note, "g");
+			infoNote.tags = preParsedDepoTags.split(", ");
+			infoNote.tags.forEach(tag => { if (!depoTags.includes(tag)) { depoTags.push(tag); } });
+			infoNote.photos = CMBRutil.parsePermilleTags(note, "p");
+			infoNote.audio = CMBRutil.parsePermilleTags(note, "a");
+			// const videoIdFromUrl = CMBRutil.parsePermilleTags(note, "a").split("v=")[1];
+			// infoNote.audio = videoIdFromUrl;
+			infoNotes.push(infoNote);
+		};
+	};
+
+	let results = 10;
+	const depository = document.getElementById("depository");
+	/**
+	 * 
+	 * @param {NotesRegistry} registeredNote
+	 */
+	function displayDepoData(registeredNote) {
+		const noteTitle = document.createElement("div");
+		const noteBody = document.createElement("div");
+		const noteTags = document.createElement("div");
+		const txtTitle = document.createTextNode(registeredNote.title);
+		const txtBody = document.createTextNode(registeredNote.body);
+		const txtTags = document.createTextNode(registeredNote.tags);
+		noteTitle.appendChild(txtTitle);
+		noteBody.appendChild(txtBody);
+		noteTags.appendChild(txtTags);
+		depository.appendChild(noteTitle);
+		depository.appendChild(noteBody);
+		depository.appendChild(noteTags);
+	}
+
+	/**
+	 * @param {NotesRegistry[]} registry or another permille-based object.
+	 * @param {String} query input
+	 * @param {String} filterBy "title" | "body" | "tags"
+	 */
+	function queryDepoData(registry, query, filterBy) {
+		let c = 0;
+		switch (filterBy) {
+			case "tags":
+				refreshNotes();
+				if (query === "all") {
+					while (c < results) {
+						for (let note of registry) {
+							displayDepoData(note);
+							c++;
+						}
+						break;
+					}
+				}
+				for (let note of registry) {
+					if (note.tags.includes(query) && c < results) {
+						displayDepoData(note);
+						c++;
+					}
+				}
+				break;
+			case "input":
+				console.log("wip");
+				break;
+			default:
+				console.log("pending");
+				break;
+		}
+	}
+
+	function enableDepoTools() {
+
+		const tagSelect = document.getElementById("depository-tag-select");
+		depoTags.forEach(tag => {
+			const text = document.createTextNode(tag);
+			const option = document.createElement("option");
+			option.setAttribute("value", tag);
+			option.appendChild(text);
+			tagSelect.appendChild(option);
+		});
+		tagSelect.onchange = function () {
+			queryDepoData(infoNotes, tagSelect.value, "tags");
+		};
+
+		const resultsSelect = document.getElementById("depository-results-select");
+		resultsSelect.onchange = function () {
+			results = parseInt(resultsSelect.value);
+			queryDepoData(infoNotes, tagSelect.value, "tags");
+		}
+
+
+	}
+
+	function refreshNotes() {
+		while (depository.children.length > 0) {
+			depository.removeChild(depository.lastChild);
+		}
+	}
+
+	(() => {
+		initDepoData(noteData);
+		enableDepoTools();
+		queryDepoData(infoNotes, "all", "tags");
+	})();
+</script>

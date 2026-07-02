@@ -74,7 +74,9 @@ router.post('/', cookieJwtAuth, async (req, res, next) => {
 
     await pool.releaseConnection();
 
-    res.redirect('../blog/blog.html');
+    // res.redirect('../blog/blog.html');
+    res.redirect('../../test-blog/test-blog.html');
+
     // res.send({
     //   message: '(1) Blog post created successfully!',
     //   postId: result.insertId,
@@ -95,23 +97,25 @@ router.get('/', async (req, res) => {
 });
 // Get all blog posts (public)
 router.get('/all', async (req, res) => {
+  console.log('Blog API: router.get(`/all`) [const parsedPosts = posts.map(post => ({...post, }));]');
+
   if (req.message) {
-    alert(message);
+    console.log(message);
   }
   try {
-    const connection = await pool.getConnection();
+    await pool.getConnection();
 
-    const [posts] = await connection.execute(
+    const [posts] = await pool.execute(
       'SELECT bp.id, bp.title, bp.location, bp.audio, bp.created_at, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id ORDER BY bp.created_at DESC'
     );
 
-    connection.release();
+    pool.releaseConnection();
 
-    // Parse JSON fields
+    // ! Parse JSON fields
     const parsedPosts = posts.map(post => ({
       ...post,
-      // tags: post.tags ? JSON.parse(post.tags) : []
     }));
+    // tags: post.tags ? JSON.parse(post.tags) : []
 
     res.json(parsedPosts);
   } catch (error) {
@@ -120,63 +124,78 @@ router.get('/all', async (req, res) => {
   }
 });
 // Get a single blog post
-router.get('/:id', async (req, res) => {
-  try {
-    const { id } = req.params;
-    const connection = await pool.getConnection();
+router.get('/read/:id', async (req, res, next) => {
+  console.log('Blog API: router.get(`/read/:id`) [res.send(req.params)]');
+  console.log('These are simply the request parameters.');
+  res.send(req.params);
+  next();
+});
+// Update a blog post (owner only)
+// ^ Former: `SELECT bp.*, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id WHERE bp.id = ?`
+// ^ const id = parseInt(req.params.id).toFixed(0);
 
-    const [posts] = await connection.execute(
-      'SELECT bp.*, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id WHERE bp.id = ?',
-      [id]
+router.get('/:id', async (req, res) => {
+  console.log('Blog API: router.get(`/:id`) [const id = req.params.id]');
+  try {
+    const id = parseInt(req.params.id).toFixed(0);
+    console.log("Fetching blog post with ID:", id);
+    console.log("Id type:", typeof id);
+
+    await pool.getConnection();
+    console.log("Getting connection; checking type:")
+    const [posts] = await pool.execute(
+      `SELECT bp.id, bp.title, bp.location, bp.audio, bp.photos, bp.tags, bp.content, bp.created_at FROM blog_posts bp WHERE bp.id = ?`
+      , [id]
     );
 
-    connection.release();
-
+    pool.releaseConnection();
+    console.log("Connection released; checking posts length:", posts.length);
     if (posts.length === 0) {
       return res.status(404).json({ error: 'Blog post not found' });
     }
 
-    const post = posts[0];
-    post.tags = post.tags ? JSON.parse(post.tags) : [];
+    const parsedPost = posts.map(post => ({
+      ...post,
+    }));
+    console.log(parsedPost);
 
-    res.json(post);
+    res.json(parsedPost);
   } catch (error) {
     console.error('Blog fetch error:', error);
     res.status(500).json({ error: 'Failed to fetch blog post' });
   }
 });
-// Update a blog post (owner only)
 router.put('/:id', cookieJwtAuth, async (req, res) => {
   try {
     const { id } = req.params;
     const { title, location, audio, photos, tags, content } = req.body;
-    const user_id = req.user.id;
+    const user_id = req.user.payload.id;
 
-    const connection = await pool.getConnection();
+    await pool.getConnection();
 
     // Check ownership
-    const [posts] = await connection.execute(
+    const [posts] = await pool.execute(
       'SELECT user_id FROM blog_posts WHERE id = ?',
       [id]
     );
 
     if (posts.length === 0) {
-      connection.release();
+      pool.releaseConnection();
       return res.status(404).json({ error: 'Blog post not found' });
     }
 
     if (posts[0].user_id !== user_id) {
-      connection.release();
+      pool.releaseConnection();
       return res.status(403).json({ error: 'Unauthorized' });
     }
 
-    await connection.execute(
+    await pool.execute(
       'UPDATE blog_posts SET title = ?, location = ?, audio = ?, photos = ?, tags = ?, content = ? WHERE id = ?',
 
       [title, location, audio, photos, tags, content, id]
     );
 
-    connection.release();
+    pool.releaseConnection();
 
     res.json({ message: 'Blog post updated successfully' });
   } catch (error) {
@@ -188,29 +207,29 @@ router.put('/:id', cookieJwtAuth, async (req, res) => {
 router.delete('/:id', cookieJwtAuth, async (req, res) => {
   try {
     const { id } = req.params;
-    const user_id = req.user.id;
+    const user_id = req.user.payload.id;
 
-    const connection = await pool.getConnection();
+    await pool.getConnection();
 
     // Check ownership
-    const [posts] = await connection.execute(
+    const [posts] = await pool.execute(
       'SELECT user_id FROM blog_posts WHERE id = ?',
       [id]
     );
 
     if (posts.length === 0) {
-      connection.release();
+      pool.releaseConnection();
       return res.status(404).json({ error: 'Blog post not found' });
     }
 
     if (posts[0].user_id !== user_id) {
-      connection.release();
+      pool.releaseConnection();
       return res.status(403).json({ error: 'Unauthorized' });
     }
 
-    await connection.execute('DELETE FROM blog_posts WHERE id = ?', [id]);
+    await pool.execute('DELETE FROM blog_posts WHERE id = ?', [id]);
 
-    connection.release();
+    pool.releaseConnection();
 
     res.json({ message: 'Blog post deleted successfully' });
   } catch (error) {

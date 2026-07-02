@@ -1,0 +1,16 @@
+<div id="single-blog-post-display">
+	<div class="flex-table">
+		<template x-for="(blogpost, index) in await $get('/api/blog/13');" :key="index">
+			<div :class="'flex-table-row grid-col-7x-1'">
+				<span x-html="blogpost.id"></span>
+				<span x-html="blogpost.title"></span>
+				<span x-html="blogpost.location"></span>
+				<span x-html="blogpost.audio"></span>
+				<span x-html="blogpost.photos"></span>
+				<span x-html="blogpost.tags"></span>
+				<span x-html="blogpost.content"></span>
+				<wbr>
+			</div>
+		</template>
+	</div>
+</div>

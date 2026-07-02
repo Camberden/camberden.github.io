@@ -454,7 +454,9 @@ a {
 	text-decoration: none;
 }
 
-
+ul {
+	text-align: left;
+}
 
 
 /* |==========| §NAVIGATION CHARTER |====================> */
@@ -636,7 +638,7 @@ nav {
 
 }
 
-#chart-access:hover {
+button>#chart-access:hover {
 	cursor: pointer;
 	color: cadetblue !important;
 	border-bottom: 0.3rem groove black;
@@ -698,7 +700,6 @@ nav {
 
 .section-title:hover :where(a) {
 	color: var(--cmbr-orange);
-
 }
 
 .section-title:not(:hover) {
@@ -982,7 +983,7 @@ button {
 button:hover :not(.trigger-box) {
 	position: sticky;
 	border-color: black;
-	color: var(--cmbr-orange);
+	/* color: var(--cmbr-orange); */
 	background: transparent;
 }
 
@@ -1068,6 +1069,10 @@ button:disabled:hover {
 	padding: 0.5rem;
 	margin-top: 0.5rem;
 	overflow: wrap;
+}
+
+.trigger-dropdown:hover {
+	color: cadetblue;
 }
 
 video::cue {
@@ -1723,7 +1728,6 @@ select:hover {
 	animation: icon-passage 30s linear infinite;
 }
 
-
 /* |==========| §MODAL STYLES .modal |====================> */
 /* |==========| COMMON MODALS |====================> */
 
@@ -1795,6 +1799,40 @@ select:hover {
 	cursor: pointer;
 	color: black;
 	text-decoration: none;
+}
+
+/* |==========| §DASHBOARD STYLES |====================> */
+/* |==========| FROM THE LEGACY dashboard/dashboard.html |====================> */
+
+.dashboard-grid {
+	display: flex;
+	padding: 2rem;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-items: center;
+	border-radius: 1rem;
+	gap: 1rem;
+}
+
+.dashboard-item {
+	display: flex;
+	flex-direction: column;
+	align-items: left;
+	justify-content: baseline;
+	text-align: left;
+	min-width: 20rem;
+	min-height: 20rem;
+	padding: 0.5rem;
+	box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey);
+}
+
+.dashboard-grid>.dashboard-item {
+	backdrop-filter: blur(0.2rem) saturate(90%);
+	-webkit-backdrop-filter: blur(0.2rem) saturate(90%);
+	background-color: rgba(4, 6, 17, 0.75);
+	background-image: transparent;
+	background-size: cover;
+	border: 0.5rem ridge rgba(22, 17, 17, 0.855);
 }
 
 /* |==========| §FONT-FACES STORED LOCALLY @font-face |====================> */

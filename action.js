@@ -1,4 +1,4 @@
-/** ===> CAMBERDEN.GITHUB.IO UPDATE ===>
+/** // !===> CAMBERDEN.GITHUB.IO UPDATE !===>
  * @description Personal Website:
  * - From 2020 to Present
  * - Primary workspace of my programming hobby
@@ -7,7 +7,7 @@
  * - øH/«![/H)'/]^)H'¬L/¬]'/H[*'v'{';{[\\
  * @author Camberden (Chrispy | Kippi)
  */
-const latestUpdate = "Monday, June 29th, 2026";
+const latestUpdate = "Thursday, July 2nd, 2026";
 document.querySelector("#latest-update").innerText = latestUpdate;
 const camberden = document.querySelector("#camberden");
 const monickers = ["camberden", "観葉伝", "カンバデン", "}*'<'('H'[';<"];

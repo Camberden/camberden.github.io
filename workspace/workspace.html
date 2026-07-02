@@ -26,7 +26,7 @@
 	<title>Chrispy's Workspace</title>
 </head>
 
-<body x-ref="body" data-theme="dark">
+<body x-ref="body" :data-theme="Alpine.store('thematic').getMode();">
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
@@ -40,6 +40,8 @@
 			hx-swap="innerHTML">Acc. Jobs</button>
 		<button class="trigger-box" hx-get="../sections.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Sitemap</button>
+		<button class="trigger-box" hx-get="../template/expenses.html" hx-target="#wksp-center" hx-trigger="click"
+			hx-swap="innerHTML">Expenses</button>
 		<button class="trigger-box" hx-get="../template/texteditor.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Text Editor</button>
 		<button class="trigger-box" hx-get="../template/reeducation.html" hx-target="#wksp-center" hx-trigger="click"
@@ -68,6 +70,20 @@
 			hx-swap="innerHTML">Uploads</button>
 		<button class="trigger-box" hx-get="../template/travel-photos.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Travel Photos</button>
+
+		<button class="trigger-box" hx-get="../template/days-and-weeks-lived.html" hx-target="#wksp-center"
+			hx-trigger="click" hx-swap="innerHTML">Days & Weeks Lived</button>
+		<button class="trigger-box" hx-get="../template/pension-calculator.html" hx-target="#wksp-center"
+			hx-trigger="click" hx-swap="innerHTML">Pension Calc</button>
+		<button class="trigger-box" hx-get="../template/reserves-calculator.html" hx-target="#wksp-center"
+			hx-trigger="click" hx-swap="innerHTML">Reserves Calc</button>
+		<button class="trigger-box" hx-get="../template/pslf-calculator.html" hx-target="#wksp-center"
+			hx-trigger="click" hx-swap="innerHTML">PSLF Calc</button>
+		<button class="trigger-box" hx-get="../template/step-pay-plan.html" hx-target="#wksp-center" hx-trigger="click"
+			hx-swap="innerHTML">Step Pay Plan</button>
+		<button class="trigger-box" hx-get="../template/uploads.html" hx-target="#wksp-center" hx-trigger="click"
+			hx-swap="innerHTML">Uploads</button>
+
 		<!-- <button class="trigger-box" hx-get="../template/mediatool.html" hx-target="#wksp-center" hx-trigger="click"
 			hx-swap="innerHTML">Mediatool</button> -->
 
@@ -76,7 +92,8 @@
 	<hr class="hr-cmbr-gradient">
 	<!--^^-->
 	<div id="workspace-monitor" class="grid-col-1-3-1"
-		style="border:0.2rem; padding:0.1rem; border: 0.2rem ridge burlywood; padding: 0.8rem;" x-data>
+		style="border:0.2rem; padding:0.1rem; border: 0.2rem ridge burlywood; padding: 0.8rem;" x-data="{
+		}">
 
 		<div id="workspace-notifier" value="loginlogout" hx-get="../template/exmodal.html" hx-target="#loginlogout"
 			hx-trigger="load delay:1200ms" hx-swap="outerHTML" x-transition>
@@ -86,17 +103,22 @@
 		</div>
 
 		<!--|=====|-->
-		<div id="workspace-console" class="flex-table vt323 grid-col-5x-1" style="border-left: 0.3rem ridge grey; border-right: 0.3rem ridge grey; background-color: black;
+		<div id="workspace-console" class="vt323 grid-col-5x-1" style="border-left: 0.3rem ridge grey; border-right: 0.3rem ridge grey; background-color: black;
 			 font-size: 1rem; color: lime; max-height: 20rem; overflow-y: scroll;">
-			<div x-data>
+			<div>&rarr;</div>
+			<div style="text-align:left;" x-data>
+				<div x-clock></div>
 				<div x-text="baseHyperlinks[0] + ' | ' + baseHyperlinks[1]"></div>
 				<div x-text="document.location"></div>
 				<div hx-post="/api/auth/version" hx-trigger="load" hx-target="this" hx-swap="outerHTML"></div>
-				<div x-text="CMBRutil.convertToPreferredDateFormat(new Date(), false)"></div>
 				<div x-show="false" x-autograph x-text="'loaded.'">
 					<img width="100%" height="100%" src="../images/squares-fade.svg" alt="loading..." cmbr-loading />
 				</div>
 			</div>
+			<div></div>
+			<div></div>
+			<div></div>
+
 
 			<!--|=====|-->
 		</div>
