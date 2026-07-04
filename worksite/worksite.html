@@ -29,55 +29,55 @@
 	<main class="index-grid" style="align-items: center; justify-items: center;">
 		<hr class="hr-push-down">
 
-		<div class="index-item">
+		<div>
 
 
-			<div id="new-todopost-handle" class="cmbr-pen grid-col-1-1" x-data>
+			<div id="new-todopost-handle" class="cmbr-pen grid-col-1-1" x-data="{
+				selectedTodoId: null,
+				selectedTodoInfo: null,
+				toggleSelectedTodo: function(id, info) {
+						this.selectedTodoId = id;
+						this.selectedTodoInfo = info;
+						// this.showUpdateForm = ! this.showUpdateForm;
+						console.log( 'this.selectedTodoId:'  + this.selectedTodoId);
+						console.log( 'this.selectedTodoInfo:'  + this.selectedTodoInfo);
+				},
 
-				<div id="alter-todos">
-					<form id="new-td-form" class="cmbr-flexfixed" action='/api/todos/' method='POST'>
-						<h2 :id="$id('modal-title')" class="marker-green">New Td</h2>
-						<hr class=" hr-cmbr-dark-gradient">
-						<hr class="hr-groove-top">
-						<hr class="hr-cmbr-gradient">
-						<div class="grid-col-1-3-1">
-							<label for="newTdInfo" x-text="'Todo Info'"></label>
-							<input type="text" id="newTdInfo" name="newTdInfo" required>
-							<wbr>
-						</div>
-						<hr class="hr-push-up">
-						<hr class="hr-cmbr-gradient">
-						<hr class="hr-push-down">
-						<hr class="hr-groove-bottom">
-						<hr class="hr-cmbr-dark-gradient">
-						<div class="grid-col-1-3-1">
-							<wbr>
-							<button type="submit" x-text="'Create Td'" cmbr-i></button>
-							<wbr>
-						</div>
-					</form>
+			}">
+
+				<div id="alter-todos" hx-get='./new-td.html' hx-trigger='load' hx-target='#alter-todos'
+					hx-swap='innerHTML' x-effect="htmx.process($el)">
+
 				</div>
 				<div>
 					<div id="all-todos-display">
+						<h2 class="marker-green">Todoposts | Selected: <span x-text="selectedTodoId"></span></h2>
+						<hr class=" hr-cmbr-dark-gradient">
+						<hr class="hr-groove-top">
+						<hr class="hr-cmbr-gradient">
 						<div class="flex-table">
 							<template x-for="(todopost, index) in $get('/api/todos/')" :key="index">
-								<div :class="'flex-table-row grid-col-5x-1'">
+								<div :class="'flex-table-row grid-col-5x-1'"
+									@click="toggleSelectedTodo(todopost.id, todopost.info)"
+									:style="selectedTodoId === todopost.id ? 'background-color: #333; color: #fff;' : ''">
 									<span x-html="todopost.id"></span>
 									<span x-html="todopost.info"></span>
 									<span x-html="todopost.created_at"></span>
-									<form :hx-put="'/api/todos/'" :hx-target="todopost.id" hx-trigger="submit">
-										<button class="trigger-box" style="border-color:blueviolet;"
-											x-text="'Update'"></button>
-									</form>
-									<form hx-delete="'/api/todos/?'" hx-params="todopost.id" hx-trigger="submit">
-										<button class="trigger-box" style="border-color:darkred;"
-											x-text="'Delete'"></button>
-
-									</form>
+									<button class="trigger-box" style="border-color:goldenrod;"
+										hx-get="./update-td.html" hx-trigger="click" hx-target="#alter-todos"
+										hx-swap="innerHTML swap:500ms settle:500ms transition:true"
+										x-effect="htmx.process($el)" x-text="'Update'">
+									</button>
+									<button class="trigger-box" style="border-color:darkred;"
+										:hx-delete="'/api/todos/' + todopost.id" hx-trigger="click"
+										hx-target="#alter-todos" hx-swap="innerHTML"
+										hx-confirm="'Are you sure you want to delete this todo?'"
+										x-effect="htmx.process($el)" x-text="'Delete'">
+									</button>
 								</div>
 							</template>
-							<button class="trigger-box" hx-get="./new-td.html" hx-trigger="click"
-								hx-target="#alter-todos" hx-swap="innerHTML" x-text="'Create New Todo'"></button>
+							<button class="trigger-box" hx-get="./new-td.html" hx-target="#alter-todos"
+								hx-trigger="click" hx-swap="innerHTML" x-text="'Create New Todo'"></button>
 						</div>
 					</div>
 

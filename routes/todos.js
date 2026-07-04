@@ -77,7 +77,7 @@ router.post('/', cookieJwtAuth, async (req, res, next) => {
 
 router.put('/:id', cookieJwtAuth, async (req, res, next) => {
 	try {
-		const { updateTdId } = req.params;
+		const updateTdId = parseInt(req.params.id).toFixed(0);
 		const { updateTdInfo } = req.body;
 		const user_id = req.user.payload.id;
 
@@ -117,8 +117,11 @@ router.put('/:id', cookieJwtAuth, async (req, res, next) => {
 router.delete('/:id', cookieJwtAuth, async (req, res) => {
 	console.log("Todos API: router.delete(`/:id`) [const { deleteTdId } = req.params;]");
 	try {
-		const { deleteTdId } = req.params;
+
+		const deleteTdId = parseInt(req.params.id).toFixed(0);
 		const user_id = req.user.payload.id;
+		console.log("Fetching delete param:", deleteTdId);
+		console.log("Id type:", typeof deleteTdId);
 
 		await pool.getConnection();
 
