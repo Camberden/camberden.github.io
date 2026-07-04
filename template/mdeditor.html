@@ -1,0 +1,16 @@
+<div id="mdeditor-handle" class="dashboard-item" style="text-align: left;" x-data="{
+			value: '# Markdown Testing 1 \n ## Markdown Testing 2 \n ### Markdown Testing 3 \n #### Markdown Testing 4 \n ##### Markdown Testing 5 \n ###### Markdown Testing 6',
+			init() {
+				let editor = CMBRutil.md();
+				editor.value(this.value);
+				editor.isSideBySideActive() ? console.log() : $store.navStore.toggle();
+				editor.codemirror.on('change', ()=> {
+					this.value = editor.value();
+				});
+			},
+		}">
+
+	<input x-ref="mdinput" type='hidden' name='mdinput' :value="value" />
+	<textarea x-ref="editor"></textarea>
+</div>
+<hr class="hr-push-down">

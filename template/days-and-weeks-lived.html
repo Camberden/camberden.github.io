@@ -35,22 +35,28 @@
 		return totalDaysLived;
 	},
 
-	daysSinceBirth: this.findDaysSinceBirthday(new Date(), (new Date(1993, 11, 14))),
-
+	init() {
+		daysSinceBirth = this.findDaysSinceBirthday(new Date(), (new Date(1993, 11, 14)));
+		weeksSinceBirth =(daysSinceBirth / 7).toFixed(2);
+		yearsSinceBirth = (daysSinceBirth / 366).toFixed(2);
+	},
 }">
 	<div>
 		<h2 class="marker-green">Time in this World</h2>
 		<hr class="hr-cmbr-dark-gradient">
 	</div>
-	<div class="grid-col-1-1">
-		<div class="flex-table-row grid-row-1" style="display:contents">
-			<span>Days Lived: </span><u x-text=" daysSinceBirth "></u>
+	<div class="flex-table">
+		<div class="flex-table-row grid-col-1-1">
+			<span>Days Lived: </span>
+			<span x-text=" daysSinceBirth "></span>
 		</div>
-		<div class="flex-table-row grid-row-1" style="display:contents">
-			<span>Weeks Lived: </span><u x-text=" (daysSinceBirth / 7).toFixed(2) "></u>
+		<div class="flex-table-row grid-col-1-1">
+			<span>Weeks Lived: </span>
+			<span x-text=" weeksSinceBirth "></span>
 		</div>
-		<div class="flex-table-row grid-row-1" style="display:contents">
-			<span>Years Lived: </span><u x-text=" (daysSinceBirth / 366).toFixed(2) "></u>
+		<div class="flex-table-row grid-col-1-1">
+			<span>Years Lived: </span>
+			<span x-text=" yearsSinceBirth "></span>
 		</div>
 	</div>
 </div>

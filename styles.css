@@ -1810,7 +1810,7 @@ select:hover {
 	flex-flow: row wrap;
 	align-items: center;
 	justify-items: center;
-	border-radius: 1rem;
+	/* border-radius: 1rem; */
 	gap: 1rem;
 }
 
@@ -1833,6 +1833,10 @@ select:hover {
 	background-image: transparent;
 	background-size: cover;
 	border: 0.5rem ridge rgba(22, 17, 17, 0.855);
+}
+
+.dashboard-button {
+	border-color: cornflowerblue;
 }
 
 /* |==========| §FONT-FACES STORED LOCALLY @font-face |====================> */

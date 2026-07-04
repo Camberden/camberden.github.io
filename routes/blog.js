@@ -134,6 +134,38 @@ router.get('/read/:id', async (req, res, next) => {
 // ^ Former: `SELECT bp.*, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id WHERE bp.id = ?`
 // ^ const id = parseInt(req.params.id).toFixed(0);
 
+router.get('/all/:username', cookieJwtAuth, async (req, res) => {
+  console.log('Blog API: router.get(`/all`) [const parsedPosts = posts.map(post => ({...post, }));]');
+
+  try {
+    if (!req.user.payload.username) {
+      console.log("Not a user.");
+      return res.status(404).json({ error: "Not a user." });
+    }
+    const currentUser = req.user.payload.username;
+    console.log(currentUser);
+
+    await pool.getConnection();
+
+    const [posts] = await pool.execute(
+      'SELECT bp.id, bp.title, bp.location, bp.audio, bp.created_at, u.username FROM blog_posts bp JOIN users u ON bp.user_id = u.id ORDER BY bp.created_at DESC'
+    );
+
+    pool.releaseConnection();
+
+    // ! Parse JSON fields
+    const parsedPosts = posts.map(post => ({
+      ...post,
+    }));
+    // tags: post.tags ? JSON.parse(post.tags) : []
+
+    res.json(parsedPosts);
+  } catch (error) {
+    console.error('Blog fetch error:', error);
+    res.status(500).json({ error: 'Failed to fetch blog posts' });
+  }
+});
+
 router.get('/:id', async (req, res) => {
   console.log('Blog API: router.get(`/:id`) [const id = req.params.id]');
   try {

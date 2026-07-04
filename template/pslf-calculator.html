@@ -1,8 +1,8 @@
 <style>
 	#pslf-boxes {
-		/* display: flex; */
-		/* justify-content: left; */
-		/* align-items: left; */
+		display: flex;
+		justify-content: left;
+		align-items: left;
 		gap: 0.5rem;
 		margin-bottom: 1rem;
 		fill: indianred;
@@ -10,29 +10,31 @@
 
 	#pslf-boxes>span {
 		/* width: max-content; */
-		/* border-right: 0.1rem solid cadetblue; */
-		/* border-left: 0.1rem solid cadetblue; */
-		/* text-align: center; */
+		border-right: 0.1rem solid cadetblue;
+		border-left: 0.1rem solid cadetblue;
+		text-align: center;
 	}
 
+
 	#pslf-progress-bar {
-		display: block;
+		display: flex;
 		box-sizing: border-box;
 		width: 100%;
 		height: 1.5rem;
 		position: relative;
 		background: var(--cmbr-curtain-plum);
+		align-items: left;
 		/* border-radius: 1rem; */
-		/* margin-right: 5%; */
-		/* margin-left: 5%; */
+		/* margin-right: 5%;
+		margin-left: 5%; */
 		box-shadow: 1.5rem 1rem 1rem -1rem var(--cmbr-dark-grey) inset;
 	}
 
 	#pslf-progress-bar>span {
-		display: flex;
-		justify-content: left;
+		display: inline;
+		box-sizing: border-box;
 		align-items: left;
-		/* width: max-content; */
+		width: fit-content;
 		height: 100%;
 		/* border-top-right-radius: 8px;
 		border-bottom-right-radius: 8px;
@@ -50,8 +52,7 @@
 	}
 
 	#pslf-progress-bar>span:nth-child(2) {
-		display: inline-flex;
-		/* height: 100%; */
+		display: inline;
 		/* border-top-right-radius: 8px;
 		border-bottom-right-radius: 8px;
 		border-top-left-radius: 20px;
@@ -69,7 +70,7 @@
 </style>
 
 <!-- PSLF CALCULATOR -->
-<div x-data="{ 
+<div class="dashboard-item" x-data="{ 
 	credits: pslfCredited,
 	served: pslfServed, 
 	remaining: pslfRemaining,
@@ -100,8 +101,11 @@
 		<div>108</div>
 		<div>120</div>
 	</div>
-	<div id="pslf-progress-bar"></div>
-	<hr class="hr-groove-top">
+	<div id="pslf-progress-frame" style="display: inline-flex;">
+		<div id="pslf-progress-bar"></div>
+
+	</div>
+	<!-- <hr class="hr-groove-top"> -->
 	<div style="text-align: right">
 		<span id="pslf-remaining" x-text="notice"></span>
 	</div>

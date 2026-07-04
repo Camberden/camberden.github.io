@@ -60,97 +60,103 @@
 	}
 </style>
 
-<div class="modal">
-	<div class="modal-field">
-		<span class="modal-close">&times;</span><br>
-		<div id="modal-text"></div>
+
+
+<div x-data="{
+	selectedApplicable: false,
+	toggleSelectedApplicable: function () {
+		this.selectedApplicable = !this.selectedApplicable;
+	},
+}" class="dashboard-item">
+	<h2 class="marker-green">Expense Management</h2>
+	<hr class="hr-trans">
+	<div id="expense-list" class="flex-table">
+		<div class="flex-table-header flex-table-row grid-col-1-1-1-1">
+			<span x-html="'PAYCHECK'">
+			</span>
+			<input type="text" placeholder=" Input Value" id="balance" class="cash" name="balance" label="balance">
+			<button id="select-applicable" class="trigger-box" x-show="!selectedApplicable"
+				@click="toggleSelectedApplicable();">Select
+				Applicable</button>
+			<button id="deselect-applicable" class="trigger-box" x-show="selectedApplicable"
+				@click="toggleSelectedApplicable();">De-select Applicable</button>
+		</div>
+		<!-- CAR PAYMENT -->
+		<div class="flex-table-row grid-col-1-1-1-1"><input type="checkbox" id="car-check">CAR<span
+				class="expense cash not-applicable" id="car-cost">0</span>
+			<span class="automated-payment">Automated: 4th</span>
+		</div>
+		<!-- FEDERAL STUDENT LOAN -->
+		<div class="flex-table-row grid-col-1-1-1-1 not-applicable"><input type="checkbox" id="nav-check">NAV<span
+				class="expense cash" id="nav-cost">0</span>
+			<span class="non-automated-payment">Inactive</span>
+		</div>
+		<!-- PRIVATE STUDENT LOAN -->
+		<div class="flex-table-row grid-col-1-1-1-1">
+			<input type="checkbox" id="sal-check">SAL<span class="expense cash applicable" id="sal-cost">0</span>
+			<span class="automated-payment">Automated: 1st</span>
+		</div>
+		<!-- MY RENT -->
+		<div class="flex-table-row grid-col-1-1-1-1"><input type="checkbox" id="ren-check">REN<span
+				class="expense cash applicable" id="ren-cost">0</span>
+			<span class="non-automated-payment">NOT Automated</span>
+		</div>
+		<!-- RENTER'S INSURANCE -->
+		<div class="flex-table-row grid-col-1-1-1-1 not-applicable"><input type="checkbox" id="rti-check">RTI<span
+				class="expense cash" id="rti-cost">0</span>
+			<span class="non-automated-payment">Inactive</span>
+		</div>
+		<!-- CAR INSURANCE -->
+		<div class="flex-table-row grid-col-1-1-1-1"><input type="checkbox" id="ins-check">INS<span
+				class="expense cash applicable" id="ins-cost">0</span>
+			<span class="automated-payment">Automated: 30th</span>
+		</div>
+		<!-- PERSONAL LOAN -->
+		<div class="flex-table-row grid-col-1-1-1-1 not-applicable"><input type="checkbox" id="loa-check">LOA
+			<span class="expense cash" id="loa-cost">0</span>
+			<span class="non-automated-payment">Inactive</span>
+		</div>
+		<!-- WATER BILL -->
+		<div class="flex-table-row grid-col-1-1-1-1 not-applicable"><input type="checkbox" id="wat-check">WAT
+			<span class="expense cash" id="wat-cost">0</span>
+			<span class="non-automated-payment">Inactive</span>
+		</div>
+		<!-- ELECTRICITY/POWER BILL -->
+		<div class="flex-table-row grid-col-1-1-1-1" class="not-applicable"><input type="checkbox" id="ele-check">ELE
+			<span class="expense cash" id="ele-cost">0</span>
+			<span class="non-automated-payment">Inactive</span>
+		</div>
+		<!-- INTERNET BILL -->
+		<div class="flex-table-row grid-col-1-1-1-1 not-applicable">
+			<input type="checkbox" id="int-check">INT
+			<span class="expense cash" id="int-cost">0</span>
+			<span class="non-automated-payment">Inactive</span>
+		</div>
+		<!-- MUSIC SUBSCRIPTION -->
+		<div class="flex-table-row grid-col-1-1-1-1"><input type="checkbox" id="mus-check">MUS<span
+				class="expense cash applicable" id="mus-cost">0</span>
+			<span class="automated-payment">Automated: 1st</span>
+		</div>
+		<!-- DONATION -->
+		<div class="flex-table-row grid-col-1-1-1-1"><input type="checkbox" id="don-check">DON<span
+				class="expense cash applicable" id="don-cost">0</span>
+			<span class="automated-payment">Automated: 1st</span>
+		</div>
+		<!-- GYM MEMBERSHIP -->
+		<div class="flex-table-row grid-col-1-1-1-1"><input type="checkbox" id="gym-check">GYM<span
+				class="expense cash applicable" id="gym-cost">0</span>
+			<span class="automated-payment">Automated: 17th</span>
+		</div>
+		<!-- MISCELLANEOUS OBLIGATIONS -->
+		<div class="flex-table-row grid-col-1-1-1-1"><input type="checkbox" id="inp-check">INP<input type="text"
+				placeholder=" Input Value" id="inp-cost">
+		</div>
+		<!-- TOTAL AFTER DEDUCTIONS -->
+		<div class="flex-table-row grid-col-1-1-1-1">ENDING BALANCE<span class="cash" id="endbalance">0</span>
+		</div>
+		<span class="marker modal-prompt" id="expense-modal">Project Expenses</span>
 	</div>
 </div>
-
-<div>
-	<div class="marker">
-		<h2>Expense Management</h2>
-	</div>
-
-	<div>
-		<ul id="expense-list">
-			<li>PAYCHECK = $<input type="text" placeholder=" Input Value" id="balance" name="balance" label="balance">
-			</li>
-			<br>
-			<li><span class="marker" id="select-applicable">Select Applicable</span></li>
-			<!-- CAR PAYMENT -->
-			<li><input type="checkbox" id="car-check">CAR = $<span class="expense applicable" id="car-cost">0</span>
-				<span class="automated-payment">Automated: 4th</span>
-			</li>
-			<!-- FEDERAL STUDENT LOAN -->
-			<li class="not-applicable"><input type="checkbox" id="nav-check">NAV = $<span class="expense"
-					id="nav-cost">0</span>
-				<span class="non-automated-payment">Inactive</span>
-			</li>
-			<!-- PRIVATE STUDENT LOAN -->
-			<li><input type="checkbox" id="sal-check">SAL = $<span class="expense applicable" id="sal-cost">0</span>
-				<span class="automated-payment">Automated: 1st</span>
-			</li>
-			<!-- MY RENT -->
-			<li><input type="checkbox" id="ren-check">REN = $<span class="expense applicable" id="ren-cost">0</span>
-				<span class="non-automated-payment">NOT Automated</span>
-			</li>
-			<!-- RENTER'S INSURANCE -->
-			<li class="not-applicable"><input type="checkbox" id="rti-check">RTI = $<span class="expense"
-					id="rti-cost">0</span>
-				<span class="non-automated-payment">Inactive</span>
-			</li>
-			<!-- CAR INSURANCE -->
-			<li><input type="checkbox" id="ins-check">INS = $<span class="expense applicable" id="ins-cost">0</span>
-				<span class="automated-payment">Automated: 30th</span>
-			</li>
-			<!-- PERSONAL LOAN -->
-			<li class="not-applicable"><input type="checkbox" id="loa-check">LOA = $<span class="expense"
-					id="loa-cost">0</span>
-				<span class="non-automated-payment">Inactive</span>
-			</li>
-			<!-- WATER BILL -->
-			<li class="not-applicable"><input type="checkbox" id="wat-check">WAT = $<span class="expense"
-					id="wat-cost">0</span>
-				<span class="non-automated-payment">Inactive</span>
-			</li>
-			<!-- ELECTRICITY/POWER BILL -->
-			<li class="not-applicable"><input type="checkbox" id="ele-check">ELE = $<span class="expense"
-					id="ele-cost">0</span>
-				<span class="non-automated-payment">Inactive</span>
-			</li>
-			<!-- INTERNET BILL -->
-			<li class="not-applicable"><input type="checkbox" id="int-check">INT = $<span class="expense"
-					id="int-cost">0</span>
-				<span class="non-automated-payment">Inactive</span>
-			</li>
-			<!-- MUSIC SUBSCRIPTION -->
-			<li><input type="checkbox" id="mus-check">MUS = $<span class="expense applicable" id="mus-cost">0</span>
-				<span class="automated-payment">Automated: 1st</span>
-			</li>
-			<!-- DONATION -->
-			<li><input type="checkbox" id="don-check">DON = $<span class="expense applicable" id="don-cost">0</span>
-				<span class="automated-payment">Automated: 1st</span>
-			</li>
-			<!-- GYM MEMBERSHIP -->
-			<li><input type="checkbox" id="gym-check">GYM = $<span class="expense applicable" id="gym-cost">0</span>
-				<span class="automated-payment">Automated: 17th</span>
-			</li>
-			<!-- MISCELLANEOUS OBLIGATIONS -->
-			<li><input type="checkbox" id="inp-check">INP = $<input type="text" placeholder=" Input Value"
-					id="inp-cost">
-			</li>
-			<!-- <li style="list-style-type: circle; margin-left: 1.3rem;">SAV = $<input type="text" placeholder=" Input Value"
-							id="sav-cost">
-					</li> -->
-			<br>
-			<!-- TOTAL AFTER DEDUCTIONS -->
-			<li>ENDING BALANCE = $<span id="endbalance">0</span>
-			</li>
-			<span class="marker modal-prompt" id="expense-modal">Project Expenses</span>
-
-		</ul>
-	</div>
 </div>
 
 <script>
@@ -420,13 +426,13 @@
 	const int = 71.99;
 	const mus = 6.39;
 	const don = 10.00;
-	const gym = 25.05;
+	const gym = 87.00;
 	let inp = 0.00; // CUSTOM INPUT: INP
 	const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
 	const expenseNames = Array.from("car nav sal ren rti ins loa wat ele int mus don gym inp".split(" "));
 	const allCosts = expenseNames.map(str => document.getElementById(str + "-cost"));
 	const allCheckboxes = expenseNames.map(str => document.getElementById(str + "-check"));
-	allCosts.forEach((elem, i) => elem.innerHTML = allExpenses[i]);
+	allCosts.forEach((elem, i) => elem.innerHTML = allExpenses[i].toFixed(2));
 
 	function updateInp() {
 		allExpenses[allExpenses.length - 1] = inp = parseFloat(document.getElementById("inp-cost").value);
@@ -450,12 +456,26 @@
 	};
 
 	function selectApplicable() {
+
+
 		document.getElementById("select-applicable").onclick = function () {
 			expenseNames.forEach(expense => {
 				if (document.getElementById(expense + "-cost").classList.contains("applicable")) {
 					document.getElementById(expense + "-check").checked = true;
 				}
 			});
+			// document.getElementById("select-applicable").style.display = "none";
+			// document.getElementById("deselect-applicable").style.display = "inline-block";
+			calculateNewBalance();
+		}
+		document.getElementById("deselect-applicable").onclick = function () {
+			expenseNames.forEach(expense => {
+				if (document.getElementById(expense + "-cost").classList.contains("applicable")) {
+					document.getElementById(expense + "-check").checked = false;
+				}
+			});
+			// document.getElementById("select-applicable").style.display = "inline-block";
+			// document.getElementById("deselect-applicable").style.display = "none";
 			calculateNewBalance();
 		}
 	};
@@ -567,7 +587,7 @@
 			document.getElementById("expense-modal").style.display = "block";
 		};
 		calculateNewBalance();
-		enableExpenseButtons();
+		selectApplicable();
 		dashboardModalAccess();
 
 	})();
