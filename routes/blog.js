@@ -47,7 +47,6 @@ const router = express.Router();
 // });
 
 // Create a new blog post
-
 router.post('/', cookieJwtAuth, async (req, res, next) => {
 
   try {
@@ -199,8 +198,8 @@ router.get('/:id', async (req, res) => {
 });
 router.put('/:id', cookieJwtAuth, async (req, res) => {
   try {
-    const { id } = req.params;
-    const { title, location, audio, photos, tags, content } = req.body;
+    const updateBpId = parseInt(req.params.id).toFixed(0);
+    const { updateBpTitle, updateBpLocation, updateBpAudio, updateBpPhotos, updateBpTags, updateBpContent } = req.body;
     const user_id = req.user.payload.id;
 
     await pool.getConnection();
@@ -208,7 +207,7 @@ router.put('/:id', cookieJwtAuth, async (req, res) => {
     // Check ownership
     const [posts] = await pool.execute(
       'SELECT user_id FROM blog_posts WHERE id = ?',
-      [id]
+      [updateBpId]
     );
 
     if (posts.length === 0) {
@@ -224,7 +223,7 @@ router.put('/:id', cookieJwtAuth, async (req, res) => {
     await pool.execute(
       'UPDATE blog_posts SET title = ?, location = ?, audio = ?, photos = ?, tags = ?, content = ? WHERE id = ?',
 
-      [title, location, audio, photos, tags, content, id]
+      [updateBpTitle, updateBpLocation, updateBpAudio, updateBpPhotos, updateBpTags, updateBpContent, updateBpId]
     );
 
     pool.releaseConnection();
@@ -238,15 +237,17 @@ router.put('/:id', cookieJwtAuth, async (req, res) => {
 // Delete a blog post (owner only)
 router.delete('/:id', cookieJwtAuth, async (req, res) => {
   try {
-    const { id } = req.params;
+    const deleteBpId = parseInt(req.params.id).toFixed(0);
     const user_id = req.user.payload.id;
+    console.log("Fetching delete param:", deleteBpId);
+    console.log("Id type:", typeof deleteBpId);
 
     await pool.getConnection();
 
     // Check ownership
     const [posts] = await pool.execute(
       'SELECT user_id FROM blog_posts WHERE id = ?',
-      [id]
+      [deleteBpId]
     );
 
     if (posts.length === 0) {
@@ -259,7 +260,7 @@ router.delete('/:id', cookieJwtAuth, async (req, res) => {
       return res.status(403).json({ error: 'Unauthorized' });
     }
 
-    await pool.execute('DELETE FROM blog_posts WHERE id = ?', [id]);
+    await pool.execute('DELETE FROM blog_posts WHERE id = ?', [deleteBpId]);
 
     pool.releaseConnection();
 

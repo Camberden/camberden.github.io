@@ -145,12 +145,11 @@ router.delete('/:id', cookieJwtAuth, async (req, res) => {
 
 		pool.releaseConnection();
 
-		res.json({ message: 'Blog post deleted successfully' });
+		res.json({ message: 'Todopost deleted successfully' });
 	} catch (error) {
-		console.error('Blog delete error:', error);
-		res.status(500).json({ error: 'Failed to delete blog post' });
+		console.error('Todopost delete error:', error);
+		res.status(500).json({ error: 'Failed to delete todopost' });
 	}
 });
-
 
 module.exports = router;

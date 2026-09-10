@@ -14,11 +14,6 @@
 		Show Travel Photos
 	</button>
 
-	<!-- <button class="trigger-box" hx-get="/api/media/travel-photos" hx-target="#workspace-console" hx-swap="innerHTML"
-		hx-trigger="click">
-		Show Travel Photos
-	</button> -->
-
 	<div class="cmbr-pen flex-grid-cmbr flex-table-r" hx-get="/api/media/travel-photos" hx-target="#workspace-console"
 		hx-trigger="load" hx-swap="innerHTML" x-effect="JSON.stringify(folderData, null, 2)" x-data>
 		<template x-for="(item, index) in folderData" :key="index">

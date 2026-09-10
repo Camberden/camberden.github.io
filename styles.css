@@ -57,6 +57,8 @@
 	--cmbr-btn-c-h: sienna;
 	--cmbr-btn-b-h: black;
 
+	--hkri-gradient: linear-gradient(rgb(78, 78, 78), rgb(48, 47, 47), rgb(31, 31, 31), rgb(63, 63, 63));
+
 	/* |=====| "CMBR DARK" |=====| */
 	--cmbr-dark-grey: #0a070f;
 	--cmbr-dark-ash: #182124;
@@ -343,12 +345,13 @@ div.editor-preview-active>h6,
 
 /* |=====| DUSTY |=====| */
 [data-theme="dusty"] {
-	--font-color: var(--cmbr-blue);
-	--link-color: var(--cmbr-orange);
-	--bg-image: url("images/cmbr-curtain-original.svg");
-	--bg-color: #d6dce1;
-	--bg-color-svg: #F4F5F6;
-
+	color: black;
+	--font-color: black;
+	--link-color: var(--cmbr-indigo);
+	--section-title: #1f29b9;
+	/* --bg-image: url("images/cmbr-curtain-light.svg"); */
+	--bg-color: #9ba1bb;
+	--bg-color-svg: none;
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
@@ -678,21 +681,22 @@ button>#chart-access:hover {
 	display: flex;
 	align-items: stretch;
 	box-sizing: border-box;
-	color: var(--cmbr-blue);
+	/* color: var(--cmbr-blue); */
 	font-family: "Lora";
-	font-style: normal;
+	font-style: bold;
 	padding: 1rem;
 	background: none;
 	background-repeat: no-repeat;
-	border-bottom: 0.1rem solid var(--cmbr-green);
+	border-bottom: 0.1rem solid var(--cmbr-indigo);
+	/* border-bottom: 0.1rem solid var(--cmbr-green); */
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
 }
 
 .section-title:hover {
 	cursor: pointer;
-	color: var(--cmbr-orange);
-	background-image: var(--cmbr-gradient);
+	color: var(--cmbr-indigo);
+	background-image: var(--hkri-gradient);
 	background-position: 50% 88%;
 	background-size: 100% 5%;
 	transition: background-size 0.3s ease-out;
@@ -713,7 +717,8 @@ button>#chart-access:hover {
 }
 
 .section-title>a {
-	color: var(--cmbr-blue);
+	color: var(--section-title);
+	/* color: var(--cmbr-blue); */
 
 	box-sizing: border-box;
 	width: 100%;
@@ -753,6 +758,13 @@ button>#chart-access:hover {
 /* |==========| WIDE VARIETY OF CONTENT SPACERS AND ACCENTS |====================> */
 .hr-cmbr-gradient {
 	background-image: var(--cmbr-gradient);
+	width: 100%;
+	height: 0.5rem;
+	opacity: 50%;
+}
+
+.hr-hkri-gradient {
+	background-image: var(--hkri-gradient);
 	width: 100%;
 	height: 0.5rem;
 	opacity: 50%;
@@ -1615,7 +1627,8 @@ select:hover {
 	flex-flow: row nowrap;
 	font-family: "PermanentMarker", sans-serif;
 	font-size: 5rem;
-	background: var(--cmbr-gradient);
+	background: #1f29b9;
+	/* background: var(--cmbr-gradient); */
 	/* outline: 0.5rem dotted red; */
 	/* border: 0.5rem dotted transparent; */
 	/* border-top: 0.1rem solid var(--clr-grid-box); */
@@ -1714,9 +1727,24 @@ select:hover {
 	font-weight: bolder;
 }
 
+.chrispyfruit-1 {
+	font-family: "Permanent Marker";
+	color: var(--cmbr-blue);
+	text-shadow: 1px 1px var(--cmbr-indigo);
+
+}
+
+footer {
+	font-family: "Permanent Marker";
+	color: var(--cmbr-blue);
+	text-shadow: 1px 1px var(--cmbr-indigo);
+
+}
+
 .index-footer {
 	/* font-family: "PermanentMarker"; */
-	color: var(--cmbr-orange);
+	/* color: var(--cmbr-blue); */
+	/* color: var(--cmbr-orange); */
 	background-color: black;
 	border-bottom: 0.5rem solid var(--cmbr-grid-box);
 	border-right: 0.5rem solid var(--cmbr-grid-box);
