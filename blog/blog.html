@@ -54,16 +54,11 @@
 		<!-- % CENTER -->
 		<article id="blog-post-articles" class="blogging-font">
 			<div class="blog-post-header">
-				<!-- <template> -->
-				<!-- <button x-show="!modifyingBp" id="new-bp" hx-get="new-post.html" hx-trigger="click"
-					hx-target="#modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">New</button>
-				<button x-show="!modifyingBp" id="update-bp" hx-get="update-post.html" hx-trigger="click"
-					hx-target="modify-bp" hx-swap="innerHTML" @click="toggleModifyingBp()">Update</button> -->
-				<!-- </template> -->
-				<button id="previous-bp" class="blog-button" x-show="!modifyingBp">Previous</button>
-				<button id="next-bp" class="blog-button" x-show="!modifyingBp">Next</button>
+				<button id="previous-bp" class="blog-button">Previous</button>
+				<button id="next-bp" class="blog-button">Next</button>
 			</div>
-			<div x-show="!modifyingBp">
+			<hr class="hr-cmbr-dark-gradient">
+			<div>
 				<div>
 					<p id="blog-post-date">August 11th, 2024</p>
 					<p id="blog-post-location">Chapel Hill Suite</p>

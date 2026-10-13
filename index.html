@@ -4,25 +4,26 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="shortcut icon" href="images/cmbr-sig.svg">
-	<link rel="stylesheet" type="text/css" href="/styles.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="/workspace/workspace.css" media="screen" />
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
-	<script src="https://unpkg.com/@popperjs/core@2"></script>
-	<script src="https://unpkg.com/tippy.js@6"></script>
+	<!-- <meta name="referrer" content="no-referrer" /> -->
+	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="blog.css" media="screen" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
-	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script>
-	<script src="https://cdn.jsdelivr.net/npm/dompurify@3.4/dist/purify.min.js"></script>
-	<script src="cmbr.js"></script>
-	<script src="htmx.js"></script>
-	<title>Chrispy's Site</title>
+
+	<script src="/htmx.js"></script>
+	<script src="/cmbr.js"></script>
+
+	<title>Chrispy's Blog</title>
 </head>
 
-<body x-ref="body" data-theme="dusty">
+<body data-theme="dark">
 
 	<main class="index-grid">
 

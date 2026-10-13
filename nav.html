@@ -39,35 +39,7 @@
             </div>
 
             <!-----| NAV 2 |----->
-            <div id="nav-2" x-data="{
-                navLoaded: false,
-                getNavLoaded: function() {
-                    const navver = document.getElementById('nav-auth-status'); 
-                    console.table({
-                        'This navLoaded': this.navLoaded, 
-                        'Store before': Alpine.store('nauth').valid,
-                        'Length trigger': navver.innerText.length,
-                    });
-                    const lenval = navver.innerText.length;
-                    this.navLoaded = (lenval > 0 ? true : false);
-                    console.table({'This navLoaded after': this.navLoaded});
-                    if (this.navLoaded && !Alpine.store('nauth').valid) { 
-                        Alpine.store('nauth').toggle();
-                    }
-                    if (!this.navLoaded && Alpine.store('nauth').valid) { 
-                        Alpine.store('nauth').toggle();
-                        }
-                        console.table({'Store after': Alpine.store('nauth').valid});
-                        } 
-                        }" x-transition
-                :style="Alpine.store('nauth').valid ? 'background: rgba(0, 0, 255, 10%)' : 'background: transparent;'">
-                <s id="reactivate" class="h1-lamp" hx-get='/api/auth/reactivate' hx-trigger="load delay:1s"
-                    hx-target="#nav-auth-status" hx-swap="textContent">
-                </s>
-                <ins id="nav-auth-status" :class="'vt323 nusr'"
-                    :style="'align-content: center; justify-self: center; color:green'" x-effect="setTimeout(() => {
-                    getNavLoaded();
-                }, 1100); " x-show="navLoaded" x-transition.delay.500ms x-transition.duration.500ms></ins>
+            <div id="nav-2">
                 <!-- ♪ -->
             </div>
 

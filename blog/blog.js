@@ -276,12 +276,12 @@ function displayBlogPostList() {
 };
 function enableBlogButtons() {
 	document.querySelectorAll(".blog-button").forEach(button => {
-		// button.onmouseover = function () {
-		// 	CMBRutil.buttonOnMouseEnter(button);
-		// }
-		// button.onmouseleave = function () {
-		// 	CMBRutil.buttonOnMouseLeave(button);
-		// }
+		button.onmouseover = function () {
+			CMBRutil.buttonOnMouseEnter(button);
+		}
+		button.onmouseleave = function () {
+			CMBRutil.buttonOnMouseLeave(button);
+		}
 		button.onclick = function () {
 			CMBRutil.buttonOnClick(button);
 
@@ -330,7 +330,6 @@ function blogFilter(selection) {
 			}
 
 		}
-
 		currentlyReading = blogPosts[blogPosts.length - 1];
 		currentlyReadingNumber = currentlyReading.id;
 		document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");

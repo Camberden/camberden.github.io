@@ -1734,12 +1734,7 @@ select:hover {
 
 }
 
-footer {
-	font-family: "Permanent Marker";
-	color: var(--cmbr-blue);
-	text-shadow: 1px 1px var(--cmbr-indigo);
 
-}
 
 .index-footer {
 	/* font-family: "PermanentMarker"; */
