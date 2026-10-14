@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="referrer" content="no-referrer" />
+	<!-- <meta name="referrer" content="no-referrer" /> -->
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../blog/blog.css" media="screen" />
@@ -26,7 +26,7 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main id="blog-main" class="flex-grid-cmbr grid-col-1-2-1" x-data="{
+	<main id="blog-main" class="flex-grid-cmbr grid-col-2-1" x-data="{
 			modifying: false,
 			toggleModifying() { 
 				this.modifying = !this.modifying;
@@ -34,21 +34,10 @@
 		}">
 
 		<!-- % LEFT -->
-		<div class="blog-item" id="study-listings">
-
-			<select id="blog-post-year-select">
-				<option value="all-years">All Years</option>
-			</select>
-			<br>
-			<hr class="hr-cmbr-dark-gradient">
-			<hr class="hr-groove-top">
-
-			<hr class="hr-groove-bottom">
-			<hr class="hr-cmbr-dark-gradient">
 
 		</div>
 		<!-- % CENTER -->
-		<article id="blog-post-articles" class="blogging-font">
+		<article class="blog-item" id="blog-post-articles" class="blogging-font">
 			<div class="blog-post-header">
 				<button id="previous-bp" class="trigger-box" @click="previousPoem();">Previous</button>
 				<button id="next-bp" class="trigger-box" @click="nextPoem();">Next</button>

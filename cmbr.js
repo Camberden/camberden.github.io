@@ -187,7 +187,7 @@ const cmbrMdConfig = {
 		"singleLineBreaks": false,
 		"codeSyntaxHighlighting": true,
 	},
-	"lineWrapping": false,
+	"lineWrapping": true,
 	"autosave": {
 		"enabled": true,
 		"uniqueId": "chrispy",

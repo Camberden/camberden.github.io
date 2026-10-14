@@ -2907,7 +2907,7 @@ form>label {
 	font-style: italic;
 	font-size: 1.3rem;
 
-	/* max-width: 570px; */
+	max-width: 570px;
 	margin-left: auto;
 	margin-right: auto;
 	margin-bottom: 2em;
@@ -2950,13 +2950,13 @@ form>label {
 .study-list>li:hover {
 	cursor: pointer;
 	color: var(--cmbr-green);
-	background: var(--clr-quaternary);
+	background-color: indianred;
 }
 
 .listed-title {
 	font-family: monospace;
 	font-size: smaller;
-	color: var(--clr-secondary);
+	color: red;
 }
 
 .listing-none {
