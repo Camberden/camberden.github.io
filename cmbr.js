@@ -507,6 +507,7 @@ const CMBRutil = {
 			updateURLParameter("search", this.value); // Update 'search' parameter
 		});
 	},
+	tubeVideo: '6uNkTqNSulY',
 	/** 
 	 * @description Reads cmbr.json
 	 * @borrows cmbr.json
@@ -540,6 +541,9 @@ const CMBRutil = {
 					case "sections":
 						// console.log("sections");
 						return data["sections"];
+						break;
+					case "tubeVideos":
+						return data["tubeVideos"];
 						break;
 					case "blog":
 						if (query.length == 1) {

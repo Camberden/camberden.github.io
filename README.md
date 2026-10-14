@@ -1,7 +1,8 @@
 # Camberden - Chrispy's Site
 <img src="images/cmbr-sig.svg" alt="camberden-sig" width="100"/>
 
-Personal webpage including an assortment of visualizers and tools for personal use. Created July 20th, 2020.  
+Chrispy's original personal static site, hosted on Github Pages. Created July 20th, 2020.
+Many features have since migrated to the share-hosted camberden.net running on a Node.js server with database connectivity.
 
 ## Tools
 * Expense Management

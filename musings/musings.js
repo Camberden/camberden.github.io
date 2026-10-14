@@ -14,7 +14,7 @@ const poems = [
 	// "I choose discomfort to my betterment over comfort to my detriment.",
 	// "I live for coincidences. They briefly give mto me the illusion or the hope that there\'s a pattern to my life, and if there\'s a pattern, then maybe I\'m moving toward some kind of destiny where it\'s all explained.",
 	"Eros Flame is characterized by striking contrasts, where the finest ingredients enrich and enhance each other: cold and hot, sweet and spicy, light and shadow. The opening notes are particularly vibrant. Fresh, juicy Italian citrus fruits like lemon, tangerine, and bitter orange are warmed by notes of black pepper from Madagascar and enveloped in aromatic wild rosemary. Through an olfactory wave of pepperwood, geranium, and rose facets, we reach the base notes where precious woods such as Texas cedar, patchouli cœur, Haitian vetiver, mountain oak moss accord, and sandalwood subtly blend to create a soft and sensuous roundness with tonka bean, perfectly intertwining with vanilla.",
-
+	`I am a United States Sailor. I will support and defend the Constitution of the United States of America and I will obey the orders of those appointed over me. I represent the fighting spirit of the Navy and those who have gone before me to defend freedom and democracy around the world. I proudly serve my country's Navy combat team with Honor, Courage and Commitment. I am committed to excellence and the fair treatment of all.`
 ];
 
 let poemnumber = 0;

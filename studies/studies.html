@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="referrer" content="no-referrer" />
+	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../blog/blog.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="/htmx.js"></script>
+	<script src="/cmbr.js"></script>
+
+	<title>Chrispy's Studies</title>
+</head>
+
+<body data-theme="dark">
+
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
+
+	<main id="blog-main" class="flex-grid-cmbr grid-col-1-2-1" x-data="{
+			modifying: false,
+			toggleModifying() { 
+				this.modifying = !this.modifying;
+			}
+		}">
+
+		<!-- % LEFT -->
+		<div class="blog-item" id="study-listings">
+
+			<select id="blog-post-year-select">
+				<option value="all-years">All Years</option>
+			</select>
+			<br>
+			<hr class="hr-cmbr-dark-gradient">
+			<hr class="hr-groove-top">
+
+			<hr class="hr-groove-bottom">
+			<hr class="hr-cmbr-dark-gradient">
+
+		</div>
+		<!-- % CENTER -->
+		<article id="blog-post-articles" class="blogging-font">
+			<div class="blog-post-header">
+				<button id="previous-bp" class="trigger-box" @click="previousPoem();">Previous</button>
+				<button id="next-bp" class="trigger-box" @click="nextPoem();">Next</button>
+			</div>
+			<hr class="hr-cmbr-dark-gradient">
+
+			<div class="poem" style="user-select: none;">
+				<div class="writing" id="fortyping">
+				</div>
+			</div>
+
+			<div id="mdeditor-handle" class="typingfield" style="text-align: left;" x-data="{
+				value: '',
+				init() {
+					let editor = CMBRutil.md();
+					editor.value(this.value);
+					editor.codemirror.on('change', ()=> {
+						this.value = editor.value();
+					});
+					editor.codemirror.on('keyup', ()=> {
+						typingTest();
+					});
+				},
+			}">
+
+				<input x-ref="mdinput" id="sampleTypingField" type='hidden' name='mdinput' :value="value" />
+				<textarea x-ref="editor" value=""></textarea>
+			</div>
+			<hr class="hr-push-down">
+
+
+
+
+		</article>
+
+		<!-- % RIGHT -->
+		<div class="blog-item" id="blog-post-media">
+			<!-- <span class="vt323" id="auth-status"></span> -->
+			<b x-text="'Now playing:'"></b><br>
+			<i id="tube-now-playing"></i>
+			<hr class="hr-cmbr-dark-gradient">
+			<hr class="hr-groove-top">
+
+
+			<!-- <ins x-text="tubeVids.length"></ins> -->
+
+			<div id="blog-music" x-data="{
+					tubeVideoInput: '',
+					tubeVids: {},
+					tubeListHover: false,
+					getTubeVidId: function(str) {
+						return str.split('v=')[1];
+					},
+					getNowPlaying: function() {
+						return nowPlaying;
+					}
+					}" x-effect="tubeVids = await CMBRutil.connectCMBRjson(['tubeVideos']);">
+				<div id="player"></div>
+				<label for="tube-video-input"></label>
+				<input id="tube-video-input" name="tube-video-input" x-ref="tubeVidRef" x-model="tubeVideoInput"
+					type="text" />
+				<button class="trigger-box"
+					@click="tubeVideoIdentity=getTubeVidId(tubeVideoInput); $nextTick(() => { loadTubeVideo(); tubeVideoInput = ''; });">Tube
+					Video</button>
+				<ul class="study-list">
+					<template x-for="(item, index) in tubeVids" :key="index">
+						<li x-text="getTubeVidId(item)"
+							@click="tubeVideoIdentity = tubeVids[index].split('v=')[1]; $nextTick(() => { loadTubeVideo(); });"
+							@mouseenter="tubeListHover === true;" @mouseleave="tubeListHover === false;"
+							:style="tubeListHover ? 'background-color: indianred;' : 'background-color:inherit;'">
+						</li>
+					</template>
+				</ul>
+
+			</div>
+
+			<hr class=" hr-groove-bottom">
+			<hr class="hr-cmbr-dark-gradient">
+		</div>
+
+	</main>
+
+	<!-- <script src="blog-data.js"></script> -->
+	<script src="../studies/studies.js"></script>
+
+</body>
+
+</html>

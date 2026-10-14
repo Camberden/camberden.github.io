@@ -1294,6 +1294,11 @@ select:hover {
 	grid-template-columns: 1fr 1fr 1fr 2fr;
 }
 
+.grid-col-1-2-1 {
+	display: grid;
+	grid-template-columns: 1fr 2fr 1fr;
+}
+
 .grid-col-1-2-1-1 {
 	display: grid;
 	grid-template-columns: 1fr 2fr 1fr 1fr;
@@ -1627,27 +1632,21 @@ select:hover {
 	flex-flow: row nowrap;
 	font-family: "PermanentMarker", sans-serif;
 	font-size: 5rem;
-	background: #1f29b9;
-	/* background: var(--cmbr-gradient); */
-	/* outline: 0.5rem dotted red; */
-	/* border: 0.5rem dotted transparent; */
-	/* border-top: 0.1rem solid var(--clr-grid-box); */
 	border-bottom: 0.3rem solid var(--clr-grid-box);
 	border-left: 0.1rem solid var(--clr-grid-box);
-	/* border-right: 0.5rem solid var(--clr-grid-box); */
-
+	/* background: transparent; */
+	background: var(--cmbr-gradient);
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	background-repeat: no-repeat;
 	color: transparent;
 	user-select: none;
-	/* text-shadow: -1rem -1rem 3rem 0rem var(--cmbr-curtain-plum); */
-	/* text-shadow: 12rem red;
-	/* animation-name: cmbr-sectionsizer;
-	animation-duration: 4s;
-	animation-timing-function: ease-in-out;
+	animation-name: change-text-shadow;
+	/* animation-name: cmbr-sectionsizer; */
+	animation-duration: 5s;
+	animation-timing-function: linear;
 	animation-direction: alternate;
-	animation-iteration-count: infinite; */
+	animation-iteration-count: 1;
 }
 
 #info-div-frame {
@@ -2534,7 +2533,12 @@ form>label {
 @keyframes change-text-shadow {
 	0% {
 		text-shadow: -2rem -2rem 3rem var(--cmbr-curtain-plum);
-		;
+		background: transparent;
+		background-clip: border-box;
+		-webkit-background-clip: text;
+		background-repeat: no-repeat;
+		color: transparent;
+
 	}
 
 	5% {
@@ -2547,6 +2551,19 @@ form>label {
 
 	50% {
 		text-shadow: 0.5rem 0.5rem 0.5rem rgb(133, 12, 170);
+		/* background: var(--cmbr-gradient);
+		background-clip: border-box;
+		-webkit-background-clip: text;
+		background-repeat: no-repeat;
+		color: transparent; */
+	}
+
+	60% {
+		background: var(--cmbr-gradient);
+		background-clip: border-box;
+		-webkit-background-clip: text;
+		background-repeat: no-repeat;
+		color: transparent;
 	}
 
 	80% {
@@ -2767,7 +2784,7 @@ form>label {
 		font-size: 1rem;
 	}
 
-	#blog-post-listings {
+	.study-list {
 		display: none;
 	}
 
@@ -2861,4 +2878,87 @@ form>label {
 		margin-inline: 0.5rem;
 	}
 
+}
+
+.highlight {
+	color: burlywood;
+}
+
+/* ----- POEMCONTAINER ----- */
+
+.poem {
+	box-sizing: content-box;
+	/* padding: 1rem; */
+	/* box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71); */
+	/* border-width: 0.3rem; */
+	background: #0f0b07de;
+	height: max-content;
+	min-width: 5rem;
+	padding: 2rem;
+	/* max-height: 40vh; */
+	overflow-y: visible;
+}
+
+.writing {
+	user-select: none;
+	color: var(--cmbr-green);
+	text-align: left;
+	font-family: Lora, sans-serif;
+	font-style: italic;
+	font-size: 1.3rem;
+
+	/* max-width: 570px; */
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 2em;
+	line-height: 1.5em;
+	min-width: 1em;
+}
+
+.writinginitial {
+	font-size: 7rem;
+	float: left;
+	line-height: 0.8em;
+	margin-top: -0.29em;
+	margin-right: -0.05em;
+	text-shadow: -5px -2px 0px darkmagenta;
+}
+
+.study-list {
+	box-sizing: content-box;
+	top: 10%;
+	flex: 1;
+	position: sticky;
+	height: 45rem;
+	overflow: auto;
+	scroll-behavior: smooth;
+}
+
+/* |==========| LIST OF BLOG POSTS AND SELECTIONS |====================> */
+
+
+.listing-highlight {
+	color: var(--cmbr-orange);
+	background: var(--cmbr-curtain-plum);
+}
+
+.study-list>li {
+	list-style-type: none;
+	text-align: left;
+}
+
+.study-list>li:hover {
+	cursor: pointer;
+	color: var(--cmbr-green);
+	background: var(--clr-quaternary);
+}
+
+.listed-title {
+	font-family: monospace;
+	font-size: smaller;
+	color: var(--clr-secondary);
+}
+
+.listing-none {
+	display: none;
 }
