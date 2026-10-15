@@ -4,7 +4,7 @@
 // ===> BLOG POSTS ===>
 const blogPostList = document.getElementById("blog-post-list");
 const blogTagList = document.getElementById("blog-post-tags");
-let currentlyReading = new BlogPost();
+let currentlyReading;
 /**
  * @type {Number}
  */
