@@ -2172,6 +2172,46 @@ I heard of the word back in high school when we had to read some of the Odyssey.
 I said it to myself on a few other occassions... when I was at the gazebo park in Butner, in Japan at the Imperial Palace gardens, behind the Biltmore in Asheville, heck, even being here at this house before I moved here. One pattern for it is.. There  always seems to be a nice breeze and a relative peace when things aren't too busy but aren't entirely still. Another is that the moment provides a stark contrast to the ordinary challenges in life. My closing note on this word would be: whenever I would pass away, I would hope that I may do so in a similar state of mind.
 	</b‰>`,
 
+	`<d‰>July 26th, 2026</d‰>
+	<l‰>Pittsboro, NC</l‰>
+	<j‰>1001 HRS</j‰>
+	<p‰>../assets/travel-photos/photo-nc-us-53.jpeg</p‰>
+	<a‰>https://www.youtube.com/watch?v=4ctfVIRnsy4</a‰>
+	<u‰>Chrispy</u‰>
+	<g‰>philosophy</g‰>
+	<b‰>&emsp;
+	While it's true that I have a new career path for which I labored and anticipated, I am disturbed on the daily at the considerable degradation of my
+	quality of life and wellbeing. While, yes, I much desired this at the outset of the offer acceptance, I am mindful moreso than ever that I will never
+	be as young as I am than I am now. I lamented over the years the squandering of my youth in my 20's... and though now I have more competencies "befitting
+	that of a college-educated individual" (a milestone in my planned redemption arc since 2017), I am left considering this time a squandering all the same.
+	I told a few people just how I could be "relaxing on a beach in Bermuda" or "climbing a mountain in Japan" or "exploring the villages of Poland" right now,
+	but I chose this suffering "for future leverage" that seems less and less meaningful the more I continue this course. I had a solid occupation in which I 
+	was at least somewhat competent and respected, and for someone of my neurological makeup, I was beyond lucky to have secured. I am tempted daily by the
+	prospect of returning, donning the grey, and reaping the rewards of my years of service with a tremendous raise that could amplify my life apart from work, and 
+	of course, oddly provide the peace of mind that I no longer so easily experience. I could be living my life more fully and I put in the work to deserve it.
+	I could be. "But what if?" I ask myself. What if something happens and I am debilitated, and couldn't continue that line of work? This suffering now would
+	pay off. What if I would endeavor to work remotely and spare myself the obligations away from the home? Heck, it would be secure, yes, but I increasingly see
+	the likelihood of that becoming a troublesome burden in its own way. This white collar stuff may always come nagging for my attention, and given how I am
+	so compelled dutifully to get ahead on tasks for the sake of service and my own conscience, I may become restless through such obligation.
+	<hr class="hr-cmbr-gradient">
+	I feel like I'm dying. I'm weaker, frailer, and resourceless. I cannot believe people go to college to do this kind of work.
+	Yet, for such a white collar trade school that college is, it is its debt burden that continues to cripple me to this day.
+	This is what I paid for: to have an office, to wear fussy clothing, to yap on the phone, to be forced into senseless conversations, to <t‰>touch papers</t‰>,
+	to handle money, to write annoying emails. This is what it would have amounted to even if I played those cards right. 
+	This. Bumbling around with papers and words. It just doesn't feel real after having endured real hardships and uniformed service.
+	At least I would take these filing habits with me into my personal life. Sigh. 
+	<hr class="hr-cmbr-gradient">
+	I mentioned earlier that my value systems had changed. They have. Frankly, I don't enjoy technology that much nor do I enjoy all this coordination
+	and communication. It leaves me less energy to engage in such things for myself and the few I care for.
+	This is all fake. I should have been more decisive about even this hobby of software stuff. I don't need some online blog.
+	I should just scan my writings, someday. For myself, and the few I care for.
+	I think I'll stop writing here for a long while. I've achieved enough in this playground. I am burnt out. It mustn't replace the more human modes of
+	expression I am fortunate to have enjoyed for so long. This computer stuff is commonplace and sterile. I desire to return to the pen and ink only for 
+	such musings. Why should I care to document everything digitally and force myself in front of another damned screen just like everyone else. 
+	I have no interest in joining them. Along those lines, to continue this white collar nonsense is to join them in spirit, too. I foresee and gradual
+	detachment from it all. I'll take the leverage I need and take my leave. Hopefully for the betterment for all parties, especially for me.
+	I am tasked with making sense of this life for myself. I am grateful for having endured this suffering as well. Clarity continues to arise.
+	</b‰>`,
 
 	/* // |==========| START NEW ENTRY TEMPLATE |=====>
 

@@ -752,15 +752,19 @@ button>.trigger-access:hover {
 	background: none;
 	background-repeat: no-repeat;
 	border-bottom: 0.1rem solid var(--cmbr-indigo);
-	/* border-bottom: 0.1rem solid var(--cmbr-green); */
 	border-left: 0.5rem solid var(--clr-grid-box);
 	border-right: 0.5rem solid var(--clr-grid-box);
 }
 
+.section-title :where(.trigger-access) {
+	border-bottom: 0.1rem solid var(--cmbr-indigo);
+
+}
+
 .section-title:hover {
 	cursor: pointer;
-	color: var(--cmbr-indigo);
-	background-image: var(--hkri-gradient);
+	color: var(--cmbr-orange);
+	background-image: var(--cmbr-gradient);
 	background-position: 50% 88%;
 	background-size: 100% 5%;
 	transition: background-size 0.3s ease-out;
@@ -1800,9 +1804,9 @@ select:hover {
 
 
 .index-footer {
-	/* font-family: "PermanentMarker"; */
+	font-family: "PermanentMarker";
 	/* color: var(--cmbr-blue); */
-	/* color: var(--cmbr-orange); */
+	color: var(--cmbr-orange);
 	background-color: black;
 	border-bottom: 0.5rem solid var(--cmbr-grid-box);
 	border-right: 0.5rem solid var(--cmbr-grid-box);
