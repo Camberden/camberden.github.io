@@ -5,112 +5,10 @@
 const blogPostList = document.getElementById("blog-post-list");
 const blogTagList = document.getElementById("blog-post-tags");
 
-let tubeVids = {};
-let tubeVidTotal = 0;
-let tubeVideoString = "https://www.youtube.com/watch?v=6uNkTqNSulY";
-var tubeVideoIdentity = "TrlKxV5KWJo";
-/**
- * @type {Number}
- */
-let tubeVideoNumber = 1;
 let currentYear;
 const listedYears = [];
 const titles = [];
 const tags = [];
-const tubeNowPlaying = document.getElementById("tube-now-playing");
-
-// ===> BLOG YOUTUBE PLAYER ===>
-// https://www.youtube.com/embed?listType=playlist&list=PLC77007E23FF423C6 // FOR PLAYLIST //
-var player;
-var done = false;
-var nowPlaying = '';
-var playerTag = document.createElement("script");
-playerTag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName("script")[0];
-firstScriptTag.parentNode.insertBefore(playerTag, firstScriptTag);
-
-// /* |==========| YOUTUBE PLAYER |====================> */
-// /* |==========| YOUTUBE PLAYER API VARIABLES & FUNCTIONS |====================> */
-function onYouTubeIframeAPIReady() {
-	player = new YT.Player("player", {
-		height: "100%",
-		width: "100%",
-		videoId: tubeVideoIdentity,
-		playerVars: {
-			"playsinline": 1,
-			"disablekb": 1,
-			"autoplay": 1,
-			"fs": 1,
-			"hl": "ja"
-		},
-		events: {
-			"onReady": onPlayerReady,
-			"onStateChange": onPlayerStateChange,
-		}
-	});
-};
-function onPlayerReady(event) {
-	event.target.playVideo();
-};
-function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.PLAYING && !done) {
-		const ytStateTimeout = setTimeout(console.info("Sixty-five-thousand."), 65000);
-		done = true;
-		clearTimeout(ytStateTimeout);
-	}
-};
-function pauseVideo() {
-	player.pauseVideo();
-};
-/**
- * @global
- * @function pauseVideoOnConsole
- * @description Prevents autoplay of audio & video by the embedded YouTube player.
- * This serves to pause the YouTube player for the corresponding blog post after loading,
- * with a console group to indicate which post's player is being paused. 
- * This is necessary due to the asynchronous and nested nature of the YouTube Iframe API which has shown for months
- * to ignore global method calls to the Player Object within this JavaScript file, blog.js.
- * Those global method calls proved reactive in the browser at runtime when passed as parameters to console methods on May 20th, 2026.
- * The setTimeout ensures that pause functionality is delivered after the player has had time to initialize and start playing,
- * thus smoothly preventing autoplay as intended.
- * @emits console.info of the Player Object's pauseVideo() method.
- */
-function pauseVideoOnConsole() {
-	(setTimeout(() => {
-		console.clear();
-		console.groupCollapsed("Loaded & Paused " + player.videoTitle);
-		pauseVideo();
-		console.groupEnd();
-		nowPlaying = player.videoTitle;
-		tubeNowPlaying.innerText = nowPlaying;
-	}, 1000));
-	console.log("Now Playing: " + nowPlaying);
-};
-function loadTubeVideo() {
-	try {
-		if (!tubeVideoIdentity) {
-
-			player.loadVideoById("TrlKxV5KWJo");
-		} else {
-			player.loadVideoById(tubeVideoIdentity);
-		}
-	} catch (error) {
-		if (error instanceof TypeError) {
-			fetch(error.target).then((response) => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-				}
-				return response.text();
-			}).then((data) => {
-				console.warn("Cleared Fetched TypeError: ", data);
-			}).catch((fetchError) => {
-				console.error("Error fetching YouTube Player API Script: ", fetchError);
-			});
-		}
-	} finally {
-		pauseVideoOnConsole();
-	}
-}
 
 // |==========| TYPING FUNCTIONS |====================> //
 /* |==========| VALUES FOR WRITTEN BLOG CONTENT |====================> */
@@ -334,7 +232,6 @@ function initIndexedDB(crud, queryData) {
 	// tubeVids = await CMBRutil.connectCMBRjson(["tubeVideos"]);
 	// console.log("Total Tube Videos: " + tubeVids.length);
 	// initBlogMap(activeBlogPostCoordinates);
-	pauseVideo();
 	// initBlogData(blogData);
 	// enableBlogButtons();
 	// enableBlogSelect();

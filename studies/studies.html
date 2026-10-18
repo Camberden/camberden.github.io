@@ -14,7 +14,10 @@
 		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
+
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
 	<script src="/htmx.js"></script>
 	<script src="/cmbr.js"></script>
@@ -22,34 +25,33 @@
 	<title>Chrispy's Studies</title>
 </head>
 
-<body data-theme="dark">
+<body data-theme="dark" x-data="{
+			utilitiesView: false,
+			toggleUtilitiesView: function() {
+				this.utilitiesView = !this.utilitiesView;
+				console.log('triggered utilitiesView: ' + this.utilitiesView);
+			},
+		}" hx-get="../compon/tube.html" hx-target="this" hx-trigger="load" hx-swap="beforeend">
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main id="blog-main" class="flex-grid-cmbr grid-col-2-1" x-data="{
-		// studyViewNum: 0,
-		// allStudyViews: ['poems', 'frames', 'quiz' ],
-		// studyView: this.allStudyViews[studyViewNum],
+	<main id="blog-main" class="flex-grid-cmbr" x-data="{
 		studyView: 'poems',
-		// 	cycleStudyViews: function () { 
-		// 		if (this.studyViewNum === allStudyViews.length) {
-		// 			this.studyViewNum = 0;
-		// 		} else {
-		// 		this.studyView = this.allStudyViews[this.studyViewNum++];
-		// 		}
-		// 	},
 		}">
 
 		<!-- % LEFT -->
 
 		<!-- % CENTER -->
-		<article class="blog-item" id="blog-post-articles" class="blogging-font">
+		<article class="blog-item" id="blog-post-articles" x-data="{
+			studyFrames: {},
+		}" x-effect="studyFrames = await CMBRutil.connectCMBRjson(['studyDocs']);">
 			<button class="trigger-box" @click="studyView = 'poems'" x-show="studyView !== 'poems'"
 				x-text="'Poem View'"></button>
 			<button class="trigger-box" @click="studyView = 'frames'" x-show="studyView !== 'frames'"
 				x-text="'Frame View'"></button>
 			<button class="trigger-box" @click="studyView = 'quizzes'" x-show="studyView !== 'quizzes'"
 				x-text="'Quiz View'"></button>
+			<button class="trigger-box" @click="toggleUtilitiesView()" x-text="'Utilities'"></button>
 			<div x-show="studyView === 'poems'">
 				<div class="blog-post-header">
 					<button id="previous-bp" class="trigger-box" @click="previousPoem();">Previous</button>
@@ -62,30 +64,22 @@
 					</div>
 				</div>
 
-				<div id="mdeditor-handle" class="typingfield" style="text-align: left;" x-data="{
-				value: '',
-				init() {
-					let editor = CMBRutil.md();
-					editor.value(this.value);
-					editor.codemirror.on('change', ()=> {
-						this.value = editor.value();
-					});
-					editor.codemirror.on('keyup', ()=> {
-						typingTest();
-					});
-				},
-			}">
-
-					<input x-ref="mdinput" id="sampleTypingField" type='hidden' name='mdinput' :value="value" />
-					<textarea x-ref="editor" value=""></textarea>
-				</div>
 			</div>
+			<select id="frame-select" @change="$refs.studyFrameSource.src = $el.value" x-show="studyView === 'frames'">
+				<template x-for="(item, index) in studyFrames" :key="index">
+					<option x-text="item">
+					</option>
+				</template>
+			</select>
 			<div x-show="studyView === 'frames'">
-				<iframe src="../assets/reference-docs/refdoc-mat171-transformations.pdf" width="600"
-					height="600"></iframe>
+				<iframe x-ref="studyFrameSource" src="../assets/reference-docs/refdoc-mat171-transformations.pdf"
+					width="600" height="600"></iframe>
 			</div>
+
+
 			<div x-show="studyView === 'quiz'">
 			</div>
+
 			<hr class="hr-push-down">
 
 
@@ -94,51 +88,42 @@
 		</article>
 
 		<!-- % RIGHT -->
-		<div class="blog-item" id="blog-post-media">
-			<!-- <span class="vt323" id="auth-status"></span> -->
-			<b x-text="'Now playing:'"></b><br>
-			<i id="tube-now-playing"></i>
-			<hr class="hr-cmbr-dark-gradient">
-			<hr class="hr-groove-top">
 
 
-			<!-- <ins x-text="tubeVids.length"></ins> -->
+		<!-- <ins x-text="tubeVids.length"></ins> -->
 
-			<div id="blog-music" x-data="{
-					tubeVideoInput: '',
-					tubeVids: {},
-					tubeListHover: false,
-					getTubeVidId: function(str) {
-						return str.split('v=')[1];
-					},
-					getNowPlaying: function() {
-						return nowPlaying;
-					}
-					}" x-effect="tubeVids = await CMBRutil.connectCMBRjson(['tubeVideos']);">
-				<div id="player"></div>
-				<label for="tube-video-input"></label>
-				<input id="tube-video-input" name="tube-video-input" x-ref="tubeVidRef" x-model="tubeVideoInput"
-					type="text" />
-				<button class="trigger-box"
-					@click="tubeVideoIdentity=getTubeVidId(tubeVideoInput); $nextTick(() => { loadTubeVideo(); tubeVideoInput = ''; });">Tube
-					Video</button>
-				<ul class="study-list">
-					<template x-for="(item, index) in tubeVids" :key="index">
-						<li x-text="getTubeVidId(item)"
-							@click="tubeVideoIdentity = tubeVids[index].split('v=')[1]; $nextTick(() => { loadTubeVideo(); });"
-							@mouseenter="tubeListHover === true;" @mouseleave="tubeListHover === false;"
-							:style="tubeListHover ? 'background-color: indianred;' : 'background-color:inherit;'">
-						</li>
-					</template>
-				</ul>
 
-			</div>
 
-			<hr class=" hr-groove-bottom">
-			<hr class="hr-cmbr-dark-gradient">
-		</div>
 
 	</main>
+	<div id="footer-sections" x-data x-transition>
+		<span x-show="utilitiesView" class="modal-close" @click="toggleUtilitiesView();">⨂</span>
+		<div x-show="!utilitiesView">
+			<h1 class="h1-lamp" camberlamp>Utilities</h1>
+		</div>
+
+		<div x-show="utilitiesView" class="flex-grid-cmbr" style="align-items: center; justify-items: center;
+	align-content: center;">
+			<div id="mdeditor-handle" class="typingfield" style="text-align: left;" x-data="{
+						value: '',
+						init() {
+							let editor = CMBRutil.md();
+							editor.value(this.value);
+							editor.codemirror.on('change', ()=> {
+								this.value = editor.value();
+							});
+							editor.codemirror.on('keyup', ()=> {
+								typingTest();
+							});
+						},
+					}">
+
+				<input x-ref="mdinput" id="sampleTypingField" type='hidden' name='mdinput' :value="value" />
+				<textarea x-ref="editor" value=""></textarea>
+			</div> <!-- % END MARKDOWN EDITOR HANDLE % -->
+
+		</div>
+	</div>
 
 	<!-- <script src="blog-data.js"></script> -->
 	<script src="../studies/studies.js"></script>

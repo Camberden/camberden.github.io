@@ -674,6 +674,70 @@ button>#chart-access:hover {
 }
 
 
+
+/* |==========| §OPTIONS DROPDOWN REDUX |====================> */
+/* |==========| COLLAPSEABLE |====================> */
+.chart-opened::after {
+	content: attr(item) " ↓";
+}
+
+.trigger-access {
+	z-index: 300;
+	position: relative;
+	font-family: monospace;
+	font-size: 1rem;
+	color: var(--cmbr-blue);
+	margin-inline-end: 100%;
+	max-height: 3rem;
+	width: max-content;
+	box-sizing: border-box;
+	border: 0.3rem solid black;
+	border-bottom: 0.3rem groove black;
+	background: rgb(37, 37, 37);
+
+}
+
+button>.trigger-access:hover {
+	cursor: pointer;
+	color: cadetblue !important;
+	border-bottom: 0.3rem groove black;
+	background-color: var(--cmbr-curtain-plum);
+}
+
+.trigger-access:active {
+	color: burlywood;
+	background-color: rgb(16, 16, 16);
+
+}
+
+.trigger-collapse {
+	position: fixed;
+	/* left: 0; */
+	z-index: 300;
+	border: 0.5rem groove black;
+	padding: 0.2rem;
+	width: fit-content;
+	height: auto;
+	text-align: start;
+	background-color: black;
+	overflow-y: scroll !important;
+	scrollbar-width: none;
+}
+
+.trigger-collapse>.trigger-links>.section-title {
+	padding: 0.5rem !important;
+	font-size: 1rem !important;
+}
+
+[cmbr-left] {
+	left: 0;
+}
+
+[cmbr-right] {
+	right: 0;
+}
+
+
 /* |==========| §SECTIONS NAVIGATION |====================> */
 /* |==========| LEFT-SIDE DROPDOWN FOR SITE MAP NAVIGATION |====================> */
 
@@ -1806,11 +1870,9 @@ select:hover {
 }
 
 .modal-close {
+	color: #0D343A;
 	border-top: none;
-	border-bottom: 1px solid #888;
 	border-left: none;
-	border-right: 1px solid #888;
-	color: #888;
 	float: inline-start;
 	font-size: 2rem;
 	font-weight: bold;
@@ -2049,7 +2111,7 @@ select:hover {
 	content: counter(item) " → ";
 }
 
-input {
+.input-legacy {
 	background-color: var(--clr-grid-box);
 	color: #f59b60;
 	font-family: monospace, serif;
@@ -2058,7 +2120,7 @@ input {
 	width: 100%;
 }
 
-input:focus {
+.input-legacy:focus {
 	background-color: var(--clr-grid-box);
 	border-color: orchid;
 }
@@ -2330,6 +2392,29 @@ form>label {
 	flex-flow: row wrap;
 	gap: 4rem 2rem;
 	align-items: baseline;
+}
+
+#footer-sections {
+	position: sticky;
+	/* font-family: monospace; */
+	/* font-size: 1rem; */
+	flex: 1;
+	/* padding: 1rem; */
+	z-index: 200;
+	bottom: 0;
+	/* left: 0; */
+	/* width: 100%; */
+	/* background-color: var(--doi-black); */
+	background: transparent;
+	/* background: linear-gradient(var(--cmbr-blass-frame)); */
+	box-shadow: 4rem 0rem 2rem 0rem black;
+}
+
+#footer-info {
+	flex: 0.8;
+	border-bottom: 1rem solid #88919830;
+	justify-items: baseline;
+	align-content: center;
 }
 
 /* |==========| ARIA ANIMATIONS @keyframes |====================> */

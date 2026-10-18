@@ -104,6 +104,18 @@
     "https://www.youtube.com/watch?v=K8ZLe_uVuuI",
     "https://www.youtube.com/watch?v=wYsfNBEfehw",
     "https://www.youtube.com/watch?v=K8ZLe_uVuuI",
-    "https://www.youtube.com/watch?v=6uNkTqNSulY"
+    "https://www.youtube.com/watch?v=6uNkTqNSulY",
+    "https://www.youtube.com/watch?v=6QOUNvMX-ws"
+  ],
+  "studyDocs": [
+    "../assets/reference-docs/refdoc-mat171-manual.pdf",
+    "../assets/reference-docs/refdoc-mat171-transformations.pdf",
+    "../assets/reference-docs/refdoc-duolingo-japanese-vocab.pdf",
+    "../assets/reference-docs/refdoc-chzc-chant2020.pdf",
+    "../assets/reference-docs/refdoc-chzc-condensed.pdf",
+    "../assets/reference-docs/refdoc-oryoki-guide.pdf",
+    "../assets/reference-docs/refdoc-acc220-acronyms.pdf",
+    "../assets/reference-docs/refdoc-nc-college-equivalence.pdf",
+    "../assets/reference-docs/refdoc-mysql-phpadmin-setup.pdf"
   ]
 }

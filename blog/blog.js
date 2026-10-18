@@ -20,15 +20,6 @@ const blogPostTitle = document.getElementById("blog-post-title");
 const blogMap = L.map("blog-map");
 let blogMapMarker;
 
-// ===> BLOG YOUTUBE PLAYER ===>
-// https://www.youtube.com/embed?listType=playlist&list=PLC77007E23FF423C6 // FOR PLAYLIST //
-var player;
-var done = false;
-var playerTag = document.createElement("script");
-playerTag.src = "https://www.youtube.com/iframe_api";
-var firstScriptTag = document.getElementsByTagName("script")[0];
-firstScriptTag.parentNode.insertBefore(playerTag, firstScriptTag);
-
 /* |==========| BLOG MAP |====================> */
 /* |==========| LEAFLET API BLOG MAP FUNCTIONS AND VALUES |====================> */
 /**
@@ -66,62 +57,7 @@ function changeCoordinates(latLng) {
 	blogMapMarker = L.marker(latLng).addTo(blogMap);
 };
 
-/* |==========| YOUTUBE PLAYER |====================> */
-/* |==========| YOUTUBE PLAYER API VARIABLES & FUNCTIONS |====================> */
-function onYouTubeIframeAPIReady() {
-	player = new YT.Player("player", {
-		height: "100%",
-		width: "100%",
-		videoId: currentlyReading.audio,
-		playerVars: {
-			"playsinline": 0,
-			"disablekb": 1,
-			"autoplay": 1,
-			"fs": 1,
-			"hl": "ja"
-		},
-		events: {
-			"onReady": onPlayerReady,
-			"onStateChange": onPlayerStateChange,
-		}
-	});
-};
-function onPlayerReady(event) {
-	event.target.playVideo();
-};
-function onPlayerStateChange(event) {
-	if (event.data == YT.PlayerState.PLAYING && !done) {
-		setTimeout(console.info("Sixty-five-thousand."), 65000);
-		done = true;
-	}
-};
-function pauseVideo() {
-	player.pauseVideo();
-};
-/**
- * @global
- * @function pauseVideoOnConsole
- * @description Prevents autoplay of audio & video by the embedded YouTube player.
- * This serves to pause the YouTube player for the corresponding blog post after loading,
- * with a console group to indicate which post's player is being paused. 
- * This is necessary due to the asynchronous and nested nature of the YouTube Iframe API which has shown for months
- * to ignore global method calls to the Player Object within this JavaScript file, blog.js.
- * Those global method calls proved reactive in the browser at runtime when passed as parameters to console methods on May 20th, 2026.
- * The setTimeout ensures that pause functionality is delivered after the player has had time to initialize and start playing,
- * thus smoothly preventing autoplay as intended.
- * @emits console.info of the Player Object's pauseVideo() method.
- */
-function pauseVideoOnConsole() {
-	(setTimeout(() => {
-		// console.clear();
-		console.groupCollapsed("Pausing Blog Post " + currentlyReadingNumber + " YouTube Player");
-		console.info("Audio: " + player.videoTitle);
-		pauseVideo();
-		console.groupEnd();
-	}, 1000));
-}
-
-// |==========| BLOG FUNCTIONS |====================> //
+// |==========| JS/HTML BLOG FUNCTIONS |====================> //
 /* |==========| VALUES FOR WRITTEN BLOG CONTENT |====================> */
 
 /**
@@ -175,7 +111,7 @@ function initBlogData(articles) {
 		const preParsedBlogTags = parsePermilleTags(article, "g");
 		blogPost.tags = preParsedBlogTags.split(", ");
 		blogPost.photos = parsePermilleTags(article, "p");
-		// blogPost.audio = parsePermilleTags(article, "a");
+		blogPost.audio = parsePermilleTags(article, "a");
 		const videoIdFromUrl = parsePermilleTags(article, "a").split("v=")[1];
 		blogPost.audio = videoIdFromUrl;
 		// |=====| DATE & TIME PARSING |=====| //
@@ -205,13 +141,7 @@ function initBlogData(articles) {
 	currentlyReadingNumber = currentlyReading.id;
 	displayCurrentlyReading();
 };
-/**
- * @function displayCurrentlyReading
- * @constructs BlogPost object from blogPosts[] Array
- * @yields The blog post data based on currentlyReadingNumber
- * @lends CMBRutil.convertToPreferredDateFormat() for date display formatting
- * @emits pauseVideoOnConsole() Autoplay prevention for the embedded YouTube player
- */
+
 function displayCurrentlyReading() {
 	blogTagList.innerHTML = "";
 	document.getElementById("blog-post-date").innerText = CMBRutil.convertToPreferredDateFormat(currentlyReading.date, true);
@@ -220,41 +150,11 @@ function displayCurrentlyReading() {
 	document.getElementById("blog-post-time").innerText = currentlyReading.time;
 	document.getElementById("blog-post-body").innerHTML = currentlyReading.body;
 	document.getElementById("blog-post-title").innerText = currentlyReading.title;
+	document.getElementById("player").src = `https://www.youtube.com/embed/${currentlyReading.audio}`;
 	document.getElementById("blog-photos").style.backgroundImage = `url("../${currentlyReading.photos}")`;
 	if (!currentlyReading.photos) {
 		document.getElementById("blog-photos").style.backgroundImage = `url(${"../assets/artifacts/foxfire.jpeg"})`;
 	}
-
-	// |=====| These are Google Ad Scripts |=====| //
-	// ! They trigger: net::ERR_BLOCKED_BY_CLIENT
-	// Likely due to ad blockers such as uBlock Origin, or Vivaldi's built in ad blocker: 
-	// GET googleads.g.doubleclick.net/pagead/id
-	// static.doubleclick.net/instream/ad_status.js
-
-	try {
-		if (!currentlyReading.audio) {
-			// John Cage's 4:33 (Silence)
-			player.loadVideoById("TrlKxV5KWJo");
-		} else {
-			player.loadVideoById(currentlyReading.audio);
-		}
-	} catch (error) {
-		if (error instanceof TypeError) {
-			fetch(error.target).then((response) => {
-				if (!response.ok) {
-					throw new Error(`HTTP error! status: ${response.status}`);
-				}
-				return response.text();
-			}).then((data) => {
-				console.warn("Cleared Fetched TypeError ");
-			}).catch((fetchError) => {
-				console.error("Error fetching YouTube Player API Script: ", fetchError);
-			});
-		}
-	} finally {
-		pauseVideoOnConsole();
-	}
-
 	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
 	for (let tag of currentlyReading.tags) {
 		const span = document.createElement("span");
@@ -354,6 +254,157 @@ function blogFilter(selection) {
 	displayCurrentlyReading();
 	return;
 };
+
+// |==========| JS/MARKDOWN BLOG FUNCTIONS |====================> //
+/**
+ * @function initBlogData
+ * @param {String[]} data 
+ * @constructs BlogPost objects from the data array of blog post strings, which are formatted with custom permille tags to denote content sections such as title, body, date, location, etc.
+ * @yields BlogPost objects to the blogPosts[] array, and generates the blog post listing on the left side of the page with click event listeners to load the corresponding post in the center display.
+ * @emits parsePermilleTags() to extract content from the data strings excluding the body content, which is instead parsed from the markdown files in the /blog/ directory.
+ */
+function initBlogDataMarkdown(articles) {
+	/**
+	 * @param {String} article
+	 * @param {String[]} articles
+	 */
+	for (let article of articles) {
+		const blogPost = new BlogPost();
+		// |=====| PARSE TEXT INPUT |=====| //
+		blogPost.id = (articles.indexOf(article) + 1);
+		blogPost.author = parsePermilleTags(article, "u");
+		blogPost.location = parsePermilleTags(article, "l");
+		blogPost.title = parsePermilleTags(article, "t");
+		blogPost.body = `md/cmbr-bp-${blogPost.id}.md`;
+		const preParsedBlogTags = parsePermilleTags(article, "g");
+		blogPost.tags = preParsedBlogTags.split(", ");
+		blogPost.photos = parsePermilleTags(article, "p");
+		blogPost.audio = parsePermilleTags(article, "a");
+		const videoIdFromUrl = parsePermilleTags(article, "a").split("v=")[1];
+		blogPost.audio = videoIdFromUrl;
+		// |=====| DATE & TIME PARSING |=====| //
+		const dateString = parsePermilleTags(article, "d").split(" ");
+		const postDate = convertDate(dateString[0], dateString[1], dateString[2]);
+		if (!listedYears.includes(parseInt(dateString[2]))) {
+			listedYears.push(parseInt(dateString[2]));
+		}
+		blogPost.time = parsePermilleTags(article, "j");
+		postDate.setHours(parseInt(blogPost.time.substring(0, 2)), parseInt(blogPost.time.substring(2, 5)));
+		blogPost.date = postDate;
+		// |=====| LIST GENERATION |=====| //
+		const li = document.createElement("li");
+		const text = document.createTextNode(blogPost.id + ": " + blogPost.title);
+		li.setAttribute("id", `bp-${blogPost.id}`);
+		li.onclick = function () {
+			document.getElementById(`bp-${currentlyReadingNumber}`).removeAttribute("class", "listing-highlight");
+			currentlyReading = blogPost;
+			currentlyReadingNumber = currentlyReading.id;
+			displayCurrentlyReadingMarkdown();
+		}
+		li.appendChild(text);
+		blogPostList.prepend(li);
+		blogPosts.push(blogPost);
+	};
+	currentlyReading = blogPosts[blogPosts.length - 1];
+	currentlyReadingNumber = currentlyReading.id;
+	displayCurrentlyReadingMarkdown();
+};
+/**
+ * @function displayCurrentlyReadingMarkdown
+ * @constructs BlogPost object from blogPosts[] Array
+ * @yields The blog post data based on currentlyReadingNumber
+ * @lends CMBRutil.convertToPreferredDateFormat() for date display formatting
+ * @emits pauseVideoOnConsole() Autoplay prevention for the embedded YouTube player
+ */
+function displayCurrentlyReadingMarkdown() {
+	blogTagList.innerHTML = "";
+	document.getElementById("blog-post-date").innerText = CMBRutil.convertToPreferredDateFormat(currentlyReading.date, true);
+	document.getElementById("blog-post-location").innerText = currentlyReading.location;
+	changeCoordinates(coordinates[currentlyReading.location]);
+	document.getElementById("blog-post-time").innerText = currentlyReading.time;
+	document.getElementById("blog-post-body").innerHTML = currentlyReading.body;
+	document.getElementById("blog-post-title").innerText = currentlyReading.title;
+	document.getElementById("blog-photos").style.backgroundImage = `url("../${currentlyReading.photos}")`;
+	if (!currentlyReading.photos) {
+		document.getElementById("blog-photos").style.backgroundImage = `url(${"../assets/artifacts/foxfire.jpeg"})`;
+	}
+
+	// |=====| These are Google Ad Scripts |=====| //
+	// ! They trigger: net::ERR_BLOCKED_BY_CLIENT
+	// Likely due to ad blockers such as uBlock Origin, or Vivaldi's built in ad blocker: 
+	// GET googleads.g.doubleclick.net/pagead/id
+	// static.doubleclick.net/instream/ad_status.js
+
+	try {
+		if (!currentlyReading.audio) {
+			// John Cage's 4:33 (Silence)
+			player.loadVideoById("TrlKxV5KWJo");
+		} else {
+			player.loadVideoById(currentlyReading.audio);
+		}
+	} catch (error) {
+		if (error instanceof TypeError) {
+			fetch(error.target).then((response) => {
+				if (!response.ok) {
+					throw new Error(`HTTP error! status: ${response.status}`);
+				}
+				return response.text();
+			}).then((data) => {
+				console.warn("Cleared Fetched TypeError ");
+			}).catch((fetchError) => {
+				console.error("Error fetching YouTube Player API Script: ", fetchError);
+			});
+		}
+	} finally {
+		pauseVideoOnConsole();
+	}
+
+	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
+	for (let tag of currentlyReading.tags) {
+		const span = document.createElement("span");
+		const text = document.createTextNode(tag);
+		span.appendChild(text);
+		span.classList.add("blog-tag");
+		blogTagList.appendChild(span);
+	}
+};
+
+function blogFilterMarkdown(selection) {
+	let loaded;
+	if (selection === "all-years") {
+		for (let li of blogPostList.children) {
+			if (li.classList.contains("listing-none")) {
+				li.classList.remove("listing-none");
+			}
+
+		}
+		currentlyReading = blogPosts[blogPosts.length - 1];
+		currentlyReadingNumber = currentlyReading.id;
+		document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
+		displayCurrentlyReadingMarkdown();
+		return;
+	}
+
+	blogPosts.forEach(article => {
+		const index = article.id;
+		if (article.date.getFullYear() != selection) {
+			// document.getElementById(`bp-${article.id}`).style.display = "none";
+			document.getElementById(`bp-${index}`).classList.add("listing-none");
+		} else {
+			document.getElementById(`bp-${index}`).classList.remove("listing-none");
+			loaded = index;
+		}
+	});
+
+	currentlyReading = blogPosts[loaded - 1];
+	currentlyReadingNumber = currentlyReading.id;
+	document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
+	displayCurrentlyReadingMarkdown();
+	return;
+};
+
+// |==========| BLOG UTILITIY FUNCTIONS |====================> //
+
 function enableBlogSelect() {
 	const blogPostYearSelect = document.getElementById("blog-post-year-select");
 	for (let i = 0; i < listedYears.length; i++) {
@@ -549,6 +600,9 @@ function initIndexedDB(crud, queryData) {
 	initBlogData(blogData);
 	enableBlogButtons();
 	enableBlogSelect();
+	displayCurrentlyReading();
+	setTimeout(() => { document.getElementById("player").src = `https://www.youtube.com/embed/${currentlyReading.audio}` }, 1000);
+
 	// console.log("https://www.youtube.com/watch?v=6uNkTqNSulY".split("v=")[1]);
 	// collectJSconfigs(canSupportIndexedDB());
 

@@ -64,8 +64,6 @@ function previousPoem() {
 
 const tap = 1;
 
-
-// Avalokiteshvara Bodhisattva, when practicing deeply the prajna paramita, perceived that all five skandhas in their own being are empty, and was saved from
 function typingTest() {
 	const para = selectedpoem;
 	const typed = document.getElementById("sampleTypingField").value;
@@ -624,7 +622,7 @@ function sutraType() {
 	cyclePanelCollections(robeChantKanji, 3000);
 	enableSutraButtons();
 	CMBRutil.handleFormDefault(true);
-	const rolyan = convertRolyaScript(ipapost);
+	// const rolyan = convertRolyaScript(ipapost);
 	// document.getElementById("rolyan").innerText = rolyan;
 
 

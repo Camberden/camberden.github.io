@@ -485,6 +485,13 @@ const CMBRutil = {
 			return false;
 		}
 	},
+	atSiteBlog: function () {
+		if (document.location.href.includes("blog.html")) {
+			return true;
+		} else {
+			return false;
+		}
+	},
 	// Function to update URL parameters
 	updateURLParameter: function (key, value) {
 		urlParams.set(key, value); // Set or update the parameter
@@ -545,6 +552,9 @@ const CMBRutil = {
 					case "tubeVideos":
 						return data["tubeVideos"];
 						break;
+					case "studyDocs":
+						return data["studyDocs"];
+						break;
 					case "blog":
 						if (query.length == 1) {
 							// console.log(data[query[0]]);
@@ -587,4 +597,5 @@ const braft = (l) => document.querySelector(`${l}`).appendChild(document.createE
 
 (async () => {
 	CMBRutil.handleFormDefault(true);
-});
+	// pauseVideoOnConsole();
+})();
