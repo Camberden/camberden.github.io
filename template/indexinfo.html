@@ -1,0 +1,42 @@
+<div class="slideshow-div" x-data="{
+	photos: {},
+	randomizePhotos: function (album) {
+		const infoDivBackground = document.getElementById('slideshow-background');
+		infoDivBackground.style.animationPlayState = 'paused';
+		infoDivBackground.parentElement.style.animationPlayState = 'paused';
+		const m = Math.random();
+		infoDivBackground.style.animationPlayState = 'running';
+		infoDivBackground.parentElement.style.animationPlayState = 'running';
+
+		let photoIndex = Math.round(m.toFixed(2) * album.length);
+		if (photoIndex < 1) {
+			++photoIndex;
+		}
+		infoDivBackground.style.backgroundImage = `url('${album[photoIndex]}')`;
+		infoDivBackground.parentElement.style.borderRight = `var(--cmbr-grid-box)`;
+	},
+	slideshow: function(){ 
+		CMBRutil.interval = setInterval(() => {
+			this.randomizePhotos(this.photos);
+		}, 10000);
+	},
+}" x-effect="photos = await CMBRutil.connectCMBRjson(['travel-photos']); randomizePhotos(photos); slideshow();">
+
+	<div id="page-info">
+		<p>
+			Welcome to the <i class="admiration">camberden</i> corner.<br>
+			I'm the author, <i>Chrispy,</i> and this site serves as my personal
+			corner of the internet where I post my music and musings and an assortment
+			of modest software projects. Whatever I create here is meaningful enough
+			to me to justify its existence. One must endeavor to create meaning and
+			substance in the real world in ways which reveal themselves to the beholder.<br>
+			All the best,<br>
+			<span class="chrispy">🌾🌾🌾 Chrispy 🌾🌾🌾 </span>
+		</p>
+	</div>
+
+	<div id="slideshow-frame">
+		<div id="slideshow-background">
+		</div>
+	</div>
+</div>

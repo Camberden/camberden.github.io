@@ -1617,6 +1617,7 @@ select:hover {
 	margin-inline: auto;
 }
 
+
 .index-sub-grid {
 	display: grid;
 	gap: 0.5rem;
@@ -1715,6 +1716,44 @@ select:hover {
 	animation-timing-function: linear;
 	animation-direction: alternate;
 	animation-iteration-count: 1;
+}
+
+#slideshow-frame {
+	box-sizing: content-box;
+	border-right: 0.5rem solid transparent;
+	margin-inline-end: 0%;
+	animation-name: info-div-load;
+	animation-duration: 10s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-timing-function: ease-in-out;
+}
+
+
+
+.slideshow-div {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	margin-inline: auto;
+	padding-bottom: 3rem;
+	flex: 1;
+	/* flex:content; */
+}
+
+#slideshow-background {
+	background-image: none;
+	background-size: cover;
+	width: 100%;
+	height: 100%;
+	opacity: 0%;
+	animation-name: info-div-shift;
+	animation-duration: 10s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+	animation-direction: normal;
+	animation-timing-function: ease-in-out;
+	animation-play-state: running;
 }
 
 #info-div-frame {

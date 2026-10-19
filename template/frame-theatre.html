@@ -1,0 +1,46 @@
+<div class="grid-col-1-1" x-data="{
+	charter: {
+		folders: [
+			['uploads', '/images/uploads/'],
+			['refdocs', '/assets/reference-docs/'],
+			['travelpics', '/assets/travel-photos/'],
+			['artifacts', '/assets/artifacts/'],
+			['graphics', '/assets/fantasy-graphics/'],
+			['blogpics', '/assets/blog-photos/'],
+			// ['residents', '/assets/segregation-residents/'],
+			// ['officers', '/assets/segregation-officers/'],
+		],
+	},
+	folderData: {},
+	folderSelected: '',
+	fileSelected: 'assets/reference-docs/refdoc-usn-prt-2025.pdf',
+	loadFile: function() {
+		this.fileSelected = CMBRutil.framefile;
+	},
+	folderSelect: function (item) {
+		let choice = item + 'FOLDER';
+		choice = this.folderSelected;
+	},
+}">
+
+	<div>
+		<i x-text="folderSelected"></i>
+		<i x-text="fileSelected"></i>
+		<hr class="hr-cmbr-gradient">
+
+		<template x-for="file in charter.folders" , :key="index">
+			<button :id="file[0] + 'FOLDER'" class="trigger-box" @click="folderSelected = file[0]"
+				:hx-get="'/one/frame/' + file[0] + '.html'" hx-trigger="click" hx-target="#frame-theatre"
+				hx-swap="innerHTML" x-text="file[0]">
+			</button>
+		</template>
+
+		<div id="frame-theatre" style="max-height: 50vh; overflow-y: scroll;" @click="loadFile()">
+		</div>
+	</div>
+
+	<div id="folder-listings" x-ref="listings">
+		<iframe :src="fileSelected" width="100%" height="500" frameborder=" 0" scrolling="yes" allowfullscreen
+			title="Listing"></iframe>
+	</div>
+</div>

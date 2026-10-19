@@ -40,9 +40,28 @@
 		}">
 
 		<!-- % LEFT -->
+		<div class="cmbr-item-left">
+			<div id="mdeditor-handle" class="typingfield" style="text-align: left;" x-data="{
+						value: '',
+						init() {
+							let editor = CMBRutil.md();
+							editor.value(this.value);
+							editor.codemirror.on('change', ()=> {
+								this.value = editor.value();
+							});
+							editor.codemirror.on('keyup', ()=> {
+								typingTest();
+							});
+						},
+					}">
+
+				<input x-ref="mdinput" id="sampleTypingField" type='hidden' name='mdinput' :value="value" />
+				<textarea x-ref="editor" value=""></textarea>
+			</div> <!-- % END MARKDOWN EDITOR HANDLE % -->
+		</div>
 
 		<!-- % CENTER -->
-		<article class="blog-item" id="blog-post-articles" x-data="{
+		<article class="cmbr-item-center" id="blog-post-articles" x-data="{
 			studyFrames: {},
 		}" x-effect="studyFrames = await CMBRutil.connectCMBRjson(['studyDocs']);">
 			<button class="trigger-box" @click="studyView = 'poems'" x-show="studyView !== 'poems'"
@@ -71,7 +90,7 @@
 					</option>
 				</template>
 			</select>
-			<div x-show="studyView === 'frames'">
+			<div x-show="studyView === 'frames'" x-cloak>
 				<iframe x-ref="studyFrameSource" src="../assets/reference-docs/refdoc-mat171-transformations.pdf"
 					width="600" height="600"></iframe>
 			</div>
@@ -104,23 +123,6 @@
 
 		<div x-show="utilitiesView" class="flex-grid-cmbr" style="align-items: center; justify-items: center;
 	align-content: center;">
-			<div id="mdeditor-handle" class="typingfield" style="text-align: left;" x-data="{
-						value: '',
-						init() {
-							let editor = CMBRutil.md();
-							editor.value(this.value);
-							editor.codemirror.on('change', ()=> {
-								this.value = editor.value();
-							});
-							editor.codemirror.on('keyup', ()=> {
-								typingTest();
-							});
-						},
-					}">
-
-				<input x-ref="mdinput" id="sampleTypingField" type='hidden' name='mdinput' :value="value" />
-				<textarea x-ref="editor" value=""></textarea>
-			</div> <!-- % END MARKDOWN EDITOR HANDLE % -->
 
 		</div>
 	</div>
