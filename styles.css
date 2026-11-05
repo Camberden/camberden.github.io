@@ -356,6 +356,9 @@ div.editor-preview-active>h6,
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
 
+/* |==========| §ELEMENTAL CLASSES|====================> */
+/* |==========| SHORT-FORM STYLING |====================> */
+
 [x-cloak] {
 	display: none;
 }
@@ -380,6 +383,11 @@ div.editor-preview-active>h6,
 	animation-timing-function: linear;
 	animation-iteration-count: infinite;
 	overflow: hidden;
+}
+
+.leaf-popup,
+[leaf-popup] {
+	background-color: transparent;
 }
 
 .data-theme-button {
@@ -1127,11 +1135,18 @@ button:disabled:hover {
 	margin-inline: auto;
 }
 
+.cmbr-tr {
+	background: transparent;
+	cursor: pointer;
+}
+
+.cmbr-tr:hover,
 .trigger-box:hover {
 	color: sienna;
 	background: #0b313d;
 }
 
+.cmbr-tr:active,
 .trigger-box:active {
 	color: var(--cmbr-green);
 	background: var(--cmbr-dark-steel);

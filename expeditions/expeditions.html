@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="referrer" content="no-referrer" /> -->
+	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../blog/blog.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
+
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="/htmx.js"></script>
+	<script src="/cmbr.js"></script>
+
+	<title>Chrispy's Expeditions</title>
+</head>
+
+<body data-theme="dark" x-data="{
+		overworld: 'Farrington Overworld',
+		overworldCoords: farringtonOverview,
+	}">
+
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
+	<hr class="hr-push-down">
+
+	<main class="grid-col-1">
+
+		<section class="cmbr-grid-flexfixed grid-col-1-4">
+			<div style="
+				top: 10%;
+				flex: 1;
+				position: sticky;
+				height: 45rem;
+				overflow: auto;
+				scroll-behavior: smooth;
+				padding: 1rem;
+				border: 0.3rem outset black;
+				max-height: 45rem;
+				background: rgba(144, 229, 238, 0.1);
+				box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
+				">
+
+				<h1 id="expeditions-map-title" class="chrispy" style="font-size: 1.5rem;" x-text="overworld"></h1>
+				<hr class="hr-groove-top">
+
+				<article>
+					<p>
+						Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda nulla sit nihil perspiciatis
+						beatae nostrum quod, aspernatur sint fugiat in error. Neque non eveniet dolorem nisi voluptate,
+						perspiciatis alias debitis.
+					</p>
+					<h2 class="marker-green" style="text-align: left;">Locales</h2>
+					<hr class="hr-cmbr-dark-gradient">
+					<table style="
+					display: flex;
+					flex-flow: column wrap;
+					font-size: 1rem;
+					overflow-x: hidden;
+					scrollbar-color: var(--cmbr-dark-iron) var(--cmbr-dark-grey);
+					scrollbar-width: auto;
+					" cmbr-flexfixed-r x-data>
+						<tbody class="flex-table-body">
+							<template x-for="(location, index) in overworldCoords" :key="index">
+								<tr class="flex-table-row cmbr-tr" @click="findLocale(location[0], location[1])">
+									<td class="cmbr-td" x-html="location[0]"></td>
+								</tr>
+							</template>
+						</tbody>
+					</table>
+				</article>
+
+				<hr class="hr-groove-bottom" style="bottom:0;">
+			</div>
+			<div id="expeditions-map" style="height: 50rem; width: 100%; border: 0.3rem ridge grey; z-index: 0;">
+			</div>
+		</section>
+	</main>
+
+	<script src="expeditions.js"></script>
+
+</body>
