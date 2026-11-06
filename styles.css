@@ -2519,7 +2519,7 @@ ARIA LOADERS
 #rainbox {
 	box-sizing: border-box;
 	width: 100%;
-	height: 100%;
+	height: 90%;
 	background: #0D343A;
 	background: linear-gradient(#0F2129, #33404a);
 	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(13, 52, 58, 1)), to(#000000));
