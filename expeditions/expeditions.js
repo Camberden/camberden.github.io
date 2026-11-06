@@ -7,6 +7,10 @@ const expeditionsMapTitle = document.getElementById("expeditions-map-title");
 const expeditionsMap = L.map("expeditions-map");
 let expeditionsMapMarker;
 let expeditionsRegionPolygon = [];
+const expeditionsDump = [
+	["Milton Dan River", [36.540795, -79.215094],],
+	["Hyco Lake", [36.472599, -79.122269],],
+];
 /**
  * @type {Array<String, coordinates>}
  */

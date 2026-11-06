@@ -1,6 +1,6 @@
 /* |==========| THREE-COLUMN GRID |====================> */
 main {
-	height: 1000vh;
+	height: max-content;
 }
 
 /* |==========| HEADER, GRID, AND EACH COLUMN |====================> */

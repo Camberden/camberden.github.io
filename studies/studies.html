@@ -35,7 +35,7 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main id="blog-main" class="flex-grid-cmbr" x-data="{
+	<main class="flex-grid-cmbr" x-data="{
 		studyView: 'poems',
 		}">
 
@@ -61,7 +61,7 @@
 		</div>
 
 		<!-- % CENTER -->
-		<article class="cmbr-item-center" id="blog-post-articles" x-data="{
+		<article class="cmbr-item-center" x-data="{
 			studyFrames: {},
 		}" x-effect="studyFrames = await CMBRutil.connectCMBRjson(['studyDocs']);">
 			<button class="trigger-box" @click="studyView = 'poems'" x-show="studyView !== 'poems'"
@@ -72,9 +72,9 @@
 				x-text="'Quiz View'"></button>
 			<button class="trigger-box" @click="toggleUtilitiesView()" x-text="'Utilities'"></button>
 			<div x-show="studyView === 'poems'">
-				<div class="blog-post-header">
-					<button id="previous-bp" class="trigger-box" @click="previousPoem();">Previous</button>
-					<button id="next-bp" class="trigger-box" @click="nextPoem();">Next</button>
+				<div>
+					<button id="previous-poem" class="trigger-box" @click="previousPoem();">Previous</button>
+					<button id="next-poem" class="trigger-box" @click="nextPoem();">Next</button>
 				</div>
 				<hr class="hr-cmbr-dark-gradient">
 

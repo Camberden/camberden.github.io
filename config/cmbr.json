@@ -5,10 +5,12 @@
     "Jisho": "https://jisho.org",
     "NHK Yasashii": "https://www3.nhk.or.jp/news/easy/",
     "Coursework": "https://www.mheducation.com",
-    "Maps": "https://maps.google.com",
+    "Maps": "https://www.openstreetmap.org/dashboard",
+    "NCCO.us": "https://ncco.us",
     "Internal Jobs": "https://wd108.myworkday.com/wday/authgwy/nc/login.html",
     "Intranet": "https://int.dac.nc.gov",
-    "Fiori": "https://portal.osc.nc.gov/app"
+    "Fiori": "https://portal.osc.nc.gov/app",
+    "Outlook": "https://outlook.office365.com/mail/inbox"
   },
   "travel-photos": {
     "path": "assets/travel-photos/",
@@ -94,6 +96,8 @@
     ]
   },
   "tubeVideos": [
+    "https://www.youtube.com/watch?v=j42T6o-XwMU",
+    "https://www.youtube.com/watch?v=XgqTrvcAySA",
     "https://www.youtube.com/watch?v=ranOCJbP93I",
     "https://www.youtube.com/watch?v=1c49TSDH8GY",
     "https://www.youtube.com/watch?v=3g7v8gQ9PfY",

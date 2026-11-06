@@ -12,29 +12,49 @@
                     ['music', 'Original Music'],
                     ['expeditions', 'Expeditions']
                 ],
-                external: [
-                    ['Checkpoint', 'https://www.youtube.com/watch?v=XgqTrvcAySA',],
-                    ['Anki Web', 'https://ankiweb.net/'],
-                    ['Clozemaster', 'https://www.clozemaster.com'],
-                    ['Jisho', 'https://jisho.org'],
-                    ['NHK Yasashii', 'https://www3.nhk.or.jp/news/easy/',],
-                    ['Course Schedule', '/assets/reference-docs/refdoc-acc149-syllabus.pdf'],
-                    ['Coursework', 'https://account.cengage.com/login?',],
-                    ['Maps', 'https://maps.google.com',],
-                    ['Internal Jobs', 'https://wd108.myworkday.com/wday/authgwy/nc/login.html',],
-                    ['Intranet', 'https://int.dac.nc.gov',],
-                    ['Fiori', 'https://portal.osc.nc.gov/app',],
-                    ['Alpine Components', 'https://alpinejs.dev/components'],
-                    ['Alpine Toolbox', 'https://www.alpinetoolbox.com/dist/tools/'],
-                    ['Alpine Ajax', 'https://alpine-ajax.js.org'],
-                ]
+                external: {
+                    'language': [
+                        ['Jisho', 'https://jisho.org'],
+                        ['Anki Web', 'https://ankiweb.net/'],
+                        ['Clozemaster', 'https://www.clozemaster.com'],
+                        ['NHK Yasashii', 'https://www3.nhk.or.jp/news/easy/',],
+                    ],
+                    'coursework': [
+                        ['Course Schedule', '/assets/reference-docs/refdoc-acc149-syllabus.pdf'],
+                        ['Coursework', 'https://account.cengage.com/login?',],
+                    ],
+                    'workplace': [
+                        ['NCCO.us', 'https://ncco.us',],
+                        ['Outlook', 'https://outlook.office365.com/mail/inbox'],
+                        ['Internal Jobs', 'https://wd108.myworkday.com/wday/authgwy/nc/login.html',],
+                        ['Intranet', 'https://int.dac.nc.gov',],
+                        ['Fiori', 'https://portal.osc.nc.gov/app',],
+                    ],
+                    'programming': [
+                        ['Camberden.net', 'https://camberden.net'],
+                        ['Alpine Components', 'https://alpinejs.dev/components'],
+                        ['Alpine Toolbox', 'https://www.alpinetoolbox.com/dist/tools/'],
+                        ['Alpine Ajax', 'https://alpine-ajax.js.org'],
+                    ],
+                    'exploration': [
+                        ['Open Maps', 'https://www.openstreetmap.org/dashboard',],
+                    ],
+                    'military': [
+                        ['r/newtothenavy', 'https://www.reddit.com/r/newtothenavy/',],
+                        ['My Navy Rates', 'https://mynavyrates.org/rates',],
+                    ],
+                    'background': [
+                        ['Checkpoint', 'https://www.youtube.com/watch?v=XgqTrvcAySA',],
+                        ['Strawberry+', 'https://www.youtube.com/watch?v=j42T6o-XwMU',],
+                    ],
+                }
             },
         },
     }">
 
     <template x-if="atHome">
         <div>
-            <template x-for="link in sitemap.links.internal" , :key="index">
+            <template x-for="link in sitemap.links.internal" :key="index">
                 <div :class="'section-title'">
                     <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"
                         :data-route="'/' + link[0] + '/'">
@@ -46,29 +66,37 @@
 
     <template x-if="!atHome">
         <div :class="'section-title'">
-            <a x-text="homePage" :href="basePath + 'index.html'" :data-route="'/'">
+            <a x-text="homePage" :href="basePath + 'index.html'" :target="'#'" :data-route="'/'">
             </a>
         </div>
+        <hr class="hr-cmbr-dark-gradient">
     </template>
 
     <template x-if="!atHome">
         <div x-effect=" displaySection() ">
-            <template x-for=" link in sitemap.links.internal" , :key="index">
+            <template x-for=" link in sitemap.links.internal" :key="index">
                 <div :class="'section-title'" :style="'padding:0.1rem'">
                     <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"
                         :data-route="'/' + link[0] + '/'">
                     </a>
                 </div>
             </template>
+            <div style="padding: 0.1rem; border-bottom: 0.3rem ridge black !important;"></div>
         </div>
     </template>
 
     <template x-if="!atHome">
         <div>
-            <template x-for="link in sitemap.links.external">
-                <div :class="'section-title'" :style="'padding:0.1rem'">
-                    <a x-text="link[0]" :href="link[1]">
-                    </a>
+            <template x-for="(category, index) in Object.keys(sitemap.links.external)" :key="index">
+                <div style="padding: 0.1rem; border-bottom: 0.3rem ridge black !important;">
+                    <b class="lora-bold" style="color:burlywood; font-size: 1.1rem;" x-text="category"></b>
+                    <hr class="hr-cmbr-dark-gradient">
+                    <template x-for="link in sitemap.links.external[category]">
+                        <div :class="'section-title'" :style="'padding:0.1rem'">
+                            <a x-text="link[0]" :href="link[1]" :target="'#'">
+                            </a>
+                        </div>
+                    </template>
                 </div>
             </template>
         </div>

@@ -11,6 +11,7 @@
             <div id="nav-1" x-data="{ active: 0 }">
 
                 <div x-data="{
+                            navOneTitle: 'Navigation',
                             id: 1,
                             get expanded() {
                                 return this.active === this.id
@@ -24,7 +25,7 @@
                         <div class="trigger-dropdown">
                             <span x-show="expanded" x-cloak>&UpArrow;</span>
                             <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                            <span class="vt323" x-text="'Options'"></span>
+                            <span class="vt323" x-text="navOneTitle"></span>
                             <span x-show="expanded" x-cloak>&UpArrow;</span>
                             <span x-show="!expanded" x-cloak>&DownArrow;</span>
                         </div>
@@ -43,6 +44,7 @@
             <!-----| NAV 2 |----->
             <div id="nav-2">
                 <div x-data="{
+                            navTwoTitle: 'Options',
                             id: 2,
                             refDocs: {},
                             get expanded() {
@@ -56,12 +58,12 @@
                         <div class="trigger-dropdown">
                             <span x-show="expanded" x-cloak>&UpArrow;</span>
                             <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                            <span class="vt323" x-text="'References'"></span>
+                            <span class="vt323" x-text="navTwoTitle"></span>
                             <span x-show="expanded" x-cloak>&UpArrow;</span>
                             <span x-show="!expanded" x-cloak>&DownArrow;</span>
                         </div>
                     </button>
-                    <div class="trigger-collapse" x-show="expanded" x-collapse>
+                    <div class="trigger-collapse" x-show="expanded" cmbr-left x-collapse>
                         <slot x-ref="navSlot2" class="trigger-links">
                             <select id="nav-refDoc-select" @change="$refs.navRefDocSource.src = $el.value">
                                 <template x-for="(item, index) in refDocs" :key="index">
@@ -171,8 +173,6 @@
             </div>
         </div>
 </div>
-
-
 </div>
 
 <div class="nav-hoist">

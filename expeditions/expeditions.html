@@ -6,13 +6,14 @@
 	<!-- <meta name="referrer" content="no-referrer" /> -->
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="../blog/blog.css" media="screen" />
+	<!-- <link rel="stylesheet" type="text/css" href="../blog/blog.css" media="screen" /> -->
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+	<script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
@@ -28,15 +29,14 @@
 <body data-theme="dark" x-data="{
 		overworld: 'Farrington Overworld',
 		overworldCoords: farringtonOverview,
-	}">
-
+	}" style="max-height: 200vh;">
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
-	<hr class="hr-push-down">
 
-	<main class="grid-col-1">
+	<main>
 
-		<section class="cmbr-grid-flexfixed grid-col-1-4">
-			<div style="
+		<section class="cmbr-grid-flexfixed" style="justify-items: center;">
+
+			<!-- <div style="
 				top: 10%;
 				flex: 1;
 				position: sticky;
@@ -77,14 +77,20 @@
 							</template>
 						</tbody>
 					</table>
-				</article>
+				</article> 
 
-				<hr class="hr-groove-bottom" style="bottom:0;">
-			</div>
-			<div id="expeditions-map" style="height: 50rem; width: 100%; border: 0.3rem ridge grey; z-index: 0;">
+			<hr class="hr-groove-bottom" style="bottom:0;">
+			</div> -->
+
+			<!-- <div id="wet"></div> -->
+
+			<div id="expeditions-map"
+				style="position: sticky; height: 40rem; width: 60rem; border: 0.3rem ridge grey; z-index: 0;">
 			</div>
 		</section>
 	</main>
+
+	<div id="footnav" hx-get="/footnav.html" hx-target="this" hx-trigger="load" hx-swap="outerHTML"></div>
 
 	<script src="expeditions.js"></script>
 
