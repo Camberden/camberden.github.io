@@ -201,16 +201,6 @@ function enableBlogButtons() {
 						document.getElementById(`bp-${currentlyReadingNumber}`).setAttribute("class", "listing-highlight");
 					}
 					break;
-				case "migration-bp":
-					blogPostDatabaseMigration(blogPosts);
-					break;
-				case "migration-bp":
-					blogPostDatabaseMigration(blogPosts);
-					break;
-				case "migration-bp":
-					blogPostDatabaseMigration(blogPosts);
-					break;
-
 
 				default:
 					console.log("Defaulted Blog Button Trigger");

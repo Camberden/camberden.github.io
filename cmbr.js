@@ -348,6 +348,20 @@ const CMBRutil = {
 			}, 200);
 		}
 	},
+
+	/**
+	 * @description Adds the specified CSS class to the selected list item and removes it from all sibling list items.
+	 * @param {HTMLElement} litem 
+	 * @param {String} addClass CSS Class Name
+	 * @example litemOnSelected($el, "listing-highlight");
+	 */
+	litemOnSelected: function (litem, addClass) {
+		for (let li of litem.parentElement.children) {
+			li.classList.remove(addClass);
+		}
+		litem.classList.add(addClass);
+	},
+
 	/**
 	 * 
 	 * @param {HTMLElement[]} buttons 
@@ -492,6 +506,13 @@ const CMBRutil = {
 			return false;
 		}
 	},
+	atSiteExpeditions: function () {
+		if (document.location.href.includes("expeditions.html") || document.getElementsByTagName("title")[0].textContent.includes("Expeditions")) {
+			return true;
+		} else {
+			return false;
+		}
+	},
 	// Function to update URL parameters
 	updateURLParameter: function (key, value) {
 		urlParams.set(key, value); // Set or update the parameter
@@ -523,6 +544,7 @@ const CMBRutil = {
 	 * 
 	 */
 	connectCMBRjson: async function (query) {
+
 		return fetch(`${document.location.origin}/config/cmbr.json`)
 			.then(data => data.json())
 			.then(data => {

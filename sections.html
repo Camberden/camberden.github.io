@@ -7,6 +7,7 @@
         links: {
                 internal: [
                     ['blog', 'Blog'],
+                    ['dashboard', 'Dashboard'],
                     // ['musings', 'Musings'],
                     ['studies', 'Studies'],
                     ['music', 'Original Music'],
@@ -37,6 +38,7 @@
                         ['Alpine Ajax', 'https://alpine-ajax.js.org'],
                     ],
                     'exploration': [
+                        ['Google Maps', 'https://maps.google.com',],
                         ['Open Maps', 'https://www.openstreetmap.org/dashboard',],
                     ],
                     'military': [
@@ -64,12 +66,19 @@
         </div>
     </template>
 
+
     <template x-if="!atHome">
-        <div :class="'section-title'">
+        <div>
+            <b class="chrispy" style="background-image: var(--cmbr-legacy-gradient); font-size: 1.3rem;"
+                x-text="'Internal'"></b>
+            <hr class="hr-cmbr-legacy-gradient"><br>
+        </div>
+    </template>
+    <template x-if="!atHome">
+        <div :class="'section-title'" :style="'padding:0.1rem'">
             <a x-text="homePage" :href="basePath + 'index.html'" :target="'#'" :data-route="'/'">
             </a>
         </div>
-        <hr class="hr-cmbr-dark-gradient">
     </template>
 
     <template x-if="!atHome">
@@ -81,15 +90,23 @@
                     </a>
                 </div>
             </template>
-            <div style="padding: 0.1rem; border-bottom: 0.3rem ridge black !important;"></div>
+            <br>
         </div>
     </template>
 
     <template x-if="!atHome">
         <div>
+            <b class="chrispy" style="background-image: var(--cmbr-legacy-gradient); font-size: 1.3rem;"
+                x-text="'External'"></b>
+            <hr class="hr-cmbr-legacy-gradient"><br>
+        </div>
+    </template>
+
+    <template x-if="!atHome">
+        <div class="grid-col-1-1">
             <template x-for="(category, index) in Object.keys(sitemap.links.external)" :key="index">
                 <div style="padding: 0.1rem; border-bottom: 0.3rem ridge black !important;">
-                    <b class="lora-bold" style="color:burlywood; font-size: 1.1rem;" x-text="category"></b>
+                    <b class="lora-bold" style="color:cornflowerblue; font-size: 1.1rem;" x-text="category"></b>
                     <hr class="hr-cmbr-dark-gradient">
                     <template x-for="link in sitemap.links.external[category]">
                         <div :class="'section-title'" :style="'padding:0.1rem'">

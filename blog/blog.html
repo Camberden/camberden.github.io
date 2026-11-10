@@ -6,6 +6,7 @@
 	<!-- <meta name="referrer" content="no-referrer" /> -->
 	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../mediaquery.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="blog.css" media="screen" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -28,7 +29,7 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main id="blog-main" class="flex-grid-cmbr grid-col-1-3-1" x-data="{
+	<main id="blog-main" class="cmbr-grid" x-data="{
 			modifyingBp: false,
 			toggleModifyingBp: function() { 
 				this.modifyingBp = !this.modifyingBp;
@@ -38,15 +39,18 @@
 				return this.currentBp === currentlyReadingNumber;
 			},
 			bpBody: '',
-		}" x-effect="bpBody = await $get(currentlyReading.body)">
+			duckedItem: false,
+
+		}" x-effect="bpBody = await $get(currentlyReading.body);">
 
 		<!-- % LEFT -->
-		<div class="blog-item" id="blog-post-listings">
-
-			<select id="blog-post-year-select">
-				<option value="all-years">All Years</option>
-			</select>
-			<br>
+		<div class="cmbr-item cmbr-item-left" id="blog-post-listings">
+			<div class="blog-post-header">
+				<select id="blog-post-year-select">
+					<option value="all-years">All Years</option>
+				</select>
+			</div>
+			<!-- <br> -->
 			<hr class="hr-cmbr-dark-gradient">
 			<hr class="hr-groove-top">
 
@@ -59,10 +63,10 @@
 
 		</div>
 		<!-- % CENTER -->
-		<article id="blog-post-articles" class="blogging-font">
+		<article id="blog-post-articles" class="cmbr-item cmbr-item-center blogging-font">
 			<div class="blog-post-header">
-				<button id="previous-bp" class="blog-button">Previous</button>
-				<button id="next-bp" class="blog-button">Next</button>
+				<button id="previous-bp" class="cmbr-button blog-button">Previous</button>
+				<button id="next-bp" class="cmbr-button blog-button">Next</button>
 			</div>
 			<hr class="hr-cmbr-dark-gradient">
 			<div>
@@ -86,29 +90,34 @@
 		</article>
 
 		<!-- % RIGHT -->
-		<div class="blog-item" id="blog-post-media">
+		<div class="cmbr-item cmbr-item-right" id="blog-post-media">
 			<!-- <span class="vt323" id="auth-status"></span> -->
-			<h3>Post <span id="displayed-post"></span></h3>
-			<h4><span id="blog-post-title"></span></h4>
+			<button x-show="duckedItem" class="trigger-box" @click="duckedItem =! duckedItem;">
+				<span x-text="'Display'"></span>
+			</button>
+			<div x-show="!duckedItem" x-transition>
+				<div class="blog-post-header">
+					<h3><span id="displayed-post" style="font-size: 1.5rem;"></span></h3>
+					<h4><span id="blog-post-title" style="font-size: 1.2rem;"></span></h4>
+				</div>
+				<hr class="hr-cmbr-dark-gradient">
+				<hr class="hr-groove-top">
 
-			<hr class="hr-cmbr-dark-gradient">
-			<hr class="hr-groove-top">
+				<div id="blog-post-tags">
+				</div>
 
-			<div id="blog-tags">
-				<div id="blog-post-tags"></div>
+				<div id="blog-map"></div>
+
+				<div id="blog-photos">
+				</div>
+
+				<div id="blog-music">
+					<div id="player"></div>
+				</div>
+
+				<hr class="hr-groove-bottom">
+				<hr class="hr-cmbr-dark-gradient">
 			</div>
-
-			<div id="blog-map"></div>
-
-			<div id="blog-photos">
-			</div>
-
-			<div id="blog-music">
-				<div id="player"></div>
-			</div>
-
-			<hr class="hr-groove-bottom">
-			<hr class="hr-cmbr-dark-gradient">
 		</div>
 
 	</main>

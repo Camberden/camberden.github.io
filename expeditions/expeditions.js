@@ -3,44 +3,12 @@
  * @typedef {Array<number[]>} coordinates
  */
 
+
+
 const expeditionsMapTitle = document.getElementById("expeditions-map-title");
 const expeditionsMap = L.map("expeditions-map");
 let expeditionsMapMarker;
 let expeditionsRegionPolygon = [];
-const expeditionsDump = [
-	["Milton Dan River", [36.540795, -79.215094],],
-	["Hyco Lake", [36.472599, -79.122269],],
-];
-/**
- * @type {Array<String, coordinates>}
- */
-const expeditionsRegion = [
-	// [35.885365, -79.018313],
-	// II Mason Farm Trail & Old Farm Trail
-
-	["Durham City limits beyond Jordan dam at Farrington Road", [35.887972, -78.988072],],
-	// II Durham City limits beyond Jordan dam at Farrington Road
-	// ["6911 Farrington Road, woods at Church, Water Rec", [35.897765, -78.988226],], 
-	// [35.889624, -78.961689], 
-	// Eagle Spur
-	["ATT Masey Creek", [35.895108, -78.953354],],
-	// ["Herndon Farm Masey Creek", [35.902226, -78.929038],],
-	// Tobacco Road Masey Creek
-	// [35.868902, -78.937111], 
-	// ["Crisp Road, Magic Hollow Creek / ATT", [35.87003, -78.935681],],
-	["Northeast Creek, Grandale", [35.871499, -78.914751],],
-	// ["Future Kit Creek Park", [35.852361, -78.899438],],
-	["ATT New Hope Church", [35.814090, -78.925183],],
-	["Martha's Chapel", [35.78842, -78.964179],],
-	// ["ATT White Oak", [35.784625, -78.920171],],
-	// ["ATT Green Level", [35.773930, -78.923219],],
-	// ["Mount Pisgah's Lick Branch ", [35.810575, -78.94568],],
-	["Farrington, South of Martha's", [35.782327, -79.01782],], // At Holland's Church, Farrington
-	["Jack Bennett & Big Woods, Herndon Creek", [35.815817, -79.047076],], // Jack Bennett & Big Woods, Herndon Creek
-
-	["Top of Unnamed Trail", [35.871416, -79.008039],],
-
-];
 
 /**
  * 
@@ -58,38 +26,13 @@ function getBorders(polygon) {
 	return regionCoords;
 }
 
-/**
- * @param {Array<String, coordinates>} overview String title with coordinates
- */
-const farringtonOverview = [
-	["Outset Overlook", [35.789656, -79.005929],],
-	["Wisteria Cypress Zone", [35.79241, -79.00936],],
-	["Pineconebird Island", [35.79611, -79.00990],],
-	["Game Land Descent", [35.79194, -78.99968],],
-	["Kippigrove", [35.79620, -78.99348],],
-	["Lick Branch Swamp Forest", [35.80689, -78.98007],], // lick branch swamp forest
-	["Emergent Peninsula", [35.81905, -78.97786],],
-	["Bamboo Grove 2", [35.801900, -79.012363],],
-	["Lystra Vista", [35.817500, -79.028789],],
-	["Overcup Coast", [35.813298, -79.028510],],
-	["Indian Creek Cypress Spikes", [35.815377, -78.975158],],
-];
-
-/**
- * @type {coordinates}
- */
-const occoneecheeLand = [
-	["Bamboo Grove 1", [36.07014, -79.110808]],
-	["Eno Mountain Ascent", [36.066949, -79.11525]],
-	["Occoneechee Overlook", [36.065034, -79.11839]],
-];
 
 
 /**
- * @param {Array<[String, coordinates]>} overview String title with coordinates
+ * @param {Overworld} overworld 
  */
-function initExpeditionsMap(overview) {
-	const latLng = overview[0][1];
+function initExpeditionsMap(overworld) {
+	const latLng = overworld.zones[0][1];
 	expeditionsMap.setView(latLng, 13);
 
 	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -108,13 +51,13 @@ function initExpeditionsMap(overview) {
 	/**
 	  * @type {coordinates} expeditionsMapBounds
 	  */
-	let expeditionsMapBounds = getBorders(expeditionsRegion);
+	let expeditionsMapBounds = getBorders(overworld.boundaries);
 
-	expeditionsRegion.forEach(coord => {
+	overworld.boundaries.forEach(coord => {
 		const vertex = L.circle(coord[1], {
 			radius: 100,
 			color: 'darkred',
-			fillOpacity: 1,
+			fillOpacity: 0.5,
 			fillColor: 'burlywood',
 
 		});
@@ -130,7 +73,7 @@ function initExpeditionsMap(overview) {
 
 
 
-	farringtonOverview.forEach(coord => {
+	overworld.zones.forEach(coord => {
 		const circle = L.circle(coord[1], {
 			radius: 50,
 			color: 'orangered',
@@ -169,10 +112,15 @@ function onMapClick(e) {
 		.openOn(expeditionsMap);
 }
 
+function selectOverworld(index) {
+	selectedOverworld = index;
+	initExpeditionsMap(expeditionOverworlds[index]);
+}
+
 
 (console.log("|=====| START |=====|=====>"), async () => {
 
-	initExpeditionsMap(farringtonOverview);
+	initExpeditionsMap(expeditionOverworlds[0]);
 
 	// console.log("https://www.youtube.com/watch?v=6uNkTqNSulY".split("v=")[1]);
 	// collectJSconfigs(canSupportIndexedDB());

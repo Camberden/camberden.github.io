@@ -6,6 +6,7 @@
 	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="./music.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../mediaquery.css" media="screen" />
 	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
@@ -17,21 +18,6 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<div id="header-and-return">
-		<div id="return">
-			<a class="marker" href="../index.html" data-route="/index.html">Return</a>
-		</div>
-		<div id="quick-links">
-			<div class="quick-links-grid-item">
-				<span id="soundcloud-link"><a href="https://soundcloud.com/camberden">[more, older music]</a></span>
-			</div>
-			<div class="quick-links-grid-item">
-				Now Playing: <span id="now-playing">Now Playing</span>
-			</div>
-		</div>
-	</div>
-
-
 	<!----- BEGIN MODALS ----->
 	<!-- To display track information coupled with an image, perhaps! -->
 	<div id="info-modal">
@@ -42,45 +28,54 @@
 	<!----- END MODALS ----->
 
 
-	<div class="music-grid">
+	<main class="cmbr-grid">
 
-		<div class="music-item">
-			<ul id="track-list"></ul>
+		<div class="cmbr-grid">
+			<div class="cmbr-item" cmbr-flexfixed-r>
+				<div>
+					<p>Now Playing: <span id="now-playing">Now Playing</span></p>
+					<span id="soundcloud-link"><a href="https://soundcloud.com/camberden">[more, older music]</a></span>
+				</div>
+				<hr class="hr-cmbr-gradient">
+
+				<button class="music-sort-button" value="all-music">All</button>
+				<button class="music-sort-button" value="finished">Finished</button>
+				<button class="music-sort-button" value="scraps">Scraps & Excerpts</button>
+				<hr>
+				<select id="sort-by-year" class="music-sort-select">
+					<option>By Year</option>
+				</select>
+				<select id="sort-by-album" class="music-sort-select">
+					<option>By Album</option>
+				</select>
+			</div>
+			<div class="cmbr-item">
+				<ul id="track-list"></ul>
+			</div>
+
 		</div>
 
-		<div class="music-item-main">
+		<div class="cmbr-item cmbr-item-center">
 
 
-			<div class="sub-music-grid">
-				<div class="sub-music-item" id="photo-box" onclick="audioEffects()">
-					<img src="../assets/artifacts/foxfire.jpeg">
-				</div>
-				<div class="sub-music-item grid-col-span-2">
-					<span id="track-player-controls">CONTROLS</span>
-				</div>
+			<!-- <div class="sub-music-grid"> -->
+			<div class="sub-music-item" id="photo-box" onclick="audioEffects()">
+				<img src="../assets/artifacts/foxfire.jpeg">
+			</div>
+			<div class="sub-music-item">
+				<span id="track-player-controls">CONTROLS</span>
 			</div>
 		</div>
 
-		<div class="music-item">
-			<button class="music-sort-button" value="all-music">All</button>
-			<button class="music-sort-button" value="finished">Finished</button>
-			<button class="music-sort-button" value="scraps">Scraps & Excerpts</button>
-			<hr>
-			<select id="sort-by-year" class="music-sort-select">
-				<option>By Year</option>
-			</select>
-			<select id="sort-by-album" class="music-sort-select">
-				<option>By Album</option>
-			</select>
-		</div>
 
-	</div>
+	</main>
+
 
 	<hr>
 	<div id="backdrop-low"></div>
 
-	< <script src="music.js">
-		</script>
+	<script src="music.js">
+	</script>
 </body>
 
 </html>

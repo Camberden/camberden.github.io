@@ -1,0 +1,9 @@
+<div id="expeditions-carousel-handle" class="grid-col-7x-1" style="display:contents;">
+	<button x-text="'<'"></button>
+	<template x-for="photo in 5">
+		<img :src="'/assets/travel-photos/photo-nc-us-' + photo + '.jpeg'" width="100" height="100"
+			@mouseover="$tooltip(photo); $el.style='border: 0.3rem inset burlywood; cursor: pointer;'"
+			@mouseout="$el.style='border: 0.3rem ridge transparent;'" style='border: 0.3rem ridge transparent;'>
+	</template>
+	<button x-text="'>'"></button>
+</div>

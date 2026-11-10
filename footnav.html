@@ -1,20 +1,30 @@
-<div class="footnav-hoist">
-	<hr class="hr-groove-bottom">
-	<hr class="hr-blass">
-	<hr id="footnav-anchor">
-	<hr class="hr-cmbr-gradient">
-	<hr class="hr-footnav-pad">
-	<hr class="hr-footnav-pad">
-	<hr class="hr-footnav-pad">
-</div>
+<footer id="footnav-handle" x-data="{
+	atIndex: CMBRutil.atSiteIndex(),
+	atExpeditions: CMBRutil.atSiteExpeditions(),
+	footnavOpen: false,
+	toggleFootnav: function() {
+		this.footnavOpen = !this.footnavOpen;
+	},
+}">
+	<div class="footnav-hoist">
+		<hr class="hr-groove-bottom">
+		<hr class="hr-blass">
+		<hr id="footnav-anchor">
+		<hr class="hr-cmbr-gradient">
+		<hr class="hr-footnav-pad" x-show="footnavOpen">
+		<hr class="hr-footnav-pad" x-show="footnavOpen">
+		<hr class="hr-footnav-pad" x-show="footnavOpen">
+	</div>
 
-<div id="footnav">
+	<div id="footnav">
 
-	<div class="footnav-sail" x-data="{ active: 0 }">
-		<!-----| footnav 1 |----->
-		<div id="footnav-1">
+		<div class="footnav-sail" x-data="{ active: 0 }" :style="footnavOpen ? 'height: 12rem;' : 'height: 3rem;'"
+			x-transition>
+			<!-----| footnav 1 |----->
+			<div id="footnav-1">
 
-			<div x-data="{
+
+				<!-- <div x-data="{
                             footnavOneTitle: 'footnavigation',
                             id: 5,
                             get expanded() {
@@ -24,47 +34,52 @@
                                 this.active = value ? this.id : null
                             },
                             }" role="region">
-				<button class="trigger-access-foot" type="button" @click="expanded = !expanded"
-					x-bind:hx-get="'/404.html'" hx-target="next slot" hx-trigger="load" hx-swap="innerHTML">
-					<div class="trigger-dropdown">
-						<span x-show="expanded" x-cloak>&DownArrow;</span>
-						<span x-show="!expanded" x-cloak>&UpArrow;</span>
-						<span class="vt323" x-text="footnavOneTitle"></span>
-						<span x-show="expanded" x-cloak>&DownArrow;</span>
-						<span x-show="!expanded" x-cloak>&UpArrow;</span>
-					</div>
-				</button>
-				<div class="trigger-collapse" x-show="expanded" x-collapse>
-					<slot x-ref="footnavSlot1" class="trigger-links">
-						<template x-show="expanded">
+					<button class="trigger-access-foot" type="button" @click="expanded = !expanded"
+						x-bind:hx-get="'/404.html'" hx-target="next slot" hx-trigger="load" hx-swap="innerHTML">
+						<div class="trigger-dropdown">
+							<span x-show="expanded" x-cloak>&DownArrow;</span>
+							<span x-show="!expanded" x-cloak>&UpArrow;</span>
+							<span class="vt323" x-text="footnavOneTitle"></span>
+							<span x-show="expanded" x-cloak>&DownArrow;</span>
+							<span x-show="!expanded" x-cloak>&UpArrow;</span>
+						</div>
+					</button>
+					<div class="trigger-collapse" x-show="expanded" x-collapse>
+						<slot x-ref="footnavSlot1" class="trigger-links">
+							<template x-show="expanded">
 
-						</template>
-					</slot>
-				</div>
+							</template>
+						</slot>
+					</div>
+				</div> -->
+
 			</div>
 
-		</div>
+			<!-----| footnav 2 |----->
+			<div id="footnav-2">
+			</div>
 
-		<!-----| footnav 2 |----->
-		<div id="footnav-2">
-		</div>
+			<!-----| footnav 3 |----->
+			<div id="footnav-3" class="cmbr-item">
+				<!-- <button hx-get="/template/rainfall.html" hx-target="#wet" hx-trigger="click" hx-swap="outerHTML"
+					class="trigger-access-foot affection" style="margin-inline-end: 0;" x-text="'Rainfall'">
+				</button> -->
+				<button class="cmbr-button" style="margin-inline-end: 0;" x-text="'Toggle Drawer'"
+					@click="toggleFootnav();">
+				</button>
+				<template x-if="atExpeditions">
+					<!-- <div class="grid-col-7x-1" x-show="footnavOpen">
+					</div> -->
+				</template>
+			</div>
 
-		<!-----| footnav 3 |----->
-		<div id="footnav-3">
-			<!-- <button hx-get="/template/rainfall.html" hx-target="#wet" hx-trigger="click" hx-swap="outerHTML"
-				class="trigger-access-foot affection" style="margin-inline-end: 0;" x-text="'Rainfall'">
-			</button> -->
-		</div>
+			<!-----| footnav 4 |----->
+			<div id="footnav-4">
+			</div>
 
-		<!-----| footnav 4 |----->
-		<div id="footnav-4">
-			<!-- <button class="trigger-access-foot affection" style="margin-inline-end: 0;" x-text="'Rainfall'">
-			</button> -->
-		</div>
-
-		<!-----| footnav 5 |----->
-		<div id="footnav-5">
-			<div x-data="{
+			<!-----| footnav 5 |----->
+			<div id="footnav-5">
+				<!-- <div x-data="{
                             footnavFiveTitle: 'Assortment',
                             id: 8,
                             get expanded() {
@@ -74,24 +89,26 @@
                                 this.active = value ? this.id : null
                             },
                             }" role="region">
-				<button class="trigger-access-foot" type="button" @click="expanded = !expanded"
-					x-bind:hx-get="'../blog/md/cmbr-bp-57.md'" hx-target="next slot" hx-trigger="load"
-					hx-swap="innerHTML">
-					<div class="trigger-dropdown">
-						<span x-show="expanded" x-cloak>&DownArrow;</span>
-						<span x-show="!expanded" x-cloak>&UpArrow;</span>
-						<span class="vt323" x-text="footnavFiveTitle"></span>
-						<span x-show="expanded" x-cloak>&DownArrow;</span>
-						<span x-show="!expanded" x-cloak>&UpArrow;</span>
-					</div>
-				</button>
-				<div class="trigger-collapse" x-show="expanded" x-collapse cmbr-left>
-					<slot x-ref="footnavSlot5" class="trigger-links">
-						<template x-show="expanded">
+					<button class="trigger-access-foot" type="button" @click="expanded = !expanded"
+						x-bind:hx-get="'../blog/md/cmbr-bp-57.md'" hx-target="next slot" hx-trigger="load"
+						hx-swap="innerHTML">
+						<div class="trigger-dropdown">
+							<span x-show="expanded" x-cloak>&DownArrow;</span>
+							<span x-show="!expanded" x-cloak>&UpArrow;</span>
+							<span class="vt323" x-text="footnavFiveTitle"></span>
+							<span x-show="expanded" x-cloak>&DownArrow;</span>
+							<span x-show="!expanded" x-cloak>&UpArrow;</span>
+						</div>
+					</button>
+					<div class="trigger-collapse" x-show="expanded" x-collapse cmbr-left>
+						<slot x-ref="footnavSlot5" class="trigger-links">
+							<template x-show="expanded">
 
-						</template>
-					</slot>
-				</div>
+							</template>
+						</slot>
+					</div>
+				</div> -->
 			</div>
 		</div>
 	</div>
+</footer>

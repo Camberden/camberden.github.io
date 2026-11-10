@@ -1,0 +1,109 @@
+/* !  §INDEX.HTML SPECIFIC |=====|>
+INDEX
+/* !  STYLES THAT MOSTLY BEFIT THE SPLASH PAGE |====================> */
+
+.cmbr-grid {
+	border: 0.3rem dotted transparent;
+	/* border: 0.3rem dotted greenyellow; */
+}
+
+@media screen and (max-width: 1200px) {
+
+	/* % 1 1 1 % */
+	.cmbr-grid {
+		border: 0.3rem dotted transparent;
+		/* border: 0.3rem dotted orange; */
+	}
+
+
+	.cmbr-item-left {
+		flex: 20%;
+		order: 1;
+		position: sticky;
+		height: 10rem;
+		background: black;
+		z-index: 10;
+	}
+
+	.cmbr-item-center {
+		flex: 80%;
+		order: 3;
+	}
+
+	.cmbr-item-right {
+		flex: 20%;
+		flex-direction: row;
+		order: 2;
+		position: sticky;
+		height: 10rem;
+		background: black;
+		z-index: 10;
+	}
+
+}
+
+@media screen and (max-width: 900px) {
+
+	.cmbr-grid {
+		border: 0.3rem dotted transparent;
+		/* border: 0.3rem dotted orangered; */
+	}
+
+	.cmbr-item-left {
+		flex: 20%;
+		order: 1;
+		position: sticky;
+		height: 10rem;
+		background: black;
+		z-index: 10;
+	}
+
+	.cmbr-item-center {
+		flex: 80%;
+		order: 3;
+	}
+
+	.cmbr-item-right {
+		flex: 20%;
+		flex-direction: row;
+		order: 2;
+		position: sticky;
+		height: 10rem;
+		background: black;
+		z-index: 10;
+	}
+
+}
+
+@media screen and (max-width: 700px) {
+
+	/* % 1 % */
+	.cmbr-grid {
+		border: 0.3rem dotted transparent;
+		/* border: 0.3rem dotted darkred; */
+	}
+
+	.cmbr-item-left {
+		flex: 20%;
+		order: 1;
+		position: sticky;
+		height: 10rem;
+		background: black;
+		z-index: 10;
+	}
+
+	.cmbr-item-center {
+		flex: 80%;
+		order: 3;
+	}
+
+	.cmbr-item-right {
+		flex: 20%;
+		flex-direction: row;
+		order: 2;
+		position: sticky;
+		height: 10rem;
+		background: black;
+		z-index: 10;
+	}
+}
