@@ -1,5 +1,6 @@
 <div x-data="{ 
     atHome: CMBRutil.atSiteIndex(),
+    atVday: CMBRutil.atSiteVday(),
     atLegacyHome: CMBRutil.atLegacyIndex(),
     basePath: document.location.origin + '/',
     homePage:  'Homepage ↺',
@@ -7,11 +8,12 @@
         links: {
                 internal: [
                     ['blog', 'Blog'],
-                    ['dashboard', 'Dashboard'],
+                    // ['dashboard', 'Dashboard'],
                     // ['musings', 'Musings'],
                     ['studies', 'Studies'],
                     ['music', 'Original Music'],
-                    ['expeditions', 'Expeditions']
+                    ['expeditions', 'Expeditions'],
+                    ['happy-veterans-day', 'Happy Veteran\'s Day!']
                 ],
                 external: {
                     'language': [

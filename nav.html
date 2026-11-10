@@ -1,6 +1,8 @@
 <div id="nav-handle" x-data="{ 
     atIndex: CMBRutil.atSiteIndex(),
     atBlog: CMBRutil.atSiteBlog(),
+    atExpeditions: CMBRutil.atSiteExpeditions(),
+    atVday: CMBRutil.atSiteVday(),
     sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
     four04Handle: CMBRutil.staticLinkTransform('404.html'),
     }" x-bg>
@@ -43,54 +45,6 @@
 
             <!-----| NAV 2 |----->
             <div id="nav-2">
-                <div x-data="{
-                            navTwoTitle: 'Options',
-                            id: 2,
-                            refDocs: {},
-                            get expanded() {
-                                return this.active === this.id
-                            },
-                            set expanded(value) {
-                                this.active = value ? this.id : null
-                            },
-                            }" role="region" x-effect="refDocs = await CMBRutil.connectCMBRjson(['studyDocs']);">
-                    <button class="trigger-access" type="button" @click="expanded = !expanded">
-                        <div class="trigger-dropdown">
-                            <span x-show="expanded" x-cloak>&UpArrow;</span>
-                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                            <span class="vt323" x-text="navTwoTitle"></span>
-                            <span x-show="expanded" x-cloak>&UpArrow;</span>
-                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                        </div>
-                    </button>
-                    <div class="trigger-collapse" x-show="expanded" cmbr-left x-collapse>
-                        <slot x-ref="navSlot2" class="trigger-links">
-                            <select id="nav-refDoc-select" @change="$refs.navRefDocSource.src = $el.value">
-                                <template x-for="(item, index) in refDocs" :key="index">
-                                    <option :value="item"
-                                        x-text="item.substring(item.lastIndexOf('/refdoc') + 8, item.lastIndexOf('.')).replaceAll('-', ' ')">
-                                    </option>
-                                </template>
-                            </select>
-                            <hr class="hr-cmbr-gradient">
-                            <iframe x-ref="navRefDocSource"
-                                src="../assets/reference-docs/refdoc-mat171-transformations.pdf" width="600"
-                                height="600"></iframe>
-                        </slot>
-                    </div>
-                </div>
-                <!-- ♪ -->
-            </div>
-
-            <!-----| NAV 3 |----->
-            <div id="nav-3">
-                <h1 class="h1-lamp">
-                    <span id="current-section"></span>
-                </h1>
-            </div>
-
-            <!-----| NAV 4 |----->
-            <div id="nav-4">
                 <template x-if="!atBlog">
                     <div x-data="{
                             id: 4,
@@ -149,9 +103,59 @@
                 </template>
             </div>
 
+            <!-----| NAV 3 |----->
+            <div id="nav-3">
+                <div class="h1-lamp">
+                    <span x-show="!atVday" id="current-section"></span>
+                    <span x-show="atVday" id="current-section" x-text="'Cheers!'"></span>
+                </div>
+            </div>
+
+            <!-----| NAV 4 |----->
+            <div id="nav-4">
+                <div x-data="{
+                            navTwoTitle: 'Options',
+                            id: 2,
+                            refDocs: {},
+                            get expanded() {
+                                return this.active === this.id
+                            },
+                            set expanded(value) {
+                                this.active = value ? this.id : null
+                            },
+                            }" role="region" x-effect="refDocs = await CMBRutil.connectCMBRjson(['studyDocs']);"
+                    x-show="!atVday && !atExpeditions">
+                    <button class="trigger-access" type="button" @click="expanded = !expanded">
+                        <div class="trigger-dropdown">
+                            <span x-show="expanded" x-cloak>&UpArrow;</span>
+                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                            <span class="vt323" x-text="navTwoTitle"></span>
+                            <span x-show="expanded" x-cloak>&UpArrow;</span>
+                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                        </div>
+                    </button>
+                    <div class="trigger-collapse" x-show="expanded" cmbr-left x-collapse>
+                        <slot x-ref="navSlot2" class="trigger-links">
+                            <select id="nav-refDoc-select" @change="$refs.navRefDocSource.src = $el.value">
+                                <template x-for="(item, index) in refDocs" :key="index">
+                                    <option :value="item"
+                                        x-text="item.substring(item.lastIndexOf('/refdoc') + 8, item.lastIndexOf('.')).replaceAll('-', ' ')">
+                                    </option>
+                                </template>
+                            </select>
+                            <hr class="hr-cmbr-gradient">
+                            <iframe x-ref="navRefDocSource"
+                                src="../assets/reference-docs/refdoc-mat171-transformations.pdf" width="600"
+                                height="600"></iframe>
+                        </slot>
+                    </div>
+                </div>
+                <!-- ♪ -->
+            </div>
+
             <!-----| NAV 5 |----->
             <div id="nav-5" x-data="{
-                            setting: 'dark',
+                            setting: document.body.dataset.theme,
                             getSetting: function(value) {
                                 return this.setting === value;
                             },

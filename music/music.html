@@ -60,16 +60,20 @@
 
 			<!-- <div class="sub-music-grid"> -->
 			<div class="sub-music-item" id="photo-box" onclick="audioEffects()">
-				<img src="../assets/artifacts/foxfire.jpeg">
+				<img src="../assets/artifacts/chrispy-collage.jpeg">
 			</div>
 			<div class="sub-music-item">
 				<span id="track-player-controls">CONTROLS</span>
 			</div>
+
 		</div>
+
 
 
 	</main>
 
+	<div hx-get="../template/mediatool.html" hx-target="this" hx-trigger="load" hx-swap="outerHTML">
+	</div>
 
 	<hr>
 	<div id="backdrop-low"></div>

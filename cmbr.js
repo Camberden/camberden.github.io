@@ -152,6 +152,7 @@ const cmbrTunes = [ // ../assets/music-tracks/music-
 	trackFruityFrolicField = new Tune("Fruity Frolic Field", 2016, "Audioshi Isle", "../assets/music-tracks/music-fruity-frolic-field.mp3", "../assets/artifacts/audioshi-isle.jpeg", true, false),
 	trackSixthMissionThrowback = new Tune("Sixth Mission Throwback", 2020, "Draft Compendium", "../assets/music-tracks/music-sixth-mission-throwback.mp3", "../assets/artifacts/foxfire.jpeg", true, false),
 	trackAGamesPostlude = new Tune("A Game's Postlude", 2012, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-a-games-postlude.mp3", "../assets/artifacts/foxfire.jpeg", true, false),
+	trackOpeningThematicStatement = new Tune("Opening Thematic Statement", 2012, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-opening-thematic-statement.mp4", "../assets/artifacts/foxfire.jpeg", true, false),
 	trackFirstDungeon = new Tune("First Dungeon", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-first-dungeon.mp3", "../assets/artifacts/foxfire.jpeg", true, false),
 	trackSixthMission = new Tune("Sixth Mission", 2010, "The Later Days of MusicalYoshi", "../assets/music-tracks/music-sixth-mission.m4a", "../assets/artifacts/foxfire.jpeg", true, false),
 	trackSecondCommune = new Tune("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", "../assets/artifacts/foxfire.jpeg", true, false),
@@ -507,7 +508,14 @@ const CMBRutil = {
 		}
 	},
 	atSiteExpeditions: function () {
-		if (document.location.href.includes("expeditions.html") || document.getElementsByTagName("title")[0].textContent.includes("Expeditions")) {
+		if (document.location.href.includes("expeditions.html")) {
+			return true;
+		} else {
+			return false;
+		}
+	},
+	atSiteVday: function () {
+		if (document.location.href.includes("happy-veterans-day.html")) {
 			return true;
 		} else {
 			return false;
