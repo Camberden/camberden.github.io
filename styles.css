@@ -711,10 +711,10 @@ X-COLLAPSE
 /* ! DROPDOWN TRIGGERS |====================> */
 
 .trigger-access {
-	z-index: 300;
-	position: sticky;
-	font-family: 'VT323' monospace;
+	font-family: 'vt323' monospace;
 	font-size: 1rem;
+	position: sticky;
+	z-index: 300;
 	color: var(--cmbr-blue);
 	margin-inline-end: 100%;
 	height: 3rem;
@@ -763,6 +763,7 @@ button>.trigger-access:hover {
 	width: max-content;
 	height: min-content;
 	max-height: 80vh;
+	max-width: 80vw;
 	text-align: start;
 	background-color: black;
 	overflow-x: scroll !important;
@@ -1235,6 +1236,7 @@ button:disabled:hover {
 .cmbr-button {
 	font-family: 'vt323', monospace;
 	font-size: 1rem;
+	font-weight: 500;
 	width: fit-content;
 	/* color: var(--cmbr-blue); */
 	max-height: 5rem;
@@ -1242,6 +1244,25 @@ button:disabled:hover {
 	box-sizing: content-box;
 	border: 0.3rem solid var(--cmbr-blass);
 	/* border-top: 0.3rem groove black; */
+
+	background: var(--cmbr-gradient);
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	background-repeat: no-repeat;
+	color: transparent;
+	user-select: none;
+}
+
+.cmbr-button-chrispy {
+	/* color: var(--cmbr-blue); */
+	font-family: 'vt323', monospace;
+	font-size: 1rem;
+	max-height: 3rem;
+	width: 12rem;
+	box-sizing: border-box;
+	border: 0.3rem solid black;
+	border-top: 0.3rem groove black;
+	/* background: rgb(37, 37, 37); */
 
 	background: var(--cmbr-gradient);
 	background-clip: border-box;
@@ -1918,19 +1939,19 @@ PARTITIONING TRIAL
 }
 
 .chrispyfruit-1 {
-	font-family: "Permanent Marker";
+	font-family: "PermanentMarker";
 	color: var(--cmbr-blue);
 	text-shadow: 1px 1px var(--cmbr-indigo);
 }
 
 .chrispyfruit-2 {
-	font-family: "Permanent Marker";
+	font-family: "PermanentMarker";
 	color: var(--cmbr-blue);
 	text-shadow: 0.3rem 0.3rem var(--cmbr-indigo);
 }
 
 .chrispyfruit-3 {
-	font-family: "Permanent Marker";
+	font-family: "PermanentMarker";
 	color: burlywood;
 	text-shadow: 0.2rem 0.2rem var(--cmbr-indigo);
 }

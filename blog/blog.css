@@ -135,7 +135,7 @@ main {
 	user-select: none;
 }
 
-.cmbr-button {
+/* .cmbr-button {
 	font-family: 'vt323', monospace;
 	font-size: 1rem;
 	color: var(--cmbr-blue);
@@ -144,15 +144,13 @@ main {
 	box-sizing: border-box;
 	border: 0.3rem solid black;
 	border-top: 0.3rem groove black;
-	/* background: rgb(37, 37, 37); */
-	background: var(--cmbr-gradient);
+	background: var(--cmbr-gradient); */
 
-	background-clip: border-box;
+/* background-clip: border-box;
 	-webkit-background-clip: text;
 	background-repeat: no-repeat;
 	color: transparent;
-	user-select: none;
-}
+	user-select: none; */
 
 #blog-map {
 	height: 10rem;

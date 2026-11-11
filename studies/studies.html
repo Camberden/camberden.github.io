@@ -45,13 +45,13 @@
 		}" x-effect="studyFrames = await CMBRutil.connectCMBRjson(['studyDocs']);">
 
 		<div class="cmbr-item">
-			<button class="trigger-box" @click="studyView = 'poems'" x-show="studyView !== 'poems'"
+			<button class="cmbr-button" @click="studyView = 'poems'" x-show="studyView !== 'poems'"
 				x-text="'Poem View'"></button>
-			<button class="trigger-box" @click="studyView = 'frames'" x-show="studyView !== 'frames'"
+			<button class="cmbr-button" @click="studyView = 'frames'" x-show="studyView !== 'frames'"
 				x-text="'Frame View'"></button>
-			<button class="trigger-box" @click="studyView = 'quizzes'" x-show="studyView !== 'quizzes'"
+			<button class="cmbr-button" @click="studyView = 'quizzes'" x-show="studyView !== 'quizzes'"
 				x-text="'Quiz View'"></button>
-			<button class="trigger-box" @click="toggleUtilitiesView()" x-text="'Utilities'"></button>
+			<button class="cmbr-button" @click="toggleUtilitiesView()" x-text="'Utilities'"></button>
 			<div id="mdeditor-handle" class="typingfield" style="text-align: left;" x-data="{
 						value: '',
 						init() {
@@ -76,8 +76,8 @@
 		<article class="cmbr-item">
 			<div x-show="studyView === 'poems'">
 				<div>
-					<button id="previous-poem" class="trigger-box" @click="previousPoem();">Previous</button>
-					<button id="next-poem" class="trigger-box" @click="nextPoem();">Next</button>
+					<button id="previous-poem" class="cmbr-button" @click="previousPoem();">Previous</button>
+					<button id="next-poem" class="cmbr-button" @click="nextPoem();">Next</button>
 				</div>
 				<hr class="hr-cmbr-dark-gradient">
 
@@ -98,7 +98,12 @@
 			</div>
 
 
-			<div x-show="studyView === 'quiz'">
+			<div x-show="studyView === 'quizzes'">
+				<div class="cmbr-item">
+					<hr class="hr-trans">
+					<div vid-paused cmbr-loading></div>
+					<hr class="hr-trans">
+				</div>
 			</div>
 
 			<hr class="hr-push-down">
