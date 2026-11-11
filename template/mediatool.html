@@ -1,4 +1,4 @@
-<div id="cmbr-player-handle" class="index-item" x-data="{
+<div id="cmbr-player-handle" x-data="{
 			allTunes: cmbrTunes,
 			selectedTune: cmbrTunes[0],
 			speechlessTune: '../assets/music-tracks/music-speechless.vtt',
@@ -154,7 +154,7 @@
 			</menu>
 		</figcaption>
 
-		<video x-ref="cmbrVideo" id="cmbr-video" controls="true" videoHeight="50" videoWidth="50"
+		<video x-ref="cmbrVideo" id="cmbr-video" controls="true" videoHeight="100" videoWidth="100"
 			disablePictureInPicture="true" loop preload="metadata" x-effect="$el.controls = false"
 			poster="../assets/artifacts/foxfire.jpeg"
 			@onloadedmetadata=" vidTime=parseFloat($el.currentTime).toFixed(trackDecimalPrecision); vidDuration=parseFloat($el.duration).toFixed(trackDecimalPrecision); "
@@ -220,4 +220,3 @@
 
 	</figure>
 </div>
-<hr class="hr-push-down">

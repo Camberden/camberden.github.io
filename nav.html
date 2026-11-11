@@ -1,17 +1,17 @@
 <div id="nav-handle" x-data="{ 
-    atIndex: CMBRutil.atSiteIndex(),
-    atBlog: CMBRutil.atSiteBlog(),
-    atExpeditions: CMBRutil.atSiteExpeditions(),
-    atVday: CMBRutil.atSiteVday(),
-    sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
-    four04Handle: CMBRutil.staticLinkTransform('404.html'),
+        atIndex: CMBRutil.atSiteIndex(),
+        atBlog: CMBRutil.atSiteBlog(),
+        atExpeditions: CMBRutil.atSiteExpeditions(),
+        atVday: CMBRutil.atSiteVday(),
+        sectionsHandle: CMBRutil.staticLinkTransform('sections.html'),
+        four04Handle: CMBRutil.staticLinkTransform('404.html'),
     }" x-bg>
 
-    <template x-if=" !atIndex" x-show="$store.navStore.on">
+    <template x-if="!atIndex" x-show="$store.navStore.on">
         <div class="nav-sail">
+
             <!-----| NAV 1 |----->
             <div id="nav-1" x-data="{ active: 0 }">
-
                 <div x-data="{
                             navOneTitle: 'Navigation',
                             id: 1,
@@ -22,149 +22,180 @@
                                 this.active = value ? this.id : null
                             },
                             }" role="region">
+
                     <button class="trigger-access" type="button" @click="expanded = !expanded"
                         x-bind:hx-get="sectionsHandle" hx-target="next slot" hx-trigger="load" hx-swap="innerHTML">
-                        <div class="trigger-dropdown">
+                        <div class="trigger-dropdown vt323">
                             <span x-show="expanded" x-cloak>&UpArrow;</span>
                             <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                            <span class="vt323" x-text="navOneTitle"></span>
+                            <span x-text="navOneTitle"></span>
                             <span x-show="expanded" x-cloak>&UpArrow;</span>
                             <span x-show="!expanded" x-cloak>&DownArrow;</span>
                         </div>
                     </button>
+
                     <div class="trigger-collapse" x-show="expanded" x-collapse>
                         <slot x-ref="navSlot1" class="trigger-links">
                             <template x-show="expanded">
-
                             </template>
                         </slot>
                     </div>
                 </div>
-
             </div>
 
             <!-----| NAV 2 |----->
             <div id="nav-2">
                 <template x-if="!atBlog">
                     <div x-data="{
-                            id: 4,
-                            tubeVids: {},
-                            get expanded() {
-                                return this.active === this.id
-                            },
-                            set expanded(value) {
-                                this.active = value ? this.id : null
-                            },
-                            tubeVideoInput: '',
-                            tubeListHover: false,
-                            vidSubmit: false,
-                            getTubeVidId: function(str) {
-                                return str.split('v=')[1];
-                            },
-                            getNowPlaying: function() {
-                                return nowPlaying;
-                            }
-                    }" role="region" x-effect="tubeVids = await CMBRutil.connectCMBRjson(['tubeVideos']);">
+                                id: 2,
+                                tubeVids: {},
+                                get expanded() {
+                                    return this.active === this.id;
+                                },
+                                set expanded(value) {
+                                    this.active = value ? this.id : null;
+                                },
+                                tubeVideoInput: '',
+                                tubeListHover: false,
+                                vidSubmit: false,
+                                getTubeVidId: function(str) {
+                                    return str.split('v=')[1];
+                                },
+                                getNowPlaying: function() {
+                                    return nowPlaying;
+                                }
+                        }" role="region" x-effect="tubeVids = await CMBRutil.connectCMBRjson(['tubeVideos']);">
 
                         <button class="trigger-access" type="button" @click="expanded = !expanded">
-                            <div class="trigger-dropdown">
+                            <div class="trigger-dropdown vt323">
                                 <span x-show="expanded" x-cloak>&UpArrow;</span>
                                 <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                                <span class="vt323" x-text="'Player'"></span>
+                                <span x-text="'Player'"></span>
                                 <span x-show="expanded" x-cloak>&UpArrow;</span>
                                 <span x-show="!expanded" x-cloak>&DownArrow;</span>
                             </div>
                         </button>
-                        <div class="trigger-collapse" x-show="expanded" x-collapse>
-                            <slot x-ref="navSlot4" class="trigger-links">
-                                <div id="player"></div>
-                                <label for="tube-video-input"></label>
-                                <input id="tube-video-input" class="cmbr-input-1" style="width:100%;"
-                                    name="tube-video-input" x-ref="tubeVidRef" x-model="tubeVideoInput" type="text"
-                                    placeholder="Paste tube video address!"
-                                    x-effect="tubeVideoInput.length >= 1 ? vidSubmit = true : vidSubmit = false;" />
-                                <hr class="hr-cmbr-dark-gradient">
-                                <div class="grid-col-1-1">
-                                    <button class="trigger-box" x-show="!vidSubmit" x-text="'⨂'" disabled></button>
-                                    <button class="trigger-box" x-show="vidSubmit"
-                                        @click="tubeVideoIdentity=getTubeVidId(tubeVideoInput); $nextTick(() => { loadTubeVideo(); tubeVideoInput = ''; })"
-                                        x-text="'Load Video'"></button>
-                                    <select
-                                        @change="tubeVideoIdentity = $el.value; $nextTick(() => { loadTubeVideo(); })">
-                                        <option x-text="'Select Video'" disabled></option>
-                                        <template x-for="(item, index) in tubeVids" :key="index">
-                                            <option x-text="getTubeVidId(item)"></option>
-                                        </template>
-                                    </select>
-                                </div>
-                            </slot>
-                        </div>
-                    </div> <!-- % END YOUTUBE PLAYER HANDLE % -->
+
+                        <div class="trigger-collapse" x-show="expanded" cmbr-right x-collapse>
+                            <div>
+                                <b class="chrispy"
+                                    style="background-image: var(--cmbr-legacy-gradient); font-size: 1.3rem;"
+                                    x-text="'Youtube Player'"></b>
+                                <hr class="hr-cmbr-legacy-gradient"><br>
+                            </div>
+                            <div style="padding: 0.1rem; border-bottom: 0.3rem ridge black !important;">
+                                <slot x-ref="navSlot2" class="trigger-links">
+                                    <div id="player"></div>
+                                    <label for="tube-video-input"></label>
+                                    <input id="tube-video-input" class="cmbr-input-1" style="width:100%;"
+                                        name="tube-video-input" x-ref="tubeVidRef" x-model="tubeVideoInput" type="text"
+                                        placeholder="Paste tube video address!"
+                                        x-effect="tubeVideoInput.length >= 1 ? vidSubmit = true : vidSubmit = false;" />
+                                    <hr class="hr-cmbr-dark-gradient">
+                                    <div class="grid-col-1-1">
+                                        <button class="trigger-box" x-show="!vidSubmit" x-text="'⨂'" disabled></button>
+                                        <button class="trigger-box" x-show="vidSubmit"
+                                            @click="tubeVideoIdentity=getTubeVidId(tubeVideoInput); $nextTick(() => { loadTubeVideo(); tubeVideoInput = ''; })"
+                                            x-text="'Load Video'"></button>
+                                        <select
+                                            @change="tubeVideoIdentity = $el.value; $nextTick(() => { loadTubeVideo(); })">
+                                            <option x-text="'Select Video'" disabled></option>
+                                            <template x-for="(item, index) in tubeVids" :key="index">
+                                                <option x-text="getTubeVidId(item)"></option>
+                                            </template>
+                                        </select>
+                                    </div>
+                                </slot>
+                            </div>
+                            <div>
+                                <b class="chrispy"
+                                    style="background-image: var(--cmbr-legacy-gradient); font-size: 1.3rem;"
+                                    x-text="'CMBR Mediatool'"></b>
+                                <hr class="hr-cmbr-legacy-gradient"><br>
+                            </div>
+                            <div hx-get="../template/mediatool.html" hx-target="this" hx-trigger="load"
+                                hx-swap="innerHTML"
+                                style="width:100%; text-align: center; justify-content: center; align-items:center;">
+                            </div>
+                        </div> <!-- % END YOUTUBE PLAYER HANDLE % -->
                 </template>
             </div>
 
             <!-----| NAV 3 |----->
-            <div id="nav-3">
-                <div class="h1-lamp">
-                    <span x-show="!atVday" id="current-section"></span>
-                    <span x-show="atVday" id="current-section" x-text="'Cheers!'"></span>
+            <div id="nav-3" x-data="{
+                currentSection: '',
+                loadSection: function(){
+                    if (!atVday) {
+                        this.currentSection = (window.location.pathname).slice(window.location.pathname.lastIndexOf('/') + 1,
+                -5).toLowerCase();
+                    };
+                    if (atVday) {
+                        this.currentSection = 'Cheers!';
+                    };
+                    return this.currentSection;
+                }
+            }">
+                <div>
+                    <h1 id="current-section" class="h1-lamp" x-effect="$el.innerHTML=loadSection();"></h1>
                 </div>
             </div>
 
             <!-----| NAV 4 |----->
             <div id="nav-4">
-                <div x-data="{
-                            navTwoTitle: 'Options',
-                            id: 2,
-                            refDocs: {},
-                            get expanded() {
-                                return this.active === this.id
-                            },
-                            set expanded(value) {
-                                this.active = value ? this.id : null
-                            },
-                            }" role="region" x-effect="refDocs = await CMBRutil.connectCMBRjson(['studyDocs']);"
-                    x-show="!atVday && !atExpeditions">
-                    <button class="trigger-access" type="button" @click="expanded = !expanded">
-                        <div class="trigger-dropdown">
-                            <span x-show="expanded" x-cloak>&UpArrow;</span>
-                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                            <span class="vt323" x-text="navTwoTitle"></span>
-                            <span x-show="expanded" x-cloak>&UpArrow;</span>
-                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                <template x-if="!atVday">
+                    <div x-data="{
+                                navFourTitle: 'Options',
+                                id: 4,
+                                refDocs: {},
+                                get expanded() {
+                                    return this.active === this.id
+                                },
+                                set expanded(value) {
+                                    this.active = value ? this.id : null
+                                },
+                                }" role="region" x-effect="refDocs = await CMBRutil.connectCMBRjson(['studyDocs']);">
+
+                        <button class="trigger-access" type="button" @click="expanded = !expanded">
+                            <div class="trigger-dropdown vt323">
+                                <span x-show="expanded" x-cloak>&UpArrow;</span>
+                                <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                                <span x-text="navFourTitle"></span>
+                                <span x-show="expanded" x-cloak>&UpArrow;</span>
+                                <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                            </div>
+                        </button>
+                        <div class="trigger-collapse" x-show="expanded" cmbr-left x-collapse>
+                            <slot x-ref="navSlot4" class="trigger-links">
+                                <select id="nav-refDoc-select" @change="$refs.navRefDocSource.src = $el.value">
+                                    <template x-for="(item, index) in refDocs" :key="index">
+                                        <option :value="item"
+                                            x-text="item.substring(item.lastIndexOf('/refdoc') + 8, item.lastIndexOf('.')).replaceAll('-', ' ')">
+                                        </option>
+                                    </template>
+                                </select>
+                                <hr class="hr-cmbr-gradient">
+                                <iframe x-ref="navRefDocSource"
+                                    src="../assets/reference-docs/refdoc-mat171-transformations.pdf" width="600"
+                                    height="600"></iframe>
+                            </slot>
                         </div>
-                    </button>
-                    <div class="trigger-collapse" x-show="expanded" cmbr-left x-collapse>
-                        <slot x-ref="navSlot2" class="trigger-links">
-                            <select id="nav-refDoc-select" @change="$refs.navRefDocSource.src = $el.value">
-                                <template x-for="(item, index) in refDocs" :key="index">
-                                    <option :value="item"
-                                        x-text="item.substring(item.lastIndexOf('/refdoc') + 8, item.lastIndexOf('.')).replaceAll('-', ' ')">
-                                    </option>
-                                </template>
-                            </select>
-                            <hr class="hr-cmbr-gradient">
-                            <iframe x-ref="navRefDocSource"
-                                src="../assets/reference-docs/refdoc-mat171-transformations.pdf" width="600"
-                                height="600"></iframe>
-                        </slot>
                     </div>
-                </div>
+                </template>
                 <!-- ♪ -->
             </div>
 
             <!-----| NAV 5 |----->
             <div id="nav-5" x-data="{
-                            setting: document.body.dataset.theme,
-                            getSetting: function(value) {
-                                return this.setting === value;
-                            },
-                            toggleMode: function (value){
-                                this.setting = value;
-                                Alpine.store('thematic').setMode(value);
-                                document.body.dataset.theme = this.setting;
-                            },
-                            }" x-init="$watch('setting', value => console.info(setting + ' mode active.'))">
+                                setting: document.body.dataset.theme,
+                                getSetting: function(value) {
+                                    return this.setting === value;
+                                },
+                                toggleMode: function (value){
+                                    this.setting = value;
+                                    Alpine.store('thematic').setMode(value);
+                                    document.body.dataset.theme = this.setting;
+                                },
+                                }" x-init="$watch('setting', value => console.info(setting + ' mode active.'))">
                 <span id="dark" class="data-theme-button"
                     :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
                     @click="toggleMode($el.id)">🌙</span>
@@ -176,14 +207,14 @@
                     @click="toggleMode($el.id)">🪻</span>
             </div>
         </div>
-</div>
-</div>
+    </template>
 
-<div class="nav-hoist">
-    <hr class="hr-nav-pad">
-    <hr class="hr-blass">
-    <hr class="hr-cmbr-gradient">
-    <hr id="nav-anchor" class="hr-groove-top">
-</div>
-</template>
+    <template x-if="!atIndex">
+        <div class="nav-hoist">
+            <hr class="hr-nav-pad">
+            <hr class="hr-cmbr-gradient" style="position: fixed; height: 1rem;">
+            <hr class="hr-cmbr-gradient">
+            <hr id="nav-anchor" class="hr-groove-top">
+        </div>
+    </template>
 </div>

@@ -38,9 +38,9 @@
 				</div>
 				<hr class="hr-cmbr-gradient">
 
-				<button class="music-sort-button" value="all-music">All</button>
-				<button class="music-sort-button" value="finished">Finished</button>
-				<button class="music-sort-button" value="scraps">Scraps & Excerpts</button>
+				<button class="music-sort-button cmbr-button" value="all-music">All</button>
+				<button class="music-sort-button cmbr-button" value="finished">Finished</button>
+				<button class="music-sort-button cmbr-button" value="scraps">Scraps & Excerpts</button>
 				<hr>
 				<select id="sort-by-year" class="music-sort-select">
 					<option>By Year</option>
@@ -72,7 +72,10 @@
 
 	</main>
 
-	<div hx-get="../template/mediatool.html" hx-target="this" hx-trigger="load" hx-swap="outerHTML">
+	<div class="cmbr-item" style="position: fixed; bottom:0;">
+		<div hx-get="../template/mediatool.html" hx-target="this" hx-trigger="load" hx-swap="outerHTML">
+		</div>
+
 	</div>
 
 	<hr>

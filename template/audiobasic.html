@@ -1,0 +1,36 @@
+<div id="audiobasic-handle" style="position: fixed; bottom: 0; right: 0; z-index: 100; " x-data="{
+	currentMusicnote: '🔇',
+	musicnotes: ['♪', '𝄞', '♫', '𝄢', '♬', '♯'],
+	audiobasicLoading: 'loading...',
+	audiobasicFile: new Audio('../assets/music-tracks/music-opening-thematic-statement.mp4'),
+	audiobasicDelay: function(audio) {
+		const delayAudiobasicInit = setTimeout(() => {
+			audio.play();
+			clearTimeout(delayAudiobasicInit);
+		}, 1000);
+	},
+	audiobasicGraphic: function(audio) {
+
+		let c = 0;
+		const musicnoteCycle = setInterval(() => {
+		if (!audio.paused) {
+			(c + 1) === this.musicnotes.length ? c = 0 : ++c;
+			this.currentMusicnote = this.musicnotes[c];
+		} else {
+			this.currentMusicnote = '🔇';
+		}
+	}, 1050);
+	},
+	}">
+	<div style="font-size: 2rem; text-align: right; box-sizing: border-box; border-right: 1rem solid transparent;">
+		<span class="caution" style="padding: 0.5rem; text-align: center; color:red; text-shadow: 2px 2px white;"
+			x-text="currentMusicnote">
+		</span>
+	</div>
+	<div style="border-left: 0.5rem groove black; border-top: 0.5rem outset black; padding: 0.3rem;">
+		<audio x-ref="audiobasicPlayer" preload="auto" controls
+			x-effect="audiobasicDelay($el); audiobasicGraphic($el);">
+			<source :src="audiobasicFile.src" type="audio/mpeg">
+		</audio>
+	</div>
+</div>

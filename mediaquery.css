@@ -9,6 +9,18 @@ INDEX
 
 @media screen and (max-width: 1200px) {
 
+	#current-section {
+		display: none;
+	}
+
+	.cmbr-speech-box {
+		width: 80%;
+	}
+
+	.data-theme-button {
+		display: none;
+	}
+
 	/* % 1 1 1 % */
 	.cmbr-grid {
 		border: 0.3rem dotted transparent;
@@ -49,6 +61,10 @@ INDEX
 		/* border: 0.3rem dotted orangered; */
 	}
 
+	.cmbr-speech-box {
+		width: 90%;
+	}
+
 	.cmbr-item-left {
 		flex: 20%;
 		order: 1;
@@ -83,6 +99,10 @@ INDEX
 		/* border: 0.3rem dotted darkred; */
 	}
 
+	.cmbr-speech-box {
+		width: 100%;
+	}
+
 	.cmbr-item-left {
 		flex: 20%;
 		order: 1;
@@ -105,5 +125,9 @@ INDEX
 		height: 10rem;
 		background: black;
 		z-index: 10;
+	}
+
+	.cmbr-item-lower {
+		order: 2;
 	}
 }

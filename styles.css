@@ -178,6 +178,7 @@ LIGHT & DARK MODES
 [data-theme="light"] {
 	--font-color: orchid;
 	--link-color: var(--mo-2-5);
+	--section-title: rgb(221, 37, 235);
 	--bg-image: var(--mosky-7);
 	--bg-color: none;
 	--bg-color-svg: none;
@@ -278,6 +279,10 @@ CMBRgrid
 
 }
 
+.cmbr-speech-box {
+	width: 70%;
+}
+
 .cmbr-item {
 
 	padding: var(--cmbr-com-pnl-padding);
@@ -332,6 +337,17 @@ CMBRgrid
 }
 
 .cmbr-item-upper {
+	order: 1;
+	flex: 30%;
+	/* box-sizing: content-box; */
+	top: 10%;
+	/* height: 45rem; */
+	overflow-x: hidden;
+	overflow-y: scroll;
+	scroll-behavior: smooth;
+}
+
+.cmbr-item-lower {
 	order: 1;
 	flex: 30%;
 	/* box-sizing: content-box; */
@@ -434,7 +450,7 @@ ul {
 /* !  TOP HOISTED BAR WITH DROPDOWN TRIGGERS |====================> */
 nav {
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	width: 100%;
 	height: 3rem;
 	background-image: url("./images/cmbr-curtain.svg");
@@ -461,12 +477,15 @@ nav {
 }
 
 #nav-2 {
-	user-select: none;
+	contain: style;
+	z-index: 100;
+	/* user-select: none;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	justify-content: center; */
 	text-align: center;
-
+	position: sticky;
+	/* right: 0; */
 	/* border-left: 0.5rem outset rgba(0, 0, 0, 0%);
 	border-right: 0.5rem inset rgba(0, 0, 0, 0%);
 	border-bottom: 0.5rem outset rgba(0, 0, 0, 50%);
@@ -474,7 +493,7 @@ nav {
 }
 
 [nav-div] {
-	/* animation: navdiv 1s linear; */
+	animation: navdiv 1s linear;
 	contain: style;
 }
 
@@ -520,14 +539,20 @@ nav {
 }
 
 #nav-3 {
+	contain: style;
+	z-index: 100;
 	text-align: center;
 }
 
 #nav-4 {
+	contain: style;
+	z-index: 100;
 	text-align: left;
 }
 
 #nav-5 {
+	contain: style;
+	z-index: 100;
 	position: fixed;
 	right: 0;
 
@@ -542,7 +567,7 @@ nav {
 	top: 0;
 	width: 3rem;
 	height: 10rem;
-	background-image: url("./images/cmbr-sig-transform.svg");
+	background-image: url("images/cmbr-sig-transform.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	transform: rotate(30deg);
@@ -550,7 +575,7 @@ nav {
 }
 
 #nav-sig:hover {
-	background-image: url("./images/cmbr-sig.svg");
+	background-image: url("images/cmbr-sig.svg");
 }
 
 .nav-hoist {
@@ -571,13 +596,25 @@ nav {
 	user-select: none;
 	font-size: 2rem;
 	font-family: "PermanentMarker", monospace;
+	background: var(--cmbr-legacy-gradient);
+	/* background: transparent; */
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	background-repeat: no-repeat;
+	color: transparent;
+	transition: text-shadow 10s ease-in-out;
+}
+
+.boom {
+	user-select: none;
+	font-size: 2rem;
+	font-family: "PermanentMarker", monospace;
 	/* background: var(--cmbr-legacy-gradient); */
 	background: transparent;
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	background-repeat: no-repeat;
 	color: transparent;
-	transition: text-shadow 10s ease-in-out;
 }
 
 [camberlamp] {
@@ -607,7 +644,7 @@ nav {
 	width: 100%;
 	height: 3rem;
 	/* background-image: url("../images/cmbr-curtain.svg"); */
-	background-image: url("./images/cmbr-sig-transform.svg");
+	background-image: url("images/cmbr-sig-transform.svg");
 }
 
 .footnav-sail {
@@ -675,17 +712,17 @@ X-COLLAPSE
 
 .trigger-access {
 	z-index: 300;
-	position: relative;
-	font-family: monospace;
+	position: sticky;
+	font-family: 'VT323' monospace;
 	font-size: 1rem;
 	color: var(--cmbr-blue);
 	margin-inline-end: 100%;
 	height: 3rem;
 	max-height: 3rem;
-	width: 12rem;
+	width: max-content;
 	box-sizing: border-box;
 	border: 0.3rem solid black;
-	border-bottom: 0.3rem groove black;
+	border-bottom: 0.5rem groove black;
 	background: rgb(37, 37, 37);
 }
 
@@ -697,25 +734,25 @@ X-COLLAPSE
 	color: var(--cmbr-blue);
 	margin-inline-end: 100%;
 	max-height: 3rem;
-	width: 12rem;
+	width: max-content;
 	box-sizing: border-box;
 	border: 0.3rem solid black;
 	border-top: 0.3rem groove black;
 	background: rgb(37, 37, 37);
 }
 
-button>.trigger-access-foot:hover,
+/* button>.trigger-access-foot:hover,
 button>.trigger-access:hover {
 	cursor: pointer;
 	color: cadetblue !important;
 	border-bottom: 0.3rem groove black;
 	background-color: var(--cmbr-curtain-plum);
-}
+} */
 
 .trigger-access-foot:active,
 .trigger-access:active {
-	color: burlywood;
-	background-color: rgb(16, 16, 16);
+	color: sienna;
+	background-color: var(--cmbr-curtain-plum);
 }
 
 .trigger-collapse {
@@ -723,8 +760,9 @@ button>.trigger-access:hover {
 	z-index: 300;
 	border: 0.5rem groove black;
 	padding: 0.2rem;
-	width: fit-content;
-	height: fit-content;
+	width: max-content;
+	height: min-content;
+	max-height: 80vh;
 	text-align: start;
 	background-color: black;
 	overflow-x: scroll !important;
@@ -753,7 +791,12 @@ button>.trigger-access:hover {
 }
 
 .trigger-dropdown:hover {
-	color: cadetblue;
+	color: var(--cmbr-orange);
+	background-color: rgb(37, 37, 37);
+}
+
+.trigger-dropdown:active {
+	color: sienna;
 }
 
 [cmbr-left] {
@@ -774,7 +817,6 @@ SECTIONS
 	display: flex;
 	align-items: stretch;
 	box-sizing: border-box;
-	/* color: var(--cmbr-blue); */
 	font-family: "Lora";
 	font-style: bold;
 	padding: 1rem;
@@ -815,7 +857,6 @@ SECTIONS
 
 .section-title>a {
 	color: var(--section-title);
-	/* color: var(--cmbr-blue); */
 
 	box-sizing: border-box;
 	width: 100%;
@@ -1002,9 +1043,15 @@ mark {
 }
 
 .admiration {
-	color: var(--mo1-5);
-	font-family: "PermanentMarker", monospace;
-	font-size: var(--cmbr-font-size);
+	font-family: "Permanent Marker", sans-serif;
+	background: var(--cmbr-legacy-gradient);
+	border-bottom: 0.3rem solid var(--clr-grid-box);
+
+	background-clip: border-box;
+	-webkit-background-clip: text;
+	background-repeat: no-repeat;
+	color: transparent;
+	user-select: none;
 }
 
 .caution {
@@ -1128,19 +1175,20 @@ cash::before per::after
 button {
 	cursor: pointer;
 	user-select: none;
-	font-family: "Lora", "sans-serif";
+	/* font-family: "Lora", "sans-serif"; */
 	font-weight: 500;
-	color: burlywood;
-	background: var(--cmbr-dark-ash);
+	/* color: burlywood; */
+	/* background: var(--cmbr-dark-ash); */
 	padding: 0.5rem;
-	border: 0.5rem ridge cornflowerblue;
-	box-sizing: border-box;
-	box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--cmbr-dark-grey);
-	transition: color 0.2s ease-in;
+	/* border: 0.5rem ridge cornflowerblue; */
+	/* box-sizing: border-box; */
+	/* box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem var(--cmbr-dark-grey); */
+	transition: color 0.1s ease-in;
+	transition: border 0.1s ease-in;
 }
 
 button:hover :not(.trigger-box) {
-	position: sticky;
+	/* position: sticky; */
 	border-color: black;
 	/* color: var(--cmbr-orange); */
 	background: transparent;
@@ -1160,7 +1208,8 @@ button:disabled {
 }
 
 button:disabled:hover {
-	background: black;
+	background: #0b313d;
+	;
 }
 
 .button-toggled {
@@ -1185,15 +1234,14 @@ button:disabled:hover {
 
 .cmbr-button {
 	font-family: 'vt323', monospace;
-	font-size: 3rem;
-	/* width: fit-content; */
-	color: var(--cmbr-blue);
+	font-size: 1rem;
+	width: fit-content;
+	/* color: var(--cmbr-blue); */
 	max-height: 5rem;
-	min-width: 3rem;
+	/* min-width: 3rem; */
 	box-sizing: content-box;
-	border: 0.3rem solid black;
+	border: 0.3rem solid var(--cmbr-blass);
 	/* border-top: 0.3rem groove black; */
-	/* background: rgb(37, 37, 37); */
 
 	background: var(--cmbr-gradient);
 	background-clip: border-box;
@@ -1205,6 +1253,7 @@ button:disabled:hover {
 
 .cmbr-button:hover {
 	border-color: cornflowerblue;
+	background-color: beige;
 }
 
 .cmbr-button:disabled:hover {
@@ -1332,7 +1381,7 @@ img[cmbr-loading] {
 }
 
 #cmbr-player {
-	width: 20rem;
+	width: 100%;
 	height: 80%;
 	border-left: 0.3rem groove black;
 	border-right: 0.3rem groove black;
@@ -1568,6 +1617,11 @@ select:hover {
 .grid-row-3-1 {
 	display: grid;
 	grid-template-rows: 3fr 1fr;
+}
+
+.grid-row-1-1-1-1 {
+	display: grid;
+	grid-template-rows: 1fr 1fr 1fr 1fr;
 }
 
 .grid-col-7x-1 {
@@ -1867,8 +1921,20 @@ PARTITIONING TRIAL
 	font-family: "Permanent Marker";
 	color: var(--cmbr-blue);
 	text-shadow: 1px 1px var(--cmbr-indigo);
-
 }
+
+.chrispyfruit-2 {
+	font-family: "Permanent Marker";
+	color: var(--cmbr-blue);
+	text-shadow: 0.3rem 0.3rem var(--cmbr-indigo);
+}
+
+.chrispyfruit-3 {
+	font-family: "Permanent Marker";
+	color: burlywood;
+	text-shadow: 0.2rem 0.2rem var(--cmbr-indigo);
+}
+
 
 
 
@@ -2456,8 +2522,8 @@ LEGACY: uncommon
 	margin-inline-start: 0%;
 	background: url("../assets/artifacts/miniship.png");
 	background-size: contain;
-
 }
+
 
 #cmbrstyle-dl>dt {
 	font-size: small;
@@ -2958,11 +3024,11 @@ ARIA LOADERS
 
 @keyframes fade-in {
 	0% {
-		opacity: .5;
+		opacity: .0;
 	}
 
 	50% {
-		opacity: .75
+		opacity: .5
 	}
 
 	100% {

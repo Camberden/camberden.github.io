@@ -627,5 +627,4 @@ const braft = (l) => document.querySelector(`${l}`).appendChild(document.createE
 
 (async () => {
 	CMBRutil.handleFormDefault(true);
-	// pauseVideoOnConsole();
 })();

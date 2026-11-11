@@ -1,4 +1,4 @@
-<div x-data="{ 
+<div id="sections-handle" x-data="{ 
     atHome: CMBRutil.atSiteIndex(),
     atVday: CMBRutil.atSiteVday(),
     atLegacyHome: CMBRutil.atLegacyIndex(),
@@ -51,7 +51,7 @@
                         ['Checkpoint', 'https://www.youtube.com/watch?v=XgqTrvcAySA',],
                         ['Strawberry+', 'https://www.youtube.com/watch?v=j42T6o-XwMU',],
                     ],
-                }
+                },
             },
         },
     }">
@@ -78,13 +78,13 @@
     </template>
     <template x-if="!atHome">
         <div :class="'section-title'" :style="'padding:0.1rem'">
-            <a x-text="homePage" :href="basePath + 'index.html'" :target="'#'" :data-route="'/'">
+            <a x-text="homePage" :href="basePath + 'index.html'" :data-route="'/'">
             </a>
         </div>
     </template>
 
     <template x-if="!atHome">
-        <div x-effect=" displaySection() ">
+        <div>
             <template x-for=" link in sitemap.links.internal" :key="index">
                 <div :class="'section-title'" :style="'padding:0.1rem'">
                     <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"

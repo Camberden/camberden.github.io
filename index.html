@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="referrer" content="no-referrer" />
-	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="shortcut icon" href="images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="styles.css" media="screen" />
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -22,12 +22,16 @@
 	<title>Chrispy's Site</title>
 </head>
 
-<body data-theme="dark">
+<body data-theme="dark" x-data="{
+
+}">
+
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
 	<main class="index-grid">
 
 		<div class="signature-div">
-			<img id="signature" src="/images/cmbr-sig-transform.svg" alt="cmbr">
+			<img id="signature" src="images/cmbr-sig-transform.svg" alt="cmbr">
 		</div>
 
 		<div class="index-grid-reduced">

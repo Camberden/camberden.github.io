@@ -28,102 +28,142 @@
 </head>
 
 <body data-theme="light" x-data="{
-		}" hx-get="../compon/tube.html" hx-target="this" hx-trigger="load" hx-swap="beforeend" style="height:200vh;">
+		}" hx-get="../compon/tube.html" hx-target="this" hx-trigger="load" hx-swap="beforeend"
+	style="height:200vh; overflow-x: hidden">
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main class=" grid-col-4-1" style="width: 100%;" x-data=" {
-		talking: true,
-		utterance: '',
-		linesRead: false,
-		lines: [
-			'Hello there, Fox!',
-			'I want to wish you a Happy Veteran\'s Day!',
-			'You probably hear it a lot, but here it is:',
-			'Thanks so so much for your service!',
-			'and for all the sacrifices entailed...',
-			'and for all the hardships endured...',
-			'and of course, for your Honor',
-			'Courage',
-			'and Committment.',
-			'You have and are making a meaningful difference.',
-			'Don\'t you doubt it!',
-			'Cheers, to my favorite Sailor.',
+	<main x-data=" {
+			talking: true,
+			utterance: '',
+			talkingDots: '',
+			linesRead: false,
+			oneLineRead: false,
+			counter: 0,
+			lines: [
+				'Hello there, Fox!',
+				'I want to wish you a Happy Veteran\'s Day!',
+				'You probably hear it a lot, but here it is:',
+				'Thanks so so much for your service!',
+				'and for all the sacrifices entailed...',
+				'and for all the hardships endured...',
+				'and of course, for your Honor',
+				'Courage',
+				'and Committment.',
+				'You have been and are making a meaningful difference.',
+				'Don\'t you doubt it!',
+				'Cheers, to my favorite Sailor!',
+			],
+			loadLine: function(line) {
+				this.utterance = '';
+				let i = 0;
+				console.log(line);
+				this.talking = true;
+				const charpaste = setInterval(() => {
+					this.utterance += line[i];
+					i++;
+					if (this.utterance.length === line.length) {
+						this.talking = false;
+						clearInterval(charpaste);
+					}
+				}, 100);
+				const removeDots = setInterval(() => {
+					this.talkingDots = this.talkingDots.substring(0, this.talkingDots[this.talkingDots.length - 1]);
+					if (!this.talking && this.talkingDots.length <= 1) {
+						this.talkingDots = '';
+						clearInterval(removeDots);
+					}
+				}, 500);
+			},
+			talkWithDots: function(elem) {
+				this.talkingDots= '';
+				let i = 0;
+				console.log(elem);
+				const ellipses = setInterval(() => {
+					if (this.talking === true) {
+						this.talkingDots += '.';
+						i++;
+						if (i === 6) {
+							this.talkingDots = '';
+							i = 0;
+						}
+					}
+					if (this.talking === false) {
+						clearInterval(ellipses);
+					}
+				}, 100);
+			},
+			rainOn: false,
+		}">
 
 
-		],
-		loadLine: function(line) {
-			this.utterance = '';
-			let i = 0;
-			console.log(line);
-			this.talking = true;
-			const charpaste = setInterval(() => {
-				this.utterance += line[i];
-				i++;
-				if (this.utterance.length === line.length) {
-					this.talking = false;
-					clearInterval(charpaste);
-				}
-			}, 100);
-		},
-		rainOn: false,
-		
-	 }">
-
-		<!-- <div class="cmbr-item cmbr-item-center"> -->
-
-		<div style="position: fixed; top:5%; width: 100%; text-align: center; z-index:10">
-
-			<div class=" grid-col-1-3-1-1"
-				style="background-color: var(--cmbr-blass); border: 0.5rem inset black; justify-content: center;">
-				<div style=" border: 0.5rem inset black;">
-					<div style="font-size: 5rem;">🇺🇸</div>
-				</div>
+		<div class=" grid-col-1 cmbr-speech-box" style="position: fixed;
+			 top:10%;
+			    z-index:10;
+				   justify-content: left;
+				   ">
 
 
+			<div style="text-align: center; align-content: center; justify-content: center;">
 				<div
-					style="text-align: center; align-content: center; justify-content: center; border: 0.5rem inset black;">
-					<!-- <div style="font-size: 5rem; animation: stagger-signature ease-in-out infinite 10s">🇺🇸</div> -->
-					<div class="marker" style="color: skyblue; font-size: 1.5rem;" x-text="utterance">
-					</div>
+					style="font-size: 3rem; animation: stagger-signature ease-in-out infinite 10s; text-shadow: 1px 1px var(--cmbr-indigo);">
+					🇺🇸</div>
+				<div style="font-size: 3rem;"></div>
+				<div class="chrispyfruit-3"
+					style=" font-size: 1.7rem; width: 100%; height: 5rem; border: 0.1rem solid transparent; ">
+					<p x-text="utterance"></p>
 				</div>
 
-				<div x-data="{counter: 0,}" style="border: 0.5rem inset black; flex-flow: row nowrap;"
-					x-init="loadLine(lines[counter]); counter++;">
-					<button class="cmbr-button" x-text="'⇐'" @click="counter--; loadLine(lines[counter]);"
-						:disabled="talking" style="left: 0;" x-show="counter <= 1;"></button>
-					<button class="cmbr-button" x-text="'⇒'" x-show="counter !== lines.length"
-						@click="loadLine(lines[counter]); counter++; counter === lines.length ? linesRead=true : console.log();"
-						:disabled="talking" style="right: 0;"></button>
-					<button x-show="linesRead" class="cmbr-button" x-text="'↺'"
-						@click="counter = 0; loadLine(lines[counter]);" :disabled="talking"></button>
-					<button x-show="linesRead" class="cmbr-button" x-text="'🌧️'" @click="rainOn =! rainOn"></button>
+				<div class="grid-col-5x-1 " style="background-color: var(--cmbr-grid-box);"
+					x-init="loadLine(lines[counter]);">
 
-					<div style="border: 0.5rem inset black; flex-flow: row nowrap;">
-						<hr class="hr-cmbr-legacy-gradient">
-						<audio preload="auto"
-							x-effect="$el.currentTime = '0'; setTimeout(() => { console.log('Testing.') }, 2000)();"
-							controls>
-							<source src="../assets/music-tracks/music-opening-thematic-statement.mp4" type="audio/mpeg">
-						</audio>
+					<div
+						style="box-sizing: border-box; padding: 0.5rem; width:3rem; height: 5rem; max-height: 5rem; max-width: 5rem;">
+
+						<button class="cmbr-button" style="font-size: 2rem;" x-text="'⇐'"
+							@click="loadLine(lines[--counter]);" :disabled="talking" x-show="counter >= 1;"></button>
 					</div>
+					<div style="box-sizing: border-box; padding: 0.5rem; width:3rem; height: 5rem; 
+					max-height: 5rem; max-width: 5rem; "
+						x-effect="counter === lines.length - 1 ? linesRead=true : console.info(counter);">
+						<button class="cmbr-button" style="font-size: 2rem;" x-text="'⇒'"
+							x-show="counter <= lines.length - 1" @click="loadLine(lines[++counter]);"
+							:disabled="talking || counter === lines.length -1"></button>
+					</div>
+					<div
+						style="box-sizing: border-box; padding: 0.5rem; width:3rem; height: 5rem; max-height: 5rem; max-width: 5rem;">
+						<button x-show="linesRead" class="cmbr-button" style="font-size: 2rem;" x-text="'↺'"
+							@click="counter = 0; loadLine(lines[counter]);" :disabled="talking"></button>
+					</div>
+					<div
+						style="box-sizing: border-box; padding: 0.5rem; width:3rem; height: 5rem; max-height: 5rem; max-width: 5rem; ">
+						<button x-show="linesRead" class="cmbr-button" style="font-size: 2rem; " x-text="'⛆'"
+							@click="rainOn =! rainOn"></button>
+					</div>
+
+					<div style="border: 0.5rem inset transparent; animation: fade-in 2s linear forwards;">
+						<div style="border: 0.3rem groove var(--cmbr-blass); border-bottom-right-radius: 50%; border-top-left-radius: 15%; 
+							border-left-width: 0rem; border-top-width: 0rem;
+							background-image: url('../assets/artifacts/chrispy-headshot-2.jpg'); opacity: 90%; width:5rem; height:5rem; 
+							box-shadow:  0.1rem 0.1rem 0.5rem 0.1rem var(--cmbr-indigo);
+background-size: contain;">
+						</div>
+						<div style="font-size: 1rem; text-align: left;"
+							x-effect="talking ? talkWithDots() : console.log();">
+							<div class="grid-col-1-1"
+								style="border-left: 0.3rem ridge var(--cmbr-blass); padding:0.1rem;">
+								<h1 class="chrispyfruit-1">Chrispy</h1>
+								<span class="chrispyfruit-1" style="text-align: left" x-text="talkingDots"></span>
+							</div>
+						</div>
+					</div>
+
 				</div>
-
-				<div style="border: 0.5rem inset black;">
-					<div style="border: 0.5rem inset black;">
-						<img src="../assets/artifacts/chrispy-headshot-2.jpg" width="100%" height="100%">
-						<hr class="hr-cmbr-legacy-gradient">
-					</div>
-					<div class="chrispy" style="font-size: 1rem; ">
-						<h1>Chrispy</h1>
-						<img x-show="talking" width="200%" height="100%" style="bottom: 0;"
-							src="../images/squares-fade.svg" alt="loading..." cmbr-loading />
-					</div>
-
-
-				</div>
-
 			</div>
+
+
+
+
 		</div>
 
 		<!-- <div vid-paused></div> -->
@@ -142,26 +182,26 @@
 			z-index: 80;">
 			<div class="grid-row-1-1-1" style="width: 50rem;" x-show="linesRead" x-cloak>
 				<div class="grid-col-1-1">
-					<span class="h1-lamp" style="
+					<span class="boom" style="
 				text-shadow: #ffcc00 2rem 1rem 5rem;
 				animation: 8s linear infinite shadow-fade;">boom~</span>
-					<span class="h1-lamp" style="
+					<span class="boom" style="
 				text-shadow: #ff8000 5rem 2rem 5rem;
 				animation: 15s linear infinite shadow-fade;">boo ff~</span>
 				</div>
 				<div class="grid-col-1-1-1" style="width: 50rem;">
-					<span class="h1-lamp" style="
+					<span class="boom" style="
 				text-shadow: #dec460 2rem 1rem 5rem;
 				animation: 9s linear infinite shadow-fade;">bang!</span>
-					<span class="h1-lamp" style="
+					<span class="boom" style="
 				text-shadow: #da4e28 3rem 6rem 3rem;
 				animation: 10s linear infinite shadow-fade;">bunf~</span>
-					<span class="h1-lamp" style="
+					<span class="boom" style="
 				text-shadow: #d74b14 2rem 1rem 5rem;
 				animation: 10s linear infinite shadow-fade;">bewm.</span>
 				</div>
 				<div class="grid-col-1">
-					<span class="h1-lamp" style="
+					<span class="boom" style="
 				text-shadow: #dec460 2rem 1rem 5rem;
 				animation: 5s linear infinite shadow-fade;">boom!</span>
 				</div>
@@ -182,25 +222,32 @@
 			<div class="grid-row-1-1-1" style="width: 50rem;">
 				<div class="grid-col-1-1">
 					<div class="miniship"
-						:style="linesRead ? 'animation: toAndFro infinite 8s ease-in-out;' : console.log()">🇺🇸</div>
-					<div class="miniship" style="animation: toAndFro infinite 7s ease-in-out;">🇺🇸</div>
+						:style="linesRead ? 'animation: toAndFro infinite 8s ease-in-out;' : console.log()">
+						🇺🇸<span>04</span></div>
+					<div class="miniship" style="animation: toAndFro infinite 7s ease-in-out;"
+						@click="counter = 11; loadLine(lines[counter]);">🇺🇸<span>11</span></div>
 				</div>
 				<div class="grid-col-2-1">
 					<div class="miniship"
-						:style="linesRead ? 'animation: toAndFro infinite 8s ease-in-out;' : console.log()">🇺🇸</div>
+						:style="linesRead ? 'animation: toAndFro infinite 8s ease-in-out;' : console.log()">
+						🇺🇸<span>01</span></div>
 					<div class="miniship" style="animation: toAndFro infinite 8s ease-in-out;"
-						@click="linesRead = true;">🇺🇸</div>
+						@click="linesRead = true;">🇺🇸<span>07</span></div>
 				</div>
 				<div class="grid-col-1-1-1">
 					<div class="miniship"
-						:style="linesRead ? 'animation: toAndFro infinite 8s ease-in-out;' : console.log()">🇺🇸</div>
-					<div class="miniship" style="animation: toAndFro infinite 5s ease-in-out;">🇺🇸</div>
-					<div class="miniship" style="animation: toAndFro infinite 7s ease-in-out;">🇺🇸</div>
+						:style="linesRead ? 'animation: toAndFro infinite 8s ease-in-out;' : console.log()">
+						🇺🇸<span>03</span></div>
+					<div class="miniship" style="animation: toAndFro infinite 5s ease-in-out;">🇺🇸<span>10</span></div>
+					<div class="miniship" style="animation: toAndFro infinite 7s ease-in-out;"
+						@click="counter = 9; loadLine(lines[counter]);">🇺🇸<span>09</span></div>
 				</div>
 			</div>
 
 		</footer>
-
+		<div style="position: fixed; bottom: 0; right: 0; z-index: 100;" hx-get="../template/audiobasic.html"
+			hx-trigger="load" hx-target="this" hx-swap="outerHTML">
+		</div>
 
 	</main>
 
