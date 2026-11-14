@@ -157,6 +157,7 @@ LIGHT & DARK MODES
 	--bg-image: url("images/cmbr-curtain.svg");
 	--bg-color: var(--clr-quinary-body);
 	--bg-color-svg: var(--cmbr-curtain-plum);
+	--cmbr-item-bg: var(--cmbr-grid-box);
 
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
@@ -169,6 +170,7 @@ LIGHT & DARK MODES
 	--bg-image: url("images/cmbr-curtain-dark.svg");
 	--bg-color: #0f0b07;
 	--bg-color-svg: #120d08;
+	/* --cmbr-item-bg: var(--cmbr-grid-box); */
 
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
@@ -182,8 +184,10 @@ LIGHT & DARK MODES
 	--bg-image: var(--mosky-7);
 	--bg-color: none;
 	--bg-color-svg: none;
+	/* --cmbr-item-bg: var(--cmbr-blass-frame); */
 
-	--cmbr-com-pnl-background: rgb(50, 65, 67);
+	--cmbr-com-pnl-background: var(--cmbr-blass-frame);
+	/* --cmbr-com-pnl-background: rgb(50, 65, 67); */
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
 

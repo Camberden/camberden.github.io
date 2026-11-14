@@ -263,7 +263,7 @@ const descriptionList = {
 		}
 	},
 	renderer(token) {
-		return `<dl class="grid-col-1-1 vt323" style="background-color: var(--cmbr-blass); 
+		return `<dl class="grid-col-1-1 vt323 mdDL" style="background-color: var(--cmbr-blass); 
 		border: 0.2rem inset black; padding: 0.5rem;">${this.parser.parseInline(token.tokens)}\n</dl>`; // parseInline to turn child tokens into HTML
 	}
 };

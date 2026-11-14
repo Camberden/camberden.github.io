@@ -36,8 +36,6 @@
 	markedTest2: '### Heading 3 \n #### Heading 4 \n _underscore_ \n `backticks` ',
 	markedTest3: '**strong?** \n <ins>ins underline</ins> \n === triple equals ===',
 
-	// Override function
-
 	markedFileParse: function(mdFile) {
 		fetch(mdFile).then( response => response.text()).then( (result) => {
     	var parsedMd = marked.use({
@@ -61,8 +59,12 @@
 	<main class="cmbr-grid">
 
 		<div class="cmbr-item cmbr-item-left">
+			<div x-data>
+				<h1 class="lora-bold"></h1>
+				<hr class="hr-trans">
+			</div>
 			<template x-for="item in 59" :key="index">
-				<button x-html="item" @click="markedFileParse('/depository/CMBRpublic/' + item + '.md')"></button>
+				<button x-html="item" @click="markedFileParse('/depository/CMBRpublic/' + item + '.md');"></button>
 			</template>
 		</div>
 		<div class="cmbr-item cmbr-item-center">
