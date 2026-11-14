@@ -240,43 +240,6 @@ function globeEmojiSpin() {
 	}, 1000);
 }
 
-/**
- * @deprecated
- */
-function viewExpansiveMap() {
-	const map = L.map("expansive-map").setView([35.91029565048358, -79.0553474519402], 2);
-
-	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-		maxZoom: 19,
-		attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-	}).addTo(map);
-
-	const marker = L.marker([35.77868919025996, -78.63746540620924]).addTo(map);
-
-	countryInformation.forEach(country => {
-
-		if (visitedCountries.includes(country.id)) {
-			styleVal = { color: 'cornflowerblue', fillColor: 'rgb(32, 159, 222)', fillOpacity: 0.5, radius: 5000 };
-		} else {
-			styleVal = { color: 'teal', fillColor: 'rgb(0, 255, 195)', fillOpacity: 0.5, radius: 5000 };
-		}
-
-		const circle = L.circle(country.position, styleVal).addTo(map);
-		circle.bindPopup(country.name);
-
-		// circle.on('click', displayNotes(country.id, "expansive-map"))
-	});
-
-	// marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
-	// circle.bindPopup("I am a circle.");
-	// polygon.bindPopup("I am a polygon.");
-
-
-	const onMapClick = (e) => {
-		alert("You clicked the map at " + e.latlng);
-	}
-	map.on('click', onMapClick);
-}
 
 (() => {
 

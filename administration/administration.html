@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<!-- Hi there! :V -->
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="referrer" content="no-referrer" /> -->
+	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../mediaquery.css" media="screen" />
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+	<!-- <script src="https://cdn.jsdelivr.net/npm/marked@11.1.1/marked.min.js"></script> -->
+	<script src="/htmx.js"></script>
+	<script src="/cmbr.js"></script>
+
+	<title>Chrispy's Admin Page</title>
+</head>
+
+<body data-theme="light" x-data="{
+	purgeInterval: function() {
+			CMBRutil.killInterval(CMBRutil.interval); 
+		},
+	mdEntries: {},
+	mdSelected: '# Markdown Selected!',
+	markedTest: '# Marked Test! \n ## Starter \n > blockquote with greater than \n ~tilde strikethrough~ \n ',
+	markedTest1: '# Heading 1 \n ## Heading 2 \n > blockquote with greater than \n ~tilde strikethrough~ \n ',
+	markedTest2: '### Heading 3 \n #### Heading 4 \n _underscore_ \n `backticks` ',
+	markedTest3: '**strong?** \n <ins>ins underline</ins> \n === triple equals ===',
+
+	// Override function
+
+	markedFileParse: function(mdFile) {
+		fetch(mdFile).then( response => response.text()).then( (result) => {
+    	var parsedMd = marked.use({
+			pedantic: false,
+			gfm: true,
+			breaks: false,
+			extensions: [descriptionList, description], walkTokens,
+		}).parse(result);
+		
+    	document.querySelector( '#mdSlot' ).innerHTML = parsedMd;
+  	});
+},
+	markedLineParse: function (mdLine) {
+		return marked.parse(mdLine);
+	},
+
+}">
+
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
+
+	<main class="cmbr-grid">
+
+		<div class="cmbr-item cmbr-item-left">
+			<template x-for="item in 59" :key="index">
+				<button x-html="item" @click="markedFileParse('/depository/CMBRpublic/' + item + '.md')"></button>
+			</template>
+		</div>
+		<div class="cmbr-item cmbr-item-center">
+			<div id="cmbrEntry" class="blogging-font">
+				<slot id="mdSlot"></slot>
+				<hr>
+			</div>
+		</div>
+
+
+
+		<div class="cmbr-item cmbr-item-right" x-data="{
+			isMarked: 'Unmarked',
+			isNowMarked: function() {
+				this.isMarked = 'Marked';
+			},
+		}">
+			<div class="chrispy-likeness-box">
+				<h1 x-text="isMarked"></h1>
+				<hr class="hr-cmbr-dark-gradient">
+				<span x-html="markedTest"></span>
+			</div>
+			<br>
+			<div class="chrispy-likeness-box">
+				<h1>Marked on Load</h1>
+				<hr class="hr-cmbr-dark-gradient">
+				<span x-html="markedLineParse(markedTest);"></span>
+			</div>
+			<br>
+			<button class="cmbr-button" x-text="'Parse!'"
+				@click="markedTest = markedLineParse(markedTest1); isNowMarked();"></button>
+			<button class="cmbr-button" x-text="'Test2!'"
+				@click="markedTest = markedLineParse(markedTest2); isNowMarked();"></button>
+			<button class="cmbr-button" x-text="'Test3!'"
+				@click="markedTest = markedLineParse(markedTest3); isNowMarked();"></button>
+		</div>
+	</main>
+
+</body>
+
+</html>

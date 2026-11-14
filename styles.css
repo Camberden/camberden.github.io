@@ -897,6 +897,14 @@ SECTIONS
 <hr>
 /* !  WIDE VARIETY OF CONTENT SPACERS AND ACCENTS |====================> */
 
+[cmbrhr] {
+	background-image: var(--cmbr-gradient);
+	width: 100%;
+	height: 0.5rem;
+	opacity: 50%;
+}
+
+:where([cmbrhr]),
 .hr-cmbr-gradient {
 	background-image: var(--cmbr-gradient);
 	width: 100%;
@@ -2288,7 +2296,7 @@ LEGACY: dashboard.js
 	display: flex;
 	padding: 2rem;
 	flex-flow: row wrap;
-	align-items: center;
+	align-items: first baseline;
 	justify-items: center;
 	/* border-radius: 1rem; */
 	gap: 1rem;
@@ -3259,6 +3267,28 @@ MUSINGS
 .listing-highlight {
 	color: var(--cmbr-orange);
 	background: var(--cmbr-curtain-plum);
+}
+
+
+[camberact]>dd {
+	animation: 0.5s ease-in-out text-fade;
+}
+
+dt {
+	text-align: left;
+}
+
+dd {
+	cursor: pointer;
+	text-align: center;
+}
+
+dl>dd:nth-of-type(odd):hover {
+	background-color: #9390ee1a;
+}
+
+dl>dd:nth-of-type(even):hover {
+	background-color: #eeae901a;
 }
 
 .study-list {

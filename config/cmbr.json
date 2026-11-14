@@ -1,4 +1,75 @@
 {
+  "mdeConfig": {
+    "autofocus": true,
+    "forceSync": true,
+    "toolbar": [
+      "bold",
+      "italic",
+      "horizontal-rule",
+      "|",
+      "quote",
+      "code",
+      "|",
+      "unordered-list",
+      "ordered-list",
+      "|",
+      "link",
+      "image",
+      "table",
+      "|",
+      "preview",
+      "side-by-side",
+      "fullscreen"
+    ],
+    "hideIcons": [
+      "guide",
+      "heading"
+    ],
+    "opacity": 1,
+    "indentWithTabs": true,
+    "initialValue": "Module 1",
+    "insertTexts": {
+      "horizontalRule": [
+        "\n\n<hr class='hr-cmbr-gradient'>\n\n",
+        ""
+      ],
+      "image": [
+        "![](http: //",
+        ")"
+      ],
+      "link": [
+        "['",
+        "'](http://)"
+      ]
+    },
+    "promptURLs": true,
+    "renderingConfig": {
+      "singleLineBreaks": true,
+      "codeSyntaxHighlighting": true
+    },
+    "lineWrapping": false,
+    "autosave": {
+      "enabled": true,
+      "uniqueId": "chrispy",
+      "delay": 1000
+    },
+    "parsingConfig": {
+      "allowAtxHeaderWithoutSpace": true,
+      "strikethrough": false,
+      "underscoresBreakWords": true
+    }
+  },
+  "tunes": [
+    {
+      "title": "Meaning",
+      "year": 2021,
+      "album": "The Rush of Feeling",
+      "link": "../assets/music-tracks/music-meaning.mp4",
+      "photoLink": "../assets/artifacts/art-meaning-paper.jpeg",
+      "lyrical": true,
+      "completed": true
+    }
+  ],
   "bookmarks": {
     "Checkpoint": "https://www.youtube.com/watch?v=XgqTrvcAySA",
     "Clozemaster": "https://www.clozemaster.com",
@@ -110,6 +181,12 @@
     "https://www.youtube.com/watch?v=K8ZLe_uVuuI",
     "https://www.youtube.com/watch?v=6uNkTqNSulY",
     "https://www.youtube.com/watch?v=6QOUNvMX-ws"
+  ],
+  "tubeVideoLinks": [
+    {
+      "title": "Olympics In Space",
+      "link": "https://www.youtube.com/watch?v=6uNkTqNSulY"
+    }
   ],
   "studyDocs": [
     "../assets/reference-docs/refdoc-mat171-manual.pdf",

@@ -4,9 +4,12 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- <meta name="referrer" content="no-referrer" /> -->
-	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../mediaquery.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css">
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
@@ -19,8 +22,10 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
-
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.20/index.global.min.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 	<script src="/htmx.js"></script>
 	<script src="/cmbr.js"></script>
 
@@ -37,15 +42,28 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main class="cmbr-grid" x-data=" { }">
+	<main class="dashboard-grid" x-data=" { }">
+		<div class="dashboard-item">
+			<div hx-get="../template/interval-panel.html" hx-trigger="intersect" hx-target="this" hx-swap="innerHTML">
+			</div>
+			<div hx-get="../template/days-and-weeks-lived.html" hx-trigger="intersect" hx-target="this"
+				hx-swap="innerHTML">
+			</div>
 
-		<div class="cmbr-item cmbr-item-left"></div>
-		<div class="cmbr-item cmbr-item-center">
-			<p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias perspiciatis inventore, error nulla saepe
-				laborum quis exercitationem, numquam nemo accusamus facere aperiam veritatis voluptas cupiditate quia
-				reiciendis consectetur voluptates maxime.</p>
 		</div>
-		<div class="cmbr-item cmbr-item-right"></div>
+		<div class="dashboard-item" hx-get="../template/expenses.html" hx-trigger="load" hx-target="this"
+			hx-swap="innerHTML"></div>
+		<div class="dashboard-item" hx-get="../template/reeducation.html" hx-trigger="load" hx-target="this"
+			hx-swap="innerHTML"></div>
+		<div class="dashboard-item" hx-get="../template/calendar.html" hx-trigger="load" hx-target="this"
+			hx-swap="innerHTML">
+		</div>
+		<div class="dashboard-item" hx-get="../template/step-pay-plan.html" hx-trigger="intersect" hx-target="this"
+			hx-swap="innerHTML"></div>
+		<div class="dashboard-item" hx-get="../template/pension-calculator.html" hx-trigger="intersect" hx-target="this"
+			hx-swap="innerHTML"></div>
+		<div class="dashboard-item" hx-get="../template/reserves-calculator.html" hx-trigger="intersect"
+			hx-target="this" hx-swap="innerHTML"></div>
 
 	</main>
 
@@ -109,8 +127,6 @@
 					<li class="splide__slide flex flex-col items-center justify-center pb-8">
 						<img class="w-full" src="../assets/travel-photos/photo-pa-us-1.jpeg" alt="placeholder image">
 					</li>
-
-
 				</ul>
 			</div>
 		</section>

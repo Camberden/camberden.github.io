@@ -4,7 +4,10 @@
  * @interface CMBRutil
  * @author Camberden (Chrispy | Kippi)  
  */
-// htmx.config.selfRequestsOnly = false;
+
+/* |====================>
+* Blog Coords
+|====================> */
 const coordinates = {
 	"Chapel Hill, NC": [35.963193, -79.058806],
 	"Hillsborough, NC": [36.074342, -79.100648],
@@ -18,6 +21,10 @@ const coordinates = {
 	"Tokyo, Japan": [35.69286, -220.300989],
 	"Nagoya, Japan": [34.879172, -222.726984]
 }
+
+/* |====================>
+* Ports & Site URLs
+|====================> */
 /** @global @readonly @description Determines the Site's Port Number */
 const basePort = document.location.port.length ? document.location.port : "";
 
@@ -32,6 +39,11 @@ const baseHyperlinks = [
 ];
 const nonStaticSite = "https://camberden.net";
 const nonStaticDev = "http://localhost:3020";
+
+/* |====================>
+% Alpine.JS
+|====================> */
+
 /**
  * @function
  * @global
@@ -39,7 +51,9 @@ const nonStaticDev = "http://localhost:3020";
  * @description Intializes ALPine DAta, MAgics, DIrectives, and STores
  */
 document.addEventListener("alpine:init", () => {
-	// !==========| Alpine Data |==========!
+	// ! ==========| Alpine Data |========== !
+	// ∆ Alpine DATA
+	// ! |====================>
 	Alpine.data('camberden', () => ({
 		site: document.location.origin,
 	})); // *=> end of Alpine Data
@@ -121,6 +135,10 @@ document.addEventListener("alpine:init", () => {
 	// *=> end of Alpine Store
 });
 
+
+/* |====================>
+* Tunes
+|====================> */
 /**
 	 * @param {string} title
 	 * @param {number} year
@@ -158,6 +176,10 @@ const cmbrTunes = [ // ../assets/music-tracks/music-
 	trackSecondCommune = new Tune("Second Commune", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-second-commune.m4a", "../assets/artifacts/foxfire.jpeg", true, false),
 	trackSuperScapegraceOriginal = new Tune("SUPER Scapegrace (Original)", 2008, "The Early Days of MusicalYoshi", "../assets/music-tracks/music-super-scapegrace-original.m4a", "../assets/artifacts/foxfire.jpeg", true, false),
 ];
+
+/* |====================>
+* Markdown
+|====================> */
 
 const cmbrMdConfig = {
 	"autofocus": true,
@@ -199,7 +221,86 @@ const cmbrMdConfig = {
 		"strikethrough": false,
 		"underscoresBreakWords": true
 	}
+};
+
+const CMBRmarkedConfig = {
+	heading(src) {
+		const match = src.match('##');
+		if (match) {
+			return {
+				type: 'heading',
+				raw: match[0],
+				text: match[1].trim()
+			};
+		}
+		// return false to use original heading tokenizer
+		return false;
+	},
+	walkTokens: (token) => {
+		//console.log(marked.parse('# heading 2\n\n## heading 3'));
+		if (token.type === 'heading') {
+			token.depth += 1;
+		}
+	},
+};
+
+const descriptionList = {
+	name: 'descriptionList',
+	level: 'block',                                     // Is this a block-level or inline-level tokenizer?
+	start(src) { return src.match(/:[^:\n]/)?.index; }, // Hint to Marked.js to stop and check for a match
+	tokenizer(src, tokens) {
+		const rule = /^(?::[^:\n]+:[^:\n]*(?:\n|$))+/;    // Regex for the complete token, anchor to string start
+		const match = rule.exec(src);
+		if (match) {
+			const token = {                                 // Token to generate
+				type: 'descriptionList',                      // Should match "name" above
+				raw: match[0],                                // Text to consume from the source
+				text: match[0].trim(),                        // Additional custom properties
+				tokens: []                                    // Array where child inline tokens will be generated
+			};
+			this.lexer.inline(token.text, token.tokens);    // Queue this data to be processed for inline tokens
+			return token;
+		}
+	},
+	renderer(token) {
+		return `<dl class="grid-col-1-1 vt323" style="background-color: var(--cmbr-blass); 
+		border: 0.2rem inset black; padding: 0.5rem;">${this.parser.parseInline(token.tokens)}\n</dl>`; // parseInline to turn child tokens into HTML
+	}
+};
+
+const description = {
+	name: 'description',
+	level: 'inline',                                 // Is this a block-level or inline-level tokenizer?
+	start(src) { return src.match(/:/)?.index; },    // Hint to Marked.js to stop and check for a match
+	tokenizer(src, tokens) {
+		const rule = /^:([^:\n]+):([^:\n]*)(?:\n|$)/;  // Regex for the complete token, anchor to string start
+		const match = rule.exec(src);
+		if (match) {
+			return {                                         // Token to generate
+				type: 'description',                           // Should match "name" above
+				raw: match[0],                                 // Text to consume from the source
+				dt: this.lexer.inlineTokens(match[1].trim()),  // Additional custom properties, including
+				dd: this.lexer.inlineTokens(match[2].trim())   //   any further-nested inline tokens
+			};
+		}
+	},
+	renderer(token) {
+		return `\n<dt>${this.parser.parseInline(token.dt)}</dt><dd>${this.parser.parseInline(token.dd)}</dd>`;
+	},
+	childTokens: ['dt', 'dd'],                 // Any child tokens to be visited by walkTokens
+};
+
+function walkTokens(token) {                        // Post-processing on the completed token tree
+	if (token.type === 'strong') {
+		token.text += ' walked';
+		token.tokens = this.Lexer.lexInline(token.text)
+	}
 }
+marked.use({ extensions: [descriptionList, description], walkTokens });
+
+/* |====================>
+% CMBRutil
+|====================> */
 
 /**
  * @global @public @interface
@@ -324,6 +425,11 @@ const CMBRutil = {
 		const l = tag.length + 3;
 		return content.substring(content.indexOf("<" + tag + "‰>") + l, content.indexOf("</" + tag + "‰>"));
 	},
+
+	/* |====================>
+	! Buttons
+	|====================> */
+
 	buttonOnMouseEnter: function (button) {
 		if (!button.classList.contains("button-toggled")) {
 			button.classList.add("button-highlight");
@@ -348,19 +454,6 @@ const CMBRutil = {
 				button.classList.remove("button-depressed");
 			}, 200);
 		}
-	},
-
-	/**
-	 * @description Adds the specified CSS class to the selected list item and removes it from all sibling list items.
-	 * @param {HTMLElement} litem 
-	 * @param {String} addClass CSS Class Name
-	 * @example litemOnSelected($el, "listing-highlight");
-	 */
-	litemOnSelected: function (litem, addClass) {
-		for (let li of litem.parentElement.children) {
-			li.classList.remove(addClass);
-		}
-		litem.classList.add(addClass);
 	},
 
 	/**
@@ -390,26 +483,53 @@ const CMBRutil = {
 			};
 		});
 	},
+
+	/* |====================>
+	! Invervals & Timers
+	|====================> */
+
 	/**
-	 * @description Handles all page forms, preventing reload upon form submission
-	 * @param {boolean} configured - Toggle boolean for default (reloading) prevention
-	 * - CONFIGURED: Applies current form submission handling and default prevention
-	 * - NONCONFIGURED: Returns page to normal form submission reloading
-	 * @fires window#onload - Fires immediately if cmbr.js is linked
-	 * @global
+	 * @property {string} timerID
+	 * @type {string}
+	 * @description Timer ID for interval or timeout operations
+	 * @example timerID = setInterval(() => { console.log("cmbrInterval"); }, 1000);
+	 * @example timerID = setTimeout(() => { console.log("cmbrTimeout"); }, 1000);
 	 */
-	handleFormDefault(configured) {
-		window.onload = function () {
-			if (configured) {
-				console.log("Running and configured!");
-				document.querySelectorAll("form").forEach(form => {
-					form.addEventListener("submit", (e) => { e.preventDefault(); });
-				});
-			} else {
-				console.log("Running! (configuration disabled)");
-			}
-		}
+	timerID: null,
+	/**
+	 * @param {string} timer 
+	 * @description Clears the specified interval timer
+	 */
+	intervalOnClear: function (timer) {
+		clearInterval(timer);
+		console.log("Interval Cleared: " + timer);
 	},
+	/**
+	 * @param {string} timer 
+	 * @description Clears the specified timeout timer
+	 */
+	timeoutOnClear: function (timer) {
+		clearTimeout(timer);
+		console.log("Timeout Cleared: " + timer);
+	},
+
+	/* |====================>
+	! List Items
+	|====================> */
+
+	/**
+	 * @description Adds the specified CSS class to the selected list item and removes it from all sibling list items.
+	 * @param {HTMLElement} litem 
+	 * @param {String} addClass CSS Class Name
+	 * @example litemOnSelected($el, "listing-highlight");
+	 */
+	litemOnSelected: function (litem, addClass) {
+		for (let li of litem.parentElement.children) {
+			li.classList.remove(addClass);
+		}
+		litem.classList.add(addClass);
+	},
+
 	// dataTheme: function () {
 	// 	document.querySelectorAll(".data-theme-button").forEach(button => {
 	// 		button.onclick = function () {
@@ -463,18 +583,28 @@ const CMBRutil = {
 			return true;
 		}
 	},
-	atLegacyIndex: function () {
-		if (this.acceptableProtocol() && document.location.href.endsWith("legacyindex.html")) {
+
+	/* |====================>
+	! atSite fn
+	|====================> */
+
+	/**
+	 * @param {string} site 
+	 * @returns {Boolean} boolean
+	 * @description Checks if the current site URL includes the specified site string
+	 */
+	atSite: function (site) {
+		if (document.location.href.includes(site)) {
 			return true;
 		} else {
 			return false;
 		}
 	},
-	staticLinkTransform: function (page) {
-		if (document.location.origin !== nonStaticSite || document.location.protocol !== 'http') {
-			return '../' + page;
+	atLegacyIndex: function () {
+		if (this.acceptableProtocol() && document.location.href.endsWith("legacyindex.html")) {
+			return true;
 		} else {
-			return '/' + page;
+			return false;
 		}
 	},
 	/** 
@@ -521,6 +651,29 @@ const CMBRutil = {
 			return false;
 		}
 	},
+
+	/* |====================>
+	! Links, URLparams, Endpoints
+	|====================> */
+
+	/**
+	 * @param {string} page
+	 * @returns {string} The relative URL pattern based on document location and protocol
+	 * @description Transforms an internal page URL pattern based on whether the
+	 * static site or the server-side site is running based on the
+	 * current document location and protocol
+	 * @example
+	 * const pageLink = CMBRutil.staticLinkTransform("page.html");
+	 * @yields {string} '../' Concatenation: static-site.com/page.html from static-site.com/nested/nested.html
+	 * @yields {string} '/' Concatenation: server-side-site.com/page.html from server-side-site.com/nested/nested.html
+	 */
+	staticLinkTransform: function (page) {
+		if (document.location.origin !== nonStaticSite || document.location.protocol !== 'http') {
+			return '../' + page;
+		} else {
+			return '/' + page;
+		}
+	},
 	// Function to update URL parameters
 	updateURLParameter: function (key, value) {
 		urlParams.set(key, value); // Set or update the parameter
@@ -543,7 +696,17 @@ const CMBRutil = {
 			updateURLParameter("search", this.value); // Update 'search' parameter
 		});
 	},
+
+	/**
+	 * @constant
+	 * @description default YouTube video ID: John Cage - 4:33
+	 */
 	tubeVideo: '6uNkTqNSulY',
+
+	/* |====================>
+	! JSON & Fetch API
+	|====================> */
+
 	/** 
 	 * @description Reads cmbr.json
 	 * @borrows cmbr.json
@@ -573,18 +736,13 @@ const CMBRutil = {
 						}
 						// console.log(data[query[0]].items[query[1]]);
 						return (data[query[0]].items[query[1]]);
-						break;
-						break;
 					case "sections":
 						// console.log("sections");
 						return data["sections"];
-						break;
 					case "tubeVideos":
 						return data["tubeVideos"];
-						break;
 					case "studyDocs":
 						return data["studyDocs"];
-						break;
 					case "blog":
 						if (query.length == 1) {
 							// console.log(data[query[0]]);
@@ -595,34 +753,70 @@ const CMBRutil = {
 						sout("blog as post = " + post);
 						// console.log(data[query[0]][post]);
 						return (data[query[0]][post]);
-						break;
-						break;
-
 					default:
 						sout("Bad Query at connectCMBRjson.");
-						return data;
+						return "CMBR Bad Query";
 				}
 			});
 
 	},
-	retrieveParcel: async function (site, query) {
-		return fetch(site)
+
+	/** 
+	 * @description Reads a JSON file or URL
+	 * @param {string} JSONorSite
+	 * @param {Array} query
+	 * @implements {Promise<Object>} 
+	 * 
+	 */
+	retrieveParcel: async function (JSONorSite, query) {
+		return fetch(JSONorSite)
 			.then(data => data.json())
 			.then(data => {
-				// console.log(data);
-				console.log("QUERY BEFORE RESOLUTION: " + query[0]);
+				console.log("Retrieval from: " + JSONorSite);
+				console.log("Fetching Datapoint at Site: " + query[0]);
 				return data;
 			})
 			.then((data) => {
 				return data[query];
 			});
 	},
+
+	/* |====================>
+	! Defaults
+	|====================> */
+
+	/**
+	 * @description Handles all page forms, preventing reload upon form submission
+	 * @param {boolean} configured - Toggle boolean for default (reloading) prevention
+	 * - CONFIGURED: Applies current form submission handling and default prevention
+	 * - NONCONFIGURED: Returns page to normal form submission reloading
+	 * @fires window#onload - Fires immediately if cmbr.js is linked
+	 * @global
+	 */
+	handleFormDefault(configured) {
+		window.onload = function () {
+			if (configured) {
+				console.log("Running and configured!");
+				document.querySelectorAll("form").forEach(form => {
+					form.addEventListener("submit", (e) => { e.preventDefault(); });
+				});
+			} else {
+				console.log("Running! (configuration disabled)");
+			}
+		}
+	},
 }
 
-// ----- GLOBAL FUNCTION EXPRESSION INVOKATIONS ----- //
+// |=====| GLOBAL FUNCTION EXPRESSION INVOKATIONS |=====| //
+/* |====================>
+* Site Section Display
+|====================> */
 const displaySite = () => { document.getElementById("current-site").innerHTML = document.location.host };
 const displaySection = () => { document.getElementById("current-section").innerHTML = (window.location.pathname).slice(window.location.pathname.lastIndexOf("/") + 1, -5).toLowerCase(); };
-const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); } //x += ("|=====* ");
+/* |====================>
+* Console Log Utils
+|====================> */
+const sout = (x) => { console.log("<‰=== " + (x ?? "No Output") + " ===‰>"); };
 const braft = (l) => document.querySelector(`${l}`).appendChild(document.createElement("br"));
 
 (async () => {

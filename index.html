@@ -23,7 +23,9 @@
 </head>
 
 <body data-theme="dark" x-data="{
-
+	purgeInterval: function() {
+			CMBRutil.killInterval(CMBRutil.interval); 
+		},
 }">
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>

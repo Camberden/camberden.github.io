@@ -1,0 +1,81 @@
+<style>
+	.interval-panel {
+		border: inherit;
+		background-color: inherit;
+		user-select: none;
+		animation-name: panel-fade;
+		animation-duration: inherit;
+		animation-timing-function: linear;
+		animation-iteration-count: infinite;
+		animation-direction: normal;
+		animation-fill-mode: unset;
+	}
+
+
+	@keyframes panel-fade {
+		0% {
+			opacity: 0;
+		}
+
+		50% {
+			opacity: 1;
+		}
+
+		100% {
+			opacity: 0;
+		}
+	}
+</style>
+<div x-data="{
+		panelValue: 0,
+		panelChange: false,
+		robeChantKanji: [
+			'大哉解脱服',
+			'無相福田衣',
+			'披奉如來教',
+			'廣度諸衆生',
+		],
+		// writePanelAnimation: function() {
+		// 	const panelAnimation = `
+		// 	background-color: black; color: cadetblue; user-select: none; animation-name: panel-fade;
+		// 	animation-duration: ${this.panelTiming.toString()[0]}
+		// 	animation-timing-function: linear; animation-iteration-count: infinite; animation-direction: normal; animation-fill-mode: unset;
+		// 	`;
+		// 	return panelAnimation;
+		// },
+		setMilliseconds: function(sec) {
+			console.log('sec' + sec);
+			const secondString = sec.substring(0, 1);
+			const miliString = parseInt(secondString + '000') ;
+			console.log('milistring' + miliString);
+			return miliString;
+		},
+		cyclePanelItems: function(elem, array) {
+			if (this.panelValue < array.length - 1) {
+				// console.log(array.length - 1);
+				++this.panelValue;
+				elem.textContent = array[this.panelValue];
+			} else {
+				elem.textContent = array[0];
+				this.panelValue = 0;
+			}
+		},
+		cyclePanelCollections: function(elem, array) {
+			elem.textContent = array[0];
+			console.log('dur ' + elem.parentElement.style.animationDuration);
+			const milliseconds = this.setMilliseconds(elem.parentElement.style.animationDuration);
+			// const secondString = millisecondString.substring(0, 1) + 's';
+			// const secondString = elem.parentElement.animationDuration.substring(0);
+			// const miliString = (parseInt(secondString) + 000 );
+			setInterval(() => { this.cyclePanelItems(elem, array) }, milliseconds); 
+		}, 
+
+		}">
+	<div style="
+		width: 10rem;
+		height: 3rem;
+		animation-duration: 5s;">
+		<div class="interval-panel" x-effect="cyclePanelCollections($el, robeChantKanji);">
+		</div>
+	</div>
+</div>

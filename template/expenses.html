@@ -31,33 +31,6 @@
 		opacity: 0.3;
 		user-select: none;
 	}
-
-	.paycard-grid {
-
-		display: grid;
-		gap: 1.5rem;
-		/* for vertical and horizontal spacing */
-		grid-template-columns: repeat(5, 20%);
-		/* repeat(4, 25%) */
-
-
-		padding-block: 1rem;
-		width: min(90%, 70rem);
-		margin-inline: auto;
-
-	}
-
-	.paycard-item {
-		padding: 1rem;
-		box-shadow: 2.5rem 3.75rem 3rem -3rem hsl(var(--cmbr-curtain-plum) / 0.25);
-		border-color: grey;
-		border-style: double;
-
-	}
-
-	#expense-modal {
-		display: none;
-	}
 </style>
 
 
@@ -67,7 +40,7 @@
 	toggleSelectedApplicable: function () {
 		this.selectedApplicable = !this.selectedApplicable;
 	},
-}" class="dashboard-item">
+	}" class="dashboard-item">
 	<h2 class="marker-green">Expense Management</h2>
 	<hr class="hr-trans">
 	<div id="expense-list" class="flex-table">
@@ -154,9 +127,7 @@
 		<!-- TOTAL AFTER DEDUCTIONS -->
 		<div class="flex-table-row grid-col-1-1-1-1">ENDING BALANCE<span class="cash" id="endbalance">0</span>
 		</div>
-		<span class="marker modal-prompt" id="expense-modal">Project Expenses</span>
 	</div>
-</div>
 </div>
 
 <script>
@@ -185,7 +156,7 @@
 	 */
 	const dashboardExpenses = [
 		new DashboardExpense("car", 0.00, false, -1, false),
-		new DashboardExpense("nav", 222.07, false, -1, false),
+		new DashboardExpense("nav", 222.07, true, -1, false),
 		new DashboardExpense("sal", 900.00, true, 1, false),
 		new DashboardExpense("ren", 200.00, true, 0, false),
 		new DashboardExpense("rti", 0.00, false, -1, false),
@@ -202,99 +173,6 @@
 		new DashboardExpense("inp", 0.00, false, 0, true),
 	];
 
-
-	function dashboardModalAccess() {
-		document.querySelectorAll(".modal-prompt").forEach(prompt => {
-			prompt.onclick = function () {
-				switch (prompt.id) {
-					case "accounting-modal":
-						displayAccountingModal();
-						modal.style.display = "block";
-						break;
-					case "expense-modal":
-						displayExpenseModal();
-						modal.style.display = "block";
-						break;
-					default:
-						console.log("default");
-						break;
-				}
-
-			}
-
-		});
-		closeModal.onclick = function () {
-			clearModal();
-			modal.style.display = "none";
-		};
-		window.onclick = function (event) {
-			if (event.target === modal) {
-				modal.style.display = "none";
-				clearModal();
-			}
-		}
-	}
-	function displayExpenseModal() {
-		const expenseModalData = document.createElement("div");
-		const currentDate = new Date();
-		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		document.getElementById("modal-text").setAttribute("class", "paycard-grid");
-		let expenseModalPaycheck = parseFloat(document.getElementById("starting-balance").value);
-		let expenseModalEndBalance = parseFloat(document.getElementById("ending-balance").textContent);
-		let expenseModalExpenses = parseFloat(expenseModalPaycheck - expenseModalEndBalance).toFixed(2);
-
-		for (let i = 0; i < 4; i++) {
-			const ul = document.createElement("ul");
-			ul.setAttribute("class", `${currentDate.getFullYear() + i}-projections`);
-			const text = document.createTextNode(currentDate.getFullYear() + i);
-			ul.appendChild(text);
-			const hr = document.createElement("hr");
-			ul.appendChild(hr);
-
-			if (currentDate.getFullYear() === currentDate.getFullYear() + i) {
-				for (let j = currentDate.getMonth(); j < months.length; j++) {
-					const li = document.createElement("li");
-					const text = document.createTextNode(months[j] + ": $");
-					const span = document.createElement("span");
-					span.setAttribute("class", "projected-monthly-expense");
-					// const expenseText = document.createTextNode(expenseModalExpenses);
-					// span.appendChild(expenseText);
-					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses}<br>=${expenseModalEndBalance}`;
-					li.appendChild(text);
-					li.appendChild(span);
-					ul.appendChild(li);
-
-				}
-			} else if (currentDate.getFullYear() < currentDate.getFullYear() + i) {
-				for (let j = 0; j < months.length; j++) {
-					const li = document.createElement("li");
-					const text = document.createTextNode(months[j] + ": $");
-					const span = document.createElement("span");
-					span.setAttribute("class", "projected-monthly-expense");
-					if (currentDate.getFullYear() + i === 2026 && j === 0) {
-						expenseModalExpenses -= 1291.61;
-						expenseModalEndBalance += 1291.61;
-						ul.innerHTML += " (Car Paid)<hr>";
-					}
-					if (currentDate.getFullYear() + i === 2027 && j === 0) {
-						expenseModalExpenses -= 900.00;
-						expenseModalEndBalance += 900.00;
-						ul.innerHTML += " (Sal Paid)<hr>";
-
-					}
-
-					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses.toFixed(2)}<br>=${expenseModalEndBalance.toFixed(2)}`;
-					li.appendChild(text);
-					li.appendChild(span);
-					ul.appendChild(li);
-				}
-			}
-			expenseModalData.appendChild(ul);
-		}
-
-
-		document.getElementById("modal-text").innerHTML = expenseModalData.innerHTML;
-	}
 	function enableExpenseButtons() {
 		document.querySelectorAll(".expense-button").forEach(button => {
 
@@ -398,7 +276,6 @@
 
 		document.getElementById("starting-balance").onkeyup = function () {
 			calculateNewBalance();
-			document.getElementById("expense-modal").style.display = "block";
 		};
 
 		dashboardExpenses.forEach(expense => {
@@ -410,22 +287,20 @@
 
 
 	// |==========| LEGACY DASHBOARD EXPENSES |==========| //
-	const modal = document.querySelector(".modal");
-	const closeModal = document.getElementsByClassName("modal-close")[0];
 	let startbalance = document.getElementById("balance").value;
 	const startbalanceupdate = document.getElementById("balance");
-	const car = 1291.61;
+	const car = 0.00;
 	const nav = 222.07;
 	const sal = 884.15;
 	const ren = 200.00;
 	const rti = 0.00;
 	const ins = 97.68;
 	const loa = 0.00;
-	const wat = 15.00;
-	const ele = 70.27;
-	const int = 71.99;
+	const wat = 0.00;
+	const ele = 0.00;
+	const int = 0.00;
 	const mus = 6.39;
-	const don = 10.00;
+	const don = 0.00;
 	const gym = 87.00;
 	let inp = 0.00; // CUSTOM INPUT: INP
 	const allExpenses = [car, nav, sal, ren, rti, ins, loa, wat, ele, int, mus, don, gym, inp];
@@ -468,127 +343,16 @@
 			// document.getElementById("deselect-applicable").style.display = "inline-block";
 			calculateNewBalance();
 		}
-		document.getElementById("deselect-applicable").onclick = function () {
-			expenseNames.forEach(expense => {
-				if (document.getElementById(expense + "-cost").classList.contains("applicable")) {
-					document.getElementById(expense + "-check").checked = false;
-				}
-			});
-			// document.getElementById("select-applicable").style.display = "inline-block";
-			// document.getElementById("deselect-applicable").style.display = "none";
-			calculateNewBalance();
-		}
 	};
-
-	function clearModal() {
-		document.getElementById("modal-text").innerHTML = "";
-		document.getElementById("modal-text").removeAttribute("class", "paycard-grid");
-
-	}
-
-	function dashboardModalAccess() {
-		document.querySelectorAll(".modal-prompt").forEach(prompt => {
-			prompt.onclick = function () {
-				switch (prompt.id) {
-					case "accounting-modal":
-						displayAccountingModal();
-						modal.style.display = "block";
-						break;
-					case "expense-modal":
-						displayExpenseModal();
-						modal.style.display = "block";
-						break;
-					default:
-						console.log("default");
-						break;
-				}
-
-			}
-
-		});
-		closeModal.onclick = function () {
-			clearModal();
-			modal.style.display = "none";
-		};
-		window.onclick = function (event) {
-			if (event.target === modal) {
-				modal.style.display = "none";
-				clearModal();
-			}
-		}
-	}
-	function displayExpenseModal() {
-		const expenseModalData = document.createElement("div");
-		const currentDate = new Date();
-		const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-		document.getElementById("modal-text").setAttribute("class", "paycard-grid");
-		let expenseModalPaycheck = parseFloat(document.getElementById("starting-balance").value);
-		let expenseModalEndBalance = parseFloat(document.getElementById("ending-balance").textContent);
-		let expenseModalExpenses = parseFloat(expenseModalPaycheck - expenseModalEndBalance).toFixed(2);
-
-		for (let i = 0; i < 4; i++) {
-			const ul = document.createElement("ul");
-			ul.setAttribute("class", `${currentDate.getFullYear() + i}-projections`);
-			const text = document.createTextNode(currentDate.getFullYear() + i);
-			ul.appendChild(text);
-			const hr = document.createElement("hr");
-			ul.appendChild(hr);
-
-			if (currentDate.getFullYear() === currentDate.getFullYear() + i) {
-				for (let j = currentDate.getMonth(); j < months.length; j++) {
-					const li = document.createElement("li");
-					const text = document.createTextNode(months[j] + ": $");
-					const span = document.createElement("span");
-					span.setAttribute("class", "projected-monthly-expense");
-					// const expenseText = document.createTextNode(expenseModalExpenses);
-					// span.appendChild(expenseText);
-					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses}<br>=${expenseModalEndBalance}`;
-					li.appendChild(text);
-					li.appendChild(span);
-					ul.appendChild(li);
-
-				}
-			} else if (currentDate.getFullYear() < currentDate.getFullYear() + i) {
-				for (let j = 0; j < months.length; j++) {
-					const li = document.createElement("li");
-					const text = document.createTextNode(months[j] + ": $");
-					const span = document.createElement("span");
-					span.setAttribute("class", "projected-monthly-expense");
-					if (currentDate.getFullYear() + i === 2026 && j === 0) {
-						expenseModalExpenses -= 1291.61;
-						expenseModalEndBalance += 1291.61;
-						ul.innerHTML += " (Car Paid)<hr>";
-					}
-					if (currentDate.getFullYear() + i === 2027 && j === 0) {
-						expenseModalExpenses -= 900.00;
-						expenseModalEndBalance += 900.00;
-						ul.innerHTML += " (Sal Paid)<hr>";
-
-					}
-
-					span.innerHTML = `${expenseModalPaycheck}<br>&nbsp-${expenseModalExpenses.toFixed(2)}<br>=${expenseModalEndBalance.toFixed(2)}`;
-					li.appendChild(text);
-					li.appendChild(span);
-					ul.appendChild(li);
-				}
-			}
-			expenseModalData.appendChild(ul);
-		}
-
-
-		document.getElementById("modal-text").innerHTML = expenseModalData.innerHTML;
-	}
 
 	(() => {
 		allCheckboxes.forEach(checkbox => checkbox.onclick = calculateNewBalance);
 		startbalanceupdate.onkeyup = function () {
 			startbalance = document.getElementById("balance").value;
 			calculateNewBalance();
-			document.getElementById("expense-modal").style.display = "block";
 		};
 		calculateNewBalance();
 		selectApplicable();
-		dashboardModalAccess();
 
 	})();
 </script>
