@@ -208,7 +208,7 @@ if [ "$git_enabled" == true ] && [ "$message" == "g" ] ; then
 	if [ ${#commitmessage} -gt 2 ] ; then
 		echo "[SUCCESS] =====> "
 		commit=$commitmessage\
-		yq -i '.configuration.meta.latest-commit = env(commit)' runner.yaml ;
+		yq -i '.configuration.meta.latest-commit = env(commitmessage)' runner.yaml ;
 		git commit -m "$commitmessage" ;
 	else
 		git reset ;
@@ -218,7 +218,7 @@ if [ "$git_enabled" == true ] && [ "$message" == "g" ] ; then
 
 fi
 
-if [ "$git_enabled" == true ] && [ ${#message} -gt 2 ] ; then
+if [ ${#message} -gt 2 ] ; then
 	build-echo "=====> [UNSPECIFIED COMMAND] =====> " 3 ;
 	pink-echo "=====> NOT writing to cmbr.json. Exiting..." ;
 	closeout true ;
