@@ -199,6 +199,7 @@ if [ "$git_enabled" == true ] && [ "$message" == "g" ] ; then
 	read -r commitmessage ;
 
 	commitmessage="$(printf '%s' "$commitmessage" )"
+	
 	if [ "$commitmessage" == "" ] ; then
 		cyan-echo "=====> Git commit cancelled..." ; 
 		git reset ;
@@ -207,8 +208,8 @@ if [ "$git_enabled" == true ] && [ "$message" == "g" ] ; then
 
 	if [ ${#commitmessage} -gt 2 ] ; then
 		echo "[SUCCESS] =====> "
-		commit=$commitmessage\
-		yq -i '.configuration.meta.latest-commit = env(commitmessage)' runner.yaml ;
+		commit=$commitmessage \
+		yq -i '.configuration.meta.latest-commit = env(commit)' runner.yaml ;
 		git commit -m "$commitmessage" ;
 	else
 		git reset ;
