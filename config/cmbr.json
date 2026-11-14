@@ -163,7 +163,12 @@
       "assets/travel-photos/photo-nc-us-45.jpeg",
       "assets/travel-photos/photo-nc-us-46.jpeg",
       "assets/travel-photos/photo-nc-us-47.jpeg",
-      "assets/travel-photos/photo-nc-us-48.jpeg"
+      "assets/travel-photos/photo-nc-us-48.jpeg",
+      "assets/travel-photos/photo-nc-us-49.jpeg",
+      "assets/travel-photos/photo-nc-us-50.jpeg",
+      "assets/travel-photos/photo-nc-us-51.jpeg",
+      "assets/travel-photos/photo-nc-us-52.jpeg",
+      "assets/travel-photos/photo-nc-us-53.jpeg"
     ]
   },
   "tubeVideos": [
@@ -189,6 +194,9 @@
     }
   ],
   "studyDocs": [
+    "../assets/reference-docs/refdoc-usn-ad-pay-2025.pdf",
+    "../assets/reference-docs/refdoc-usn-drill-pay-2025.pdf",
+    "../assets/reference-docs/refdoc-usn-prt-2025.pdf",
     "../assets/reference-docs/refdoc-mat171-manual.pdf",
     "../assets/reference-docs/refdoc-mat171-transformations.pdf",
     "../assets/reference-docs/refdoc-duolingo-japanese-vocab.pdf",
@@ -198,5 +206,11 @@
     "../assets/reference-docs/refdoc-acc220-acronyms.pdf",
     "../assets/reference-docs/refdoc-nc-college-equivalence.pdf",
     "../assets/reference-docs/refdoc-mysql-phpadmin-setup.pdf"
+  ],
+  "studyImages": [
+    "../assets/reference-docs/refdoc-celsius-fahrenheit.png",
+    "../assets/reference-docs/refdoc-fraction-decimal.png",
+    "../assets/reference-docs/refdoc-imperial-distance.jpg",
+    "../assets/reference-docs/refdoc-liquid-us-customary.png"
   ]
 }

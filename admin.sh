@@ -199,7 +199,7 @@ if [ "$git_enabled" == true ] && [ "$message" == "g" ] ; then
 	read -r commitmessage ;
 
 	commitmessage="$(printf '%s' "$commitmessage" )"
-	
+
 	if [ "$commitmessage" == "" ] ; then
 		cyan-echo "=====> Git commit cancelled..." ; 
 		git reset ;
@@ -211,10 +211,6 @@ if [ "$git_enabled" == true ] && [ "$message" == "g" ] ; then
 		commit=$commitmessage \
 		yq -i '.configuration.meta.latest-commit = env(commit)' runner.yaml ;
 		git commit -m "$commitmessage" ;
-	else
-		git reset ;
-		echo "=====> Too few characters (# < 3) Exiting..."
-		echo "=====> Commit cancelled..." ; closeout true;
 	fi
 
 fi

@@ -747,7 +747,6 @@ const CMBRutil = {
 						if (query.length == 1) {
 							// console.log(data[query[0]]);
 							return (data[query[0]]);
-							break;
 						}
 						let post = ("post-" + query[1]);
 						sout("blog as post = " + post);

@@ -4,7 +4,7 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- <meta name="referrer" content="no-referrer" /> -->
-	<link rel="shortcut icon" href="..images/cmbr-sig.svg">
+	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
 	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
 	<link rel="stylesheet" type="text/css" href="../mediaquery.css" media="screen" />
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
@@ -34,12 +34,18 @@
 		overworldCoords: expeditionOverworlds[0].zones,
 		overworldImages: {},
 		overworldImageIndex: 0,
-		overworldTabs: ['Locales', 'Curiosities', 'Musings', ],
+		overworldTabs: ['Locales', 'Curiosities', 'Musings',],
 		overworldTabSelected: 'Locales',
+		localeView: '___',
+		coordsView: '___',
 		overworldChange: function(overworldTitle) {
 			this.overworld = overworldTitle;
 			this.overworldCoords = getOverworldByTitle(overworldTitle).zones;
 			initExpeditionsMap(getOverworldByTitle(overworldTitle));
+		},
+		coordsLocaleChange: function(locale, coords){
+			this.localeView = locale;
+			this.coordsView = coords;
 		}
 	}" style="max-height: 200vh;"
 	x-effect="overworldImages = await CMBRutil.connectCMBRjson(['travel-photos']); console.log(overworldImages[0])"
@@ -83,7 +89,7 @@
 					<ul>
 						<template x-for="(location, index) in overworldCoords" :key="index">
 							<li class="flex-table-row cmbr-tr"
-								@click="findLocale(location[0], location[1]); CMBRutil.litemOnSelected($el, 'listing-highlight');">
+								@click="findLocale(location[0], location[1]); CMBRutil.litemOnSelected($el, 'listing-highlight'); coordsLocaleChange(location[0], location[1])">
 								<span class="cmbr-td" x-html="location[0]"></span>
 							</li>
 						</template>
@@ -113,32 +119,35 @@
 					</template>
 				</select>
 				<table style="
-					display: none;
+					display: flex;
 					width: 100%;
 					table-layout: fixed;
 					vertical-align: middle;
 					font-family: 'Lora', 'monospace';
 					color: burlywood;
-					border: 0.5rem groove cadetblue;
+					border: 0.3rem inset black;
 					background: transparent;">
 					<thead>
 						<tr>
-							<th colspan="2" x-text="'Overworld Data'"></th>
+							<th colspan="1" x-text="'Locale:'"></th>
+						</tr>
+						<tr>
+							<th colspan="1" x-text="'Coordinates:'"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<th>Images</th>
-							<td x-html="overworldImages.length"></td>
+							<td id="clickedLocale" x-text="localeView"></td>
 						</tr>
-					</tbody>
+						<tr>
+							<td id="clickedCoords" x-text="coordsView"></td>
+						</tr>
 				</table>
 			</div>
 			<div id="expeditions-map"
 				style="position: sticky; padding: -2rem; height: 30rem; width: 100%; border: 0.3rem ridge grey; z-index: 0;">
 			</div>
 
-			<!-- <div class="grid-col-7x-1"> -->
 			<div class="cmbr-button-grid">
 				<button class="cmbr-button" style="height: 5rem;" x-text="'<'"></button>
 				<template x-for="photo in 5">

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="referrer" content="no-referrer" /> -->
+	<link rel="shortcut icon" href="../images/cmbr-sig.svg">
+	<link rel="stylesheet" type="text/css" href="../styles.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="../mediaquery.css" media="screen" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+	<script src="https://unpkg.com/@popperjs/core@2"></script>
+	<script src="https://unpkg.com/tippy.js@6"></script>
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+	<script src="https://cdn.jsdelivr.net/simplemde/1.11/simplemde.min.js"></script>
+	<script src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@imacrayon/alpine-ajax@0.12.6/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/focus@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
+	<script src="/htmx.js"></script>
+	<script src="/cmbr.js"></script>
+
+	<title>Chrispy's Fantasypad</title>
+</head>
+
+<body data-theme="dark" x-data="{
+		fantasyMaps: ['Great Regions',],
+		// fantasyMaps: ['Great Regions', 'Camberdenza', 'Amderfole'],
+		fantasyMapTitle: 'Great Regions',
+		fantasyMapImages: {},
+		fantasyMapImageIndex: 0,
+		fantasyMapTabs: ['Regions', 'Curiosities', 'Eras', ],
+		fantasyMapTabSelected: 'Regions',
+		regionChart: [
+			['Farentia', 'Farentia CD', 'Farentian SIT'],
+			['Zethro-Scheipen', 'Claywater'],
+			['Tendou', 'Tendou CD', 'Tendouese Kinokoland', 'Austral Isles', 'Rolya Chain', 'Rolya'],
+			['Selunia', 'Mokarzmamat', 'Grand Selunia', 'Midselunia'],
+			['Aakse'],
+			['Cheirica', 'Lucidea Town'],
+			['East Farentia', 'Outset City'],
+			['Mochadia', 'Mochadia Major', 'Mochadia Minor', 'Husisiholkit'],
+		],
+		fantasyMapChange: function(place) {
+			this.fantasyMapTitle = place;
+			// this.fantasyMapCoords = getFantasyMapByTitle(fantasyMapTitle).zones;
+			// initFantasyMap(getFantasyMapByTitle(fantasyMapTitle));
+		}
+	}" style="max-height: 200vh;"
+	x-effect="overworldImages = await CMBRutil.connectCMBRjson(['travel-photos']); console.log(overworldImages[0])"
+	hx-get="../compon/tube.html" hx-target="this" hx-trigger="load" hx-swap="beforeend">
+
+	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
+
+	<main class="cmbr-grid">
+
+		<!-- ! CMBRgrid ITEM UPPER !-->
+		<div class="cmbr-item-lower grid-col-1">
+			<div class="cmbr-item">
+				<h1 id="fantasy-map-title" class="chrispy" style="font-size: 1.5rem;" x-text="fantasyMapTitle"></h1>
+
+				<hr class=" hr-groove-top">
+
+				<article>
+					<i>
+						Shown here is the map of the simply named "Great Regions," a Minecraft world born in May of 2012
+						whose lore
+						and prospect for adventure and creation had not yet ceased. This world was the original creative
+						sandbox for me,
+						and I had invested plentiful hours into its development and maintenance. There are numerous
+						regions (like countries),
+						and cities with histories tied to their utility during the earliest era and imagined happenings
+						beyond. The world has endured drastic world-edit transformations following the "Encroachment," a
+						world event causing dramatic landscape alterations in late 2013. Since then, many are removed,
+						but the
+						world yet proves unweildy for a sole individual to flesh out to any degree of completion given
+						its size.
+					</i>
+
+				</article>
+			</div>
+			<br>
+			<!-- % TABS div % !-->
+			<div class="cmbr-item">
+
+				<div class="button-grid-row grid-col-1-1-1" x-data>
+					<template x-for="(tab, index) in fantasyMapTabs" :key="index">
+						<div class="lora-bold expedition-tab"
+							:style="fantasyMapTabSelected === fantasyMapTabs[index] ? 'color: burlywood; opacity: 1; cursor: pointer; user-select:none;' : 'color: inherit; opacity: 0.5; cursor: pointer;'"
+							x-text="fantasyMapTabs[index]" @click="fantasyMapTabSelected = fantasyMapTabs[index];">
+						</div>
+					</template>
+				</div>
+				<hr class="hr-cmbr-dark-gradient">
+
+				<div x-show="fantasyMapTabSelected === 'Regions'">
+					<ul>
+						<template x-for="(location, index) in regionChart" :key="index">
+							<li class="flex-table-row cmbr-tr"
+								@click="CMBRutil.litemOnSelected($el, 'listing-highlight');">
+								<span class="cmbr-td" x-html="location[0]"></span>
+							</li>
+						</template>
+					</ul>
+				</div>
+				<div x-show="fantasyMapTabSelected === 'Curiosities'">
+					<ul><i>A few curious things:</i>
+						<li>Dead trees like imposing golems...</li>
+						<li>Catfish that are halved...</li>
+						<li>River branches consumed by dead cypresses and pines...</li>
+						<li>Islands only briefly accessible by foot...</li>
+						<li>Peculiar encampments with practical loot...</li>
+					</ul>
+				</div>
+
+				<div x-show="fantasyMapTabSelected === 'Eras'">
+					<ul class="gr-list">
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">1</span><i class="cmbr-td rarr">May
+								2012</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">12</span><i class="cmbr-td rarr">June
+								2013</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">36</span><i class="cmbr-td rarr">June
+								2015</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">72</span><i class="cmbr-td rarr">June
+								2018</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">108</span><i class="cmbr-td rarr">June
+								2021</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">144</span><i class="cmbr-td rarr">June
+								2024</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">155</span><i class="cmbr-td rarr">May 2025
+								(13
+								Years)</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">156</span><i class="cmbr-td rarr">June
+								2025</i>
+						</li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">157</span><i class="cmbr-td rarr">July
+								2025
+							</i></li>
+						<li class="flex-table-row cmbr-tr"><span class="mdcm">158</span><i class="cmbr-td rarr">August
+								2025</i>
+							(Encroachments
+							Removed)
+						</li>
+						<li class="flex-table-row"><span class="mdcm">159</span>= <i>September 2025</i></li>
+						<li class="flex-table-row"><span class="mdcm">160</span>= <i>October 2025</i></li>
+					</ul>
+				</div>
+				<!-- </article> -->
+				<hr class="hr-groove-bottom" style="bottom:0;">
+			</div>
+		</div> <!-- ! END CMBRgrid Item UPPER !-->
+
+
+
+		<div class="cmbr-item cmbr-item-center">
+			<div class="grid-col-1-1" style="background-image: url('../images/cmbr-sig-transform.svg');">
+				<select @change="fantasyMapChange($el.value)"
+					style="font-weight: 700; background-color: transparent; border: 0.3rem ridge black;">
+					<template x-for="(item, index) in fantasyMaps" :key="index">
+						<option :value="item" x-text="$el.value"></option>
+					</template>
+				</select>
+				<table style="
+					display: flex;
+					width: 100%;
+					table-layout: fixed;
+					vertical-align: middle;
+					font-family: 'Lora', 'monospace';
+					color: burlywood;
+					border: 0.3rem inset black;
+					background: transparent;">
+					<thead>
+						<tr>
+							<th colspan="1" x-text="'Region:'"></th>
+						</tr>
+						<tr>
+							<th colspan="1" x-text="'Division:'"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td id="region-title" x-text="'___'"></td>
+						</tr>
+						<tr>
+							<td id="division-title" x-text="'___'"></td>
+						</tr>
+					</tbody>
+					<div id="region-flag" style="position: absolute; right: 5%; box-sizing: border-box; border: 0.3rem groove black; width: 100%; 
+						border-bottom: none; height: 10%; background-repeat: no-repeat; background-size: contain; width: 2rem;
+						min-height: 2rem;">
+					</div>
+				</table>
+			</div>
+			<div id="great-regions-map"
+				style="position: sticky; padding: -2rem; height: 100%; width: 100%; border: 0.3rem ridge grey; z-index: 0;">
+				<div hx-get="../template/greatregions-map.html" hx-trigger="load" hx-target="this" hx-swap="outerHTML">
+
+				</div>
+			</div>
+
+			<div class="cmbr-button-grid">
+				<button class="cmbr-button" style="height: 5rem;" x-text="'<'"></button>
+				<template x-for="photo in 5">
+					<img :src="'../assets/fantasy-graphics/pankair-sorghum' + ('') + '.jpeg'" width="100" height="100"
+						@mouseover="$tooltip(photo); $el.style='border: 0.3rem inset burlywood; cursor: pointer;'"
+						@mouseout="$el.style='border: 0.3rem ridge transparent;'"
+						style='border: 0.3rem ridge transparent;'>
+				</template>
+				<button class="cmbr-button" style="height: 5rem;" x-text="'>'"></button>
+			</div>
+
+			<hr class="hr-cmbr-dark-gradient">
+
+		</div>
+
+	</main>
+
+	<!-- <div id="footnav" hx-get="/footnav.html" hx-target="this" hx-trigger="load" hx-swap="outerHTML"></div> -->
+
+
+</body>

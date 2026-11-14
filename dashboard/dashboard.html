@@ -42,8 +42,8 @@
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main class="dashboard-grid" x-data=" { }">
-		<div class="dashboard-item">
+	<main class="cmbr-grid" x-data=" { }">
+		<div class="cmbr-item">
 			<div hx-get="../template/interval-panel.html" hx-trigger="intersect" hx-target="this" hx-swap="innerHTML">
 			</div>
 			<div hx-get="../template/days-and-weeks-lived.html" hx-trigger="intersect" hx-target="this"
@@ -51,19 +51,19 @@
 			</div>
 
 		</div>
-		<div class="dashboard-item" hx-get="../template/expenses.html" hx-trigger="load" hx-target="this"
+		<div class="cmbr-item" hx-get="../template/expenses.html" hx-trigger="load" hx-target="this"
 			hx-swap="innerHTML"></div>
-		<div class="dashboard-item" hx-get="../template/reeducation.html" hx-trigger="load" hx-target="this"
+		<div class="cmbr-item" hx-get="../template/reeducation.html" hx-trigger="load" hx-target="this"
 			hx-swap="innerHTML"></div>
-		<div class="dashboard-item" hx-get="../template/calendar.html" hx-trigger="load" hx-target="this"
+		<div class="cmbr-item" hx-get="../template/calendar.html" hx-trigger="load" hx-target="this"
 			hx-swap="innerHTML">
 		</div>
-		<div class="dashboard-item" hx-get="../template/step-pay-plan.html" hx-trigger="intersect" hx-target="this"
+		<div class="cmbr-item" hx-get="../template/step-pay-plan.html" hx-trigger="intersect" hx-target="this"
 			hx-swap="innerHTML"></div>
-		<div class="dashboard-item" hx-get="../template/pension-calculator.html" hx-trigger="intersect" hx-target="this"
+		<div class="cmbr-item" hx-get="../template/pension-calculator.html" hx-trigger="intersect" hx-target="this"
 			hx-swap="innerHTML"></div>
-		<div class="dashboard-item" hx-get="../template/reserves-calculator.html" hx-trigger="intersect"
-			hx-target="this" hx-swap="innerHTML"></div>
+		<div class="cmbr-item" hx-get="../template/reserves-calculator.html" hx-trigger="intersect" hx-target="this"
+			hx-swap="innerHTML"></div>
 
 	</main>
 

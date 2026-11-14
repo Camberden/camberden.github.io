@@ -29,26 +29,25 @@ INDEX
 
 
 	.cmbr-item-left {
-		flex: 20%;
+		/* flex: 20%; */
+		position: relative;
 		order: 1;
-		position: sticky;
-		height: 10rem;
-		background: black;
+		height: 15rem;
 		z-index: 10;
 	}
 
 	.cmbr-item-center {
 		flex: 80%;
 		order: 3;
+
 	}
 
 	.cmbr-item-right {
-		flex: 20%;
+		/* flex: 20%; */
 		flex-direction: row;
 		order: 2;
-		position: sticky;
-		height: 10rem;
-		background: black;
+		position: relative;
+		height: 15rem;
 		z-index: 10;
 	}
 
@@ -68,9 +67,8 @@ INDEX
 	.cmbr-item-left {
 		flex: 20%;
 		order: 1;
-		position: sticky;
-		height: 10rem;
-		background: black;
+		position: relative;
+		height: 15rem;
 		z-index: 10;
 	}
 
@@ -83,9 +81,8 @@ INDEX
 		flex: 20%;
 		flex-direction: row;
 		order: 2;
-		position: sticky;
-		height: 10rem;
-		background: black;
+		position: relative;
+		height: 15rem;
 		z-index: 10;
 	}
 
@@ -104,11 +101,10 @@ INDEX
 	}
 
 	.cmbr-item-left {
-		flex: 20%;
-		order: 1;
-		position: sticky;
-		height: 10rem;
-		background: black;
+		flex: 80%;
+		order: 2;
+		position: relative;
+		height: 15rem;
 		z-index: 10;
 	}
 
@@ -118,12 +114,11 @@ INDEX
 	}
 
 	.cmbr-item-right {
-		flex: 20%;
+		flex: 80%;
 		flex-direction: row;
-		order: 2;
-		position: sticky;
-		height: 10rem;
-		background: black;
+		order: 1;
+		position: relative;
+		height: 15rem;
 		z-index: 10;
 	}
 

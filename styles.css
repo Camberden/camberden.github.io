@@ -1158,7 +1158,7 @@ cash::before per::after
 	content: attr(item) " № ";
 }
 
-.mdcm::before {
+.mdcm::after {
 	content: attr(item) " 𝕄 ";
 }
 
@@ -1177,9 +1177,6 @@ cash::before per::after
 	content: attr(item) " № ";
 }
 
-.mdcm::before {
-	content: attr(item) " 𝕄 ";
-}
 
 /* !  TRIGGERS, AND THEIR AFFIXATION |=====|>
 <button> & .trigger-box

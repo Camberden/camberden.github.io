@@ -2,21 +2,21 @@
 <!-- TODO: reimplement hover fills -->
 <div id="greatregions-handle" class="cmbr-grid" x-data="{
 	targetPaths() {
-	const regions = document.querySelectorAll('.gr-region');
-	const capitals = document.querySelectorAll('.gr-capital');
-	const regionTitle = document.getElementById('region-title');
-	const divisionTitle = document.getElementById('division-title');
-	const regionFlag = document.getElementById('region-flag');
-	const regionChart = [
-		'Farentia'['Farentia', 'Farentia CD', 'Farentian SIT'],
-		'Zethro-Scheipen'['Zethro-Scheipen', 'Claywater'],
-		'Tendou'['Tendou', 'Tendou CD', 'Tendouese Kinokoland', 'Austral Isles', 'Rolya Chain', 'Rolya'],
-		'Selunia'['Selunia', 'Mokarzmamat', 'Grand Selunia', 'Midselunia'],
-		'Aakse'['Aakse'],
-		'Cheirica'['Cheirica', 'Lucidea Town'],
-		'East Farentia'['East Farentia', 'Outset City'],
-		'Mochadia'['Mochadia', 'Mochadia Major', 'Mochadia Minor', 'Husisiholkit'],
-	];
+		const regions = document.querySelectorAll('.gr-region');
+		const capitals = document.querySelectorAll('.gr-capital');
+		const regionTitle = document.getElementById('region-title');
+		const divisionTitle = document.getElementById('division-title');
+		const regionFlag = document.getElementById('region-flag');
+		const regionChart = [
+			'Farentia'['Farentia', 'Farentia CD', 'Farentian SIT'],
+			'Zethro-Scheipen'['Zethro-Scheipen', 'Claywater'],
+			'Tendou'['Tendou', 'Tendou CD', 'Tendouese Kinokoland', 'Austral Isles', 'Rolya Chain', 'Rolya'],
+			'Selunia'['Selunia', 'Mokarzmamat', 'Grand Selunia', 'Midselunia'],
+			'Aakse'['Aakse'],
+			'Cheirica'['Cheirica', 'Lucidea Town'],
+			'East Farentia'['East Farentia', 'Outset City'],
+			'Mochadia'['Mochadia', 'Mochadia Major', 'Mochadia Minor', 'Husisiholkit'],
+		];
 	
 	for (let region of regions) {
 		region.style.fill = 'grey';
@@ -78,18 +78,18 @@
 		<hr class="hr-cmbr-gradient">
 
 		<ul class="gr-list" style="list-style-type: none;">
-			<li class="flex-table-row">1m = May 2012</li>
-			<li class="flex-table-row">12m = June 2013</li>
-			<li class="flex-table-row">36m = June 2015</li>
-			<li class="flex-table-row">72m = June 2018</li>
-			<li class="flex-table-row">108m = June 2021</li>
-			<li class="flex-table-row">144m = June 2024</li>
-			<li class="flex-table-row">155m = May 2025 (13 Years)</li>
-			<li class="flex-table-row">156m = June 2025</li>
-			<li class="flex-table-row">157m = July 2025 </li>
-			<li class="flex-table-row">158m = August 2025 (Encroachments Removed)</li>
-			<li class="flex-table-row">159m = September 2025</li>
-			<li class="flex-table-row">160m = October 2025</li>
+			<li class="flex-table-row "><span class="mdcm">1m</span> May 2012</li>
+			<li class="flex-table-row "><span class="mdcm">12</span>= June 2013</li>
+			<li class="flex-table-row "><span class="mdcm">36</span>= June 2015</li>
+			<li class="flex-table-row "><span class="mdcm">72</span>= June 2018</li>
+			<li class="flex-table-row "><span class="mdcm">108</span> = June 2021</li>
+			<li class="flex-table-row "><span class="mdcm">144</span> = June 2024</li>
+			<li class="flex-table-row "><span class="mdcm">155</span> = May 2025 (13 Years)</li>
+			<li class="flex-table-row"><span class="mdcm">156</span>= June 2025</li>
+			<li class="flex-table-row"><span class="mdcm">157</span>= July 2025 </li>
+			<li class="flex-table-row"><span class="mdcm">158</span>= August 2025 (Encroachments Removed)</li>
+			<li class="flex-table-row"><span class="mdcm">159</span>= September 2025</li>
+			<li class="flex-table-row"><span class="mdcm">160</span>= October 2025</li>
 		</ul>
 	</div>
 
