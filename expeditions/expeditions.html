@@ -33,22 +33,26 @@
 		overworld: expeditionOverworlds[0].title,
 		overworldCoords: expeditionOverworlds[0].zones,
 		overworldImages: {},
-		overworldImageIndex: 0,
 		overworldTabs: ['Locales', 'Curiosities', 'Musings',],
 		overworldTabSelected: 'Locales',
 		localeView: '___',
 		coordsView: '___',
-		overworldChange: function(overworldTitle) {
-			this.overworld = overworldTitle;
-			this.overworldCoords = getOverworldByTitle(overworldTitle).zones;
-			initExpeditionsMap(getOverworldByTitle(overworldTitle));
+		overworldChange: function(ovTitle) {
+			setCurrentOverworld(ovTitle);
+			const loadedOverworld = getOverworldByTitle(ovTitle);
+			this.overworld = ovTitle;
+			this.overworldCoords = loadedOverworld.zones;
+			findLocale(this.overworld, this.overworldCoords[0][1]);
 		},
 		coordsLocaleChange: function(locale, coords){
 			this.localeView = locale;
 			this.coordsView = coords;
+		},
+		ovLitems: function (elem) {
+			CMBRutil.litemOnSelected(elem, 'listing-highlight')
 		}
 	}" style="max-height: 200vh;"
-	x-effect="overworldImages = await CMBRutil.connectCMBRjson(['travel-photos']); console.log(overworldImages[0])"
+	x-effect="overworldImages = await CMBRutil.connectCMBRjson(['expeditionary']); console.log(overworldImages[0])"
 	hx-get="../compon/tube.html" hx-target="this" hx-trigger="load" hx-swap="beforeend">
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
@@ -57,19 +61,73 @@
 
 		<!-- ! CMBRgrid ITEM UPPER !-->
 		<div class="cmbr-item-lower grid-col-1">
-			<div class="cmbr-item">
-				<h1 id="expeditions-map-title" class="chrispy" style="font-size: 1.5rem;" x-text="overworld"></h1>
+
+			<div class="cmbr-item" x-data="{
+				talking: true,
+				utterance: '',
+				talkingDots: '',
+				linesRead: false,
+				oneLineRead: false,
+				counter: 0,
+				lines: [
+					`An alternatively-routed commute is to thank for discovering this marvel at the B. Everette Jordan Lake.
+					Its northern stretches are replete with stark diversities in flora, forestry, waterfront, and material character.
+					This vast State Game Land is akin to open world paradise wherein relative distance is fairly simple to achieve for the intrepid, and in such distance, a freedom reminiscent of a story's protagonist.
+					The sense of place at this zone, named for the point of Farrington, is profound relative to all others in Central North Carolina and merits a closeness to my heart.`,
+				],
+				loadLine: function(line) {
+					this.utterance = '';
+					let i = 0;
+					console.log(line);
+					this.talking = true;
+					const charpaste = setInterval(() => {
+						this.utterance += line[i];
+						i++;
+						if (this.utterance.length === line.length) {
+							this.talking = false;
+							clearInterval(charpaste);
+						}
+					}, 20);
+					const removeDots = setInterval(() => {
+						this.talkingDots = this.talkingDots.substring(0, this.talkingDots[this.talkingDots.length - 1]);
+						if (!this.talking && this.talkingDots.length <= 1) {
+							this.talkingDots = '';
+							clearInterval(removeDots);
+						}
+					}, 500);
+				},
+				talkWithDots: function(elem) {
+					this.talkingDots= '';
+					let i = 0;
+					console.log(elem);
+					const ellipses = setInterval(() => {
+						if (this.talking === true) {
+							this.talkingDots += '.';
+							i++;
+							if (i === 6) {
+								this.talkingDots = '';
+								i = 0;
+							}
+						}
+						if (this.talking === false) {
+							clearInterval(ellipses);
+						}
+					}, 100);
+				},
+				runAgain: function() {
+					if (!this.linesRead) {
+						this.loadLine(lines[counter]);
+					}
+				}
+			}" x-init="loadLine(lines[counter])">
+				<h1 id=" expeditions-map-title" class="chrispy" style="font-size: 1.5rem;" x-text="overworld">
+				</h1>
 
 				<hr class=" hr-groove-top">
 
-				<article>
-					<i>
-						Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda nulla sit nihil perspiciatis
-						beatae nostrum quod, aspernatur sint fugiat in error. Neque non eveniet dolorem nisi voluptate,
-						perspiciatis alias debitis.
-					</i>
-					<hr class="hr-push-down">
-				</article>
+				<summary style="min-height: 10rem; max-height: max-content; justify-content: center; ">
+					<q style=" font-style: italic; font-weight: 400; line-height: 0.8rem;" x-text="utterance"></q>
+				</summary>
 			</div>
 			<br>
 			<!-- % TABS div % !-->
@@ -85,30 +143,120 @@
 				</div>
 				<hr class="hr-cmbr-dark-gradient">
 
-				<div x-show="overworldTabSelected === 'Locales'">
-					<ul>
+				<div x-show="overworldTabSelected === 'Locales'" style="border: 0.3rem inset black; ">
+					<menu class="grid-col-1-1-1" style="list-style-type: none;">
 						<template x-for="(location, index) in overworldCoords" :key="index">
 							<li class="flex-table-row cmbr-tr"
-								@click="findLocale(location[0], location[1]); CMBRutil.litemOnSelected($el, 'listing-highlight'); coordsLocaleChange(location[0], location[1])">
+								@click="findLocale(location[0], location[1]); ovLitems($el); coordsLocaleChange(location[0], location[1])">
 								<span class="cmbr-td" x-html="location[0]"></span>
 							</li>
 						</template>
-					</ul>
+					</menu>
 				</div>
+
 				<div x-show="overworldTabSelected === 'Curiosities'">
-					<ul><i>A few curious things:</i>
-						<li>Dead trees like imposing golems...</li>
-						<li>Catfish that are halved...</li>
-						<li>River branches consumed by dead cypresses and pines...</li>
-						<li>Islands only briefly accessible by foot...</li>
-						<li>Peculiar encampments with practical loot...</li>
-					</ul>
+					<div style="border: 0.3rem inset black; ">
+						<menu class="grid-col-1-1-1" style="list-style-type: none" ;>
+							<li class="flex-table-row cmbr-tr" @click="ovLitems($el);">Dead trees like imposing
+								golems...</li>
+							<li class="flex-table-row cmbr-tr" @click="ovLitems($el);">Catfish that are halved...
+							</li>
+							<li class="flex-table-row cmbr-tr" @click="ovLitems($el);">River branches consumed by
+								dead cypresses and pines...
+							</li>
+							<li class="flex-table-row cmbr-tr" @click="ovLitems($el);">Islands only briefly
+								accessible by foot...</li>
+							<li class="flex-table-row cmbr-tr" @click="ovLitems($el);">Peculiar encampments with
+								practical loot...</li>
+						</menu>
+					</div>
+				</div>
+				<div x-show="overworldTabSelected === 'Musings'" x-data="{ 
+						musingsClicked: 0, 
+						ovMusings: 2,
+						routeMusings: function(){
+							if (this.musingsClicked === (this.ovMusings)) {
+								this.musingsClicked = 0;
+							}
+						},
+					}" x-effect="routeMusings();">
+
+
+					<span class="cmbr-pen" x-html="musingsClicked + 1"></span>
+					<button class="cmbr-button" style="position: right; margin-inline-start: 80%;"
+						@click="++musingsClicked;" x-text="'Cycle Musings'"></button>
+					<hr class="hr-push-down">
+					<article x-show="musingsClicked === 0" x-cloak
+						style="background-image: url('../images/sig.svg'); background-size: cover;">
+						<q class="writing">
+							I drive 10hrs on average per week nowadays. I
+							get home, eat dinner, and maybe text around a little to brighten things figuratively.
+							Life
+							brings so many twists and turns, much like my alternatively-routed drive back home. I
+							don't
+							know
+							what Apple Maps was thinking, but it took me on the toll road back home. And yet, I
+							honestly
+							don't mind having incurred the expense. It brought me some of the most gorgeous views
+							this
+							year:
+							narrow landbridges and tiny islands to my left and right, the expanse of Lake Jordan
+							beyond.
+							Boats were skimming by, trailblaizers hiking along an isthmus. The water was glistening
+							and
+							the
+							air was fresh, and in the foliage was a delightful mix of spring pastel and long-leaf
+							evergreen.
+						</q>
+						<div style="color: cadetblue;">
+							<hr class="hr-push-down">
+							<b>Chrispy's Netjournal</b><span class="rarr">"The Winds and the Waters"</span>
+						</div>
+					</article>
+
+					<article x-show="musingsClicked === 1"
+						style="background-image: url('../images/sig.svg'); background-size: cover;" x-cloak>
+						<q class="writing">
+							I briefly wrote of a beautiful area along Lake Jordan, and this morning I took myself to
+							that
+							tiny access point and proceeded to explore freely. The morning was fairly cold and the
+							wind
+							was consistently moderate. I decked myself out in my parka and gloves, backpack
+							equipped,
+							and gazed outward to the water and landscapes cradling it. My parking spot was
+							essentially
+							on a cliff which made for a dramatic outset. I'd soon discover that the pine-laden paths
+							along the shoreline would vary considerably in elevation, adding a welcome need for
+							exertion
+							I've been craving. Former campsites were encountered occassionally, with stones
+							configured
+							as seats, ash and charcoal remains at the circles, some trash astrewn. Proceeding
+							through
+							the aforementioned isthmus, I felt as if along the fine line between peace and choas:
+							calm,
+							gentle waters nestled by the ithsmus and landbridge; steady, rowdy waves crashing ashore
+							from the expansive lake proper. Ahead was a grove sporting taller pines wearing myriad
+							purple wisterias and a miniscule lagoon from which short bald cypress emerge. After
+							exploring that spot, I headed back to the outset overlook and proceeded in the other
+							direction to hike the trails along the sloped and craggy shoreline. The wind beat upon
+							me
+							heavily and I was glad to have had multiple layers; the pines did not suffice for
+							coverage,
+							and neither did nestling along a rockface away from the wind direction. All morning it
+							seemed the winds and waters were destined to ride together and barrage this entire zone.
+							No,
+							it was not discomforting but rather enlivening!
+						</q>
+						<div style="color: cadetblue;">
+							<hr class="hr-push-down">
+							<b>Chrispy's Netjournal</b><span class="rarr">"The Winds and the Waters"</span>
+						</div>
+					</article>
 				</div>
 				<!-- </article> -->
 				<hr class="hr-groove-bottom" style="bottom:0;">
 			</div>
 		</div> <!-- ! END CMBRgrid Item UPPER !-->
-
 
 
 		<div class="cmbr-item cmbr-item-center">
@@ -129,18 +277,18 @@
 					background: transparent;">
 					<thead>
 						<tr>
-							<th colspan="1" x-text="'Locale:'"></th>
+							<th colspan="1" x-text="'Images:'"></th>
 						</tr>
 						<tr>
-							<th colspan="1" x-text="'Coordinates:'"></th>
+							<th colspan="1" x-text="'Borderposts:'"></th>
 						</tr>
 					</thead>
 					<tbody>
 						<tr>
-							<td id="clickedLocale" x-text="localeView"></td>
+							<td id="clickedLocale" x-text="overworldImages.length"></td>
 						</tr>
 						<tr>
-							<td id="clickedCoords" x-text="coordsView"></td>
+							<td id="clickedCoords" x-text="'8'"></td>
 						</tr>
 				</table>
 			</div>
@@ -148,24 +296,45 @@
 				style="position: sticky; padding: -2rem; height: 30rem; width: 100%; border: 0.3rem ridge grey; z-index: 0;">
 			</div>
 
-			<div class="cmbr-button-grid">
-				<button class="cmbr-button" style="height: 5rem;" x-text="'<'"></button>
-				<template x-for="photo in 5">
-					<img :src="'../assets/travel-photos/photo-nc-us-' + (48 + photo) + '.jpeg'" width="100" height="100"
-						@mouseover="$tooltip(photo); $el.style='border: 0.3rem inset burlywood; cursor: pointer;'"
-						@mouseout="$el.style='border: 0.3rem ridge transparent;'"
-						style='border: 0.3rem ridge transparent;'>
-				</template>
-				<button class="cmbr-button" style="height: 5rem;" x-text="'>'"></button>
-			</div>
+			<div class="cmbr-button-grid" x-data="{
+					exPhotos: {},
+					photoLoadCount: 5,
+					openStatus: 0,
+					 incrementOpenStatus: function(inc){
+						if (inc && this.openStatus >= Math.floor(this.exPhotos.length/ this.photoLoadCount)) {
+							this.openStatus = 0;
+						} else if (!inc && this.openStatus - 1 < 0) {
+							this.openStatus = Math.floor(this.exPhotos.length/this.photoLoadCount);
+						} else if (inc) {
+							this.openStatus = this.openStatus + 1;
+						} else if (!inc) {
+							this.openStatus = this.openStatus - 1;
+						}
+					 },
+					}" x-init="exPhotos = await CMBRutil.connectCMBRjson(['expeditionary']);
+				">
+				<button class="cmbr-button" style="height: 100px; width: 50px; font-size: 5rem;"
+					@click="incrementOpenStatus(false);" x-text="'<'">
+				</button>
 
-			<hr class="hr-cmbr-dark-gradient">
+				<div x-data>
+					<template x-for=" (photo, index) in exPhotos" :key="index">
+						<img :src="photo" width="100" height="100" x-show="openStatus === Math.floor(index/5);"
+							@click="overworldPoster = photo; $tooltip(photo.substring(photo.lastIndexOf('/') + 1, photo.lastIndexOf('.')))"
+							; @mouseover="$el.style='border: 0.3rem inset burlywood; cursor: pointer;'"
+							@mouseout="$el.style='border: 0.3rem ridge transparent;'"
+							style=" border: 0.3rem ridge transparent;" />
+					</template>
+				</div>
+				<button class="cmbr-button" style="height: 100px; width: 50px; font-size: 5rem;"
+					@click="incrementOpenStatus(true);" x-text="'>'">
+				</button>
+			</div>
 
 		</div>
 
 	</main>
 
-	<!-- <div id="footnav" hx-get="/footnav.html" hx-target="this" hx-trigger="load" hx-swap="outerHTML"></div> -->
 
 	<script src="overworld.js"></script>
 	<script src="expeditions.js"></script>

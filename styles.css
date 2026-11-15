@@ -39,6 +39,7 @@ ROOT STYLES *
 	--cmbr-green: #8acb88;
 	--cmbr-curtain-plum: #292540;
 	--cmbr-grid-box: #90e5ee1a;
+	--cmbr-gold: #ffcc00;
 	--cmbr-degrees: 120deg;
 	--cmbr-gradient: linear-gradient(var(--cmbr-degrees), var(--cmbr-indigo), var(--cmbr-blue), var(--cmbr-orange), var(--cmbr-violet));
 	--cmbr-legacy-gradient: linear-gradient(120deg, #f59b60 0%, #a1dbf8 100%);
@@ -57,6 +58,9 @@ ROOT STYLES *
 	--cmbr-btn-bo: 0.3rem ridge var(--cmbr-btn-b);
 	--cmbr-btn-c-h: sienna;
 	--cmbr-btn-b-h: black;
+	--listing-hi: forestgreen;
+
+
 
 	--hkri-gradient: linear-gradient(rgb(78, 78, 78), rgb(48, 47, 47), rgb(31, 31, 31), rgb(63, 63, 63));
 
@@ -158,6 +162,8 @@ LIGHT & DARK MODES
 	--bg-color: var(--clr-quinary-body);
 	--bg-color-svg: var(--cmbr-curtain-plum);
 	--cmbr-item-bg: var(--cmbr-grid-box);
+	--listing-hi: var(--cmbr-orange);
+	--listing-hi-bg: var(var(--cmbr-curtain-plum));
 
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
@@ -167,10 +173,13 @@ LIGHT & DARK MODES
 [data-theme="dark"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
+	--section-title: var(--cmbr-blue);
 	--bg-image: url("images/cmbr-curtain-dark.svg");
 	--bg-color: #0f0b07;
 	--bg-color-svg: #120d08;
-	/* --cmbr-item-bg: var(--cmbr-grid-box); */
+	--listing-hi: forestgreen;
+	--listing-hi-bg: var(--cmbr-blass-frame);
+	--cmbr-item-bg: var(--cmbr-grid-box);
 
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
@@ -178,13 +187,15 @@ LIGHT & DARK MODES
 
 /* |=====| LIGHT |=====| */
 [data-theme="light"] {
-	--font-color: orchid;
-	--link-color: var(--mo-2-5);
-	--section-title: rgb(221, 37, 235);
+	--font-color: rgb(38, 186, 196);
+	--link-color: var(--mo2-4);
+	--section-title: var(--cmbr-green);
 	--bg-image: var(--mosky-7);
 	--bg-color: none;
 	--bg-color-svg: none;
-	/* --cmbr-item-bg: var(--cmbr-blass-frame); */
+	--listing-hi: cornflowerblue;
+	--listing-hi-bg: var(--cmbr-blass-frame);
+	--cmbr-item-bg: var(--cmbr-grid-box);
 
 	--cmbr-com-pnl-background: var(--cmbr-blass-frame);
 	/* --cmbr-com-pnl-background: rgb(50, 65, 67); */
@@ -195,23 +206,26 @@ LIGHT & DARK MODES
 [data-theme="paperesque"] {
 	--font-color: var(--cmbr-blue);
 	--link-color: var(--cmbr-orange);
+	--section-title: var(--cmbr-blue);
 	--bg-image: url("images/cmbr-curtain-original.svg");
 	--bg-color: #d6dce1;
 	--bg-color-svg: #F4F5F6;
-
+	--cmbr-item-bg: var(--cmbr-grid-box);
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
 
 /* |=====| DUSTY |=====| */
 [data-theme="dusty"] {
-	color: black;
 	--font-color: black;
 	--link-color: var(--cmbr-indigo);
 	--section-title: #1f29b9;
+	--listing-hi: forestgreen;
+	--listing-hi-bg: var(--cmbr-blass-frame);
 	/* --bg-image: url("images/cmbr-curtain-light.svg"); */
 	--bg-color: #9ba1bb;
 	--bg-color-svg: none;
+	--cmbr-item-bg: var(--cmbr-grid-box);
 	--cmbr-com-pnl-background: rgba(144, 229, 238, 0.1);
 	--cmbr-com-pnl-box-shadow: -0.1rem -0.1rem 0.5rem rgb(12, 11, 71);
 }
@@ -444,8 +458,20 @@ a {
 	text-decoration: none;
 }
 
+slot>p>a {
+	color: var(--clr-primary);
+}
+
 ul {
 	text-align: left;
+}
+
+slot>ul>li>a {
+	color: var(--cmbr-green)
+}
+
+slot>ul>li>a:hover {
+	color: var(--cmbr-orange);
 }
 
 
@@ -1297,7 +1323,7 @@ button:disabled:hover {
 .cmbr-button-grid {
 	display: flex;
 	flex-flow: row nowrap;
-	justify-content: center;
+	justify-content: space-between;
 	box-sizing: border-box;
 	column-gap: 0.3rem;
 	padding: 0.5rem;
@@ -3246,13 +3272,23 @@ MUSINGS
 	min-width: 1em;
 }
 
+.quote-start {
+	font-size: rem;
+	float: left;
+	line-height: 0.8rem;
+	margin-top: 1rem;
+	/* margin-top: -0.29rem; */
+	margin-right: -1.8rem;
+	text-shadow: -5px -2px 0px darkmagenta;
+}
+
 .writinginitial {
 	font-size: 7rem;
 	float: left;
 	line-height: 0.8em;
 	margin-top: -0.29em;
 	margin-right: -0.05em;
-	text-shadow: -5px -2px 0px darkmagenta;
+	text-shadow: -5px -2px 0px rgb(133, 132, 132);
 }
 
 .listed-title {
@@ -3266,8 +3302,10 @@ MUSINGS
 }
 
 .listing-highlight {
-	color: var(--cmbr-orange);
-	background: var(--cmbr-curtain-plum);
+	color: var(--listing-hi);
+	background: var(--listing-hi-bg);
+	/* color: var(--cmbr-orange);
+	background: var(--cmbr-curtain-plum); */
 }
 
 
@@ -3516,8 +3554,17 @@ MODULE: NEOCITIES
 MODULE: LEAFLET
 /* * INTERACTIVE EXTERNAL MAP API |==========| */
 .leaf-popup,
+.popupCustom .leaflet-popup-tip,
+.popupCustom .leaflet-popup-content-wrapper,
 [leaf-popup] {
-	background-color: transparent;
+	box-sizing: border-box;
+	/* outline: 0.1rem dotted salmon;
+	background-color: var(--cmbr-blass-frame);
+	background-size: cover;
+	background-position: 100%;
+	height: 5rem;
+	width: fit-content;
+	color: indianred; */
 }
 
 .expedition-photos {
@@ -3542,6 +3589,10 @@ MODULE: LEAFLET
 /* * Alpine Carosel |====================>
 TAILWIND: Carosel
 /* * Photoview |==========| */
+
+.splide__pagination__page.is-active {
+	background: #333;
+}
 
 /* flex space-x-6 */
 .div-1 {

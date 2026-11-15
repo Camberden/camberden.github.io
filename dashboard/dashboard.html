@@ -14,6 +14,8 @@
 	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
 		integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 	<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
 
 	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
 		integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
@@ -38,12 +40,83 @@
 				this.utilitiesView = !this.utilitiesView;
 				console.log('triggered utilitiesView: ' + this.utilitiesView);
 			},
+			talking: true,
+				utterance: '',
+				talkingDots: '',
+				linesRead: false,
+				oneLineRead: false,
+				counter: 0,
+				lines: [
+					`I am quite tired. But that's only for today. Also I'm thirty-three. In other words, I'm 1725 days old. Good Day.`,
+				],
+			loadLine: function(line) {
+					this.utterance = '';
+					let i = 0;
+					console.log(line);
+					this.talking = true;
+					const charpaste = setInterval(() => {
+						this.utterance += line[i];
+						i++;
+						if (this.utterance.length === line.length) {
+							this.talking = false;
+							clearInterval(charpaste);
+						}
+					}, 100);
+					const removeDots = setInterval(() => {
+						this.talkingDots = this.talkingDots.substring(0, this.talkingDots[this.talkingDots.length - 1]);
+						if (!this.talking && this.talkingDots.length <= 1) {
+							this.talkingDots = '';
+							clearInterval(removeDots);
+						}
+					}, 500);
+				},
+				talkWithDots: function(elem) {
+					this.talkingDots= '';
+					let i = 0;
+					console.log(elem);
+					const ellipses = setInterval(() => {
+						if (this.talking === true) {
+							this.talkingDots += '.';
+							i++;
+							if (i === 6) {
+								this.talkingDots = '';
+								i = 0;
+							}
+						}
+						if (this.talking === false) {
+							clearInterval(ellipses);
+						}
+					}, 100);
+				},
 		}" hx-get="../compon/tube.html" hx-target="this" hx-trigger="load" hx-swap="beforeend">
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main class="cmbr-grid" x-data=" { }">
+	<main class="cmbr-grid" x-data=" {
+		utterance: '',
+		dashboardPoster: '../images/gifs/overlook-overit.gif',
+	}">
+
+		<div class="cmbr-item cmbr-item-center;" style="width: 70%;">
+			<div :style="'background-image: url(' + dashboardPoster + '); background-size: cover;'">
+				<div style="background-color: var(--cmbr-blass);">
+					<h1 class="chrispy" style="font-size: 1.5rem;" x-text="'Well Come Two Board of Dashing.'">
+					</h1>
+				</div>
+				<hr class=" hr-groove-top">
+
+				<summary
+					style="color: var(--cmbr-blue); min-height: 10rem; max-height: max-content; justify-content: center; border: 0.3rem inset black; border-top: none; list-style-type: none;"
+					x-effect=" loadLine(lines[counter])">
+
+					<q class="lora-italic"
+						style="font-weight: 700; font-size: 2rem; line-height: 1.8rem; text-shadow: 0.2rem 0.2rem black;"
+						x-text="utterance"></q>
+				</summary>
+			</div>
+		</div>
 		<div class="cmbr-item">
+
 			<div hx-get="../template/interval-panel.html" hx-trigger="intersect" hx-target="this" hx-swap="innerHTML">
 			</div>
 			<div hx-get="../template/days-and-weeks-lived.html" hx-trigger="intersect" hx-target="this"
@@ -51,32 +124,25 @@
 			</div>
 
 		</div>
-		<div class="cmbr-item" hx-get="../template/expenses.html" hx-trigger="load" hx-target="this"
-			hx-swap="innerHTML"></div>
+		<div class="cmbr-item" hx-get="../template/expenses.html" hx-trigger="load" hx-target="this" hx-swap="innerHTML"
+			x-cloak></div>
 		<div class="cmbr-item" hx-get="../template/reeducation.html" hx-trigger="load" hx-target="this"
-			hx-swap="innerHTML"></div>
-		<div class="cmbr-item" hx-get="../template/calendar.html" hx-trigger="load" hx-target="this"
-			hx-swap="innerHTML">
+			hx-swap="innerHTML" x-cloak></div>
+		<div class="cmbr-item" hx-get="../template/calendar.html" hx-trigger="load" hx-target="this" hx-swap="innerHTML"
+			x-cloak>
 		</div>
 		<div class="cmbr-item" hx-get="../template/step-pay-plan.html" hx-trigger="intersect" hx-target="this"
-			hx-swap="innerHTML"></div>
+			hx-swap="innerHTML" x-cloak></div>
 		<div class="cmbr-item" hx-get="../template/pension-calculator.html" hx-trigger="intersect" hx-target="this"
-			hx-swap="innerHTML"></div>
+			hx-swap="innerHTML" x-cloak></div>
 		<div class="cmbr-item" hx-get="../template/reserves-calculator.html" hx-trigger="intersect" hx-target="this"
-			hx-swap="innerHTML"></div>
+			hx-swap="innerHTML" x-cloak></div>
 
 	</main>
 
 
 	<!-- * SPLIDE * -->
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
-	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
 
-	<style>
-		.splide__pagination__page.is-active {
-			background: #333;
-		}
-	</style>
 
 	<div x-data="{
         init() {
@@ -90,7 +156,7 @@
                 },
             }).mount()
         },
-    }">
+   	 }" x-cloak>
 		<section x-ref="splide" class="splide px-14" aria-label="Splide/Alpine.js Carousel Example">
 			<div class="splide__track">
 				<ul class="splide__list">

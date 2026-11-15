@@ -743,6 +743,10 @@ const CMBRutil = {
 						return data["tubeVideos"];
 					case "studyDocs":
 						return data["studyDocs"];
+					case "grGeneralPhotos":
+						return data["grGeneralPhotos"];
+					case "expeditionary":
+						return data["expeditionary"];
 					case "blog":
 						if (query.length == 1) {
 							// console.log(data[query[0]]);

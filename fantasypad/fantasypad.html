@@ -21,6 +21,8 @@
 	<script defer src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
 	<script defer src="https://unpkg.com/alpinejs-fetch@latest/dist/api.min.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/css/splide.min.css">
+	<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.0.7/dist/js/splide.min.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/marked/lib/marked.umd.js"></script>
 	<script src="/htmx.js"></script>
 	<script src="/cmbr.js"></script>
@@ -48,8 +50,9 @@
 		],
 		fantasyMapChange: function(place) {
 			this.fantasyMapTitle = place;
-			// this.fantasyMapCoords = getFantasyMapByTitle(fantasyMapTitle).zones;
-			// initFantasyMap(getFantasyMapByTitle(fantasyMapTitle));
+		},
+		grLitems: function (elem) {
+			CMBRutil.litemOnSelected(elem, 'listing-highlight')
 		}
 	}" style="max-height: 200vh;"
 	x-effect="overworldImages = await CMBRutil.connectCMBRjson(['travel-photos']); console.log(overworldImages[0])"
@@ -101,68 +104,104 @@
 				<div x-show="fantasyMapTabSelected === 'Regions'">
 					<ul>
 						<template x-for="(location, index) in regionChart" :key="index">
-							<li class="flex-table-row cmbr-tr"
-								@click="CMBRutil.litemOnSelected($el, 'listing-highlight');">
+							<li class="flex-table-row cmbr-tr" @click="grLitems($el)">
 								<span class="cmbr-td" x-html="location[0]"></span>
 							</li>
 						</template>
 					</ul>
 				</div>
-				<div x-show="fantasyMapTabSelected === 'Curiosities'">
-					<ul><i>A few curious things:</i>
-						<li>Dead trees like imposing golems...</li>
-						<li>Catfish that are halved...</li>
-						<li>River branches consumed by dead cypresses and pines...</li>
-						<li>Islands only briefly accessible by foot...</li>
-						<li>Peculiar encampments with practical loot...</li>
-					</ul>
-				</div>
 
-				<div x-show="fantasyMapTabSelected === 'Eras'">
-					<ul class="gr-list">
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">1</span><i class="cmbr-td rarr">May
-								2012</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">12</span><i class="cmbr-td rarr">June
-								2013</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">36</span><i class="cmbr-td rarr">June
-								2015</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">72</span><i class="cmbr-td rarr">June
-								2018</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">108</span><i class="cmbr-td rarr">June
-								2021</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">144</span><i class="cmbr-td rarr">June
-								2024</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">155</span><i class="cmbr-td rarr">May 2025
-								(13
-								Years)</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">156</span><i class="cmbr-td rarr">June
-								2025</i>
-						</li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">157</span><i class="cmbr-td rarr">July
-								2025
-							</i></li>
-						<li class="flex-table-row cmbr-tr"><span class="mdcm">158</span><i class="cmbr-td rarr">August
-								2025</i>
-							(Encroachments
-							Removed)
-						</li>
-						<li class="flex-table-row"><span class="mdcm">159</span>= <i>September 2025</i></li>
-						<li class="flex-table-row"><span class="mdcm">160</span>= <i>October 2025</i></li>
-					</ul>
+				<div x-show="fantasyMapTabSelected === 'Curiosities'" x-data="{
+					curiositySelected: 'Books Uncovered',
+					booksCount: grBooks.length - 1,
+					currentBook: grBooks[0],
+					loadBook: function(num) {
+						this.currentBook = grBooks[num];
+					},
+				}">
+					<div style="border: 0.3rem inset black; background-image: url('../images/cmbr-sig-transform.svg')">
+						<select class="affection" style="border: 0.3rem inset black; margin-inline-end: 100%;"
+							@change="curiositySelected = $el.value;">
+							<option value="Books Uncovered" x-text="$el.value"></option>
+							<option value="Minevisor" x-text="$el.value"></option>
+						</select>
+						<!-- <h1 class="affection">Books</h1> -->
+						<i x-show="curiositySelected === 'Books Uncovered'"
+							x-text="'These books were retrieved using a utility on the world save file.'"></i>
+						<i x-show="curiositySelected === 'Minevisor'"
+							x-text="'This utility site presents plentiful deep datapoints.'"></i>
+					</div>
+					<div style="border: 0.3rem inset black; ">
+						<menu class="grid-col-1-1-1" style="list-style-type: none;"
+							x-show="curiositySelected === 'Books Uncovered'">
+							<template x-for=" item in booksCount" :key="index">
+								<li class="flex-table-row cmbr-tr" @click="grLitems($el); loadBook(item);"
+									x-text="'Book ' + item"></li>
+							</template>
+
+						</menu>
+						<div x-show="curiositySelected === 'Minevisor'">
+							<img src="../assets/gr/gr-minevisor-1.png" width: 100; height: 50; />
+						</div>
+					</div>
+					<div
+						style="position: sticky;border: 0.3rem inset black; overflow-y: scroll; background-color: var(--cmbr-blass); max-height: 15rem;">
+						<article x-show="curiositySelected === 'Books Uncovered'" class="affection"
+							x-text="currentBook"></article>
+						<button class="cmbr-button" x-show="curiositySelected === 'Minevisor'">
+							<a class="affection" href="gr-report.html" target="#" x-text="'World Report'"></a>
+						</button>
+					</div>
 				</div>
-				<!-- </article> -->
-				<hr class="hr-groove-bottom" style="bottom:0;">
 			</div>
+
+			<div x-show="fantasyMapTabSelected === 'Eras'">
+				<ul class="gr-list">
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">1</span><i class="cmbr-td rarr">May
+							2012</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">12</span><i class="cmbr-td rarr">June
+							2013</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">36</span><i class="cmbr-td rarr">June
+							2015</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">72</span><i class="cmbr-td rarr">June
+							2018</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">108</span><i class="cmbr-td rarr">June
+							2021</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">144</span><i class="cmbr-td rarr">June
+							2024</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">155</span><i class="cmbr-td rarr">May 2025
+							(13
+							Years)</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">156</span><i class="cmbr-td rarr">June
+							2025</i>
+					</li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">157</span><i class="cmbr-td rarr">July
+							2025
+						</i></li>
+					<li class="flex-table-row cmbr-tr"><span class="mdcm">158</span><i class="cmbr-td rarr">August
+							2025</i>
+						(Encroachments
+						Removed)
+					</li>
+					<li class="flex-table-row"><span class="mdcm">159</span>= <i>September 2025</i></li>
+					<li class="flex-table-row"><span class="mdcm">160</span>= <i>October 2025</i></li>
+				</ul>
+			</div>
+			<!-- </article> -->
+			<hr class="hr-groove-bottom" style="bottom:0;">
 		</div> <!-- ! END CMBRgrid Item UPPER !-->
 
 
+
+		<!-- % REGIONS %-->
+		<!-- ! CMBRgrid ITEM CENTER !-->
 
 		<div class="cmbr-item cmbr-item-center">
 			<div class="grid-col-1-1" style="background-image: url('../images/cmbr-sig-transform.svg');">
@@ -203,6 +242,7 @@
 					</div>
 				</table>
 			</div>
+			<!-- % MAP ITSELF %-->
 			<div id="great-regions-map"
 				style="position: sticky; padding: -2rem; height: 100%; width: 100%; border: 0.3rem ridge grey; z-index: 0;">
 				<div hx-get="../template/greatregions-map.html" hx-trigger="load" hx-target="this" hx-swap="outerHTML">
@@ -210,24 +250,44 @@
 				</div>
 			</div>
 
-			<div class="cmbr-button-grid">
-				<button class="cmbr-button" style="height: 5rem;" x-text="'<'"></button>
-				<template x-for="photo in 5">
-					<img :src="'../assets/fantasy-graphics/pankair-sorghum' + ('') + '.jpeg'" width="100" height="100"
-						@mouseover="$tooltip(photo); $el.style='border: 0.3rem inset burlywood; cursor: pointer;'"
-						@mouseout="$el.style='border: 0.3rem ridge transparent;'"
-						style='border: 0.3rem ridge transparent;'>
-				</template>
-				<button class="cmbr-button" style="height: 5rem;" x-text="'>'"></button>
+			<div class="cmbr-button-grid" x-data="{
+					grPhotos: {},
+					photoLoadCount: 5,
+					openStatus: 0,
+					 incrementOpenStatus: function(inc){
+						if (inc && this.openStatus >= Math.floor(this.grPhotos.length/ this.photoLoadCount)) {
+							this.openStatus = 0;
+						} else if (!inc && this.openStatus - 1 < 0) {
+							this.openStatus = Math.floor(this.grPhotos.length/this.photoLoadCount);
+						} else if (inc) {
+							this.openStatus = this.openStatus + 1;
+						} else if (!inc) {
+							this.openStatus = this.openStatus - 1;
+						}
+					 },
+					}" x-init="grPhotos = await CMBRutil.connectCMBRjson(['grGeneralPhotos']); photoLoadCount = 5;
+				">
+				<button class="cmbr-button" style="height: 100px; width: 50px; font-size: 5rem;"
+					@click="incrementOpenStatus(false);" x-text="'<'">
+				</button>
+
+				<div x-data>
+					<template x-for=" (photo, index) in grPhotos" :key="index">
+						<img :src="photo" width="100" height="100" x-show="openStatus === Math.floor(index/5);"
+							@click="$tooltip(photo.substring(photo.lastIndexOf('/') + 1, photo.lastIndexOf('.')))" ;
+							@mouseover="$el.style='border: 0.3rem inset burlywood; cursor: pointer;'"
+							@mouseout="$el.style='border: 0.3rem ridge transparent;'"
+							style=" border: 0.3rem ridge transparent;" />
+					</template>
+				</div>
+				<button class="cmbr-button" style="height: 100px; width: 50px; font-size: 5rem;"
+					@click="incrementOpenStatus(true);" x-text="'>'">
+				</button>
 			</div>
-
-			<hr class="hr-cmbr-dark-gradient">
-
 		</div>
 
 	</main>
 
-	<!-- <div id="footnav" hx-get="/footnav.html" hx-target="this" hx-trigger="load" hx-swap="outerHTML"></div> -->
-
+	<script src="gr-books.js"></script>
 
 </body>

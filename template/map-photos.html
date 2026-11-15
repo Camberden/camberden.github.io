@@ -1,0 +1,60 @@
+<div id="map-photos-handle" x-data="{
+        init() {
+            new Splide(this.$refs.splide, {
+                perPage: 2,
+                gap: '0.5rem',
+                breakpoints: {
+                    640: {
+                        perPage: 1,
+                    },
+                },
+            }).mount()
+        },
+		grPhotos: {},
+		photoIndexArray: ['0','1','2','3','4',],
+		photoLoadFromIndex: 0,
+		photoLoadCount: 5,
+		loadNextPhotos: function(start, end) {
+			this.photoLoadFromIndex = this.photoLoadFromIndex + this.photoLoadCount;
+			for (let i = 0; i < this.photoLoadCount; i++) {
+				let j = 0;
+				if (i + start >= end) {
+					this.photoIndexArray[i] = j;
+					j++;
+				} else {
+					this.photoIndexArray[i] = i;
+				}
+			}
+		},
+					
+    }" x-init="grPhotos = await CMBRutil.connectCMBRjson(['grGeneralPhotos']);">
+
+	<section x-ref=" splide" class="splide px-14" aria-label="photo">
+		<div class="splide__track">
+			<ul class="splide__list">
+
+				<template x-for="(photo, index) in grPhotos" :key="index">
+					<li class="splide__slide flex flex-col items-center justify-center pb-8">
+
+						<img :src="photo" width="100" height="100"
+							@mouseover="$tooltip(index); $el.style='border: 0.3rem inset burlywood; cursor: pointer;'"
+							@mouseout="$el.style='border: 0.3rem ridge transparent;'"
+							style="border: 0.3rem ridge transparent;" />
+
+					</li>
+				</template>
+				<li class="splide__slide flex flex-col items-center justify-center pb-8">
+					<img class="w-full" src="../assets/travel-photos/photo-nara-jp-1.jpeg" alt="placeholder image">
+				</li>
+
+				<li class="splide__slide flex flex-col items-center justify-center pb-8">
+					<img class="w-full" src="../assets/travel-photos/photo-nara-jp-2.jpeg" alt="placeholder image">
+				</li>
+
+				<li class="splide__slide flex flex-col items-center justify-center pb-8">
+					<img class="w-full" src="../assets/travel-photos/photo-nv-us-1.jpeg" alt="placeholder image">
+				</li>
+			</ul>
+		</div>
+	</section>
+</div>

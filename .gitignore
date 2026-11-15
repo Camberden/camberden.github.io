@@ -14,7 +14,6 @@ node_modules/
 !cmbr.json
 CNAME
 
-cmbr.md
 admin.json
 runner.yml
 runner.yaml

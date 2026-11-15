@@ -170,8 +170,8 @@
                                 navFourTitle: 'Docs',
                                 id: 1,
                                 refDocs: {},
-                                docsTabs: ['Guidedocs', 'Study', 'Assortment'],
-                                docsTabSelected: 'Guidedocs',
+                                docsTabs: ['Refs', 'Study', 'Variety'],
+                                docsTabSelected: 'Refs',
                                 get expanded() {
                                     return this.active === this.id
                                 },
@@ -212,11 +212,12 @@
                                         </option>
                                     </template>
                                 </select>
-                                <hr class="hr-cmbr-gradient">
+                                <hr class="hr-cmbr-legacy-gradient">
                                 <slot id="mdNavSlot" x-html="markedFileParse('../cmbr.md')" width="600" height="600"
-                                    x-show="docsTabSelected === 'Guidedocs'">
+                                    x-show="docsTabSelected === 'Refs'" class="cmbr-flex-table">
                                 </slot>
-                                <iframe x-ref="navRefDocSource" src="../README.md" width="600" height="600"
+                                <iframe x-ref="navRefDocSource"
+                                    src="../assets/reference-docs/refdoc-usn-ad-pay-2025.pdf" width="600" height="600"
                                     x-show="docsTabSelected === 'Study'"></iframe>
                         </div>
                         </slot>

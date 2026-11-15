@@ -71,8 +71,8 @@ main {
 
 
 .listing-highlight {
-	color: var(--cmbr-orange);
-	background: var(--cmbr-curtain-plum);
+	color: forestgreen;
+	font-weight: 700;
 }
 
 #blog-post-list>li {

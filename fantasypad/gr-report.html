@@ -1,0 +1,763 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="generator" content="minevisor" />
+  <title>minevisor - the great regions 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,560;12..96,650&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #070809;
+      --ink-2: #0c0e10;
+      --panel: #121518;
+      --panel-2: #181c20;
+      --line: #2a3138;
+      --line-soft: #22282e;
+      --text: #e9ecef;
+      --muted: #8b949e;
+      --faint: #5c6570;
+      --accent: #72c48a;
+      --accent-soft: color-mix(in srgb, #72c48a 16%, transparent);
+      --overworld: #6a9f78;
+      --nether: #c45c4a;
+      --end: #9a7eb8;
+      --radius-md: 10px;
+      --radius-lg: 16px;
+      --radius-xl: 22px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(ellipse 80% 50% at 12% -10%, color-mix(in srgb, var(--accent) 12%, transparent), transparent 55%),
+        radial-gradient(ellipse 60% 40% at 100% 0%, color-mix(in srgb, var(--end) 10%, transparent), transparent 50%),
+        var(--ink);
+      color: var(--text);
+      font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 28px 20px 48px;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 6px;
+      background: linear-gradient(145deg, var(--panel-2), var(--panel));
+      border: 1px solid var(--line);
+      display: grid;
+      place-items: center;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .export-date {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .hero {
+      padding: 24px;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-xl);
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--panel) 92%, transparent), var(--panel-2));
+      box-shadow: 0 24px 64px -40px rgba(0, 0, 0, 0.85);
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 650;
+      letter-spacing: -0.03em;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 14px;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.28rem 0.62rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-soft);
+      background: color-mix(in srgb, var(--panel-2) 88%, transparent);
+      color: var(--muted);
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .grid-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1px;
+      margin-top: 22px;
+      overflow: hidden;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
+      background: var(--line-soft);
+    }
+
+    .stat-card {
+      padding: 16px;
+      background: var(--panel);
+    }
+
+    .stat-label {
+      margin: 0;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+
+    .stat-value {
+      margin: 8px 0 0;
+      font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+      font-size: 1.25rem;
+      font-weight: 600;
+    }
+
+    .section {
+      margin-top: 28px;
+      padding: 20px;
+      border: 1px solid var(--line-soft);
+      border-radius: var(--radius-lg);
+      background: var(--panel);
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 620;
+    }
+
+    .section-head span {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--faint);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .progress-stack {
+      display: grid;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .progress-row {
+      display: grid;
+      gap: 6px;
+    }
+
+    .progress-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
+    .progress-track {
+      height: 6px;
+      border-radius: 999px;
+      background: var(--line-soft);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .progress-fill--accent {
+      background: linear-gradient(90deg, color-mix(in srgb, var(--accent) 70%, #fff), var(--accent));
+    }
+
+    .progress-fill--overworld {
+      background: linear-gradient(90deg, color-mix(in srgb, var(--overworld) 70%, #fff), var(--overworld));
+    }
+
+    .story-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+
+    .story-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line-soft);
+      background: var(--panel-2);
+    }
+
+    .story-item.is-done {
+      border-color: color-mix(in srgb, var(--accent) 28%, var(--line-soft));
+      background: color-mix(in srgb, var(--accent-soft) 55%, var(--panel-2));
+    }
+
+    .story-mark {
+      color: var(--faint);
+      font-size: 14px;
+      line-height: 1.4;
+    }
+
+    .story-item.is-done .story-mark {
+      color: var(--accent);
+    }
+
+    .story-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 560;
+    }
+
+    .story-detail {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .adv-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .adv-card {
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line-soft);
+      background: var(--panel-2);
+    }
+
+    .adv-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 560;
+    }
+
+    .adv-desc {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .adv-owners {
+      margin: 8px 0 0;
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+      font-size: 11px;
+      color: var(--accent);
+    }
+
+    .player-grid {
+      display: grid;
+      gap: 12px;
+    }
+
+    .player-card {
+      padding: 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line-soft);
+      background: var(--panel-2);
+    }
+
+    .player-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .player-name {
+      margin: 0;
+      font-family: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 620;
+    }
+
+    .player-meta {
+      margin: 4px 0 0;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .player-badge {
+      padding: 0.2rem 0.5rem;
+      border-radius: 999px;
+      border: 1px solid var(--line-soft);
+      background: var(--panel);
+      color: var(--faint);
+      font-size: 10px;
+    }
+
+    .player-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 14px;
+      margin-top: 12px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .player-stats strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    .item-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .item-tag {
+      display: inline-flex;
+      padding: 0.22rem 0.5rem;
+      border-radius: 6px;
+      border: 1px solid var(--line-soft);
+      background: var(--panel);
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .item-tag--empty {
+      font-style: italic;
+      color: var(--faint);
+    }
+
+    .empty {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .mono {
+      font-family: "IBM Plex Mono", ui-monospace, monospace;
+    }
+
+    .footer {
+      margin-top: 28px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line-soft);
+      color: var(--faint);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    @media print {
+      body {
+        background: #fff;
+        color: #111;
+      }
+
+      .hero,
+      .section,
+      .stat-card,
+      .player-card,
+      .adv-card,
+      .story-item {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">⛏</span>
+        <span>minevisor</span>
+      </div>
+      <p class="export-date">Exported Nov 14, 2026, 11:15 PM</p>
+    </div>
+
+    <header class="hero">
+      <h1>The Great Regions 2025</h1>
+      <div class="chips"><span class="chip">1.21.8</span><span class="chip">Creative</span><span
+          class="chip">Peaceful</span><span class="chip">Aug 20, 2025</span><span class="chip">Seed 2360751</span></div>
+      <div class="grid-stats">
+        <article class="stat-card">
+          <p class="stat-label">Players</p>
+          <p class="stat-value">6</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Playtime</p>
+          <p class="stat-value">488h 47m</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Deaths</p>
+          <p class="stat-value">13</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Story</p>
+          <p class="stat-value">1/11</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Advancements</p>
+          <p class="stat-value">1/100</p>
+        </article>
+        <article class="stat-card">
+          <p class="stat-label">Containers</p>
+          <p class="stat-value">0</p>
+        </article>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Progress</h2>
+        <span>Snapshot overview</span>
+      </div>
+      <div class="progress-stack">
+        <div class="progress-row">
+          <div class="progress-head">
+            <span>Story</span>
+            <span class="mono">1/11</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill progress-fill--overworld" style="width:9%"></div>
+          </div>
+        </div>
+        <div class="progress-row">
+          <div class="progress-head">
+            <span>Advancements</span>
+            <span class="mono">1/100</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill progress-fill--accent" style="width:1%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Story</h2>
+        <span>1/11 complete</span>
+      </div>
+      <ul class="story-list">
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">The Nether</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Nether fortress</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Stronghold</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">The End</p>
+
+          </div>
+        </li>
+        <li class="story-item is-done">
+          <span class="story-mark" aria-hidden="true">✓</span>
+          <div>
+            <p class="story-title">Ender Dragon</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Elytra</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Wither</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Beacon</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Netherite</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Village raid</p>
+
+          </div>
+        </li>
+        <li class="story-item">
+          <span class="story-mark" aria-hidden="true">○</span>
+          <div>
+            <p class="story-title">Deep Dark</p>
+
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Advancements</h2>
+        <span>1 unlocked</span>
+      </div>
+      <div class="adv-grid">
+        <article class="adv-card">
+          <p class="adv-title">Sweet Dreams</p>
+          <p class="adv-desc">Sleep in a Bed to change your respawn point</p>
+          <p class="adv-owners">Audioshi</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-head">
+        <h2>Players</h2>
+        <span>6 profiles</span>
+      </div>
+      <div class="player-grid">
+        <article class="player-card">
+          <header class="player-head">
+            <div>
+              <h3 class="player-name">Audioshi</h3>
+              <p class="player-meta">Online · Overworld</p>
+            </div>
+            <span class="player-badge mono">Lv 0</span>
+          </header>
+          <div class="player-stats">
+            <span><strong>325h 21m</strong> playtime</span>
+            <span><strong>4</strong> deaths</span>
+            <span><strong>921</strong> mobs</span>
+            <span><strong>3797705m</strong> traveled</span>
+            <span class="mono">@1949, 74, 5</span>
+          </div>
+          <div class="item-tags"><span class="item-tag">1× Wooden Axe</span><span class="item-tag">1× Grass
+              Block</span><span class="item-tag">1× Scaffolding</span><span class="item-tag">1× Music Disc
+              Stal</span><span class="item-tag">64× Torch</span><span class="item-tag">1× Filled Map</span><span
+              class="item-tag">1× Unisos&amp;Kuksipore</span><span class="item-tag">1× Verton Centre</span><span
+              class="item-tag">1× Cherica's Map #1</span><span class="item-tag">64× Bedrock</span><span
+              class="item-tag">1× Spruce Log</span><span class="item-tag">1× Daylight Detector</span><span
+              class="item-tag">1× Cyan Dye</span><span class="item-tag">59× Green Dye</span><span class="item-tag">2×
+              Heavy Weighted Pressure Plate</span><span class="item-tag">14× Lily Pad</span><span class="item-tag">22×
+              Wheat Seeds</span><span class="item-tag">1× Oak Sign</span><span class="item-tag">1× Dandelion</span><span
+              class="item-tag">1× Paper</span><span class="item-tag">58× Purple Dye</span><span class="item-tag">64×
+              Cyan Dye</span><span class="item-tag">4× Torch</span><span class="item-tag">1× Item Frame</span><span
+              class="item-tag">7× Egg</span><span class="item-tag">16× Cyan Banner</span><span class="item-tag">1× White
+              Banner</span><span class="item-tag">28× Powered Rail</span><span class="item-tag">3× Spectral
+              Arrow</span><span class="item-tag">1× Pink Bed</span><span class="item-tag">1× Cyan Banner</span><span
+              class="item-tag">16× FF Banner</span><span class="item-tag">38× Paper</span><span class="item-tag">1×
+              Minecart</span><span class="item-tag">1× Spruce Boat</span><span class="item-tag">64× Filled Map</span>
+          </div>
+        </article>
+        <article class="player-card">
+          <header class="player-head">
+            <div>
+              <h3 class="player-name">Shpoozels</h3>
+              <p class="player-meta">Online · Overworld</p>
+            </div>
+            <span class="player-badge mono">Lv 7</span>
+          </header>
+          <div class="player-stats">
+            <span><strong>134h 26m</strong> playtime</span>
+            <span><strong>8</strong> deaths</span>
+            <span><strong>1134</strong> mobs</span>
+            <span><strong>513602m</strong> traveled</span>
+            <span class="mono">@-817, 63, -1743</span>
+          </div>
+          <div class="item-tags"><span class="item-tag">3× Bookshelf</span><span class="item-tag">1× Banner</span><span
+              class="item-tag">1× Physh</span><span class="item-tag">3× Lily Pad</span><span class="item-tag">1×
+              Bookshelf</span><span class="item-tag">1× Oak Trapdoor</span><span class="item-tag">1× Spruce
+              Boat</span><span class="item-tag">1× Cherica's Map #1</span><span class="item-tag">1× Writable
+              Book</span><span class="item-tag">1× Anvil</span></div>
+        </article>
+        <article class="player-card">
+          <header class="player-head">
+            <div>
+              <h3 class="player-name">mocha2007</h3>
+              <p class="player-meta">Online · Overworld</p>
+            </div>
+            <span class="player-badge mono">Lv 26</span>
+          </header>
+          <div class="player-stats">
+            <span><strong>21h 35m</strong> playtime</span>
+            <span><strong>0</strong> deaths</span>
+            <span><strong>191</strong> mobs</span>
+            <span><strong>159965m</strong> traveled</span>
+            <span class="mono">@1890, 79, -2366</span>
+          </div>
+          <div class="item-tags"><span class="item-tag">1× Mocha's Bow</span><span class="item-tag">1× Mocha's
+              Sword</span><span class="item-tag">64× Sand</span><span class="item-tag">64× Arrow</span><span
+              class="item-tag">61× Spectral Arrow</span><span class="item-tag">1× Shield</span><span class="item-tag">1×
+              Wheat Seeds</span><span class="item-tag">5× Oak Sapling</span><span class="item-tag">2× Poppy</span><span
+              class="item-tag">1× Fireworks</span><span class="item-tag">1× Fireworks</span><span class="item-tag">1×
+              Boat</span><span class="item-tag">1× Filled Map</span><span class="item-tag">1× Fireworks</span><span
+              class="item-tag">1× Fireworks</span><span class="item-tag">1× Minecart</span><span class="item-tag">1×
+              Filled Map</span><span class="item-tag">1× Fireworks</span><span class="item-tag">1× Diamond
+              Helmet</span><span class="item-tag">1× Diamond Chestplate</span><span class="item-tag">1× Diamond
+              Leggings</span><span class="item-tag">1× Diamond Boots</span></div>
+        </article>
+        <article class="player-card">
+          <header class="player-head">
+            <div>
+              <h3 class="player-name">Nomad_d</h3>
+              <p class="player-meta">Online · Overworld</p>
+            </div>
+            <span class="player-badge mono">Lv 6</span>
+          </header>
+          <div class="player-stats">
+            <span><strong>6h 53m</strong> playtime</span>
+            <span><strong>1</strong> deaths</span>
+            <span><strong>165</strong> mobs</span>
+            <span><strong>27549m</strong> traveled</span>
+            <span class="mono">@-326, 94, -205</span>
+          </div>
+          <div class="item-tags"><span class="item-tag">16× Egg</span><span class="item-tag">2× Feather</span><span
+              class="item-tag">1× Dirt</span><span class="item-tag">1× Item Frame</span><span class="item-tag">1× Lime
+              Wool</span><span class="item-tag">64× Arrow</span><span class="item-tag">4× Lead</span><span
+              class="item-tag">2× Chicken</span><span class="item-tag">64× Cobblestone</span><span class="item-tag">4×
+              Cobblestone</span><span class="item-tag">1× Filled Map</span><span class="item-tag">3× Sugar</span><span
+              class="item-tag">5× String</span><span class="item-tag">1× Record 13</span><span class="item-tag">64×
+              Arrow</span><span class="item-tag">64× Arrow</span><span class="item-tag">1× Minecart</span><span
+              class="item-tag">53× Lapis Lazuli</span><span class="item-tag">1× Leather Boots</span><span
+              class="item-tag">1× Record Cat</span><span class="item-tag">24× Spawn Egg</span><span class="item-tag">1×
+              Iron Ingot</span><span class="item-tag">48× Leather</span><span class="item-tag">64× Beef</span><span
+              class="item-tag">1× Filled Map</span><span class="item-tag">1× Filled Map</span><span class="item-tag">1×
+              Porkchop</span><span class="item-tag">1× Lucidian Bow</span><span class="item-tag">1× Diamond
+              Pickaxe</span><span class="item-tag">7× Wheat Seeds</span><span class="item-tag">1× Spruce
+              Sapling</span><span class="item-tag">8× Gunpowder</span><span class="item-tag">7× Bone</span><span
+              class="item-tag">1× Record 11</span><span class="item-tag">16× Egg</span><span class="item-tag">38×
+              Beef</span></div>
+        </article>
+        <article class="player-card">
+          <header class="player-head">
+            <div>
+              <h3 class="player-name">EVILwaffle98</h3>
+              <p class="player-meta">Online · Overworld</p>
+            </div>
+            <span class="player-badge mono">Lv 2</span>
+          </header>
+          <div class="player-stats">
+            <span><strong>24m</strong> playtime</span>
+            <span><strong>0</strong> deaths</span>
+            <span><strong>0</strong> mobs</span>
+            <span><strong>14845m</strong> traveled</span>
+            <span class="mono">@2150, 89, 264</span>
+          </div>
+          <div class="item-tags"><span class="item-tag">2× Chest</span><span class="item-tag">2× Feather</span><span
+              class="item-tag">1× Cooked Chicken</span><span class="item-tag">2× Rotten Flesh</span><span
+              class="item-tag">1× Grass Block</span><span class="item-tag">1× Bone</span></div>
+        </article>
+        <article class="player-card">
+          <header class="player-head">
+            <div>
+              <h3 class="player-name">CirrusSky</h3>
+              <p class="player-meta">Online · Overworld</p>
+            </div>
+            <span class="player-badge mono">Lv 0</span>
+          </header>
+          <div class="player-stats">
+            <span><strong>5m</strong> playtime</span>
+            <span><strong>0</strong> deaths</span>
+            <span><strong>0</strong> mobs</span>
+            <span><strong>241m</strong> traveled</span>
+            <span class="mono">@2130, 72, -154</span>
+          </div>
+          <div class="item-tags"><span class="item-tag">1× Spawn Egg</span><span class="item-tag">1× Spawn
+              Egg</span><span class="item-tag">1× Spawn Egg</span><span class="item-tag">1× Banner</span><span
+              class="item-tag">2× Armor Stand</span></div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      Exported from minevisor · self-contained HTML · no server required
+    </footer>
+  </div>
+</body>
+
+</html>

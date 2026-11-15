@@ -4,11 +4,12 @@
  * @typedef {Array<number[]>} coordinates
  */
 
-const expeditionsMapTitle = document.getElementById("expeditions-map-title");
 const expeditionsMap = L.map("expeditions-map");
 let expeditionsMapMarker;
 let expeditionsRegionPolygon = [];
 let currentOverworldTitle;
+
+
 
 /**
  * 
@@ -43,8 +44,6 @@ function initExpeditionsMap(overworlds) {
 		clickable: true,
 		draggable: true
 	};
-	expeditionsMapMarker = L.marker(latLng, expeditionsMapMarkerOptions).addTo(expeditionsMap);
-
 
 
 	for (const overworld of overworlds) {
@@ -79,19 +78,25 @@ function initExpeditionsMap(overworlds) {
 				fillOpacity: 0.3,
 				fillColor: 'var(--cmbr-indigo)',
 			});
-			circle.bindPopup(`<b>${coord[0]}</b><br>${coord[1]}`).openPopup();
+			circle.bindPopup(`<b>${coord[0]}</b><br>${coord[1]}`, {
+				className: "leaf-popup",
+			}).openPopup();
 			circle.addTo(expeditionsMap);
 		});
+		expeditionsMap.fitBounds(expeditionsRegionBorders.getBounds());
 	}
-	expeditionsMap.on('click', onMapClick);
 
-	expeditionsMap.setView(latLng, 13);
-	// expeditionsMap.fitBounds(expeditionsRegionBorders.getBounds());
+	expeditionsMapMarker = L.marker(latLng, expeditionsMapMarkerOptions).addTo(expeditionsMap);
+	expeditionsMap.on('click', onMapClick);
+	// expeditionsMap.setView(latLng, 13);
 
 };
 
 // ! Useful |=====>
 /* 
+L.CustomPopup = L.Popup.extend({
+  // You changes here
+});
 	bounds.contains(pointOrBounds) returns true when the bounds fully contain a point or another bounds object;
 	bounds.intersects(otherBounds) test whether they share any point
 */
@@ -109,7 +114,7 @@ function findLocale(locale, latLng) {
 	expeditionsMapMarker.remove();
 	expeditionsMapMarker = L.marker(latLng).addTo(expeditionsMap);
 	expeditionsMapMarker.bindPopup((`<b>${locale}</b><br>` + latLng.toString()), {
-		className: "leaf-popup",
+		// className: "leaf-popup",
 	}).openPopup();
 };
 
@@ -122,21 +127,24 @@ function updateExpeditionsLocaleBar(locale, updateId) {
 	document.getElementById(updateId).innerHTML = locale;
 };
 
+
+
 function onMapClick(e) {
 	const popup = L.popup();
 	popup
 		.setLatLng(e.latlng)
-		.setContent(`<slot class="grid-row-1-1" style="color: indianred;"><i>Coordinates</i>` + e.latlng.toString().substring(e.latlng.toString().indexOf("(") + 1, e.latlng.toString().indexOf(")")) +
-			`<div style="border: 0.3rem groove var(--cmbr-blass); border-bottom-right-radius: 50%; border-top-left-radius: 15%;` +
-			`border-left-width: 0rem; border-top-width: 0rem;` +
-			`background-image: url('../assets/artifacts/chrispy-headshot-2.jpg'); opacity: 90%; width:3rem; height:3rem; ` +
-			`box-shadow:  0.1rem 0.1rem 0.5rem 0.1rem var(--cmbr-indigo);` +
-			`background-size: contain; right: 0; margin-inline-start: 70%;"></div></slot>`)
+		.setContent(`<div class="grid-row-1-1";"><b>Coordinates</b>` + e.latlng.toString().substring(e.latlng.toString().indexOf("(") + 1, e.latlng.toString().indexOf(")")) + `</div>`)
 		.openOn(expeditionsMap);
+	//`border-left-width: 0rem; border-top-width: 0rem;` +
+	//`<div style="border: 0.3rem groove var(--cmbr-blass); border-bottom-right-radius: 50%; border-top-left-radius: 15%;` +
+	// `background-image: url('../assets/artifacts/chrispy-headshot-2.jpg'); opacity: 90%; width:3rem; height:3rem; ` +
+	// `box-shadow:  0.1rem 0.1rem 0.5rem 0.1rem var(--cmbr-indigo);` +
 }
 function setCurrentOverworld(ovTitle) {
-	currentOverworldTitle = ovTitle;
-	initExpeditionsMap(getOverworldByTitle(ovTitle));
+	const ovSet = getOverworldByTitle(ovTitle);
+	console.log("OV SET: " + ovSet.title);
+	findLocale(ovSet.title, ovSet.zones[0][1]);
+	console.log(ovSet.zones[1].toString());
 }
 
 
