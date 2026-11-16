@@ -48,6 +48,78 @@
                 </div>
             </div>
 
+
+            <!-----| NAV 4 |----->
+            <div id="nav-4" x-data="{ active: 0 }" x-show="!atVday">
+                <div x-data="{
+                        markedFileParse: function(mdFile) {
+                            fetch(mdFile).then( response => response.text()).then( (result) => {
+                                var parsedMd = marked.use({
+                                    pedantic: false,
+                                    gfm: true,
+                                    breaks: false,
+                                    extensions: [descriptionList, description], walkTokens,
+                                }).parse(result);
+                                document.querySelector( '#mdNavSlot' ).innerHTML = parsedMd;
+                            });
+                        },
+                        navFourTitle: 'Docs',
+                        id: 1,
+                        refDocs: {},
+                        docsTabs: ['Refs', 'Study', 'Variety'],
+                        docsTabSelected: 'Refs',
+                        get expanded() {
+                            return this.active === this.id
+                        },
+                        set expanded(value) {
+                            this.active = value ? this.id : null
+                        },
+                        }" role="region" x-effect="refDocs = await CMBRutil.connectCMBRjson(['studyDocs']);">
+
+                    <button class="trigger-access" type="button" @click="expanded = !expanded"
+                        :style="expanded ? ' border-bottom: 0.3rem groove indianred;' : ' border-bottom: 0.5rem groove black;'">
+                        <div class="trigger-dropdown vt323"
+                            :style="expanded ? 'background-color: transparent' : 'background-color: inherit;'">
+                            <span x-show="expanded" :style="expanded ? 'color: coral;' : 'color: inherit;'"
+                                x-cloak>&UpArrow;</span>
+                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                            <span x-text="navFourTitle"
+                                :style="expanded ? 'color: orangered;' : 'color: inherit;'"></span>
+                            <span x-show="expanded" x-cloak
+                                :style="expanded ? 'color: coral;' : 'color: inherit;'">&UpArrow;</span>
+                            <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                        </div>
+                    </button>
+                    <div class="trigger-collapse" x-show="expanded" x-collapse>
+                        <slot x-ref="navSlot4">
+                            <div class="grid-col-1-1-1">
+                                <template x-for="(tab, index) in docsTabs" :key="index">
+                                    <div class="lora-bold expedition-tab"
+                                        :style="docsTabSelected === docsTabs[index] ? 'color: burlywood; opacity: 1; cursor: pointer; user-select:none;' : 'color: inherit; opacity: 0.5; cursor: pointer;'"
+                                        x-text="docsTabs[index]" @click="docsTabSelected = docsTabs[index];">
+                                    </div>
+                                </template>
+                            </div>
+                            <select id="nav-refDoc-select" @change="$refs.navRefDocSource.src = $el.value"
+                                x-show="docsTabSelected === 'Study'">
+                                <template x-for="(item, index) in refDocs" :key="index">
+                                    <option :value="item"
+                                        x-text="item.substring(item.lastIndexOf('/refdoc') + 8, item.lastIndexOf('.')).replaceAll('-', ' ')">
+                                    </option>
+                                </template>
+                            </select>
+                            <hr class="hr-cmbr-legacy-gradient">
+                            <slot id="mdNavSlot" x-html="markedFileParse('../cmbr.md')" width="600" height="600"
+                                x-show="docsTabSelected === 'Refs'" class="cmbr-flex-table">
+                            </slot>
+                            <iframe x-ref="navRefDocSource" src="../assets/reference-docs/refdoc-usn-ad-pay-2025.pdf"
+                                width="600" height="600" x-show="docsTabSelected === 'Study'"></iframe>
+                    </div>
+                    </slot>
+                </div>
+            </div>
+            <!-- ♪ -->
+
             <!-----| NAV 2 |----->
             <div id="nav-2" x-data="{ active: 0 }">
                 <template x-if="!atBlog">
@@ -87,7 +159,7 @@
                             </div>
                         </button>
 
-                        <div class="trigger-collapse" x-show="expanded" cmbr-right x-collapse>
+                        <div class="trigger-collapse" x-show="expanded" cmbr-left x-collapse>
                             <div>
                                 <b class="chrispy"
                                     style="background-image: var(--cmbr-legacy-gradient); font-size: 1.3rem;"
@@ -118,7 +190,8 @@
                                     </div>
                                 </slot>
                             </div>
-                            <div>
+
+                            <!-- <div>
                                 <b class="chrispy"
                                     style="background-image: var(--cmbr-legacy-gradient); font-size: 1.3rem;"
                                     x-text="'CMBR Mediatool'"></b>
@@ -127,134 +200,62 @@
                             <div hx-get="../template/mediatool.html" hx-target="this" hx-trigger="load"
                                 hx-swap="innerHTML"
                                 style="width:100%; text-align: center; justify-content: center; align-items:center;">
-                            </div>
+                            </div> -->
                         </div> <!-- % END YOUTUBE PLAYER HANDLE % -->
                 </template>
             </div>
 
             <!-----| NAV 3 |----->
             <div id="nav-3" x-data="{
-                currentSection: '',
-                loadSection: function(){
-                    if (!atVday) {
-                        this.currentSection = (window.location.pathname).slice(window.location.pathname.lastIndexOf('/') + 1,
-                -5).toLowerCase();
-                    };
-                    if (atVday) {
-                        this.currentSection = 'Cheers!';
-                    };
-                    return this.currentSection;
-                }
-            }">
+                    currentSection: '',
+                    loadSection: function(){
+                        if (!atVday) {
+                            this.currentSection = (window.location.pathname).slice(window.location.pathname.lastIndexOf('/') + 1,
+                            -5).toLowerCase();
+                            };
+                        if (atVday) {
+                            this.currentSection = 'Cheers!';
+                        };
+                        return this.currentSection;
+                    }}">
                 <div>
-                    <h1 id="current-section" class="h1-lamp" x-effect="$el.innerHTML=loadSection();"></h1>
+                    <h1 id="current-section" class="h1-lamp rarr" x-effect="$el.innerHTML=loadSection();">
+                    </h1>
                 </div>
             </div>
 
-            <!-----| NAV 4 |----->
-            <div id="nav-4" x-data="{ active: 0 }">
-                <template x-if="!atVday">
-                    <div x-data="{
-                        markedFileParse: function(mdFile) {
-                            fetch(mdFile).then( response => response.text()).then( (result) => {
-                            var parsedMd = marked.use({
-                                pedantic: false,
-                                gfm: true,
-                                breaks: false,
-                                extensions: [descriptionList, description], walkTokens,
-                            }).parse(result);
-                            
-                            document.querySelector( '#mdNavSlot' ).innerHTML = parsedMd;
-                        });
-                    },
-                                navFourTitle: 'Docs',
-                                id: 1,
-                                refDocs: {},
-                                docsTabs: ['Refs', 'Study', 'Variety'],
-                                docsTabSelected: 'Refs',
-                                get expanded() {
-                                    return this.active === this.id
-                                },
-                                set expanded(value) {
-                                    this.active = value ? this.id : null
-                                },
-                                }" role="region" x-effect="refDocs = await CMBRutil.connectCMBRjson(['studyDocs']);">
+            <!-----| NAV 5 |----->
+            <div id="nav-5" x-data="{
+                setting: document.body.dataset.theme,
+                getSetting: function(value) {
+                    return this.setting === value;
+                },
+                toggleMode: function (value){
+                    this.setting = value;
+                    Alpine.store('thematic').setMode(value);
+                    document.body.dataset.theme = this.setting;
+                },
+                }" x-init="$watch('setting', value => console.info(setting + ' mode active.'))">
 
-                        <button class="trigger-access" type="button" @click="expanded = !expanded"
-                            :style="expanded ? ' border-bottom: 0.3rem groove indianred;' : ' border-bottom: 0.5rem groove black;'">
-                            <div class="trigger-dropdown vt323"
-                                :style="expanded ? 'background-color: transparent' : 'background-color: inherit;'">
-                                <span x-show="expanded" :style="expanded ? 'color: coral;' : 'color: inherit;'"
-                                    x-cloak>&UpArrow;</span>
-                                <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                                <span x-text="navFourTitle"
-                                    :style="expanded ? 'color: orangered;' : 'color: inherit;'"></span>
-                                <span x-show="expanded" x-cloak
-                                    :style="expanded ? 'color: coral;' : 'color: inherit;'">&UpArrow;</span>
-                                <span x-show="!expanded" x-cloak>&DownArrow;</span>
-                            </div>
-                        </button>
-                        <div class="trigger-collapse" x-show="expanded" cmbr-left x-collapse>
-                            <slot x-ref="navSlot4">
-                                <div class="grid-col-1-1-1">
-                                    <template x-for="(tab, index) in docsTabs" :key="index">
-                                        <div class="lora-bold expedition-tab"
-                                            :style="docsTabSelected === docsTabs[index] ? 'color: burlywood; opacity: 1; cursor: pointer; user-select:none;' : 'color: inherit; opacity: 0.5; cursor: pointer;'"
-                                            x-text="docsTabs[index]" @click="docsTabSelected = docsTabs[index];">
-                                        </div>
-                                    </template>
-                                </div>
-                                <select id="nav-refDoc-select" @change="$refs.navRefDocSource.src = $el.value"
-                                    x-show="docsTabSelected === 'Study'">
-                                    <template x-for="(item, index) in refDocs" :key="index">
-                                        <option :value="item"
-                                            x-text="item.substring(item.lastIndexOf('/refdoc') + 8, item.lastIndexOf('.')).replaceAll('-', ' ')">
-                                        </option>
-                                    </template>
-                                </select>
-                                <hr class="hr-cmbr-legacy-gradient">
-                                <slot id="mdNavSlot" x-html="markedFileParse('../cmbr.md')" width="600" height="600"
-                                    x-show="docsTabSelected === 'Refs'" class="cmbr-flex-table">
-                                </slot>
-                                <iframe x-ref="navRefDocSource"
-                                    src="../assets/reference-docs/refdoc-usn-ad-pay-2025.pdf" width="600" height="600"
-                                    x-show="docsTabSelected === 'Study'"></iframe>
-                        </div>
-                        </slot>
-                    </div>
+                <span id="dark" class="data-theme-button"
+                    :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
+                    @click="toggleMode($el.id)">🌙</span>
+                <span id="light" class="data-theme-button"
+                    :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
+                    @click="toggleMode($el.id)">☀️</span>
+                <span id="legacy" class="data-theme-button"
+                    :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
+                    @click="toggleMode($el.id)">🪻</span>
             </div>
+        </div> <!-- ! end Nav Sail !-->
     </template>
-    <!-- ♪ -->
-</div>
 
-<!-----| NAV 5 |----->
-<div id="nav-5" x-data="{
-                                setting: document.body.dataset.theme,
-                                getSetting: function(value) {
-                                    return this.setting === value;
-                                },
-                                toggleMode: function (value){
-                                    this.setting = value;
-                                    Alpine.store('thematic').setMode(value);
-                                    document.body.dataset.theme = this.setting;
-                                },
-                                }" x-init="$watch('setting', value => console.info(setting + ' mode active.'))">
-    <span id="dark" class="data-theme-button" :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
-        @click="toggleMode($el.id)">🌙</span>
-    <span id="light" class="data-theme-button" :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
-        @click="toggleMode($el.id)">☀️</span>
-    <span id="legacy" class="data-theme-button" :style="getSetting($el.id) ? 'color:initial' : 'color:transparent'"
-        @click="toggleMode($el.id)">🪻</span>
-</div>
-</div>
-</template>
-
-<template x-if="!atIndex">
-    <div class="nav-hoist">
-        <hr class="hr-nav-pad">
-        <hr class="hr-cmbr-gradient" style="position: fixed; height: 1rem;">
-        <hr class="hr-cmbr-gradient">
-        <hr id="nav-anchor" class="hr-groove-top">
-    </div>
-</template>
+    <template x-if="!atIndex">
+        <div class="nav-hoist">
+            <hr class="hr-nav-pad">
+            <hr class="hr-cmbr-gradient" style="position: fixed; height: 1rem;">
+            <hr class="hr-cmbr-gradient">
+            <hr id="nav-anchor" class="hr-groove-top">
+        </div>
+    </template>
 </div>

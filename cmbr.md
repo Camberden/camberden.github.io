@@ -1,5 +1,4 @@
 # cmbr.refs.md
-_Camberden site reference links for study workflow_
 
 <br>
 <hr class='hr-hkri-gradient'>

@@ -62,7 +62,7 @@ ROOT STYLES *
 
 
 
-	--hkri-gradient: linear-gradient(rgb(78, 78, 78), rgb(48, 47, 47), rgb(31, 31, 31), rgb(63, 63, 63));
+	--hkri-gradient: linear-gradient(120deg, rgb(78, 78, 78), rgb(48, 47, 47), rgb(31, 31, 31), rgb(63, 63, 63));
 
 	/* |=====| "CMBR DARK" |=====| */
 	--cmbr-dark-grey: #0a070f;
@@ -503,12 +503,12 @@ nav {
 
 #nav-1 {
 	contain: style;
-	z-index: 100;
+	z-index: 130;
 }
 
 #nav-2 {
 	contain: style;
-	z-index: 100;
+	z-index: 110;
 	/* user-select: none;
 	display: flex;
 	align-items: center;
@@ -571,12 +571,12 @@ nav {
 #nav-3 {
 	contain: style;
 	z-index: 100;
-	text-align: center;
+	text-align: left;
 }
 
 #nav-4 {
 	contain: style;
-	z-index: 100;
+	z-index: 120;
 	text-align: left;
 }
 
@@ -597,7 +597,7 @@ nav {
 	top: 0;
 	width: 3rem;
 	height: 10rem;
-	background-image: url("images/cmbr-sig-transform.svg");
+	background-image: url("../images/cmbr-sig-transform.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	transform: rotate(30deg);
@@ -605,7 +605,7 @@ nav {
 }
 
 #nav-sig:hover {
-	background-image: url("images/cmbr-sig.svg");
+	background-image: url("../images/cmbr-sig.svg");
 }
 
 .nav-hoist {
@@ -626,12 +626,14 @@ nav {
 	user-select: none;
 	font-size: 2rem;
 	font-family: "PermanentMarker", monospace;
-	background: var(--cmbr-legacy-gradient);
+	background: var(--mosky-2);
 	/* background: transparent; */
 	background-clip: border-box;
 	-webkit-background-clip: text;
 	background-repeat: no-repeat;
+	background-size: contain;
 	color: transparent;
+	text-shadow: #ffcc00 2rem 1rem 5rem;
 	transition: text-shadow 10s ease-in-out;
 }
 
@@ -648,7 +650,6 @@ nav {
 }
 
 [camberlamp] {
-	text-shadow: #ffcc00 2rem 1rem 5rem;
 	animation: 10s linear shadow-fade;
 }
 
@@ -660,7 +661,8 @@ nav {
 .h1-lamp:active {
 	cursor: grabbing;
 	text-shadow: #ffcc00 2rem 1rem 5rem;
-	animation: 5s linear shadow-fade infinite;
+	animation: 5s linear spectrum infinite;
+	/* animation: 5s linear shadow-fade infinite; */
 }
 
 
@@ -2335,10 +2337,11 @@ LEGACY: dashboard.js
 	align-items: left;
 	justify-content: baseline;
 	text-align: left;
-	min-width: 20rem;
-	min-height: 20rem;
+	min-width: 10rem;
+	max-width: 100vw;
+	/* min-height: 20rem; */
 	padding: 0.5rem;
-	box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey);
+	/* box-shadow: 1.5rem 1.75rem 1rem -1rem var(--cmbr-dark-grey); */
 }
 
 .dashboard-grid>.dashboard-item {
@@ -3044,6 +3047,7 @@ ARIA LOADERS
 	50% {
 		opacity: 0.5;
 		text-shadow: #ffcc00 2rem 2rem -2rem;
+		background: linear-gradient(120deg, #f59c6000 0%, #a1dbf800 100%);
 		background-clip: border-box;
 		-webkit-background-clip: text;
 	}
@@ -3051,12 +3055,13 @@ ARIA LOADERS
 	75% {
 		opacity: 0.0;
 		text-shadow: #a8561b 2rem -2rem -2rem;
-		/* background: linear-gradient(120deg, #f59c6000 0%, #a1dbf800 100%); */
+		background: linear-gradient(120deg, #f59c6000 0%, #a1dbf800 100%);
 		background-clip: border-box;
 		-webkit-background-clip: text;
 	}
 
 	100% {
+		opacity: 1.0;
 		text-shadow: transparent 2rem -2rem 2rem;
 		background: transparent;
 		background-clip: border-box;

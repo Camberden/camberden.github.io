@@ -97,16 +97,20 @@
 		dashboardPoster: '../images/gifs/overlook-overit.gif',
 	}">
 
-		<div class="cmbr-item cmbr-item-center;" style="width: 70%;">
-			<div :style="'background-image: url(' + dashboardPoster + '); background-size: cover;'">
-				<div style="background-color: var(--cmbr-blass);">
+
+		<div class="dashboard-item;" style="width: 80%;">
+			<div
+				:style="'background-image: url(' + dashboardPoster + '); background-size: cover; border: 0.3rem inset black; border-top: none;'">
+
+				<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black; border-bottom: none;">
+
 					<h1 class="chrispy" style="font-size: 1.5rem;" x-text="'Well Come Two Board of Dashing.'">
 					</h1>
 				</div>
 				<hr class=" hr-groove-top">
 
 				<summary
-					style="color: var(--cmbr-blue); min-height: 10rem; max-height: max-content; justify-content: center; border: 0.3rem inset black; border-top: none; list-style-type: none;"
+					style="color: var(--cmbr-blue); padding: 2rem; min-height: 10rem; max-height: max-content; justify-content: center; list-style-type: none;"
 					x-effect=" loadLine(lines[counter])">
 
 					<q class="lora-italic"
@@ -114,37 +118,61 @@
 						x-text="utterance"></q>
 				</summary>
 			</div>
-		</div>
-		<div class="cmbr-item">
 
-			<div hx-get="../template/interval-panel.html" hx-trigger="intersect" hx-target="this" hx-swap="innerHTML">
+
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;" x-cloak>
+				<div hx-get="../template/interval-panel.html" hx-trigger="intersect" hx-target="this"
+					hx-swap="innerHTML">
+				</div>
+				<div class=" cmbr-item;" hx-get="../template/days-and-weeks-lived.html" hx-trigger="intersect"
+					hx-target="this" hx-swap="innerHTML">
+				</div>
 			</div>
-			<div hx-get="../template/days-and-weeks-lived.html" hx-trigger="intersect" hx-target="this"
-				hx-swap="innerHTML">
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;">
+				<div class=" cmbr-item;" hx-get="../template/expenses.html" hx-trigger="load" hx-target="this"
+					hx-swap="innerHTML" x-cloak>
+				</div>
+			</div>
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;">
+				<div class="cmbr-item" hx-get="../template/reeducation.html" hx-trigger="load" hx-target="this"
+					hx-swap="innerHTML" x-cloak></div>
+			</div>
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;">
+				<div class="cmbr-item" hx-get="../template/calendar.html" hx-trigger="load" hx-target="this"
+					hx-swap="innerHTML" x-cloak>
+				</div>
+			</div>
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;">
+				<div class="cmbr-item" hx-get="../template/step-pay-plan.html" hx-trigger="intersect" hx-target="this"
+					hx-swap="innerHTML" x-cloak></div>
+			</div>
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;">
+				<div class="cmbr-item" hx-get="../template/pension-calculator.html" hx-trigger="intersect"
+					hx-target="this" hx-swap="innerHTML" x-cloak></div>
+			</div>
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;">
+				<div class="cmbr-item" hx-get="../template/reserves-calculator.html" hx-trigger="intersect"
+					hx-target="this" hx-swap="innerHTML" x-cloak></div>
 			</div>
 
+			<div style="background-color: var(--cmbr-blass); border: 0.5rem inset black;" x-cloak>
+				<div class="cmbr-item" hx-get="../template/roles.html" hx-trigger="intersect" hx-target="this"
+					hx-swap="innerHTML">
+				</div>
+
+			</div>
+
+
 		</div>
-		<div class="cmbr-item" hx-get="../template/expenses.html" hx-trigger="load" hx-target="this" hx-swap="innerHTML"
-			x-cloak></div>
-		<div class="cmbr-item" hx-get="../template/reeducation.html" hx-trigger="load" hx-target="this"
-			hx-swap="innerHTML" x-cloak></div>
-		<div class="cmbr-item" hx-get="../template/calendar.html" hx-trigger="load" hx-target="this" hx-swap="innerHTML"
-			x-cloak>
-		</div>
-		<div class="cmbr-item" hx-get="../template/step-pay-plan.html" hx-trigger="intersect" hx-target="this"
-			hx-swap="innerHTML" x-cloak></div>
-		<div class="cmbr-item" hx-get="../template/pension-calculator.html" hx-trigger="intersect" hx-target="this"
-			hx-swap="innerHTML" x-cloak></div>
-		<div class="cmbr-item" hx-get="../template/reserves-calculator.html" hx-trigger="intersect" hx-target="this"
-			hx-swap="innerHTML" x-cloak></div>
+
+
+
+
+
 
 	</main>
-
-
 	<!-- * SPLIDE * -->
-
-
-	<div x-data="{
+	<!-- <div x-data="{
         init() {
             new Splide(this.$refs.splide, {
                 perPage: 2,
@@ -196,7 +224,7 @@
 				</ul>
 			</div>
 		</section>
-	</div>
+	</div> -->
 </body>
 
 </html>
