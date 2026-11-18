@@ -743,7 +743,7 @@ X-COLLAPSE
 /* ! DROPDOWN TRIGGERS |====================> */
 
 .trigger-access {
-	font-family: 'vt323' monospace;
+	font-family: VT323 monospace;
 	font-size: 1rem;
 	position: sticky;
 	z-index: 300;

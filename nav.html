@@ -23,10 +23,10 @@
                             },
                             }" role="region">
 
-                    <button class="trigger-access" type="button" @click="expanded = !expanded"
-                        :style="expanded ? ' border-bottom: 0.3rem groove indianred;' : ' border-bottom: 0.5rem groove black;'"
+                    <button class="trigger-access vt323" type="button" @click="expanded = !expanded"
+                        :style="expanded ? ' border-bottom: 0.3rem groove indianred;' : 'border-bottom: 0.5rem groove black;'"
                         x-bind:hx-get="sectionsHandle" hx-target="next slot" hx-trigger="load" hx-swap="innerHTML">
-                        <div class="trigger-dropdown vt323"
+                        <div class="trigger-dropdown "
                             :style="expanded ? 'background-color: transparent' : 'background-color: inherit;'">
                             <span x-show="expanded" :style="expanded ? 'color: coral;' : 'color: inherit;'"
                                 x-cloak>&UpArrow;</span>
@@ -76,9 +76,9 @@
                         },
                         }" role="region" x-effect="refDocs = await CMBRutil.connectCMBRjson(['studyDocs']);">
 
-                    <button class="trigger-access" type="button" @click="expanded = !expanded"
+                    <button class="trigger-access vt323" type="button" @click="expanded = !expanded"
                         :style="expanded ? ' border-bottom: 0.3rem groove indianred;' : ' border-bottom: 0.5rem groove black;'">
-                        <div class="trigger-dropdown vt323"
+                        <div class="trigger-dropdown"
                             :style="expanded ? 'background-color: transparent' : 'background-color: inherit;'">
                             <span x-show="expanded" :style="expanded ? 'color: coral;' : 'color: inherit;'"
                                 x-cloak>&UpArrow;</span>
@@ -144,18 +144,18 @@
                                 }
                         }" role="region" x-effect="tubeVids = await CMBRutil.connectCMBRjson(['tubeVideos']);">
 
-                        <button class="trigger-access" type="button" @click="expanded = !expanded"
+                        <button class="trigger-access vt323" type="button" @click="expanded = !expanded"
                             :style="expanded ? ' border-bottom: 0.3rem groove indianred;' : ' border-bottom: 0.5rem groove black;'">
-                            <div class="trigger-dropdown vt323"
+                            <div class="trigger-dropdown "
                                 :style="expanded ? 'background-color: transparent' : 'background-color: inherit;'">
                                 <span x-show="expanded" :style="expanded ? 'color: coral;' : 'color: inherit;'"
                                     x-cloak>&UpArrow;</span>
-                                <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                                <span x-show="!expanded" x-cloak>&LeftArrow;</span>
                                 <span x-text="navTwoTitle"
                                     :style="expanded ? 'color: orangered;' : 'color: inherit;'"></span>
                                 <span x-show="expanded" x-cloak
                                     :style="expanded ? 'color: coral;' : 'color: inherit;'">&UpArrow;</span>
-                                <span x-show="!expanded" x-cloak>&DownArrow;</span>
+                                <span x-show="!expanded" x-cloak>&LeftArrow;</span>
                             </div>
                         </button>
 
