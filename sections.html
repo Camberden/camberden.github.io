@@ -61,8 +61,7 @@
         <div>
             <template x-for="link in sitemap.links.internal" :key="index">
                 <div :class="'section-title'">
-                    <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"
-                        :data-route="'/' + link[0] + '/'">
+                    <a x-text="link[1]" :href="basePath + link[0]">
                     </a>
                 </div>
             </template>
@@ -79,7 +78,7 @@
     </template>
     <template x-if="!atHome">
         <div :class="'section-title'" :style="'padding:0.1rem'">
-            <a x-text="homePage" :href="basePath + 'index.html'" :data-route="'/'">
+            <a x-text="homePage" :href="basePath" :data-route="'/'">
             </a>
         </div>
     </template>
@@ -88,8 +87,7 @@
         <div>
             <template x-for=" link in sitemap.links.internal" :key="index">
                 <div :class="'section-title'" :style="'padding:0.1rem'">
-                    <a x-text="link[1]" :href="basePath + link[0] + '/' + link[0] + '.html'"
-                        :data-route="'/' + link[0] + '/'">
+                    <a x-text="link[1]" :href="basePath + link[0]" :data-route="'/' + link[0] + '/'">
                     </a>
                 </div>
             </template>

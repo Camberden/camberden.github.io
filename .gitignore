@@ -8,6 +8,7 @@
 .shelf
 .vscode/
 
+markdown.db
 node_modules/
 !package.json
 !package-lock.json

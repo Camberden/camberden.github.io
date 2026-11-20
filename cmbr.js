@@ -631,21 +631,21 @@ const CMBRutil = {
 		}
 	},
 	atSiteBlog: function () {
-		if (document.location.href.includes("blog.html")) {
+		if (document.location.href.includes("blog")) {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	atSiteExpeditions: function () {
-		if (document.location.href.includes("expeditions.html")) {
+		if (document.location.href.includes("expeditions")) {
 			return true;
 		} else {
 			return false;
 		}
 	},
 	atSiteVday: function () {
-		if (document.location.href.includes("happy-veterans-day.html")) {
+		if (document.location.href.includes("happy-veterans-day")) {
 			return true;
 		} else {
 			return false;

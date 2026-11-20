@@ -210,8 +210,8 @@
                     currentSection: '',
                     loadSection: function(){
                         if (!atVday) {
-                            this.currentSection = (window.location.pathname).slice(window.location.pathname.lastIndexOf('/') + 1,
-                            -5).toLowerCase();
+                            this.currentSection = (window.location.pathname).substring((window.location.pathname).indexOf('/') + 1,
+                            (window.location.pathname).length).toLowerCase().replace('/','');
                             };
                         if (atVday) {
                             this.currentSection = 'Cheers!';
