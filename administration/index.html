@@ -35,44 +35,77 @@
 	markedTest1: '# Heading 1 \n ## Heading 2 \n > blockquote with greater than \n ~tilde strikethrough~ \n ',
 	markedTest2: '### Heading 3 \n #### Heading 4 \n _underscore_ \n `backticks` ',
 	markedTest3: '**strong?** \n <ins>ins underline</ins> \n === triple equals ===',
-
-	markedFileParse: function(mdFile) {
+	dlEntry: [],
+	dlArray: [],
+	ddTags: [],
+	dldtLitem: 1,
+	propertiesRefreshed: true,
+	togglePropertiesRefreshed: function(){
+		this.propertiesRefreshed = ! this.propertiesRefreshed;
+		console.log(this.propertiesRefreshed);
+	},
+	markedFileParse: function (mdFile) {
+		this.togglePropertiesRefreshed();
+		this.ddTags = [];
 		fetch(mdFile).then( response => response.text()).then( (result) => {
-    	var parsedMd = marked.use({
-			pedantic: false,
-			gfm: true,
-			breaks: false,
-			extensions: [descriptionList, description], walkTokens,
-		}).parse(result);
-		
-    	document.querySelector( '#mdSlot' ).innerHTML = parsedMd;
-  	});
-},
+			var parsedMd = marked.parse(result);
+			document.querySelector('#mdSlot').innerHTML = parsedMd;
+		});
+
+		const loadFrontmatter = setTimeout(() => {
+			try {
+				this.dlArray = document.getElementsByTagName('DL')[0].innerHTML;
+				this.dlEntry = Array.from(this.dlArray.split('\n'));
+			} catch (error) {
+				console.log(this.dlEntry);
+			}
+			let j = 1;
+			for (let i = 0; i < this.dlEntry.length; i++) {
+				if (i > 0 && this.dlEntry[i - j].includes('tags')) {
+					if (!this.dlEntry[i].includes('<dt>')) {
+						this.ddTags[j - 1] = i;
+						j++;
+					};
+				};
+			};
+			clearTimeout(loadFrontmatter);
+			this.togglePropertiesRefreshed();
+		}, 1000);
+	},
 	markedLineParse: function (mdLine) {
 		return marked.parse(mdLine);
 	},
-
+	classTags: [],
 }">
 
 	<nav id="nav" hx-get="/nav.html" hx-target="#nav" hx-trigger="load" hx-swap="innerHTML" x-bg></nav>
 
-	<main class="cmbr-grid">
+	<main class="cmbr-grid" x-init="mdEntries = CMBRutil.connectCMBRjson(['netjournal']);"
+		x-effect="$watch('ddTags', value => (classTags = value))">
 
 		<div class="cmbr-item cmbr-item-left">
-			<div x-data>
-				<h1 class="lora-bold"></h1>
+
+			<div class="cmbr-item">
+				<h1 class="lora-bold" x-text="'MD Doclists'"></h1>
 				<hr class="hr-trans">
+				<div class=" flex-table flex-table-r">
+					<template x-for="(item, index) in mdEntries" :key="item">
+						<button class="cmbr-button" style="min-width: 2rem;"
+							x-text="(index + 1 )+ ': ' + item.substring(item.lastIndexOf('/') + 1, item.lastIndexOf('.'))"
+							@click="markedFileParse(item)"></button>
+					</template>
+				</div>
 			</div>
-			<template x-for="item in 59" :key="index">
-				<button x-html="item" @click="markedFileParse('/depository/CMBRpublic/' + item + '.md');"></button>
-			</template>
 		</div>
-		<div class="cmbr-item cmbr-item-center">
+
+
+		<div class=" cmbr-item cmbr-item-center" style="max-width: 40rem;">
 			<div id="cmbrEntry" class="blogging-font">
 				<slot id="mdSlot"></slot>
 				<hr>
 			</div>
 		</div>
+
 
 
 
@@ -82,6 +115,22 @@
 				this.isMarked = 'Marked';
 			},
 		}">
+
+			<div class="cmbr-item vt323 affection grid-col-1" style="border: 0.3rem solid inset; min-height: 20rem;"
+				x-effect="$watch('ddTags', value => (classTags = value))" x-show="propertiesRefreshed"
+				x-transition.duration.1000ms>
+				<template x-for="(item, index) in dlEntry" :key="item">
+					<div>
+						<template x-if="item !== ''">
+							<div x-html="item" :class="classTags.includes(index) ? 'chrispy cmbr-button' : ''">
+							</div>
+						</template>
+
+					</div>
+				</template>
+				<!-- <div class="cmbr-item" style="min-height: 15rem;" x-show="!propertiesRefreshed" x-transiton vid-paused>
+				</div> -->
+			</div>
 			<div class="chrispy-likeness-box">
 				<h1 x-text="isMarked"></h1>
 				<hr class="hr-cmbr-dark-gradient">

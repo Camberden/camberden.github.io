@@ -34,7 +34,7 @@ const baseHyperlinks = [
 	"https://camberden.github.io/",
 	"https://camberden.net/",
 	"http://127.0.0.1:" + basePort,
-	"http://localhost:" + basePort,
+	"http://localhost:" + basePort + '/',
 	"http://localhost:" + basePort + "/index.html",
 ];
 const nonStaticSite = "https://camberden.net";
@@ -224,38 +224,56 @@ const cmbrMdConfig = {
 };
 
 const CMBRmarkedConfig = {
-	heading(src) {
-		const match = src.match('##');
+	name: 'heading',
+	level: 'block',
+	start(src) { return src.match('##')?.index; },
+	tokenizer(src, tokens) {
+		const rule = /^(#{1,6})[ \t]+([^\r\n]+?)[ \t]*#*\r?(?:\n+|$)/;
+		const match = rule.exec(src);
 		if (match) {
 			return {
 				type: 'heading',
 				raw: match[0],
-				text: match[1].trim()
+				depth: match[1].length,
+				text: match[2].trim()
 			};
 		}
 		// return false to use original heading tokenizer
 		return false;
 	},
-	walkTokens: (token) => {
-		//console.log(marked.parse('# heading 2\n\n## heading 3'));
-		if (token.type === 'heading') {
-			token.depth += 1;
+};
+
+const cmbrThematicBreak = {
+	name: 'cmbrThematicBreak',
+	level: 'block',
+	start(src) { return src.match(/^ {0,3}\*{3,}[ \t]*(?:\r?\n|$)/)?.index; },
+	tokenizer(src) {
+		const rule = /^ {0,3}\*{3,}[ \t]*(?:\r?\n|$)/;
+		const match = rule.exec(src);
+		if (match) {
+			return {
+				type: 'cmbrThematicBreak',
+				raw: match[0],
+			};
 		}
+	},
+	renderer() {
+		return '<hr class="hr-cmbr-gradient">\n';
 	},
 };
 
 const descriptionList = {
 	name: 'descriptionList',
 	level: 'block',                                     // Is this a block-level or inline-level tokenizer?
-	start(src) { return src.match(/:[^:\n]/)?.index; }, // Hint to Marked.js to stop and check for a match
+	start(src) { return src.match(/^---[ \t]*(?:\r?\n|$)/)?.index; }, // Hint to Marked.js to stop and check for a match
 	tokenizer(src, tokens) {
-		const rule = /^(?::[^:\n]+:[^:\n]*(?:\n|$))+/;    // Regex for the complete token, anchor to string start
+		const rule = /^---[ \t]*\r?\n([\s\S]*?)\r?\n---[ \t]*(?:\r?\n|$)/; // Match a complete fenced metadata section
 		const match = rule.exec(src);
 		if (match) {
 			const token = {                                 // Token to generate
 				type: 'descriptionList',                      // Should match "name" above
 				raw: match[0],                                // Text to consume from the source
-				text: match[0].trim(),                        // Additional custom properties
+				text: match[1].trim(),                        // Additional custom properties
 				tokens: []                                    // Array where child inline tokens will be generated
 			};
 			this.lexer.inline(token.text, token.tokens);    // Queue this data to be processed for inline tokens
@@ -263,40 +281,65 @@ const descriptionList = {
 		}
 	},
 	renderer(token) {
-		return `<dl class="grid-col-1-1 vt323 mdDL" style="background-color: var(--cmbr-blass); 
-		border: 0.2rem inset black; padding: 0.5rem;">${this.parser.parseInline(token.tokens)}\n</dl>`; // parseInline to turn child tokens into HTML
+		return `<dl x-show="false">${this.parser.parseInline(token.tokens)}</dl>`; // parseInline to turn child tokens into HTML
 	}
 };
 
 const description = {
 	name: 'description',
 	level: 'inline',                                 // Is this a block-level or inline-level tokenizer?
-	start(src) { return src.match(/:/)?.index; },    // Hint to Marked.js to stop and check for a match
+	start(src) { return src.match(/^[^:\r\n]+:/)?.index; }, // Hint to Marked.js to stop and check for a match
 	tokenizer(src, tokens) {
-		const rule = /^:([^:\n]+):([^:\n]*)(?:\n|$)/;  // Regex for the complete token, anchor to string start
+		const rule = /^([^:\r\n]+):[ \t]*(?:(?:\r?\n[ \t]*-[ \t]+[^\r\n]*)+(?:\r?\n|$)|[^\r\n]*(?:\r?\n|$))/; // Match a scalar or a YAML-style list value
 		const match = rule.exec(src);
 		if (match) {
+			const lines = match[0].split(/\r?\n/);
+			const key = lines[0].slice(0, lines[0].indexOf(':')).trim();
+			const listValues = lines.slice(1)
+				.map((line) => line.match(/^[ \t]*-[ \t]+(.*)$/)?.[1].trim())
+				.filter((value) => value !== undefined);
+			const values = listValues.length
+				? listValues
+				: [lines[0].slice(lines[0].indexOf(':') + 1).trim()];
+
 			return {                                         // Token to generate
 				type: 'description',                           // Should match "name" above
 				raw: match[0],                                 // Text to consume from the source
-				dt: this.lexer.inlineTokens(match[1].trim()),  // Additional custom properties, including
-				dd: this.lexer.inlineTokens(match[2].trim())   //   any further-nested inline tokens
+				dt: this.lexer.inlineTokens(key),              // Additional custom properties, including
+				dd: values.map((value) => [{                   //   any further-nested inline tokens
+					type: 'text',
+					raw: value,
+					text: value,
+					escaped: false,
+				}])
 			};
 		}
 	},
 	renderer(token) {
-		return `\n<dt>${this.parser.parseInline(token.dt)}</dt><dd>${this.parser.parseInline(token.dd)}</dd>`;
+		const values = token.dd
+			.map((value) => `\n<dd>${this.parser.parseInline(value)}</dd>`)
+			.join('');
+		return `\n<dt>${this.parser.parseInline(token.dt)}</dt>${values}`;
 	},
-	childTokens: ['dt', 'dd'],                 // Any child tokens to be visited by walkTokens
+	childTokens: ['dt'],                       // Any child tokens to be visited by walkTokens
 };
+
+// };
 
 function walkTokens(token) {                        // Post-processing on the completed token tree
 	if (token.type === 'strong') {
 		token.text += ' walked';
+		token.depth += 1;
 		token.tokens = this.Lexer.lexInline(token.text)
 	}
+	if (token.type === 'hr') {
+		token.text += ' <hr class="hr-cmbr-gradient">';
+		token.depth += 1;
+		token.tokens = this.Lexer.lexInline(token.text)
+	}
+
 }
-marked.use({ extensions: [descriptionList, description], walkTokens });
+marked.use({ extensions: [cmbrThematicBreak, descriptionList, description], walkTokens });
 
 /* |====================>
 % CMBRutil
@@ -529,50 +572,6 @@ const CMBRutil = {
 		}
 		litem.classList.add(addClass);
 	},
-
-	// dataTheme: function () {
-	// 	document.querySelectorAll(".data-theme-button").forEach(button => {
-	// 		button.onclick = function () {
-	// 			switch (button.id) {
-	// 				case "dark":
-	// 					document.querySelector("body").setAttribute("data-theme", "dark");
-	// 					button.style.color = "initial";
-	// 					document.getElementById("light").style.color = "transparent";
-	// 					document.getElementById("legacy").style.color = "transparent";
-	// 					// document.getElementById("paperesque").style.color = "transparent";
-	// 					break;
-	// 				case "light":
-	// 					document.querySelector("body").setAttribute("data-theme", "light");
-	// 					button.style.color = "initial";
-	// 					document.getElementById("dark").style.color = "transparent";
-	// 					document.getElementById("legacy").style.color = "transparent";
-	// 					// document.getElementById("paperesque").style.color = "transparent";
-
-	// 					break;
-	// 				case "legacy":
-	// 					document.querySelector("body").setAttribute("data-theme", "legacy");
-	// 					button.style.color = "initial";
-	// 					document.getElementById("dark").style.color = "transparent";
-	// 					document.getElementById("light").style.color = "transparent";
-	// 					// document.getElementById("paperesque").style.color = "transparent";
-
-	// 					break;
-	// 				case "paperesque":
-	// 					document.querySelector("body").setAttribute("data-theme", "paperesque");
-	// 					button.style.color = "initial";
-	// 					document.getElementById("dark").style.color = "transparent";
-	// 					document.getElementById("light").style.color = "transparent";
-	// 					// document.getElementById("legacy").style.color = "transparent";
-
-	// 					break;
-	// 				default:
-	// 					console.log("Light, Dark, and Lavendarium.");
-	// 					break;
-	// 			}
-	// 		}
-	// 	});
-	// 	document.getElementById(document.querySelector("body").getAttribute("data-theme")).style.color = "initial";
-	// },
 	/** @returns {Boolean} `true` if file:// protocol | `false` otherwise */
 	acceptableProtocol: function () {
 		if (document.location.protocol === "file:") {
@@ -622,10 +621,11 @@ const CMBRutil = {
 			return true;
 		} else if (document.location.href.endsWith("index.html")) {
 			return true;
-		} else if (document.location.href.endsWith(document.location.port + "/")) {
-			return true;
-		} else if (document.location.href.includes(baseHyperlinks[0])) {
-			return false;
+			/*
+			$ Removed following reindexing; prevents <nav> from being displayed outside index on nested pages.
+			} else if (document.location.href.endsWith(document.location.port + "/")) {
+				return true; 
+			*/
 		} else {
 			return false;
 		}
@@ -720,13 +720,13 @@ const CMBRutil = {
 			.then(data => data.json())
 			.then(data => {
 				// console.log(data);
-				console.log("QUERY BEFORE RESOLUTION: " + query[0]);
+				console.log("CMBRutil.connectCMBRjson Query: " + query);
 				return data;
 			})
 			.then((data) => {
-				query[0] == "travel-photos" ? console.log("QUERY 0 SAME: " + query[0]) : console.log("QUERY 0 NOT SAME: " + query[0]);
-				query[1] == 1 ? console.log("QUERY 1 SAME: " + query[1]) : console.log("QUERY 1 NOT SAME: " + query[1]);
-				console.log("QUERY LENGTH: " + query.length);
+				// // query[0] == "travel-photos" ? console.log("QUERY 0 SAME: " + query[0]) : console.log("QUERY 0 NOT SAME: " + query[0]);
+				// // query[1] == 1 ? console.log("QUERY 1 SAME: " + query[1]) : console.log("QUERY 1 NOT SAME: " + query[1]);
+				// // console.log("QUERY LENGTH: " + query.length);
 				switch (query[0]) {
 					case "travel-photos":
 						if (query.length == 1) {
@@ -747,6 +747,8 @@ const CMBRutil = {
 						return data["grGeneralPhotos"];
 					case "expeditionary":
 						return data["expeditionary"];
+					case "netjournal":
+						return data["netjournal"];
 					case "blog":
 						if (query.length == 1) {
 							// console.log(data[query[0]]);
